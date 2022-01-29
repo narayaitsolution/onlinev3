@@ -1,0 +1,67 @@
+@page{
+	size: auto;
+	margin : 0;
+}
+
+html{
+	background-color: #FFFFFF; 
+  margin: 20px;  /* this affects the margin on the html before sending to printer */
+	font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  margin: 10mm 10mm 10mm 10mm; /* margin you want for the content */
+}
+
+header, footer, aside, nav, form, iframe{
+  display: none;
+}
+
+body {
+	margin: 0px;
+  background-color: white;
+	background-image: none;
+}
+h1 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+h2 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+h4 {
+	font-family: font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+}
+hr {
+	border: 1px solid;
+}
+
+tr.top td {
+  border-top: thin solid black;
+}
+
+tr.bottom td {
+  border-bottom: thin solid black;
+}
+
+tr.row td:first-child {
+  border-left: thin solid black;
+}
+
+tr.row td:last-child {
+  border-right: thin solid black;
+}
+
+p {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+  
