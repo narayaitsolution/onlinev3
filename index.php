@@ -31,7 +31,7 @@
         <a href="#" class="h1"><img src="system/saintek-logo.png" width="100%"></a>
       </div>
       <div class="card-body">
-        <p class="login-box-msg h2"><b>SAINTEK</b> e-Office</p>
+        <p class="login-box-msg h3"><b>SAINTEK</b> e-Office</p>
 
         <form action="auth.php" method="post">
           <div class="input-group mb-3">
@@ -68,10 +68,10 @@
         </form>
         <hr>
         <div class="row">
-          <div class="col">
+          <div class="col text-sm">
             <a href="forgot-password.html" class="btn btn-success btn-block">Lupa Password</a>
           </div>
-          <div class="col">
+          <div class="col text-sm">
             <a href="register.html" class="btn btn-warning btn-block">DAFTAR</a>
           </div>
         </div>
