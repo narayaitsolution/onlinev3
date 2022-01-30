@@ -1,9 +1,10 @@
+<!--
 <style>
     .main-sidebar {
-        background-color: turquoise !important
+        background-color: clear !important
     }
 </style>
-
+-->
 
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->

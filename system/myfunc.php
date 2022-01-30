@@ -19,7 +19,7 @@ function tgljam_indo($tanggal)
             1 =>   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
         );
         $pecahkan = explode('-', substr($tanggal, 0, 10));
-        return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0] . ' pukul ' . (substr($tanggal, 11, 8)) . ' WIB';
+        return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0] . ' jam ' . (substr($tanggal, 11, 8)) . ' WIB';
     }
 }
 
