@@ -30,6 +30,35 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="datasurat-tampil.php" class="nav-link">
+                        <i class="nav-icon fas fa-envelope-open"></i>
+                        <p>
+                            Surat Disetujui
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pengajuanmhs-tampil.php" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Surat Mahasiswa
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-paper-plane"></i>
+                        <p>
+                            Disposisi
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
+
+                <!-- menu pengunjung fakultas khusus wadek 2& 3 -->
                 <?php
                 if ($jabatan == 'wadek3' or $jabatan == 'wadek2') {
                 ?>
@@ -45,24 +74,7 @@
                 <?php
                 }
                 ?>
-                <?php
-                $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Mhs. Bimbingan'");
-                $dmenu = mysqli_fetch_array($qmenu);
-                $statussurat = $dmenu['status'];
-                if ($statussurat == 1) {
-                ?>
-                    <li class="nav-item">
-                        <a href="bimbingan-tampil.php" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Mhs. Bimbingan
-                                <span class="right badge badge-danger"></span>
-                            </p>
-                        </a>
-                    </li>
-                <?php
-                }
-                ?>
+
 
                 <?php
                 $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Pengguna Lab.'");
@@ -86,19 +98,8 @@
                     }
                 }
                 ?>
-                <!-- cek kapasitas lab
-                <li class="nav-item">
-                    <a href="lab-cekkapasitas.php" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>
-                            Kapasitas Lab.
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-            -->
 
-
+                <!-- menu operator SKPI -->
                 <?php
                 $qoperator = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
                 $jmldata = mysqli_num_rows($qoperator);
@@ -156,6 +157,8 @@
                 <?php
                 }
                 ?>
+
+                <!-- menu admin -->
                 <?php
                 if ($nip == '198312132019031004') {
                 ?>
@@ -209,15 +212,7 @@
                 <?php
                 }
                 ?>
-                <li class="nav-item">
-                    <a href="userprofile-tampil.php" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Profile User
-                            <span class="right badge badge-danger"><small>baru</small></span>
-                        </p>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="https://wa.me/6281234302099" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>

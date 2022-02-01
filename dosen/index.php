@@ -54,7 +54,7 @@ $no = 1;
                             <h1>Dashboard</h1>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
             </section>
 
             <!-- notifications -->
@@ -62,174 +62,284 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>150 <sup style="font-size: 20px">surat</sup></h3>
-                                    <p>Surat Mahasiswa <br /> menunggu verifikasi</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-email"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Verifikasi <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- pengajuan bawahan -->
-                        <?php
-                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
-                        ?>
-                            <div class="col-lg col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-success">
+                            <a href="pengajuanmhs-tampil.php">
+                                <div class="small-box bg-info">
                                     <div class="inner">
-                                        <h3>53 <sup style="font-size: 20px">surat</sup></h3>
-                                        <p>Bawahan <br /> menunggu verifikasi</p>
+                                        <h3>150 <sup style="font-size: 20px">surat</sup></h3>
+                                        <p>Surat Mahasiswa <br /> menunggu verifikasi</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-email"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">Verifikasi <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
+                            </a>
+                        </div>
+
+                        <!-- pengajuan bawahan -->
+                        <?php
+                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                            $qwfh = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0");
+                            $jwfh = mysqli_num_rows($qwfh);
+                            $qst = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0");
+                            $jst = mysqli_num_rows($qst);
+                            $tbawahan = $jwfh + $jst;
+
+                        ?>
+                            <div class="col-lg col-6">
+                                <a href="pengajuanbawahan-tampil.php">
+                                    <div class="small-box bg-success">
+                                        <div class="inner">
+                                            <h3><?= $tbawahan; ?> <sup style="font-size: 20px">surat</sup></h3>
+                                            <p>Bawahan <br /> menunggu verifikasi</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-email"></i>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         <?php
                         }
                         ?>
                         <!-- ./col -->
                         <div class="col-lg col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>2 <sup style="font-size: 20px">surat</sup></h3>
-                                    <p>Disposisi <br />masuk</p>
+                            <a href="#">
+                                <div class="small-box bg-danger">
+                                    <div class="inner">
+                                        <h3>2 <sup style="font-size: 20px">surat</sup></h3>
+                                        <p>Disposisi <br />masuk</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-android-mail"></i>
+                                    </div>
                                 </div>
-                                <div class="icon">
-                                    <i class="ion ion-android-mail"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
+                            </a>
                         </div>
-                        <div class="col-lg col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-secondary">
-                                <div class="inner">
-                                    <h3>2 <sup style="font-size: 20px">surat</sup></h3>
-                                    <p>Pribadi <br />Masuk</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-android-mail"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Main content -->
-            <section class="content">
-                <!-- rekap atas -->
-                <div class="container-fluid">
-                    <div class="row">
-
-                        <!-- pegunjung fakulas -->
                         <?php
                         if ($jabatan == 'wadek3' or $jabatan == 'wadek2') {
                         ?>
-                            <div class="col col-sm-3 col-md-3">
-                                <div class="info-box">
-                                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Pengunjung Fakultas</span>
-                                        <span class="info-box-number">
-                                            <a href="pengunjung-tampil.php" class="btn btn-danger btn-sm btn-block">CEK</a>
-                                        </span>
+                            <div class="col-lg col-6">
+                                <a href="#">
+                                    <div class="small-box bg-warning">
+                                        <div class="inner">
+                                            <h3>60 <sup style="font-size: 20px">orang</sup></h3>
+                                            <p>Pengunjung Fakultas <br />masuk</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-ios-people"></i>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         <?php
                         }
                         ?>
+                    </div>
+                </div>
+            </section>
 
-                        <!-- pengajuan mahasiswa -->
-                        <div class="col col-sm-3 col-md-3">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-envelope"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Surat Mahasiswa</span>
-                                    <span class="info-box-number">
-                                        <a href="pengajuanmhs-tampil.php" class="btn btn-info btn-sm btn-block">CEK</a>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- pengajuan bawahan -->
-                        <?php
-                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
-                        ?>
-                            <div class="col col-sm col-md">
-                                <div class="info-box">
-                                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-envelope"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Surat Bawahan</span>
-                                        <span class="info-box-number"><a href="pengajuanbawahan-tampil.php" class="btn btn-success btn-sm btn-block">CEK</a></span>
+            <!-- tabel pengajuan pribadi -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Pengajuan Surat Pribadi</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                        <!-- fix for small devices only -->
-                        <div class="clearfix hidden-md-up"></div>
+                                <?php $no = 1; ?>
+                                <div class="card-body p-0">
+                                    <div class="card-body">
+                                        <table id="example2" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th width="5%" style="text-align: center;">No</th>
+                                                    <th width="20%" style="text-align: center;">Jenis Surat</th>
+                                                    <th style="text-align: center;">Status Surat</th>
+                                                    <th width="20%" style="text-align: center;">Keterangan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Izin-->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE nip='$nip' ORDER BY tglizin1 DESC");
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $jenissurat = 'Surat Izin';
+                                                    $keterangan = $data['keterangan'];
+                                                    $verifikasiprodi = $data['verifikasiprodi'];
+                                                    $verifikatorprodi = $data['verifikatorprodi'];
 
-                        <!-- riwayat surat -->
-                        <?php
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Riwayat Surat'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                        ?>
-                            <div class="col col-sm col-md">
-                                <div class="info-box mb">
-                                    <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-envelope-open"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Riwayat Surat</span>
-                                        <span class="info-box-number"><a href="datasurat-tampil.php" class="btn btn-secondary btn-sm btn-block">CEK</a></span>
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $jenissurat; ?></td>
+                                                        <td>
+                                                            <?php
+                                                            if ($verifikasiprodi == 0) {
+                                                            ?>
+                                                                menunggu verifikasi <?= namadosen($dbsurat, $verifikatorprodi); ?>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                            <?php
+                                                            if ($verifikasiprodi == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-sm" href="izin-cetak.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak
+                                                                </a>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                            <?php
+                                                            if ($verifikasiprodi == 2) {
+                                                            ?>
+                                                                Ditolak oleh <?= namadosen($dbsurat, $verifikatorprodi); ?>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $keterangan; ?>
+                                                            <br />
+                                                            <?php
+                                                            if ($verifikasiprodi <> 1) {
+                                                            ?>
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                    <i class="fas fa-trash"></i> Hapus
+                                                                </a>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+
+                                                <!-- pengajuan WFH-->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE nip='$nip' ORDER BY tglwfh1 DESC");
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tglwfh1 = $data['tglwfh1'];
+                                                    $tglwfh2 = $data['tglwfh2'];
+                                                    $tglwfh3 = $data['tglwfh3'];
+                                                    $tglwfh4 = $data['tglwfh4'];
+                                                    $tglwfh5 = $data['tglwfh5'];
+                                                    $verifikasiprodi = $data['verifikasiprodi'];
+                                                    $verifikatorprodi = $data['verifikatorprodi'];
+                                                    $verifikasifakultas = $data['verifikasifakultas'];
+                                                    $verifikatorfakultas = $data['verifikatorfakultas'];
+                                                    $jenissurat = 'Izin WFH';
+                                                    $keterangan = $data['keterangan'];
+                                                    if (date($tglwfh5) != 0) {
+                                                        $wfhselesai = $tglwfh5;
+                                                    } else {
+                                                        if (date($tglwfh4) != 0) {
+                                                            $wfhselesai = $tglwfh4;
+                                                        } else {
+                                                            if (date($tglwfh3) != 0) {
+                                                                $wfhselesai = $tglwfh3;
+                                                            } else {
+                                                                if (date($tglwfh2) != 0) {
+                                                                    $wfhselesai = $tglwfh2;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $jenissurat; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php
+                                                            if ($verifikasiprodi == 0) {
+                                                            ?>
+                                                                menunggu verifikasi <?= namadosen($dbsurat, $verifikatorprodi); ?>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                            <?php
+                                                            if ($verifikasiprodi == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-sm" href="wfh-cetakrk.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak Rencana Kerja
+                                                                </a>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                            <?php
+                                                            if ($verifikasiprodi == 2) {
+                                                            ?>
+                                                                Ditolak oleh <?= namadosen($dbsurat, $verifikatorprodi); ?>
+                                                            <?php
+                                                            };
+                                                            ?>
+
+                                                            <?php
+                                                            if ($verifikasifakultas == 0) {
+                                                            ?>
+                                                                Menunggu verifikasi <?= namadosen($dbsurat, $verifikatorfakultas); ?>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                            <?php
+                                                            if ($verifikasifakultas == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-sm" href="wfh-cetakst.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak Surat Tugas
+                                                                </a>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                            <?php
+                                                            if ($verifikasifakultas == 2) {
+                                                            ?>
+                                                                Ditolak oleh <?= namadosen($dbsurat, $verifikatorfakultas); ?>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $keterangan; ?>
+                                                            <br />
+                                                            <?php
+                                                            if ($verifikasifakultas <> 1) {
+                                                            ?>
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="wfh-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                    <i class="fas fa-trash"></i> Hapus
+                                                                </a>
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
-
-                        <!-- pengajuan pribadi -->
-                        <div class="col col-sm col-md">
-                            <div class="info-box mb">
-                                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user-secret"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Pengajuan Pribadi</span>
-                                    <span class="info-box-number"><a href="pengajuansurat-tampil.php" class="btn btn-warning btn-sm btn-block">CEK</a></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </section>
-            <!-- /.content -->
+
         </div>
-        <!-- /.content-wrapper -->
-
-        <?php
-        require('footer.php');
-        ?>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
+    <?php
+    require('footer.php');
+    ?>
 
     <script src="../template/plugins/jquery/jquery.min.js"></script>
     <script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

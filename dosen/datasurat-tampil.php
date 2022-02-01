@@ -61,7 +61,7 @@ $no = 1;
                 <!-- Pengajuan Surat Mahasiswa -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Pengajuan Surat Mahasiswa</h3>
+                        <h3 class="card-title">Surat Mahasiswa Disetujui</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
