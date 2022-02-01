@@ -61,7 +61,7 @@ $no = 1;
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
@@ -74,22 +74,28 @@ $no = 1;
                                 <a href="#" class="small-box-footer">Verifikasi <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3>53 <sup style="font-size: 20px">surat</sup></h3>
-                                    <p>Bawahan <br /> menunggu verifikasi</p>
+                        <!-- pengajuan bawahan -->
+                        <?php
+                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        ?>
+                            <div class="col-lg col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-success">
+                                    <div class="inner">
+                                        <h3>53 <sup style="font-size: 20px">surat</sup></h3>
+                                        <p>Bawahan <br /> menunggu verifikasi</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-email"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">Verifikasi <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ion ion-email"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">Verifikasi <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                        </div>
+                        <?php
+                        }
+                        ?>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg col-6">
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
@@ -102,7 +108,7 @@ $no = 1;
                                 <a href="#" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg col-6">
                             <!-- small box -->
                             <div class="small-box bg-secondary">
                                 <div class="inner">
