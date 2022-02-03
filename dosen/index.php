@@ -12,6 +12,7 @@ if ($_SESSION['hakakses'] != "dosen") {
 require('../system/dbconn.php');
 require('../system/myfunc.php');
 $no = 1;
+$tahun = date('Y');
 ?>
 
 <!DOCTYPE html>
@@ -166,7 +167,7 @@ $no = 1;
                                             <tbody>
                                                 <!-- Izin-->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE nip='$nip' ORDER BY tglizin1 DESC");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE nip='$nip' AND year(tglsurat) = $tahun ORDER BY tglizin1 DESC");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
                                                     $jenissurat = 'Surat Izin';
@@ -224,7 +225,7 @@ $no = 1;
 
                                                 <!-- pengajuan WFH-->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE nip='$nip' ORDER BY tglwfh1 DESC");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE nip='$nip' and year(tglsurat) = $tahun ORDER BY tglwfh1 DESC");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
                                                     $tglwfh1 = $data['tglwfh1'];
