@@ -24,11 +24,11 @@
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header bg-primary">
-                    <img src="../system/dosen.png" class="img-circle elevation-2" alt="User Image">
+                    <img src="../system/mahasiswa.png" class="img-circle elevation-2" alt="User Image">
 
                     <p>
                         <?= $nama; ?>
-                        <small>NIP : <?= $nip; ?></small>
+                        <small>NIM : <?= $nim; ?></small>
                     </p>
                 </li>
                 <!-- Menu Body -->

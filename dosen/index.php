@@ -167,7 +167,7 @@ $tahun = date('Y');
                                             <tbody>
                                                 <!-- Izin-->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE nip='$nip' AND year(tglsurat) = $tahun ORDER BY tglizin1 DESC");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE nip='$nip' ORDER BY tglizin1 DESC");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
                                                     $jenissurat = 'Surat Izin';
