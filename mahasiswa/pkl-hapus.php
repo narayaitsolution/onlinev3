@@ -2,11 +2,14 @@
 session_start();
 require('../system/dbconn.php');
 
-$nodata = mysqli_real_escape_string($dbsurat, $_GET['nodata']);
+//$nodata = mysqli_real_escape_string($dbsurat, $_GET['nodata']);
+$token = $_GET['token'];
 $nim = $_SESSION['nip'];
+
 //delete file pakta integritas
-$query4 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE no = '$nodata'");
+$query4 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE token = '$token'");
 $data = mysqli_fetch_array($query4);
+$nodata = $data['no'];
 $namafile = $data['lampiran'];
 $namafile2 = $data['buktivaksin'];
 unlink($namafile);

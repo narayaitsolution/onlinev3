@@ -100,6 +100,7 @@ $no = 1;
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
                                     $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -120,7 +121,7 @@ $no = 1;
                                             <?php
                                             if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php

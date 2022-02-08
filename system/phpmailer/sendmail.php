@@ -18,7 +18,7 @@
 		$mail->SMTPSecure = "tls";                           
 		$mail->Port = 587;                                   
 		$mail->From = "saintekonline@gmail.com"; //email pengirim
-		$mail->FromName = "SAINTEK Online"; //nama pengirim
+		$mail->FromName = "SAINTEK e-Office"; //nama pengirim
 		$mail->addAddress($email, $nama); //email penerima				 
 		$mail->isHTML(true);
 	 
@@ -32,4 +32,3 @@
 			echo "Message has been sent successfully";
 		}
 	}
-?>

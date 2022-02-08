@@ -14,10 +14,12 @@ $tglmulai = $_POST['tglmulai'];
 $tglselesai = $_POST['tglselesai'];
 $jenispkl = $_POST['jenispkl'];
 $pklmagang = $_POST['pklmagang'];
+$token = md5(microtime());
 
 //masukin data
-$stmt = $dbsurat->prepare("INSERT INTO pkl (tanggal, prodi, nim, nama, instansi, tempatpkl, alamat, tglmulai, tglselesai, pklmagang, jenispkl) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("sssssssssss", $tanggal, $prodi, $nim, $nama, $instansi, $tempatpkl, $alamat, $tglmulai, $tglselesai, $pklmagang, $jenispkl);
+$stmt = $dbsurat->prepare("INSERT INTO pkl (tanggal, prodi, nim, nama, instansi, tempatpkl, alamat, tglmulai, tglselesai, pklmagang, jenispkl,token) 
+                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("ssssssssssss", $tanggal, $prodi, $nim, $nama, $instansi, $tempatpkl, $alamat, $tglmulai, $tglselesai, $pklmagang, $jenispkl, $token);
 $stmt->execute();
 
 $qpkl = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE nim='$nim' and statussurat=-1");

@@ -98,6 +98,7 @@ $no = 1;
                                     $validasi1 = $data['validasi1'];
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -106,7 +107,7 @@ $no = 1;
                                         <td><?= $prodimhs; ?></td>
                                         <td><?= tgljam_indo($tanggal); ?></td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="pkl-koor-tampil.php?nodata=<?php echo $nodata; ?>">
+                                            <a class="btn btn-info btn-sm" href="pkl-koor-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
@@ -130,6 +131,7 @@ $no = 1;
                                     $validasi1 = $data['validasi1'];
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -138,7 +140,7 @@ $no = 1;
                                         <td><?= $prodimhs; ?></td>
                                         <td><?= tgljam_indo($tanggal); ?></td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="pkl-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
+                                            <a class="btn btn-info btn-sm" href="pkl-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
@@ -162,6 +164,7 @@ $no = 1;
                                     $validasi1 = $data['validasi1'];
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -170,7 +173,7 @@ $no = 1;
                                         <td><?= $prodimhs; ?></td>
                                         <td><?= tgljam_indo($tanggal); ?></td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="pkl-wd-tampil.php?nodata=<?php echo $nodata; ?>">
+                                            <a class="btn btn-info btn-sm" href="pkl-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
