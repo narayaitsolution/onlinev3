@@ -15,7 +15,6 @@ $tglselesai = $_POST['tglselesai'];
 $jenispkl = $_POST['jenispkl'];
 $pklmagang = $_POST['pklmagang'];
 
-
 //masukin data
 $stmt = $dbsurat->prepare("INSERT INTO pkl (tanggal, prodi, nim, nama, instansi, tempatpkl, alamat, tglmulai, tglselesai, pklmagang, jenispkl) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 $stmt->bind_param("sssssssssss", $tanggal, $prodi, $nim, $nama, $instansi, $tempatpkl, $alamat, $tglmulai, $tglselesai, $pklmagang, $jenispkl);

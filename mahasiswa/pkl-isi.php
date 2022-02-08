@@ -81,9 +81,9 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="tempat" class="col-sm-2 col-form-label">Unit / Bagian</label>
+                                                <label for="tempatpkl" class="col-sm-2 col-form-label">Unit / Bagian</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="tempat" name="tempat" required>
+                                                    <input type="text" class="form-control" id="tempatpkl" name="tempatpkl" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -117,8 +117,8 @@ $no = 1;
                                                 <label for="jenispkl" class="col-sm-2 col-form-label">Luring / Daring</label>
                                                 <div class="col-sm-10">
                                                     <select class="form-control" id="jenispkl" name="jenispkl">
-                                                        <option value="Offline" selected>Luring / Offline</option>
-                                                        <option value="Online">Daring / Online</option>
+                                                        <option value="Offline">Luring / Offline</option>
+                                                        <option value="Online" selected>Daring / Online</option>
                                                     </select>
                                                     <small style="color:red">
                                                         <li>PKL Online / Daring harus mengunggah <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>

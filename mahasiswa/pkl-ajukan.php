@@ -70,6 +70,6 @@ $pesan = "Yth. " . $namakoor . "<br/>
 		<br/>
         <br/>
         <b>SAINTEK Online</b>";
-//sendmail($emailkoor, $namakoor, $subject, $pesan);
+sendmail($emailkoor, $namakoor, $subject, $pesan);
 
 header("location:index.php");

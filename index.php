@@ -15,7 +15,7 @@ require('system/myfunc.php');
   <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
   <style>
     .login-page {
-      background-image: url('system/uinmalang.jpg');
+      background-image: url('system/saintek-bg.jpg');
       background-repeat: no-repeat;
       background-size: cover;
     }
