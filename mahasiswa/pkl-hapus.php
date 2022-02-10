@@ -11,9 +11,7 @@ $query4 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE token = '$token'");
 $data = mysqli_fetch_array($query4);
 $nodata = $data['no'];
 $namafile = $data['lampiran'];
-$namafile2 = $data['buktivaksin'];
 unlink($namafile);
-unlink($namafile2);
 
 //delete file bukti vaksin
 $query4 = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nodata = '$nodata'");

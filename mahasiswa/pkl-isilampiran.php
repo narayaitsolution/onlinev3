@@ -60,8 +60,8 @@ $no = 1;
                     <div class="alert alert-warning alert-dismissible fade show">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>KETERANGAN : </strong><br />
-                        <li>PKL Online / Daring harus mengunggah <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b></li>
-                        <li>PKL Offline / Luring harus mengunggah <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) dan bukti vaksin (semua anggota kelompok) oleh ketua kelompok</b></li>
+                        <li><b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) di-upload oleh ketua kelompok</b></li>
+                        <li>Pastikan seluruh anggota kelompok telah <b>meng-upload bukti vaksin terakhir melalui menu Profile User</b></li>
                     </div>
                 </div>
             </section>
@@ -158,7 +158,7 @@ $no = 1;
                                                 <td><?= $nama; ?></td>
                                                 <?php
                                                 if ($lampiran == '') {
-                                                    $namafile = 'noimage.gif';
+                                                    $namafile = '../system/noimage.gif';
                                                 } else {
                                                     $statussurat = $statussurat + 1;
                                                     $namafile = $lampiran;
@@ -181,50 +181,6 @@ $no = 1;
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <?php
-                                            if ($jenispkl == 'Offline') {
-                                                //cek anggota
-                                                $anggotapkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nodata='$nodata'");
-                                                while ($danggota = mysqli_fetch_array($anggotapkl)) {
-                                                    $nimanggota = $danggota['nimanggota'];
-                                                    $namaanggota = $danggota['nama'];
-                                                    $buktivaksin = $danggota['buktivaksin'];
-                                            ?>
-                                                    <tr>
-                                                        <td><?= $no + 1; ?></td>
-                                                        <td>Bukti Vaksin Terakhir</td>
-                                                        <td><?= $namaanggota; ?></td>
-                                                        <?php
-                                                        if (is_null($buktivaksin)) {
-                                                            $namafile = 'noimage.gif';
-                                                        } else {
-                                                            $namafile = $buktivaksin;
-                                                            $statussurat = $statussurat + 1;
-                                                        }
-                                                        ?>
-                                                        <td style="text-align: center;">
-                                                            <a href="<?= $namafile; ?>" target="_blank"><img src="<?= $namafile; ?>" class="img-fluid" width="200px"></img></a>
-                                                            <br />
-                                                            <form action="pkl-isilampiran2-upload.php" enctype="multipart/form-data" class="form-horizontal" method="post">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <input type="file" name="fileToUpload" class="form-control" accept=".jpg,.jpeg">
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        <button class="btn btn-block btn-primary btn-upload" name="fileToUpload" value="fileToUpload"><i class="fa fa-file-upload"></i> Upload</button>
-                                                                    </div>
-                                                                </div>
-                                                                <small style="color:blue"><i>*) Ukuran file maksimal 1MB format JPEG / JPG</i></small>
-                                                                <input type="hidden" name="nodata" value="<?= $nodata; ?>">
-                                                                <input type="hidden" name="nimanggota" value="<?= $nimanggota; ?>">
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                            <?php
-                                                    $no++;
-                                                }
-                                            }
-                                            ?>
                                         </tbody>
                                     </table>
                                     <br />

@@ -113,10 +113,11 @@ $no = 1;
                                         <form role="form" method="post" action="pkl-anggotatambah.php">
                                             <table id="example2" class="table table-bordered table-hover text-sm">
                                                 <thead>
-                                                    <th width="5%">No.</th>
-                                                    <th>NIM</th>
-                                                    <th>NAMA</th>
-                                                    <th width="5%">Aksi</th>
+                                                    <th width="5%" style="text-align: center;">No.</th>
+                                                    <th width="20%" style="text-align: center;">Nama</th>
+                                                    <th style="text-align: center;">NIM</th>
+                                                    <th style="text-align: center;">Bukti Vaksin</th>
+                                                    <th width="5%" style="text-align: center;">Aksi</th>
                                                 </thead>
                                                 <tbody>
                                                     <!--baca status -->
@@ -129,13 +130,6 @@ $no = 1;
                                                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                                                 <strong>ERROR!</strong> Data tidak ditemukan.
                                                             </div>
-                                                        <?php
-                                                        } elseif ($ket == 'used') {
-                                                        ?>
-                                                            <div class="alert alert-danger alert-dismissible fade show">
-                                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                                <strong>ERROR!</strong> Anggota sudah terdaftar pada kelompok lain.
-                                                            </div>
                                                     <?php
                                                         }
                                                     }
@@ -144,10 +138,18 @@ $no = 1;
                                                     <!-- memasukkan pengusul -->
                                                     <?php
                                                     $qcari = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota = '$nim'");
-                                                    $data = mysqli_num_rows($qcari);
-                                                    if ($data == 0) {
-                                                        $qtambah = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama) 
-																		values('$nodata','$nim','$nim','$nama')";
+                                                    $jhasil = mysqli_num_rows($qcari);
+                                                    if ($jhasil == 0) {
+                                                        $qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                                                        $dhasil = mysqli_fetch_array($qpengguna);
+                                                        $nimketua = $dhasil['nip'];
+                                                        $nimanggota = $dhasil['nip'];
+                                                        $namaanggota = $dhasil['nama'];
+                                                        $buktivaksin = $dhasil['buktivaksin'];
+                                                        $nohp = $dhasil['nohp'];
+
+                                                        $qtambah = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama,telepon, buktivaksin) 
+																		values('$nodata','$nimketua','$nimanggota','$namaanggota','$nohp','$buktivaksin')";
                                                         $sql =  mysqli_query($dbsurat, $qtambah);
                                                     }
                                                     ?>
@@ -160,14 +162,17 @@ $no = 1;
                                                         $nimanggota = $q['nimanggota'];
                                                         $nama = $q['nama'];
                                                         $telepon = $q['telepon'];
+                                                        $buktivaksin = $q['buktivaksin'];
                                                     ?>
                                                         <tr>
                                                             <td><?= $no++; ?></td>
-                                                            <td><?= $nimanggota; ?></td>
                                                             <td><?= $nama; ?></td>
+                                                            <td><?= $nimanggota; ?></td>
+                                                            <td><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="20%"></a></td>
                                                             <td>
                                                                 <form action="pkl-anggotahapus.php" method="POST">
                                                                     <input type="hidden" name="id" value="<?= $id; ?>">
+                                                                    <input type="hidden" name="nodata" value="<?= $nodata; ?>">
                                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus anggota ini ?');"><i class="fa fa-trash"></i></button>
                                                                 </form>
                                                             </td>

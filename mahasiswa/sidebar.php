@@ -137,7 +137,7 @@
                         if ($statussurat == 1) {
                         ?>
                             <li class="nav-item">
-                                <a href="pkl-isi.php" class="nav-link">
+                                <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>Surat Pengantar PKL</p>
                                 </a>

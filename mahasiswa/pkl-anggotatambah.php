@@ -6,15 +6,16 @@ $nim = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
 $nimanggota = mysqli_real_escape_string($dbsurat, $_POST['nimanggota']);
 $nodata = mysqli_real_escape_string($dbsurat, $_POST['nodata']);
 
-$carianggota = mysqli_query($dbsurat, "SELECT nip, nama, nohp FROM pengguna WHERE nip='$nimanggota'");
+$carianggota = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimanggota'");
 $hasil = mysqli_num_rows($carianggota);
 if ($hasil > 0) {
     $data = mysqli_fetch_array($carianggota);
     $nimanggota2 = $data['nip'];
     $namaanggota2 = $data['nama'];
     $notelepon = $data['nohp'];
-    $sql = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon) 
-					values('$nodata','$nim','$nimanggota2','$namaanggota2','$notelepon')";
+    $buktivaksin = $data['buktivaksin'];
+    $sql = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
+			values('$nodata','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')";
     if (mysqli_query($dbsurat, $sql)) {
         $ket = "ok";
     } else {

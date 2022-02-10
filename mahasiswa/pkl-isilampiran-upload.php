@@ -24,7 +24,6 @@ $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
 
 $allowedfileExtensions = array('jpg', 'jpeg');
-echo $fileName;
 
 if (in_array($fileExtension, $allowedfileExtensions)) {
     if ($fileSize <= 1048576) {

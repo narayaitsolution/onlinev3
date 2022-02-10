@@ -187,7 +187,7 @@ $no = 1;
                                                                 <td><?= $no; ?></td>
                                                                 <td><?= $namaanggota; ?></td>
                                                                 <td><?= $nimanggota; ?></td>
-                                                                <td style="text-align: center;"><img src="<?= $buktivaksin; ?>" width="30%"></td>
+                                                                <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="30%"></a></td>
                                                             </tr>
                                                         <?php
                                                             $no++;

@@ -121,8 +121,8 @@ $no = 1;
                                                         <option value="Online" selected>Daring / Online</option>
                                                     </select>
                                                     <small style="color:red">
-                                                        <li>PKL Online / Daring harus mengunggah <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>
-                                                        <li>PKL Offline / Luring harus mengunggah <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) DAN bukti vaksin (semua anggota kelompok) oleh ketua kelompok</b><br /></li>
+                                                        <li>Upload <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>
+                                                        <li>Pastikan seluruh peserta PKL sudah meng-upload bukti vaksin pada <b>Profile pengguna</b></li>
                                                     </small>
                                                 </div>
                                             </div>

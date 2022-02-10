@@ -330,7 +330,7 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == -1) {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="pkl-isianggota.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-sm" href="pkl-isianggota.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-file"></i> Lengkapi
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
@@ -355,7 +355,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
