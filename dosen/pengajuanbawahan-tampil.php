@@ -96,6 +96,7 @@ $no = 1;
                                     $nama = $data['nama'];
                                     $surat = 'Izin WFH';
                                     $verifikasiprodi = $data['verifikasiprodi'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -104,7 +105,7 @@ $no = 1;
                                         <td><?= $prodimhs; ?></td>
                                         <td><?= tgljam_indo($tanggal); ?></td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="#">
+                                            <a class="btn btn-info btn-sm" href="wfh-atasan-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>

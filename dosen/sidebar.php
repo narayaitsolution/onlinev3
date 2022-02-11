@@ -30,6 +30,45 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item has-treeview menu-close">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Surat Izin
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="wfh-isi.php" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Work From Home
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Izin Tidak Masuk
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Cuti
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="datasurat-tampil.php" class="nav-link">
                         <i class="nav-icon fas fa-envelope-open"></i>
