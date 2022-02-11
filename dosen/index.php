@@ -141,7 +141,7 @@ $tahun = date('Y');
                 </div>
             </section>
 
-            <!-- tabel pengajuan bawahan -->
+            <!-- tabel pengajuan bawahan & mahasiswa -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -164,8 +164,8 @@ $tahun = date('Y');
                                                 <td style="text-align:center">Surat</td>
                                                 <td style="text-align:center">Nama</td>
                                                 <td style="text-align:center">PRODI</td>
-                                                <td style="text-align:center">Tgl. Pengajuan</td>
                                                 <td style="text-align:center">Aksi</td>
+                                                <td style="text-align:center">Tgl. Pengajuan</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -189,12 +189,12 @@ $tahun = date('Y');
                                                     <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="pkl-koor-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -222,12 +222,12 @@ $tahun = date('Y');
                                                     <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="pkl-kaprodi-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -255,12 +255,12 @@ $tahun = date('Y');
                                                     <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="pkl-wd-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -288,7 +288,6 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <?php
                                                         if ($verifikasi0 == 0) {
@@ -300,6 +299,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -326,7 +326,6 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <?php
                                                         if ($verifikasi1 == 0) {
@@ -338,6 +337,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -364,7 +364,6 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <?php
                                                         if ($verifikasi2 == 0) {
@@ -376,6 +375,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -402,7 +402,6 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <?php
                                                         if ($verifikasi3 == 0) {
@@ -414,6 +413,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -439,12 +439,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinpenelitian-dosen-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -470,12 +470,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinpenelitian-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -501,12 +501,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinpenelitian-wd-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -532,12 +532,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinujian-dosen-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -563,12 +563,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinujian-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -594,12 +594,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinujian-wd-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -625,12 +625,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinbimbingan-dosen-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -656,12 +656,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinbimbingan-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -687,12 +687,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="ijinbimbingan-wd-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -718,12 +718,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="peminjamanalat-dosen-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -749,12 +749,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="peminjamanalat-kaprodi-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -780,12 +780,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="peminjamanalat-wd-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -811,12 +811,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodi; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="observasi-dosen-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -842,12 +842,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="observasi-kaprodi-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -873,12 +873,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="observasi-wd-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -904,12 +904,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="pengambilandata-dosen-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -935,12 +935,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="pengambilandata-kaprodi-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -966,12 +966,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="pengambilandata-wd-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -997,12 +997,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="suket-dosen-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1028,12 +1028,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="suket-kaprodi-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1059,12 +1059,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="suket-wd-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1093,12 +1093,12 @@ $tahun = date('Y');
                                                         <td><?= $surat; ?></td>
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $prodimhs; ?></td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
                                                         <td>
                                                             <a class="btn btn-info btn-sm" href="skpi-dosen-tampil.php?nim=<?= mysqli_real_escape_string($dbsurat, $nim); ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
                                                     </tr>
                                             <?php
                                                     $no++;
@@ -1128,12 +1128,12 @@ $tahun = date('Y');
                                                         <td><?= $surat; ?></td>
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $prodimhs; ?></td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
                                                         <td>
                                                             <a class="btn btn-info btn-sm" href="skpi-kaprodi-tampil.php?nim=<?= mysqli_real_escape_string($dbsurat, $nim); ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
                                                     </tr>
                                             <?php
                                                     $no++;
@@ -1163,12 +1163,12 @@ $tahun = date('Y');
                                                         <td><?= $surat; ?></td>
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $prodimhs; ?></td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
                                                         <td>
                                                             <a class="btn btn-info btn-sm" href="skpi-wd-tampil.php?nim=<?= mysqli_real_escape_string($dbsurat, $nim); ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
                                                     </tr>
                                             <?php
                                                     $no++;
@@ -1195,12 +1195,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="cetakkhs-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1227,12 +1227,12 @@ $tahun = date('Y');
                                                     <td><?= $surat; ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                     <td>
                                                         <a class="btn btn-info btn-sm" href="cetakkhs-wd-tampil.php?nodata=<?php echo $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1244,6 +1244,7 @@ $tahun = date('Y');
                                 </div>
                             </div>
                         </div>
+
                         <!-- Pengajuan Bawahan -->
                         <div class="col-md-6">
                             <div class="card card-success">

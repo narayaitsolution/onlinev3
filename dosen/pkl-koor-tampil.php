@@ -193,10 +193,10 @@ $no = 1;
                                         <form role="form" method="POST">
                                             <input type="hidden" name="token" value="<?= $token; ?>"></input>
                                             <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <div class="col-6">
                                                     <button name="aksi" value="setujui" type="submit" formaction="pkl-koor-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <div class="col-6">
                                                     <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
                                                 </div>
                                             </div>

@@ -58,7 +58,6 @@ $no = 1;
 
             <!-- Main content -->
             <section class="content">
-
                 <!-- Pengajuan Surat Mahasiswa -->
                 <div class="card card-info">
                     <div class="card-header">
