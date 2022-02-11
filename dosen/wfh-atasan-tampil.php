@@ -6,7 +6,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "dosen") {
+if ($_SESSION['jabatan'] != "kaprodi") {
     header("location:../deauth.php");
 }
 require('../system/dbconn.php');
@@ -128,50 +128,74 @@ $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-2</label>
-                                            <div class="col-sm-10">
-                                                <div class="row">
-                                                    Tanggal<br />
-                                                    <input type="text" class="form-control" id="tgl2" name="tgl2" value="<?= tgl_indo($tglwfh2); ?>" readonly>
-                                                    Kegiatan<br />
-                                                    <textarea class="form-control" rows="3" id="kegiatan2" name="kegiatan2" readonly><?= $kegiatan2; ?></textarea>
+                                        <?php
+                                        if (!empty($tglwfh2)) {
+                                        ?>
+                                            <div class="form-group row">
+                                                <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-2</label>
+                                                <div class="col-sm-10">
+                                                    <div class="row">
+                                                        Tanggal<br />
+                                                        <input type="text" class="form-control" id="tgl2" name="tgl2" value="<?= tgl_indo($tglwfh2); ?>" readonly>
+                                                        Kegiatan<br />
+                                                        <textarea class="form-control" rows="3" id="kegiatan2" name="kegiatan2" readonly><?= $kegiatan2; ?></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-3</label>
-                                            <div class="col-sm-10">
-                                                <div class="row">
-                                                    Tanggal<br />
-                                                    <input type="text" class="form-control" id="tgl3" name="tgl3" value="<?= tgl_indo($tglwfh3); ?>" readonly>
-                                                    Kegiatan<br />
-                                                    <textarea class="form-control" rows="3" id="kegiatan3" name="kegiatan3" readonly><?= $kegiatan3; ?></textarea>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php
+                                        if (!empty($tglwfh3)) {
+                                        ?>
+                                            <div class="form-group row">
+                                                <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-3</label>
+                                                <div class="col-sm-10">
+                                                    <div class="row">
+                                                        Tanggal<br />
+                                                        <input type="text" class="form-control" id="tgl3" name="tgl3" value="<?= tgl_indo($tglwfh3); ?>" readonly>
+                                                        Kegiatan<br />
+                                                        <textarea class="form-control" rows="3" id="kegiatan3" name="kegiatan3" readonly><?= $kegiatan3; ?></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-4</label>
-                                            <div class="col-sm-10">
-                                                <div class="row">
-                                                    Tanggal<br />
-                                                    <input type="text" class="form-control" id="tgl4" name="tgl4" value="<?= tgl_indo($tglwfh4); ?>" readonly>
-                                                    Kegiatan<br />
-                                                    <textarea class="form-control" rows="3" id="kegiatan4" name="kegiatan4" readonly><?= $kegiatan4; ?></textarea>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php
+                                        if (!empty($tglwfh4)) {
+                                        ?>
+                                            <div class="form-group row">
+                                                <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-4</label>
+                                                <div class="col-sm-10">
+                                                    <div class="row">
+                                                        Tanggal<br />
+                                                        <input type="text" class="form-control" id="tgl4" name="tgl4" value="<?= tgl_indo($tglwfh4); ?>" readonly>
+                                                        Kegiatan<br />
+                                                        <textarea class="form-control" rows="3" id="kegiatan4" name="kegiatan4" readonly><?= $kegiatan4; ?></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-5</label>
-                                            <div class="col-sm-10">
-                                                <div class="row">
-                                                    Tanggal<br />
-                                                    <input type="text" class="form-control" id="tgl5" name="tgl5" value="<?= tgl_indo($tglwfh5); ?>" readonly>
-                                                    Kegiatan<br />
-                                                    <textarea class="form-control" rows="3" id="kegiatan5" name="kegiatan5" readonly><?= $kegiatan5; ?></textarea>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php
+                                        if (!empty($tglwfh5)) {
+                                        ?>
+                                            <div class="form-group row">
+                                                <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-5</label>
+                                                <div class="col-sm-10">
+                                                    <div class="row">
+                                                        Tanggal<br />
+                                                        <input type="text" class="form-control" id="tgl5" name="tgl5" value="<?= tgl_indo($tglwfh5); ?>" readonly>
+                                                        Kegiatan<br />
+                                                        <textarea class="form-control" rows="3" id="kegiatan5" name="kegiatan5" readonly><?= $kegiatan5; ?></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <?php
+                                        }
+                                        ?>
                                         <hr>
                                         <form role="form" method="POST">
                                             <input type="hidden" name="token" value="<?= $token; ?>"></input>

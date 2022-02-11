@@ -53,7 +53,7 @@ if ($jabatan == 'kaprodi' or $jabatan == 'dekan' or $jabatan == 'wadek1' or $jab
     $nipwd = $dhasil['nip'];
 } else {
     //cari nip kaprodi
-    $kdjabatan = 'kaprodi';
+    $kdjabatan = 'kabag-tu';
     $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE prodi=? AND kdjabatan=?");
     $stmt->bind_param("ss", $prodi, $kdjabatan);
     $stmt->execute();
