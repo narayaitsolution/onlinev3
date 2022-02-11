@@ -146,7 +146,7 @@ $tahun = date('Y');
                 <div class="container-fluid">
                     <div class="row">
                         <!-- Pengajuan Mahasiswa -->
-                        <div class="col-md-6">
+                        <div class="col-sm">
                             <div class="card card-warning">
                                 <div class="card-header">
                                     <h3 class="card-title">Pengajuan Surat Mahasiswa</h3>
@@ -1244,158 +1244,163 @@ $tahun = date('Y');
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        ?>
+                            <!-- Pengajuan Bawahan -->
+                            <div class="col-sm">
+                                <div class="card card-success">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Pengajuan Surat Bawahan</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body">
+                                        <table id="example3" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <tr>
+                                                    <td style="text-align:center">No</td>
+                                                    <td style="text-align:center">Surat</td>
+                                                    <td style="text-align:center">Nama</td>
+                                                    <td style="text-align:center">PRODI</td>
+                                                    <td style="text-align:center">Aksi</td>
+                                                    <td style="text-align:center">Tgl. Pengajuan</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- WFH as kaprodi -->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
+                                                $jmldata = mysqli_num_rows($query);
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tglsurat'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $nama = $data['nama'];
+                                                    $surat = 'Izin WFH';
+                                                    $verifikasiprodi = $data['verifikasiprodi'];
+                                                    $token = $data['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $surat; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="wfh-atasan-tampil.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /. WFH as kaprodi-->
 
-                        <!-- Pengajuan Bawahan -->
-                        <div class="col-md-6">
-                            <div class="card card-success">
-                                <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Surat Bawahan</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                                <!-- WFH as WD -->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorfakultas='$nip' AND verifikasiprodi=1 and verifikasifakultas = 0 order by tglsurat desc");
+                                                $jmldata = mysqli_num_rows($query);
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tglsurat'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $nama = $data['nama'];
+                                                    $surat = 'Izin WFH';
+                                                    $verifikasifakultas = $data['verifikasifakultas'];
+                                                    $token = $data['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $surat; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="wfh-wd-tampil.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /. WFH as WD-->
+
+                                                <!-- Surattugas as kaprodi -->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
+                                                $jmldata = mysqli_num_rows($query);
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tglsurat'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $nama = $data['nama'];
+                                                    $surat = 'Surat Tugas';
+                                                    $verifikasiprodi = $data['verifikasiprodi'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $surat; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="#">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /. surat tugas as kaprodi-->
+
+                                                <!-- surat tugas as WD -->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorfakultas='$nip' AND verifikasiprodi=0 and verifikasifakultas = 0 order by tglsurat desc");
+                                                $jmldata = mysqli_num_rows($query);
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tglsurat'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $nama = $data['nama'];
+                                                    $surat = 'Surat Tugas';
+                                                    $verifikasifakultas = $data['verifikasifakultas'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $surat; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="#">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /. surat tugas as WD-->
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <?php $no = 1; ?>
-                                <div class="card-body">
-                                    <table id="example3" class="table table-bordered table-hover text-sm">
-                                        <thead>
-                                            <tr>
-                                                <td style="text-align:center">No</td>
-                                                <td style="text-align:center">Surat</td>
-                                                <td style="text-align:center">Nama</td>
-                                                <td style="text-align:center">PRODI</td>
-                                                <td style="text-align:center">Aksi</td>
-                                                <td style="text-align:center">Tgl. Pengajuan</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- WFH as kaprodi -->
-                                            <?php
-                                            $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
-                                            $jmldata = mysqli_num_rows($query);
-                                            while ($data = mysqli_fetch_array($query)) {
-                                                $nodata = $data['no'];
-                                                $tanggal = $data['tglsurat'];
-                                                $prodimhs = $data['prodi'];
-                                                $nama = $data['nama'];
-                                                $surat = 'Izin WFH';
-                                                $verifikasiprodi = $data['verifikasiprodi'];
-                                                $token = $data['token'];
-                                            ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $surat; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $prodimhs; ?></td>
-                                                    <td>
-                                                        <a class="btn btn-info btn-sm" href="wfh-atasan-tampil.php?token=<?= $token; ?>">
-                                                            <i class="fas fa-eye"></i> Lihat
-                                                        </a>
-                                                    </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
-                                                </tr>
-                                            <?php
-                                                $no++;
-                                            }
-                                            ?>
-                                            <!-- /. WFH as kaprodi-->
-
-                                            <!-- WFH as WD -->
-                                            <?php
-                                            $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorfakultas='$nip' AND verifikasiprodi=0 and verifikasifakultas = 0 order by tglsurat desc");
-                                            $jmldata = mysqli_num_rows($query);
-                                            while ($data = mysqli_fetch_array($query)) {
-                                                $nodata = $data['no'];
-                                                $tanggal = $data['tglsurat'];
-                                                $prodimhs = $data['prodi'];
-                                                $nama = $data['nama'];
-                                                $surat = 'Izin WFH';
-                                                $verifikasifakultas = $data['verifikasifakultas'];
-                                            ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $surat; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $prodimhs; ?></td>
-                                                    <td>
-                                                        <a class="btn btn-info btn-sm" href="#">
-                                                            <i class="fas fa-eye"></i> Lihat
-                                                        </a>
-                                                    </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
-                                                </tr>
-                                            <?php
-                                                $no++;
-                                            }
-                                            ?>
-                                            <!-- /. WFH as WD-->
-
-                                            <!-- Surattugas as kaprodi -->
-                                            <?php
-                                            $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
-                                            $jmldata = mysqli_num_rows($query);
-                                            while ($data = mysqli_fetch_array($query)) {
-                                                $nodata = $data['no'];
-                                                $tanggal = $data['tglsurat'];
-                                                $prodimhs = $data['prodi'];
-                                                $nama = $data['nama'];
-                                                $surat = 'Surat Tugas';
-                                                $verifikasiprodi = $data['verifikasiprodi'];
-                                            ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $surat; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $prodimhs; ?></td>
-                                                    <td>
-                                                        <a class="btn btn-info btn-sm" href="#">
-                                                            <i class="fas fa-eye"></i> Lihat
-                                                        </a>
-                                                    </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
-                                                </tr>
-                                            <?php
-                                                $no++;
-                                            }
-                                            ?>
-                                            <!-- /. surat tugas as kaprodi-->
-
-                                            <!-- surat tugas as WD -->
-                                            <?php
-                                            $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorfakultas='$nip' AND verifikasiprodi=0 and verifikasifakultas = 0 order by tglsurat desc");
-                                            $jmldata = mysqli_num_rows($query);
-                                            while ($data = mysqli_fetch_array($query)) {
-                                                $nodata = $data['no'];
-                                                $tanggal = $data['tglsurat'];
-                                                $prodimhs = $data['prodi'];
-                                                $nama = $data['nama'];
-                                                $surat = 'Surat Tugas';
-                                                $verifikasifakultas = $data['verifikasifakultas'];
-                                            ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $surat; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $prodimhs; ?></td>
-                                                    <td>
-                                                        <a class="btn btn-info btn-sm" href="#">
-                                                            <i class="fas fa-eye"></i> Lihat
-                                                        </a>
-                                                    </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
-                                                </tr>
-                                            <?php
-                                                $no++;
-                                            }
-                                            ?>
-                                            <!-- /. surat tugas as WD-->
-
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
-                        </div>
-
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </section>
