@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link">
-                        <i class="nav-icon fas fa-tv"></i>
+                        <i class="nav-icon fa-solid fa-tv"></i>
                         <p>
                             Dashboard
                             <span class="right badge badge-danger"></span>
@@ -36,7 +36,7 @@
                 ?>
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
+                            <i class="nav-icon fa-solid fa-users"></i>
                             <p>
                                 Pengunjung Fakultas
                                 <i class="right fas fa-angle-left"></i>
@@ -45,7 +45,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="pengunjung-tampil.php" class="nav-link">
-                                    <i class="nav-icon fas fa-clock"></i>
+                                    <i class="nav-icon fa-solid fas fa-user-clock"></i>
                                     <p>
                                         Data Hari ini
                                         <span class="right badge badge-danger"></span>
@@ -54,7 +54,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="pengunjung-rekap.php" class="nav-link">
-                                    <i class="nav-icon fas fa-users"></i>
+                                    <i class="nav-icon fa-solid fas fa-users"></i>
                                     <p>
                                         Rekap Pengunjung
                                         <span class="right badge badge-danger"></span>
@@ -68,7 +68,7 @@
                 ?>
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
+                        <i class="nav-icon fa-regular fa-file-lines"></i>
                         <p>
                             Surat Izin
                             <i class="right fas fa-angle-left"></i>
@@ -77,7 +77,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="wfh-isi.php" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                                <i class="nav-icon fa-solid fa-house-laptop"></i>
                                 <p>
                                     Work From Home
                                     <span class="right badge badge-danger"></span>
@@ -85,8 +85,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-bed-pulse"></i>
                                 <p>
                                     Izin Tidak Masuk
                                     <span class="right badge badge-danger"></span>
@@ -94,8 +94,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-plane-departure"></i>
                                 <p>
                                     Cuti
                                     <span class="right badge badge-danger"></span>
@@ -105,37 +105,83 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="datasurat-tampil.php" class="nav-link">
-                        <i class="nav-icon fas fa-envelope-open"></i>
-                        <p>
-                            Surat Disetujui
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pengajuanmhs-tampil.php" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Surat Mahasiswa
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
+                <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-paper-plane"></i>
+                        <i class="nav-icon fa-solid fa-warehouse"></i>
                         <p>
-                            Disposisi
-                            <span class="right badge badge-danger"></span>
+                            Peminjaman Fasilitas
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-house-user"></i>
+                                <p>
+                                    Peminjaman Ruangan
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-car"></i>
+                                <p>
+                                    Peminjaman Kendaraan
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
+                                <p>
+                                    Peminjaman Peralatan
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
-
-
-
-
+                <li class="nav-item has-treeview menu-close">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-envelopes-bulk"></i>
+                        <p>
+                            Riwayat Surat
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pengajuanbawahan-tampil.php" class="nav-link">
+                                <i class="nav-icon fa-solid fa-envelope-open"></i>
+                                <p>
+                                    Surat Bawahan Disetujui
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pengajuanmhs-tampil.php" class="nav-link">
+                                <i class="nav-icon fa-solid fa-envelope-open-text"></i>
+                                <p>
+                                    Surat Mahasiswa Disetujui
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-square-envelope"></i>
+                                <p>
+                                    Disposisi Surat
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <?php
                 $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Pengguna Lab.'");
                 $dmenu = mysqli_fetch_array($qmenu);
@@ -275,7 +321,7 @@
 
                 <li class="nav-item">
                     <a href="https://wa.me/6281234302099" class="nav-link">
-                        <i class="nav-icon fas fa-question-circle"></i>
+                        <i class="nav-icon fa-brands fa-whatsapp"></i>
                         <p>
                             Bantuan
                             <span class="right badge badge-danger"></span>

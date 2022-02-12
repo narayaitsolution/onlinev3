@@ -24,6 +24,7 @@ $tahun = date('Y');
     <title>SAINTEK e-Office</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -1410,12 +1411,55 @@ $tahun = date('Y');
                 </div>
             </section>
 
-            <!-- tabel pengajuan pribadi -->
+            <!-- tabel pengajuan bawah -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="card card-secondary">
+                        <?php
+                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        ?>
+                            <!-- Disposisi Surat -->
+                            <div class="col-sm">
+                                <div class="card card-danger">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Disposisi Surat</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body">
+                                        <table id="example4" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align:center">No</th>
+                                                    <th style="text-align:center">Surat</th>
+                                                    <th style="text-align:center">Pengirim</th>
+                                                    <th style="text-align:center">Aksi</th>
+                                                    <th style="text-align:center">Tgl. Pengajuan</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- disposisi surat -->
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                        <!-- Pengajuan Pribadi -->
+                        <div class="col-sm">
+                            <div class="card card-info">
                                 <div class="card-header">
                                     <h3 class="card-title">Pengajuan Surat Pribadi</h3>
                                     <div class="card-tools">
@@ -1426,13 +1470,13 @@ $tahun = date('Y');
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <table id="example2" class="table table-bordered table-hover text-sm">
+                                        <table id="example5" class="table table-bordered table-hover text-sm">
                                             <thead>
                                                 <tr>
-                                                    <th width="5%" style="text-align: center;">No</th>
-                                                    <th width="20%" style="text-align: center;">Jenis Surat</th>
+                                                    <th style="text-align: center;">No</th>
+                                                    <th style="text-align: center;">Jenis Surat</th>
                                                     <th style="text-align: center;">Status Surat</th>
-                                                    <th width="20%" style="text-align: center;">Keterangan</th>
+                                                    <th style="text-align: center;">Keterangan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1649,6 +1693,24 @@ $tahun = date('Y');
                 "responsive": true,
             });
             $('#example3').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            $('#example4').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            $('#example5').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": true,

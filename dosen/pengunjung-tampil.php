@@ -595,10 +595,10 @@ $tahun = date('Y');
                                             <thead>
                                                 <tr>
                                                     <th width="5%">No</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Prodi</th>
                                                     <th>Nama</th>
                                                     <th>Suhu</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Prodi</th>
                                                     <th>Keperluan</th>
                                                     <th>Jam Masuk</th>
                                                     <th>Jam Keluar</th>
@@ -619,10 +619,10 @@ $tahun = date('Y');
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <td><?= tgl_indo($tanggal); ?></td>
-                                                        <td><?= $prodi; ?></td>
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $suhu; ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
+                                                        <td><?= $prodi; ?></td>
                                                         <td><?= $keperluan; ?></td>
                                                         <td><?= tgljam_indo($jammasuk); ?></td>
                                                         <td><?= tgljam_indo($jamkeluar); ?></td>
