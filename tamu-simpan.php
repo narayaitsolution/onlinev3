@@ -41,7 +41,7 @@ if ($suhu >= 37.3) {
         <br/>
         Apabila anda mengalami hal yang kurang menyenangkan selama di Fakultas Sains dan Teknologi, mohon dapat melaporkan melalui tombol berikut ini :
         <br/>
-        <a href='https://saintek.uin-malang.ac.id/lapor/' style=' background-color: #FFA600;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>LAPORKAN</a><br/>
+        <a href='https://saintek.uin-malang.ac.id/laporkan/' style=' background-color: #FFA600;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>LAPORKAN</a><br/>
         <br/>
         Kerahasiaan laporan anda terjamin. Laporan anda sangat berarti untuk peningkatan layanan kami.
         <br/>

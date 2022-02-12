@@ -27,10 +27,7 @@ $fileType = $_FILES['fileToUpload']['type'];
 $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
 if (!empty($fileName)) {
-
-
     $allowedfileExtensions = array('jpg', 'jpeg');
-
     if (in_array($fileExtension, $allowedfileExtensions)) {
         if ($fileSize <= 1048576) {
             $dest_path = $target_dir . $nip . '-buktivaksin.jpg';

@@ -101,6 +101,29 @@ $tahun = date('Y');
                         $buktivaksin = $duser['buktivaksin'];
                         ?>
                         <div class="col-md-9">
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                if ($_GET['pesan'] == "success") {
+                            ?>
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        <strong>BERHASIL!</strong> update profile
+                                    </div>
+                                <?php
+                                } elseif ($_GET['pesan'] == "gagal") {
+                                ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>GAGAL!</strong> update profile
+                                    </div>
+                                <?php
+                                } elseif ($_GET['pesan'] == "filesize") {
+                                ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>GAGAL!</strong> ukuran file Sertifikat Vaksin max 1MB
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
                             <div class="card card-primary">
                                 <div class="card-header p-2">
                                     <h3 class="card-title">Data Pribadi</h3>
