@@ -23,7 +23,7 @@ $tahun = date('Y');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SAINTEK e-Office</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">

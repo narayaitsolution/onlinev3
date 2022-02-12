@@ -32,16 +32,16 @@
                 </li>
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
+                        <i class="nav-icon fa-regular fa-file-lines"></i>
                         <p>
-                            Surat Izin
+                            Pengajuan Surat
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="wfh-isi.php" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                                <i class="nav-icon fa-solid fa-house-laptop"></i>
                                 <p>
                                     Work From Home
                                     <span class="right badge badge-danger"></span>
@@ -49,8 +49,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-briefcase"></i>
+                                <p>
+                                    Surat Tugas
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-bed-pulse"></i>
                                 <p>
                                     Izin Tidak Masuk
                                     <span class="right badge badge-danger"></span>
@@ -58,8 +67,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-plane-departure"></i>
                                 <p>
                                     Cuti
                                     <span class="right badge badge-danger"></span>
@@ -71,9 +80,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-paper-plane"></i>
+                        <i class="nav-icon fa-solid fa-square-envelope"></i>
                         <p>
-                            Disposisi
+                            Disposisi Surat
                             <span class="right badge badge-danger"></span>
                         </p>
                     </a>
@@ -139,8 +148,8 @@
                 ?>
 
                 <li class="nav-item">
-                    <a href="https://wa.me/6281234302099" class="nav-link">
-                        <i class="nav-icon fas fa-phone"></i>
+                    <a href="https://wa.me/6281234302099" target="_blank" class="nav-link">
+                        <i class="nav-icon fa-brands fa-whatsapp"></i>
                         <p>
                             Bantuan
                             <span class="right badge badge-danger"></span>

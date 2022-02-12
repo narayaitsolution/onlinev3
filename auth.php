@@ -3,7 +3,7 @@ session_start();
 require('system/dbconn.php');
 
 $userid = mysqli_real_escape_string($dbsurat, $_POST['userid']);
-$pass = mysqli_real_escape_string($dbsurat, md5($_POST['pass']));
+$pass = mysqli_real_escape_string($dbsurat, md5(strtolower($_POST['pass'])));
 $kunci = $_POST['kunci'];
 $antibot = $_POST['antibot'];
 $aktif = '1';

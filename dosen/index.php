@@ -23,7 +23,7 @@ $tahun = date('Y');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SAINTEK e-Office</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -143,6 +143,95 @@ $tahun = date('Y');
                         }
                         ?>
                         -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- laporan -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <?php
+                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        ?>
+                            <!-- LAPORAN -->
+                            <div class="col-sm">
+                                <div class="card card-danger">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Laporan</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body">
+                                        <table id="example4" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align:center">No</th>
+                                                    <th style="text-align:center">Tgl. Laporan</th>
+                                                    <th style="text-align:center">Unit Terkait</th>
+                                                    <th style="text-align:center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- disposisi surat -->
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Hasil Survey</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="text-center">
+                                            <strong>Hasil Survey</strong>
+                                        </p>
+                                        <div class="progress-group">
+                                            Keramahan Pelayanan
+                                            <span class="float-right"><b>60</b>/100</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+
+                                        <div class="progress-group">
+                                            Kecepatan Pelayanan
+                                            <span class="float-right"><b>70</b>/100</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 70%"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            <span class="progress-text">Kejelasan Prosedur Pelayanan</span>
+                                            <span class="float-right"><b>80</b>/100</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </section>
@@ -1420,7 +1509,7 @@ $tahun = date('Y');
                         ?>
                             <!-- Disposisi Surat -->
                             <div class="col-sm">
-                                <div class="card card-danger">
+                                <div class="card card-primary">
                                     <div class="card-header">
                                         <h3 class="card-title">Disposisi Surat</h3>
                                         <div class="card-tools">

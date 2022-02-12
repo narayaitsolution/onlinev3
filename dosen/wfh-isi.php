@@ -23,7 +23,7 @@ $no = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SAINTEK e-Office</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -65,7 +65,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin PKL / Magang</h3>
+                                    <h3 class="card-title">Pengajuan Izin Work From Home</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>

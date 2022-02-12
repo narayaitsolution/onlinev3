@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link">
-                        <i class="nav-icon fas fa-tv"></i>
+                        <i class="nav-icon fa-solid fa-tv"></i>
                         <p>
                             Dashboard
                             <span class="right badge badge-danger"></span>
@@ -32,7 +32,7 @@
                 </li>
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-envelope"></i>
+                        <i class="nav-icon fa-solid fa-envelopes-bulk"></i>
                         <p>
                             Pengajuan Surat
                             <i class="right fas fa-angle-left"></i>
@@ -396,8 +396,8 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="mailto:narayaitsolution@gmail.com" class="nav-link">
-                        <i class="nav-icon fas fa-question-circle"></i>
+                    <a href="mailto:saintekonline@gmail.com" class="nav-link">
+                        <i class="nav-icon fa-regular fa-circle-question"></i>
                         <p>
                             Bantuan
                             <span class="right badge badge-danger"></span>

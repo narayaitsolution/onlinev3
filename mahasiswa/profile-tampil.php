@@ -25,7 +25,7 @@ $tahun = date('Y');
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
 </head>
 

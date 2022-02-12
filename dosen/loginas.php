@@ -11,7 +11,6 @@ if ($_SESSION['hakakses'] != "dosen") {
 }
 require('../system/dbconn.php');
 require('../system/myfunc.php');
-$no = 1;
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +21,7 @@ $no = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SAINTEK e-Office</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -104,6 +103,7 @@ $no = 1;
                                     <th width="10%" style="text-align:center">Aksi</th>
                                 </tr>
                             </thead>
+                            <?php $no = 1; ?>
                             <tbody>
                                 <!-- Daftar Pengguna-->
                                 <?php
@@ -133,8 +133,8 @@ $no = 1;
                                             </td>
                                         </tr>
                                 <?php
+                                        $no++;
                                     }
-                                    $no++;
                                 }
                                 ?>
                             </tbody>

@@ -70,7 +70,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-regular fa-file-lines"></i>
                         <p>
-                            Surat Izin
+                            Pengajuan Surat
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -80,6 +80,15 @@
                                 <i class="nav-icon fa-solid fa-house-laptop"></i>
                                 <p>
                                     Work From Home
+                                    <span class="right badge badge-danger"></span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                                <i class="nav-icon fa-solid fa-briefcase"></i>
+                                <p>
+                                    Surat Tugas
                                     <span class="right badge badge-danger"></span>
                                 </p>
                             </a>
@@ -153,15 +162,21 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pengajuanbawahan-tampil.php" class="nav-link">
-                                <i class="nav-icon fa-solid fa-envelope-open"></i>
-                                <p>
-                                    Surat Bawahan Disetujui
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
-                        </li>
+                        <?php
+                        if ($jabatan <> 'dosen') {
+                        ?>
+                            <li class="nav-item">
+                                <a href="pengajuanbawahan-tampil.php" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-envelope-open"></i>
+                                    <p>
+                                        Surat Bawahan Disetujui
+                                        <span class="right badge badge-danger"></span>
+                                    </p>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        ?>
                         <li class="nav-item">
                             <a href="pengajuanmhs-tampil.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-envelope-open-text"></i>
@@ -320,7 +335,7 @@
                 ?>
 
                 <li class="nav-item">
-                    <a href="https://wa.me/6281234302099" class="nav-link">
+                    <a href="https://wa.me/6281234302099" target="_blank" class="nav-link">
                         <i class="nav-icon fa-brands fa-whatsapp"></i>
                         <p>
                             Bantuan
