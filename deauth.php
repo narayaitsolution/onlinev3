@@ -1,5 +1,8 @@
 <?php
 session_start();
+session_unset();
+session_destroy();
+setcookie("usertoken", "", time() - 60, "/");
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,8 +10,6 @@ session_start();
 <body>
 
     <?php
-    session_unset();
-    session_destroy();
     header('location:index.php?pesan=logout');
     ?>
 

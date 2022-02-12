@@ -42,6 +42,12 @@ require('system/myfunc.php');
             <div class="alert alert-danger alert-dismissible fade show">
               <strong>ERROR!</strong> User ID / Password salah
             </div>
+          <?php
+          } elseif ($_GET['pesan'] == "resetok") {
+          ?>
+            <div class="alert alert-success alert-dismissible fade show">
+              <strong>RESET Password</strong> berhasil
+            </div>
         <?php
           }
         } ?>
