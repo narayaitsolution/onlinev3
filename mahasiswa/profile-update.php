@@ -10,7 +10,7 @@ require('../system/myfunc.php');
 $no = 1;
 $tahun = date('Y');
 
-$nama = mysqli_real_escape_string($dbsurat, $_POST['nama']);
+$nama = $_POST['nama'];
 $nip = mysqli_real_escape_string($dbsurat, $_POST['nip']);
 $nohp = mysqli_real_escape_string($dbsurat, $_POST['nohp']);
 $email = mysqli_real_escape_string($dbsurat, $_POST['email']);

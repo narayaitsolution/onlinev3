@@ -1,3 +1,7 @@
+<?php
+require('system/myfunc.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,10 +35,21 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg"><b>Daftar Akun</b></p>
-
-        <form action="daftar-simpan.php" method="post">
+        <?php
+        if (isset($_GET['pesan'])) {
+          if ($_GET['pesan'] == "registered") {
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>ERROR!</strong> NIM / NIP / NIPT / EMail / UserID telah terdaftar
+            </div>
+        <?php
+          }
+        }
+        ?>
+        <form action="daftar-simpan.php" method="post" id="my-form">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Nama" name="nama">
+            <input type="text" class="form-control" placeholder="Nama" name="nama" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -42,7 +57,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="NIM" name="nim">
+            <input type="number" class="form-control" placeholder="NIM" name="nim" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -50,7 +65,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email" name="email">
+            <input type="email" class="form-control" placeholder="Email aktif" name="email" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -58,7 +73,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="number" class="form-control" placeholder="Ho. HP" name="nohp">
+            <input type="number" class="form-control" placeholder="Ho. HP aktif" name="nohp" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-phone"></span>
@@ -84,7 +99,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="userif" class="form-control" placeholder="User ID" name="userid">
+            <input type="userif" class="form-control" placeholder="User ID" name="userid" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -92,16 +107,31 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" name="pass">
+            <input type="password" class="form-control" placeholder="Password" name="pass" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-key"></span>
               </div>
             </div>
           </div>
+          <?php
+          $angka1 = rand(1, 5);
+          $angka2 = rand(1, 5);
+          $kunci = $angka1 + $angka2;
+          ?>
+          <div class="input-group mb-3">
+            <input type="number" placeholder="<?= huruf($angka1); ?> ditambah <?= huruf($angka2); ?> ?" class="form-control" name="jawaban" required>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-question"></span>
+              </div>
+            </div>
+          </div>
+          <hr>
           <div class="row">
             <div class="col">
-              <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran data yang saya isikan')">DAFTAR</button>
+              <input type="hidden" name="kunci" value="<?= $kunci; ?>">
+              <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran data yang saya isikan')" id="btn-submit">DAFTAR</button>
             </div>
           </div>
         </form>

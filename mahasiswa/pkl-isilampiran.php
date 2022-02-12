@@ -135,13 +135,13 @@ $no = 1;
                                     <h3 class="card-title">Upload Lampiran </h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table table-bordered table-striped">
+                                    <table class="table table-bordered table-striped" id="example2">
                                         <thead>
                                             <tr>
                                                 <th width="5%" style="text-align:center">No</th>
-                                                <th style="text-align:center">Lampiran</th>
-                                                <th style="text-align:center">Nama</th>
+                                                <th style="text-align:center">Ketua Kelompok</th>
                                                 <th style="text-align:center">Dokumen</th>
+                                                <th style="text-align:center">Lampiran</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -154,7 +154,6 @@ $no = 1;
                                             ?>
                                             <tr>
                                                 <td><?= $no; ?></td>
-                                                <td>Pakta Integritas</td>
                                                 <td><?= $nama; ?></td>
                                                 <?php
                                                 if ($lampiran == '') {
@@ -180,6 +179,7 @@ $no = 1;
                                                         <input type="hidden" name="nodata" value="<?= $nodata; ?>">
                                                     </form>
                                                 </td>
+                                                <td>Pakta Integritas</td>
                                             </tr>
                                         </tbody>
                                     </table>

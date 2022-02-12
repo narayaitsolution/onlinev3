@@ -98,8 +98,8 @@ $no = 1;
                             <thead>
                                 <tr>
                                     <th width="5%" style="text-align:center">No</th>
-                                    <th style="text-align:center">NIP / NIM</th>
                                     <th style="text-align:center">Nama</th>
+                                    <th style="text-align:center">NIP / NIM</th>
                                     <th style="text-align:center">Prodi</th>
                                     <th width="10%" style="text-align:center">Aksi</th>
                                 </tr>
@@ -121,8 +121,8 @@ $no = 1;
                                 ?>
                                         <tr>
                                             <td><?= $no; ?></td>
-                                            <td><?= $nip; ?></td>
                                             <td><?= $nama; ?></td>
+                                            <td><?= $nip; ?></td>
                                             <td><?= $prodi; ?></td>
                                             <td>
                                                 <form action="../auth-as.php" method="POST">

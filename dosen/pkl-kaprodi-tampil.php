@@ -156,19 +156,19 @@ $no = 1;
                                         <div class="form-group row">
                                             <label for="paktaintegritas" class="col-sm-2 col-form-label">Pakta Integritas</label>
                                             <div class="col-sm-10">
-                                                <img src="<?= $lampiran; ?>" width="50%">
+                                                <a href="<?= $lampiran; ?>" target="_blank"><img src="<?= $lampiran; ?>" width="50%"></a>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="paktaintegritas" class="col-sm-2 col-form-label">Anggota PKL</label>
+                                            <label for="paktaintegritas" class="col-sm-2 col-form-label">Anggota PKL / Magang</label>
                                             <div class="col-sm-10">
                                                 <table id="example2" class="table table-bordered table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th width="5%" style="text-align: center;">No</th>
                                                             <th style="text-align: center;">Nama</th>
-                                                            <th width="20%" style="text-align: center;">NIM</th>
                                                             <th width="20%" style="text-align: center;">Bukti Vaksin</th>
+                                                            <th width="20%" style="text-align: center;">NIM</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -186,8 +186,8 @@ $no = 1;
                                                             <tr>
                                                                 <td><?= $no; ?></td>
                                                                 <td><?= $namaanggota; ?></td>
+                                                                <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="100%"></a></td>
                                                                 <td><?= $nimanggota; ?></td>
-                                                                <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="30%"></a></td>
                                                             </tr>
                                                         <?php
                                                             $no++;

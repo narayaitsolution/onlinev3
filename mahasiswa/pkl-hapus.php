@@ -14,11 +14,13 @@ $namafile = $data['lampiran'];
 unlink($namafile);
 
 //delete file bukti vaksin
+/*
 $query4 = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nodata = '$nodata'");
 while ($data = mysqli_fetch_array($query4)) {
     $buktivaksin = $data['buktivaksin'];
     unlink($buktivaksin);
 }
+*/
 
 //delete record
 $query2 = mysqli_query($dbsurat, "DELETE FROM pklanggota WHERE nodata = '$nodata'");

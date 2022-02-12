@@ -46,8 +46,8 @@ require('system/myfunc.php');
                 <?php
                     }
                 } ?>
-                <p class="login-box-msg h3"><b>SAINTEK</b> user login</p>
-                <form action="civitas-auth.php" method="post">
+                <p class="login-box-msg h3"><b>SAINTEK</b> <br />Gateway Check</p>
+                <form action="civitas-auth.php" method="post" id="my-form">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="User ID" name="userid" required>
                         <div class="input-group-append">
@@ -79,10 +79,10 @@ require('system/myfunc.php');
                     </div>
                     <hr>
                     <input type="hidden" name="kunci" value="<?= $kunci; ?>">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
                 <hr>
-                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-users"></i> Tamu</a>
+                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block" onclick="return confirm ('Saya menyatakan kebenaran data yang saya isikan')"><i class="fa-solid fa-users"></i> Tamu</a>
             </div>
         </div>
     </div>

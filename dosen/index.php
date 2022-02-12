@@ -62,6 +62,7 @@ $tahun = date('Y');
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <!--
                         <div class="col-lg col-6">
                             <a href="pengajuanmhs-tampil.php">
                                 <div class="small-box bg-info">
@@ -75,8 +76,9 @@ $tahun = date('Y');
                                 </div>
                             </a>
                         </div>
-
+-->
                         <!-- pengajuan bawahan -->
+                        <!--
                         <?php
                         if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
                             $qwfh = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0");
@@ -102,6 +104,7 @@ $tahun = date('Y');
                         <?php
                         }
                         ?>
+                        -->
                         <!-- ./col -->
                         <!--
                         <div class="col-lg col-6">
@@ -118,6 +121,7 @@ $tahun = date('Y');
                             </a>
                         </div>
                     -->
+                        <!--
                         <?php
                         if ($jabatan == 'wadek3' or $jabatan == 'wadek2') {
                         ?>
@@ -137,6 +141,7 @@ $tahun = date('Y');
                         <?php
                         }
                         ?>
+                        -->
                     </div>
                 </div>
             </section>
