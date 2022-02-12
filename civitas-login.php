@@ -81,6 +81,8 @@ require('system/myfunc.php');
                     <input type="hidden" name="kunci" value="<?= $kunci; ?>">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
+                <hr>
+                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-users"></i> Tamu</a>
             </div>
         </div>
     </div>

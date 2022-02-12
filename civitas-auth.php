@@ -50,11 +50,11 @@ if ($kunci == $antibot) {
         setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/");
 
         if ($hakakses == 'dosen') {
-            header('location:civitas-masuk.php');
+            header('location:index2.php');
         } elseif ($hakakses == 'tendik') {
-            header('location:civitas-masuk.php');
+            header('location:index2.php');
         } elseif ($hakakses == 'mahasiswa') {
-            header('location:civitas-masuk.php');
+            header('location:index2.php');
         }
     } else {
         header('location:index.php?pesan=gagal');
