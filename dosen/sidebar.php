@@ -30,6 +30,42 @@
                         </p>
                     </a>
                 </li>
+                <!-- menu pengunjung fakultas khusus wadek 2& 3 -->
+                <?php
+                if ($jabatan == 'wadek3' or $jabatan == 'wadek2') {
+                ?>
+                    <li class="nav-item has-treeview menu-close">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Pengunjung Fakultas
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pengunjung-tampil.php" class="nav-link">
+                                    <i class="nav-icon fas fa-clock"></i>
+                                    <p>
+                                        Data Hari ini
+                                        <span class="right badge badge-danger"></span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pengunjung-rekap.php" class="nav-link">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Rekap Pengunjung
+                                        <span class="right badge badge-danger"></span>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
@@ -97,22 +133,7 @@
                     </a>
                 </li>
 
-                <!-- menu pengunjung fakultas khusus wadek 2& 3 -->
-                <?php
-                if ($jabatan == 'wadek3' or $jabatan == 'wadek2') {
-                ?>
-                    <li class="nav-item">
-                        <a href="pengunjung-tampil.php" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Pengunjung Fakultas
-                                <span class="right badge badge-danger"></span>
-                            </p>
-                        </a>
-                    </li>
-                <?php
-                }
-                ?>
+
 
 
                 <?php

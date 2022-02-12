@@ -63,7 +63,7 @@ date_default_timezone_set("Asia/Jakarta");
                     <label>E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" required>
                     <hr>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return conform ('Saya menyatakan bahwa data yang saya masukkan adalah benar')">MASUK <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm ('Saya menyatakan bahwa data yang saya masukkan adalah benar')">MASUK <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
             </div>
         </div>

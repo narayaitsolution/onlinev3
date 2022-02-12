@@ -82,7 +82,7 @@ require('system/myfunc.php');
                     <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
                 <hr>
-                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block" onclick="return confirm ('Saya menyatakan kebenaran data yang saya isikan')"><i class="fa-solid fa-users"></i> Tamu</a>
+                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-users"></i> Tamu</a>
             </div>
         </div>
     </div>

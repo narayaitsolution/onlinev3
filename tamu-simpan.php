@@ -6,13 +6,13 @@ require('system/myfunc.php');
 
 date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
-$suhu = mysqli_real_escape_string($dbsurat, $_POST['suhu']);
-$nama = mysqli_real_escape_string($dbsurat, $_POST['nama']);
-$instansi = mysqli_real_escape_string($dbsurat, $_POST['instansi']);
-$tujuan = mysqli_real_escape_string($dbsurat, $_POST['tujuan']);
-$keperluan = mysqli_real_escape_string($dbsurat, $_POST['keperluan']);
-$nohp = mysqli_real_escape_string($dbsurat, $_POST['nohp']);
-$email = mysqli_real_escape_string($dbsurat, $_POST['email']);
+$suhu = $_POST['suhu'];
+$nama = $_POST['nama'];
+$instansi = $_POST['instansi'];
+$tujuan = $_POST['tujuan'];
+$keperluan = $_POST['keperluan'];
+$nohp = $_POST['nohp'];
+$email = $_POST['email'];
 $hakakses = 'tamu';
 
 if ($suhu >= 37.3) {
@@ -22,7 +22,7 @@ if ($suhu >= 37.3) {
 } else {
     $stmt = $dbsurat->prepare("INSERT INTO masukfakultas (tanggal, nama, instansiasal, prodi, hakakses,suhu, keperluan, nohp,email,jammasuk)
                                 VALUES (?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("ssssssssss", $tanggal, $nama, $instansi, $prodi, $hakakses, $suhu, $keperluan, $nohp, $email, $tanggal);
+    $stmt->bind_param("ssssssssss", $tanggal, $nama, $instansi, $tujuan, $hakakses, $suhu, $keperluan, $nohp, $email, $tanggal);
     $stmt->execute();
     $namaurl = urlencode($nama);
 
