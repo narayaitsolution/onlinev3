@@ -109,6 +109,33 @@ function multibaris($pesan)
     str_replace(["\r\n", "\r", "\n"], "<br/>", $pesan);
     return $pesan;
 }
+
+function imgresize($file_name)
+{
+    $maxDim = 1024;
+    //$file_name = $_FILES['myFile']['tmp_name'];
+    list($width, $height, $type, $attr) = getimagesize($file_name);
+    if ($width > $maxDim || $height > $maxDim) {
+        $target_filename = $file_name;
+        $ratio = $width / $height;
+        if ($ratio > 1) {
+            $new_width = $maxDim;
+            $new_height = $maxDim / $ratio;
+        } else {
+            $new_width = $maxDim * $ratio;
+            $new_height = $maxDim;
+        }
+        $src = imagecreatefromstring(file_get_contents($file_name));
+        $dst = imagecreatetruecolor($new_width, $new_height);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+        imagedestroy($src);
+        imagejpeg($dst, $target_filename); // adjust format as needed
+        imagedestroy($dst);
+    } else {
+        $target_filename = $file_name;
+    }
+    return $target_filename;
+}
 ?>
 
 <script>
@@ -120,7 +147,7 @@ function multibaris($pesan)
 </script>
 
 <!-- cari dosen -->
-<script src="../system/js/jquery-1.12.4.min.js"></script>
+<script src="../template/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('.search-box input[type="text"]').on("keyup input", function() {

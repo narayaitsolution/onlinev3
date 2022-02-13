@@ -118,11 +118,12 @@ $no = 1;
                                                     $tglvalidasi3 = tgl_indo($data['tglvalidasi3']);
                                                     $keterangan = $data['keterangan'];
                                                     $statussurat = $data['statuspengajuan'];
+                                                    $token = $data['token'];
 
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no; ?></td>
-                                                        <td><?php echo $surat; ?></td>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $surat; ?></td>
                                                         <td>
                                                             <!-- data belum lengkap -->
                                                             <?php
@@ -202,17 +203,17 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == -1) {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="ijinlab-isi2.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-info btn-sm" href="ijinlab-isi2.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-file"></i>
                                                                     Lengkapi
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="ijinlab-cetak.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-sm" href="ijinlab-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i>
                                                                     Cetak
                                                                 </a>
@@ -222,13 +223,13 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -275,7 +276,7 @@ $no = 1;
                                                 ?>
 
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
+                                                        <td><?= $no++; ?></td>
                                                         <td>Surat Pengantar <?= $pklmagang; ?> <br />
                                                             Ketua <?= $namaketua; ?>
                                                         </td>
@@ -396,8 +397,8 @@ $no = 1;
                                                     $statussurat = $q['statussurat'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo $q['jenissurat']; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $q['jenissurat']; ?></td>
                                                         <td>
                                                             <!-- dosen wali -->
                                                             <?php
@@ -461,7 +462,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -470,7 +471,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('Harap menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -498,8 +499,8 @@ $no = 1;
                                                     $statussurat = $q['statussurat'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Permohonan Cetak KHS"; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= "Permohonan Cetak KHS"; ?></td>
                                                         <td>
                                                             <!-- ketua jurusan -->
                                                             <?php
@@ -544,7 +545,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -553,7 +554,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('Harap menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -585,8 +586,8 @@ $no = 1;
                                                     $keterangan = $q['keterangan'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Permohonan Ijin Penelitian"; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= "Permohonan Ijin Penelitian"; ?></td>
                                                         <td>
                                                             <!-- dosen pembimbing -->
                                                             <?php
@@ -647,7 +648,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -656,7 +657,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('Harap menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -688,8 +689,8 @@ $no = 1;
                                                     $keterangan = $q['keterangan'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Ijin Ujian Skripsi Offline"; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= "Ijin Ujian Skripsi Offline"; ?></td>
                                                         <td>
                                                             <!-- dosen pembimbing -->
                                                             <?php
@@ -796,8 +797,8 @@ $no = 1;
                                                     $keterangan = $q['keterangan'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Ijin Bimbingan Offline"; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= "Ijin Bimbingan Offline"; ?></td>
                                                         <td>
                                                             <!-- dosen pembimbing -->
                                                             <?php
@@ -904,8 +905,8 @@ $no = 1;
                                                     $statussurat = $q['statussurat'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Permohonan Peminjaman Alat"; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= "Permohonan Peminjaman Alat"; ?></td>
                                                         <td>
                                                             <!-- dosen pembimbing -->
                                                             <?php
@@ -1006,8 +1007,8 @@ $no = 1;
                                                     $statussurat = $q['statussurat'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Ijin Pengambilan Data"; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= "Ijin Pengambilan Data"; ?></td>
                                                         <td>
                                                             <!-- dosen pembimbing -->
                                                             <?php
@@ -1068,7 +1069,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -1077,7 +1078,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('Harap menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1116,7 +1117,7 @@ $no = 1;
                                                 ?>
 
                                                             <tr>
-                                                                <td><?php echo $no++; ?></td>
+                                                                <td><?= $no++; ?></td>
                                                                 <td>Surat Pengantar Observasi <br />
                                                                     Ketua <?= $namaketua; ?>
                                                                 </td>
@@ -1182,14 +1183,14 @@ $no = 1;
                                                                     <?php
                                                                     if ($statussurat == -1) {
                                                                     ?>
-                                                                        <a class="btn btn-info btn-sm" href="observasi-isianggota.php?nodata=<?php echo $nodata; ?>">
+                                                                        <a class="btn btn-info btn-sm" href="observasi-isianggota.php?nodata=<?= $nodata; ?>">
                                                                             <i class="fas fa-file"></i>
                                                                             Lengkapi
                                                                         </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 1) {
                                                                     ?>
-                                                                        <a class="btn btn-success btn-sm" href="observasi-cetak.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                        <a class="btn btn-success btn-sm" href="observasi-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
                                                                             <i class="fas fa-print"></i>
                                                                             Cetak
                                                                         </a>
@@ -1199,13 +1200,13 @@ $no = 1;
                                                                         <a class="btn btn-secondary btn-sm" disabled>
                                                                             <i class="fas fa-spinner"></i> Proses
                                                                         </a>
-                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
                                                                             <i class="fas fa-trash"></i> Batalkan
                                                                         </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 2) {
                                                                     ?>
-                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
                                                                             <i class="fas fa-trash"></i> Hapus
                                                                         </a>
                                                                     <?php
@@ -1237,8 +1238,8 @@ $no = 1;
                                                     $keterangan = $q['keterangan'];
                                                 ?>
                                                     <tr>
-                                                        <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Surat Keterangan Pendamping Ijazah"; ?></td>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= "Surat Keterangan Pendamping Ijazah"; ?></td>
                                                         <td>
                                                             <!-- dosen pembimbing -->
                                                             <?php
@@ -1307,7 +1308,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($verifikasi1 == 2 or $verifikasi2 == 2 or $verifikasi3 == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -1316,7 +1317,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('harap menunggu proses')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
