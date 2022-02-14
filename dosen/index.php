@@ -152,7 +152,7 @@ $tahun = date('Y');
                 <div class="container-fluid">
                     <div class="row">
                         <?php
-                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1') {
                         ?>
                             <!-- LAPORAN -->
                             <div class="col-sm">
@@ -416,6 +416,8 @@ $tahun = date('Y');
                                                 $verifikasi1 = $data['validasi1'];
                                                 $verifikasi2 = $data['validasi2'];
                                                 $verifikasi3 = $data['validasi3'];
+                                                $token = $data['token'];
+
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -426,7 +428,7 @@ $tahun = date('Y');
                                                         <?php
                                                         if ($verifikasi1 == 0) {
                                                         ?>
-                                                            <a class="btn btn-info btn-sm" href="ijinlab-kalab-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                            <a class="btn btn-info btn-sm" href="ijinlab-kalab-tampil.php?token=<?= $token; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         <?php
@@ -454,6 +456,8 @@ $tahun = date('Y');
                                                 $verifikasi1 = $data['validasi1'];
                                                 $verifikasi2 = $data['validasi2'];
                                                 $verifikasi3 = $data['validasi3'];
+                                                $token = $data['token'];
+
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -464,7 +468,7 @@ $tahun = date('Y');
                                                         <?php
                                                         if ($verifikasi2 == 0) {
                                                         ?>
-                                                            <a class="btn btn-info btn-sm" href="ijinlab-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                            <a class="btn btn-info btn-sm" href="ijinlab-kaprodi-tampil.php?token=<?= $token; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         <?php
@@ -492,6 +496,7 @@ $tahun = date('Y');
                                                 $verifikasi1 = $data['validasi1'];
                                                 $verifikasi2 = $data['validasi2'];
                                                 $verifikasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -502,7 +507,7 @@ $tahun = date('Y');
                                                         <?php
                                                         if ($verifikasi3 == 0) {
                                                         ?>
-                                                            <a class="btn btn-info btn-sm" href="ijinlab-wd-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                            <a class="btn btn-info btn-sm" href="ijinlab-wd-tampil.php?token=<?= $token; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         <?php

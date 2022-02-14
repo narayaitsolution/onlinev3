@@ -6,7 +6,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "dosen") {
+if ($_SESSION['jabatan'] != "wadek1") {
     header("location:../deauth.php");
 }
 require('../system/dbconn.php');
@@ -66,27 +66,37 @@ $no = 1;
             $stmt->bind_param("s", $token);
             $stmt->execute();
             $result = $stmt->get_result();
-            $dpkl = $result->fetch_assoc();
-            $nodata = $dpkl['no'];
-            $tanggal = $dpkl['tanggal'];
-            $nimmhs = $dpkl['nim'];
-            $namamhs = $dpkl['nama'];
-            $alamatasal = $dpkl['alamatasal'];
-            $alamatmalang = $dpkl['alamatmalang'];
-            $nohportu = $dpkl['nohportu'];
-            $riwayatpenyakit = $dpkl['riwayatpenyakit'];
-            $posisi = $dpkl['posisi'];
-            $prodi = $dpkl['prodi'];
-            $namalab = $dpkl['namalab'];
-            $dosen = $dpkl['dosen'];
-            $tglmulai = $dpkl['tglmulai'];
-            $tglselesai = $dpkl['tglselesai'];
-            $lamp1 = $dpkl['lamp1'];
-            $lamp4 = $dpkl['lamp4'];
-            $lamp5 = $dpkl['lamp5'];
-            $lamp7 = $dpkl['lamp7'];
-            $lamp7 = $dpkl['lamp7'];
-            $lamp8 = $dpkl['lamp8'];
+            $dlab = $result->fetch_assoc();
+            $nodata = $dlab['no'];
+            $tanggal = $dlab['tanggal'];
+            $nimmhs = $dlab['nim'];
+            $namamhs = $dlab['nama'];
+            $alamatasal = $dlab['alamatasal'];
+            $alamatmalang = $dlab['alamatmalang'];
+            $nohportu = $dlab['nohportu'];
+            $riwayatpenyakit = $dlab['riwayatpenyakit'];
+            $posisi = $dlab['posisi'];
+            $prodi = $dlab['prodi'];
+            $namalab = $dlab['namalab'];
+            $dosen = $dlab['dosen'];
+            $tglmulai = $dlab['tglmulai'];
+            $tglselesai = $dlab['tglselesai'];
+            $lamp1 = $dlab['lamp1'];
+            $lamp4 = $dlab['lamp4'];
+            $lamp5 = $dlab['lamp5'];
+            $lamp7 = $dlab['lamp7'];
+            $lamp7 = $dlab['lamp7'];
+            $lamp8 = $dlab['lamp8'];
+            $validator0 = $dlab['validator0'];
+            $validasi0 = $dlab['validasi0'];
+            $tglvalidasi0 = $dlab['tglvalidasi0'];
+            $validator1 = $dlab['validator1'];
+            $validasi1 = $dlab['validasi1'];
+            $tglvalidasi1 = $dlab['tglvalidasi1'];
+            $validator2 = $dlab['validator2'];
+            $validasi2 = $dlab['validasi2'];
+            $tglvalidasi2 = $dlab['tglvalidasi2'];
+
             ?>
 
             <!-- tabel pengajuan pribadi -->
@@ -212,12 +222,70 @@ $no = 1;
                                             </div>
                                         </div>
                                         <hr>
+                                        <div class="form-group row">
+                                            <label for="paktaintegritas" class="col-sm-2 col-form-label">Verifikator</label>
+                                            <div class="col-sm-10">
+                                                <table id="example3" class="table table-bordered table-hover text-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="5%" style="text-align: center;">No</th>
+                                                            <th style="text-align: center;">Jabatan</th>
+                                                            <th style="text-align: center;">Status</th>
+                                                            <th style="text-align: center;">Nama</th>
+                                                            <th style="text-align: center;">Tgl. Verifikasi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Koordinator PKL</td>
+                                                            <td><?php if ($validasi0 == 1) {
+                                                                    echo 'Disetujui';
+                                                                } elseif ($validasi0 == 2) {
+                                                                    echo 'Ditolak';
+                                                                } else {
+                                                                    'Belum Disetujui';
+                                                                } ?></td>
+                                                            <td><?= namadosen($dbsurat, $validator0); ?></td>
+                                                            <td><?= tgljam_indo($tglvalidasi0); ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>Kepala Lab.</td>
+                                                            <td><?php if ($validasi0 == 1) {
+                                                                    echo 'Disetujui';
+                                                                } elseif ($validasi0 == 2) {
+                                                                    echo 'Ditolak';
+                                                                } else {
+                                                                    'Belum Disetujui';
+                                                                } ?></td>
+                                                            <td><?= namadosen($dbsurat, $validator1); ?></td>
+                                                            <td><?= tgljam_indo($tglvalidasi1); ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>KAPRODI</td>
+                                                            <td><?php if ($validasi0 == 1) {
+                                                                    echo 'Disetujui';
+                                                                } elseif ($validasi0 == 2) {
+                                                                    echo 'Ditolak';
+                                                                } else {
+                                                                    'Belum Disetujui';
+                                                                } ?></td>
+                                                            <td><?= namadosen($dbsurat, $validator2); ?></td>
+                                                            <td><?= tgljam_indo($tglvalidasi2); ?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr>
                                         <form role="form" method="POST" id="my-form">
                                             <input type="hidden" name="token" value="<?= $token; ?>">
                                             <input type="hidden" name="namalab" value="<?= $namalab; ?>">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="ijinlab-dosbing-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="ijinlab-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
                                                 </div>
                                                 <div class="col-6">
                                                     <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
@@ -238,7 +306,7 @@ $no = 1;
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                            <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="ijinlab-dosbing-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
+                                                            <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="ijinlab-wd-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -297,7 +365,7 @@ $no = 1;
                 "lengthChange": false,
                 "searching": false,
                 "ordering": true,
-                "info": true,
+                "info": false,
                 "autoWidth": false,
                 "responsive": true,
             });

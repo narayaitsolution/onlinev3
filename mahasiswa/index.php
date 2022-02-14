@@ -215,7 +215,11 @@ $no = 1;
                                                             ?>
                                                                 <a class="btn btn-success btn-sm" href="ijinlab-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i>
-                                                                    Cetak
+                                                                    Cetak Surat Izin
+                                                                </a>
+                                                                <a class="btn btn-success btn-sm" href="ijinlab-cetakidcard.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i>
+                                                                    Cetak ID Card
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 0) {
