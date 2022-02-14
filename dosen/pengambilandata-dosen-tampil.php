@@ -3,18 +3,20 @@ session_start();
 require('../system/dbconn.php');
 require('../system/myfunc.php');
 $user = $_SESSION['user'];
-$nim = $_SESSION['nip'];
+$nip = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "mahasiswa") {
+if ($_SESSION['hakakses'] != "dosen") {
     header("location:../deauth.php");
 }
 
 $tglsekarang = date('Y-m-d');
 $tahun = date('Y');
 $no = 1;
+
+$token = $_GET['token'];
 
 ?>
 
@@ -60,6 +62,19 @@ $no = 1;
                     </div>
                 </div>
             </section>
+            <?php
+            $sql = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE token='$token'");
+            $dsql = mysqli_fetch_array($sql);
+            $nim = $dsql['nim'];
+            $nama = $dsql['nama'];
+            $prodi = $dsql['prodi'];
+            $judulskripsi = $dsql['judulskripsi'];
+            $dosen = $dsql['dosen'];
+            $instansi = $dsql['instansi'];
+            $alamat = $dsql['alamat'];
+            $tglpelaksanaan = $dsql['tglpelaksanaan'];
+            $datadiperlukan = $dsql['datadiperlukan'];
+            ?>
 
             <!-- tabel pengajuan pribadi -->
             <section class="content">
@@ -80,46 +95,72 @@ $no = 1;
                                             <div class="form-group row">
                                                 <label for="judulskripsi" class="col-sm-2 col-form-label">Judul Skripsi / Penelitian</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="judulskripsi" name="judulskripsi" required>
+                                                    <input type="text" class="form-control" id="judulskripsi" name="judulskripsi" value="<?= $judulskripsi; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="tglselesai" class="col-sm-2 col-form-label">Dosen Pembimbing</label>
                                                 <div class="col-sm-10">
-                                                    <div class="search-box">
-                                                        <input type="text" class="form-control" autocomplete="off" placeholder="cari dosen" name="dosen" required>
-                                                        </input>
-                                                        <div class="result"></div>
-                                                    </div>
-                                                    <small style="color:red">Ketikkan nama dosen kemudian <b>pilih dari daftar</b></small>
+                                                    <input type="text" class="form-control" id="dosen" name="dosen" value="<?= $dosen; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="instansi" name="instansi" required>
+                                                    <input type="text" class="form-control" id="instansi" name="instansi" value="<?= $instansi; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="alamat" name="alamat" required>
+                                                    <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $alamat; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="tglpelaksanaan" class="col-sm-2 col-form-label">Taggal Pelaksanaan</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" class="form-control" id="tglpelaksanaan" name="tglpelaksanaan" required>
+                                                    <input type="text" class="form-control" id="tglpelaksanaan" name="tglpelaksanaan" value="<?= tgl_indo($tglpelaksanaan); ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="datadiperlukan" class="col-sm-2 col-form-label">Data / Sample</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="datadiperlukan" name="datadiperlukan" required>
+                                                    <input type="text" class="form-control" id="datadiperlukan" name="datadiperlukan" value="<?= $datadiperlukan; ?>" readonly>
                                                 </div>
                                             </div>
                                             <hr>
-                                            <button type="submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-file-upload"></i> Ajukan</button>
+                                            <form role="form" method="POST" id="my-form">
+                                                <input type="hidden" name="token" value="<?= $token; ?>">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="pengambilandata-dosen-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
+                                                    </div>
+                                                </div>
+                                                <!-- modal tolak -->
+                                                <div class="modal fade" id="modal-tolak">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Alasan Penolakan</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <textarea class="form-control" rows="3" name="keterangan"></textarea>
+                                                            </div>
+                                                            <div class="modal-footer justify-content-between">
+                                                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                                                <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="pengambilandata-dosen-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- ./modal tolak-->
+                                            </form>
                                         </form>
                                     </div>
                                 </div>

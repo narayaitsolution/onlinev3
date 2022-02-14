@@ -1009,6 +1009,7 @@ $no = 1;
                                                     $validator3 = $q['validator3'];
                                                     $tglvalidasi3 = $q['tglvalidasi3'];
                                                     $statussurat = $q['statussurat'];
+                                                    $token = $q['token'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
@@ -1067,13 +1068,13 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="pengambilandata-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-sm" href="pengambilandata-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pengambilandata-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -1082,7 +1083,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('Harap menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pengambilandata-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
