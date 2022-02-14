@@ -377,6 +377,7 @@ $tahun = date('Y');
                                                 $verifikasi1 = $data['validasi1'];
                                                 $verifikasi2 = $data['validasi2'];
                                                 $verifikasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -387,7 +388,7 @@ $tahun = date('Y');
                                                         <?php
                                                         if ($verifikasi0 == 0) {
                                                         ?>
-                                                            <a class="btn btn-info btn-sm" href="ijinlab-dosbing-tampil.php?nodata=<?= $nodata; ?>">
+                                                            <a class="btn btn-info btn-sm" href="ijinlab-dosbing-tampil.php?token=<?= $token; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         <?php

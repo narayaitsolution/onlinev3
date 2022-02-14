@@ -6,7 +6,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['jabatan'] != "kaprodi") {
+if ($_SESSION['jabatan'] == "dosen") {
     header("location:../deauth.php");
 }
 require('../system/dbconn.php');
