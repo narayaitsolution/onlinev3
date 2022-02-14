@@ -5,7 +5,7 @@ require('../system/myfunc.php');
 date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
 
-$nama =  $_SESSION['nama'];
+$nama =  mysqli_real_escape_string($dbsurat, $_SESSION['nama']);
 $nim = $_SESSION['nip'];
 $prodi = $_SESSION['prodi'];
 //$ttl = mysqli_real_escape_string($dbsurat, $_POST['ttl']);

@@ -2,7 +2,7 @@
 session_start();
 session_unset();
 session_destroy();
-setcookie("usertoken", "", time() - 60, "/");
+//setcookie("usertoken", "", time() - 60, "/");
 ?>
 <!DOCTYPE html>
 <html>

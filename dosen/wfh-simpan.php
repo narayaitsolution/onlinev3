@@ -6,7 +6,7 @@ require('../system/phpmailer/sendmail.php');
 
 $user = $_SESSION['user'];
 $nip = $_SESSION['nip'];
-$nama = $_SESSION['nama'];
+$nama = mysqli_real_escape_string($dbsurat, $_SESSION['nama']);
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
