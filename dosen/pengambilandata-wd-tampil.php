@@ -65,8 +65,8 @@ $token = $_GET['token'];
             <?php
             $sql = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE token='$token'");
             $dsql = mysqli_fetch_array($sql);
-            $nim = $dsql['nim'];
-            $nama = $dsql['nama'];
+            $nimmhs = $dsql['nim'];
+            $namamhs = $dsql['nama'];
             $prodi = $dsql['prodi'];
             $judulskripsi = $dsql['judulskripsi'];
             $dosen = $dsql['dosen'];
@@ -98,6 +98,24 @@ $token = $_GET['token'];
                                 <div class="card-body p-0">
                                     <div class="card-body">
                                         <form action="pengambilandata-simpan.php" method="POST">
+                                            <div class="form-group row">
+                                                <label for="namamhs" class="col-sm-2 col-form-label">Nama</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="namamhs" name="namamhs" value="<?= $namamhs; ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="nimmhs" class="col-sm-2 col-form-label">NIM</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="nimmhs" name="nimmhs" value="<?= $nimmhs; ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="prodi" name="prodi" value="<?= $prodi; ?>" readonly>
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label for="judulskripsi" class="col-sm-2 col-form-label">Judul Skripsi / Penelitian</label>
                                                 <div class="col-sm-10">
