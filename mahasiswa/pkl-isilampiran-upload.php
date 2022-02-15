@@ -23,24 +23,15 @@ $fileType = $_FILES['fileToUpload']['type'];
 $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
 
-$allowedfileExtensions = array('jpg', 'jpeg');
+$lampiran_low = imgresize($fileTmpPath);
 
-if (in_array($fileExtension, $allowedfileExtensions)) {
-    if ($fileSize <= 1048576) {
-        $dest_path = $target_dir . $nim . '-lampiranpkl-' . $nodata . '.' . $fileExtension;
-        echo $dest_path;
-        if (move_uploaded_file($fileTmpPath, $dest_path)) {
-            //update data lampiran
-            $stmt = $dbsurat->prepare("UPDATE pkl SET lampiran=? WHERE no=?");
-            $stmt->bind_param("si", $dest_path, $nodata);
-            $stmt->execute();
-            header("location:pkl-isilampiran.php?nodata=$nodata&pesan=success");
-        } else {
-            header("location:pkl-isilampiran.php?nodata=$nodata&pesan=gagal");
-        };
-    } else {
-        header("location:pkl-isilampiran.php?nodata=$nodata&pesan=filesize");
-    };
+$dest_path = $target_dir . $nim . '-lampiranpkl-' . $nodata . '.' . $fileExtension;
+if (move_uploaded_file($lampiran_low, $dest_path)) {
+    //update data lampiran
+    $stmt = $dbsurat->prepare("UPDATE pkl SET lampiran=? WHERE no=?");
+    $stmt->bind_param("si", $dest_path, $nodata);
+    $stmt->execute();
+    header("location:pkl-isilampiran.php?nodata=$nodata&pesan=success");
 } else {
-    header("location:pkl-isilampiran.php?nodata=$nodata&pesan=extention");
+    header("location:pkl-isilampiran.php?nodata=$nodata&pesan=gagal");
 };

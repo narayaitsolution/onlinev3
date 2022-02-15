@@ -29,9 +29,6 @@ $allowedfileExtensions = array('jpg', 'jpeg');
 if (in_array($fileExtension, $allowedfileExtensions)) {
     if ($fileSize <= 1048576) {
         $dest_path = $target_dir . $nimanggota . '-buktivaksin-' . $nodata . '.' . $fileExtension;
-        echo $dest_path;
-        echo $nimanggota;
-        echo $nodata;
         if (move_uploaded_file($fileTmpPath, $dest_path)) {
             //update data lampiran
             $stmt = $dbsurat->prepare("UPDATE pklanggota SET buktivaksin=? WHERE nodata=? AND nimanggota=?");
