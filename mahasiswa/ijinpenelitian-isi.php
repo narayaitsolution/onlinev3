@@ -84,14 +84,19 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="tglselesai" class="col-sm-2 col-form-label">Dosen Pembimbing</label>
+                                                <label for="dosen" class="col-sm-2 col-form-label">Dosen Pembimbing</label>
                                                 <div class="col-sm-10">
-                                                    <div class="search-box">
-                                                        <input type="text" class="form-control" autocomplete="off" placeholder="cari dosen" name="dosen" required>
-                                                        </input>
-                                                        <div class="result"></div>
-                                                    </div>
-                                                    <small style="color:red">Ketikkan nama dosen kemudian <b>pilih dari daftar</b></small>
+                                                    <select name="dosen" class="form-control">
+                                                        <?php
+                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi='$prodi' AND hakakses='dosen' ORDER BY nama");
+                                                        while ($ddosen = mysqli_fetch_array($qdosen)) {
+                                                            $namadosen = $ddosen['nama'];
+                                                        ?>
+                                                            <option value="<?= $namadosen; ?>"><?= $namadosen; ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
