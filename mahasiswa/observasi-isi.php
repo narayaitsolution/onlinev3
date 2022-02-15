@@ -76,7 +76,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="observasi-isi-simpan.php" method="POST">
+                                        <form action="observasi-isi-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="matakuliah" class="col-sm-2 col-form-label">Mata Kuliah</label>
                                                 <div class="col-sm-10">
@@ -113,7 +113,7 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <hr>
-                                            <button type="submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-file-upload"></i> Ajukan</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-file-upload"></i> Ajukan</button>
                                         </form>
                                     </div>
                                 </div>

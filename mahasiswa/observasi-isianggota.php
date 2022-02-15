@@ -76,12 +76,12 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="observasi-anggotatambah.php">
+                                        <form role="form" method="post" action="observasi-isianggota-tambah.php">
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">NIM Anggota</label>
                                                 <div class="col-sm-8">
                                                     <input type="number" class="form-control" id="nimanggota" name="nimanggota">
-                                                    <input type="hidden" name="nodata" value="<?= $nodata; ?>" />
+                                                    <input type="hidden" name="token" value="<?= $token; ?>">
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <button type="submit" class="btn btn-success btn-sm"> <i class="fa fa-plus"></i> Tambah</button>
@@ -110,89 +110,86 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="observasi-anggotatambah.php">
-                                            <table id="example2" class="table table-bordered table-hover text-sm">
-                                                <thead>
-                                                    <th width="5%" style="text-align: center;">No.</th>
-                                                    <th width="20%" style="text-align: center;">Nama</th>
-                                                    <th style="text-align: center;">NIM</th>
-                                                    <th style="text-align: center;">Bukti Vaksin</th>
-                                                    <th width="5%" style="text-align: center;">Aksi</th>
-                                                </thead>
-                                                <tbody>
-                                                    <!--baca status -->
-                                                    <?php
-                                                    if (isset($_GET['ket'])) {
-                                                        $ket = mysqli_real_escape_string($dbsurat, $_GET['ket']);
-                                                        if ($ket == 'notfound') {
-                                                    ?>
-                                                            <div class="alert alert-danger alert-dismissible fade show">
-                                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                                <strong>ERROR!</strong> Data tidak ditemukan.
-                                                            </div>
-                                                    <?php
-                                                        }
+
+                                        <table id="example2" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <th width="5%" style="text-align: center;">No.</th>
+                                                <th width="20%" style="text-align: center;">Nama</th>
+                                                <th style="text-align: center;">NIM</th>
+                                                <th style="text-align: center;">Bukti Vaksin</th>
+                                                <th width="5%" style="text-align: center;">Aksi</th>
+                                            </thead>
+                                            <tbody>
+                                                <!--baca status -->
+                                                <?php
+                                                if (isset($_GET['ket'])) {
+                                                    $ket = mysqli_real_escape_string($dbsurat, $_GET['ket']);
+                                                    if ($ket == 'notfound') {
+                                                ?>
+                                                        <div class="alert alert-danger alert-dismissible fade show">
+                                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                            <strong>ERROR!</strong> Data tidak ditemukan.
+                                                        </div>
+                                                <?php
                                                     }
-                                                    ?>
+                                                }
+                                                ?>
 
-                                                    <!-- memasukkan pengusul -->
-                                                    <?php
-                                                    $qcari = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimanggota = '$nim'");
-                                                    $jhasil = mysqli_num_rows($qcari);
-                                                    if ($jhasil == 0) {
-                                                        $qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
-                                                        $dhasil = mysqli_fetch_array($qpengguna);
-                                                        $nimketua = $dhasil['nip'];
-                                                        $nimanggota = $dhasil['nip'];
-                                                        $namaanggota = $dhasil['nama'];
-                                                        $buktivaksin = $dhasil['buktivaksin'];
-                                                        $nohp = $dhasil['nohp'];
+                                                <!-- memasukkan pengusul -->
+                                                <?php
+                                                $qcari = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimanggota = '$nim'");
+                                                $jhasil = mysqli_num_rows($qcari);
+                                                if ($jhasil == 0) {
+                                                    $qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                                    $dhasil = mysqli_fetch_array($qpengguna);
+                                                    $nimketua = $dhasil['nip'];
+                                                    $nimanggota = $dhasil['nip'];
+                                                    $namaanggota = $dhasil['nama'];
+                                                    $buktivaksin = $dhasil['buktivaksin'];
+                                                    $nohp = $dhasil['nohp'];
 
-                                                        $qtambah = "INSERT INTO observasianggota (token,nimketua, nimanggota, nama,telepon, buktivaksin) 
+                                                    $qtambah = "INSERT INTO observasianggota (token,nimketua, nimanggota, nama,telepon, buktivaksin) 
 																		values('$token','$nimketua','$nimanggota','$namaanggota','$nohp','$buktivaksin')";
-                                                        $sql =  mysqli_query($dbsurat, $qtambah);
-                                                    }
-                                                    ?>
+                                                    $sql =  mysqli_query($dbsurat, $qtambah);
+                                                }
+                                                ?>
 
-                                                    <?php
-                                                    $dataanggota = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimketua='$nim'");
-                                                    $no = 1;
-                                                    while ($q = mysqli_fetch_array($dataanggota)) {
-                                                        $id = $q['id'];
-                                                        $nimanggota = $q['nimanggota'];
-                                                        $nama = $q['nama'];
-                                                        $telepon = $q['telepon'];
-                                                        $buktivaksin = $q['buktivaksin'];
-                                                        $token = $q['token'];
-                                                    ?>
-                                                        <tr>
-                                                            <td><?= $no++; ?></td>
-                                                            <td><?= $nama; ?></td>
-                                                            <td><?= $nimanggota; ?></td>
-                                                            <td><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="20%"></a></td>
-                                                            <td>
-                                                                <form action="observasianggota-hapus.php" method="POST">
-                                                                    <input type="hidden" name="id" value="<?= $id; ?>">
-                                                                    <input type="hidden" name="token" value="<?= $token; ?>">
-                                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus anggota ini ?');"><i class="fa fa-trash"></i></button>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </form>
+                                                <?php
+                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimketua='$nim'");
+                                                $no = 1;
+                                                while ($q = mysqli_fetch_array($dataanggota)) {
+                                                    $id = $q['id'];
+                                                    $nimanggota = $q['nimanggota'];
+                                                    $nama = $q['nama'];
+                                                    $telepon = $q['telepon'];
+                                                    $buktivaksin = $q['buktivaksin'];
+                                                    $token = $q['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nimanggota; ?></td>
+                                                        <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="20%"></a></td>
+                                                        <td>
+                                                            <form action="observasi-isianggota-hapus.php" method="POST">
+                                                                <input type="hidden" name="token" value="<?= $token; ?>">
+                                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus anggota ini ?');"><i class="fa fa-trash"></i></button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <a href="pkl-isilampiran.php?nodata=<?= $nodata; ?>" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-file"></i> Isi Lampiran <i class="fa fa-arrow-right"></i></a>
+                            <a href="observasi-simpan.php?token=<?= $token; ?>" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-check"></i> Ajukan </a>
                         </div>
                     </div>
                 </div>
             </section>
-
         </div>
     </div>
     <?php

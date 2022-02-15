@@ -909,6 +909,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -916,11 +917,11 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodi; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="observasi-dosen-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="observasi-dosen-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -933,13 +934,14 @@ $tahun = date('Y');
                                             $query = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE validator2='$nip' AND validasi2 = 0 AND validasi1=1");
                                             while ($data = mysqli_fetch_array($query)) {
                                                 $nodata = $data['no'];
-                                                $tanggal = ['tanggal'];
+                                                $tanggal = $data['tanggal'];
                                                 $prodimhs = $data['prodi'];
                                                 $nama = $data['nama'];
                                                 $surat = 'Ijin Observasi';
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -947,11 +949,11 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="observasi-kaprodi-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="observasi-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -971,6 +973,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -978,11 +981,11 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="observasi-wd-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="observasi-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;

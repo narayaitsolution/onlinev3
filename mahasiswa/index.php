@@ -1120,6 +1120,7 @@ $no = 1;
                                                             $tglvalidasi3 = $q['tglvalidasi3'];
                                                             $keterangan = $q['keterangan'];
                                                             $statussurat = $q['statussurat'];
+                                                            $token = $q['token'];
                                                 ?>
 
                                                             <tr>
@@ -1189,14 +1190,14 @@ $no = 1;
                                                                     <?php
                                                                     if ($statussurat == -1) {
                                                                     ?>
-                                                                        <a class="btn btn-info btn-sm" href="observasi-isianggota.php?nodata=<?= $nodata; ?>">
+                                                                        <a class="btn btn-info btn-sm" href="observasi-isianggota.php?token=<?= $token; ?>">
                                                                             <i class="fas fa-file"></i>
                                                                             Lengkapi
                                                                         </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 1) {
                                                                     ?>
-                                                                        <a class="btn btn-success btn-sm" href="observasi-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                                        <a class="btn btn-success btn-sm" href="observasi-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                             <i class="fas fa-print"></i>
                                                                             Cetak
                                                                         </a>
@@ -1206,13 +1207,13 @@ $no = 1;
                                                                         <a class="btn btn-secondary btn-sm" disabled>
                                                                             <i class="fas fa-spinner"></i> Proses
                                                                         </a>
-                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
+                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
                                                                             <i class="fas fa-trash"></i> Batalkan
                                                                         </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 2) {
                                                                     ?>
-                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
+                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
                                                                             <i class="fas fa-trash"></i> Hapus
                                                                         </a>
                                                                     <?php
