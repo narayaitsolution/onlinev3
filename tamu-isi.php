@@ -36,7 +36,7 @@ date_default_timezone_set("Asia/Jakarta");
                 <p class="login-box-msg h5">Selamat Datang di <br /><b>Fakultas Sains dan Teknologi </br>UIN Malang</b><br />Mohon mengisi identitas</p>
                 <p style="text-align: center;"><?= tgljam_indo(date('Y-m-d H:i:s')); ?></p>
                 <hr>
-                <form action="tamu-simpan.php" method="post">
+                <form action="tamu-simpan.php" method="post" id="my-form">
                     <label>Suhu Tubuh</label>
                     <input type="number" class="form-control" step="any" id="suhu" name="suhu" required>
                     <label>Nama</label>
@@ -63,7 +63,7 @@ date_default_timezone_set("Asia/Jakarta");
                     <label>E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" required>
                     <hr>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm ('Saya menyatakan bahwa data yang saya masukkan adalah benar')">MASUK <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm ('Saya menyatakan bahwa data yang saya masukkan adalah benar')">MASUK <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
             </div>
         </div>

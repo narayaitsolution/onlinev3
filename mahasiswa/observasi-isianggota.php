@@ -76,7 +76,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="observasi-isianggota-tambah.php">
+                                        <form role="form" method="post" action="observasi-isianggota-tambah.php" id="my-form">
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">NIM Anggota</label>
                                                 <div class="col-sm-8">
@@ -84,7 +84,7 @@ $no = 1;
                                                     <input type="hidden" name="token" value="<?= $token; ?>">
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <button type="submit" class="btn btn-success btn-sm"> <i class="fa fa-plus"></i> Tambah</button>
+                                                    <button type="submit" id="btn-submit" class="btn btn-success btn-sm"> <i class="fa fa-plus"></i> Tambah</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -171,9 +171,9 @@ $no = 1;
                                                         <td><?= $nimanggota; ?></td>
                                                         <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="20%"></a></td>
                                                         <td>
-                                                            <form action="observasi-isianggota-hapus.php" method="POST">
+                                                            <form action="observasi-isianggota-hapus.php" method="POST" id="my-form">
                                                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus anggota ini ?');"><i class="fa fa-trash"></i></button>
+                                                                <button type="submit" id="btn-submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus anggota ini ?');"><i class="fa fa-trash"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>

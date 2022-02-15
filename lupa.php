@@ -46,7 +46,7 @@ require('system/myfunc.php');
                     }
                 } ?>
                 <p class="login-box-msg h3"><b>RESET</b> password</p>
-                <form action="lupa-cek.php" method="post">
+                <form action="lupa-cek.php" method="post" id="my-form">
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="E-Mail terdaftar di system" name="email" required>
                         <div class="input-group-append">
@@ -71,7 +71,7 @@ require('system/myfunc.php');
                     </div>
                     <hr>
                     <input type="hidden" name="kunci" value="<?= $kunci; ?>">
-                    <button type="submit" class="btn btn-warning btn-lg btn-block"><span class="fas fa-key" onclick="return confirm('Reset Password ?')"></span> RESET</button>
+                    <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block"><span class="fas fa-key" onclick="return confirm('Reset Password ?')"></span> RESET</button>
                 </form>
             </div>
         </div>

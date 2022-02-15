@@ -47,7 +47,7 @@ $token = $_GET['token'];
                     }
                 } ?>
                 <p class="login-box-msg h3"><b>RESET</b> password</p>
-                <form action="lupa-resetok.php" method="post">
+                <form action="lupa-resetok.php" method="post" id="my-form">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Password baru" name="pass1" autocomplete="off" required>
                         <div class="input-group-append">
@@ -81,7 +81,7 @@ $token = $_GET['token'];
                     <hr>
                     <input type="hidden" name="kunci" value="<?= $kunci; ?>">
                     <input type="hidden" name="token" value="<?= $token; ?>">
-                    <button type="submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Reset Password ?')"><span class="fas fa-key"></span> RESET</button>
+                    <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Reset Password ?')"><span class="fas fa-key"></span> RESET</button>
                 </form>
             </div>
         </div>

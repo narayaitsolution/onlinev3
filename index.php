@@ -52,7 +52,7 @@ require('system/myfunc.php');
           }
         } ?>
         <p class="login-box-msg h3"><b>SAINTEK</b> e-Office</p>
-        <form action="auth.php" method="post">
+        <form action="auth.php" method="post" id="my-form">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="User ID" name="userid" required>
             <div class="input-group-append">
@@ -84,7 +84,7 @@ require('system/myfunc.php');
           </div>
           <hr>
           <input type="hidden" name="kunci" value="<?= $kunci; ?>">
-          <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-right-to-bracket"></i> Masuk</button>
+          <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-right-to-bracket"></i> Masuk</button>
         </form>
         <hr>
         <div class="row">

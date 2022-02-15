@@ -94,7 +94,7 @@ $token = $_GET['token'];
                                     <?php
                                     }
                                     ?>
-                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data">
+                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data" id="my-form">
                                         <div class="row">
                                             <div class="col-8">
                                                 <input type="file" name="filescreening" class="form-control" accept=".jpg,.jpeg">
@@ -102,7 +102,7 @@ $token = $_GET['token'];
                                             <div class="col-4">
                                                 <input type="hidden" name="lampiranke" value="1">
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
                                             </div>
                                         </div>
                                     </form>
@@ -124,7 +124,7 @@ $token = $_GET['token'];
                                     <?php
                                     }
                                     ?>
-                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data">
+                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data" id="my-form">
                                         <div class="row">
                                             <div class="col-8">
                                                 <input type="file" name="filescreening" class="form-control" accept=".jpg,.jpeg">
@@ -132,7 +132,7 @@ $token = $_GET['token'];
                                             <div class="col-4">
                                                 <input type="hidden" name="lampiranke" value="4">
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
                                             </div>
                                         </div>
                                     </form>
@@ -154,7 +154,7 @@ $token = $_GET['token'];
                                     <?php
                                     }
                                     ?>
-                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data">
+                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data" id="my-form">
                                         <div class="row">
                                             <div class="col-8">
                                                 <input type="file" name="filescreening" class="form-control" accept=".jpg,.jpeg">
@@ -162,7 +162,7 @@ $token = $_GET['token'];
                                             <div class="col-4">
                                                 <input type="hidden" name="lampiranke" value="5">
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
                                             </div>
                                         </div>
                                     </form>
@@ -184,7 +184,7 @@ $token = $_GET['token'];
                                     <?php
                                     }
                                     ?>
-                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data">
+                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data" id="my-form">
                                         <div class="row">
                                             <div class="col-8">
                                                 <input type="file" name="filescreening" class="form-control" accept=".jpg,.jpeg">
@@ -192,7 +192,7 @@ $token = $_GET['token'];
                                             <div class="col-4">
                                                 <input type="hidden" name="lampiranke" value="7">
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
                                             </div>
                                         </div>
                                     </form>
@@ -214,7 +214,7 @@ $token = $_GET['token'];
                                     <?php
                                     }
                                     ?>
-                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data">
+                                    <form method="POST" action="ijinlab-isi2-simpan.php" enctype="multipart/form-data" id="my-form">
                                         <div class="row">
                                             <div class="col-8">
                                                 <input type="file" name="filescreening" class="form-control" accept=".jpg,.jpeg">
@@ -222,7 +222,7 @@ $token = $_GET['token'];
                                             <div class="col-4">
                                                 <input type="hidden" name="lampiranke" value="8">
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Upload</button>
                                             </div>
                                         </div>
                                     </form>
@@ -235,11 +235,11 @@ $token = $_GET['token'];
                                 <?php
                                 if (empty($lampiran1) or empty($lampiran4) or empty($lampiran5) or empty($lampiran7) or empty($lampiran8)) {
                                 ?>
-                                    <button type="submit" class="btn btn-lg btn-block btn-primary" disabled><i class="fa-solid fa-file-arrow-up"></i> Ajukan</button>
+                                    <button type="submit" id="btn-submit" class="btn btn-lg btn-block btn-primary" disabled><i class="fa-solid fa-file-arrow-up"></i> Ajukan</button>
                                 <?php
                                 } else {
                                 ?>
-                                    <button type="submit" class="btn btn-lg btn-block btn-primary" id="btn-submit" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Ajukan</button>
+                                    <button type="submit" id="btn-submit" class="btn btn-lg btn-block btn-primary" id="btn-submit" onclick="return confirm ('Dengan ini saya menyatakan kebenaran file yang saya upload')"><i class="fa-solid fa-file-arrow-up"></i> Ajukan</button>
                                 <?php
                                 }
                                 ?>

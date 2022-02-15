@@ -73,7 +73,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="wfh-simpan.php" method="POST">
+                                        <form action="wfh-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-1</label>
                                                 <div class="col-sm-10">
@@ -131,7 +131,7 @@ $no = 1;
                                             </div>
 
                                             <hr>
-                                            <button type="submit" class="btn btn-primary btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> Ajukan</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> Ajukan</button>
                                         </form>
                                     </div>
                                 </div>

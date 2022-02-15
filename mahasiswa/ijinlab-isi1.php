@@ -87,7 +87,7 @@ if ($jhasil > 0) {
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="ijinlab-isi1-simpan.php" method="POST">
+                                        <form action="ijinlab-isi1-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="alamatasal" class="col-sm-2 col-form-label">Alamat Asal</label>
                                                 <div class="col-sm-10">
@@ -171,7 +171,7 @@ if ($jhasil > 0) {
                                                 </div>
                                             </div>
                                             <hr>
-                                            <button type="submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Upload Lampiran</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Upload Lampiran</button>
                                         </form>
                                     </div>
                                 </div>

@@ -73,7 +73,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="pkl-isitempat-simpan.php" method="POST">
+                                        <form action="pkl-isitempat-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
                                                 <div class="col-sm-10">
@@ -127,7 +127,7 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <hr>
-                                            <button type="submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-users"></i> Anggota Kelompok <i class="fa fa-arrow-right"></i></button>
+                                            <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-users"></i> Anggota Kelompok <i class="fa fa-arrow-right"></i></button>
                                         </form>
                                     </div>
                                 </div>

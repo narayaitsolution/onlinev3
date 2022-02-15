@@ -131,7 +131,7 @@ require('system/myfunc.php');
           <div class="row">
             <div class="col">
               <input type="hidden" name="kunci" value="<?= $kunci; ?>">
-              <button type="submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran data yang saya isikan')" id="btn-submit">DAFTAR</button>
+              <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran data yang saya isikan')">DAFTAR</button>
             </div>
           </div>
         </form>

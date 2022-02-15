@@ -70,7 +70,7 @@ date_default_timezone_set("Asia/Jakarta");
                 <hr>
                 <p style="text-align: center;"><?= tgljam_indo(date('Y-m-d H:i:s')); ?></p>
                 <hr>
-                <form action="civitas-simpan.php" method="post">
+                <form action="civitas-simpan.php" method="post" id="my-form">
                     <label>Suhu Tubuh</label>
                     <div class="input-group mb-3">
                         <input type="number" class="form-control" placeholder="Suhu tubuh" name="suhu" step="any" required>
@@ -100,7 +100,7 @@ date_default_timezone_set("Asia/Jakarta");
                     }
                     ?>
                     <hr>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
             </div>
         </div>

@@ -132,7 +132,7 @@ $tahun = date('Y');
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <FORM action="profile-update.php" enctype="multipart/form-data" class="form-horizontal" method="post">
+                                    <FORM action="profile-update.php" enctype="multipart/form-data" class="form-horizontal" method="post" id="my-form">
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
@@ -203,7 +203,7 @@ $tahun = date('Y');
                                         </div>
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')">UPDATE DATA</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')">UPDATE DATA</button>
                                             </div>
                                         </div>
                                     </FORM>
