@@ -534,6 +534,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -541,7 +542,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="ijinpenelitian-dosen-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="ijinpenelitian-dosen-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
