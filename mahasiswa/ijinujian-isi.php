@@ -15,20 +15,6 @@ $tglsekarang = date('Y-m-d');
 $tahun = date('Y');
 $no = 1;
 
-/*
-//cek kalo sudah mengisi data maka lanjut ke upload lampiran
-$statuspengajuan = -1;
-$stmt = $dbsurat->prepare("SELECT * FROM ijinlab WHERE nim=? AND statuspengajuan=?");
-$stmt->bind_param("si", $nim, $statuspengajuan);
-$stmt->execute();
-$result = $stmt->get_result();
-$jhasil = $result->num_rows;
-if ($jhasil > 0) {
-    $dhasil = $result->fetch_array();
-    $nodata = $dhasil['no'];
-    header("location:ijinlab-isi2.php?nodata=$nodata");
-}
-*/
 ?>
 
 <!DOCTYPE html>
