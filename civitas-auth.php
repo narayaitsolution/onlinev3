@@ -49,12 +49,12 @@ if ($jhasil > 0) {
     setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/");
 
     if ($hakakses == 'dosen') {
-        header('location:index2.php');
+        header('location:civitas-masuk.php');
     } elseif ($hakakses == 'tendik') {
-        header('location:index2.php');
+        header('location:civitas-masuk.php');
     } elseif ($hakakses == 'mahasiswa') {
-        header('location:index2.php');
+        header('location:civitas-masuk.php');
     }
 } else {
-    header('location:index.php?pesan=gagal');
+    header('location:index2.php?pesan=gagal');
 }

@@ -1,22 +1,5 @@
 <?php
-session_start();
 require('system/myfunc.php');
-require('system/dbconn.php');
-if (isset($_COOKIE['usertoken'])) {
-    $usertoken = $_COOKIE['usertoken'];
-    $cookie_name = "usertoken";
-    setcookie($cookie_name, $usertoken, time() + (86400 * 3), "/");
-    $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE token='$usertoken'");
-    $duser = mysqli_fetch_array($quser);
-    $nama = $duser['nama'];
-    $nip = $duser['nip'];
-    $prodi = $duser['prodi'];
-    $hakakses = $duser['hakakses'];
-    $token = $duser['token'];
-} else {
-    header('location:civitas-login.php');
-}
-date_default_timezone_set("Asia/Jakarta");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,76 +23,52 @@ date_default_timezone_set("Asia/Jakarta");
     </style>
 </head>
 
-<body class="hold-transition login-page text-sm">
+<body class="hold-transition login-page">
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <a href="#" class="h1"><img src="system/saintek-logo.png" width="100%"></a>
             </div>
-
             <div class="card-body">
-                <p class="login-box-msg h5">Salam, <br /><?= $nama; ?></p>
                 <?php
                 if (isset($_GET['pesan'])) {
-                    if ($_GET['pesan'] == "tinggi") {
+                    if ($_GET['pesan'] == "antibot") {
                 ?>
                         <div class="alert alert-danger alert-dismissible fade show">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>ERROR!</strong> Suhu tubuh <b>terlalu tinggi</b><br />
-                            Ulangi pengecekan suhu 5 menit lagi
+                            <strong>ERROR!</strong> perhitungan salah!!
                         </div>
                     <?php
-                    } else if ($_GET['pesan'] == "rendah") {
+                    } elseif ($_GET['pesan'] == "gagal") {
                     ?>
                         <div class="alert alert-danger alert-dismissible fade show">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>ERROR!! </strong> Suhu tubuh <b>terlalu rendah</b><br />
-                            Ulangi pengecekan suhu 5 menit lagi
+                            <strong>ERROR!</strong> User ID / Password salah
                         </div>
                 <?php
                     }
-                }
-                ?>
-                <hr>
-                <p style="text-align: center;"><?= tgljam_indo(date('Y-m-d H:i:s')); ?></p>
-                <hr>
-                <form action="civitas-simpan.php" method="post" id="my-form">
-                    <label>Suhu Tubuh</label>
+                } ?>
+                <p class="login-box-msg h3"><b>SAINTEK</b> <br />Gateway Check</p>
+                <form action="civitas-auth.php" method="post" id="my-form">
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="Suhu tubuh" name="suhu" step="any" required>
+                        <input type="text" class="form-control" placeholder="User ID" name="userid" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-thermometer"></span>
+                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
-                    <?php
-                    if ($hakakses == 'mahasiswa') {
-                    ?>
-                        <label>Tujuan</label>
-                        <div class="input-group mb-3">
-                            <select class="form-control" name="keperluan">
-                                <option value="Praktikum" selected>Praktikum</option>
-                                <option value="Penelitian" selected>Penelitian</option>
-                                <option value="Kuliah">Kuliah</option>
-                                <option value="Konsultasi">Konsultasi</option>
-                                <option value="Administrasi">Administrasi</option>
-                                <option value="Ujian Skripsi">Ujian Skripsi</option>
-                                <option value="Ujian Tesis">Ujian Tesis</option>
-                                <option value="Pertemuan">Pertemuan</option>
-                            </select>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="pass" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-key"></span>
+                            </div>
                         </div>
-                    <?php
-                    }
-                    ?>
+                    </div>
                     <hr>
-                    <input type="hidden" name="token" value="<?= $token; ?>">
-                    <input type="hidden" name="nim" value="<?= $nim; ?>">
-                    <input type="hidden" name="nama" value="<?= $nama; ?>">
-                    <input type="hidden" name="prodi" value="<?= $prodi; ?>">
-                    <input type="hidden" name="hakakses" value="<?= $hakakses; ?>">
-                    <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
+                <hr>
+                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-users"></i> Tamu</a>
             </div>
         </div>
     </div>
