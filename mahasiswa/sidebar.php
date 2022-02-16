@@ -218,7 +218,7 @@
                                 */
                         ?>
                             <li class="nav-item">
-                                <a href="ijinujian-isi1.php" class="nav-link">
+                                <a href="ijinujian-isi.php" class="nav-link">
                                     <i class="nav-icon fa fa-comments"></i>
                                     <p>
                                         Ijin Ujian Offline

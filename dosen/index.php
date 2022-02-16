@@ -630,6 +630,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -637,7 +638,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="ijinujian-dosen-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="ijinujian-dosen-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -661,6 +662,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -668,7 +670,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="ijinujian-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="ijinujian-kaprodi-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -692,6 +694,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -699,7 +702,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="ijinujian-wd-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="ijinujian-wd-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -730,7 +733,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="ijinbimbingan-dosen-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="ijinbimbingan-dosen-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -761,7 +764,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="ijinbimbingan-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="ijinbimbingan-kaprodi-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -792,7 +795,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="ijinbimbingan-wd-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="ijinbimbingan-wd-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1108,7 +1111,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="suket-dosen-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="suket-dosen-tampil.php?nodata=<?= mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1139,7 +1142,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="suket-kaprodi-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="suket-kaprodi-tampil.php?nodata=<?= mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1170,7 +1173,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="suket-wd-tampil.php?nodata=<?php echo mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="suket-wd-tampil.php?nodata=<?= mysqli_real_escape_string($dbsurat, $nodata); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1306,7 +1309,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="cetakkhs-kaprodi-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="cetakkhs-kaprodi-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1338,7 +1341,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="cetakkhs-wd-tampil.php?nodata=<?php echo $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="cetakkhs-wd-tampil.php?nodata=<?= $nodata; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1609,7 +1612,7 @@ $tahun = date('Y');
                                                             <?php
                                                             if ($verifikasiprodi == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="izin-cetak.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-sm" href="izin-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
@@ -1629,7 +1632,7 @@ $tahun = date('Y');
                                                             <?php
                                                             if ($verifikasiprodi <> 1) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -1690,7 +1693,7 @@ $tahun = date('Y');
                                                             <?php
                                                             if ($verifikasiprodi == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="wfh-cetakrk.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-sm" href="wfh-cetakrk.php?nodata=<?= $nodata; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak Rencana Kerja
                                                                 </a>
                                                             <?php
@@ -1714,7 +1717,7 @@ $tahun = date('Y');
                                                             <?php
                                                             if ($verifikasifakultas == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="wfh-cetakst.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-sm" href="wfh-cetakst.php?nodata=<?= $nodata; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak Surat Tugas
                                                                 </a>
                                                             <?php

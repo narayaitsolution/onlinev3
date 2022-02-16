@@ -1,20 +1,27 @@
 <?php
 session_start();
 require('../system/dbconn.php');
+require('../system/myfunc.php');
 require('../system/phpmailer/sendmail.php');
-
+$no = 1;
+$tahun = date('Y');
 date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
-$nim = $_SESSION['nip'];
+
 $nama = $_SESSION['nama'];
+$nim = $_SESSION['nip'];
 $prodi = $_SESSION['prodi'];
-$judulskripsi = mysqli_real_escape_string($dbsurat, $_POST['judulskripsi']);
-$dosen = mysqli_real_escape_string($dbsurat, $_POST['dosen']);
-$instansi = mysqli_real_escape_string($dbsurat, $_POST['instansi']);
-$alamat = mysqli_real_escape_string($dbsurat, $_POST['alamat']);
-$tglpelaksanaan = mysqli_real_escape_string($dbsurat, $_POST['tglpelaksanaan']);
-$datadiperlukan = mysqli_real_escape_string($dbsurat, $_POST['datadiperlukan']);
+$dosen = $_POST['dosen'];
+$tglmulai = $_POST['tglmulai'];
 $token = md5(uniqid());
+
+$target_dir = "../lampiran/";
+$lampiran1 = $_FILES['lampiran1']['tmp_name'];
+$lampiran2 = $_FILES['lampiran2']['tmp_name'];
+$lampiran1_low = imgresize($lampiran1);
+$lampiran2_low = imgresize($lampiran2);
+$lampiran1_upload = $target_dir . $nim . '-izinorangtua.jpg';
+$lampiran2_upload = $target_dir . $nim . '-persetujuanpembimbing.jpg';
 
 //cari nip dosen
 $stmt = $dbsurat->prepare("SELECT * FROM pengguna WHERE nama=?");
@@ -22,9 +29,7 @@ $stmt->bind_param("s", $dosen);
 $stmt->execute();
 $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
-$namadosen = $dhasil['nama'];
 $nipdosen = $dhasil['nip'];
-$emaildosen = $dhasil['emaildosen'];
 
 //cari nip kajur
 $kdjabatan = 'kaprodi';
@@ -37,30 +42,32 @@ $nipkaprodi = $dhasil['nip'];
 
 //cari nip wd-1
 $jabatan = 'wadek1';
+$level = 4;
 $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
 $stmt->bind_param("s", $jabatan);
 $stmt->execute();
 $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
-$nipwd1 = $dhasil['nip'];
+$nipwd = $dhasil['nip'];
 
-//masukin data
-$stmt = $dbsurat->prepare("INSERT INTO pengambilandata (tanggal, nim, nama, prodi, judulskripsi, dosen, instansi, alamat, tglpelaksanaan,datadiperlukan,validator1,validator2,validator3,token) 
-                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $judulskripsi, $dosen, $instansi, $alamat, $tglpelaksanaan, $datadiperlukan, $nipdosen, $nipkaprodi, $nipwd1, $token);
-$stmt->execute();
+if (move_uploaded_file($lampiran1_low, $lampiran1_upload)) {
+    if (move_uploaded_file($lampiran2_low, $lampiran2_upload)) {
+        $stmt = $dbsurat->prepare("INSERT INTO ijinujian (tanggal,nim,nama,prodi,dosen,tglmulai,lampiran1,lampiran2,validator1,validator2,validator3,token)
+                                VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssssssss", $tanggal, $nim, $nama, $prodi, $dosen, $tglmulai, $lampiran1_upload, $lampiran2_upload, $nipdosen, $nipkaprodi, $nipwd, $token);
+        $stmt->execute();
 
-//kirim email ke dosen pembimbing
-//cari email dosen dari NIP
-$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipdosen'");
-$dsql3 = mysqli_fetch_array($sql3);
-$namadosen = $dsql3['nama'];
-$emaildosen = $dsql3['email'];
+        //kirim email ke dosen pembimbing
+        //cari email dosen dari NIP
+        $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipdosen'");
+        $dsql3 = mysqli_fetch_array($sql3);
+        $namadosen = $dsql3['nama'];
+        $emaildosen = $dsql3['email'];
 
-//kirim email
-$surat = 'Ijin Pengambilan Data';
-$subject = "Pengajuan Surat " . $surat . "";
-$pesan = "Yth. " . $namadosen . "<br/>
+        //kirim email
+        $surat = 'Ijin Ujian Offline';
+        $subject = "Pengajuan Surat " . $surat . "";
+        $pesan = "Yth. " . $namadosen . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
         <br />
@@ -78,6 +85,12 @@ $pesan = "Yth. " . $namadosen . "<br/>
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
-sendmail($emaildosen, $namadosen, $subject, $pesan);
+        sendmail($emaildosen, $namadosen, $subject, $pesan);
 
-header("location:index.php");
+        header("location:index.php?");
+    } else {
+        header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
+    };
+} else {
+    header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
+}

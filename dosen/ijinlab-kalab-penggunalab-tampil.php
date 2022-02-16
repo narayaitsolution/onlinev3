@@ -92,40 +92,44 @@ $no = 1;
                                         <tbody>
                                             <?php
                                             $sql = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan >= 1 AND validator1='$nip' ORDER BY statuspengajuan ASC, tglmulai DESC");
-                                            $dsql = mysqli_fetch_array($sql);
-                                            $namamhs = $dsql['nama'];
-                                            $nimmhs = $dsql['nim'];
-                                            $namalab = $dsql['namalab'];
-                                            $dosen = $dsql['dosen'];
-                                            $tglmulai = $dsql['tglmulai'];
-                                            $tglselesai = $dsql['tglselesai'];
-                                            $statuspengajuan = $dsql['statuspengajuan'];
-                                            $token = $dsql['token'];
+                                            while ($dsql = mysqli_fetch_array($sql)) {
+                                                $namamhs = $dsql['nama'];
+                                                $nimmhs = $dsql['nim'];
+                                                $namalab = $dsql['namalab'];
+                                                $dosen = $dsql['dosen'];
+                                                $tglmulai = $dsql['tglmulai'];
+                                                $tglselesai = $dsql['tglselesai'];
+                                                $statuspengajuan = $dsql['statuspengajuan'];
+                                                $token = $dsql['token'];
                                             ?>
-                                            <tr>
-                                                <td><?= $no; ?></td>
-                                                <td><?= $namamhs; ?></td>
-                                                <td><?= tgl_indo($tglselesai); ?></td>
-                                                <td><?= tgl_indo($tglmulai); ?></td>
-                                                <td>
-                                                    <a class="btn btn-info btn-sm" href="ijinlab-kalab-penggunalab-detail.php?token=<?= $token; ?>">
-                                                        <i class="fas fa-eye"></i> Lihat
-                                                    </a>
-                                                </td>
-                                                <?php
-                                                if ($statuspengajuan == '1') {
-                                                    $status = 'AKTIF';
-                                                } elseif ($statuspengajuan == '2') {
-                                                    $status = 'DITOLAK';
-                                                } elseif ($statuspengajuan == '3') {
-                                                    $status = 'SELESAI';
-                                                }
-                                                ?>
-                                                <td style="text-align: center;">
-                                                    <?= $status; ?>
-                                                </td>
-                                                <td><?= $namalab; ?></td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td><?= $namamhs; ?></td>
+                                                    <td><?= tgl_indo($tglselesai); ?></td>
+                                                    <td><?= tgl_indo($tglmulai); ?></td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm" href="ijinlab-kalab-penggunalab-detail.php?token=<?= $token; ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <?php
+                                                    if ($statuspengajuan == '1') {
+                                                        $status = 'AKTIF';
+                                                    } elseif ($statuspengajuan == '2') {
+                                                        $status = 'DITOLAK';
+                                                    } elseif ($statuspengajuan == '3') {
+                                                        $status = 'SELESAI';
+                                                    }
+                                                    ?>
+                                                    <td style="text-align: center;">
+                                                        <?= $status; ?>
+                                                    </td>
+                                                    <td><?= $namalab; ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
