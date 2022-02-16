@@ -9,7 +9,10 @@ if (isset($_COOKIE['usertoken'])) {
     $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE token='$usertoken'");
     $duser = mysqli_fetch_array($quser);
     $nama = $duser['nama'];
+    $nip = $duser['nip'];
+    $prodi = $duser['prodi'];
     $hakakses = $duser['hakakses'];
+    $token = $duser['token'];
 } else {
     header('location:civitas-login.php');
 }
@@ -100,6 +103,11 @@ date_default_timezone_set("Asia/Jakarta");
                     }
                     ?>
                     <hr>
+                    <input type="hidden" name="token" value="<?= $token; ?>">
+                    <input type="hidden" name="nim" value="<?= $nim; ?>">
+                    <input type="hidden" name="nama" value="<?= $nama; ?>">
+                    <input type="hidden" name="prodi" value="<?= $prodi; ?>">
+                    <input type="hidden" name="hakakses" value="<?= $hakakses; ?>">
                     <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
             </div>

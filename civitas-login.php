@@ -64,21 +64,7 @@ require('system/myfunc.php');
                             </div>
                         </div>
                     </div>
-                    <?php
-                    $angka1 = rand(1, 5);
-                    $angka2 = rand(1, 5);
-                    $kunci = $angka1 + $angka2;
-                    ?>
-                    <div class="input-group mb-3">
-                        <input type="number" placeholder="<?= huruf($angka1); ?> ditambah <?= huruf($angka2); ?> ?" class="form-control" name="antibot" required>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-question"></span>
-                            </div>
-                        </div>
-                    </div>
                     <hr>
-                    <input type="hidden" name="kunci" value="<?= $kunci; ?>">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit">Masuk <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>
                 <hr>
