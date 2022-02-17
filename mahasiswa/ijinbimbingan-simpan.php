@@ -13,6 +13,7 @@ $nim = $_SESSION['nip'];
 $prodi = $_SESSION['prodi'];
 $dosen = $_POST['dosen'];
 $tglmulai = $_POST['tglmulai'];
+$tglselesai = date('Y-m-d', strtotime($tglmulai . " +3 month"));
 $token = md5(uniqid());
 
 $target_dir = "../lampiran/";
@@ -20,8 +21,8 @@ $lampiran1 = $_FILES['lampiran1']['tmp_name'];
 $lampiran2 = $_FILES['lampiran2']['tmp_name'];
 $lampiran1_low = imgresize($lampiran1);
 $lampiran2_low = imgresize($lampiran2);
-$lampiran1_upload = $target_dir . $nim . '-ujianonline-izinorangtua.jpg';
-$lampiran2_upload = $target_dir . $nim . '-ujianonline-persetujuanpembimbing.jpg';
+$lampiran1_upload = $target_dir . $nim . '-bimbingan-izin.jpg';
+$lampiran2_upload = $target_dir . $nim . '-bimbingan-persetujuan.jpg';
 
 //cari nip dosen
 $stmt = $dbsurat->prepare("SELECT * FROM pengguna WHERE nama=?");
@@ -52,9 +53,9 @@ $nipwd = $dhasil['nip'];
 
 if (move_uploaded_file($lampiran1_low, $lampiran1_upload)) {
     if (move_uploaded_file($lampiran2_low, $lampiran2_upload)) {
-        $stmt = $dbsurat->prepare("INSERT INTO ijinujian (tanggal,nim,nama,prodi,dosen,tglmulai,lampiran1,lampiran2,validator1,validator2,validator3,token)
-                                VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssssssss", $tanggal, $nim, $nama, $prodi, $dosen, $tglmulai, $lampiran1_upload, $lampiran2_upload, $nipdosen, $nipkaprodi, $nipwd, $token);
+        $stmt = $dbsurat->prepare("INSERT INTO ijinbimbingan (tanggal,nim,nama,prodi,dosen,tglmulai,tglselesai,lampiran1,lampiran2,validator1,validator2,validator3,token)
+                                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssssssssssss", $tanggal, $nim, $nama, $prodi, $dosen, $tglmulai, $tglselesai, $lampiran1_upload, $lampiran2_upload, $nipdosen, $nipkaprodi, $nipwd, $token);
         $stmt->execute();
 
         //kirim email ke dosen pembimbing
@@ -65,7 +66,7 @@ if (move_uploaded_file($lampiran1_low, $lampiran1_upload)) {
         $emaildosen = $dsql3['email'];
 
         //kirim email
-        $surat = 'Ijin Ujian Offline';
+        $surat = 'Ijin Bimbingan Offline';
         $subject = "Pengajuan Surat " . $surat . "";
         $pesan = "Yth. " . $namadosen . "<br/>
         <br/>
@@ -89,8 +90,8 @@ if (move_uploaded_file($lampiran1_low, $lampiran1_upload)) {
 
         header("location:index.php?");
     } else {
-        header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
-    };
+        header("location:ijinbimbingan-isi.php?token=$token&pesan=uploadfailed");
+    }
 } else {
-    header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
+    header("location:ijinbimbingan-isi.php?token=$token&pesan=uploadfailed");
 }

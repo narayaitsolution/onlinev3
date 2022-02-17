@@ -797,6 +797,7 @@ $no = 1;
                                                     $tglvalidasi3 = $q['tglvalidasi3'];
                                                     $statussurat = $q['statussurat'];
                                                     $keterangan = $q['keterangan'];
+                                                    $token = $q['token'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
@@ -855,19 +856,19 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="ijinbimbingan-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-sm" href="ijinbimbingan-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } elseif ($validator1 == null or $validator2 == null or $validator3 == null) {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="ijinbimbingan-isi2.php?nodata=<?= $nodata; ?>"><i class="fas fa-lup"></i> Upload
+                                                                <a class="btn btn-info btn-sm" href="ijinbimbingan-isi2.php?token=<?= $token; ?>"><i class="fas fa-lup"></i> Upload
                                                                 </a>
                                                             <?php
                                                             } else {
@@ -875,7 +876,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('Harap menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php

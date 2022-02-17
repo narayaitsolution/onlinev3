@@ -121,7 +121,7 @@ $buktivaksin = $dvaksin['buktivaksin'];
                                             <div class="form-group row">
                                                 <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Ujian</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" class="form-control" id="tglmulai" name="tglmulai" value="<?= $tglmulai; ?>" readonly>
+                                                    <input type="text" class="form-control" id="tglmulai" name="tglmulai" value="<?= tgl_indo($tglmulai); ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

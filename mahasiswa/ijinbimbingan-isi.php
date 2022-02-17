@@ -69,7 +69,6 @@ $no = 1;
                 echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
             }
             ?>
-
             <!-- tabel pengajuan pribadi -->
             <section class="content">
                 <div class="container-fluid">
@@ -77,14 +76,14 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin Ujian Offline</h3>
+                                    <h3 class="card-title">Pengajuan Izin Bimbingan Offline</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="ijinujian-simpan.php" menctype="multipart/form-data" method="POST" id="my-form">
+                                        <form action="ijinbimbingan-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="dosen" class="col-sm-2 col-form-label">Dosen Pembimbing</label>
                                                 <div class="col-sm-10">
@@ -102,7 +101,7 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Pelaksanaan Ujian</label>
+                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Mulai Bimbingan</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" class="form-control" id="tglmulai" name="tglmulai" value="<?= $tglmulai; ?>" required>
                                                 </div>

@@ -13,7 +13,7 @@ require('../system/dbconn.php');
 require('../system/myfunc.php');
 
 $token = mysqli_real_escape_string($dbsurat, "$_GET[token]");
-$qijinujian = mysqli_query($dbsurat, "SELECT * FROM ijinujian WHERE token = '$token'");
+$qijinujian = mysqli_query($dbsurat, "SELECT * FROM ijinbimbingan WHERE token = '$token'");
 $dijinujian = mysqli_fetch_array($qijinujian);
 $tanggal = $dijinujian['tanggal'];
 $nimmhs = $dijinujian['nim'];
@@ -21,14 +21,9 @@ $namamhs = $dijinujian['nama'];
 $prodimhs = $dijinujian['prodi'];
 $dosen = $dijinujian['dosen'];
 $tglmulai = $dijinujian['tglmulai'];
+$tglselesai = $dijinujian['tglselesai'];
 $lampiran1 = $dijinujian['lampiran1'];
 $lampiran2 = $dijinujian['lampiran2'];
-$validasi1 = $dijinujian['validasi1'];
-$validator1 = $dijinujian['validator1'];
-$tglvalidasi1 = $dijinujian['tglvalidasi1'];
-$validasi2 = $dijinujian['validasi2'];
-$validator2 = $dijinujian['validator2'];
-$tglvalidasi2 = $dijinujian['tglvalidasi2'];
 
 //cari bukti vaksin
 $qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
@@ -86,14 +81,14 @@ $buktivaksin = $dvaksin['buktivaksin'];
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin Ujian Offline</h3>
+                                    <h3 class="card-title">Pengajuan Izin Bimbingan Offline</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="ijinujian-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
+                                        <form action="ijinbimbingan-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="tanggal" class="col-sm-2 col-form-label">Pengajuan Surat</label>
                                                 <div class="col-sm-10">
@@ -125,9 +120,15 @@ $buktivaksin = $dvaksin['buktivaksin'];
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Ujian</label>
+                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Mulai Bimbingan</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="tglmulai" name="tglmulai" value="<?= tgl_indo($tglmulai); ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="tglselesai" class="col-sm-2 col-form-label">Tanggal Selesai Bimbingan</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="tglselesai" name="tglselesai" value="<?= tgl_indo($tglselesai); ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -149,56 +150,11 @@ $buktivaksin = $dvaksin['buktivaksin'];
                                                 </div>
                                             </div>
                                             <hr>
-                                            <div class="form-group row">
-                                                <label for="paktaintegritas" class="col-sm-2 col-form-label">Verifikator</label>
-                                                <div class="col-sm-10">
-                                                    <table id="example2" class="table table-bordered table-hover text-sm">
-                                                        <thead>
-                                                            <tr>
-                                                                <th width="5%" style="text-align: center;">No</th>
-                                                                <th style="text-align: center;">Jabatan</th>
-                                                                <th style="text-align: center;">Status</th>
-                                                                <th style="text-align: center;">Nama</th>
-                                                                <th style="text-align: center;">Tgl. Verifikasi</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Dosen Pembimbing</td>
-                                                                <td><?php if ($validasi1 == 1) {
-                                                                        echo 'Disetujui';
-                                                                    } elseif ($validasi1 == 2) {
-                                                                        echo 'Ditolak';
-                                                                    } else {
-                                                                        'Belum Disetujui';
-                                                                    } ?></td>
-                                                                <td><?= namadosen($dbsurat, $validator1); ?></td>
-                                                                <td><?= tgljam_indo($tglvalidasi1); ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>Kaprodi</td>
-                                                                <td><?php if ($validasi2 == 1) {
-                                                                        echo 'Disetujui';
-                                                                    } elseif ($validasi2 == 2) {
-                                                                        echo 'Ditolak';
-                                                                    } else {
-                                                                        'Belum Disetujui';
-                                                                    } ?></td>
-                                                                <td><?= namadosen($dbsurat, $validator2); ?></td>
-                                                                <td><?= tgljam_indo($tglvalidasi2); ?></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <hr>
                                             <form role="form" method="POST" id="my-form">
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="ijinujian-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                                                        <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="ijinbimbingan-dosen-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
                                                     </div>
                                                     <div class="col-6">
                                                         <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
@@ -219,7 +175,7 @@ $buktivaksin = $dvaksin['buktivaksin'];
                                                             </div>
                                                             <div class="modal-footer justify-content-between">
                                                                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                                <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="ijinujian-wd-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
+                                                                <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="ijinbimbingan-dosen-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -266,12 +222,12 @@ $buktivaksin = $dvaksin['buktivaksin'];
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
-                "paging": false,
+                "paging": true,
                 "lengthChange": false,
-                "searching": false,
-                "ordering": false,
-                "info": false,
-                "autoWidth": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
                 "responsive": true,
             });
         });
