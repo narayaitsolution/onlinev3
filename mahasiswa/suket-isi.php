@@ -66,7 +66,7 @@ $no = 1;
             $qdata = mysqli_fetch_array($quser);
             $buktivaksin = $qdata['buktivaksin'];
             if (empty($buktivaksin)) {
-                echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
+                //echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
             }
             ?>
 
@@ -77,46 +77,28 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin Ujian Offline</h3>
+                                    <h3 class="card-title">Pengajuan Surat Keterangan</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="ijinujian-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
+                                        <form action="suket-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
-                                                <label for="dosen" class="col-sm-2 col-form-label">Dosen Pembimbing</label>
+                                                <label for="dosen" class="col-sm-2 col-form-label">Jenis Surat Keterangan</label>
                                                 <div class="col-sm-10">
-                                                    <select name="dosen" class="form-control">
-                                                        <?php
-                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi='$prodi' AND hakakses='dosen' order by nama");
-                                                        while ($ddosen = mysqli_fetch_array($qdosen)) {
-                                                            $namadosen = $ddosen['nama'];
-                                                        ?>
-                                                            <option value="<?= $namadosen; ?>"><?= $namadosen; ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
+                                                    <select name="jenissurat" class="form-control">
+                                                        <option value="Surat Keterangan Rekomendasi" selected>Surat Keterangan Rekomendasi</option>
+                                                        <option value="Surat Keterangan Kelakuan Baik">Surat Keterangan Kelakuan Baik</option>
                                                     </select>
+                                                    <small style="color:red"><b>Surat Keterangan Aktif Kuliah</b> dikeluarkan oleh Akademik Pusat (Universitas) silahkan <a href="http://akademik.uin-malang.ac.id/" target="_blank">klik disini</a></small>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Pelaksanaan Ujian</label>
+                                                <label for="keperluan" class="col-sm-2 col-form-label">Keperluan</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" class="form-control" id="tglmulai" name="tglmulai" value="<?= $tglmulai; ?>" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="lampiran1" class="col-sm-2 col-form-label">Surat Izin Orang Tua</label>
-                                                <div class="col-sm-10">
-                                                    <input type="file" class="form-control" id="lampiran1" name="lampiran1" accept=".jpg,.jpeg" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="lampiran2" class="col-sm-2 col-form-label">Persetujuan Dosen Pembimbing</label>
-                                                <div class="col-sm-10">
-                                                    <input type="file" class="form-control" id="lampiran2" name="lampiran2" accept=".jpg,.jpeg" required>
+                                                    <input type="text" class="form-control" id="keperluan" name="keperluan" required>
                                                 </div>
                                             </div>
                                             <hr>

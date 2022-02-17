@@ -1104,6 +1104,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -1111,7 +1112,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="suket-dosen-tampil.php?nodata=<?= mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="suket-dosen-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1135,6 +1136,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -1142,7 +1144,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="suket-kaprodi-tampil.php?nodata=<?= mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="suket-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -1166,6 +1168,7 @@ $tahun = date('Y');
                                                 $validasi1 = $data['validasi1'];
                                                 $validasi2 = $data['validasi2'];
                                                 $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -1173,7 +1176,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="suket-wd-tampil.php?nodata=<?= mysqli_real_escape_string($dbsurat, $nodata); ?>">
+                                                        <a class="btn btn-info btn-sm" href="suket-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
