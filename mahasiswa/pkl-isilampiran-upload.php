@@ -2,6 +2,7 @@
 session_start();
 
 require("../system/dbconn.php");
+require("../system/myfunc.php");
 
 $nim = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
 $nama = mysqli_real_escape_string($dbsurat, $_SESSION['nama']);

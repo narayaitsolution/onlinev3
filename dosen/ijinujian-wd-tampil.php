@@ -30,6 +30,10 @@ $validasi2 = $dijinujian['validasi2'];
 $validator2 = $dijinujian['validator2'];
 $tglvalidasi2 = $dijinujian['tglvalidasi2'];
 
+//cari bukti vaksin
+$qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
+$dvaksin = mysqli_fetch_array($qvaksin);
+$buktivaksin = $dvaksin['buktivaksin'];
 ?>
 
 <!DOCTYPE html>
@@ -138,11 +142,17 @@ $tglvalidasi2 = $dijinujian['tglvalidasi2'];
                                                     <a href="<?= $lampiran2; ?>" target="_blank"><img src="<?= $lampiran2; ?>" class="img-fluid" width="50%"></a>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label for="buktivaksin" class="col-sm-2 col-form-label">Bukti Vaksin Terakhir</label>
+                                                <div class="col-sm-10">
+                                                    <a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" class="img-fluid" width="50%"></a>
+                                                </div>
+                                            </div>
                                             <hr>
                                             <div class="form-group row">
                                                 <label for="paktaintegritas" class="col-sm-2 col-form-label">Verifikator</label>
                                                 <div class="col-sm-10">
-                                                    <table id="example3" class="table table-bordered table-hover text-sm">
+                                                    <table id="example2" class="table table-bordered table-hover text-sm">
                                                         <thead>
                                                             <tr>
                                                                 <th width="5%" style="text-align: center;">No</th>
@@ -256,12 +266,12 @@ $tglvalidasi2 = $dijinujian['tglvalidasi2'];
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
-                "paging": true,
+                "paging": false,
                 "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
+                "searching": false,
+                "ordering": false,
+                "info": false,
+                "autoWidth": true,
                 "responsive": true,
             });
         });

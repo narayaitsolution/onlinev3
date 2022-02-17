@@ -24,6 +24,10 @@ $tglmulai = $dijinujian['tglmulai'];
 $lampiran1 = $dijinujian['lampiran1'];
 $lampiran2 = $dijinujian['lampiran2'];
 
+//cari bukti vaksin
+$qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
+$dvaksin = mysqli_fetch_array($qvaksin);
+$buktivaksin = $dvaksin['buktivaksin'];
 ?>
 
 <!DOCTYPE html>
@@ -130,6 +134,12 @@ $lampiran2 = $dijinujian['lampiran2'];
                                                 <label for="lampiran1" class="col-sm-2 col-form-label">Persetujuan Dosen Pembimbing</label>
                                                 <div class="col-sm-10">
                                                     <a href="<?= $lampiran2; ?>" target="_blank"><img src="<?= $lampiran2; ?>" class="img-fluid" width="50%"></a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="buktivaksin" class="col-sm-2 col-form-label">Bukti Vaksin Terakhir</label>
+                                                <div class="col-sm-10">
+                                                    <a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" class="img-fluid" width="50%"></a>
                                                 </div>
                                             </div>
                                             <hr>

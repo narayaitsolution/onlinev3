@@ -61,6 +61,16 @@ $no = 1;
                 </div>
             </section>
 
+            <!-- alert bukti vaksin -->
+            <?php
+            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+            $qdata = mysqli_fetch_array($quser);
+            $buktivaksin = $qdata['buktivaksin'];
+            if (empty($buktivaksin)) {
+                echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
+            }
+            ?>
+
             <!-- tabel pengajuan pribadi -->
             <section class="content">
                 <div class="container-fluid">
