@@ -822,6 +822,7 @@ $tahun = date('Y');
                                                 $verifikasi1 = $data['validasi1'];
                                                 $verifikasi2 = $data['validasi2'];
                                                 $verifikasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -829,7 +830,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="peminjamanalat-dosen-tampil.php?nodata=<?= $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="peminjamanalat-dosen-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -853,6 +854,7 @@ $tahun = date('Y');
                                                 $verifikasi1 = $data['validasi1'];
                                                 $verifikasi2 = $data['validasi2'];
                                                 $verifikasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -860,7 +862,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="peminjamanalat-kaprodi-tampil.php?nodata=<?= $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="peminjamanalat-kaprodi-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
@@ -884,6 +886,7 @@ $tahun = date('Y');
                                                 $verifikasi1 = $data['validasi1'];
                                                 $verifikasi2 = $data['validasi2'];
                                                 $verifikasi3 = $data['validasi3'];
+                                                $token = $data['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -891,7 +894,7 @@ $tahun = date('Y');
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $prodimhs; ?></td>
                                                     <td>
-                                                        <a class="btn btn-info btn-sm" href="peminjamanalat-wd-tampil.php?nodata=<?= $nodata; ?>">
+                                                        <a class="btn btn-info btn-sm" href="peminjamanalat-wd-tampil.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
