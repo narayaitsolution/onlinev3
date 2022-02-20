@@ -84,7 +84,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
         <tr>
             <td>&nbsp;</td>
             <td colspan="4" align="center">
-                <h2>Nomor : <?= $nosurat; ?></h2>
+                <!--<h2>Nomor : <?= $nosurat; ?></h2>-->
             </td>
             <td>&nbsp;</td>
         </tr>
