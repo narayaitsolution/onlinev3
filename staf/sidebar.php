@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                            <a href="izin-isi.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-bed-pulse"></i>
                                 <p>
                                     Izin Tidak Masuk

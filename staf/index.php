@@ -72,6 +72,7 @@ $tahun = date('Y');
                             $tbawahan = $jwfh + $jst;
 
                         ?>
+                            <!--
                             <div class="col-lg col-6">
                                 <a href="pengajuanbawahan-tampil.php">
                                     <div class="small-box bg-success">
@@ -85,6 +86,7 @@ $tahun = date('Y');
                                     </div>
                                 </a>
                             </div>
+                        -->
                         <?php
                         }
                         ?>
@@ -172,37 +174,6 @@ $tahun = date('Y');
                                                 ?>
                                                 <!-- /. WFH as kaprodi-->
 
-                                                <!-- WFH as WD -->
-                                                <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorfakultas='$nip' AND verifikasiprodi=1 and verifikasifakultas = 0 order by tglsurat desc");
-                                                $jmldata = mysqli_num_rows($query);
-                                                while ($data = mysqli_fetch_array($query)) {
-                                                    $nodata = $data['no'];
-                                                    $tanggal = $data['tglsurat'];
-                                                    $prodimhs = $data['prodi'];
-                                                    $nama = $data['nama'];
-                                                    $surat = 'Izin WFH';
-                                                    $verifikasifakultas = $data['verifikasifakultas'];
-                                                    $token = $data['token'];
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= $surat; ?></td>
-                                                        <td><?= $nama; ?></td>
-                                                        <td><?= $prodimhs; ?></td>
-                                                        <td>
-                                                            <a class="btn btn-info btn-sm" href="wfh-wd-tampil.php?token=<?= $token; ?>">
-                                                                <i class="fas fa-eye"></i> Lihat
-                                                            </a>
-                                                        </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
-                                                    </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
-                                                <!-- /. WFH as WD-->
-
                                                 <!-- Surattugas as kaprodi -->
                                                 <?php
                                                 $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
@@ -233,17 +204,18 @@ $tahun = date('Y');
                                                 ?>
                                                 <!-- /. surat tugas as kaprodi-->
 
-                                                <!-- surat tugas as WD -->
+                                                <!-- izin as atasan -->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorfakultas='$nip' AND verifikasiprodi=0 and verifikasifakultas = 0 order by tglsurat desc");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE validator1='$nip' AND validasi1=0 and validasi2 = 0 order by tglsurat desc");
                                                 $jmldata = mysqli_num_rows($query);
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
                                                     $tanggal = $data['tglsurat'];
                                                     $prodimhs = $data['prodi'];
                                                     $nama = $data['nama'];
-                                                    $surat = 'Surat Tugas';
-                                                    $verifikasifakultas = $data['verifikasifakultas'];
+                                                    $surat = 'Surat Izin';
+                                                    $validasi2 = $data['validasi2'];
+                                                    $token = $data['token'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
@@ -251,7 +223,7 @@ $tahun = date('Y');
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $prodimhs; ?></td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="#">
+                                                            <a class="btn btn-info btn-sm" href="izin-atasan-tampil.php?token=<?= $token; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
@@ -261,7 +233,39 @@ $tahun = date('Y');
                                                     $no++;
                                                 }
                                                 ?>
-                                                <!-- /. surat tugas as WD-->
+                                                <!-- /. izin as atasan-->
+
+
+                                                <!-- izin as kabag-tu -->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE validator2='$nip' AND validasi1=1 and validasi2 = 0 order by tglsurat desc");
+                                                $jmldata = mysqli_num_rows($query);
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tglsurat'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $nama = $data['nama'];
+                                                    $surat = 'Surat Izin';
+                                                    $validasi2 = $data['validasi2'];
+                                                    $token = $data['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $surat; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="izin-kabag-tampil.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /. izin as kabag tu-->
 
                                             </tbody>
                                         </table>
@@ -308,49 +312,53 @@ $tahun = date('Y');
                                                     $nodata = $data['no'];
                                                     $jenissurat = 'Surat Izin';
                                                     $keterangan = $data['keterangan'];
-                                                    $verifikasiprodi = $data['verifikasiprodi'];
-                                                    $verifikatorprodi = $data['verifikatorprodi'];
-
+                                                    $validasi1 = $data['validasi1'];
+                                                    $validator1 = $data['validator1'];
+                                                    $validasi2 = $data['validasi2'];
+                                                    $validator2 = $data['validator2'];
+                                                    $keterangan = $data['keterangan'];
+                                                    $token = $data['token'];
+                                                    $statussurat = $data['statussurat'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
                                                         <td><?= $jenissurat; ?></td>
                                                         <td>
                                                             <?php
-                                                            if ($verifikasiprodi == 0) {
+                                                            if ($validasi1 == 0) {
+                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
+                                                            } elseif ($validasi1 == 1) {
+                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
+                                                            } elseif ($validasi1 == 2) {
+                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                            }
                                                             ?>
-                                                                menunggu verifikasi <?= namadosen($dbsurat, $verifikatorprodi); ?>
+                                                            <br />
                                                             <?php
-                                                            };
-                                                            ?>
-                                                            <?php
-                                                            if ($verifikasiprodi == 1) {
-                                                            ?>
-                                                                <a class="btn btn-success btn-sm" href="izin-cetak.php?nodata=<?php echo $nodata; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak
-                                                                </a>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                            <?php
-                                                            if ($verifikasiprodi == 2) {
-                                                            ?>
-                                                                Ditolak oleh <?= namadosen($dbsurat, $verifikatorprodi); ?>
-                                                            <?php
-                                                            };
+                                                            if ($validasi2 == 0) {
+                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
+                                                            } elseif ($validasi2 == 1) {
+                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
+                                                            } elseif ($validasi2 == 2) {
+                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                            }
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <?= $keterangan; ?>
-                                                            <br />
                                                             <?php
-                                                            if ($verifikasiprodi <> 1) {
+                                                            if ($statussurat == 2 or $statussurat == 0) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?nodata=<?php echo $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
-                                                            };
+                                                            } elseif ($statussurat == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-sm" href="izin-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak
+                                                                </a>
+                                                            <?php
+                                                            }
                                                             ?>
                                                         </td>
                                                     </tr>
