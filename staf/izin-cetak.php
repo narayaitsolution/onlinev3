@@ -151,7 +151,17 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td colspan="4">Pada hari <?= hari(date("N", strtotime($tglizin1))); ?> tanggal <?= tgl_indo(($tglizin1)); ?> s/d <?= hari(date("N", strtotime($tglizin2))); ?> tanggal <?= tgl_indo(($tglizin2)); ?> diberikan izin <?= $jenisizin; ?> karena <?= $alasan; ?></td>
+            <?php
+            if ($tglizin1 == $tglizin2) {
+            ?>
+                <td colspan="4">Pada hari <?= hari(date("N", strtotime($tglizin1))); ?> tanggal <?= tgl_indo(($tglizin1)); ?> diberikan izin <?= $jenisizin; ?> karena <?= $alasan; ?></td>
+            <?php
+            } else {
+            ?>
+                <td colspan="4">Pada hari <?= hari(date("N", strtotime($tglizin1))); ?> tanggal <?= tgl_indo(($tglizin1)); ?> s/d <?= hari(date("N", strtotime($tglizin2))); ?> tanggal <?= tgl_indo(($tglizin2)); ?> diberikan izin <?= $jenisizin; ?> karena <?= $alasan; ?></td>
+            <?php
+            }
+            ?>
             <td>&nbsp;</td>
         </tr>
         <tr>
