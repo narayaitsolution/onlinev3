@@ -66,6 +66,7 @@
                                 </p>
                             </a>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
                                 <i class="nav-icon fa-solid fa-plane-departure"></i>
@@ -75,7 +76,7 @@
                                 </p>
                             </a>
                         </li>
-
+                        -->
                     </ul>
                 </li>
                 <li class="nav-item">
