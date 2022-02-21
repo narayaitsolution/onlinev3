@@ -151,7 +151,7 @@ if ($jhasil > 0) {
                                                 <div class="col-sm-10">
                                                     <select name="dosen" class="form-control">
                                                         <?php
-                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi='$prodi' AND hakakses='dosen' ORDER BY nama");
+                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi like '%$prodi' AND hakakses='dosen' ORDER BY nama");
                                                         while ($ddosen = mysqli_fetch_array($qdosen)) {
                                                             $namadosen = $ddosen['nama'];
                                                         ?>

@@ -81,7 +81,7 @@ $tahun = date('Y');
                         <!-- pengajuan bawahan -->
                         <!--
                         <?php
-                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
                             $qwfh = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0");
                             $jwfh = mysqli_num_rows($qwfh);
                             $qst = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0");
@@ -152,7 +152,7 @@ $tahun = date('Y');
                 <div class="container-fluid">
                     <div class="row">
                         <?php
-                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1') {
+                        if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1') {
                         ?>
                             <!-- LAPORAN -->
                             <div class="col-sm">
@@ -1368,7 +1368,7 @@ $tahun = date('Y');
                         </div>
 
                         <?php
-                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
                         ?>
                             <!-- Pengajuan Bawahan -->
                             <div class="col-sm">
@@ -1458,7 +1458,7 @@ $tahun = date('Y');
 
                                                 <!-- Surattugas as kaprodi -->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikator1='$nip' AND verifikasi1 = 0 and verifikasi2=0 order by tglsurat desc");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator1='$nip' AND validasi1 = 0 and validasi2=0 order by tglsurat desc");
                                                 $jmldata = mysqli_num_rows($query);
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
@@ -1466,7 +1466,8 @@ $tahun = date('Y');
                                                     $prodimhs = $data['prodi'];
                                                     $nama = $data['nama'];
                                                     $surat = 'Surat Tugas';
-                                                    $verifikasi1 = $data['verifikasi1'];
+                                                    $validasi1 = $data['validasi1'];
+                                                    $token = $data['token'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
@@ -1474,7 +1475,7 @@ $tahun = date('Y');
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $prodimhs; ?></td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="#">
+                                                            <a class="btn btn-info btn-sm" href="surattugas-atasan-tampil.php?token=<?= $token; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
@@ -1488,7 +1489,7 @@ $tahun = date('Y');
 
                                                 <!-- surat tugas as WD -->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikator2='$nip' AND verifikasi1=1 and verifikasi2 = 0 order by tglsurat desc");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator2='$nip' AND validasi1=1 and validasi2 = 0 order by tglsurat desc");
                                                 $jmldata = mysqli_num_rows($query);
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
@@ -1496,7 +1497,8 @@ $tahun = date('Y');
                                                     $prodimhs = $data['prodi'];
                                                     $nama = $data['nama'];
                                                     $surat = 'Surat Tugas';
-                                                    $verifikasi2 = $data['verifikasi2'];
+                                                    $validasi2 = $data['validasi2'];
+                                                    $token = $data['token'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
@@ -1504,7 +1506,7 @@ $tahun = date('Y');
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $prodimhs; ?></td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="#">
+                                                            <a class="btn btn-info btn-sm" href="surattugas-dekan-tampil.php?token=<?= $token; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
@@ -1563,7 +1565,7 @@ $tahun = date('Y');
                 <div class="container-fluid">
                     <div class="row">
                         <?php
-                        if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
                         ?>
                             <!-- Disposisi Surat -->
                             <div class="col-sm">
@@ -1671,13 +1673,13 @@ $tahun = date('Y');
                                                             <?php
                                                             if ($statussurat == 2 or $statussurat == 0) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="surattugas-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="izin-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
