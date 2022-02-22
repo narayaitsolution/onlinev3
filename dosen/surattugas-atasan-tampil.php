@@ -24,6 +24,7 @@ $golonganbawahan = $dst['golongan'];
 $pangkatbawahan = $dst['pangkat'];
 $jabatanbawahan = $dst['jabatan'];
 $untuk = $dst['untuk'];
+$tglpelaksanaan = $dst['tglpelaksanaan'];
 $lampiran = $dst['lampiran'];
 
 ?>
@@ -126,6 +127,12 @@ $lampiran = $dst['lampiran'];
                                             <label for="instansi" class="col-sm-2 col-form-label">Untuk</label>
                                             <div class="col-sm-10">
                                                 <textarea class="form-control" name="untuk" rows="5" readonly><?= $untuk; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="instansi" class="col-sm-2 col-form-label">Tanggal Pelaksanaan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="tglpelaksanaan" name="tglpelaksanaan" value="<?= tgl_indo($tglpelaksanaan); ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
