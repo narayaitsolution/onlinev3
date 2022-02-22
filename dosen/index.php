@@ -1630,7 +1630,7 @@ $tahun = date('Y');
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- Izin-->
+                                                <!-- surat tugas-->
                                                 <?php
                                                 $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE nip='$nip' ORDER BY tglsurat DESC");
                                                 while ($data = mysqli_fetch_array($query)) {
@@ -1678,6 +1678,15 @@ $tahun = date('Y');
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak
+                                                                </a>
+                                                                <a class="btn btn-primary btn-sm" href="surattugas-bukti.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fa fa-upload" aria-hidden="true"></i> Upload Bukti
+                                                                </a>
+                                                            <?php
+                                                            } elseif ($statussurat == 3) {
                                                             ?>
                                                                 <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak

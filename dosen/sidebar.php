@@ -85,13 +85,25 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="surattugas-isi.php" class="nav-link">
-                                <i class="nav-icon fa-solid fa-briefcase"></i>
-                                <p>
-                                    Surat Tugas
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
+                            <?php
+                            $qst = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE nip='$nip' AND statussurat=1");
+                            $jst = mysqli_num_rows($qst);
+                            if ($jst > 0) {
+                            ?>
+                                <a href="#" class="nav-link" onclick="return alert('ANDA BELUM MENGUNGGAH BUKTI PELAKSANAAN SURAT TUGAS !!')">
+                                <?php
+                            } else {
+                                ?>
+                                    <a href="surattugas-isi.php" class="nav-link">
+                                    <?php
+                                }
+                                    ?>
+                                    <i class="nav-icon fa-solid fa-briefcase"></i>
+                                    <p>
+                                        Surat Tugas
+                                        <span class="right badge badge-danger"></span>
+                                    </p>
+                                    </a>
                         </li>
                         <li class="nav-item">
                             <a href="izin-isi.php" class="nav-link">
