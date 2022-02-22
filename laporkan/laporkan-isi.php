@@ -29,17 +29,30 @@ require('../system/myfunc.php');
                 <a href="#" class="h1"><img src="../system/saintek-logo.png" width="100%"></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg h3">LAPORKAN!!</p>
-                <p style="text-align:center">Kami siap menindak lanjuti laporan anda untuk peningkatan kualitas pelayanan kami. <b>Kami tidak merekam identitas anda</b></p>
-                <form action="laporkan-simpan.php" method="post" id="my-form">
+                <p class="login-box-msg h3">Ada keluhan terkait pelayanan kami ?</p>
+                <p style="text-align:center">Kami akan menindak lanjuti laporan anda untuk peningkatan kualitas pelayanan kami.</p>
+                <form action="laporkan-simpan.php" enctype="multipart/form-data" method="post" id="my-form">
+                    <div class="form-group row">
+                        <label for="unitkerja" class="col-sm-3 col-form-label">Keluhan Terkait</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="keluhan">
+                                <option value="Kebersihan">Kebersihan</option>
+                                <option value="Fasilitas">Fasilitas</option>
+                                <option value="Administrasi" selected>Administrasi</option>
+                                <option value="Peralatan">Peralatan</option>
+                                <option value="Internet / Komputer">Internet / Komputer</option>
+                                <option value="Lain - Lain">Lain - Lain</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="unitkerja" class="col-sm-3 col-form-label">Unit Kerja / Bagian Terkait</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="unitkerja">
-                                <option value="Fakultas" selected>Fakultas</option>
-                                <option value="Bagian Umum">Bagian Umum</option>
-                                <option value="Bagian Akademik">Bagian Akademik</option>
-                                <option value="Bagian Keuangan">Bagian Keuangan</option>
+                                <option value="Bagian Umum">Bagian Umum Fakultas</option>
+                                <option value="Bagian Akademik">Bagian Akademik Fakultas</option>
+                                <option value="Bagian Keuangan">Bagian Keuangan Fakultas</option>
+                                <option value="Lab SIM">Bagian IT Fakultas</option>
                                 <option value="Prodi. Biologi">Prodi. Biologi</option>
                                 <option value="Prodi. Fisika">Prodi. Fisika</option>
                                 <option value="Prodi. Kimia">Prodi. Kimia</option>
@@ -61,11 +74,11 @@ require('../system/myfunc.php');
                     <div class="form-group row">
                         <label for="laporan" class="col-sm-3 col-form-label">Isi Laporan</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" name="laporan" row="5"></textarea>
+                            <textarea class="form-control" name="laporan" row="10" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="bukti" class="col-sm-3 col-form-label">Bukti</label>
+                        <label for="bukti" class="col-sm-3 col-form-label">Bukti <small style="color:red;">*</small></label>
                         <div class="col-sm-9">
                             <input type="file" class="form-control" name="bukti" accept=".jpg,.jpeg">
                         </div>
@@ -88,9 +101,10 @@ require('../system/myfunc.php');
                             </div>
                         </div>
                     </div>
+                    <small style="color:red;">*) optional</small>
                     <hr>
                     <input type="hidden" name="kunci" value="<?= $kunci; ?>">
-                    <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block"><i class="fa-solid fa-circle-exclamation"></i> LAPORKAN</button>
+                    <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Laporkan keluhan anda ?')"><i class="fa-solid fa-circle-exclamation"></i> LAPORKAN</button>
                 </form>
             </div>
         </div>

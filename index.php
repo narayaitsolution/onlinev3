@@ -89,10 +89,13 @@ require('system/myfunc.php');
         <hr>
         <div class="row">
           <div class="col text-sm">
-            <a href="lupa.php" class="btn btn-success btn-block">Lupa Password</a>
+            <a href="lupa.php" class="btn btn-success btn-block">LUPA Password</a>
           </div>
           <div class="col text-sm">
-            <a href="daftar.php" class="btn btn-warning btn-block">DAFTAR</a>
+            <a href="daftar.php" class="btn btn-warning btn-block">DAFTAR Akun</a>
+          </div>
+          <div class="col text-sm">
+            <a href="laporkan/" class="btn btn-danger btn-block">LAPORKAN Keluhan</a>
           </div>
         </div>
       </div>

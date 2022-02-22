@@ -1,5 +1,6 @@
 <?php
 require('../system/myfunc.php');
+$kode = mysqli_real_escape_string($dbsurat, "$_GET[kode]");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +31,13 @@ require('../system/myfunc.php');
                 <a href="#" class="h1"><img src="../system/saintek-logo.png" width="100%"></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg h3"><b>LAPORKAN!!</b></p>
-                <p style="text-align: center;">Kami <b>TIDAK</b> menyimpan informasi pelapor</p>
+                <p class="login-box-msg h3"><b>TERIMA KASIH</b></p>
+                <p style="text-align: center;">Kami akan segera menindak lanjuti laporan anda.</p>
+                <p style="text-align: justify;">Silahkan catat kode berikut ini untuk memantau perkembangan laporan anda</p>
                 <hr>
-                <a href="laporkan-isi.php" class="btn btn-warning btn-lg btn-block"><i class="fa-solid fa-circle-exclamation"></i> LAPORKAN KELUHAN</a>
-                <a href="gratifikasi-isi.php" class="btn btn-danger btn-lg btn-block"><i class="fa-solid fa-gift"></i> LAPORKAN GRATIFIKASI</a>
-                <a href="laporkan-cek.php" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-magnifying-glass"></i> Cek Laporan</a>
+                <h1 style="text-align: center; font-family: 'Courier New', Courier, monospace; color:blue"><b><?= $kode; ?></b></h1>
+                <hr>
+                <a href="https://saintek.uin-malang.ac.id" class="btn btn-success btn-lg btn-block">Kembali</a>
             </div>
         </div>
     </div>
