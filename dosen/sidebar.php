@@ -303,7 +303,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="lab-cekkapasitas2.php" class="nav-link">
+                                <a href="lab-cekkapasitas.php" class="nav-link">
                                     <i class="nav-icon fas fa-flask"></i>
                                     <p>
                                         Kontrol Kapasitas Lab.

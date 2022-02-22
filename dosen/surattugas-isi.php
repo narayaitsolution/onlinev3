@@ -204,6 +204,12 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label for="instansi" class="col-sm-2 col-form-label">Tanggal Pelaksanaan</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" name="tglpelaksanaan" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Lampiran</label>
                                                 <div class="col-sm-10">
                                                     <input type="file" class="form-control" name="lampiran" accept=".jpg,.jpeg" required>

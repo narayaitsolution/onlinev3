@@ -94,9 +94,11 @@ require('system/myfunc.php');
           <div class="col text-sm">
             <a href="daftar.php" class="btn btn-warning btn-block">DAFTAR Akun</a>
           </div>
+          <!--
           <div class="col text-sm">
             <a href="laporkan/" class="btn btn-danger btn-block">LAPORKAN Keluhan</a>
           </div>
+      -->
         </div>
       </div>
     </div>

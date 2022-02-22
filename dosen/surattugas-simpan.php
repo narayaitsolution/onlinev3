@@ -14,6 +14,7 @@ $jabatan = $_POST['jabatan'];
 $pangkat = $_POST['pangkat'];
 $golongan = $_POST['golongan'];
 $untuk = mysqli_real_escape_string($dbsurat, $_POST['untuk']);
+$tglpelaksanaan = mysqli_real_escape_string($dbsurat, $_POST['tglpelaksanaan']);
 $token = md5(uniqid());
 $uniqid = uniqid();
 
@@ -84,8 +85,8 @@ if ($jabatan == 'dosen') {
 
 
 if (move_uploaded_file($buktivaksin_low, $dest_path)) {
-    $sql = mysqli_query($dbsurat, "INSERT INTO surattugas (prodi, tglsurat, iduser, nama, nip,pangkat,golongan,jabatan, untuk, lampiran, validator1,validator2,token) 
-                                    VALUES ('$prodi','$tanggal','$nip','$nama','$nip','$pangkat','$golongan','$jabatan','$untuk','$dest_path','$nipkaprodi','$nipdekan','$token')");
+    $sql = mysqli_query($dbsurat, "INSERT INTO surattugas (prodi, tglsurat, iduser, nama, nip,pangkat,golongan,jabatan, untuk, tglpelaksanaan, lampiran, validator1,validator2,token) 
+                                    VALUES ('$prodi','$tanggal','$nip','$nama','$nip','$pangkat','$golongan','$jabatan','$untuk','$tglpelaksanaan','$dest_path','$nipkaprodi','$nipdekan','$token')");
     //kirim email;
     //cari email kaprodi berdasarkan NIP
     $sql2 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkaprodi'");
