@@ -10,6 +10,7 @@ $tglsurat = date('Y-m-d H:i:s');
 $nama = $_SESSION['nama'];
 $nip = $_SESSION['nip'];
 $pangkat = $_POST['pangkat'];
+$golongan = $_POST['golongan'];
 $jabatan = $_SESSION['jabatan'];
 $prodi = $_SESSION['prodi'];
 $jeniscuti = mysqli_real_escape_string($dbsurat, $_POST['cuti']);
@@ -91,8 +92,8 @@ if ($jabatan == 'dosen') {
 }
 
 if (move_uploaded_file($lampiran_low, $dest_path)) {
-    $sql = mysqli_query($dbsurat, "INSERT INTO cuti (prodi, tglsurat, nama, nip,pangkat,jabatan, tglizin1, tglizin2,jmlizin,jeniscuti,alasan,validator1,validator2,lampiran,token) 
-			                    VALUES ('$prodi','$tglsurat','$nama','$nip','$pangkat','$jabatan','$tgl1','$tgl2','$cuti','$jeniscuti','$alasan','$nipkaprodi','$nipwd','$dest_path','$token')");
+    $sql = mysqli_query($dbsurat, "INSERT INTO cuti (prodi, tglsurat, nama, nip,pangkat,golongan,jabatan, tglizin1, tglizin2,jmlizin,jeniscuti,alasan,validator1,validator2,lampiran,token) 
+			                    VALUES ('$prodi','$tglsurat','$nama','$nip','$pangkat','$golongan','$jabatan','$tgl1','$tgl2','$cuti','$jeniscuti','$alasan','$nipkaprodi','$nipwd','$dest_path','$token')");
 
     //kirim email;
     //cari email kaprodi berdasarkan NIP

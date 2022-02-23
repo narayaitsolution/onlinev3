@@ -140,25 +140,36 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="pangkat" class="col-sm-2 col-form-label">Pangkat / Golongan</label>
+                                                <label for="pangkat" class="col-sm-2 col-form-label">Pangkat</label>
                                                 <div class="col-sm-10">
                                                     <select class="form-control" name="pangkat">
-                                                        <option value="IV/d">IV/d</option>
-                                                        <option value="IV/c">IV/c</option>
-                                                        <option value="IV/b">IV/b</option>
-                                                        <option value="IV/a">IV/a</option>
-                                                        <option value="III/d">III/d</option>
-                                                        <option value="III/c">III/c</option>
-                                                        <option value="III/b" selected>III/b</option>
-                                                        <option value="III/a">III/a</option>
-                                                        <option value="II/d">II/d</option>
-                                                        <option value="II/c">II/c</option>
-                                                        <option value="II/b">II/b</option>
-                                                        <option value="II/a">II/a</option>
-                                                        <option value="I/d">I/d</option>
-                                                        <option value="I/c">I/c</option>
-                                                        <option value="I/b">I/b</option>
-                                                        <option value="I/a">I/a</option>
+                                                        <option value="Guru Besar">Guru Besar</option>
+                                                        <option value="Lektor Kepala">Lektor Kepala</option>
+                                                        <option value="Lektor" selected>Lektor</option>
+                                                        <option value="Asisten Ahli">Asisten Ahli</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="golongan" class="col-sm-2 col-form-label">Golongan</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" name="golongan">
+                                                        <option value="IV/d" selected>IV-d</option>
+                                                        <option value="IV/c">IV-c</option>
+                                                        <option value="IV/b">IV-b</option>
+                                                        <option value="IV/a">IV-a</option>
+                                                        <option value="III/d">III-d</option>
+                                                        <option value="III/c">III-c</option>
+                                                        <option value="III/b">III-b</option>
+                                                        <option value="III/a">III-a</option>
+                                                        <option value="II/d">II-d</option>
+                                                        <option value="II/c">II-c</option>
+                                                        <option value="II/b">II-b</option>
+                                                        <option value="II/a">II-a</option>
+                                                        <option value="I/d">I-d</option>
+                                                        <option value="I/c">I-c</option>
+                                                        <option value="I/b">I-b</option>
+                                                        <option value="I/a">I-a</option>
                                                     </select>
                                                 </div>
                                             </div>
