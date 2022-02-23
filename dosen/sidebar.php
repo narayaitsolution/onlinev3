@@ -114,17 +114,15 @@
                                 </p>
                             </a>
                         </li>
-                        <!--
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
-                                <i class="nav-icon fa-solid fa-plane-departure"></i>
+                            <a href="cuti-isi.php" class="nav-link">
+                                <i class=" nav-icon fa-solid fa-plane-departure"></i>
                                 <p>
                                     Cuti
                                     <span class="right badge badge-danger"></span>
                                 </p>
                             </a>
                         </li>
-                        -->
                     </ul>
                 </li>
                 <li class="nav-item has-treeview menu-close">

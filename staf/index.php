@@ -267,6 +267,37 @@ $tahun = date('Y');
                                                 ?>
                                                 <!-- /. izin as kabag tu-->
 
+                                                <!-- izin as atasan -->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE validator1='$nip' AND validasi1=0 and validasi2 = 0 order by tglsurat desc");
+                                                $jmldata = mysqli_num_rows($query);
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tglsurat'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $nama = $data['nama'];
+                                                    $surat = 'Surat Izin';
+                                                    $validasi2 = $data['validasi2'];
+                                                    $token = $data['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $surat; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="cuti-atasan-tampil.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /. izin as atasan-->
+
                                             </tbody>
                                         </table>
                                     </div>
