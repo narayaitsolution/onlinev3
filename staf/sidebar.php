@@ -66,9 +66,8 @@
                                 </p>
                             </a>
                         </li>
-                        <!--
                         <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
+                            <a href="cuti-isi.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-plane-departure"></i>
                                 <p>
                                     Cuti
@@ -76,7 +75,6 @@
                                 </p>
                             </a>
                         </li>
-                        -->
                     </ul>
                 </li>
                 <li class="nav-item">

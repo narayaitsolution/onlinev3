@@ -29,9 +29,6 @@ $jmlizin = $dizin['jmlizin'];
 $jeniscuti = $dizin['jeniscuti'];
 $alasan = $dizin['alasan'];
 $lampiran = $dizin['lampiran'];
-$validator1 = $dizin['validator1'];
-$validasi1 = $dizin['validasi1'];
-$tglvalidasi1 = $dizin['tglvalidasi1'];
 
 ?>
 
@@ -160,43 +157,11 @@ $tglvalidasi1 = $dizin['tglvalidasi1'];
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="form-group row">
-                                            <label for="paktaintegritas" class="col-sm-2 col-form-label">Verifikator</label>
-                                            <div class="col-sm-10">
-                                                <table id="example2" class="table table-bordered table-hover text-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th width="5%" style="text-align: center;">No</th>
-                                                            <th style="text-align: center;">Jabatan</th>
-                                                            <th style="text-align: center;">Status</th>
-                                                            <th style="text-align: center;">Nama</th>
-                                                            <th style="text-align: center;">Tgl. Verifikasi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Atasan Langsung</td>
-                                                            <td><?php if ($validasi1 == 1) {
-                                                                    echo 'Disetujui';
-                                                                } elseif ($validasi1 == 2) {
-                                                                    echo 'Ditolak';
-                                                                } else {
-                                                                    'Belum Disetujui';
-                                                                } ?></td>
-                                                            <td><?= namadosen($dbsurat, $validator1); ?></td>
-                                                            <td><?= tgljam_indo($tglvalidasi1); ?></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <hr>
                                         <form role="form" method="POST" id="my-form">
                                             <input type="hidden" name="token" value="<?= $token; ?>">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="cuti-dekan-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="cuti-atasan-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
                                                 </div>
                                                 <div class="col-6">
                                                     <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
@@ -217,7 +182,7 @@ $tglvalidasi1 = $dizin['tglvalidasi1'];
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                            <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="cuti-dekan-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
+                                                            <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="cuti-atasan-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -262,11 +227,11 @@ $tglvalidasi1 = $dizin['tglvalidasi1'];
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
-                "paging": false,
+                "paging": true,
                 "lengthChange": false,
-                "searching": false,
-                "ordering": false,
-                "info": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
                 "autoWidth": false,
                 "responsive": true,
             });

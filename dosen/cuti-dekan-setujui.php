@@ -11,7 +11,7 @@ $nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
 $bulan = date('m');
 $tahun = date('Y');
 //cari urutan surat di tahun ini untuk no surat
-$qurutan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tanggal)=$tahun");
+$qurutan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglsurat)=$tahun");
 $urutan = mysqli_num_rows($qurutan);
 $nosurat = "B-" . $urutan . ".O/FST/KP.08.2/" . $bulan . "/" . $tahun . "";
 //update status validasi dosen
