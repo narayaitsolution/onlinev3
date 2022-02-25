@@ -26,7 +26,6 @@ $fileExtension = strtolower(end($fileNameCmps));
 $sertifikat_low = imgresize($fileTmpPath);
 
 $dest_path = $target_dir . $nim . '-lampiranskpi-' . $fileName;
-echo $dest_path;
 if (move_uploaded_file($sertifikat_low, $dest_path)) {
     //update data lampiran
     $stmt = $dbsurat->prepare("INSERT INTO skpi_prestasipenghargaan (tanggal, nim, nama, prodi, aktivitas, indonesia, english,bukti)

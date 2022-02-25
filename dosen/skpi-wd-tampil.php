@@ -83,15 +83,15 @@ $prodimhs = $data['prodi'];
                                 <div class="card-body p-0">
                                     <div class="card-body">
                                         <div class="form-group row">
-                                            <label for="namamhs" class="col-sm-2 col-form-label">Nama</label>
+                                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="namamhs" name="namamhs" value="<?= $namamhs; ?>" readonly>
+                                                <input type="text" class="form-control" id="nama" name="nama" value="<?= $namamhs; ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="nimmhs" class="col-sm-2 col-form-label">NIM</label>
+                                            <label for="nim" class="col-sm-2 col-form-label">NIM</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nimmhs" name="nimmhs" value="<?= $nimmhs; ?>" readonly>
+                                                <input type="text" class="form-control" id="nim" name="nim" value="<?= $nimmhs; ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -300,8 +300,8 @@ $prodimhs = $data['prodi'];
                                             </div>
                                             <hr />
                                             <input type="hidden" name="nosurat" value="<?= $nosurat; ?>" />
-                                            <input type="hidden" name="namamhs" value="<?= $namamhs; ?>" />
-                                            <input type="hidden" name="nimmhs" value="<?= $nimmhs; ?>" />
+                                            <input type="hidden" name="nama" value="<?= $namamhs; ?>" />
+                                            <input type="hidden" name="nim" value="<?= $nim; ?>" />
                                             <input type="hidden" name="prodi" value="<?= $prodimhs; ?>" />
                                             <input type="hidden" name="nodata" value="<?= $nodata; ?>">
                                             <div class="row">

@@ -11,12 +11,12 @@ date_default_timezone_set("Asia/Jakarta");
 $tgl = date('Y-m-d H:i:s');
 
 if (empty($keterangan)) {
-    header("location:skpi-tampil.php?nim=$nim&respon=kosong");
+	header("location:skpi-tampil.php?nim=$nim&respon=kosong");
 } else {
-    $sql = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan
-						SET verifikasi2 = '2', 
-								tglverifikasi2 = '$tgl',
+	$sql = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan
+						SET verifikasi3 = '2', 
+								tglverifikasi3 = '$tgl',
 								keterangan = '$keterangan'
 						WHERE no = '$nosurat' AND nim = '$nim'");
-    header("location:index.php");
+	header("location:index.php");
 }

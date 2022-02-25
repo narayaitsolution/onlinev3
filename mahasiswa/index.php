@@ -1314,7 +1314,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($verifikasi1 == 2 or $verifikasi2 == 2 or $verifikasi3 == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpi-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -1323,7 +1323,7 @@ $no = 1;
                                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('harap menunggu proses')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpi-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php

@@ -7,6 +7,9 @@ $nim = $_SESSION['nip'];
 $prodi = $_SESSION['prodi'];
 $dosen = $_POST['dosen'];
 
+date_default_timezone_set("Asia/Jakarta");
+$tanggal = date('Y-m-d H:i:s');
+
 //cari nip dosen
 $stmt = $dbsurat->prepare("SELECT * FROM pengguna WHERE nama=?");
 $stmt->bind_param("s", $dosen);
@@ -49,7 +52,8 @@ if ($cekdata > 0) {
         echo "error " . mysqli_error($dbsurat);
     }
 } else {
-    $qsimpan = mysqli_query($dbsurat, "INSERT INTO skpi_prestasipenghargaan (nim, nama, prodi,verifikator1,verifikator2,verifikator3) VALUES ('$nim','$nama','$prodi','$nipdosen','$nipkaprodi','$nipwd')");
+    $qsimpan = mysqli_query($dbsurat, "INSERT INTO skpi_prestasipenghargaan (tanggal,nim, nama, prodi,verifikator1,verifikator2,verifikator3) 
+                                        VALUES ('$tanggal','$nim','$nama','$prodi','$nipdosen','$nipkaprodi','$nipwd')");
     if ($qsimpan) {
         header("location:index.php");
     } else {
