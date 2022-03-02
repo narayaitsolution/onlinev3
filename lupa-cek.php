@@ -13,15 +13,18 @@ if ($kunci == $jawaban) {
     $stmt->execute();
     $result = $stmt->get_result();
     $jhasil = $result->num_rows;
+    $newpass = rand(10000, 99999);
+    $newmd5pass = md5($newpass);
     if ($jhasil > 0) {
-        $stmt = $dbsurat->prepare("UPDATE pengguna SET token = '$token' WHERE email=?");
-        $stmt->bind_param("s", $email);
+        $stmt = $dbsurat->prepare("UPDATE pengguna SET pass=?,token=? WHERE email=?");
+        $stmt->bind_param("sss", $newmd5pass, $token, $email);
         $stmt->execute();
 
         //ambil data token
         $sql = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE email='$email'");
         $dsql = mysqli_fetch_array($sql);
         $nama = $dsql['nama'];
+        $user = $dsql['user'];
         $token = $dsql['token'];
 
         //kirim email
@@ -33,23 +36,22 @@ if ($kunci == $jawaban) {
 		<br />
 		Kami telah menerima permintaan reset password anda pada sistem SAINTEK e-Office.
         <br/>
-        Silahkan klik tombol berikut ini untuk me-reset password anda.
+        Berikut ini adalah informasi User ID & Password anda di SAINTEK e-Office
 		<br />
-        <a href='https://saintek.uin-malang.ac.id/online/lupa-reset.php?token=$token' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Reset Password</a><br/>        
+        <h1><b>User ID = " . $user . "</b></h1>
 		<br/>
-        atau silahkan copy & paste link berikut ini pada browser anda apabila tombol diatas tidak berfungsi https://saintek.uin-malang.ac.id/online/lupa-reset.php?token=$token<br/>
+        <h1><b>Password = " . $newpass . "</b></h1>
+		<br/>
         <br/>
-        <br/>
-        Apabila anda tidak merasa melakukan permintaan reset password, segera ubah password anda di sistem SAINTEK e-Office.<br/>
+        <b style='color:red;'>Jangan beritahukan informasi diatas kepada siapapun!!.</b><br/>
         <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #03DF00;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>        
         Wassalamualaikum wr. wb.
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
         sendmail($email, $nama, $subject, $pesan);
-        header("location:index.php?pesan=reset");
+        header("location:index.php?pesan=resetok");
     } else {
-
         header('location:lupa.php?pesan=notregistered');
     }
 } else {

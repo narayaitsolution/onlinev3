@@ -46,7 +46,7 @@ require('system/myfunc.php');
           } elseif ($_GET['pesan'] == "resetok") {
           ?>
             <div class="alert alert-success alert-dismissible fade show">
-              <strong>RESET Password</strong> berhasil
+              <strong>RESET berhasil</strong> cek email anda
             </div>
         <?php
           }

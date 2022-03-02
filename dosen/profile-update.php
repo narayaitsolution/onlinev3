@@ -17,7 +17,7 @@ $email = mysqli_real_escape_string($dbsurat, $_POST['email']);
 $prodi = mysqli_real_escape_string($dbsurat, $_POST['prodi']);
 $userid = mysqli_real_escape_string($dbsurat, $_POST['userid']);
 $pass = mysqli_real_escape_string($dbsurat, $_POST['pass']);
-$passmd5 = md5($pass);
+$passmd5 = md5(strtolower($pass));
 
 $target_dir = "../lampiran/";
 $fileTmpPath = $_FILES['fileToUpload']['tmp_name'];
@@ -29,10 +29,11 @@ $fileExtension = strtolower(end($fileNameCmps));
 
 if (!empty($fileName)) {
     $allowedfileExtensions = array('jpg', 'jpeg');
+    $buktivaksin_low = imgresize($fileTmpPath);
     if (in_array($fileExtension, $allowedfileExtensions)) {
         if ($fileSize <= 1048576) {
             $dest_path = $target_dir . $nip . '-buktivaksin.jpg';
-            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+            if (move_uploaded_file($buktivaksin_low, $dest_path)) {
                 $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,user=?,pass=?,buktivaksin=? 
                                         WHERE nip=?");
                 $stmt->bind_param("sssssssss", $nama, $nip, $nohp, $email, $prodi, $userid, $passmd5, $dest_path, $nip);
@@ -50,7 +51,7 @@ if (!empty($fileName)) {
 } else {
     $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,user=?,pass=? 
                                         WHERE nip=?");
-    $stmt->bind_param("sssssssss", $nama, $nip, $nohp, $email, $prodi, $userid, $passmd5, $nip);
+    $stmt->bind_param("ssssssss", $nama, $nip, $nohp, $email, $prodi, $userid, $passmd5, $nip);
     $stmt->execute();
     header("location:profile-tampil.php?nip=$nip&pesan=success");
 }
