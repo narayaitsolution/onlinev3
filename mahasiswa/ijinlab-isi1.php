@@ -128,7 +128,14 @@ if ($jhasil > 0) {
                                                 <div class="col-sm-10">
                                                     <select name="namalab" class="form-control">
                                                         <?php
-                                                        $sql = mysqli_query($dbsurat, "SELECT * FROM laboratorium WHERE jurusan like '%$prodi'");
+                                                        if ($jurusan == 'Magister Biologi' or $jurusan == 'Teknik Informatika') {
+                                                            $jur = explode(' ', $jurusan);
+                                                            $jrs = $jur[1];
+                                                        } else {
+                                                            $jrs = $jurusan;
+                                                        }
+
+                                                        $sql = mysqli_query($dbsurat, "SELECT * FROM laboratorium WHERE jurusan like '%$jrs'");
                                                         $jmldata = mysqli_num_rows($sql);
                                                         //echo "Jumlah data = ".$jmldata;
                                                         while ($data = mysqli_fetch_array($sql)) {

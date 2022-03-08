@@ -105,7 +105,13 @@ $no = 1;
                                                                 <select name="dosen" class="form-control">
                                                                     <option value="<?= $kalab; ?>" selected><?= namadosen($dbsurat, $kalab); ?></option>
                                                                     <?php
-                                                                    $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi like '%$jurusan' and hakakses='dosen' ORDER BY nama");
+                                                                    if ($jurusan == 'Magister Biologi' or $jurusan == 'Teknik Informatika') {
+                                                                        $jur = explode(' ', $jurusan);
+                                                                        $jrs = $jur[1];
+                                                                    } else {
+                                                                        $jrs = $jurusan;
+                                                                    }
+                                                                    $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi like '%$jrs' and hakakses='dosen' ORDER BY nama");
                                                                     while ($ddosen = mysqli_fetch_array($qdosen)) {
                                                                         $nama = $ddosen['nama'];
                                                                     ?>
