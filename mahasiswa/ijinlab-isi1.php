@@ -128,11 +128,11 @@ if ($jhasil > 0) {
                                                 <div class="col-sm-10">
                                                     <select name="namalab" class="form-control">
                                                         <?php
-                                                        if ($jurusan == 'Magister Biologi' or $jurusan == 'Teknik Informatika') {
-                                                            $jur = explode(' ', $jurusan);
+                                                        if ($prodi == 'Magister Biologi' or $prodi == 'Magister Informatika') {
+                                                            $jur = explode(' ', $prodi);
                                                             $jrs = $jur[1];
                                                         } else {
-                                                            $jrs = $jurusan;
+                                                            $jrs = $prodi;
                                                         }
 
                                                         $sql = mysqli_query($dbsurat, "SELECT * FROM laboratorium WHERE jurusan like '%$jrs'");
@@ -158,7 +158,13 @@ if ($jhasil > 0) {
                                                 <div class="col-sm-10">
                                                     <select name="dosen" class="form-control">
                                                         <?php
-                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi like '%$prodi' AND hakakses='dosen' ORDER BY nama");
+                                                        if ($prodi == 'Magister Biologi' or $prodi == 'Magister Informatika') {
+                                                            $jur = explode(' ', $prodi);
+                                                            $jrs = $jur[1];
+                                                        } else {
+                                                            $jrs = $prodi;
+                                                        }
+                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi like '%$jrs' AND hakakses='dosen' ORDER BY nama");
                                                         while ($ddosen = mysqli_fetch_array($qdosen)) {
                                                             $namadosen = $ddosen['nama'];
                                                         ?>

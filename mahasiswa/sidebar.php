@@ -99,7 +99,7 @@
                         if ($statussurat == 1) {
                         ?>
                             <?php
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nip'");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (empty($buktivaksin)) {

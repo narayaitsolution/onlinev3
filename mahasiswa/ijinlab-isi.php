@@ -121,7 +121,7 @@ $no = 1;
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>6.</td>
+                                        <td>5.</td>
                                         <td><b>Lampiran 8-</b>Surat persetujuan orang tua bermaterai <br />
                                         </td>
                                         <td>
@@ -131,7 +131,7 @@ $no = 1;
                                 </tbody>
                             </table>
                             <hr />
-                            <a href="ijinlab-isi1.php" class="btn btn-lg btn-block btn-primary" onclick="return confirm ('Saya sudah menyiapkan dokumen - dokumen tersebut')">Lengkapi Data</button>
+                            <a href="ijinlab-isi1.php" class="btn btn-lg btn-block btn-primary" onclick="return confirm ('Saya sudah menyiapkan dokumen - dokumen tersebut')">Lengkapi Data</a>
                         </div>
                     </div>
                 </div>
