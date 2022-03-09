@@ -58,6 +58,27 @@ $no = 1;
                 </div>
             </section>
 
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col">
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                if ($_GET['pesan'] == "penuh") {
+                            ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>ERROR!</strong> Laboratorium Penuh!!
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
             <!-- ambil data -->
             <?php
             $token = mysqli_real_escape_string($dbsurat, $_GET['token']);

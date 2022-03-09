@@ -91,7 +91,7 @@ $no = 1;
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan >= 1 AND validator1='$nip' ORDER BY statuspengajuan ASC, tglmulai DESC");
+                                            $sql = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan >= 1 AND validator1='$nip' ORDER BY statuspengajuan ASC, tglselesai ASC");
                                             while ($dsql = mysqli_fetch_array($sql)) {
                                                 $namamhs = $dsql['nama'];
                                                 $nimmhs = $dsql['nim'];
