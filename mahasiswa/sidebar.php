@@ -98,13 +98,29 @@
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
                         ?>
-                            <li class="nav-item">
-                                <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
-                                    <i class="nav-icon fas fa-users"></i>
-                                    <p>Surat Pengantar PKL</p>
-                                </a>
-                            </li>
+                            <?php
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nip'");
+                            $qdata = mysqli_fetch_array($quser);
+                            $buktivaksin = $qdata['buktivaksin'];
+                            if (empty($buktivaksin)) {
+                            ?>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" onclick="return alert('Pengajuan Surat Pengantar PKL dapat dilakukan setelah bukti vaksin terakhir di Upload')">
+                                        <i class="nav-icon fas fa-users"></i>
+                                        <p>Surat Pengantar PKL</p>
+                                    </a>
+                                </li>
+                            <?php
+                            } else {
+                            ?>
+                                <li class="nav-item">
+                                    <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
+                                        <i class="nav-icon fas fa-users"></i>
+                                        <p>Surat Pengantar PKL</p>
+                                    </a>
+                                </li>
                         <?php
+                            }
                         }
                         ?>
 
