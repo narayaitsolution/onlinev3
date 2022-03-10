@@ -170,19 +170,31 @@ $tahun = date('Y');
                                             <thead>
                                                 <tr>
                                                     <th style="text-align:center">No</th>
-                                                    <th style="text-align:center">Tgl. Laporan</th>
+                                                    <th style="text-align:center">Keluhan</th>
                                                     <th style="text-align:center">Unit Terkait</th>
+                                                    <th style="text-align:center">Tgl. Laporan</th>
                                                     <th style="text-align:center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- disposisi surat -->
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
+                                                <?php
+                                                $qlaporan = mysqli_query($dbsurat, "SELECT * FROM laporkan WHERE status=0");
+                                                while ($dlaporkan = mysqli_fetch_array($qlaporan)) {
+                                                    $nodata = $dlaporkan['no'];
+                                                    $tanggal = $dlaporkan['tanggal'];
+                                                    $unitterkait = $dlaporkan['unitterkait'];
+                                                    $keluhan = $dlaporkan['keluhan'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $keluhan; ?></td>
+                                                        <td><?= $unitterkait; ?></td>
+                                                        <td><?= $tanggal; ?></td>
+                                                        <td></td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>

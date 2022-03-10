@@ -26,7 +26,7 @@ require('../system/myfunc.php');
     <div class="container-fluid">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="#" class="h1"><img src="../system/saintek-logo.png" width="100%"></a>
+                <a href="#" class="h1"><img src="../system/saintek-logo.png" width="50%"></a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg h3">Ada keluhan terkait pelayanan kami ?</p>
