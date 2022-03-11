@@ -190,7 +190,11 @@ $tahun = date('Y');
                                                         <td><?= $keluhan; ?></td>
                                                         <td><?= $unitterkait; ?></td>
                                                         <td><?= $tanggal; ?></td>
-                                                        <td></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="laporan-pimpinan-tampil.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 <?php
                                                 }
