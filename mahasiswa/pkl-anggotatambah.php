@@ -14,12 +14,16 @@ if ($hasil > 0) {
     $namaanggota2 = $data['nama'];
     $notelepon = $data['nohp'];
     $buktivaksin = $data['buktivaksin'];
-    $sql = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
-			values('$nodata','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')";
-    if (mysqli_query($dbsurat, $sql)) {
-        $ket = "ok";
+    if ($buktivaksin == null) {
+        $ket = "novaksin";
     } else {
-        $ket = "notok";
+        $sql = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
+                values('$nodata','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')";
+        if (mysqli_query($dbsurat, $sql)) {
+            $ket = "ok";
+        } else {
+            $ket = "notok";
+        }
     }
 } else {
     $ket = "notfound";

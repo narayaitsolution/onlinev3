@@ -61,6 +61,46 @@ $no = 1;
                 </div>
             </section>
 
+            <!-- alert -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col">
+
+                            <?php
+                            if (isset($_GET['ket'])) {
+                                if ($_GET['ket'] == 'novaksin') {
+                            ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>ERROR!</strong> Anggota belum upload bukti vaksin!!
+                                    </div>
+                                <?php
+                                } elseif ($_GET['ket'] == 'notfound') {
+                                ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>ERROR!</strong> data tidak ditemukan!!
+                                    </div>
+                                <?php
+                                } elseif ($_GET['ket'] == 'notok') {
+                                ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>ERROR!</strong> penambahan anggota gagal!!
+                                    </div>
+                                <?php
+                                } elseif ($_GET['ket'] == 'ok') {
+                                ?>
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        <strong>SUKSES</strong> penambahan anggota berhasil
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- tabel pengajuan pribadi -->
             <section class="content">
                 <div class="container-fluid">
