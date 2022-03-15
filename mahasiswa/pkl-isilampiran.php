@@ -187,7 +187,7 @@ $no = 1;
                                     <?php
                                     if ($lampiran <> '') {
                                     ?>
-                                        <a href="pkl-ajukan.php?nodata=<?= $nodata; ?>" class="btn btn-success btn-block" onclick="return confirm ('Saya menyatakan kebenaran data yang saya kirimkan')"><i class="fa fa-check "></i> Ajukan Pengantar PKL </a>
+                                        <a href="pkl-ajukan.php?nodata=<?= $nodata; ?>" class="btn btn-success btn-block" onclick="return confirm ('Saya menyatakan kebenaran data yang saya kirimkan')"><i class="fa fa-file-upload "></i> Ajukan Pengantar PKL </a>
                                     <?php
                                     } else {
                                     ?>

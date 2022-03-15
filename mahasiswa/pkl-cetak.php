@@ -24,6 +24,7 @@ $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
 $datasurat = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE token='$token'");
 $rowsurat = mysqli_fetch_array($datasurat);
 $nosurat = $rowsurat['keterangan'];
+$nodata = $rowsurat['no'];
 $nim = $rowsurat['nim'];
 $prodi = $rowsurat['prodi'];
 $instansi = $rowsurat['instansi'];
@@ -144,7 +145,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
 			</tr>
 			<?php
 			// data peserta observasi
-			$dataanggota = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimketua='$nim'");
+			$dataanggota = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimketua='$nim' and nodata='$nodata'");
 			$jmlanggota = mysqli_num_rows($dataanggota);
 			while ($rowanggota = mysqli_fetch_array($dataanggota)) {
 				$nimanggota = $rowanggota['nimanggota'];

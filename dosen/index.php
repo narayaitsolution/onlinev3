@@ -184,6 +184,7 @@ $tahun = date('Y');
                                                     $tanggal = $dlaporkan['tanggal'];
                                                     $unitterkait = $dlaporkan['unitterkait'];
                                                     $keluhan = $dlaporkan['keluhan'];
+                                                    $kode = $dlaporkan['kode'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
@@ -191,7 +192,7 @@ $tahun = date('Y');
                                                         <td><?= $unitterkait; ?></td>
                                                         <td><?= $tanggal; ?></td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="laporan-pimpinan-tampil.php?token=<?= $token; ?>">
+                                                            <a class="btn btn-info btn-sm" href="laporan-pimpinan-tampil.php?token=<?= $kode; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>

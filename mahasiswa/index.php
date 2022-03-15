@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('../system/dbconn.php');
+require('../system/myfunc.php');
 $user = $_SESSION['user'];
 $nim = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
@@ -9,8 +11,6 @@ $jabatan = $_SESSION['jabatan'];
 if ($_SESSION['hakakses'] != "mahasiswa") {
     header("location:../deauth.php");
 }
-require('../system/dbconn.php');
-require('../system/myfunc.php');
 $tahun = date('Y');
 $no = 1;
 ?>

@@ -160,24 +160,9 @@ $no = 1;
                                                     <th width="5%" style="text-align: center;">Aksi</th>
                                                 </thead>
                                                 <tbody>
-                                                    <!--baca status -->
-                                                    <?php
-                                                    if (isset($_GET['ket'])) {
-                                                        $ket = mysqli_real_escape_string($dbsurat, $_GET['ket']);
-                                                        if ($ket == 'notfound') {
-                                                    ?>
-                                                            <div class="alert alert-danger alert-dismissible fade show">
-                                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                                <strong>ERROR!</strong> Data tidak ditemukan.
-                                                            </div>
-                                                    <?php
-                                                        }
-                                                    }
-                                                    ?>
-
                                                     <!-- memasukkan pengusul -->
                                                     <?php
-                                                    $qcari = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota = '$nim'");
+                                                    $qcari = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota ='$nim' AND nodata='$nodata'");
                                                     $jhasil = mysqli_num_rows($qcari);
                                                     if ($jhasil == 0) {
                                                         $qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
@@ -195,7 +180,7 @@ $no = 1;
                                                     ?>
 
                                                     <?php
-                                                    $dataanggota = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimketua='$nim'");
+                                                    $dataanggota = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimketua='$nim' and nodata='$nodata'");
                                                     $no = 1;
                                                     while ($q = mysqli_fetch_array($dataanggota)) {
                                                         $id = $q['id'];

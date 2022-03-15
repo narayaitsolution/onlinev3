@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('../system/dbconn.php');
+require('../system/myfunc.php');
 $user = $_SESSION['user'];
 $nip = $_SESSION['nip'];
 $nama = mysqli_real_escape_string($dbsurat, $_SESSION['nama']);
@@ -9,8 +11,6 @@ $jabatan = $_SESSION['jabatan'];
 if ($_SESSION['hakakses'] != "dosen") {
     header("location:../deauth.php");
 }
-require('../system/dbconn.php');
-require('../system/myfunc.php');
 $tahun = date('Y');
 $no = 1;
 ?>
@@ -152,19 +152,19 @@ $no = 1;
                                         </div>
                                         <div class="form-group row">
                                             <label for="paktaintegritas" class="col-sm-2 col-form-label">Pakta Integritas</label>
-                                            <div class="col-sm-10">
-                                                <a href="<?= $lampiran; ?>" target="_blank"><img src="<?= $lampiran; ?>" width="50%"></a>
+                                            <div class="col-sm-10 text-center">
+                                                <a href="<?= $lampiran; ?>" target="_blank"><img src="<?= $lampiran; ?>" class="img-fluid" width="50%"></a>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="anggotapkl" class="col-sm-2 col-form-label">Anggota PKL / Magang</label>
                                             <div class="col-sm-10">
-                                                <table id="example2" class="table table-bordered table-hover">
+                                                <table id="example2" class="table table-bordered table-hover text-sm">
                                                     <thead>
                                                         <tr>
                                                             <th width="5%" style="text-align: center;">No</th>
-                                                            <th style="text-align: center;">Nama</th>
                                                             <th width="20%" style="text-align: center;">Bukti Vaksin</th>
+                                                            <th style="text-align: center;">Nama</th>
                                                             <th width="20%" style="text-align: center;">NIM</th>
                                                         </tr>
                                                     </thead>
@@ -182,8 +182,8 @@ $no = 1;
                                                         ?>
                                                             <tr>
                                                                 <td><?= $no; ?></td>
-                                                                <td><?= $namaanggota; ?></td>
                                                                 <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="100%"></a></td>
+                                                                <td><?= $namaanggota; ?></td>
                                                                 <td><?= $nimanggota; ?></td>
                                                             </tr>
                                                         <?php
