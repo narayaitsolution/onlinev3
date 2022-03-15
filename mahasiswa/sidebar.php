@@ -110,16 +110,29 @@
                                         <p>Surat Pengantar PKL</p>
                                     </a>
                                 </li>
-                            <?php
+                                <?php
                             } else {
-                            ?>
-                                <li class="nav-item">
-                                    <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
-                                        <i class="nav-icon fas fa-users"></i>
-                                        <p>Surat Pengantar PKL</p>
-                                    </a>
-                                </li>
+                                $qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim'");
+                                $jpkl = mysqli_num_rows($qpkl);
+                                if ($jpkl > 0) {
+                                ?>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" onclick="return alert('Anda hanya diijinkan mengajukan izin PKL 1x. Hubungi Koor. PKL untuk membatalkan pengajuan anda sebelumnya')">
+                                            <i class="nav-icon fas fa-users"></i>
+                                            <p>Surat Pengantar PKL</p>
+                                        </a>
+                                    </li>
+                                <?php
+                                } else {
+                                ?>
+                                    <li class="nav-item">
+                                        <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
+                                            <i class="nav-icon fas fa-users"></i>
+                                            <p>Surat Pengantar PKL</p>
+                                        </a>
+                                    </li>
                         <?php
+                                };
                             }
                         }
                         ?>

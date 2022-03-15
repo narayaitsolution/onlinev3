@@ -140,6 +140,9 @@ $no = 1;
                                             <?php
                                             }
                                             ?>
+                                            <a class="btn btn-danger btn-sm" href="pengajuanmhs-pklhapus.php?nodata=<?= $nodata; ?>" onclick="return alert('Menghapus pengajuan ini ?')">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php
