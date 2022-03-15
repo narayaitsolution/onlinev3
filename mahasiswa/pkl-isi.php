@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('../system/dbconn.php');
+require('../system/myfunc.php');
 $user = $_SESSION['user'];
 $nim = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
@@ -9,10 +11,15 @@ $jabatan = $_SESSION['jabatan'];
 if ($_SESSION['hakakses'] != "mahasiswa") {
     header("location:../deauth.php");
 }
-require('../system/dbconn.php');
-require('../system/myfunc.php');
 $tahun = date('Y');
 $no = 1;
+
+//jika sudah ijin pkl tidak boleh ijin lagi
+$qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim'");
+$jpkl = mysqli_num_rows($qpkl);
+if ($jpkl > 0) {
+    header("location:index.php");
+}
 ?>
 
 <!DOCTYPE html>
