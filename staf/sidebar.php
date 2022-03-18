@@ -86,7 +86,21 @@
                         </p>
                     </a>
                 </li>
-
+                <?php
+                if ($jabatan == 'kasubag-akademik') {
+                ?>
+                    <li class="nav-item">
+                        <a href="pengajuanmhs-tampil.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-square-envelope"></i>
+                            <p>
+                                Data Surat Mahasiswa
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 <!-- menu operator SKPI -->
                 <?php
                 $qoperator = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
