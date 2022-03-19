@@ -79,10 +79,10 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                             <thead>
                                 <tr>
                                     <th width="5%">No.</th>
-                                    <th width="35%"> Surat</th>
-                                    <th width="30%">Nama</th>
-                                    <th width="15%">Prodi</th>
-                                    <th width="10%">No. Surat</th>
+                                    <th> Surat</th>
+                                    <th>Nama</th>
+                                    <th>Prodi</th>
+                                    <th width="25%">No. Surat</th>
                                     <th width="5%">Aksi</th>
                                 </tr>
                             </thead>
@@ -91,7 +91,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- PKL Koordinator-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' OR year(tanggal)='$tahunlalu' ORDER BY tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE statussurat=1 ORDER BY tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -144,7 +144,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- ijin lab -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE year(tanggal)='$tahun' OR year(tanggal)='$tahunlalu' ORDER BY tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan=1 ORDER BY tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -196,7 +196,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- ijin penelitian -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinpenelitian WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' ORDER BY prodi");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinpenelitian WHERE statussurat=1 ORDER BY tanggal");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $nim = $data['nim'];
@@ -255,7 +255,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- peminjaman alat -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM peminjamanalat WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' ORDER BY prodi");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM peminjamanalat WHERE statussurat=1 ORDER BY tanggal DESC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $nim = $data['nim'];
@@ -314,7 +314,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Observasi -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' ORDER BY prodi");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE statussurat=1 ORDER BY tanggal DESC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $nim = $data['nim'];
@@ -373,7 +373,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- pengambilandata -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' ORDER BY prodi");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE statussurat=1 ORDER BY tanggal DESC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $prodi = $data['prodi'];
@@ -431,7 +431,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Surat Keterangan -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM suket WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' ORDER BY prodi");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM suket WHERE statussurat=1 ORDER BY tanggal DESC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $nim = $data['nim'];
@@ -487,65 +487,6 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                 }
                                 ?>
                                 <!-- /Surat Keterangan -->
-
-                                <!-- SKPI -->
-                                <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE verifikator1='$nip' OR verifikator2='$nip' OR verifikator3='$nip' GROUP BY nim ORDER BY jurusan");
-                                while ($data = mysqli_fetch_array($query)) {
-                                    $nodata = $data['no'];
-                                    $nim = $data['nim'];
-                                    $prodi = $data['jurusan'];
-                                    $nama = $data['nama'];
-                                    $surat = 'SKPI';
-                                    $verifikasi1 = $data['verifikasi1'];
-                                    $verifikasi2 = $data['verifikasi2'];
-                                    $verifikasi3 = $data['verifikasi3'];
-                                    $keterangan = $data['keterangan'];
-                                ?>
-                                    <tr>
-                                        <td><?= $no; ?></td>
-                                        <td><?= $surat; ?></td>
-                                        <td><?= $nama; ?></td>
-                                        <td><?= $prodi; ?></td>
-                                        <td> <?php
-                                                if ($verifikasi1 == 1 and $verifikasi2 == 1 and $verifikasi2 == 1) {
-                                                    echo 'Disetujui';
-                                                } elseif ($verifikasi1 == 2 or $verifikasi2 == 2 or $verifikasi2 == 2) {
-                                                    echo 'Ditolak';
-                                                } else {
-                                                    echo 'Proses';
-                                                }
-                                                ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
-                                            ?>
-                                                <a class="btn btn-success btn-sm" href="../staf/skpi-tampil.php?nodata=<?= $nodata; ?>" target="_blank">
-                                                    <i class="fas fa-print"></i>
-                                                </a>
-                                            <?php
-                                            } elseif ($validasi1 == 2 or $validasi2 == 2 or $validasi3 == 2) {
-                                            ?>
-                                                <a class="btn btn-danger btn-sm" onclick="return alert('<?= $keterangan; ?>')">
-                                                    <i class="fas fa-ban"></i>
-                                                </a>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Dalam proses verifikasi')">
-                                                    <i class="fas fa-spinner"></i>
-                                                </a>
-                                            <?php
-                                            }
-                                            ?>
-                                        </td>
-                                    </tr>
-                                <?php
-                                    $no++;
-                                }
-                                ?>
-                                <!-- /SKPI -->
                             </tbody>
                         </table>
                     </div>
