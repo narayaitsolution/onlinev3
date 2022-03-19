@@ -116,7 +116,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                             <?php
                                             if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?no=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php
@@ -157,6 +157,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
                                     $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -168,7 +169,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                             <?php
                                             if ($validasi0 == 1 and $validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/ijinlab-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/ijinlab-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php
@@ -207,6 +208,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
                                     $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -227,7 +229,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                             <?php
                                             if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/ijinpenelitian-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/ijinpenelitian-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php
@@ -266,6 +268,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
                                     $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -286,7 +289,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                             <?php
                                             if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/peminjamanalat-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/peminjamanalat-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php
@@ -325,6 +328,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
                                     $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -345,7 +349,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                             <?php
                                             if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/observasi-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/observasi-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php
@@ -383,6 +387,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
                                     $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -403,7 +408,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                             <?php
                                             if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/pengambilandata-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/pengambilandata-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php
@@ -442,6 +447,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $validasi2 = $data['validasi2'];
                                     $validasi3 = $data['validasi3'];
                                     $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -462,7 +468,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                             <?php
                                             if ($validasi1 == 1 and $validasi2 == 1 and $validasi3 == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/suket-cetak.php?nodata=<?= $nodata; ?>" target="_blank">
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/suket-cetak.php?token=<?= $token; ?>" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                             <?php
