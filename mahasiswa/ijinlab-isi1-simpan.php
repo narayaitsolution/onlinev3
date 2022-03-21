@@ -23,8 +23,8 @@ $token = md5(uniqid());
 
 //hitung jumlah hari
 $jmlhari = (strtotime($tglselesai) - strtotime($tglmulai)) / 60 / 60 / 24;
-if ($jmlhari > 30) {
-    $tglselesai = date('Y-m-d', strtotime($tglmulai . " +1 month"));
+if ($jmlhari > 90) {
+    $tglselesai = date('Y-m-d', strtotime($tglmulai . " +2 month"));
 }
 
 //masukin data

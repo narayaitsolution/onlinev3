@@ -93,39 +93,15 @@ $no = 1;
                                         </td>
                                         <td>
 
-                                            <a href="https://kedokteran.uin-malang.ac.id/konsuldokter/formulir" target="_blank" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-magnifying-glass"></i> Periksa Disini</a>
+                                            <a href="https://kedokteran.uin-malang.ac.id/konsuldokter/formulir" target="_blank" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-magnifying-glass"></i> Periksa</a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>2.</td>
-                                        <td><b>Lampiran 4-</b>Surat pernyataan melaksanakan karantina mandiri<br />
+                                        <td>Surat persetujuan orang tua bermaterai <br />
                                         </td>
                                         <td>
-                                            <a href="../doc/Lampiran4.docx" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-download"></i> Download Lampiran 4</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td><b>Lampiran 5-</b>Surat pernyataan kesanggupan menerapkan protokol kesehatan<br />
-                                        </td>
-                                        <td>
-                                            <a href="../doc/Lampiran5.docx" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-download"></i> Download Lampiran 5</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td><b>Lampiran 7-</b>Form kesediaan karantina mandiri selama 14 hari di Malang sebelum bekerja di laboratorium<br />
-                                        </td>
-                                        <td>
-                                            <a href="../doc/Lampiran7.docx" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-download"></i> Download Lampiran 7</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5.</td>
-                                        <td><b>Lampiran 8-</b>Surat persetujuan orang tua bermaterai <br />
-                                        </td>
-                                        <td>
-                                            <a href="../doc/Lampiran8.docx" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-download"></i> Download Lampiran 8</a>
+                                            <a href="../doc/Lampiran8.docx" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-file-download"></i> Download</a>
                                         </td>
                                     </tr>
                                 </tbody>

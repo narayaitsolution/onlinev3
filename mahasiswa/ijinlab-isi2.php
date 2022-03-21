@@ -110,6 +110,7 @@ $token = $_GET['token'];
                                 </div>
                             </div>
                             <hr>
+                            <!--
                             <div class="form-group row">
                                 <label for="instansi" class="col-sm-6 col-form-label">Lampiran 4 <br />Surat pernyataan melaksanakan karantina mandiri</label>
                                 <div class="col-sm-6 text-center">
@@ -200,8 +201,9 @@ $token = $_GET['token'];
                                 </div>
                             </div>
                             <hr>
+                                -->
                             <div class="form-group row">
-                                <label for="instansi" class="col-sm-6 col-form-label">Lampiran 8 <br />Surat persetujuan orang tua bermaterai</label>
+                                <label for="instansi" class="col-sm-6 col-form-label">Surat persetujuan orang tua bermaterai</label>
                                 <div class="col-sm-6 text-center">
                                     <?php
                                     if (empty($lampiran8)) {
@@ -233,7 +235,7 @@ $token = $_GET['token'];
                             <form action="ijinlab-ajukan.php" method="POST" id="my-form">
                                 <input type="hidden" name="token" value="<?= $token; ?>">
                                 <?php
-                                if (empty($lampiran1) or empty($lampiran4) or empty($lampiran5) or empty($lampiran7) or empty($lampiran8)) {
+                                if (empty($lampiran1) or empty($lampiran8)) {
                                 ?>
                                     <button type="submit" id="btn-submit" class="btn btn-lg btn-block btn-primary" disabled><i class="fa-solid fa-file-arrow-up"></i> Ajukan</button>
                                 <?php

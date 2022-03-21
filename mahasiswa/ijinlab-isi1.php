@@ -98,7 +98,7 @@ if ($jhasil > 0) {
                                                 <label for="alamatmalang" class="col-sm-2 col-form-label">Alamat di Malang</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="alamatmalang" name="alamatmalang" required>
-                                                    <small style="color:red">tuliskan <b>TIDAK ADA</b> apabila tidak tinggal di Malang </small>
+                                                    <small style="color:red">tuliskan <b>TIDAK ADA</b> jika tidak tinggal di Malang </small>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -111,7 +111,7 @@ if ($jhasil > 0) {
                                                 <label for="riwayatpenyakit" class="col-sm-2 col-form-label">Riwayat Penyakit</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="riwayatpenyakit" name="riwayatpenyakit" required>
-                                                    <small style="color:red">tuliskan <b>TIDAK ADA</b> apabila tidak memiliki riwayat peyakit </small>
+                                                    <small style="color:red">tuliskan <b>TIDAK ADA</b> jika tidak ada riwayat peyakit </small>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -185,7 +185,7 @@ if ($jhasil > 0) {
                                                 <label for="tglselesai" class="col-sm-2 col-form-label">Selesai penggunaan Lab.</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" class="form-control" id="tglselesai" name="tglselesai" required>
-                                                    <small style="color:red">Penggunaan lab maksimal 1 bulan</small>
+                                                    <small style="color:red">Penggunaan lab maksimal 3 bulan</small>
                                                 </div>
                                             </div>
                                             <hr>

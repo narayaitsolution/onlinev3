@@ -208,6 +208,7 @@ $no = 1;
                                                             <td>Bukti Screening COVID-19</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp1; ?>" target="_blank"><img src="<?= $lamp1; ?>" width="50%"></a></td>
                                                         </tr>
+                                                        <!--
                                                         <tr>
                                                             <td>2</td>
                                                             <td>Karantina Mandiri</td>
@@ -223,8 +224,9 @@ $no = 1;
                                                             <td>Pernyataan Karantina Mandiri di Malang</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp7; ?>" target="_blank"><img src="<?= $lamp7; ?>" width="50%"></a></td>
                                                         </tr>
+                        -->
                                                         <tr>
-                                                            <td>5</td>
+                                                            <td>2</td>
                                                             <td>Kesediaan Orang Tua</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp8; ?>" target="_blank"><img src="<?= $lamp8; ?>" width="50%"></a></td>
                                                         </tr>
@@ -306,11 +308,11 @@ $no = 1;
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": false,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": false,
                 "ordering": true,
                 "info": false,
-                "autoWidth": false,
+                "autoWidth": true,
                 "responsive": true,
             });
             $('#example3').DataTable({
