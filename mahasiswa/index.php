@@ -65,7 +65,7 @@ $no = 1;
             $qdata = mysqli_fetch_array($quser);
             $buktivaksin = $qdata['buktivaksin'];
             if (empty($buktivaksin)) {
-                echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
+                echo "<script>alert('Pengajuan Surat dapat dilakukan setelah Bukti Vaksin Terakhir di-upload pada Profil Pengguna (klik gambar pojok kanan atas)')</script>";
             }
             ?>
 
