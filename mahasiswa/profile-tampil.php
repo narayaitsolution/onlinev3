@@ -57,6 +57,29 @@ $tahun = date('Y');
                 </div><!-- /.container-fluid -->
             </section>
 
+            <!-- alert -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <?php
+                    if (isset($_GET['pesan'])) {
+                        if ($_GET['pesan'] == "success") {
+                    ?>
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <strong>SUKSES!</strong> perubahan data berhasil
+                            </div>
+                        <?php
+                        } elseif ($_GET['pesan'] == "gagal") {
+                        ?>
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <strong>ERROR!</strong> perubahan data gagal
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </section>
+
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">

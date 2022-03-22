@@ -85,6 +85,7 @@ $no = 1;
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!--
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">WFH Hari ke-2</label>
                                                 <div class="col-sm-10">
@@ -129,7 +130,7 @@ $no = 1;
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            -->
                                             <hr>
                                             <button type="submit" id="btn-submit" class="btn btn-primary btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> Ajukan</button>
                                         </form>

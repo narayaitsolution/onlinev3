@@ -17,7 +17,6 @@
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
 
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -46,7 +45,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -72,7 +71,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -99,7 +98,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -136,7 +135,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -163,7 +162,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -190,7 +189,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -217,7 +216,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -243,7 +242,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -269,7 +268,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
@@ -295,7 +294,7 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             if (!empty($buktivaksin)) {
