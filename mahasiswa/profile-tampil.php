@@ -1,7 +1,7 @@
 <?php
 session_start();
 $user = $_SESSION['user'];
-$nip = $_SESSION['nip'];
+$nim = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
@@ -95,7 +95,7 @@ $tahun = date('Y');
 
                                     <h3 class="profile-username text-center"><?= $nama; ?></h3>
 
-                                    <p class="text-muted text-center">NIM. <?= $nip; ?></p>
+                                    <p class="text-muted text-center">NIM. <?= $nim; ?></p>
 
                                     <ul class="list-group list-group-unbordered mb-3">
                                         <li class="list-group-item">
@@ -111,7 +111,7 @@ $tahun = date('Y');
 
                         <!-- ambil data -->
                         <?php
-                        $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nip");
+                        $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
                         $duser = mysqli_fetch_array($quser);
                         $nohp = $duser['nohp'];
                         $email = $duser['email'];
@@ -139,7 +139,7 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nip" name="nip" value="<?= $nip; ?>" required>
+                                                <input type="text" class="form-control" id="nip" name="nip" value="<?= $nim; ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
