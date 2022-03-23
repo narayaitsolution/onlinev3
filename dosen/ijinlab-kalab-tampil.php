@@ -91,6 +91,10 @@ $no = 1;
             $validasi0 = $dlab['validasi0'];
             $tglvalidasi0 = $dlab['tglvalidasi0'];
 
+            //cari bukti vaksin
+            $qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
+            $dvaksin = mysqli_fetch_array($qvaksin);
+            $buktivaksin = $dvaksin['buktivaksin'];
             ?>
 
             <!-- tabel pengajuan pribadi -->
@@ -213,8 +217,14 @@ $no = 1;
                                                             <td>Kesediaan Orang Tua</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp8; ?>" target="_blank"><img src="<?= $lamp8; ?>" width="50%"></a></td>
                                                         </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Bukti Vaksin terakhir</td>
+                                                            <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="50%"></a></td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
+                                                <small style="color:blue">Klik pada gambar untuk memperbesar</small>
                                             </div>
                                         </div>
                                         <hr>

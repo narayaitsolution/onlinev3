@@ -100,6 +100,12 @@ $no = 1;
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="dosen" class="col-sm-2 col-form-label">NIM</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="nimmhs" value="<?= $nimmhs; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="dosen" class="col-sm-2 col-form-label">Jenis Surat Keterangan</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="jenissurat" value="<?= $jenissurat; ?>" readonly>

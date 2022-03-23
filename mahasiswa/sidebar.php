@@ -78,10 +78,37 @@
 
                         ?>
                                 <li class="nav-item">
+                                    <a href="#" class="nav-link" onclick="return alert('Surat Keterangan Aktif Kuliah dapat di ajukan melalui SIAKAD masing - masing')">
+                                        <i class="nav-icon fas fa-id-card"></i>
+                                        <p>
+                                            Surat Aktif Kuliah
+                                            <span class="right badge badge-danger"></span>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://kemahasiswaan.uin-malang.ac.id/layanan-mahasiswa/" class="nav-link" target="_blank" onclick="return alert('Surat Keterangan Beasiswa diajukan melalui Kemahasiswaan Pusat')">
+                                        <i class="nav-icon fas fa-id-card"></i>
+                                        <p>
+                                            Surat Keterangan Beasiswa
+                                            <span class="right badge badge-danger"></span>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="suket-isi.php" class="nav-link">
                                         <i class="nav-icon fas fa-id-card"></i>
                                         <p>
                                             Surat Keterangan
+                                            <span class="right badge badge-danger"></span>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="rekomendasi-isi.php" class="nav-link">
+                                        <i class="nav-icon fas fa-id-card"></i>
+                                        <p>
+                                            Surat Rekomendasi
                                             <span class="right badge badge-danger"></span>
                                         </p>
                                     </a>

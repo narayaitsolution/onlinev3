@@ -108,6 +108,11 @@ $no = 1;
             $lamp7 = $dpkl['lamp7'];
             $lamp7 = $dpkl['lamp7'];
             $lamp8 = $dpkl['lamp8'];
+
+            //cari bukti vaksin
+            $qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
+            $dvaksin = mysqli_fetch_array($qvaksin);
+            $buktivaksin = $dvaksin['buktivaksin'];
             ?>
 
             <!-- tabel pengajuan pribadi -->
@@ -224,14 +229,20 @@ $no = 1;
                                                             <td>Pernyataan Karantina Mandiri di Malang</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp7; ?>" target="_blank"><img src="<?= $lamp7; ?>" width="50%"></a></td>
                                                         </tr>
-                        -->
+                                                        -->
                                                         <tr>
                                                             <td>2</td>
                                                             <td>Kesediaan Orang Tua</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp8; ?>" target="_blank"><img src="<?= $lamp8; ?>" width="50%"></a></td>
                                                         </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Bukti Vaksin Terakhir</td>
+                                                            <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="50%"></a></td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
+                                                <small style="color:blue">Klik pada gambar untuk memperbesar</small>
                                             </div>
                                         </div>
                                         <hr>

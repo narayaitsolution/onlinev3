@@ -103,6 +103,12 @@ $no = 1;
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="dosen" class="col-sm-2 col-form-label">NIM</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="nimmhs" value="<?= $nimmhs; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="dosen" class="col-sm-2 col-form-label">Jenis Surat Keterangan</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="jenissurat" value="<?= $jenissurat; ?>" readonly>
@@ -118,7 +124,7 @@ $no = 1;
                                         <div class="form-group row">
                                             <label for="paktaintegritas" class="col-sm-2 col-form-label">Verifikator</label>
                                             <div class="col-sm-10">
-                                                <table id="example3" class="table table-bordered table-hover">
+                                                <table id="example3" class="table table-bordered table-hover text-sm">
                                                     <thead>
                                                         <tr>
                                                             <th width="5%" style="text-align: center;">No</th>
