@@ -159,7 +159,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             ?>
                 <tr>
                     <td>&nbsp;</td>
-                    <td colspan="4">Dengan ini memberikan rekomendasi kepada mahasiswa di bawah ini :</td>
+                    <td colspan="4">Dengan ini memberikan rekomendasi kepada :</td>
                 </tr>
             <?php
             }
@@ -194,7 +194,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             ?>
                 <tr>
                     <td>&nbsp;</td>
-                    <td colspan="4" style="text-align: justify;">yang bersangkutan merupakan mahasiswa di program studi <?php echo $prodi; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang, dan kami <b>rekomendasikan</b> untuk <?= $keperluan; ?> </td>
+                    <td colspan="4" style="text-align: justify;">untuk <?= $keperluan; ?> </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -207,7 +207,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td colspan="4" style="text-align: justify;">Demikian Surat Keterangan ini dibuat dengan sebenarnya.</td>
+                    <td colspan="4" style="text-align: justify;">Demikian Surat Rekomendasi ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.</td>
                     <td>&nbsp;</td>
                 </tr>
             <?php

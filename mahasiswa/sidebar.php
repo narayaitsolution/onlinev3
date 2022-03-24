@@ -57,7 +57,7 @@
                                     <li class="nav-item">
                                         <a href="#" class="nav-link" onclick="return alert('Anda hanya diijinkan mengajukan izin PKL 1x. Hubungi Koor. PKL untuk membatalkan pengajuan anda sebelumnya')">
                                             <i class="nav-icon fas fa-users"></i>
-                                            <p>Surat Pengantar PKL</p>
+                                            <p>Pengantar PKL</p>
                                         </a>
                                     </li>
                                 <?php
@@ -94,7 +94,7 @@
                                     <a href="rekomendasi-isi.php" class="nav-link">
                                         <i class="nav-icon fas fa-id-card"></i>
                                         <p>
-                                            Surat Rekomendasi
+                                            Rekomendasi
                                             <span class="right badge badge-danger"></span>
                                         </p>
                                     </a>
@@ -105,7 +105,7 @@
                                     <a href="suket-isi.php" class="nav-link">
                                         <i class="nav-icon fas fa-id-card"></i>
                                         <p>
-                                            Surat Keterangan
+                                            Keterangan Kelakuan Baik
                                             <span class="right badge badge-danger"></span>
                                         </p>
                                     </a>
@@ -116,7 +116,7 @@
                                     <a href="https://kemahasiswaan.uin-malang.ac.id/layanan-mahasiswa/" class="nav-link" target="_blank" onclick="return alert('Surat Keterangan Beasiswa diajukan melalui Kemahasiswaan Pusat')">
                                         <i class="nav-icon fas fa-id-card"></i>
                                         <p>
-                                            Surat Keterangan Beasiswa
+                                            Keterangan Beasiswa
                                             <span class="right badge badge-danger"></span>
                                         </p>
                                     </a>
@@ -127,7 +127,7 @@
                                     <a href="#" class="nav-link" onclick="return alert('Surat Keterangan Aktif Kuliah dapat di ajukan melalui SIAKAD masing - masing')">
                                         <i class="nav-icon fas fa-id-card"></i>
                                         <p>
-                                            Surat Keterangan Mhs. Aktif
+                                            Keterangan Mahasiswa Aktif
                                             <span class="right badge badge-danger"></span>
                                         </p>
                                     </a>

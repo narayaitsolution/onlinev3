@@ -226,7 +226,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
                         $tahunb = $tahun + 1;
                     }
                     ?>
-                    <td colspan="4" style="text-align: justify;">Pada Semester <?= $semester; ?> Tahun Akademik <?= $tahuna . "/" . $tahunb; ?> adalah mahasiswa di Program Studi <?= $prodi; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang dan
+                    <td colspan="4" style="text-align: justify;">Pada Semester <?= $semester; ?> Tahun Akademik <?= $tahuna . "/" . $tahunb; ?> masih terdaftar sebagai mahasiswa di Program Studi <?= $prodi; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang dan
                         <?php
                         if ($jenissurat == "Surat Keterangan Keringanan UKT") {
                         ?>
