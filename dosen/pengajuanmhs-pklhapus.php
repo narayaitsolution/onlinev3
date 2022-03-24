@@ -8,7 +8,6 @@ $nodata = $_GET['nodata'];
 //delete file pakta integritas
 $query4 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE no = '$nodata'");
 $data = mysqli_fetch_array($query4);
-$nodata = $data['no'];
 $namafile = $data['lampiran'];
 unlink($namafile);
 
@@ -22,7 +21,7 @@ while ($data = mysqli_fetch_array($query4)) {
 */
 
 //delete record
-$query2 = mysqli_query($dbsurat, "DELETE FROM pklanggota WHERE no = '$nodata'");
+$query2 = mysqli_query($dbsurat, "DELETE FROM pklanggota WHERE nodata = '$nodata'");
 $query3 = mysqli_query($dbsurat, "DELETE FROM pkl WHERE no = '$nodata'");
 
 header("location:pengajuanmhs-tampil.php");

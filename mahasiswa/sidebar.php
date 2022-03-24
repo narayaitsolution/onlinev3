@@ -127,7 +127,7 @@
                                     <a href="#" class="nav-link" onclick="return alert('Surat Keterangan Aktif Kuliah dapat di ajukan melalui SIAKAD masing - masing')">
                                         <i class="nav-icon fas fa-id-card"></i>
                                         <p>
-                                            Surat Aktif Kuliah
+                                            Surat Keterangan Mhs. Aktif
                                             <span class="right badge badge-danger"></span>
                                         </p>
                                     </a>
@@ -137,32 +137,7 @@
                         }
                         ?>
 
-                        <!-- surat ijin bimbingan -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Bimbingan'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
 
-                        ?>
-                                <li class="nav-item">
-                                    <a href="ijinbimbingan-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-book"></i>
-                                        <p>
-                                            Ijin Bimbingan Offline
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        ?>
 
                         <!-- surat ijin penelitian -->
                         <?php
@@ -236,33 +211,6 @@
                                         <i class="nav-icon fa fa-edit"></i>
                                         <p>
                                             Ijin Observasi
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        ?>
-
-                        <!-- surat ijin ujian -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Ujian'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-
-                        ?>
-                                <li class="nav-item">
-                                    <a href="ijinujian-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-comments"></i>
-                                        <p>
-                                            Ijin Ujian Offline
                                             <span class="right badge badge-danger"></span>
                                         </p>
                                     </a>
@@ -348,6 +296,62 @@
                             }
                         }
                         ?>
+
+                        <!-- surat ijin bimbingan -->
+                        <?php
+                        //cek status menu ijinlab
+                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Bimbingan'");
+                        $dmenu = mysqli_fetch_array($qmenu);
+                        $statussurat = $dmenu['status'];
+                        if ($statussurat == 1) {
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                            $qdata = mysqli_fetch_array($quser);
+                            $buktivaksin = $qdata['buktivaksin'];
+                            if (!empty($buktivaksin)) {
+
+                        ?>
+                                <li class="nav-item">
+                                    <a href="ijinbimbingan-isi.php" class="nav-link">
+                                        <i class="nav-icon fa fa-book"></i>
+                                        <p>
+                                            Ijin Bimbingan Offline
+                                            <span class="right badge badge-danger"></span>
+                                        </p>
+                                    </a>
+                                </li>
+                        <?php
+                            }
+                        }
+                        ?>
+
+                        <!-- surat ijin ujian -->
+                        <?php
+                        //cek status menu ijinlab
+                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Ujian'");
+                        $dmenu = mysqli_fetch_array($qmenu);
+                        $statussurat = $dmenu['status'];
+                        if ($statussurat == 1) {
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                            $qdata = mysqli_fetch_array($quser);
+                            $buktivaksin = $qdata['buktivaksin'];
+                            if (!empty($buktivaksin)) {
+
+                        ?>
+                                <li class="nav-item">
+                                    <a href="ijinujian-isi.php" class="nav-link">
+                                        <i class="nav-icon fa fa-comments"></i>
+                                        <p>
+                                            Ijin Ujian Offline
+                                            <span class="right badge badge-danger"></span>
+                                        </p>
+                                    </a>
+                                </li>
+                        <?php
+                            }
+                        }
+                        ?>
+
+
 
                     </ul>
                 </li>
