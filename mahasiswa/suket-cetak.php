@@ -260,7 +260,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
                 ?>
                     <tr>
                         <td>&nbsp;</td>
-                        <td colspan="4" style="text-align: justify;">Demikian Surat Keterangan ini dibuat dengan sebenarnya untuk dipergunakan sebagai persyaratan <?php echo $keperluan; ?>.</td>
+                        <td colspan="4" style="text-align: justify;">Demikian Surat Keterangan ini dibuat dengan sebenarnya.</td>
                     </tr>
                 <?php
                 } else {
