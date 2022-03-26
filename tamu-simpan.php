@@ -37,7 +37,7 @@ if ($suhu >= 37.3) {
 		<br />
         Untuk meningkatkan pelayanan kami mohon berkenan untuk menilai pelayanan kami melalui tombol berikut ini :
         <br/>
-        <a href='https://saintek.uin-malang.ac.id/penilaianlayanan/index.php?nohp=$nohp&email=$email' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Penilaian Layanan</a><br/>
+        <a href='https://saintek.uin-malang.ac.id/penilaianlayanan/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Penilaian Layanan</a><br/>
         <br/>
         Apabila anda mengalami hal yang kurang menyenangkan selama di Fakultas Sains dan Teknologi, mohon dapat melaporkan melalui tombol berikut ini :
         <br/>

@@ -29,52 +29,62 @@ require('../system/myfunc.php');
                 <a href="#" class="h1"><img src="../system/saintek-logo.png" width="50%"></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg h3">Ada keluhan terkait pelayanan kami ?</p>
-                <p style="text-align:center">Kami akan menindak lanjuti laporan anda untuk peningkatan kualitas pelayanan kami.</p>
-                <form action="laporkan-simpan.php" enctype="multipart/form-data" method="post" id="my-form">
+                <p class="login-box-msg h3">LAPORAN GRATIFIKASI</p>
+                <p style="text-align:center">Mengetahui staf / dosen kami menerima gratifikasi ? LAPORKAN!!</p>
+                <form action="gratifikasi-simpan.php" enctype="multipart/form-data" method="post" id="my-form">
                     <div class="form-group row">
-                        <label for="unitkerja" class="col-sm-3 col-form-label">Keluhan Terkait</label>
+                        <label for="penerima" class="col-sm-3 col-form-label">Nama Penerima Gratifikasi</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="keluhan">
-                                <option value="Kebersihan">Kebersihan</option>
-                                <option value="Fasilitas">Fasilitas</option>
-                                <option value="Administrasi" selected>Administrasi</option>
-                                <option value="Lain - Lain">Lain - Lain</option>
+                            <input type="text" name="penerima" class="form-control" required>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="form-group row">
+                        <label for="alamat" class="col-sm-3 col-form-label">Alamat penerima Gratifikasi <small style="color:red;">*</small></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="alamat" class="form-control">
+                        </div>
+                    </div>
+                    -->
+                    <div class="form-group row">
+                        <label for="jabatan" class="col-sm-3 col-form-label">Jabatan penerima Gratifikasi</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="jabatan">
+                                <option value="Pimpinan Fakultas">Pimpinan Fakultas</option>
+                                <option value="Pimpinan Program Studi">Pimpinan Program Studi</option>
+                                <option value="Dosen" selected>Dosen</option>
+                                <option value="Staf Administrasi">Staf Administrasi</option>
+                                <option value="Laboran">Laboran</option>
+                                <option value="Satpam">Satpam / Security</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="unitkerja" class="col-sm-3 col-form-label">Unit Kerja / Bagian Terkait</label>
+                        <label for="alamat" class="col-sm-3 col-form-label">Tempat penerimaan Gratifikasi</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="unitkerja">
-                                <option value="Fakultas">Fakultas SAINTEK</option>
-                                <option value="Bagian Umum">Bagian Umum Fakultas</option>
-                                <option value="Bagian Akademik">Bagian Akademik Fakultas</option>
-                                <option value="Bagian Keuangan">Bagian Keuangan Fakultas</option>
-                                <option value="Program Studi Biologi">Program Studi Biologi</option>
-                                <option value="Program Studi Fisika">Program Studi Fisika</option>
-                                <option value="Program Studi Kimia">Program Studi Kimia</option>
-                                <option value="Program Studi Matematika">Program Studi Matematika</option>
-                                <option value="Program Studi Teknik Informatika">Program Studi Teknik Informatika</option>
-                                <option value="Program Studi Teknik Arsitektur">Program Studi Teknik Arsitektur</option>
-                                <option value="Program Studi Perpustakaan dan Ilmu Informasi">Program Studi Perpustakaan dan Ilmu Informasi</option>
-                                <option value="Program Studi Magister Biologi">Program Studi Magister Biologi</option>
-                                <option value="Program Studi Magister Informatika">Program Studi Magister Informatika</option>
-                            </select>
+                            <input type="text" name="tempat" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="unitkerja" class="col-sm-3 col-form-label">Judul Laporan</label>
+                        <label for="unitkerja" class="col-sm-3 col-form-label">Waktu Penerimaan Gratifikasi</label>
                         <div class="col-sm-9">
-                            <input type="text" name="judul" class="form-control" required>
+                            <input type="datetime-local" name="waktu" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="laporan" class="col-sm-3 col-form-label">Isi Laporan</label>
+                        <label for="laporan" class="col-sm-3 col-form-label">Uraian Gratifikasi</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" name="laporan" row="10" required></textarea>
+                            <textarea class="form-control" name="uraian" row="10" required></textarea>
                         </div>
                     </div>
+                    <!--
+                    <div class="form-group row">
+                        <label for="unitkerja" class="col-sm-3 col-form-label">Nilai Gratifikasi <small style="color:red;">*</small></label>
+                        <div class="col-sm-9">
+                            <input type="number" name="nilai" class="form-control">
+                        </div>
+                    </div>
+                    -->
                     <div class="form-group row">
                         <label for="bukti" class="col-sm-3 col-form-label">Bukti <small style="color:red;">*</small></label>
                         <div class="col-sm-9">
@@ -102,7 +112,7 @@ require('../system/myfunc.php');
                     <small style="color:red;">*) dapat dikosongkan</small>
                     <hr>
                     <input type="hidden" name="kunci" value="<?= $kunci; ?>">
-                    <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Laporkan keluhan anda ?')"><i class="fa-solid fa-circle-exclamation"></i> LAPORKAN</button>
+                    <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Laporkan ?')"><i class="fa-solid fa-circle-exclamation"></i> LAPORKAN</button>
                 </form>
             </div>
         </div>

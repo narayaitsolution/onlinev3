@@ -67,7 +67,7 @@ $tahun = date('Y');
                         if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
                             $qwfh = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0");
                             $jwfh = mysqli_num_rows($qwfh);
-                            $qst = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0");
+                            $qst = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator1='$nip' AND validasi1 = 0 and validasi2=0");
                             $jst = mysqli_num_rows($qst);
                             $tbawahan = $jwfh + $jst;
 
@@ -107,6 +107,68 @@ $tahun = date('Y');
                         </div>
                     -->
 
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- tabel disposisi surat -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <?php
+                        if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
+                        ?>
+                            <!-- Disposisi Surat -->
+                            <div class="col-sm">
+                                <div class="card card-warning">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Disposisi Surat</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body">
+                                        <table id="example4" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align:center">No</th>
+                                                    <th style="text-align:center">Tanggal</th>
+                                                    <th style="text-align:center">Laporan</th>
+                                                    <th style="text-align:center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- laporan keluhan -->
+                                                <?php
+                                                $qlaporan = mysqli_query($dbsurat, "SELECT * FROM laporkan WHERE petugas='$nip' AND status=1");
+                                                while ($dlaporan = mysqli_fetch_array($qlaporan)) {
+                                                    $tanggal = $dlaporan['tanggal'];
+                                                    $surat = 'Laporan Keluhan';
+                                                    $kode = $dlaporan['kode'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= $surat; ?></td>
+                                                        <td><a class="btn btn-info btn-sm" href="disposisi-laporkan-tampil.php?kode=<?= $kode; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </section>
@@ -176,7 +238,7 @@ $tahun = date('Y');
 
                                                 <!-- Surattugas as kaprodi -->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator1='$nip' AND validasi1 = 0 and validasi2=0 order by tglsurat desc");
                                                 $jmldata = mysqli_num_rows($query);
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];

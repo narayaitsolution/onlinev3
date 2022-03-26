@@ -197,6 +197,7 @@
                                 </p>
                             </a>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa-solid fa-square-envelope"></i>
@@ -206,6 +207,7 @@
                                 </p>
                             </a>
                         </li>
+                    -->
                     </ul>
                 </li>
                 <?php
@@ -344,12 +346,20 @@
                 <?php
                 }
                 ?>
-
+                <li class="nav-item">
+                    <a href="../laporkan" class="nav-link" onclick="return confirm('Membuat laporan kepada pimpinan Fakultas ?')">
+                        <i class="nav-icon fa-solid fa-bullhorn"></i>
+                        <p>
+                            Laporkan Keluhan
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="https://wa.me/6281234302099" target="_blank" class="nav-link">
                         <i class="nav-icon fa-brands fa-whatsapp"></i>
                         <p>
-                            Bantuan
+                            Laporkan Error
                             <span class="right badge badge-danger"></span>
                         </p>
                     </a>

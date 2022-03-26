@@ -16,21 +16,15 @@ if (!in_array($jabatan, $jab)) {
 
 
 $token = mysqli_real_escape_string($dbsurat, "$_GET[token]");
-$qijinujian = mysqli_query($dbsurat, "SELECT * FROM ijinujian WHERE token = '$token'");
+$qijinujian = mysqli_query($dbsurat, "SELECT * FROM laporkan WHERE kode='$token'");
 $dijinujian = mysqli_fetch_array($qijinujian);
 $tanggal = $dijinujian['tanggal'];
-$nimmhs = $dijinujian['nim'];
-$namamhs = $dijinujian['nama'];
-$prodimhs = $dijinujian['prodi'];
-$dosen = $dijinujian['dosen'];
-$tglmulai = $dijinujian['tglmulai'];
-$lampiran1 = $dijinujian['lampiran1'];
-$lampiran2 = $dijinujian['lampiran2'];
-
-//cari bukti vaksin
-$qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
-$dvaksin = mysqli_fetch_array($qvaksin);
-$buktivaksin = $dvaksin['buktivaksin'];
+$keluhan = $dijinujian['keluhan'];
+$unitterkait = $dijinujian['unitterkait'];
+$judul = $dijinujian['judul'];
+$laporan = $dijinujian['laporan'];
+$bukti = $dijinujian['bukti'];
+$status = $dijinujian['status'];
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +77,7 @@ $buktivaksin = $dvaksin['buktivaksin'];
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin Ujian Offline</h3>
+                                    <h3 class="card-title">Laporan Keluhan</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -92,57 +86,62 @@ $buktivaksin = $dvaksin['buktivaksin'];
                                     <div class="card-body">
                                         <form action="ijinujian-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                                             <div class="form-group row">
-                                                <label for="tanggal" class="col-sm-2 col-form-label">Pengajuan Surat</label>
+                                                <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?= tgljam_indo($tanggal); ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="namamhs" class="col-sm-2 col-form-label">Nama Mahasiswa</label>
+                                                <label for="namamhs" class="col-sm-2 col-form-label">Keluhan</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="namamhs" name="namamhs" value="<?= $namamhs; ?>" readonly>
+                                                    <input type="text" class="form-control" name="keluhan" value="<?= $keluhan; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="nimmhs" class="col-sm-2 col-form-label">NIM Mahasiswa</label>
+                                                <label for="nimmhs" class="col-sm-2 col-form-label">Unit Terkait</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="nimmhs" name="nimmhs" value="<?= $nimmhs; ?>" readonly>
+                                                    <input type="text" class="form-control" name="unitterkait" value="<?= $unitterkait; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="prodimhs" class="col-sm-2 col-form-label">Program Studi</label>
+                                                <label for="prodimhs" class="col-sm-2 col-form-label">Judul</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="prodimhs" name="prodimhs" value="<?= $prodimhs; ?>" readonly>
+                                                    <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="dosen" class="col-sm-2 col-form-label">Dosen Pembimbing</label>
+                                                <label for="dosen" class="col-sm-2 col-form-label">Laporan</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="dosen" name="dosen" value="<?= $dosen; ?>" readonly>
+                                                    <textarea class="form-control" name="laporan" readonly><?= $laporan; ?></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Ujian</label>
+                                                <label for="tglmulai" class="col-sm-2 col-form-label">Bukti</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="tglmulai" name="tglmulai" value="<?= tgl_indo($tglmulai); ?>" readonly>
+                                                    <a href="<?= $bukti; ?>"><img src="<?= $bukti; ?>" width="50%"></a>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="lampiran1" class="col-sm-2 col-form-label">Surat Izin Orang Tua</label>
+                                                <label for="buktivaksin" class="col-sm-2 col-form-label">Disposisikan</label>
                                                 <div class="col-sm-10">
-                                                    <a href="<?= $lampiran1; ?>" target="_blank"><img src="<?= $lampiran1; ?>" class="img-fluid" width="50%"></a>
+                                                    <select name="petugas" class="form-control">
+                                                        <?php
+                                                        $qpimpinan = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE kdjabatan <> 'koorpkl' or kdjabatan <> 'sekprodi' ORDER BY nama");
+                                                        while ($dpimpinan = mysqli_fetch_array($qpimpinan)) {
+                                                            $nip = $dpimpinan['nip'];
+                                                            $namapimpinan = $dpimpinan['nama'];
+                                                        ?>
+                                                            <option value="<?= $nip; ?>"><?= $namapimpinan; ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="lampiran1" class="col-sm-2 col-form-label">Persetujuan Dosen Pembimbing</label>
+                                                <label for="dosen" class="col-sm-2 col-form-label">Perintah</label>
                                                 <div class="col-sm-10">
-                                                    <a href="<?= $lampiran2; ?>" target="_blank"><img src="<?= $lampiran2; ?>" class="img-fluid" width="50%"></a>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="buktivaksin" class="col-sm-2 col-form-label">Bukti Vaksin Terakhir</label>
-                                                <div class="col-sm-10">
-                                                    <a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" class="img-fluid" width="50%"></a>
+                                                    <textarea class="form-control" name="perintah"></textarea>
                                                 </div>
                                             </div>
                                             <hr>
@@ -150,33 +149,12 @@ $buktivaksin = $dvaksin['buktivaksin'];
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="ijinujian-dosen-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                                                        <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="laporan-keluhan-simpan.php" class="btn btn-warning btn-block btn-lg" onclick="return confirm('Disposisikan ?')"> <i class="fa fa-check"></i> Disposisikan</button>
                                                     </div>
                                                     <div class="col-6">
-                                                        <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
+                                                        <button name="aksi" id="btn-submit" value="hapus" type="submit" formaction="laporan-keluhan-hapus.php" class="btn btn-danger btn-block btn-lg" onclick="return confirm('Hapus laporan ini ?')"> <i class="fa fa-trash"></i> Hapus</button>
                                                     </div>
                                                 </div>
-                                                <!-- modal tolak -->
-                                                <div class="modal fade" id="modal-tolak">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Alasan Penolakan</h4>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <textarea class="form-control" rows="3" name="keterangan"></textarea>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                                <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="ijinujian-dosen-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- ./modal tolak-->
                                             </form>
                                         </form>
                                     </div>

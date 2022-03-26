@@ -8,6 +8,15 @@ $jlaporan = mysqli_num_rows($qlaporan);
 if ($jlaporan > 0) {
     $dlaporan = mysqli_fetch_array($qlaporan);
     $status = $dlaporan['status'];
+    $tglfollowup = $dlaporan['tglfollowup'];
+} else {
+    $qlaporan = mysqli_query($dbsurat, "SELECT * FROM gratifikasi where kode='$kode'");
+    $jlaporan = mysqli_num_rows($qlaporan);
+    if ($jlaporan > 0) {
+        $dlaporan = mysqli_fetch_array($qlaporan);
+        $status = $dlaporan['status'];
+        $tglfollowup = $dlaporan['waktufollowup'];
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -43,17 +52,17 @@ if ($jlaporan > 0) {
                 <hr>
                 <?php
                 if ($jlaporan > 0) {
-                    if ($status == 0) {
+                    if ($status == 1) {
                         echo 'Menunggu tindak lanjut pimpinan Fakultas';
                     } else {
-                        echo 'Sudah di tindak lanjuti pimpinan Fakultas <br/> Terima kasih atas laporan anda';
+                        echo 'Laporan anda sudah di tindak lanjuti pimpinan Fakultas pada tanggal ' . tgl_indo($tglfollowup) . '<br/> Terima kasih atas laporan anda';
                     }
                 } else {
-                    echo 'Sudah di tindak lanjuti pimpinan Fakultas';
+                    echo 'Mohon maaf, laporan anda tidak ditemukan di sistem. <br/>Pastikan menuliskan kode laporan dengan benar.';
                 }
                 ?>
                 <hr>
-                <a href="https://saintek.uin-malang.ac.id" class="btn btn-success btn-lg btn-block">Kembali</a>
+                <a href="https://saintek.uin-malang.ac.id/online" class="btn btn-success btn-lg btn-block">Kembali</a>
             </div>
         </div>
     </div>

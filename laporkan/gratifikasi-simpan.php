@@ -6,14 +6,17 @@ require('../system/myfunc.php');
 date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
 
-$keluhan = $_POST['keluhan'];
-$unitkerja = $_POST['unitkerja'];
-$judul = mysqli_real_escape_string($dbsurat, "$_POST[judul]");
-$laporan = mysqli_real_escape_string($dbsurat, "$_POST[laporan]");
-$antibot = $_POST['antibot'];
-$kunci = $_POST['kunci'];
+$penerima = $_POST['penerima'];
+$alamat = $_POST['alamat'];
+$jabatan = $_POST['jabatan'];
+$tempat = $_POST['tempat'];
+$waktu = $_POST['waktu'];
+$uraian = $_POST['uraian'];
+$nilai = $_POST['nilai'];
 $bukti = $_FILES['bukti']['tmp_name'];
 $kode = random_str(8);
+$status = 0;
+
 
 if ($antibot == $kunci) {
     if (isset($bukti)) {
@@ -24,10 +27,11 @@ if ($antibot == $kunci) {
         $dest_path = '';
     }
     move_uploaded_file($bukti_low, $dest_path);
-    $stmt = $dbsurat->prepare("INSERT INTO laporkan (tanggal,keluhan,unitterkait,judul,laporan,bukti,kode)
-    VALUES(?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssss", $tanggal, $keluhan, $unitkerja, $judul, $laporan, $dest_path, $kode);
+    $stmt = $dbsurat->prepare("INSERT INTO gratifikasi (tanggal,penerima,alamat,jabatan,tempat,waktu,uraian,nilai,bukti,status,kode)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssis", $tanggal, $penerima, $alamat, $jabatan, $tempat, $waktu, $uraian, $nilai, $dest_path, $status, $kode);
     $stmt->execute();
+
     header("location:laporkan-selesai.php?kode=$kode");
 } else {
     header("location:laporkan-isi.php?pesan=hitungsalah");

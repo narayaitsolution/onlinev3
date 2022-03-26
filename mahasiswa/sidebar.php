@@ -356,10 +356,19 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="../laporkan" class="nav-link" onclick="return confirm('Membuat laporan kepada pimpinan Fakultas ?')">
+                        <i class="nav-icon fa-solid fa-bullhorn"></i>
+                        <p>
+                            Laporkan Keluhan
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="mailto:saintekonline@gmail.com" class="nav-link">
                         <i class="nav-icon fa-regular fa-circle-question"></i>
                         <p>
-                            Bantuan
+                            Laporkan Error
                             <span class="right badge badge-danger"></span>
                         </p>
                     </a>

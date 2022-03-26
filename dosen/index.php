@@ -170,13 +170,13 @@ $tahun = date('Y');
                                             <thead>
                                                 <tr>
                                                     <th style="text-align:center">No</th>
-                                                    <th style="text-align:center">Keluhan</th>
-                                                    <th style="text-align:center">Unit Terkait</th>
                                                     <th style="text-align:center">Tgl. Laporan</th>
+                                                    <th style="text-align:center">Laporan</th>
                                                     <th style="text-align:center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <!-- laporan keluhan -->
                                                 <?php
                                                 $qlaporan = mysqli_query($dbsurat, "SELECT * FROM laporkan WHERE status=0");
                                                 while ($dlaporkan = mysqli_fetch_array($qlaporan)) {
@@ -185,19 +185,44 @@ $tahun = date('Y');
                                                     $unitterkait = $dlaporkan['unitterkait'];
                                                     $keluhan = $dlaporkan['keluhan'];
                                                     $kode = $dlaporkan['kode'];
+                                                    $laporan = 'Laporan Keluhan';
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <td><?= $keluhan; ?></td>
-                                                        <td><?= $unitterkait; ?></td>
-                                                        <td><?= $tanggal; ?></td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= $laporan; ?></td>
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href="laporan-pimpinan-tampil.php?token=<?= $kode; ?>">
+                                                            <a class="btn btn-info btn-sm" href="laporan-keluhan-tampil.php?token=<?= $kode; ?>">
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
                                                     </tr>
                                                 <?php
+                                                    $no++;
+                                                }
+                                                ?>
+
+                                                <!-- laporan gratifikasi -->
+                                                <?php
+                                                $qlaporan = mysqli_query($dbsurat, "SELECT * FROM gratifikasi WHERE status=0");
+                                                while ($dlaporkan = mysqli_fetch_array($qlaporan)) {
+                                                    $nodata = $dlaporkan['no'];
+                                                    $tanggal = $dlaporkan['tanggal'];
+                                                    $laporan = 'Laporan Gratifikasi';
+                                                    $kode = $dlaporkan['kode'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= $laporan; ?></td>
+                                                        <td>
+                                                            <a class="btn btn-info btn-sm" href="laporan-gratifikasi-tampil.php?kode=<?= $kode; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
                                                 }
                                                 ?>
                                             </tbody>
@@ -214,33 +239,52 @@ $tahun = date('Y');
                                             <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
+                                    <?php
+                                    $pelayanan = 0;
+                                    $kecepatan = 0;
+                                    $kejelasan = 0;
+                                    $qnilai = mysqli_query($dbsurat, "SELECT * FROM penilaianlayanan");
+                                    $jnilai = mysqli_num_rows($qnilai);
+                                    while ($dnilai = mysqli_fetch_array($qnilai)) {
+                                        $pelayanan = $pelayanan + $dnilai['pelayanan'];
+                                        $kecepatan = $kecepatan + $dnilai['kecepatan'];
+                                        $kejelasan = $kejelasan + $dnilai['kejelasan'];
+                                    }
+                                    $totalpelayanan = $jnilai * 5;
+                                    $totalkecepatan = $jnilai * 5;
+                                    $totalkejelasan = $jnilai * 5;
+
+                                    $nilaipelayanan = ($pelayanan / $totalpelayanan) * 100;
+                                    $nilaikecepatan = ($kecepatan / $totalkecepatan) * 100;
+                                    $nilaikejelasan = ($kejelasan / $totalkejelasan) * 100;
+                                    ?>
                                     <div class="card-body">
                                         <p class="text-center">
                                             <strong>Hasil Survey</strong>
                                         </p>
                                         <div class="progress-group">
                                             Keramahan Pelayanan
-                                            <span class="float-right"><b>60</b>/100</span>
+                                            <span class="float-right"><?= round($nilaipelayanan); ?>%</span>
                                             <div class="progress progress-sm">
-                                                <div class="progress-bar bg-primary" style="width: 60%"></div>
+                                                <div class="progress-bar bg-primary" style="width: <?= round($nilaipelayanan); ?>%"></div>
                                             </div>
                                         </div>
                                         <!-- /.progress-group -->
 
                                         <div class="progress-group">
                                             Kecepatan Pelayanan
-                                            <span class="float-right"><b>70</b>/100</span>
+                                            <span class="float-right"><?= round($nilaikecepatan); ?>%</span>
                                             <div class="progress progress-sm">
-                                                <div class="progress-bar bg-danger" style="width: 70%"></div>
+                                                <div class="progress-bar bg-danger" style="width: <?= round($nilaikecepatan); ?>%"></div>
                                             </div>
                                         </div>
 
                                         <!-- /.progress-group -->
                                         <div class="progress-group">
                                             <span class="progress-text">Kejelasan Prosedur Pelayanan</span>
-                                            <span class="float-right"><b>80</b>/100</span>
+                                            <span class="float-right"><?= round($nilaikejelasan); ?>%</span>
                                             <div class="progress progress-sm">
-                                                <div class="progress-bar bg-success" style="width: 80%"></div>
+                                                <div class="progress-bar bg-success" style="width: <?= round($nilaikejelasan); ?>%"></div>
                                             </div>
                                         </div>
                                     </div>
