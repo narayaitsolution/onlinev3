@@ -89,8 +89,8 @@ if (move_uploaded_file($lampiran1_low, $lampiran1_upload)) {
 
         header("location:index.php?");
     } else {
-        header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
+        //header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
     };
 } else {
-    header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
+    //header("location:ijinujian-isi.php?token=$token&pesan=uploadfailed");
 }

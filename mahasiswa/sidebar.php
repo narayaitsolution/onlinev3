@@ -124,7 +124,7 @@
 
                                 <!-- surat keterangan masih studi -->
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" onclick="return alert('Surat Keterangan Aktif Kuliah dapat di ajukan melalui SIAKAD masing - masing')">
+                                    <a href="https://siakad.uin-malang.ac.id" target="_blank" class="nav-link" onclick="return alert('Surat Keterangan Aktif Kuliah dapat di ajukan melalui SIAKAD masing - masing')">
                                         <i class="nav-icon fas fa-id-card"></i>
                                         <p>
                                             Keterangan Mahasiswa Aktif

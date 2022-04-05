@@ -77,6 +77,11 @@ $token = $_GET['token'];
             $validasi1 = $dsql['validasi1'];
             $validator1 = $dsql['validator1'];
             $tglvalidasi1 = $dsql['tglvalidasi1'];
+
+            //cari bukti vaksin
+            $qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
+            $dvaksin = mysqli_fetch_array($qvaksin);
+            $buktivaksin = $dvaksin['buktivaksin'];
             ?>
 
             <!-- tabel pengajuan pribadi -->
@@ -141,6 +146,12 @@ $token = $_GET['token'];
                                                 <label for="datadiperlukan" class="col-sm-2 col-form-label">Data / Sample</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="datadiperlukan" name="datadiperlukan" value="<?= $datadiperlukan; ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="tglselesai" class="col-sm-2 col-form-label">Bukti Vaksin</label>
+                                                <div class="col-sm-10">
+                                                    <a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="50%"></a>
                                                 </div>
                                             </div>
                                             <hr>

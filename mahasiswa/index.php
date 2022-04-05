@@ -60,14 +60,27 @@ $no = 1;
             </section>
 
             <!-- alert bukti vaksin -->
-            <?php
-            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
-            $qdata = mysqli_fetch_array($quser);
-            $buktivaksin = $qdata['buktivaksin'];
-            if (empty($buktivaksin)) {
-                echo "<script>alert('Pengajuan Surat dapat dilakukan setelah Bukti Vaksin Terakhir di-upload pada Profil Pengguna (klik gambar pojok kanan atas)')</script>";
-            }
-            ?>
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <?php
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $qdata = mysqli_fetch_array($quser);
+                            $buktivaksin = $qdata['buktivaksin'];
+                            if (empty($buktivaksin)) {
+                                echo "<script>alert('Pengajuan Surat dapat dilakukan setelah Bukti Vaksin Terakhir di-upload pada Profil Pengguna (klik gambar pojok kanan atas)')</script>";
+                            ?>
+                                <div class="alert alert-danger alert-dismissible fade show">
+                                    <strong>ERROR!</strong> Pengajuan Surat dapat dilakukan setelah Bukti Vaksin Terakhir di-upload pada Profil Pengguna (klik gambar pojok kanan atas)
+                                </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- tabel pengajuan pribadi -->
             <section class="content">

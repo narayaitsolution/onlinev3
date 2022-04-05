@@ -14,14 +14,13 @@ if ($hasil > 0) {
     $namaanggota2 = $data['nama'];
     $notelepon = $data['nohp'];
     $buktivaksin = $data['buktivaksin'];
-    $sql = "INSERT INTO observasianggota (token,nimketua, nimanggota, nama, telepon, buktivaksin) 
-			values('$token','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')";
-    if (mysqli_query($dbsurat, $sql)) {
-        $ket = "ok";
+    if ($buktivaksin == null) {
+        header("location:observasi-isianggota.php?token=$token&ket=novaksin");
     } else {
-        $ket = "notok";
+        mysqli_query($dbsurat, "INSERT INTO observasianggota (token,nimketua, nimanggota, nama, telepon, buktivaksin) 
+                                VALUES('$token','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')");
+        header("location:observasi-isianggota.php?token=$token&ket=ok");
     }
 } else {
-    $ket = "notfound";
+    header("location:observasi-isianggota.php?token=$token&ket=notfound");
 }
-header("location:observasi-isianggota.php?token=$token&ket=$ket");

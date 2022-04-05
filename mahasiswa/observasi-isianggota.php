@@ -60,6 +60,26 @@ $no = 1;
                     </div>
                 </div>
             </section>
+            <!-- alert -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <?php
+                            if (isset($_GET['ket'])) {
+                                if ($_GET['ket'] == "novaksin") {
+                            ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>ERROR!</strong> Anggota belum upload bukti vaksin terakhir!!
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- tabel pengajuan pribadi -->
             <section class="content">

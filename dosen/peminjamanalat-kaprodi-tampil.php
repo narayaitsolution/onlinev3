@@ -81,6 +81,11 @@ $no = 1;
             $validasi1 = $dsql['validasi1'];
             $validator1 = $dsql['validator1'];
             $tglvalidasi1 = $dsql['tglvalidasi1'];
+
+            //cari bukti vaksin
+            $qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+            $dvaksin = mysqli_fetch_array($qvaksin);
+            $buktivaksin = $dvaksin['buktivaksin'];
             ?>
             <!-- tabel pengajuan pribadi -->
             <section class="content">
@@ -156,6 +161,12 @@ $no = 1;
                                                 <label for="tglselesai" class="col-sm-2 col-form-label">Tanggal selesai penelitian</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="tglselesai" name="tglselesai" value="<?= tgl_indo($tglselesai); ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="tglselesai" class="col-sm-2 col-form-label">Bukti Vaksin</label>
+                                                <div class="col-sm-10">
+                                                    <a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="50%"></a>
                                                 </div>
                                             </div>
                                             <hr>
