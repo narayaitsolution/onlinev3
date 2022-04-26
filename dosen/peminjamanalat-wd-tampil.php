@@ -86,7 +86,7 @@ $no = 1;
             $tglvalidasi2 = $dsql['tglvalidasi2'];
 
             //cari bukti vaksin
-            $qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
+            $qvaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
             $dvaksin = mysqli_fetch_array($qvaksin);
             $buktivaksin = $dvaksin['buktivaksin'];
             ?>

@@ -278,22 +278,16 @@
                         $dmenu = mysqli_fetch_array($qmenu);
                         $statussurat = $dmenu['status'];
                         if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-
                         ?>
-                                <li class="nav-item">
-                                    <a href="skpi-isi.php" class="nav-link">
-                                        <i class="nav-icon fas fa-graduation-cap"></i>
-                                        <p>
-                                            Pengajuan SKPI
-                                        </p>
-                                    </a>
-                                </li>
+                            <li class="nav-item">
+                                <a href="skpi-isi.php" class="nav-link">
+                                    <i class="nav-icon fas fa-graduation-cap"></i>
+                                    <p>
+                                        Pengajuan SKPI
+                                    </p>
+                                </a>
+                            </li>
                         <?php
-                            }
                         }
                         ?>
 
