@@ -89,7 +89,7 @@ require('system/myfunc.php');
         <hr>
         <div class="row">
           <div class="col text-sm">
-            <a href="lupa.php" class="btn btn-success btn-block">LUPA Password</a>
+            <a href="mailto:saintekonline@gmail.com" class="btn btn-success btn-block" onclick="alert ('Reset password email ke saintekonline@gmail.com');">LUPA Password</a>
           </div>
           <div class="col text-sm">
             <a href="daftar.php" class="btn btn-warning btn-block">DAFTAR Akun</a>
