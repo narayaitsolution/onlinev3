@@ -6,12 +6,14 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "dosen") {
+if ($nip !== '198312132019031004') {
     header("location:../deauth.php");
 }
 require('../system/dbconn.php');
 require('../system/myfunc.php');
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -129,6 +131,11 @@ require('../system/myfunc.php');
                                                     <input type="hidden" name="username" value="<?= $user; ?>">
                                                     <input type="hidden" name="password" value="<?= $pass; ?>">
                                                     <input type="submit" class="btn btn-danger btn-sm" value="Log In" name="loginas" onclick="return confirm ('Login As <?= $nama; ?> ?');">
+                                                </form>
+                                                <form action="passreset.php" method="POST">
+                                                    <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                                                    <input type="hidden" name="nip" value="<?= $nip; ?>">
+                                                    <input type="submit" class="btn btn-warning btn-sm" value="Reset" name="reset" onclick="return confirm ('Reset Password <?= $nama; ?> ?');">
                                                 </form>
                                             </td>
                                         </tr>

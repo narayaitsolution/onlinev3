@@ -303,7 +303,7 @@ $tahun = date('Y');
             ?>
             <!-- cari data pengunjung -->
             <?php
-            $tglhariini = date('Y-m-d');
+            $tglhariini = date('Y-m-d', strtotime('-3 weeks'));
             $qtotal = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE()");
             $jtotal = mysqli_num_rows($qtotal);
             $qmhs = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE() AND hakakses='mahasiswa'");
