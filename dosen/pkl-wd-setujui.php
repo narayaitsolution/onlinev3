@@ -10,7 +10,7 @@ $nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
 $bulan = date('m');
 $tahun = date('Y');
 //cari urutan surat di tahun ini untuk no surat
-$qurutan = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)=$tahun");
+$qurutan = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun'");
 $urutan = mysqli_num_rows($qurutan);
 
 $nosurat = "B-" . $urutan . ".O/FST.3/PP.06/" . $bulan . "/" . $tahun . "";
