@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('../system/dbconn.php');
+require('../system/myfunc.php');
 $user = $_SESSION['user'];
 $nip = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
@@ -9,8 +11,6 @@ $jabatan = $_SESSION['jabatan'];
 if ($_SESSION['hakakses'] != "dosen") {
     header("location:../deauth.php");
 }
-require('../system/dbconn.php');
-require('../system/myfunc.php');
 $no = 1;
 $tahun = date('Y');
 ?>
@@ -1422,6 +1422,70 @@ $tahun = date('Y');
                                             }
                                             ?>
                                             <!-- /.Cetak KHS as wd-->
+
+                                            <!-- penghargaan as kaprodi-->
+                                            <?php
+                                            $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validator2='$nip' AND validasi2 = 0");
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                $nodata = $data['no'];
+                                                $tanggal = $data['tanggal'];
+                                                $prodimhs = $data['prodi'];
+                                                $nama = $data['nama'];
+                                                $surat = 'Penghargaan';
+                                                $validasi1 = $data['validasi1'];
+                                                $validasi2 = $data['validasi2'];
+                                                $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td><?= $surat; ?></td>
+                                                    <td><?= $nama; ?></td>
+                                                    <td><?= $prodimhs; ?></td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm" href="penghargaan-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                            <!-- /penghargaan as kaprodi-->
+
+                                            <!-- penghargaan as WD-->
+                                            <?php
+                                            $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validator3='$nip' AND validasi3 = 0 AND validasi2=1");
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                $nodata = $data['no'];
+                                                $tanggal = $data['tanggal'];
+                                                $prodimhs = $data['prodi'];
+                                                $nama = $data['nama'];
+                                                $surat = 'Penghargaan';
+                                                $validasi1 = $data['validasi1'];
+                                                $validasi2 = $data['validasi2'];
+                                                $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td><?= $surat; ?></td>
+                                                    <td><?= $nama; ?></td>
+                                                    <td><?= $prodimhs; ?></td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm" href="penghargaan-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                            <!-- /penghargaan as WD-->
                                         </tbody>
                                     </table>
                                 </div>

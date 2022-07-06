@@ -76,6 +76,25 @@
                         }
                         ?>
 
+                        <!-- Penghargaan -->
+                        <?php
+                        //cek status menu pkl
+                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Penghargaan'");
+                        $dmenu = mysqli_fetch_array($qmenu);
+                        $statussurat = $dmenu['status'];
+                        if ($statussurat == 1) {
+                        ?>
+                            <li class="nav-item">
+                                <a href="penghargaan-isi.php" class="nav-link">
+                                    <i class="nav-icon fas fa-trophy"></i>
+                                    <p>Penghargaan</p>
+                                    <span class="badge badge-danger right">Baru</span>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+
                         <!-- surat keterangan -->
                         <?php
                         //cek status menu ijinlab
