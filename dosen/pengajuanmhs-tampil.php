@@ -730,7 +730,7 @@ $tahun = date('Y');
 
                                 <!-- pengajuan penghargaan -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND statussurat='1' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $nim = $data['nim'];
@@ -779,9 +779,6 @@ $tahun = date('Y');
                                             <?php
                                             if ($statussurat == 1) {
                                             ?>
-                                                <a class="btn btn-success btn-sm" href="../mahasiswa/suket-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                    <i class="fas fa-print"></i>
-                                                </a>
                                             <?php
                                             } elseif ($statussurat == 2) {
                                             ?>

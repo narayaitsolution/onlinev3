@@ -143,7 +143,8 @@ $no = 1;
                                         <div class="form-group row">
                                             <label for="keperluan" class="col-sm-2 col-form-label">Bukti</label>
                                             <div class="col-sm-10">
-                                                <img src="<?= $bukti; ?>" width="200px">
+                                                <a href="<?= $bukti; ?>" target="_blank"><img src="<?= $bukti; ?>" width="200px"></a><br>
+                                                <small style="color: red;">Klik pada gambar untuk memperbersar</small>
                                             </div>
                                         </div>
                                         <hr>
