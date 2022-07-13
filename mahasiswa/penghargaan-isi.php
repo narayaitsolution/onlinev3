@@ -86,34 +86,36 @@ $no = 1;
                                     <div class="card-body">
                                         <form action="penghargaan-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Nama</label>
-                                                <div class="col-sm-10">
+                                                <label class="col-sm-3 col-form-label">Nama</label>
+                                                <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="nama" name="nama" value="<?= $nama; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">NIM</label>
-                                                <div class="col-sm-10">
+                                                <label class="col-sm-3 col-form-label">NIM</label>
+                                                <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="nim" name="nim" value="<?= $nim; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Kegiatan</label>
-                                                <div class="col-sm-10">
+                                                <label class="col-sm-3 col-form-label">Kegiatan</label>
+                                                <div class="col-sm-9">
                                                     <select name="kegiatan" class="form-control">
-                                                        <option value="Lomba">Lomba</option>
+                                                        <option value="Penulisan karya ilmiah di media cetak">Penulisan karya ilmiah di media cetak</option>
+                                                        <option value="Penulisan karya ilmiah di jurnal ilmiah bereputasi">Penulisan karya ilmiah di jurnal ilmiah bereputasi</option>
+                                                        <option value="Kompetisi/kejuaraan/perlombaan">Kompetisi/kejuaraan/perlombaan</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Nama Kegiatan</label>
-                                                <div class="col-sm-10">
+                                                <label class="col-sm-3 col-form-label">Nama Kegiatan / Media Publikasi</label>
+                                                <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="namakegiatan" name="namakegiatan" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Tingkat</label>
-                                                <div class="col-sm-10">
+                                                <label class="col-sm-3 col-form-label">Level Kegiatan</label>
+                                                <div class="col-sm-9">
                                                     <select name="tingkat" class="form-control">
                                                         <option value="Internasional">Internasional</option>
                                                         <option value="Nasional" selected>Nasional</option>
@@ -123,27 +125,52 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Kategori</label>
-                                                <div class="col-sm-10">
+                                                <label class="col-sm-3 col-form-label">Kategori</label>
+                                                <div class="col-sm-9">
                                                     <select name="kategori" class="form-control">
-                                                        <option value="Individu">Individu</option>
-                                                        <option value="Kelompok">Kelompok</option>
+                                                        <option value="Akademik">Akademik</option>
+                                                        <option value="Non Akademik">Non Akademik</option>
                                                     </select>
+                                                    <small style="color: blue;">
+                                                        <b>Kategori Akademik :</b>
+                                                        <ul>
+                                                            <li>Penulisan karya ilmiah di media cetak nasional/internasional, sebagai penulis pertama.</li>
+                                                            <li>Penulisan karya ilmiah di jurnal ilmiah bereputasi nasional/international, sebagai penulis pertama.</li>
+                                                        </ul>
+                                                        <b>Kategori Non Akademik :</b>
+                                                        <ul>
+                                                            <li>- Kompetisi/kejuaraan/perlombaan dalam bidang ilmiah, teknologi, olah raga, seni, budaya, sosial, riset dan keagamaan.</li>
+                                                        </ul>
+                                                    </small>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Peringkat</label>
-                                                <div class="col-sm-10">
+                                                <label class="col-sm-3 col-form-label">Jenis Kegiatan</label>
+                                                <div class="col-sm-9">
+                                                    <select name="jeniskegiatan" class="form-control">
+                                                        <option value="Individu" selected>Individu</option>
+                                                        <option value="Kelompok">Kelompok</option>
+                                                    </select>
+                                                    <small style="color: red;">
+                                                        <li>Untuk kegiatan kelompok, <b>cukup ketua kelompok</b> yang mengajukan</li>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Peringkat</label>
+                                                <div class="col-sm-9">
                                                     <select name="peringkat" class="form-control">
+                                                        <option value="Penulis 1">Penulis 1</option>
                                                         <option value="Juara 1" selected>Juara 1</option>
                                                         <option value="Juara 2">Juara 2</option>
                                                         <option value="Juara 3">Juara 3</option>
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
-                                                <label for="keperluan" class="col-sm-2 col-form-label">Bukti</label>
-                                                <div class="col-sm-10">
+                                                <label for="keperluan" class="col-sm-3 col-form-label">Bukti</label>
+                                                <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="bukti" name="bukti" accept="image/jpg, image/jpeg" required>
                                                     <li style="color: red;"><small>Format File JPG / JPEG, ukuran file maksimal 10MB</small></li>
                                                 </div>

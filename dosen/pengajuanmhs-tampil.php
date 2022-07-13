@@ -779,6 +779,11 @@ $tahun = date('Y');
                                             <?php
                                             if ($statussurat == 1) {
                                             ?>
+                                                <a href="penghargaan-cetak.php" class="btn btn-success btn-sm">
+                                                    <i class="fas fa-print"></i>
+                                                </a>
+                                                <?php
+                                                ?>
                                             <?php
                                             } elseif ($statussurat == 2) {
                                             ?>

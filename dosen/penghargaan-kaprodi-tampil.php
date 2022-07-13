@@ -74,6 +74,7 @@ $no = 1;
             $namakegiatan = $row['namakegiatan'];
             $tingkat = $row['tingkat'];
             $kategori = $row['kategori'];
+            $jeniskegiatan = $row['jeniskegiatan'];
             $peringkat = $row['peringkat'];
             $bukti = $row['bukti'];
             ?>
@@ -117,13 +118,13 @@ $no = 1;
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Nama Kegiatan</label>
+                                            <label class="col-sm-2 col-form-label">Nama Kegiatan / Media Publikasi</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="namakegiatan" value="<?= $namakegiatan; ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Tingkat</label>
+                                            <label class="col-sm-2 col-form-label">Level Kegiatan</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="tingkat" value="<?= $tingkat; ?>" readonly>
                                             </div>
@@ -132,6 +133,23 @@ $no = 1;
                                             <label class="col-sm-2 col-form-label">Kategori</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="kategori" value="<?= $kategori; ?>" readonly>
+                                                <small style="color: blue;">
+                                                    <b>Kategori Akademik :</b>
+                                                    <ul>
+                                                        <li>Penulisan karya ilmiah di media cetak nasional/internasional, sebagai penulis pertama.</li>
+                                                        <li>Penulisan karya ilmiah di jurnal ilmiah bereputasi nasional/international, sebagai penulis pertama.</li>
+                                                    </ul>
+                                                    <b>Kategori Non Akademik :</b>
+                                                    <ul>
+                                                        <li>- Kompetisi/kejuaraan/perlombaan dalam bidang ilmiah, teknologi, olah raga, seni, budaya, sosial, riset dan keagamaan.</li>
+                                                    </ul>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Jenis Kegiatan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="jeniskegiatan" value="<?= $jeniskegiatan; ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
