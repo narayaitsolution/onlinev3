@@ -60,15 +60,18 @@ $no = 1;
                 </div>
             </section>
 
-            <!-- alert bukti vaksin -->
-            <?php
-            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
-            $qdata = mysqli_fetch_array($quser);
-            $buktivaksin = $qdata['buktivaksin'];
-            if (empty($buktivaksin)) {
-                //echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
-            }
-            ?>
+            <!-- alert  -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <strong>UPDATE DATA!!</strong> Pastikan untuk memperbarui data email & no. hp anda di profile pengguna!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- tabel pengajuan pribadi -->
             <section class="content">
