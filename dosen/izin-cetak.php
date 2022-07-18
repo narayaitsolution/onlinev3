@@ -197,20 +197,28 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
             <td>&nbsp;</td>
             <?php
             if ($validasi2 == 1) {
-                $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip='$validator2' AND kdjabatan='kabag-tu'");
+                $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip='$validator2'");
                 $dsql = mysqli_fetch_array($sql);
                 $ttd = $dsql['ttd'];
                 $jabatan = $dsql['jabatan'];
                 $namakaprodi = $dsql['nama'];
                 $nipkaprodi = $dsql['nip'];
+                if ($jabatan == 'Wakil Dekan Bidang AUPK' || $jabatan == 'Dekan') {
             ?>
-                <td style="text-align:center">
-                    <!--<?= $jabatan; ?><br />-->
-                    <img src="../ttd/<?= $ttd; ?>" width="100px"><br />
-                    <u><?= $namakaprodi; ?></u><br />
-                    NIP. <?= $nipkaprodi; ?>
-                </td>
+                    <td style="text-align:center">
+                        <img src="../ttd/<?= $ttd; ?>" width="250px"><br />
+                    </td>
+                <?php
+                } else {
+                ?>
+                    <td style="text-align:center">
+                        <!--<?= $jabatan; ?><br />-->
+                        <img src="../ttd/<?= $ttd; ?>" width="100px"><br />
+                        <u><?= $namakaprodi; ?></u><br />
+                        NIP. <?= $nipkaprodi; ?>
+                    </td>
             <?php
+                }
             }
             ?>
             <td>&nbsp;</td>

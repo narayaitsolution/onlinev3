@@ -161,6 +161,8 @@ $sisa = $dsisa['sisa'];
                                         <hr>
                                         <form role="form" method="POST" id="my-form">
                                             <input type="hidden" name="token" value="<?= $token; ?>">
+                                            <input type="hidden" name="jmlizin" value="<?= $jmlizin; ?>">
+                                            <input type="hidden" name="nipbawahan" value="<?= $nipbawahan; ?>">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="izin-kaprodi-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
