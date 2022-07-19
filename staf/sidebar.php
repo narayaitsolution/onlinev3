@@ -39,15 +39,24 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="wfh-isi.php" class="nav-link">
-                                <i class="nav-icon fa-solid fa-house-laptop"></i>
-                                <p>
-                                    Work From Home
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
-                        </li>
+                        <?php
+                        $qjenissurat = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat = 'Pengajuan WFH'");
+                        $djenissurat = mysqli_fetch_array($qjenissurat);
+                        $status = $djenissurat['status'];
+                        if ($status == '1') {
+                        ?>
+                            <li class="nav-item">
+                                <a href="wfh-isi.php" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-house-laptop"></i>
+                                    <p>
+                                        Work From Home
+                                        <span class="right badge badge-danger"></span>
+                                    </p>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        ?>
                         <li class="nav-item">
                             <a href="#" class="nav-link" onclick="return alert('COMING SOON')">
                                 <i class="nav-icon fa-solid fa-briefcase"></i>
