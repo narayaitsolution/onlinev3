@@ -38,331 +38,336 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-
-                        <!-- surat pengantar PKL -->
                         <?php
-                        //cek status menu pkl
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Surat Pengantar PKL'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-                                $qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim'");
-                                $jpkl = mysqli_num_rows($qpkl);
-                                if ($jpkl > 0) {
+                        $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                        $qdata = mysqli_fetch_array($quser);
+                        $buktivaksin = $qdata['buktivaksin'];
+                        if (!empty($buktivaksin)) {
                         ?>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link" onclick="return alert('Anda hanya diijinkan mengajukan izin PKL 1x. Hubungi Koor. PKL untuk membatalkan pengajuan anda sebelumnya')">
-                                            <i class="nav-icon fas fa-users"></i>
-                                            <p>Pengantar PKL</p>
-                                        </a>
-                                    </li>
-                                <?php
-                                } else {
-                                ?>
-                                    <li class="nav-item">
-                                        <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
-                                            <i class="nav-icon fas fa-users"></i>
-                                            <p>Surat Pengantar PKL</p>
-                                        </a>
-                                    </li>
-                        <?php
+                            <!-- surat pengantar PKL -->
+                            <?php
+                            //cek status menu pkl
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Surat Pengantar PKL'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
+                                    $qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim'");
+                                    $jpkl = mysqli_num_rows($qpkl);
+                                    if ($jpkl > 0) {
+                            ?>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link" onclick="return alert('Anda hanya diijinkan mengajukan izin PKL 1x. Hubungi Koor. PKL untuk membatalkan pengajuan anda sebelumnya')">
+                                                <i class="nav-icon fas fa-users"></i>
+                                                <p>Pengantar PKL</p>
+                                            </a>
+                                        </li>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <li class="nav-item">
+                                            <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
+                                                <i class="nav-icon fas fa-users"></i>
+                                                <p>Surat Pengantar PKL</p>
+                                            </a>
+                                        </li>
+                            <?php
 
+                                    }
                                 }
                             }
-                        }
-                        ?>
+                            ?>
 
-                        <!-- Penghargaan -->
-                        <?php
-                        //cek status menu pkl
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Penghargaan'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                        ?>
-                            <li class="nav-item">
-                                <a href="penghargaan-isi.php" class="nav-link">
-                                    <i class="nav-icon fas fa-trophy"></i>
-                                    <p>Penghargaan</p>
-                                    <span class="badge badge-danger right">Baru</span>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-
-                        <!-- surat keterangan -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Surat Keterangan'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-
-                        ?>
-                                <!-- surat rekomendasi -->
+                            <!-- Penghargaan -->
+                            <?php
+                            //cek status menu pkl
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Penghargaan'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                            ?>
                                 <li class="nav-item">
-                                    <a href="rekomendasi-isi.php" class="nav-link">
-                                        <i class="nav-icon fas fa-id-card"></i>
-                                        <p>
-                                            Rekomendasi
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
+                                    <a href="penghargaan-isi.php" class="nav-link">
+                                        <i class="nav-icon fas fa-trophy"></i>
+                                        <p>Penghargaan</p>
+                                        <span class="badge badge-danger right">Baru</span>
                                     </a>
                                 </li>
-
-                                <!-- surat keterangan -->
-                                <li class="nav-item">
-                                    <a href="suket-isi.php" class="nav-link">
-                                        <i class="nav-icon fas fa-id-card"></i>
-                                        <p>
-                                            Keterangan Kelakuan Baik
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-
-                                <!-- surat keterangan beasiswa -->
-                                <li class="nav-item">
-                                    <a href="https://kemahasiswaan.uin-malang.ac.id/layanan-mahasiswa/" class="nav-link" target="_blank" onclick="return alert('Surat Keterangan Beasiswa diajukan melalui Kemahasiswaan Pusat')">
-                                        <i class="nav-icon fas fa-id-card"></i>
-                                        <p>
-                                            Keterangan Beasiswa
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-
-                                <!-- surat keterangan masih studi -->
-                                <li class="nav-item">
-                                    <a href="https://siakad.uin-malang.ac.id" target="_blank" class="nav-link" onclick="return alert('Surat Keterangan Aktif Kuliah dapat di ajukan melalui SIAKAD masing - masing')">
-                                        <i class="nav-icon fas fa-id-card"></i>
-                                        <p>
-                                            Keterangan Mahasiswa Aktif
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
+                            <?php
                             }
-                        }
-                        ?>
+                            ?>
+
+                            <!-- surat keterangan -->
+                            <?php
+                            //cek status menu ijinlab
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Surat Keterangan'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
+
+                            ?>
+                                    <!-- surat rekomendasi -->
+                                    <li class="nav-item">
+                                        <a href="rekomendasi-isi.php" class="nav-link">
+                                            <i class="nav-icon fas fa-id-card"></i>
+                                            <p>
+                                                Rekomendasi
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+
+                                    <!-- surat keterangan -->
+                                    <li class="nav-item">
+                                        <a href="suket-isi.php" class="nav-link">
+                                            <i class="nav-icon fas fa-id-card"></i>
+                                            <p>
+                                                Keterangan Kelakuan Baik
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+
+                                    <!-- surat keterangan beasiswa -->
+                                    <li class="nav-item">
+                                        <a href="https://kemahasiswaan.uin-malang.ac.id/layanan-mahasiswa/" class="nav-link" target="_blank" onclick="return alert('Surat Keterangan Beasiswa diajukan melalui Kemahasiswaan Pusat')">
+                                            <i class="nav-icon fas fa-id-card"></i>
+                                            <p>
+                                                Keterangan Beasiswa
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+
+                                    <!-- surat keterangan masih studi -->
+                                    <li class="nav-item">
+                                        <a href="https://siakad.uin-malang.ac.id" target="_blank" class="nav-link" onclick="return alert('Surat Keterangan Aktif Kuliah dapat di ajukan melalui SIAKAD masing - masing')">
+                                            <i class="nav-icon fas fa-id-card"></i>
+                                            <p>
+                                                Keterangan Mahasiswa Aktif
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
 
 
 
-                        <!-- surat ijin penelitian -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Penelitian'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
+                            <!-- surat ijin penelitian -->
+                            <?php
+                            //cek status menu ijinlab
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Penelitian'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
 
-                        ?>
+                            ?>
+                                    <li class="nav-item">
+                                        <a href="ijinpenelitian-isi.php" class="nav-link">
+                                            <i class="nav-icon fa fa-search"></i>
+                                            <p>
+                                                Ijin Penelitian
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                            <!-- ijin penggunaan lab -->
+                            <?php
+                            //cek status menu ijinlab
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Penggunaan Lab.'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
+
+                            ?>
+                                    <li class="nav-item">
+                                        <a href="ijinlab-isi.php" class="nav-link">
+                                            <i class="nav-icon fas fa-flask"></i>
+                                            <p>
+                                                Ijin Penggunaan Lab.
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                            <!-- surat ijin observasi -->
+                            <?php
+                            //cek status menu ijinlab
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Observasi'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
+
+                            ?>
+                                    <li class="nav-item">
+                                        <a href="observasi-isi.php" class="nav-link">
+                                            <i class="nav-icon fa fa-edit"></i>
+                                            <p>
+                                                Ijin Observasi
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                            <!-- permohonan pengambilan data -->
+                            <?php
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Pengambilan Data'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
+
+                            ?>
+                                    <li class="nav-item">
+                                        <a href="pengambilandata-isi.php" class="nav-link">
+                                            <i class="nav-icon fa fa-table"></i>
+                                            <p>
+                                                Pengambilan Data
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                            <!-- permohonan peminjaman alat -->
+                            <?php
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Peminjaman Alat'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
+
+                            ?>
+                                    <li class="nav-item">
+                                        <a href="peminjamanalat-isi.php" class="nav-link">
+                                            <i class="nav-icon fa fa-wrench"></i>
+                                            <p>
+                                                Peminjaman Alat
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
+                            }
+                            ?>
+
+                            <!-- permohonan SKPI -->
+                            <?php
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Pengajuan SKPI'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                            ?>
                                 <li class="nav-item">
-                                    <a href="ijinpenelitian-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-search"></i>
+                                    <a href="skpi-isi.php" class="nav-link">
+                                        <i class="nav-icon fas fa-graduation-cap"></i>
                                         <p>
-                                            Ijin Penelitian
-                                            <span class="right badge badge-danger"></span>
+                                            Pengajuan SKPI
                                         </p>
                                     </a>
                                 </li>
-                        <?php
+                            <?php
                             }
-                        }
-                        ?>
+                            ?>
 
-                        <!-- ijin penggunaan lab -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Penggunaan Lab.'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
+                            <!-- surat ijin bimbingan -->
+                            <?php
+                            //cek status menu ijinlab
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Bimbingan'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
 
-                        ?>
-                                <li class="nav-item">
-                                    <a href="ijinlab-isi.php" class="nav-link">
-                                        <i class="nav-icon fas fa-flask"></i>
-                                        <p>
-                                            Ijin Penggunaan Lab.
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
+                            ?>
+                                    <li class="nav-item">
+                                        <a href="ijinbimbingan-isi.php" class="nav-link">
+                                            <i class="nav-icon fa fa-book"></i>
+                                            <p>
+                                                Ijin Bimbingan Offline
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
                             }
-                        }
-                        ?>
+                            ?>
 
-                        <!-- surat ijin observasi -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Observasi'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
+                            <!-- surat ijin ujian -->
+                            <?php
+                            //cek status menu ijinlab
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Ujian'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                                $qdata = mysqli_fetch_array($quser);
+                                $buktivaksin = $qdata['buktivaksin'];
+                                if (!empty($buktivaksin)) {
 
-                        ?>
-                                <li class="nav-item">
-                                    <a href="observasi-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-edit"></i>
-                                        <p>
-                                            Ijin Observasi
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
+                            ?>
+                                    <li class="nav-item">
+                                        <a href="ijinujian-isi.php" class="nav-link">
+                                            <i class="nav-icon fa fa-comments"></i>
+                                            <p>
+                                                Ijin Ujian Offline
+                                                <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+                            <?php
+                                }
                             }
-                        }
-                        ?>
-
-                        <!-- permohonan pengambilan data -->
-                        <?php
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Pengambilan Data'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-
-                        ?>
-                                <li class="nav-item">
-                                    <a href="pengambilandata-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-table"></i>
-                                        <p>
-                                            Pengambilan Data
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        ?>
-
-                        <!-- permohonan peminjaman alat -->
-                        <?php
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Peminjaman Alat'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-
-                        ?>
-                                <li class="nav-item">
-                                    <a href="peminjamanalat-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-wrench"></i>
-                                        <p>
-                                            Peminjaman Alat
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        ?>
-
-                        <!-- permohonan SKPI -->
-                        <?php
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Pengajuan SKPI'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                        ?>
-                            <li class="nav-item">
-                                <a href="skpi-isi.php" class="nav-link">
-                                    <i class="nav-icon fas fa-graduation-cap"></i>
-                                    <p>
-                                        Pengajuan SKPI
-                                    </p>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-
-                        <!-- surat ijin bimbingan -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Bimbingan'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-
-                        ?>
-                                <li class="nav-item">
-                                    <a href="ijinbimbingan-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-book"></i>
-                                        <p>
-                                            Ijin Bimbingan Offline
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        ?>
-
-                        <!-- surat ijin ujian -->
-                        <?php
-                        //cek status menu ijinlab
-                        $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Ijin Ujian'");
-                        $dmenu = mysqli_fetch_array($qmenu);
-                        $statussurat = $dmenu['status'];
-                        if ($statussurat == 1) {
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                            $qdata = mysqli_fetch_array($quser);
-                            $buktivaksin = $qdata['buktivaksin'];
-                            if (!empty($buktivaksin)) {
-
-                        ?>
-                                <li class="nav-item">
-                                    <a href="ijinujian-isi.php" class="nav-link">
-                                        <i class="nav-icon fa fa-comments"></i>
-                                        <p>
-                                            Ijin Ujian Offline
-                                            <span class="right badge badge-danger"></span>
-                                        </p>
-                                    </a>
-                                </li>
-                        <?php
-                            }
-                        }
-                        ?>
+                            ?>
 
 
 
@@ -387,6 +392,9 @@
                     </a>
                 </li>
             </ul>
+        <?php
+                        }
+        ?>
         </nav>
     </div>
 </aside>
