@@ -59,19 +59,6 @@ $no = 1;
                 </div>
             </section>
 
-            <!-- alert  -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-12">
-                            <div class="alert alert-danger alert-dismissible fade show">
-                                <strong>UPDATE DATA!!</strong> Pastikan untuk memperbarui data email & no. hp anda di profile pengguna!!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- alert bukti vaksin -->
             <section class="content-header">
                 <div class="container-fluid">
