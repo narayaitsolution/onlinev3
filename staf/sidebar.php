@@ -109,6 +109,15 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="penghargaan-tampil.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-trophy"></i>
+                            <p>
+                                Pengajuan Penghargaan
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
                 <?php
                 }
                 ?>
