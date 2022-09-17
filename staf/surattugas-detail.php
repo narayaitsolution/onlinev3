@@ -6,7 +6,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "dosen") {
+if ($_SESSION['jabatan'] != "kabag-tu") {
   header("location:../deauth.php");
 }
 require('../system/dbconn.php');
@@ -68,7 +68,7 @@ $bukti = $dst['bukti'];
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Dashboard</h1>
+              <h1>Surat Tugas</h1>
             </div>
           </div>
         </div>
