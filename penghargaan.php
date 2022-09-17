@@ -17,32 +17,18 @@ require('system/dbconn.php');
     <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
-    <style>
-        .login-page {
-            background-image: url('system/saintek-bg.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
+
 </head>
 
 <body class="hold-transition text-sm">
     <section class="content">
         <!-- Pengajuan Surat Mahasiswa -->
-        <div class="card card-info">
+        <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">Penghargaan Mahasiswa</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped text-sm">
+                <table id="example2" class="table table-bordered table-striped text-sm">
                     <thead>
                         <tr>
                             <th width="5%">No.</th>

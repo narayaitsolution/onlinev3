@@ -21,7 +21,7 @@ $uniqid = uniqid();
 $target_dir = "../lampiran/";
 $fileTmpPath = $_FILES['lampiran']['tmp_name'];
 $buktivaksin_low = imgresize($fileTmpPath);
-$dest_path = $target_dir . $nip . '-lampiranst-' . $uniqid . '.jpg';
+$dest_path = $target_dir . $uniqid . '.jpg';
 
 //kaprodi keatas verifikasi dekan
 if ($jabatan == 'kaprodi' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'wadek3' or $jabatan == 'kabag-tu') {

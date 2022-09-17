@@ -6,7 +6,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['jabatan'] = "dosen") {
+if ($_SESSION['jabatan'] == "mahasiswa") {
     header("location:../deauth.php");
 }
 require('../system/dbconn.php');
@@ -148,7 +148,7 @@ $no = 1;
 
                                 <!-- Surattugas as kaprodi -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator1='$nip' order by tglsurat desc");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -156,7 +156,8 @@ $no = 1;
                                     $prodimhs = $data['prodi'];
                                     $nama = $data['nama'];
                                     $surat = 'Surat Tugas';
-                                    $verifikasiprodi = $data['verifikasiprodi'];
+                                    $validasi2 = $data['validasi2'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -165,7 +166,7 @@ $no = 1;
                                         <td><?= $prodimhs; ?></td>
                                         <td><?= tgljam_indo($tanggal); ?></td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="#">
+                                            <a class="btn btn-info btn-sm" href="surattugas-detail.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
@@ -178,7 +179,7 @@ $no = 1;
 
                                 <!-- surat tugas as WD -->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE verifikatorfakultas='$nip' AND verifikasiprodi=0 and verifikasifakultas = 0 order by tglsurat desc");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator2='$nip' order by tglsurat desc");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -186,7 +187,8 @@ $no = 1;
                                     $prodimhs = $data['prodi'];
                                     $nama = $data['nama'];
                                     $surat = 'Surat Tugas';
-                                    $verifikasifakultas = $data['verifikasifakultas'];
+                                    $validasi2 = $data['validasi2'];
+                                    $token = $data['token'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
@@ -195,7 +197,7 @@ $no = 1;
                                         <td><?= $prodimhs; ?></td>
                                         <td><?= tgljam_indo($tanggal); ?></td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="#">
+                                            <a class="btn btn-info btn-sm" href="surattugas-detail.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>

@@ -10,11 +10,11 @@ $tanggal = date('Y-m-d H:i:s');
 $nip = $_SESSION['nip'];
 $token = mysqli_real_escape_string($dbsurat, $_POST['token']);
 $nodata = mysqli_real_escape_string($dbsurat, $_POST['nodata']);
-
+$kode = uniqid();
 $target_dir = "../lampiran/";
 $fileTmpPath = $_FILES['bukti']['tmp_name'];
 $bukti_low = imgresize($fileTmpPath);
-$dest_path = $target_dir . $nip . '-buktistst-' . $nodata . '.jpg';
+$dest_path = $target_dir . $kode . '.jpg';
 
 
 if (move_uploaded_file($bukti_low, $dest_path)) {
