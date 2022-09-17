@@ -10,6 +10,8 @@ $tglsurat = date('Y-m-d H:i:s');
 $nama = $_SESSION['nama'];
 $nip = $_SESSION['nip'];
 $pangkat = $_POST['pangkat'];
+$golongan = $_POST['golongan'];
+$pangkatgolongan = $pangkat . ' - ' . $golongan;
 $jabatan = $_SESSION['jabatan'];
 $prodi = $_SESSION['prodi'];
 $jenisizin = mysqli_real_escape_string($dbsurat, $_POST['jenisizin']);
@@ -92,7 +94,7 @@ if ($cuti > $sisacuti) {
     }
 
     $sql = mysqli_query($dbsurat, "INSERT INTO izin (prodi, tglsurat, nama, nip,pangkat,jabatan, tglizin1, tglizin2,jmlizin,jenisizin,alasan,validator1,validator2,token) 
-			                    VALUES ('$prodi','$tglsurat','$nama','$nip','$pangkat','$jabatan','$tgl1','$tgl2','$cuti','$jenisizin','$alasan','$nipkaprodi','$nipwd','$token')");
+			                    VALUES ('$prodi','$tglsurat','$nama','$nip','$pangkatgolongan','$jabatan','$tgl1','$tgl2','$cuti','$jenisizin','$alasan','$nipkaprodi','$nipwd','$token')");
 
     //kirim email;
     //cari email kaprodi berdasarkan NIP

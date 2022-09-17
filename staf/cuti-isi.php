@@ -52,7 +52,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+                            <h1>Cuti</h1>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin Cuti</h3>
+                                    <h3 class="card-title">Pengajuan Cuti</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>

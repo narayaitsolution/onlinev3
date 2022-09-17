@@ -44,11 +44,11 @@ $pesan = "Yth. " . $namamhs . "<br/>
 		Dengan hormat,
 		<br />
         Pengajuan Surat " . $surat . " anda telah disetujui.<br/>
-        Silahkan klik tombol dibawah ini mencetak Surat tersebut<br/>
+        Silahkan masuk kedalam SAINTEK e-Office untuk mencetak surat anda.<br/>
         <br/>
-        <a href='https://saintek.uin-malang.ac.id/online/mahasiswa/cuti-cetak.php?token=$token' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Cetak Surat</a><br/>
+        <a href='https://saintek.uin-malang.ac.id/online' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
         <br/>
-        atau silahkan mencetak melalui website SAINTEK e-Office di <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
+        atau klik disini <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
         <br/>
         Wassalamualaikum wr. wb.
 		<br/>

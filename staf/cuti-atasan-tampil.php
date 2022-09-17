@@ -6,7 +6,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "dosen") {
+if ($_SESSION['jabatan'] != "kabag-tu") {
     header("location:../deauth.php");
 }
 require('../system/dbconn.php');
@@ -82,7 +82,7 @@ $lampiran = $dizin['lampiran'];
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin Tidak Masuk Kerja</h3>
+                                    <h3 class="card-title">Pengajuan Cuti</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>

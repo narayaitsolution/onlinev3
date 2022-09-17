@@ -62,10 +62,10 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
 <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
     <thead>
         <tr>
-            <td></td>
-            <td width="20%"></td>
-            <td colspan="2"></td>
-            <td></td>
+            <td>&nbsp;</td>
+            <td width="20%">&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
     </thead>
     <tbody>
@@ -73,20 +73,18 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             <td>&nbsp;</td>
             <td>Nomor </td>
             <td colspan="2">: <?= $keterangan; ?></td>
-            <td></td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
             <td>Lampiran </td>
             <td colspan="2">: 1 lembar</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
             <td>Hal </td>
             <td colspan="2">: Permohonan Surat Izin <?= $jeniscuti; ?> <br /> atas nama <?= $nama; ?> </td>
-            <td></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -129,9 +127,13 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             <td colspan="3">&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
+    </tbody>
+</table>
+<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
+    <tbody>
         <tr>
             <td>&nbsp;</td>
-            <td>Nama</td>
+            <td width="30%">Nama</td>
             <td colspan="2">: <?= $nama; ?></td>
             <td>&nbsp;</td>
         </tr>
@@ -144,7 +146,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
         <tr>
             <td>&nbsp;</td>
             <td>Pangkat / Golongan</td>
-            <td colspan="2">: <?= $pangkat; ?> / <?= $golongan; ?></td>
+            <td colspan="2">: <?= $pangkat; ?> - <?= $golongan; ?></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -179,7 +181,6 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             <td colspan="3" style="text-align: justify;">Demikian surat permohonan ini dibuat, atas perhatian dan kerja sama yang baik disampaikan terima kasih.</td>
             <td>&nbsp;</td>
         </tr>
-
     </tbody>
 </table>
 
@@ -205,39 +206,6 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             <?php
             }
             ?>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
     </tbody>

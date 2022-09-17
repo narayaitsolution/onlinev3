@@ -140,24 +140,49 @@ $no = 1;
                                             <div class="form-group row">
                                                 <label for="pangkat" class="col-sm-2 col-form-label">Pangkat / Golongan</label>
                                                 <div class="col-sm-10">
-                                                    <select class="form-control" name="pangkat">
-                                                        <option value="IV/d">IV/d</option>
-                                                        <option value="IV/c">IV/c</option>
-                                                        <option value="IV/b">IV/b</option>
-                                                        <option value="IV/a">IV/a</option>
-                                                        <option value="III/d">III/d</option>
-                                                        <option value="III/c">III/c</option>
-                                                        <option value="III/b" selected>III/b</option>
-                                                        <option value="III/a">III/a</option>
-                                                        <option value="II/d">II/d</option>
-                                                        <option value="II/c">II/c</option>
-                                                        <option value="II/b">II/b</option>
-                                                        <option value="II/a">II/a</option>
-                                                        <option value="I/d">I/d</option>
-                                                        <option value="I/c">I/c</option>
-                                                        <option value="I/b">I/b</option>
-                                                        <option value="I/a">I/a</option>
-                                                    </select>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <select class="form-control" name="pangkat">
+                                                                <option value="Juru Muda">Juru Muda</option>
+                                                                <option value="Juru Muda Tk. 1">Juru Muda Tk. 1</option>
+                                                                <option value="Juru">Juru</option>
+                                                                <option value="Juru Tk. 1">Juru Tk. 1</option>
+                                                                <option value="Pengatur Muda">Pengatur Muda</option>
+                                                                <option value="Pengatur Muda Tk. 1">Pengatur Muda Tk. 1</option>
+                                                                <option value="Pengatur">Pengatur</option>
+                                                                <option value="Pengatur Tk. 1" selected>Pengatur Tk. 1</option>
+                                                                <option value="Penata Muda">Penata Muda</option>
+                                                                <option value="Penata Muda Tk. 1">Penata Muda Tk. 1</option>
+                                                                <option value="Penata">Penata</option>
+                                                                <option value="Penata Tk. 1">Penata Tk. 1</option>
+                                                                <option value="Pembina">Pembina</option>
+                                                                <option value="Pembina Tk. 1">Pembina Tk. 1</option>
+                                                                <option value="Pembina Utama Muda">Pembina Utama Muda</option>
+                                                                <option value="Pembina Utama Madya">Pembina Utama Madya</option>
+                                                                <option value="Pembina Utama">Pembina Utama</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col">
+                                                            <select class="form-control" name="golongan">
+                                                                <option value="IV/d">IV/d</option>
+                                                                <option value="IV/c">IV/c</option>
+                                                                <option value="IV/b">IV/b</option>
+                                                                <option value="IV/a">IV/a</option>
+                                                                <option value="III/d">III/d</option>
+                                                                <option value="III/c">III/c</option>
+                                                                <option value="III/b" selected>III/b</option>
+                                                                <option value="III/a">III/a</option>
+                                                                <option value="II/d">II/d</option>
+                                                                <option value="II/c">II/c</option>
+                                                                <option value="II/b">II/b</option>
+                                                                <option value="II/a">II/a</option>
+                                                                <option value="I/d">I/d</option>
+                                                                <option value="I/c">I/c</option>
+                                                                <option value="I/b">I/b</option>
+                                                                <option value="I/a">I/a</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- cari jabatan -->

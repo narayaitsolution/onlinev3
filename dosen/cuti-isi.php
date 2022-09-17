@@ -52,7 +52,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+                            <h1>Cuti</h1>
                         </div>
                     </div>
                 </div>
@@ -143,10 +143,36 @@ $no = 1;
                                                 <label for="pangkat" class="col-sm-2 col-form-label">Pangkat</label>
                                                 <div class="col-sm-10">
                                                     <select class="form-control" name="pangkat">
-                                                        <option value="Guru Besar">Guru Besar</option>
-                                                        <option value="Lektor Kepala">Lektor Kepala</option>
-                                                        <option value="Lektor" selected>Lektor</option>
-                                                        <option value="Asisten Ahli">Asisten Ahli</option>
+                                                        <?php
+                                                        if ($hakakses == 'dosen') {
+                                                        ?>
+                                                            <option value="Guru Besar">Guru Besar</option>
+                                                            <option value="Lektor Kepala">Lektor Kepala</option>
+                                                            <option value="Lektor" selected>Lektor</option>
+                                                            <option value="Asisten Ahli">Asisten Ahli</option>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <option value="Pembina Utama - IV/e">Pembina Utama - IV/e</option>
+                                                            <option value="Pembina Utama Madya - IV/d">Pembina Utama Madya - IV/d</option>
+                                                            <option value="Pembina Utama Muda - IV/c">Pembina Utama Muda - IV/c</option>
+                                                            <option value="Pembina Tk. I - IV/b">Pembina Tk. I - IV/b</option>
+                                                            <option value="Pembina - IV/a">Pembina - IV/a</option>
+                                                            <option value="Penata Tk. I - III/d">Penata Tk. I - III/d</option>
+                                                            <option value="Penata - III/c">Penata - III/c</option>
+                                                            <option value="Penata Muda Tk. I - III/b">Penata Muda Tk. I - III/b</option>
+                                                            <option value="Penata Muda - III/a" selected>Penata Muda - III/a</option>
+                                                            <option value="Pengatur Tk. I - II/d">Pengatur Tk. I - II/d</option>
+                                                            <option value="Pengatur - II/c">Pengatur - II/c</option>
+                                                            <option value="Pengatur Muda Tk. I - II/b">Pengatur Muda Tk. I - II/b</option>
+                                                            <option value="Pengatur Muda - II/a">Pengatur Muda - II/a</option>
+                                                            <option value="Juru Tk. I - I/d">Juru Tk. I - I/d</option>
+                                                            <option value="Juru - I/c">Juru - I/c</option>
+                                                            <option value="Juru Muda Tk. I - I/b">Juru Muda Tk. I - I/b</option>
+                                                            <option value="Juru Muda - I/b">Juru Muda - I/b</option>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
