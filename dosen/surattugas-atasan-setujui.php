@@ -15,8 +15,8 @@ $sql = mysqli_query($dbsurat, "UPDATE surattugas
 					validasi1 = '1'
 					WHERE token = '$token' AND validator1='$nip'");
 
-//kirim email ke wadek3
-//cari email wadek3 dari NIP
+//kirim email ke wadek2
+//cari email wadek2 dari NIP
 $sql2 = mysqli_query($dbsurat, "SELECT * FROM suket WHERE token='$token'");
 $dsql2 = mysqli_fetch_array($sql2);
 $nama = $dsql2['nama'];

@@ -207,9 +207,9 @@ $no = 1;
                                     $no++;
                                 }
                                 ?>
-                                <!-- /. surat tugas as atasan-->
+                                <!-- /. surat izin as kabag-tu-->
 
-                                <!-- surat izin as kabag-tu -->
+                                <!-- cuti as kabag-tu -->
                                 <?php
                                 $query = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE validator1='$nip' order by tglsurat desc");
                                 $jmldata = mysqli_num_rows($query);
@@ -238,7 +238,7 @@ $no = 1;
                                     $no++;
                                 }
                                 ?>
-                                <!-- /. surat tugas as atasan-->
+                                <!-- /. cuti as atasan-->
 
                             </tbody>
                         </table>
