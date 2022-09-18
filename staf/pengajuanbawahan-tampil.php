@@ -85,7 +85,7 @@ $no = 1;
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- WFH as kaprodi -->
+                                <!-- WFH as atasan -->
                                 <?php
                                 $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
                                 $jmldata = mysqli_num_rows($query);
@@ -116,7 +116,7 @@ $no = 1;
                                 ?>
                                 <!-- /. WFH as kaprodi-->
 
-                                <!-- WFH as WD -->
+                                <!-- WFH as kabag-tu -->
                                 <?php
                                 $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorfakultas='$nip' AND verifikasiprodi=0 and verifikasifakultas = 0 order by tglsurat desc");
                                 $jmldata = mysqli_num_rows($query);
@@ -168,6 +168,37 @@ $no = 1;
                                         <td><?= tgljam_indo($tanggal); ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="surattugas-detail.php?token=<?= $token; ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /. surat tugas as atasan-->
+
+                                <!-- surat izin as kabag-tu -->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE validator2='$nip' order by tglsurat desc");
+                                $jmldata = mysqli_num_rows($query);
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tglsurat'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = $data['nama'];
+                                    $surat = 'Surat Izin';
+                                    $validasi2 = $data['validasi2'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="izin-detail.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
