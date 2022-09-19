@@ -141,7 +141,7 @@ $lampiran = $dst['lampiran'];
                                                 <label for="instansi" class="col-sm-2 col-form-label">Bukti Pelaksanaan</label>
                                                 <div class="col-sm-10">
                                                     <input type="file" name="bukti" class="form-control" accept=".jpg,.jpeg" required>
-                                                    <small style="color: red;">Jenis file JPG / JPEG ukuran maksimal 1MB</small>
+                                                    <small style="color: red;">Jenis file PDF ukuran maksimal 1MB</small>
                                                 </div>
                                             </div>
                                             <hr>

@@ -15,6 +15,7 @@ $pangkat = $_POST['pangkat'];
 $golongan = $_POST['golongan'];
 $untuk = mysqli_real_escape_string($dbsurat, $_POST['untuk']);
 $tglpelaksanaan = mysqli_real_escape_string($dbsurat, $_POST['tglpelaksanaan']);
+$kegiatan = $_POST['kegiatan'];
 $token = md5(uniqid());
 $uniqid = uniqid();
 
@@ -56,7 +57,13 @@ if ($jabatan == 'kaprodi' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $ja
     $namakaprodi = $dhasil['nama'];
 
     //cari nip dekan
-    $jabatanwd = 'wadek2';
+    if ($kegiatan == 'akademik') {
+        $jabatanwd = 'wadek1';
+    } elseif ($kegiatan == 'umum') {
+        $jabatanwd = 'wadek2';
+    } else {
+        $jabatanwd = 'wadek3';
+    }
     $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
     $stmt->bind_param("s", $jabatanwd);
     $stmt->execute();
