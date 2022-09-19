@@ -17,18 +17,18 @@ $sql = mysqli_query($dbsurat, "UPDATE surattugas
 
 //kirim email ke wadek2
 //cari email wadek2 dari NIP
-$sql2 = mysqli_query($dbsurat, "SELECT * FROM suket WHERE token='$token'");
+$sql2 = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE token='$token'");
 $dsql2 = mysqli_fetch_array($sql2);
 $nama = $dsql2['nama'];
-$nipwadek3 = $dsql2['validator3'];
-$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwadek3'");
+$nipwadek2 = $dsql2['validator2'];
+$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwadek2'");
 $dsql3 = mysqli_fetch_array($sql3);
-$namawadek3 = $dsql3['nama'];
-$emailwadek3 = $dsql3['email'];
+$namawadek2 = $dsql3['nama'];
+$emailwadek2 = $dsql3['email'];
 
 //kirim email
 $subject = "Pengajuan Surat Tugas";
-$pesan = "Yth. " . $namawadek3 . "<br/>
+$pesan = "Yth. " . $namawadek2 . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
         <br />
@@ -46,6 +46,6 @@ $pesan = "Yth. " . $namawadek3 . "<br/>
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
-sendmail($emailwadek3, $namawadek3, $subject, $pesan);
+sendmail($emailwadek2, $namawadek2, $subject, $pesan);
 
 header("location:index.php");
