@@ -383,6 +383,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="../penilaianlayanan" class="nav-link">
+                        <i class="nav-icon fa-solid fa-thumbs-up"></i>
+                        <p>
+                            Penilaian Layanan
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="mailto:saintekonline@gmail.com" class="nav-link">
                         <i class="nav-icon fa-regular fa-circle-question"></i>
                         <p>

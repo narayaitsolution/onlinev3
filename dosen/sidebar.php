@@ -358,10 +358,19 @@
                 }
                 ?>
                 <li class="nav-item">
-                    <a href="../laporkan" class="nav-link" onclick="return confirm('Membuat laporan kepada pimpinan Fakultas ?')">
+                    <a href="../laporkan" class="nav-link">
                         <i class="nav-icon fa-solid fa-bullhorn"></i>
                         <p>
                             Laporkan Keluhan
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../penilaianlayanan" class="nav-link">
+                        <i class="nav-icon fa-solid fa-thumbs-up"></i>
+                        <p>
+                            Penilaian Layanan
                             <span class="right badge badge-danger"></span>
                         </p>
                     </a>

@@ -42,8 +42,8 @@ require('../system/myfunc.php');
                 }
                 ?>
                 <form action="penilaian-simpan.php" method="POST">
-                    <p class="login-box-msg h3"><b>Nilai Kami</b></p>
-                    <p style="text-align: center;">Untuk peningkatan kualitas pelayanan, mohon memberikan nilai terhadap kualitas pelayanan kami</p>
+                    <p class="login-box-msg h4"><b>Nilai Layanan Kami</b></p>
+                    <p style="text-align: center;">untuk peningkatan kualitas</p>
                     <hr>
                     <label>Keramahan Pelayanan</label>
                     <select name="pelayanan" class="form-control">
@@ -81,7 +81,7 @@ require('../system/myfunc.php');
                     <button type="submit" class="btn btn-success btn-lg btn-block" onclick="return confirm('Lakukan Penilaian ?')">NILAI</button>
                 </form>
                 <hr>
-                <small style="color: blue;">Catatan : Kami <b>tidak menyimpan</b> informasi anda</small>
+                <small style="color: red;">Catatan : Kami <b>tidak menyimpan</b> informasi anda</small>
             </div>
         </div>
     </div>

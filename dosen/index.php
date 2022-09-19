@@ -189,7 +189,7 @@ $tahun = date('Y');
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                         <td><?= $laporan; ?></td>
                                                         <td>
                                                             <a class="btn btn-info btn-sm" href="laporan-keluhan-tampil.php?token=<?= $kode; ?>">
@@ -213,7 +213,7 @@ $tahun = date('Y');
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                         <td><?= $laporan; ?></td>
                                                         <td>
                                                             <a class="btn btn-info btn-sm" href="laporan-gratifikasi-tampil.php?kode=<?= $kode; ?>">
@@ -350,7 +350,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -383,7 +383,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -416,7 +416,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -456,7 +456,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -496,7 +496,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -536,7 +536,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -575,7 +575,7 @@ $tahun = date('Y');
                                                         };
                                                         ?>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -607,7 +607,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -639,7 +639,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -671,7 +671,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -703,7 +703,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -735,7 +735,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -767,7 +767,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -799,7 +799,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -831,7 +831,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -863,7 +863,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -895,7 +895,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -927,7 +927,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -959,7 +959,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -991,7 +991,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1023,7 +1023,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1055,7 +1055,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1087,7 +1087,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1119,7 +1119,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1151,7 +1151,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1183,7 +1183,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1215,7 +1215,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1247,7 +1247,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1281,7 +1281,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                             <?php
                                                     $no++;
@@ -1316,7 +1316,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                             <?php
                                                     $no++;
@@ -1351,7 +1351,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                             <?php
                                                     $no++;
@@ -1383,7 +1383,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1415,7 +1415,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1447,7 +1447,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1479,7 +1479,7 @@ $tahun = date('Y');
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
-                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -1542,7 +1542,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
@@ -1573,7 +1573,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
@@ -1604,7 +1604,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
@@ -1635,7 +1635,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
@@ -1666,7 +1666,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
@@ -1697,7 +1697,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
@@ -1728,7 +1728,7 @@ $tahun = date('Y');
                                                                 <i class="fas fa-eye"></i> Lihat
                                                             </a>
                                                         </td>
-                                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
