@@ -1869,7 +1869,7 @@ $tahun = date('Y');
                                                                 <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
-                                                                <a class="btn btn-primary btn-sm" href="surattugas-bukti.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-primary btn-sm" href="surattugas-bukti.php?token=<?= $token; ?>">
                                                                     <i class="fa fa-upload" aria-hidden="true"></i> Upload Bukti
                                                                 </a>
                                                             <?php

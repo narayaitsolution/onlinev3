@@ -11,7 +11,7 @@ $tgl = date('Y-m-d H:i:s');
 $bulan = date('m');
 $tahun = date('Y');
 //cari urutan surat di tahun ini untuk no surat
-$qurutan = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE year(tanggal)=$tahun");
+$qurutan = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE year(tglsurat)=$tahun");
 $urutan = mysqli_num_rows($qurutan) + 1;
 
 $nosurat = "B-" . $urutan . ".O/FST/KM.01.2/" . $bulan . "/" . $tahun . "";
@@ -27,7 +27,7 @@ $sql = mysqli_query($dbsurat, "UPDATE surattugas
 //cari NIP pembuat surat dulu
 $sql1 = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE token='$token'");
 $dsql1 = mysqli_fetch_array($sql1);
-$nim = $dsql1['nim'];
+$nim = $dsql1['nip'];
 
 //cari email pembuat surat dari NIP
 $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");

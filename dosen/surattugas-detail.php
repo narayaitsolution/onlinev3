@@ -140,9 +140,16 @@ $bukti = $dst['bukti'];
                     <div class="form-group row">
                       <label for="instansi" class="col-sm-2 col-form-label">Bukti Pelaksanaan</label>
                       <div class="col-sm-10">
-                        <a href="<?= $bukti; ?>" target="_blank"><img src="<?= $bukti; ?>" class="img-float" width="30%"></a>
+                        <?php
+                        if (!empty($bukti)) {
+                        ?>
+                          <a href="<?= $bukti; ?>" class="btn btn-primary" target="_blank"><i class="fa-solid fa-eye"></i> Lihat Laporan</a>
+                        <?php
+                        } else {
+                          echo '<b style="color:red;">Belum upload laporan pelaksanaan</b>';
+                        }
+                        ?>
                         <br>
-                        <small style="color: red;">Klik pada gambar untuk memperbesar</small>
                       </div>
                     </div>
                     <hr>

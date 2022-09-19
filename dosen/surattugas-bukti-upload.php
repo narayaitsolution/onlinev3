@@ -13,12 +13,12 @@ $nodata = mysqli_real_escape_string($dbsurat, $_POST['nodata']);
 $kode = uniqid();
 $target_dir = "../lampiran/";
 $fileTmpPath = $_FILES['bukti']['tmp_name'];
-$bukti_low = imgresize($fileTmpPath);
-$dest_path = $target_dir . $kode . '.jpg';
-
-
-if (move_uploaded_file($bukti_low, $dest_path)) {
-    $sql = mysqli_query($dbsurat, "UPDATE surattugas SET bukti='$dest_path',statussurat=3 WHERE token='$token' and nip='$nip'");
+$laporan = $target_dir . $kode . '.pdf';
+move_uploaded_file($fileTmpPath, $laporan);
+$info = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $laporan);
+$filesize = filesize($laporan);
+if ($info == 'application/pdf' && $filesize < 5242880) {
+    $sql = mysqli_query($dbsurat, "UPDATE surattugas SET bukti='$laporan',statussurat=3 WHERE token='$token' and nip='$nip'");
     header("location:index.php");
 } else {
     header("location:index.php?pesan=gagal");

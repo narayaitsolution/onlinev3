@@ -136,12 +136,18 @@ $lampiran = $dst['lampiran'];
                                                 <input type="text" class="form-control" id="tglpelaksanaan" name="tglpelaksanaan" value="<?= tgl_indo($tglpelaksanaan); ?>" readonly>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="instansi" class="col-sm-2 col-form-label">Template Laporan</label>
+                                            <div class="col-sm-10">
+                                                <a href="../doc/IzinOrangTua.docx" class="btn btn-primary" target="_blank"><i class="fa-solid fa-download"></i> Download Template</a>
+                                            </div>
+                                        </div>
                                         <form role="form" action="surattugas-bukti-upload.php" enctype="multipart/form-data" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Bukti Pelaksanaan</label>
                                                 <div class="col-sm-10">
-                                                    <input type="file" name="bukti" class="form-control" accept=".jpg,.jpeg" required>
-                                                    <small style="color: red;">Jenis file PDF ukuran maksimal 1MB</small>
+                                                    <input type="file" name="bukti" class="form-control" accept=".pdf" required>
+                                                    <small style="color: red;">Jenis file PDF ukuran maksimal 5MB</small>
                                                 </div>
                                             </div>
                                             <hr>
