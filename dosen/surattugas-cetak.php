@@ -161,7 +161,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
             <td>&nbsp;</td>
             <?php
             if ($validasi2 == 1) {
-                $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip='$validator2' AND kdjabatan='dekan'");
+                $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE kdjabatan='dekan'");
                 $dsql = mysqli_fetch_array($sql);
                 $ttd = $dsql['ttd'];
                 $jabatan = $dsql['jabatan'];
