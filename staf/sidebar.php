@@ -98,6 +98,15 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="kinerja-tampil.php" class="nav-link">
+                        <i class="nav-icon fa-solid fa-person-digging"></i>
+                        <p>
+                            Kinerja
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
                 <?php
                 if ($jabatan == 'kabag-tu') {
                 ?>
