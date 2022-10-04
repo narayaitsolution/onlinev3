@@ -194,8 +194,10 @@ $tahun = date('Y');
                                                 }
                                                 ?>
                                                 <img src="<?= $bukti; ?>" width="50%" class="img-fluid">
-                                                <br />
-                                                <input type="file" name="fileToUpload" class="form control" accept=".jpg,.jpeg">
+                                                <br>
+                                                <small style="color:red">File format JPG/JPEG ukuran Maks. 1 MB</small>
+                                                <br>
+                                                <input type="file" name="fileToUpload" class="form control" accept="image/jpg,image/jpeg">
                                             </div>
                                         </div>
                                         <div class="form-group row">
