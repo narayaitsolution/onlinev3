@@ -10,7 +10,8 @@
 </script>
 
 <!-- connect to db -->
-<?php require_once('../system/dbconn.php'); ?>
+<?php require('../system/dbconn.php'); ?>
+<?php require('../system/myfunc.php'); ?>
 <!-- ./db -->
 
 <!-- ambil data ijin lab dari tabel ijinlab -->
@@ -59,26 +60,26 @@ if ($cek > 0) {
 
 		<div class="container" align="center">
 			<p style="margin-top:2%">Nama</p>
-			<p style="font-weight: bold;margin-top:-4%"><?php echo $nama; ?></p>
-			<p style="margin-top:-4%">NIM <b><?php echo $nim; ?></b></p>
-			<p style="margin-top:-4%">Program Studi <b><?php echo $prodi; ?></b></p>
+			<p style="font-weight: bold;margin-top:-4%"><?= $nama; ?></p>
+			<p style="margin-top:-4%">NIM <b><?= $nim; ?></b></p>
+			<p style="margin-top:-4%">Program Studi <b><?= $prodi; ?></b></p>
 			<p style="margin-top:-4%">Laboratorium </p>
-			<p style="font-weight: bold;margin-top:-4%"><?php echo $namalab; ?></p>
+			<p style="font-weight: bold;margin-top:-4%"><?= $namalab; ?></p>
 			<p style="margin-top:-4%">Waktu Penggunaan Lab. </p>
-			<p style="font-weight: bold;margin-top:-4%"><?php echo tgl_indo($tglmulai) . " s/d " . tgl_indo($tglselesai); ?></p>
+			<p style="font-weight: bold;margin-top:-4%"><?= tgl_indo($tglmulai) . " s/d " . tgl_indo($tglselesai); ?></p>
 			<p style="margin-top:-4%">Dosen Pembimbing </p>
-			<p style="font-weight: bold;margin-top:-4%"><?php echo $dosen; ?></p>
+			<p style="font-weight: bold;margin-top:-4%"><?= namadosen($dbsurat, $dosen); ?></p>
 			<p style="margin-top:-4%">Surat Ijin Penggunaan Laboratorium </p>
-			<p style="font-weight: bold;margin-top:-4%"><img src="../qrcode/<?php echo $namafile . '.png'; ?>" width="140"></img></p>
+			<p style="font-weight: bold;margin-top:-4%"><img src="../qrcode/<?= $namafile . '.png'; ?>" width="140"></img></p>
 		</div>
 	</div>
 	<!--
 		<div class="id-1">
 			<center>
-				<img src=<?php echo "" ?> alt="Avatar" width="200px" height="175px" >        
+				<img src=<?= "" ?> alt="Avatar" width="200px" height="175px" >        
 				<div class="container" align="center">
 					<p style="margin:auto">The bearer whose photograph appears overleaf is a staff of</p>
-					<h2 style="color:#00BFFF;margin-left:2%">THE STATE OF <?php echo $idsx; ?> </h2>
+					<h2 style="color:#00BFFF;margin-left:2%">THE STATE OF <?= $idsx; ?> </h2>
 					<p style="margin:auto">If lost and found please return to the nearest police station</p>
 					<hr align="center" style="border: 1px solid black;width:80%;margin-top:13%"></hr> 
 					<p align="center" style="margin-top:-2%">Authorized Signature</p>
@@ -89,38 +90,7 @@ if ($cek > 0) {
 		-->
 </div>
 
-<?php
-function tgl_indo($tanggal)
-{
-	$bulan = array(
-		1 =>   'Januari',
-		'Februari',
-		'Maret',
-		'April',
-		'Mei',
-		'Juni',
-		'Juli',
-		'Agustus',
-		'September',
-		'Oktober',
-		'November',
-		'Desember'
-	);
-	$pecahkan = explode('-', $tanggal);
 
-	return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
-}
-
-function semester($tanggal)
-{
-	$pecahkan = explode('-', $tanggal);
-	if ($pecahkan[1] < 7) {
-		return "Genap Tahun Akademik " . $pecahkan[0] . "/" . $pecahkan[0];
-	} else {
-		return "Ganjil Tahun Akademik " . $pecahkan[0] . "/" . $pecahkan[0];
-	}
-}
-?>
 <style>
 	body {
 		background: #008080;

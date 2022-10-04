@@ -204,7 +204,7 @@
 
                             ?>
                                     <li class="nav-item">
-                                        <a href="ijinlab-isi.php" class="nav-link">
+                                        <a href="ijinlab-isi1.php" class="nav-link">
                                             <i class="nav-icon fas fa-flask"></i>
                                             <p>
                                                 Ijin Penggunaan Lab.

@@ -82,6 +82,19 @@ $no = 1;
                 </div>
             </section>
 
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col">
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>WAJIB!!</strong> Upload Bukti Vaksin <b>TERAKHIR</b> di profile user anda
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- tabel pengajuan pribadi -->
             <section class="content">
                 <div class="container-fluid">

@@ -190,12 +190,12 @@ $no = 1;
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        <!--
                                                         <tr>
                                                             <td>1</td>
                                                             <td>Bukti Screening COVID-19</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp1; ?>" target="_blank"><img src="<?= $lamp1; ?>" width="50%"></a></td>
                                                         </tr>
-                                                        <!--
                                                         <tr>
                                                             <td>2</td>
                                                             <td>Karantina Mandiri</td>
@@ -211,15 +211,15 @@ $no = 1;
                                                             <td>Pernyataan Karantina Mandiri di Malang</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp7; ?>" target="_blank"><img src="<?= $lamp7; ?>" width="50%"></a></td>
                                                         </tr>
--->
                                                         <tr>
                                                             <td>2</td>
                                                             <td>Kesediaan Orang Tua</td>
                                                             <td style="text-align: center;"><a href="<?= $lamp8; ?>" target="_blank"><img src="<?= $lamp8; ?>" width="50%"></a></td>
                                                         </tr>
+                                                    -->
                                                         <tr>
-                                                            <td>3</td>
-                                                            <td>Bukti Vaksin terakhir</td>
+                                                            <td>1</td>
+                                                            <td>Bukti Vaksin terakhir <b>(BOOSTER)</b></td>
                                                             <td style="text-align: center;"><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="50%"></a></td>
                                                         </tr>
                                                     </tbody>
@@ -252,7 +252,7 @@ $no = 1;
                                                                 } else {
                                                                     'Belum Disetujui';
                                                                 } ?></td>
-                                                            <td>Koordinator PKL</td>
+                                                            <td>Dosen Pembimbing</td>
                                                             <td><?= tgljam_indo($tglvalidasi0); ?></td>
                                                         </tr>
                                                     </tbody>

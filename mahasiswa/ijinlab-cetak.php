@@ -81,7 +81,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
 		<tr>
 			<td>&nbsp;</td>
 			<td colspan="4" align="center">
-				<h2>Nomor : <?php echo $keterangan; ?></h2>
+				<h2>Nomor : <?= $keterangan; ?></h2>
 			</td>
 			<td>&nbsp;</td>
 		</tr>
@@ -107,25 +107,25 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
 			<tr>
 				<td>&nbsp;</td>
 				<td>Nama</td>
-				<td colspan="3">: <?php echo $namadekan; ?></td>
+				<td colspan="3">: <?= $namadekan; ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>NIP</td>
-				<td colspan="3">: <?php echo $nipdekan; ?></td>
+				<td colspan="3">: <?= $nipdekan; ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>Jabatan</td>
-				<td colspan="3">: <?php echo $jabatandekan . " Fakultas Sains dan Teknologi"; ?></td>
+				<td colspan="3">: <?= $jabatandekan . " Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang"; ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td colspan="3"> Universitas Islam Negeri Maulana Malik Ibrahim Malang</td>
+				<td colspan="3"></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
@@ -152,37 +152,37 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
 			<tr>
 				<td>&nbsp;</td>
 				<td>Nama</td>
-				<td colspan="3">: <?php echo $nama; ?></td>
+				<td colspan="3">: <?= $nama; ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>NIM</td>
-				<td colspan="3">: <?php echo $nim; ?></td>
+				<td colspan="3">: <?= $nim; ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>Program Studi</td>
-				<td colspan="3">: <?php echo $prodi; ?></td>
+				<td colspan="3">: <?= $prodi; ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>Laboratorium</td>
-				<td colspan="3">: <?php echo $namalab; ?></td>
+				<td colspan="3">: <?= $namalab; ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>Penggunaan Laboratorium</td>
-				<td colspan="3">: <?php echo tgl_indo($tglmulai); ?> s/d <?php echo tgl_indo($tglselesai); ?></td>
+				<td colspan="3">: <?= tgl_indo($tglmulai); ?> s/d <?= tgl_indo($tglselesai); ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>Dosen Pembimbing</td>
-				<td colspan="3">: <?php echo $dosen; ?></td>
+				<td colspan="3">: <?= namadosen($dbsurat, $dosen); ?></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
@@ -227,7 +227,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
 				<td>&nbsp;</td>
 				<td style="text-align:center">
 					<small><i>Scan QRCode ini </i></small><br />
-					<img src="../qrcode/<?php echo $namafile; ?>.png" width="80" /><br />
+					<img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br />
 					<small><i>untuk verifikasi surat</i></small>
 				</td>
 				<td>&nbsp;</td>

@@ -65,8 +65,21 @@ if ($jhasil > 0) {
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
+                        <div class="col">
                             <h1>Dashboard</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col">
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>WAJIB!!</strong> Upload Bukti Vaksin <b>BOOSTER</b> di profile user anda
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,8 +180,9 @@ if ($jhasil > 0) {
                                                         $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE prodi like '%$jrs' AND hakakses='dosen' ORDER BY nama");
                                                         while ($ddosen = mysqli_fetch_array($qdosen)) {
                                                             $namadosen = $ddosen['nama'];
+                                                            $nipdosen = $ddosen['nip'];
                                                         ?>
-                                                            <option value="<?= $namadosen; ?>"><?= $namadosen; ?></option>
+                                                            <option value="<?= $nipdosen; ?>"><?= $namadosen; ?></option>
                                                         <?php
                                                         }
                                                         ?>
@@ -185,11 +199,11 @@ if ($jhasil > 0) {
                                                 <label for="tglselesai" class="col-sm-2 col-form-label">Selesai penggunaan Lab.</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" class="form-control" id="tglselesai" name="tglselesai" required>
-                                                    <small style="color:red">Penggunaan lab maksimal 3 bulan</small>
+                                                    <small style="color:red">Penggunaan lab maksimal 6 bulan</small>
                                                 </div>
                                             </div>
                                             <hr>
-                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Upload Lampiran</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Ajukan</button>
                                         </form>
                                     </div>
                                 </div>
