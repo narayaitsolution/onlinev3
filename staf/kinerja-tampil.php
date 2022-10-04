@@ -75,7 +75,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg">
-                            <div class="small-box bg-success">
+                            <div class="small-box bg-primary">
                                 <div class="inner">
                                     <h3>12 <sup style="font-size: 20px">Jam</sup></h3>
                                     <p>Total Jam Kerja</p>
@@ -87,7 +87,7 @@ $no = 1;
                         </div>
 
                         <div class="col-lg">
-                            <div class="small-box bg-primary">
+                            <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3>28 <sup style="font-size: 20px">Pekerjaan</sup></h3>
                                     <p>Sesuai TUSI</p>
@@ -112,21 +112,13 @@ $no = 1;
                 </div>
             </section>
 
+
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <?php
-                            if (isset($_GET['pesan'])) {
-                                if ($_GET['pesan'] == "over") {
-                            ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <strong>ERROR!</strong> lama izin melebihi sisa cuti
-                                    </div>
-                            <?php
-                                }
-                            }
-                            ?>
+                            <a href="kinerja-isi.php" class="btn btn-danger btn-lg btn-block">Tambah Data</a>
+                            <hr>
                         </div>
                     </div>
                 </div>
