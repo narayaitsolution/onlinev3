@@ -11,12 +11,12 @@ require('system/dbconn.php');
     <title>SAINTEK e-Office</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
-    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
-    <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="template/plugins/fontawesome6/css/all.css">
+    <link rel="stylesheet" href="template/plugins/fontawesome6/css/all.css">
+    <link rel="stylesheet" href="template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
 
 </head>
 
@@ -84,7 +84,7 @@ require('system/dbconn.php');
                 </table>
             </div>
         </div>
-        <a href="https://saintek.uin-malang.ac.id" class="btn btn-secondary btn-lg btn-block"><i class="fa-solid fa-backward-fast"></i> Kembali</a>
+        <a href="https://saintek.uin-malang.ac.id" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-backward-fast"></i> Kembali</a>
     </section>
 
     <script src="template/plugins/jquery/jquery.min.js"></script>
