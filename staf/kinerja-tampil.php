@@ -52,22 +52,46 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Rekap Kinerja</h1>
+                            <h1>Kinerja</h1>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- notifikasi -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                            ?>
+                                <div class="alert alert-danger alert-dismissible fade show">
+                                    <?= $_GET['pesan']; ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+            </section>
+            <!-- ambil data statistik-->
             <?php
-            //cek datacuti
-            $qsisa = mysqli_query($dbsurat, "SELECT * FROM izinsisa WHERE nip = '$nip'");
-            $jsisa = mysqli_num_rows($qsisa);
-            if ($jsisa > 0) {
-                $dsisa = mysqli_fetch_array($qsisa);
-                $sisacuti = $dsisa['sisa'];
-            } else {
-                $qinputsisa = mysqli_query($dbsurat, "INSERT INTO izinsisa (nip,sisa) VALUES ('$nip',12)");
-                $sisacuti = 12;
+            //sesuai tusi
+            $qjmlkinerjatusi = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE jeniskerja='TUSI'");
+            $jjmlkinerjatusi = mysqli_num_rows($qjmlkinerjatusi);
+            //tisak sesuai tusi
+            $qjmlkinerjanontusi = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE jeniskerja='Non-TUSI'");
+            $jjmlkinerjanontusi = mysqli_num_rows($qjmlkinerjanontusi);
+            //tisak sesuai tusi
+            $qjmlkinerjask = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE jeniskerja='SK'");
+            $jjmlkinerjask = mysqli_num_rows($qjmlkinerjask);
+            //jamkerja
+            $totalkerja = 0;
+            $qjamkerja = mysqli_query($dbsurat, "SELECT * FROM kinerja");
+            while ($djamkerja = mysqli_fetch_array($qjamkerja)) {
+                $lamakerja = $djamkerja['lamakerja'];
+                $totalkerja = $totalkerja + $lamakerja;
             }
             ?>
 
@@ -77,7 +101,7 @@ $no = 1;
                         <div class="col-lg">
                             <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h3>12 <sup style="font-size: 20px">Jam</sup></h3>
+                                    <h3><?= $totalkerja; ?> <sup style="font-size: 20px">Jam</sup></h3>
                                     <p>Total Jam Kerja</p>
                                 </div>
                                 <div class="icon">
@@ -89,8 +113,19 @@ $no = 1;
                         <div class="col-lg">
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>28 <sup style="font-size: 20px">Pekerjaan</sup></h3>
+                                    <h3><?= $jjmlkinerjatusi; ?> <sup style="font-size: 20px">Pekerjaan</sup></h3>
                                     <p>Sesuai TUSI</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa-solid fa-person-digging"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3><?= $jjmlkinerjanontusi; ?> <sup style="font-size: 20px">Pekerjaan</sup></h3>
+                                    <p>Diluar TUSI</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa-solid fa-person-digging"></i>
@@ -100,8 +135,8 @@ $no = 1;
                         <div class="col-lg">
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>100 <sup style="font-size: 20px">Pekerjaan</sup></h3>
-                                    <p>Diluar TUSI</p>
+                                    <h3><?= $jjmlkinerjask; ?> <sup style="font-size: 20px">Pekerjaan</sup></h3>
+                                    <p>Berdasarkan SK</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa-solid fa-person-digging"></i>
@@ -116,11 +151,11 @@ $no = 1;
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
-                            <a href="kinerja-isi.php" class="btn btn-danger btn-lg btn-block">Tambah Data</a>
-                            <hr>
+                        <div class="col">
+                            <a href="kinerja-isi.php" class="btn btn-danger btn-lg btn-block"><i class="fa-solid fa-square-plus"></i> Tambah Data</a>
                         </div>
                     </div>
+                    <hr>
                 </div>
             </section>
 
@@ -139,7 +174,54 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-
+                                        <table id="example1" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <tr>
+                                                    <td style="text-align:center">No</td>
+                                                    <td style="text-align:center">Tanggal</td>
+                                                    <td style="text-align:center">Kegiatan</td>
+                                                    <td style="text-align:center">Lama Kegiatan (jam)</td>
+                                                    <td style="text-align:center">Jenis Kegiatan</td>
+                                                    <td style="text-align:center">Aksi</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE nip='$nip' order by tglkerja desc");
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $tglkerja = $data['tglkerja'];
+                                                    $pekerjaan = $data['pekerjaan'];
+                                                    $lamakerja = $data['lamakerja'];
+                                                    $jeniskerja = $data['jeniskerja'];
+                                                    $verifikasi = $data['verifikasi'];
+                                                    $token = $data['token'];
+                                                    if ($verifikasi == 0) {
+                                                        $status = 'Belum di verifikasi';
+                                                    } elseif ($verifikasi == 1) {
+                                                        $status = 'Terverifikasi';
+                                                    } elseif ($verifikasi == 2) {
+                                                        $status = 'Ditolak atasan';
+                                                    }
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= tgl_indo($tglkerja); ?></td>
+                                                        <td><?= $pekerjaan; ?></td>
+                                                        <td style="text-align: center;"><?= $lamakerja; ?></td>
+                                                        <td style="text-align: center;"><?= $jeniskerja; ?></td>
+                                                        <td style="text-align: center;">
+                                                            <a class="btn btn-info btn-sm" href="kinerja-detail.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Detail
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -172,10 +254,14 @@ $no = 1;
     <script>
         $(function() {
             $("#example1").DataTable({
-                "responsive": true,
+                "paging": true,
                 "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "responsive": true,
+                "buttons": ["excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
