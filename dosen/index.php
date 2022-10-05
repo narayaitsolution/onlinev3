@@ -301,8 +301,9 @@ $tahun = date('Y');
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
+
                         <!-- Pengajuan Mahasiswa -->
-                        <div class="col-sm">
+                        <div class="col">
                             <div class="card card-warning">
                                 <div class="card-header">
                                     <h3 class="card-title">Pengajuan Surat Mahasiswa</h3>
@@ -1492,11 +1493,12 @@ $tahun = date('Y');
                             </div>
                         </div>
 
+                        <!-- pengajuan bawahan -->
                         <?php
                         if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
                         ?>
                             <!-- Pengajuan Bawahan -->
-                            <div class="col-sm">
+                            <div class="col">
                                 <div class="card card-success">
                                     <div class="card-header">
                                         <h3 class="card-title">Pengajuan Surat Bawahan</h3>
@@ -1751,48 +1753,6 @@ $tahun = date('Y');
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <?php
-                        if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
-                        ?>
-                            <!-- Disposisi Surat -->
-                            <div class="col-sm">
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Disposisi Surat</h3>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                    <?php $no = 1; ?>
-                                    <div class="card-body">
-                                        <table id="example4" class="table table-bordered table-hover text-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th style="text-align:center">No</th>
-                                                    <th style="text-align:center">Surat</th>
-                                                    <th style="text-align:center">Pengirim</th>
-                                                    <th style="text-align:center">Aksi</th>
-                                                    <th style="text-align:center">Tgl. Pengajuan</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- disposisi surat -->
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
 
                         <!-- Pengajuan Pribadi -->
                         <div class="col-sm">

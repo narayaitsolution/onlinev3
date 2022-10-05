@@ -372,70 +372,78 @@ $tahun = date('Y');
                     </div>
                 </div>
             </section>
+            <?php
+            $qoperatorskpi = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
+            $joperatorskpi = mysqli_num_rows($qoperatorskpi);
+            if ($joperatorskpi > 0) {
+            ?>
 
-            <!-- tabel pengajuan SKPI -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card card-secondary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Pengajuan SKPI Mahasiswa</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                <!-- tabel pengajuan SKPI -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Pengajuan SKPI Mahasiswa</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php $no = 1; ?>
-                                <div class="card-body p-0">
-                                    <div class="card-body">
-                                        <table id="example2" class="table table-bordered table-hover text-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th width="5%" style="text-align: center;">No</th>
-                                                    <th style="text-align: center;">Nama</th>
-                                                    <th style="text-align: center;">NIM</th>
-                                                    <th width="20%" style="text-align: center;">Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' and keterangan is null GROUP BY nim ORDER BY tanggal");
-                                                while ($data = mysqli_fetch_array($query)) {
-                                                    $nodata = $data['no'];
-                                                    $nim = $data['nim'];
-                                                    $nama = $data['nama'];
-                                                ?>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body p-0">
+                                        <div class="card-body">
+                                            <table id="example2" class="table table-bordered table-hover text-sm">
+                                                <thead>
                                                     <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= $nama; ?></td>
-                                                        <td><?= $nim; ?></td>
-                                                        <td style="text-align: center;">
-                                                            <a class="btn btn-info btn-sm" href="skpi-detail.php?nim=<?= $nim; ?>">
-                                                                <i class="fas fa-magnifying"></i> Detail
-                                                            </a>
-                                                        </td>
+                                                        <th width="5%" style="text-align: center;">No</th>
+                                                        <th style="text-align: center;">Nama</th>
+                                                        <th style="text-align: center;">NIM</th>
+                                                        <th width="20%" style="text-align: center;">Aksi</th>
                                                     </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' and keterangan is null GROUP BY nim ORDER BY tanggal");
+                                                    while ($data = mysqli_fetch_array($query)) {
+                                                        $nodata = $data['no'];
+                                                        $nim = $data['nim'];
+                                                        $nama = $data['nama'];
+                                                    ?>
+                                                        <tr>
+                                                            <td><?= $no; ?></td>
+                                                            <td><?= $nama; ?></td>
+                                                            <td><?= $nim; ?></td>
+                                                            <td style="text-align: center;">
+                                                                <a class="btn btn-info btn-sm" href="skpi-detail.php?nim=<?= $nim; ?>">
+                                                                    <i class="fas fa-magnifying"></i> Detail
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $no++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php
+            }
+            ?>
 
             <!-- tabel pengajuan pribadi -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card card-secondary">
+                            <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title">Pengajuan Surat Pribadi</h3>
                                     <div class="card-tools">

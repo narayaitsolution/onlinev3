@@ -374,7 +374,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="../laporkan" class="nav-link" onclick="return confirm('Membuat laporan kepada pimpinan Fakultas ?')">
+                    <a href="https://helpdesk.uin-malang.ac.id" class="nav-link" target="_blank">
                         <i class="nav-icon fa-solid fa-bullhorn"></i>
                         <p>
                             Laporkan Keluhan

@@ -357,8 +357,23 @@
                 <?php
                 }
                 ?>
+                <?php
+                if ($jabatan == 'dekan' || $jabatan == 'wadek1' || $jabatan == 'wadek2' || $jabatan == 'wadek3' || $jabatan == 'kaprodi') {
+                ?>
+                    <li class="nav-item">
+                        <a href="kinerja-rekap.php" class="nav-link" target="_blank">
+                            <i class="nav-icon fa-solid fa-person-digging"></i>
+                            <p>
+                                Kinerja Bawahan
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item">
-                    <a href="../laporkan" class="nav-link">
+                    <a href="https://helpdesk.uin-malang.ac.id" class="nav-link" target="_blank">
                         <i class="nav-icon fa-solid fa-bullhorn"></i>
                         <p>
                             Laporkan Keluhan

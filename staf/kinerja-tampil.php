@@ -78,17 +78,17 @@ $no = 1;
             <!-- ambil data statistik-->
             <?php
             //sesuai tusi
-            $qjmlkinerjatusi = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE jeniskerja='TUSI'");
+            $qjmlkinerjatusi = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE  nip='$nip' AND jeniskerja='TUSI'");
             $jjmlkinerjatusi = mysqli_num_rows($qjmlkinerjatusi);
             //tisak sesuai tusi
-            $qjmlkinerjanontusi = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE jeniskerja='Non-TUSI'");
+            $qjmlkinerjanontusi = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE nip='$nip' AND jeniskerja='Non-TUSI'");
             $jjmlkinerjanontusi = mysqli_num_rows($qjmlkinerjanontusi);
             //tisak sesuai tusi
-            $qjmlkinerjask = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE jeniskerja='SK'");
+            $qjmlkinerjask = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE nip='$nip' AND jeniskerja='SK'");
             $jjmlkinerjask = mysqli_num_rows($qjmlkinerjask);
             //jamkerja
             $totalkerja = 0;
-            $qjamkerja = mysqli_query($dbsurat, "SELECT * FROM kinerja");
+            $qjamkerja = mysqli_query($dbsurat, "SELECT * FROM kinerja WHERE nip='$nip'");
             while ($djamkerja = mysqli_fetch_array($qjamkerja)) {
                 $lamakerja = $djamkerja['lamakerja'];
                 $totalkerja = $totalkerja + $lamakerja;
