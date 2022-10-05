@@ -147,89 +147,13 @@ $tahun = date('Y');
                 </div>
             </section>
 
-            <!-- laporan -->
+            <!-- laporan 
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <?php
                         if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1') {
                         ?>
-                            <!-- LAPORAN -->
-                            <div class="col-sm">
-                                <div class="card card-danger">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Laporan</h3>
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
-                                        </div>
-                                    </div>
-                                    <?php $no = 1; ?>
-                                    <div class="card-body">
-                                        <table id="example4" class="table table-bordered table-hover text-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th style="text-align:center">No</th>
-                                                    <th style="text-align:center">Tgl. Laporan</th>
-                                                    <th style="text-align:center">Laporan</th>
-                                                    <th style="text-align:center">Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- laporan keluhan -->
-                                                <?php
-                                                $qlaporan = mysqli_query($dbsurat, "SELECT * FROM laporkan WHERE status=0");
-                                                while ($dlaporkan = mysqli_fetch_array($qlaporan)) {
-                                                    $nodata = $dlaporkan['no'];
-                                                    $tanggal = $dlaporkan['tanggal'];
-                                                    $unitterkait = $dlaporkan['unitterkait'];
-                                                    $keluhan = $dlaporkan['keluhan'];
-                                                    $kode = $dlaporkan['kode'];
-                                                    $laporan = 'Laporan Keluhan';
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= tgl_indo($tanggal); ?></td>
-                                                        <td><?= $laporan; ?></td>
-                                                        <td>
-                                                            <a class="btn btn-info btn-sm" href="laporan-keluhan-tampil.php?token=<?= $kode; ?>">
-                                                                <i class="fas fa-eye"></i> Lihat
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
-
-                                                <!-- laporan gratifikasi -->
-                                                <?php
-                                                $qlaporan = mysqli_query($dbsurat, "SELECT * FROM gratifikasi WHERE status=0");
-                                                while ($dlaporkan = mysqli_fetch_array($qlaporan)) {
-                                                    $nodata = $dlaporkan['no'];
-                                                    $tanggal = $dlaporkan['tanggal'];
-                                                    $laporan = 'Laporan Gratifikasi';
-                                                    $kode = $dlaporkan['kode'];
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= tgl_indo($tanggal); ?></td>
-                                                        <td><?= $laporan; ?></td>
-                                                        <td>
-                                                            <a class="btn btn-info btn-sm" href="laporan-gratifikasi-tampil.php?kode=<?= $kode; ?>">
-                                                                <i class="fas fa-eye"></i> Lihat
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-sm-4">
                                 <div class="card card-secondary">
                                     <div class="card-header">
@@ -269,7 +193,6 @@ $tahun = date('Y');
                                                 <div class="progress-bar bg-primary" style="width: <?= round($nilaipelayanan); ?>%"></div>
                                             </div>
                                         </div>
-                                        <!-- /.progress-group -->
 
                                         <div class="progress-group">
                                             Kecepatan Pelayanan
@@ -279,7 +202,6 @@ $tahun = date('Y');
                                             </div>
                                         </div>
 
-                                        <!-- /.progress-group -->
                                         <div class="progress-group">
                                             <span class="progress-text">Kejelasan Prosedur Pelayanan</span>
                                             <span class="float-right"><?= round($nilaikejelasan); ?>%</span>
@@ -296,6 +218,7 @@ $tahun = date('Y');
                     </div>
                 </div>
             </section>
+            -->
 
             <!-- tabel pengajuan bawahan & mahasiswa -->
             <section class="content">
