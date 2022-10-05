@@ -28,7 +28,7 @@ require('system/dbconn.php');
                 <h3 class="card-title">Penghargaan Mahasiswa</h3>
             </div>
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-striped text-sm">
+                <table id="example1" class="table table-bordered table-striped text-sm">
                     <thead>
                         <tr>
                             <th width="5%">No.</th>
@@ -73,7 +73,7 @@ require('system/dbconn.php');
                                 <td><?= $tingkat; ?></td>
                                 <td><?= $peringkat; ?></td>
                                 <td><?= $namakegiatan; ?></td>
-                                <td><a href="<?= $bukti; ?>" target="_blank">Lihat</a></td>
+                                <td><a href="<?= $bukti; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                             </tr>
                         <?php
                             $no++;
@@ -84,8 +84,7 @@ require('system/dbconn.php');
                 </table>
             </div>
         </div>
-        <a href="index.php" class="btn btn-primary">
-            << Kembali</a>
+        <a href="https://saintek.uin-malang.ac.id" class="btn btn-secondary btn-lg btn-block"><i class="fa-solid fa-backward-fast"></i> Kembali</a>
     </section>
 
     <script src="template/plugins/jquery/jquery.min.js"></script>
