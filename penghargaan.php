@@ -33,12 +33,12 @@ require('system/dbconn.php');
                         <tr>
                             <th width="5%">No.</th>
                             <th style="text-align: center;">Semester</th>
+                            <th style="text-align: center;">Peringkat</th>
+                            <th style="text-align: center;">Tingkat</th>
+                            <th style="text-align: center;">Kegiatan</th>
                             <th style="text-align: center;">Nama</th>
                             <th style="text-align: center;">NIM</th>
                             <th style="text-align: center;">Prodi</th>
-                            <th style="text-align: center;">Kegiatan</th>
-                            <th style="text-align: center;">Tingkat</th>
-                            <th style="text-align: center;">Peringkat</th>
                             <th style="text-align: center;">Nama Kegiatan</th>
                             <th style="text-align: center;">Bukti</th>
                         </tr>
@@ -48,7 +48,7 @@ require('system/dbconn.php');
 
                         <!-- PKL Koordinator-->
                         <?php
-                        $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE statussurat=1 ORDER BY tanggal DESC");
+                        $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validasi2='1' AND statussurat<'2' ORDER BY peringkat,tingkat,prodi");
                         $jmldata = mysqli_num_rows($query);
                         while ($data = mysqli_fetch_array($query)) {
                             $nodata = $data['no'];
@@ -66,12 +66,12 @@ require('system/dbconn.php');
                             <tr>
                                 <td><?= $no; ?></td>
                                 <td><?= semester(date('Y', strtotime($tanggal)), date('m', strtotime($tanggal))); ?></td>
+                                <td><?= $peringkat; ?></td>
+                                <td><?= $tingkat; ?></td>
+                                <td><?= $kegiatan; ?></td>
                                 <td><?= $nama; ?></td>
                                 <td><?= $nim; ?></td>
                                 <td><?= $prodi; ?></td>
-                                <td><?= $kegiatan; ?></td>
-                                <td><?= $tingkat; ?></td>
-                                <td><?= $peringkat; ?></td>
                                 <td><?= $namakegiatan; ?></td>
                                 <td><a href="<?= $bukti; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                             </tr>
