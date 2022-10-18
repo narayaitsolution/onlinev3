@@ -237,7 +237,7 @@ $tahun = date('Y');
                                 </div>
                                 <?php $no = 1; ?>
                                 <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover text-sm">
+                                    <table id="example1" class="table table-bordered table-hover text-sm">
                                         <thead>
                                             <tr>
                                                 <td style="text-align:center">No</td>
@@ -2036,10 +2036,14 @@ $tahun = date('Y');
     <script>
         $(function() {
             $("#example1").DataTable({
-                "responsive": true,
+                "paging": true,
                 "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "responsive": true,
+                "buttons": ["excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
