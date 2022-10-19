@@ -183,7 +183,6 @@ $no = 1;
                                                     $nama = $q['nama'];
                                                     $telepon = $q['telepon'];
                                                     $buktivaksin = $q['buktivaksin'];
-                                                    $token = $q['token'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
