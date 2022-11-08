@@ -157,7 +157,7 @@ $no = 1;
 
                                                 <!-- memasukkan pengusul -->
                                                 <?php
-                                                $qcari = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimanggota = '$nim'");
+                                                $qcari = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimanggota = '$nim' and token='$token'");
                                                 $jhasil = mysqli_num_rows($qcari);
                                                 if ($jhasil == 0) {
                                                     $qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
@@ -175,7 +175,7 @@ $no = 1;
                                                 ?>
 
                                                 <?php
-                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimketua='$nim'");
+                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimketua='$nim' and token='$token'");
                                                 $no = 1;
                                                 while ($q = mysqli_fetch_array($dataanggota)) {
                                                     $id = $q['id'];

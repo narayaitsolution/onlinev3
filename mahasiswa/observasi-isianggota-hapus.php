@@ -12,4 +12,5 @@ if ($qhapus) {
 } else {
     $status = 'failed';
 }
+
 header("location:observasi-isianggota.php?token=$token&keterangan=$status");
