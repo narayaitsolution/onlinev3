@@ -1326,6 +1326,9 @@ $no = 1;
                                                                             <i class="fas fa-file"></i>
                                                                             Lengkapi
                                                                         </a>
+                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
+                                                                            <i class="fas fa-trash"></i> Batalkan
+                                                                        </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 1) {
                                                                     ?>
