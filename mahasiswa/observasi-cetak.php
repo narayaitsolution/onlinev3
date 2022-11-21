@@ -151,7 +151,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
                 </tr>
                 <?php
                 // data peserta observasi
-                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE nimketua='$nim'");
+                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM observasianggota WHERE token='$token'");
                 while ($rowanggota = mysqli_fetch_array($dataanggota)) {
                     $nimanggota = $rowanggota['nimanggota'];
                     $namaanggota = $rowanggota['nama'];

@@ -1235,8 +1235,8 @@ $no = 1;
                                                 $jquery1 = mysqli_num_rows($query1);
                                                 if ($jquery1 > 0) {
                                                     while ($dquery1 = mysqli_fetch_array($query1)) {
-                                                        $nimketuaobservasi = $dquery1['nimketua'];
-                                                        $query2 = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE nim = '$nimketuaobservasi'");
+                                                        $tokenketua = $dquery1['token'];
+                                                        $query2 = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE token = '$tokenketua'");
                                                         while ($q = mysqli_fetch_array($query2)) {
                                                             $nodata = $q['no'];
                                                             $nimketua = $q['nim'];
