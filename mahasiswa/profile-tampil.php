@@ -111,7 +111,7 @@ $tahun = date('Y');
 
                         <!-- ambil data -->
                         <?php
-                        $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                        $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                         $duser = mysqli_fetch_array($quser);
                         $nohp = $duser['nohp'];
                         $email = $duser['email'];
@@ -119,6 +119,7 @@ $tahun = date('Y');
                         $user = $duser['user'];
                         $pass = $duser['pass'];
                         $buktivaksin = $duser['buktivaksin'];
+                        $token = $duser['token'];
                         ?>
                         <div class="col-md-9">
                             <div class="card card-primary">
@@ -139,7 +140,8 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nip" name="nip" value="<?= $nim; ?>" required>
+                                                <input type="text" class="form-control" id="nip" name="nip" value="<?= $nim; ?>" readonly>
+                                                <small style="color: red;">Laporkan jika terdapat kesalahan pada NIM anda</small>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -202,6 +204,7 @@ $tahun = date('Y');
                                         </div>
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
+                                                <input type="hidden" name="token" value="<?= $token; ?>">
                                                 <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')">UPDATE DATA</button>
                                             </div>
                                         </div>

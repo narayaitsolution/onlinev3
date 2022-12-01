@@ -33,9 +33,9 @@ if (!empty($fileName)) {
     if (in_array($fileExtension, $allowedfileExtensions)) {
         $dest_path = $target_dir . $nip . '-buktivaksin.jpg';
         if (move_uploaded_file($buktivaksin_low, $dest_path)) {
-            $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,user=?,pass=?,buktivaksin=? 
+            $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=?,user=?,pass=?,buktivaksin=? 
                                         WHERE nip=?");
-            $stmt->bind_param("sssssssss", $nama, $nip, $nohp, $email, $prodi, $userid, $passmd5, $dest_path, $nip);
+            $stmt->bind_param("ssssssss", $nama, $nohp, $email, $prodi, $userid, $passmd5, $dest_path, $nip);
             $stmt->execute();
             header("location:profile-tampil.php?nip=$nip&pesan=success");
         } else {
@@ -45,9 +45,9 @@ if (!empty($fileName)) {
         header("location:profile-tampil.php?nip=$nip&pesan=extention");
     };
 } else {
-    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,user=?,pass=? 
+    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=?,user=?,pass=? 
                                         WHERE nip=?");
-    $stmt->bind_param("ssssssss", $nama, $nip, $nohp, $email, $prodi, $userid, $passmd5, $nip);
+    $stmt->bind_param("sssssss", $nama, $nohp, $email, $prodi, $userid, $passmd5, $nip);
     $stmt->execute();
     header("location:profile-tampil.php?nip=$nip&pesan=success");
 }
