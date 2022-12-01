@@ -14,6 +14,7 @@ if ($prodi = 'Perpustakaan dan Ilmu Informasi') {
     $sql = mysqli_query($dbsurat, "UPDATE ijinpenelitian
 					                SET tglvalidasi1 = '$tgl', 
 					                    validasi1 = '1',
+                                        tglvalidasi2 = '$tgl', 
                                         validasi2 = '1'
 					                WHERE token = '$token'");
 
