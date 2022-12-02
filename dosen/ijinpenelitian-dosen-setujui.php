@@ -9,7 +9,7 @@ $nim = mysqli_real_escape_string($dbsurat, $_SESSION['nim']);
 $nama = mysqli_real_escape_string($dbsurat, $_SESSION['nama']);
 $prodi = $_SESSION['prodi'];
 
-if ($prodi = 'Perpustakaan dan Ilmu Informasi') {
+if ($prodi == 'Perpustakaan dan Ilmu Informasi') {
     //update status validasi dosen
     $sql = mysqli_query($dbsurat, "UPDATE ijinpenelitian
 					                SET tglvalidasi1 = '$tgl', 

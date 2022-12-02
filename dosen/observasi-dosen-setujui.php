@@ -9,7 +9,7 @@ $tgl = date('Y-m-d H:i:s');
 $nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
 $prodi = $_SESSION['prodi'];
 
-if ($prodi = 'Perpustakaan dan Ilmu Informasi') {
+if ($prodi == 'Perpustakaan dan Ilmu Informasi') {
     $sql = mysqli_query($dbsurat, "UPDATE observasi
                         SET tglvalidasi1 = '$tgl', 
                             validasi1 = '1',

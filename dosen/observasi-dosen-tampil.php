@@ -68,6 +68,7 @@ $no = 1;
             $row = mysqli_fetch_array($datamhs);
             $nimmhs = $row['nim'];
             $namamhs = $row['nama'];
+            $tujuan = $row['tujuan'];
             $instansi = $row['instansi'];
             $alamat = $row['alamat'];
             $tglpelaksanaan = $row['tglpelaksanaan'];
@@ -114,7 +115,13 @@ $no = 1;
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
+                                            <label for="instansi" class="col-sm-2 col-form-label">Tujuan Surat (Pimpinan Lembaga)</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" value="<?= $tujuan; ?>" name="tujuan" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="instansi" class="col-sm-2 col-form-label">Tujuan Observasi</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" value="<?= $instansi; ?>" name="instansi" readonly>
                                             </div>

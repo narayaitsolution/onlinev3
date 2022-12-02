@@ -164,7 +164,7 @@ $no = 1;
                                                     $dhasil = mysqli_fetch_array($qpengguna);
                                                     $nimketua = $dhasil['nip'];
                                                     $nimanggota = $dhasil['nip'];
-                                                    $namaanggota = $dhasil['nama'];
+                                                    $namaanggota = mysqli_real_escape_string($dbsurat, $dhasil['nama']);
                                                     $buktivaksin = $dhasil['buktivaksin'];
                                                     $nohp = $dhasil['nohp'];
 

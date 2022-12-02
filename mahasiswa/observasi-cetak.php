@@ -34,7 +34,11 @@ $nim = $rowsurat['nim'];
 $prodi = $rowsurat['prodi'];
 $matakuliah = $rowsurat['matakuliah'];
 $dosen = $rowsurat['dosen'];
+$tujuan = $rowsurat['tujuan'];
 $instansi = $rowsurat['instansi'];
+if (empty($tujuan)) {
+    $tujuan = $instansi;
+}
 $alamat = $rowsurat['alamat'];
 $tglpelaksanaan = date('Y-m-d', strtotime($rowsurat['tglpelaksanaan']));
 $tglvalidasi3 = $rowsurat['tglvalidasi3'];
@@ -114,7 +118,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td colspan="3">Yth. <?= $instansi; ?></td>
+                    <td colspan="3">Yth. <?= $tujuan; ?></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>

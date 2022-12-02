@@ -9,15 +9,16 @@ $nama = mysqli_real_escape_string($dbsurat, $_SESSION['nama']);
 $prodi = mysqli_real_escape_string($dbsurat, $_SESSION['prodi']);
 $matakuliah = mysqli_real_escape_string($dbsurat, $_POST['matakuliah']);
 $dosen = mysqli_real_escape_string($dbsurat, $_POST['dosen']);
+$tujuan = mysqli_real_escape_string($dbsurat, $_POST['tujuan']);
 $instansi = mysqli_real_escape_string($dbsurat, $_POST['instansi']);
 $alamat = mysqli_real_escape_string($dbsurat, $_POST['alamat']);
 $tglmulai = $_POST['tglmulai'];
 $token = md5(uniqid());
 
 //masukin data
-$stmt = $dbsurat->prepare("INSERT INTO observasi (tanggal, nim, nama, prodi, matakuliah, dosen, instansi, alamat, tglpelaksanaan, token) 
-                            VALUES (?,?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("ssssssssss", $tanggal, $nim, $nama, $prodi, $matakuliah, $dosen, $instansi, $alamat, $tglmulai, $token);
+$stmt = $dbsurat->prepare("INSERT INTO observasi (tanggal, nim, nama, prodi, matakuliah, dosen, tujuan, instansi, alamat, tglpelaksanaan, token) 
+                            VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("sssssssssss", $tanggal, $nim, $nama, $prodi, $matakuliah, $dosen, $tujuan, $instansi, $alamat, $tglmulai, $token);
 $stmt->execute();
 /*
 $qpkl = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE nim='$nim' and statussurat=-1");

@@ -68,6 +68,7 @@ $no = 1;
             $row = mysqli_fetch_array($datamhs);
             $nimmhs = $row['nim'];
             $namamhs = $row['nama'];
+            $tujuan = $row['tujuan'];
             $instansi = $row['instansi'];
             $alamat = $row['alamat'];
             $tglpelaksanaan = $row['tglpelaksanaan'];
@@ -117,7 +118,13 @@ $no = 1;
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
+                                            <label for="instansi" class="col-sm-2 col-form-label">Tujuan Surat (Pimpinan Lembaga)</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" value="<?= $tujuan; ?>" name="tujuan" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="instansi" class="col-sm-2 col-form-label">Tujuan Observasi</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" value="<?= $instansi; ?>" name="instansi" readonly>
                                             </div>
@@ -144,7 +151,7 @@ $no = 1;
                                         <div class="form-group row">
                                             <label for="anggotapkl" class="col-sm-2 col-form-label">Anggota Observasi</label>
                                             <div class="col-sm-10">
-                                                <table id="example2" class="table table-bordered table-hover">
+                                                <table id="example2" class="table table-bordered table-hover text-sm">
                                                     <thead>
                                                         <tr>
                                                             <th width="5%" style="text-align: center;">No</th>
@@ -183,7 +190,7 @@ $no = 1;
                                         <div class="form-group row">
                                             <label for="paktaintegritas" class="col-sm-2 col-form-label">Verifikator</label>
                                             <div class="col-sm-10">
-                                                <table id="example3" class="table table-bordered table-hover">
+                                                <table id="example3" class="table table-bordered table-hover text-sm">
                                                     <thead>
                                                         <tr>
                                                             <th width="5%" style="text-align: center;">No</th>
@@ -197,7 +204,7 @@ $no = 1;
                                                         <tr>
                                                             <td>1</td>
                                                             <td><?= namadosen($dbsurat, $validator1); ?></td>
-                                                            <td>Koordinator PKL</td>
+                                                            <td>Dosen</td>
                                                             <td><?php if ($validasi1 == 1) {
                                                                     echo 'Disetujui';
                                                                 } elseif ($validasi2 == 2) {
