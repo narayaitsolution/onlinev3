@@ -11,7 +11,7 @@ $hasil = mysqli_num_rows($carianggota);
 if ($hasil > 0) {
     $data = mysqli_fetch_array($carianggota);
     $nimanggota2 = $data['nip'];
-    $namaanggota2 = $data['nama'];
+    $namaanggota2 = mysqli_real_escape_string($dbsurat, $data['nama']);
     $notelepon = $data['nohp'];
     $buktivaksin = $data['buktivaksin'];
     if ($buktivaksin == null) {
