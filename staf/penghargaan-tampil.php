@@ -81,6 +81,8 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                   <th width="5%">No.</th>
                   <th>Nama</th>
                   <th>NIM</th>
+                  <th>No. HP</th>
+                  <th>E-Mail</th>
                   <th>Prodi</th>
                   <th>Kegiatan</th>
                   <th>Tingkat</th>
@@ -107,11 +109,17 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                   $bukti = $data['bukti'];
                   $namakegiatan = $data['namakegiatan'];
                   $token = $data['token'];
+                  $qnohp = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                  $dnohp = mysqli_fetch_array($qnohp);
+                  $nohp = $dnohp['nohp'];
+                  $email = $dnohp['email'];
                 ?>
                   <tr>
                     <td><?= $no; ?></td>
                     <td><?= $nama; ?></td>
                     <td><?= $nim; ?></td>
+                    <td><?= $nohp; ?></td>
+                    <td><?= $email; ?></td>
                     <td><?= $prodi; ?></td>
                     <td><?= $kegiatan; ?></td>
                     <td><?= $tingkat; ?></td>
