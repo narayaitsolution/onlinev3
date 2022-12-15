@@ -25,6 +25,7 @@ $pangkatbawahan = $dst['pangkat'];
 $jabatanbawahan = $dst['jabatan'];
 $untuk = $dst['untuk'];
 $tglpelaksanaan = $dst['tglpelaksanaan'];
+$tglselesai = $dst['tglselesai'];
 $lampiran = $dst['lampiran'];
 $validator1 = $dst['validator1'];
 $validasi1 = $dst['validasi1'];
@@ -139,16 +140,22 @@ $tglvalidasi1 = $dst['tglvalidasi1'];
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="instansi" class="col-sm-2 col-form-label">Tanggal Selesai</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="tglselesai" name="tglselesai" value="<?= tgl_indo($tglselesai); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="instansi" class="col-sm-2 col-form-label">Lampiran</label>
                                             <div class="col-sm-10">
-                                                <a href="<?= $lampiran; ?>" target="_blank"><img src="<?= $lampiran; ?>" width="50%"></a>
+                                                <a href="<?= $lampiran; ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> LIHAT</a>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="form-group row">
                                             <label for="paktaintegritas" class="col-sm-2 col-form-label">Verifikator</label>
                                             <div class="col-sm-10">
-                                                <table id="example2" class="table table-bordered table-hover">
+                                                <table id="example2" class="table table-bordered table-hover text-sm">
                                                     <thead>
                                                         <tr>
                                                             <th width="5%" style="text-align: center;">No</th>

@@ -38,6 +38,7 @@ $golongan = $data['golongan'];
 $jabatan = $data['jabatan'];
 $untuk = $data['untuk'];
 $tglpelaksanaan = $data['tglpelaksanaan'];
+$tglselesai = $data['tglselesai'];
 $validator2 = $data['validator2'];
 $validasi2 = $data['validasi2'];
 $tglvalidasi2 = $data['tglvalidasi2'];
@@ -120,7 +121,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", 'L', 4, 4);
         </tr>
         <tr>
             <td>Untuk</td>
-            <td colspan="5">: <?= $untuk; ?> pada tanggal <?= tgl_indo($tglpelaksanaan); ?></td>
+            <td colspan="5">: <?= $untuk; ?> pada tanggal <?= tgl_indo($tglpelaksanaan); ?> sampai dengan <?= tgl_indo($tglselesai); ?></td>
         </tr>
         <tr>
             <td colspan="6">&nbsp;</td>

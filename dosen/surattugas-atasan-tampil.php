@@ -25,6 +25,7 @@ $pangkatbawahan = $dst['pangkat'];
 $jabatanbawahan = $dst['jabatan'];
 $untuk = $dst['untuk'];
 $tglpelaksanaan = $dst['tglpelaksanaan'];
+$tglselesai = $dst['tglselesai'];
 $lampiran = $dst['lampiran'];
 
 ?>
@@ -136,9 +137,15 @@ $lampiran = $dst['lampiran'];
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="instansi" class="col-sm-2 col-form-label">Tanggal Selesai</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="tglselesai" name="tglselesai" value="<?= tgl_indo($tglselesai); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="instansi" class="col-sm-2 col-form-label">Lampiran</label>
                                             <div class="col-sm-10">
-                                                <a href="<?= $lampiran; ?>" target="_blank"><img src="<?= $lampiran; ?>" width="50%"></a>
+                                                <a href="<?= $lampiran; ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> LIHAT</a>
                                             </div>
                                         </div>
                                         <hr>

@@ -208,22 +208,28 @@ $no = 1;
                                                 <div class="col-sm-10">
                                                     <select name="kegiatan" class="form-control">
                                                         <option value="akademik">Kegiatan Akademik</option>
-                                                        <option value="umum">Kegiatan Umum</option>
+                                                        <option value="umum">Kegiatan Umum / Kepegawaian</option>
                                                         <option value="kemahasiswaan">Kegiatan Kemahasiswaan</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="instansi" class="col-sm-2 col-form-label">Tanggal Pelaksanaan</label>
+                                                <label for="instansi" class="col-sm-2 col-form-label">Tanggal Mulai</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" class="form-control" name="tglpelaksanaan" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label for="instansi" class="col-sm-2 col-form-label">Tanggal Selesai</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" name="tglselesai" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Lampiran</label>
                                                 <div class="col-sm-10">
-                                                    <input type="file" class="form-control" name="lampiran" accept=".jpg,.jpeg" required>
-                                                    <small style="color:red">Jenis File JPG/JPEG ukuran file maksimal 1MB</small>
+                                                    <input type="file" class="form-control" name="lampiran" accept=".pdf" required>
+                                                    <small style="color:red">Jenis File PDF ukuran file maksimal 5MB</small>
                                                 </div>
                                             </div>
                                             <hr>
