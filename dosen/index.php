@@ -1548,8 +1548,10 @@ $tahun = date('Y');
                                                     $jenissurat = 'Surat Tugas';
                                                     $keterangan = $data['keterangan'];
                                                     $validasi1 = $data['validasi1'];
+                                                    $tglvalidasi1 = $data['tglvalidasi1'];
                                                     $validator1 = $data['validator1'];
                                                     $validasi2 = $data['validasi2'];
+                                                    $tglvalidasi2 = $data['tglvalidasi2'];
                                                     $validator2 = $data['validator2'];
                                                     $statussurat = $data['statussurat'];
                                                     $keterangan = $data['keterangan'];
@@ -1563,7 +1565,7 @@ $tahun = date('Y');
                                                             if ($validasi1 == 0) {
                                                                 echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
                                                             } elseif ($validasi1 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
+                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator1) . ' pada ' . tgl_indo($tglvalidasi1);
                                                             } elseif ($validasi1 == 2) {
                                                                 echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
                                                             }
@@ -1573,7 +1575,7 @@ $tahun = date('Y');
                                                             if ($validasi2 == 0) {
                                                                 echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
                                                             } elseif ($validasi2 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
+                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator2) . ' pada ' . tgl_indo($tglvalidasi1);;
                                                             } elseif ($validasi2 == 2) {
                                                                 echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
                                                             }
