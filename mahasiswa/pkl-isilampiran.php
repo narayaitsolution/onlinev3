@@ -191,7 +191,7 @@ $no = 1;
                                     <?php
                                     } else {
                                     ?>
-                                        <a href="#" class="btn btn-success btn-block disabled"><i class="fa fa-check"></i> Ajukan Pengantar PKL </a>
+                                        <a href="#" class="btn btn-success btn-lg btn-block disabled"><i class="fa fa-check"></i> Ajukan Surat Pengantar </a>
                                     <?php
                                     }
                                     ?>

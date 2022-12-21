@@ -124,7 +124,7 @@ if ($jpkl > 0) {
                                             <div class="form-group row">
                                                 <label for="pklmagang" class="col-sm-2 col-form-label">PKL / Magang</label>
                                                 <div class="col-sm-10">
-                                                    <select class="form-control" id="pklmagang" name="pklmagang">
+                                                    <select class="form-control" id="pklmagang" name="pklmagang" disabled>
                                                         <option value="PKL" selected>PKL</option>
                                                         <option value="Magang">Magang</option>
                                                     </select>

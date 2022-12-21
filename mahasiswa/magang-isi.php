@@ -90,7 +90,7 @@ if ($jmagang > 0) {
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="magang-isitempat-simpan.php" method="POST" id="my-form">
+                                        <form action="pkl-isitempat-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
                                                 <div class="col-sm-10">
@@ -122,11 +122,11 @@ if ($jmagang > 0) {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="magangmagang" class="col-sm-2 col-form-label">agang</label>
+                                                <label for="magangmagang" class="col-sm-2 col-form-label">Magang</label>
                                                 <div class="col-sm-10">
-                                                    <select class="form-control" id="magangmagang" name="magangmagang">
-                                                        <option value="magang" selected>magang</option>
-                                                        <option value="Magang">Magang</option>
+                                                    <select class="form-control" id="magangmagang" name="magangmagang" disabled>
+                                                        <option value="PKL">PKL</option>
+                                                        <option value="Magang" selected>Magang</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -134,13 +134,15 @@ if ($jmagang > 0) {
                                                 <label for="jenismagang" class="col-sm-2 col-form-label">Luring / Daring</label>
                                                 <div class="col-sm-10">
                                                     <select class="form-control" id="jenismagang" name="jenismagang">
-                                                        <option value="Offline">Luring / Offline</option>
-                                                        <option value="Online" selected>Daring / Online</option>
+                                                        <option value="Offline" selected>Luring / Offline</option>
+                                                        <option value="Online">Daring / Online</option>
                                                     </select>
+                                                    <!--
                                                     <small style="color:red">
-                                                        <li>Upload <b>Pakta Integritas (<a href="../doc/paktaintegritasmagang.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>
+                                                        <li>Upload <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>
                                                         <li>Pastikan seluruh peserta magang sudah meng-upload bukti vaksin pada <b>Profile pengguna</b></li>
                                                     </small>
+        -->
                                                 </div>
                                             </div>
                                             <hr>
