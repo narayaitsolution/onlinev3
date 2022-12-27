@@ -189,6 +189,72 @@ $tahun = date('Y');
                                             ?>
                                             <!-- /. PKL as WD-->
 
+                                            <!-- magang as Kaprodi-->
+                                            <?php
+                                            $query = mysqli_query($dbsurat, "SELECT * FROM magang WHERE validator2='$nip' AND validasi2 = 0");
+                                            $jmldata = mysqli_num_rows($query);
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                $nodata = $data['no'];
+                                                $tanggal = $data['tanggal'];
+                                                $prodimhs = $data['prodi'];
+                                                $nama = stripslashes($data['nama']);
+                                                $surat = $data['pklmagang'];
+                                                $validasi1 = $data['validasi1'];
+                                                $validasi2 = $data['validasi2'];
+                                                $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td><?= 'Surat Pengantar ' . $surat; ?></td>
+                                                    <td><?= $nama; ?></td>
+                                                    <td><?= $prodimhs; ?></td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm" href="magang-kaprodi-tampil.php?token=<?= $token; ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                            <!-- /. magang as kaprodi-->
+
+                                            <!-- magang as WD-->
+                                            <?php
+                                            $query = mysqli_query($dbsurat, "SELECT * FROM magang WHERE validator3='$nip' AND validasi3 = 0 AND validasi2=1");
+                                            $jmldata = mysqli_num_rows($query);
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                $nodata = $data['no'];
+                                                $tanggal = $data['tanggal'];
+                                                $prodimhs = $data['prodi'];
+                                                $nama = stripslashes($data['nama']);
+                                                $surat = $data['pklmagang'];
+                                                $validasi1 = $data['validasi1'];
+                                                $validasi2 = $data['validasi2'];
+                                                $validasi3 = $data['validasi3'];
+                                                $token = $data['token'];
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td><?= 'Surat Pengantar ' . $surat; ?></td>
+                                                    <td><?= $nama; ?></td>
+                                                    <td><?= $prodimhs; ?></td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-sm" href="magang-wd-tampil.php?token=<?= $token; ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                            <!-- /. magang as WD-->
+
                                             <!-- ijin lab sebagai dosbing-->
                                             <?php
                                             $query = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE validator0='$nip' AND validasi0 = 0");

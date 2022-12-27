@@ -82,7 +82,7 @@ if ($jpkl > 0) {
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin PKL / Magang</h3>
+                                    <h3 class="card-title">Pengajuan Izin PKL</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -121,15 +121,7 @@ if ($jpkl > 0) {
                                                     <input type="date" class="form-control" id="tglselesai" name="tglselesai" required>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="pklmagang" class="col-sm-2 col-form-label">PKL / Magang</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" id="pklmagang" name="pklmagang" disabled>
-                                                        <option value="PKL" selected>PKL</option>
-                                                        <option value="Magang">Magang</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                            <input type="hidden" name="pklmagang" value="PKL">
                                             <div class="form-group row">
                                                 <label for="jenispkl" class="col-sm-2 col-form-label">Luring / Daring</label>
                                                 <div class="col-sm-10">

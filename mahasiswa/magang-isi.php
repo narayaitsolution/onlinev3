@@ -90,7 +90,7 @@ if ($jmagang > 0) {
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="pkl-isitempat-simpan.php" method="POST" id="my-form">
+                                        <form action="magang-isitempat-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
                                                 <div class="col-sm-10">
@@ -98,9 +98,9 @@ if ($jmagang > 0) {
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="tempatmagang" class="col-sm-2 col-form-label">Unit / Bagian</label>
+                                                <label for="tempatpkl" class="col-sm-2 col-form-label">Unit / Bagian</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="tempatmagang" name="tempatmagang" required>
+                                                    <input type="text" class="form-control" id="tempatpkl" name="tempatpkl" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -121,19 +121,11 @@ if ($jmagang > 0) {
                                                     <input type="date" class="form-control" id="tglselesai" name="tglselesai" required>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="pklmagang" value="Magang">
                                             <div class="form-group row">
-                                                <label for="magangmagang" class="col-sm-2 col-form-label">Magang</label>
+                                                <label for="jenispkl" class="col-sm-2 col-form-label">Luring / Daring</label>
                                                 <div class="col-sm-10">
-                                                    <select class="form-control" id="magangmagang" name="magangmagang" disabled>
-                                                        <option value="PKL">PKL</option>
-                                                        <option value="Magang" selected>Magang</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="jenismagang" class="col-sm-2 col-form-label">Luring / Daring</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" id="jenismagang" name="jenismagang">
+                                                    <select class="form-control" id="jenispkl" name="jenispkl">
                                                         <option value="Offline" selected>Luring / Offline</option>
                                                         <option value="Online">Daring / Online</option>
                                                     </select>

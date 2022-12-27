@@ -13,7 +13,6 @@ require('../system/dbconn.php');
 require('../system/myfunc.php');
 
 $nodata = $_GET['nodata'];
-
 $tahun = date('Y');
 $no = 1;
 ?>
@@ -108,7 +107,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin PKL</h3>
+                                    <h3 class="card-title">Pengajuan Izin Magang</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -116,7 +115,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="pkl-anggotatambah.php" id="my-form">
+                                        <form role="form" method="post" action="magang-anggotatambah.php" id="my-form">
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">NIM Anggota</label>
                                                 <div class="col-sm-8">
@@ -142,7 +141,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Anggota PKL</h3>
+                                    <h3 class="card-title">Anggota Magang</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -150,7 +149,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="pkl-anggotatambah.php">
+                                        <form role="form" method="post" action="magang-anggotatambah.php">
                                             <table id="example2" class="table table-bordered table-hover text-sm">
                                                 <thead>
                                                     <th width="5%" style="text-align: center;">No.</th>
@@ -162,7 +161,7 @@ $no = 1;
                                                 <tbody>
                                                     <!-- memasukkan pengusul -->
                                                     <?php
-                                                    $qcari = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota ='$nim' AND nodata='$nodata'");
+                                                    $qcari = mysqli_query($dbsurat, "SELECT * FROM maganganggota WHERE nimanggota ='$nim' AND nodata='$nodata'");
                                                     $jhasil = mysqli_num_rows($qcari);
                                                     if ($jhasil == 0) {
                                                         $qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
@@ -173,14 +172,14 @@ $no = 1;
                                                         $buktivaksin = $dhasil['buktivaksin'];
                                                         $nohp = $dhasil['nohp'];
 
-                                                        $qtambah = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama,telepon, buktivaksin) 
+                                                        $qtambah = "INSERT INTO maganganggota (nodata,nimketua, nimanggota, nama,telepon, buktivaksin) 
 																		values('$nodata','$nimketua','$nimanggota','$namaanggota','$nohp','$buktivaksin')";
                                                         $sql =  mysqli_query($dbsurat, $qtambah);
                                                     }
                                                     ?>
 
                                                     <?php
-                                                    $dataanggota = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimketua='$nim' and nodata='$nodata'");
+                                                    $dataanggota = mysqli_query($dbsurat, "SELECT * FROM maganganggota WHERE nimketua='$nim' and nodata='$nodata'");
                                                     $no = 1;
                                                     while ($q = mysqli_fetch_array($dataanggota)) {
                                                         $id = $q['id'];
@@ -195,7 +194,7 @@ $no = 1;
                                                             <td><?= $nimanggota; ?></td>
                                                             <td><a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" width="20%"></a></td>
                                                             <td>
-                                                                <form action="pkl-anggotahapus.php" method="POST" id="my-form">
+                                                                <form action="magang-anggotahapus.php" method="POST" id="my-form">
                                                                     <input type="hidden" name="id" value="<?= $id; ?>">
                                                                     <input type="hidden" name="nodata" value="<?= $nodata; ?>">
                                                                     <button type="submit" id="btn-submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus anggota ini ?');"><i class="fa fa-trash"></i></button>
@@ -211,7 +210,7 @@ $no = 1;
                                     </div>
                                 </div>
                             </div>
-                            <a href="pkl-isilampiran.php?nodata=<?= $nodata; ?>" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-file"></i> Isi Lampiran <i class="fa fa-arrow-right"></i></a>
+                            <a href="magang-isilampiran.php?nodata=<?= $nodata; ?>" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-file"></i> Isi Lampiran <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

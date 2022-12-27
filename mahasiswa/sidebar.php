@@ -106,7 +106,7 @@
                                     } else {
                                     ?>
                                         <li class="nav-item">
-                                            <a href="Magang-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
+                                            <a href="magang-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
                                                 <i class="nav-icon fas fa-users"></i>
                                                 <p>Pengantar Magang</p>
                                             </a>
