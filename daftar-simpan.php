@@ -39,8 +39,10 @@ if ($kunci == $jawaban) {
 		<br />
 		Pendaftaran pengguna pada SAINTEK e-Office telah berhasil dilakukan.
         <br/>
-        Silahkan login ke sistem SAINTEK e-Office menggunakan UserID dan Password yang telah anda daftarkan.
+        Silahkan tunggu proses verifikasi user. Akan membutuhkan waktu maksimal 1x24 jam.
 		<br />
+        Akan terdapat email notifikasi ketika akun anda sudah aktif dan dapat digunakan.
+        <br/>
         Silahkan membalas email ini apabila ada pertanyaan terkait proses pendaftaran ini
         <br/>        
         Wassalamualaikum wr. wb.
