@@ -60,7 +60,7 @@ $tahun = date('Y');
             </section>
 
             <?php
-            if ($nip = '198312132019031004') {
+            if ($nip == '198312132019031004') {
             ?>
                 <!-- tabel Registrasi User baru -->
                 <section class="content">
