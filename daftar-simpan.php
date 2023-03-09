@@ -25,7 +25,7 @@ if ($kunci == $jawaban) {
         header('location:daftar.php?pesan=registered');
     } else {
         $hakakses = 'mahasiswa';
-        $aktif = 1;
+        $aktif = 0;
         $stmt = $dbsurat->prepare("INSERT INTO pengguna (nama, nip, nohp, email, prodi, fakultas, user, pass,hakakses,token,aktif) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("sssssssssss", $nama, $nip, $nohp, $email, $prodi, $fakultas, $username, $passmd5, $hakakses, $token, $aktif);
         $stmt->execute();
