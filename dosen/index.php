@@ -1940,6 +1940,7 @@ $tahun = date('Y');
     <script src="../template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="../template/dist/js/adminlte.min.js"></script>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
 
     <script>
         $(function() {

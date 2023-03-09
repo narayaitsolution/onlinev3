@@ -73,6 +73,12 @@ $tahun = date('Y');
                             <div class="alert alert-danger alert-dismissible fade show">
                                 <strong>ERROR!</strong> perubahan data gagal
                             </div>
+                        <?php
+                        } elseif ($_GET['pesan'] == "extention") {
+                        ?>
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <strong>ERROR!</strong> Format file salah!!
+                            </div>
                     <?php
                         }
                     }
