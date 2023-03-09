@@ -1,16 +1,6 @@
 <?php
-session_start();
-$user = $_SESSION['user'];
-$nip = $_SESSION['nip'];
-$nama = $_SESSION['nama'];
-$prodi = $_SESSION['prodi'];
-$hakakses = $_SESSION['hakakses'];
-$jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "dosen") {
-    header("location:../deauth.php");
-}
-require('../system/dbconn.php');
-require('../system/myfunc.php');
+require('system/dbconn.php');
+require('system/myfunc.php');
 $no = 1;
 $tahun = date('Y');
 ?>
@@ -23,10 +13,10 @@ $tahun = date('Y');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SAINTEK e-Office</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
-    <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="template/plugins/fontawesome6/css/all.css">
+    <link rel="stylesheet" href="template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Google Chart -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -262,18 +252,18 @@ $tahun = date('Y');
     </script>
 </head>
 
-<body class="hold-transition sidebar-mini text-sm">
+<body class="hold-transition login-page">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
         <?php
-        require('navbar.php');
+        //require('dosen/navbar.php');
         ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <?php
-        require('sidebar.php');
+        //require('sidebar.php');
         ?>
         <!-- ./Main Sidebar Container -->
 
@@ -651,21 +641,21 @@ $tahun = date('Y');
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
-    <script src="../template/plugins/jquery/jquery.min.js"></script>
-    <script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../template/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../template/plugins/jszip/jszip.min.js"></script>
-    <script src="../template/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../template/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script src="../template/dist/js/adminlte.min.js"></script>
+    <script src="template/plugins/jquery/jquery.min.js"></script>
+    <script src="template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="template/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="template/plugins/jszip/jszip.min.js"></script>
+    <script src="template/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="template/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="template/dist/js/adminlte.min.js"></script>
 
 
     <script>

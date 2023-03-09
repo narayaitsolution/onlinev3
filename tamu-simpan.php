@@ -6,27 +6,30 @@ require('system/myfunc.php');
 
 date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
-$suhu = $_POST['suhu'];
+$suhu = 00;
 $nama = $_POST['nama'];
 $instansi = $_POST['instansi'];
 $tujuan = $_POST['tujuan'];
 $keperluan = $_POST['keperluan'];
 $nohp = $_POST['nohp'];
-$email = $_POST['email'];
+$email = '';
 $hakakses = 'tamu';
 
+/*
 if ($suhu >= 37.3) {
     header("location:tamu-masuk.php?pesan=tinggi");
 } elseif ($suhu < 35) {
     header("location:tamu-masuk.php?pesan=rendah");
 } else {
-    $stmt = $dbsurat->prepare("INSERT INTO masukfakultas (tanggal, nama, instansiasal, prodi, hakakses,suhu, keperluan, nohp,email,jammasuk)
+*/
+$stmt = $dbsurat->prepare("INSERT INTO masukfakultas (tanggal, nama, instansiasal, prodi, hakakses,suhu, keperluan, nohp,email,jammasuk)
                                 VALUES (?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("ssssssssss", $tanggal, $nama, $instansi, $tujuan, $hakakses, $suhu, $keperluan, $nohp, $email, $tanggal);
-    $stmt->execute();
-    $namaurl = urlencode($nama);
+$stmt->bind_param("ssssssssss", $tanggal, $nama, $instansi, $tujuan, $hakakses, $suhu, $keperluan, $nohp, $email, $tanggal);
+$stmt->execute();
+$namaurl = urlencode($nama);
 
-    //kirim email
+//kirim email
+/*
     $subject = "Pelayanan Fakultas SAINTEK UIN Malang";
     $pesan = "Yth. " . $nama . "<br/>
         <br/>
@@ -50,6 +53,8 @@ if ($suhu >= 37.3) {
         <br/>
         <b>SAINTEK Online</b>";
     sendmail($email, $nama, $subject, $pesan);
-
-    header("location:tamu-tampil.php?nama=$namaurl");
+    */
+header("location:tamu-tampil.php?nama=$namaurl");
+/*
 }
+*/

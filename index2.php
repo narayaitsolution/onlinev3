@@ -46,7 +46,8 @@ require('system/myfunc.php');
                 <?php
                     }
                 } ?>
-                <p class="login-box-msg h3"><b>SAINTEK</b> <br />Gateway Check</p>
+                <p class="login-box-msg h3"><b>SAINTEK</b> <br />Buku Tamu Digital</p>
+                <!--
                 <form action="civitas-auth.php" method="post" id="my-form">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="User ID" name="userid" required>
@@ -70,7 +71,8 @@ require('system/myfunc.php');
                     <a href="daftar.php" class="btn btn-warning btn-lg btn-block"><i class="fa-solid fa-users"></i> DAFTAR</a>
                 </form>
                 <hr>
-                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-users"></i> Tamu</a>
+                -->
+                <a href="tamu-isi.php" class="btn btn-success btn-lg btn-block"><i class="fa-solid fa-users"></i> Tamu Klik Disini</a>
             </div>
         </div>
     </div>

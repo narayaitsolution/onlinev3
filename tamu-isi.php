@@ -37,8 +37,10 @@ date_default_timezone_set("Asia/Jakarta");
                 <p style="text-align: center;"><?= tgljam_indo(date('Y-m-d H:i:s')); ?></p>
                 <hr>
                 <form action="tamu-simpan.php" method="post" id="my-form">
+                    <!--
                     <label>Suhu Tubuh</label>
                     <input type="number" class="form-control" step="any" id="suhu" name="suhu" required>
+                    -->
                     <label>Nama</label>
                     <input type="text" class="form-control" id="nama" name="nama" required>
                     <label>Asal Instansi</label>
@@ -60,8 +62,10 @@ date_default_timezone_set("Asia/Jakarta");
                     <input type="text" class="form-control" id="keperluan" name="keperluan" required>
                     <label>No. Telepon / HP</label>
                     <input type="text" class="form-control" id="nohp" name="nohp" required>
+                    <!--
                     <label>E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email">
+                    -->
                     <hr>
                     <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm ('Saya menyatakan bahwa data yang saya masukkan adalah benar')">MASUK <i class="fa-solid fa-right-to-bracket"></i></button>
                 </form>

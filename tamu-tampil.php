@@ -40,9 +40,12 @@ date_default_timezone_set("Asia/Jakarta");
                 <p style="text-align: center;"><?= tgljam_indo(date('Y-m-d H:i:s')); ?></p>
                 <hr>
                 Selamat datang di Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang. <br />
+                Semoga anda puas dengan pelayanan kami.
+                <!--
                 Untuk peningkatan layanan kami, mohon dapat melakukan penilaian pelayanan melalui email yang telah kami kirimkan.
+                -->
                 <hr>
-                <a href="https://saintek.uin-malang.ac.id" class="btn btn-lg btn-block btn-primary">SELESAI</a>
+                <a href="https://saintek.uin-malang.ac.id" class="btn btn-lg btn-block btn-primary">Kembali</a>
             </div>
         </div>
     </div>
