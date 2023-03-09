@@ -16,7 +16,7 @@ function sendmail($email, $nama, $subject, $pesan)
 	$mail->Host = "tls://smtp.gmail.com"; //host mail server
 	$mail->SMTPAuth = true;
 	$mail->Username = "saintekonline@gmail.com";   //nama-email smtp          
-	$mail->Password = "kxcicnnceltzxatz";           //password email smtp
+	$mail->Password = "pvlsbbenrodpqcri";           //password email smtp
 	$mail->SMTPSecure = "tls";
 	$mail->Port = 587;
 	$mail->From = "saintekonline@gmail.com"; //email pengirim

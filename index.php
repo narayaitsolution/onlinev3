@@ -48,9 +48,16 @@ require('system/myfunc.php');
             <div class="alert alert-success alert-dismissible fade show">
               <strong>RESET berhasil</strong> cek email anda
             </div>
+          <?php
+          } elseif ($_GET['pesan'] == "daftarok") {
+          ?>
+            <div class="alert alert-success alert-dismissible fade show">
+              <strong>Pendaftaran Berhasil</strong> tunggu verifikasi akun.
+            </div>
         <?php
           }
-        } ?>
+        }
+        ?>
         <p class="login-box-msg h3"><b>SAINTEK</b> e-Office</p>
         <form action="auth.php" method="post" id="my-form">
           <div class="input-group mb-3">

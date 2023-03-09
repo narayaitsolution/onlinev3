@@ -99,7 +99,7 @@ require('system/myfunc.php');
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="userif" class="form-control" placeholder="User ID" name="userid" required>
+            <input type="userid" class="form-control" placeholder="NIM" name="userid" required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
