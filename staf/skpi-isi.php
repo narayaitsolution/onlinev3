@@ -122,11 +122,11 @@ $no = 1;
                                         <table id="example1" class="table table-bordered table-hover text-sm">
                                             <thead>
                                                 <tr>
-                                                    <th width=5%" style="text-align: center;">No</th>
-                                                    <th style="text-align: center;">Capaian Pembelajaran</th>
-                                                    <th style="text-align: center;">Indonesia</th>
-                                                    <th style="text-align: center;">English</th>
-                                                    <th style="text-align: center;">Aksi</th>
+                                                    <th width="5%" style="text-align: center;">No</th>
+                                                    <th style="text-align: center;" width="10%">Capaian Pembelajaran</th>
+                                                    <th style="text-align: center;" width="40%">Indonesia</th>
+                                                    <th style="text-align: center;" width="40%">English</th>
+                                                    <th style="text-align: center;" width="5%">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -144,7 +144,7 @@ $no = 1;
                                                         <td><?= $indonesia; ?></td>
                                                         <td><?= $english; ?></td>
                                                         <td style="text-align: center;">
-                                                            <a class="btn btn-danger btn-sm" href="skpi-hapus.php?no=<?= $nodata; ?>">
+                                                            <a class="btn btn-danger btn-sm" href="skpi-hapus.php?no=<?= $nodata; ?>" onclick="return confirm ('Yakin hapus data ini ?')">
                                                                 <i class="fas fa-trashbin"></i> Hapus
                                                             </a>
                                                         </td>
@@ -192,8 +192,8 @@ $no = 1;
                 "searching": true,
                 "ordering": true,
                 "info": true,
-                "autoWidth": true,
-                "responsive": true,
+                "autoWidth": false,
+                "responsive": false,
                 "buttons": ["excel", "pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({

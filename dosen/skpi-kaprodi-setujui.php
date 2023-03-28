@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('../system/dbconn.php');
+require('../system/phpmailer/sendmail.php');
 
 $nip = $_SESSION['nip'];
 $nimmhs = mysqli_real_escape_string($dbsurat, $_POST['nim']);
@@ -74,19 +75,19 @@ $qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan
 
 //kirim email ke wd1
 //cari email wd1 dari NIP
-$sql2 = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE nim='$nim'");
+$sql2 = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE nim='$nimmhs'");
 $dsql2 = mysqli_fetch_array($sql2);
 $nama = $dsql2['nama'];
 $nipkajur = $dsql2['verifikator3'];
-$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkajur'");
+$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwd1'");
 $dsql3 = mysqli_fetch_array($sql3);
-$namakajur = $dsql3['nama'];
-$emailkajur = $dsql3['email'];
+$namawd1 = $dsql3['nama'];
+$emailwd1 = $dsql3['email'];
 
 //kirim email
 $surat = 'Keterangan Pendamping Ijazah';
 $subject = "Pengajuan Surat " . $surat;
-$pesan = "Yth. " . $namakajur . "<br/>
+$pesan = "Yth. " . $namawd1 . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
         <br />
@@ -104,7 +105,7 @@ $pesan = "Yth. " . $namakajur . "<br/>
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
-sendmail($emailkajur, $namakajur, $subject, $pesan);
+sendmail($emailwd1, $namawd1, $subject, $pesan);
 
 
 header("location:index.php");

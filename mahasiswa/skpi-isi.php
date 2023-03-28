@@ -60,15 +60,21 @@ $no = 1;
                 </div>
             </section>
 
-            <!-- alert bukti vaksin -->
-            <?php
-            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
-            $qdata = mysqli_fetch_array($quser);
-            $buktivaksin = $qdata['buktivaksin'];
-            if (empty($buktivaksin)) {
-                echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
-            }
-            ?>
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col">
+                            <?php
+                            $pesan = $_GET['pesan'];
+                            ?>
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>ERROR!!</strong> <?= $pesan; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- tabel pengajuan pribadi -->
             <section class="content">

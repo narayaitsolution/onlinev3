@@ -1467,6 +1467,7 @@ $tahun = date('Y');
                                 if ($jdata > 0) {
                                     while ($data = mysqli_fetch_array($query)) {
                                         $nodata = $data['no'];
+                                        $nim = $data['nim'];
                                         $tanggal = $data['tanggal'];
                                         $prodimhs = $data['prodi'];
                                         $nama = stripslashes($data['nama']);
