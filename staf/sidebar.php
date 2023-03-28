@@ -98,6 +98,7 @@
                         </li>
                     </ul>
                 </li>
+                <!--
                 <li class="nav-item">
                     <a href="kinerja-tampil.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-person-digging"></i>
@@ -107,6 +108,7 @@
                         </p>
                     </a>
                 </li>
+                            -->
                 <?php
                 if ($jabatan == 'kabag-tu') {
                 ?>
@@ -210,6 +212,36 @@
                             <?php
                             }
                             ?>
+                        </ul>
+                    </li>
+                <?php
+                }
+                ?>
+                <!-- menu operator SKRIPSI -->
+                <?php
+                $qoperator = mysqli_query($dbsurat, "SELECT * FROM skripsi_operator WHERE kode='$nip'");
+                $jmldata = mysqli_num_rows($qoperator);
+                if ($jmldata == 1) {
+
+                ?>
+                    <li class="nav-item has-treeview menu-close">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                SKRIPSI
+                                <!--<span class="right badge badge-danger">BARU</span>-->
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="skripsi-isi.php" class="nav-link">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Progress Mahasiswa
+                                    </p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 <?php
