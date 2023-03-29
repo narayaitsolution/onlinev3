@@ -15,7 +15,7 @@ $tahun = date('Y');
 $no = 1;
 
 //jika sudah ijin pkl tidak boleh ijin lagi
-$qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim'");
+$qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim' and statussurat<3");
 $jpkl = mysqli_num_rows($qpkl);
 if ($jpkl > 0) {
     header("location:index.php");
@@ -126,8 +126,8 @@ if ($jpkl > 0) {
                                                 <label for="jenispkl" class="col-sm-2 col-form-label">Luring / Daring</label>
                                                 <div class="col-sm-10">
                                                     <select class="form-control" id="jenispkl" name="jenispkl">
-                                                        <option value="Offline">Luring / Offline</option>
-                                                        <option value="Online" selected>Daring / Online</option>
+                                                        <option value="Offline" selected>Luring / Offline</option>
+                                                        <option value="Online">Daring / Online</option>
                                                     </select>
                                                     <small style="color:red">
                                                         <li>Upload <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>

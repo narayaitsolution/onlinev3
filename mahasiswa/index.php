@@ -332,7 +332,7 @@ $no = 1;
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    Ditolak Dosen Koordinator PKL <?= namadosen($dbsurat, $validator1); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
+                                                                    Ditolak / dibatalkan Dosen Koordinator PKL <?= namadosen($dbsurat, $validator1); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
                                                                 <?php
                                                                 };
                                                                 ?>
@@ -348,7 +348,7 @@ $no = 1;
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    Ditolak oleh Ketua Program Studi <?= namadosen($dbsurat, $validator2); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
+                                                                    Ditolak / dibatalkan oleh Ketua Program Studi <?= namadosen($dbsurat, $validator2); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
                                                                 <?php
                                                                 };
                                                                 ?>
@@ -364,7 +364,7 @@ $no = 1;
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    Ditolak oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
+                                                                    Ditolak / dibatalkan oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
                                                             <?php
                                                                 }
                                                             };

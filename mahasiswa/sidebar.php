@@ -55,7 +55,7 @@
                                 $qdata = mysqli_fetch_array($quser);
                                 $buktivaksin = $qdata['buktivaksin'];
                                 if (!empty($buktivaksin)) {
-                                    $qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim'");
+                                    $qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim' and statussurat<3");
                                     $jpkl = mysqli_num_rows($qpkl);
                                     if ($jpkl > 0) {
                             ?>

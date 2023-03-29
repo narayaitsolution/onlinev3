@@ -122,6 +122,8 @@ $tahun = date('Y');
                                                     echo ' <b style="color:green;">telah disetujui</b>';
                                                 } elseif ($validasi1 == 2) {
                                                     echo ' <b style="color:red;">ditolak</b>';
+                                                } elseif ($validasi1 == 3) {
+                                                    echo ' <b style="color:red;">dibatalkan</b>';
                                                 };
                                                 echo '<br/>';
 
@@ -133,6 +135,8 @@ $tahun = date('Y');
                                                     echo ' <b style="color:green;">telah disetujui</b>';
                                                 } elseif ($validasi2 == 2) {
                                                     echo ' <b style="color:red;">ditolak</b>';
+                                                } elseif ($validasi2 == 3) {
+                                                    echo ' <b style="color:red;">dibatalkan</b>';
                                                 };
                                                 echo '<br/>';
 
@@ -144,6 +148,8 @@ $tahun = date('Y');
                                                     echo ' <b style="color:green;">telah disetujui</b>';
                                                 } elseif ($validasi3 == 2) {
                                                     echo ' <b style="color:red;">ditolak</b>';
+                                                } elseif ($validasi3 == 3) {
+                                                    echo ' <b style="color:red;">dibatalkan</b>';
                                                 };
                                                 echo '<br/>';
                                                 ?>
@@ -162,6 +168,12 @@ $tahun = date('Y');
                                                     <i class="fas fa-ban"></i>
                                                 </a>
                                             <?php
+                                            } elseif ($statussurat == 3) {
+                                            ?>
+                                                <a class="btn btn-warning btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                                </a>
+                                            <?php
                                             } else {
                                             ?>
                                                 <a class="btn btn-secondary btn-sm" onclick="return alert('Dalam proses verifikasi')">
@@ -170,7 +182,7 @@ $tahun = date('Y');
                                             <?php
                                             }
                                             ?>
-                                            <a class="btn btn-danger btn-sm" href="pengajuanmhs-pklhapus.php?nodata=<?= $nodata; ?>" onclick="return alert('Menghapus pengajuan ini ?')">
+                                            <a class="btn btn-danger btn-sm" href="pengajuanmhs-pklhapus.php?nodata=<?= $nodata; ?>" onclick="return alert('Membatalkan pengajuan ini ?')">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
