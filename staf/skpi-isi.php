@@ -55,6 +55,35 @@ $no = 1;
                 </div>
             </section>
 
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col">
+                            <?php
+                            if (isset($pesan)) {
+                                $pesan = $_GET['pesan'];
+                                if ($pesan = 'berhasil') {
+                            ?>
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>BERHASIL!!</strong> aksi data berhasil
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>GAGAL!!</strong> aksi gagal!!
+                                    </div>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- tabel pengajuan pribadi -->
             <section class="content">
                 <div class="container-fluid">
@@ -70,7 +99,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="skp-simpan.php" method="POST">
+                                        <form action="skpi-simpan.php" method="POST">
                                             <div class="form-group row">
                                                 <label for="prodi" class="col-sm-2 col-form-label">Capaian Pembelajaran</label>
                                                 <div class="col-sm-10">
@@ -82,15 +111,25 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="nama" class="col-sm-2 col-form-label">Indonesia</label>
+                                                <label for="indonesia" class="col-sm-2 col-form-label">Indonesia</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="indonesia">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="nim" class="col-sm-2 col-form-label">English</label>
+                                                <label for="english" class="col-sm-2 col-form-label">English</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="english">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="sifat" class="col-sm-2 col-form-label">Sifat</label>
+                                                <div class="col-sm-10">
+                                                    <select name="sifat" class="form-control">
+                                                        <option value="0" selected>Opsional</option>
+                                                        <option value="1">Disarankan</option>
+                                                        <option value="2">Wajib</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <hr>

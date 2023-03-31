@@ -1,15 +1,18 @@
 <?php
 session_start();
 require('../system/dbconn.php');
+require('../system/myfunc.php');
 require('../system/phpmailer/sendmail.php');
 
 $nip = $_SESSION['nip'];
 $nimmhs = mysqli_real_escape_string($dbsurat, $_POST['nim']);
 $namamhs = mysqli_real_escape_string($dbsurat, $_POST['nama']);
 $prodi = mysqli_real_escape_string($dbsurat, $_POST['prodi']);
+/*
 $kemampuankerja = $_POST['kemampuankerja'];
 $penguasaanpengetahuan = $_POST['penguasaanpengetahuan'];
 $SikapKhusus = $_POST['SikapKhusus'];
+*/
 
 date_default_timezone_set("Asia/Jakarta");
 $tgl = date('Y-m-d H:i:s');
@@ -32,9 +35,9 @@ $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipwd1 = $dhasil['nip'];
 
+/*
 //hapus data existing
 $qhapus = mysqli_query($dbsurat, "DELETE FROM skpi WHERE nim='$nimmhs'");
-
 
 foreach ($kemampuankerja as $kerja) {
     $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE no='$kerja' ");
@@ -42,8 +45,11 @@ foreach ($kemampuankerja as $kerja) {
     $cpl = $data[2];
     $indonesia = $data[3];
     $english = $data[4];
-    $qsimpan = mysqli_query($dbsurat, "INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikator3) 
-                                        VALUES ('$nimmhs','$namamhs','$prodi','$cpl','$indonesia','$english',1,'$nip','$tgl',1,'$nipkaprodi','$tgl','$nipwd1')");
+    $verifikasi = 1;
+    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $verifikasi, $nip, $tgl, $verifikasi, $nipkaprodi, $tgl, $verifikasi, $nipwd1, $tgl);
+    $stmt->execute();
 }
 
 foreach ($penguasaanpengetahuan as $pengetahuan) {
@@ -52,8 +58,11 @@ foreach ($penguasaanpengetahuan as $pengetahuan) {
     $cpl = $data2[2];
     $indonesia = $data2[3];
     $english = $data2[4];
-    $qsimpan2 = mysqli_query($dbsurat, "INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikator3) 
-                                        VALUES ('$nimmhs','$namamhs','$prodi','$cpl','$indonesia','$english',1,'$nip','$tgl',1,'$nipkaprodi','$tgl','$nipwd1')");
+    $verifikasi = 1;
+    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $verifikasi, $nip, $tgl, $verifikasi, $nipkaprodi, $tgl, $verifikasi, $nipwd1, $tgl);
+    $stmt->execute();
 }
 
 foreach ($SikapKhusus as $khusus) {
@@ -62,39 +71,49 @@ foreach ($SikapKhusus as $khusus) {
     $cpl = $data3[2];
     $indonesia = $data3[3];
     $english = $data3[4];
-    $qsimpan3 = mysqli_query($dbsurat, "INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikator3) 
-                                        VALUES ('$nimmhs','$namamhs','$prodi','$cpl','$indonesia','$english',1,'$nip','$tgl',1,'$nipkaprodi','$tgl','$nipwd1')");
+    $verifikasi = 1;
+    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $verifikasi, $nip, $tgl, $verifikasi, $nipkaprodi, $tgl, $verifikasi, $nipwd1, $tgl);
+    $stmt->execute();
 }
-
+*/
 
 //setujui sertifikat
 $qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan 
 								    SET verifikasi2=1,
-										tglverifikasi2='$tgl'
+										tglverifikasi2='$tgl',
+								        verifikasi3=1,
+										tglverifikasi3='$tgl'
+									WHERE nim='$nimmhs'");
+$qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi
+								    SET verifikasi2=1,
+										tglverifikasi2='$tgl',
+								        verifikasi3=1,
+										tglverifikasi3='$tgl'
 									WHERE nim='$nimmhs'");
 
-//kirim email ke wd1
-//cari email wd1 dari NIP
-$sql2 = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE nim='$nimmhs'");
+
+//kirim email ke admin
+//cari email admin dari NIP
+$sql2 = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE prodi='$prodi'");
 $dsql2 = mysqli_fetch_array($sql2);
-$nama = $dsql2['nama'];
-$nipkajur = $dsql2['verifikator3'];
+$nip = $dsql2['kode'];
 $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwd1'");
 $dsql3 = mysqli_fetch_array($sql3);
-$namawd1 = $dsql3['nama'];
-$emailwd1 = $dsql3['email'];
+$namaadmin = $dsql3['nama'];
+$emailadmin = $dsql3['email'];
 
 //kirim email
-$surat = 'Keterangan Pendamping Ijazah';
-$subject = "Pengajuan Surat " . $surat;
-$pesan = "Yth. " . $namawd1 . "<br/>
+$subject = "Pengajuan SKPI ";
+$pesan = "Yth. " . $namaadmin . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
         <br />
 		<br />
 		Dengan hormat,
 		<br />
-        Terdapat pengajuan surat " . $surat . " atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
+        Terdapat pengajuan surat SKPI atas nama " . $namamhs . " di sistem SAINTEK e-Office.<br/>
         Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
         <br/>
         <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
@@ -105,7 +124,7 @@ $pesan = "Yth. " . $namawd1 . "<br/>
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
-sendmail($emailwd1, $namawd1, $subject, $pesan);
+sendmail($emailadmin, $namaadmin, $subject, $pesan);
 
 
 header("location:index.php");

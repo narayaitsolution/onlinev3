@@ -65,12 +65,16 @@ $no = 1;
                     <div class="row mb-2">
                         <div class="col">
                             <?php
-                            $pesan = $_GET['pesan'];
+                            if (isset($pesan)) {
+                                $pesan = $_GET['pesan'];
                             ?>
-                            <div class="alert alert-danger alert-dismissible fade show">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>ERROR!!</strong> <?= $pesan; ?>
-                            </div>
+                                <div class="alert alert-danger alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>ERROR!!</strong> <?= $pesan; ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

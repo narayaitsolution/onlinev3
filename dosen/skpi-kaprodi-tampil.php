@@ -192,35 +192,14 @@ $prodimhs = $data['prodi'];
                                                 <div class="card-body">
                                                     <b>Kemampuan Kerja</b><br />
                                                     <?php
-                                                    $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE jurusan='$prodimhs' AND cpl='Kemampuan Kerja' ORDER BY indonesia");
+                                                    $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Kemampuan Kerja' ORDER BY indonesia");
                                                     while ($cpl = mysqli_fetch_array($qcpl)) {
-                                                        $nodata = $cpl[0];
-                                                        $kemampuankerja = $cpl[3];
-                                                        $def = $cpl[5];
-
+                                                        $nodata = $cpl['no'];
+                                                        $indonesia = $cpl['indonesia'];
+                                                        $english = $cpl['english'];
                                                     ?>
                                                         <div class="row">
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                    <?php
-                                                                    if ($def == 0) {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="kemampuankerja[]" value="<?= $nodata; ?>">
-
-                                                                    <?php
-                                                                    } elseif ($def == 1) {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="kemampuankerja[]" value="<?= $nodata; ?>" checked>
-                                                                    <?php
-                                                                    } else {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="kemampuankerja[]" value="<?= $nodata; ?>" onclick="return false;" checked>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
-                                                                    <label class="form-check-label"><?= $kemampuankerja; ?></label>
-                                                                </div>
-                                                            </div>
+                                                            <li><?= $indonesia; ?></li>
                                                         </div>
                                                     <?php
                                                     }
@@ -228,34 +207,14 @@ $prodimhs = $data['prodi'];
                                                     <br />
                                                     <b>Penguasaan Pengetahuan</b>
                                                     <?php
-                                                    $qcpl2 = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE jurusan='$prodimhs' AND cpl='Penguasaan Pengetahuan' ORDER BY indonesia");
+                                                    $qcpl2 = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Penguasaan Pengetahuan' ORDER BY indonesia");
                                                     while ($cpl2 = mysqli_fetch_array($qcpl2)) {
-                                                        $nodata = $cpl2[0];
-                                                        $penguasaanpengetahuan = $cpl2[3];
-                                                        $def = $cpl2[5];
+                                                        $nodata = $cpl2['no'];
+                                                        $indonesia = $cpl2['indonesia'];
+                                                        $english = $cpl2['english'];
                                                     ?>
                                                         <div class="row">
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                    <?php
-                                                                    if ($def == 0) {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="penguasaanpengetahuan[]" value="<?= $nodata; ?>">
-
-                                                                    <?php
-                                                                    } elseif ($def == 1) {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="penguasaanpengetahuan[]" value="<?= $nodata; ?>" checked>
-                                                                    <?php
-                                                                    } else {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="penguasaanpengetahuan[]" value="<?= $nodata; ?>" onclick="return false;" checked>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
-                                                                    <label class="form-check-label"><?= $penguasaanpengetahuan; ?></label>
-                                                                </div>
-                                                            </div>
+                                                            <li><?= $indonesia; ?></li>
                                                         </div>
                                                     <?php
                                                     }
@@ -263,34 +222,14 @@ $prodimhs = $data['prodi'];
                                                     <br />
                                                     <b>Sikap Khusus</b>
                                                     <?php
-                                                    $qcpl3 = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE jurusan='$prodimhs' AND cpl='Sikap Khusus' ORDER BY indonesia");
+                                                    $qcpl3 = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Sikap Khusus' ORDER BY indonesia");
                                                     while ($cpl3 = mysqli_fetch_array($qcpl3)) {
-                                                        $nodata = $cpl3[0];
-                                                        $SikapKhusus = $cpl3[3];
-                                                        $def = $cpl3[5];
+                                                        $nodata = $cpl3['no'];
+                                                        $indonesia = $cpl3['indonesia'];
+                                                        $english = $cpl3['english'];
                                                     ?>
                                                         <div class="row">
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                    <?php
-                                                                    if ($def == 0) {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="SikapKhusus[]" value="<?= $nodata; ?>">
-
-                                                                    <?php
-                                                                    } elseif ($def == 1) {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="SikapKhusus[]" value="<?= $nodata; ?>" checked>
-                                                                    <?php
-                                                                    } else {
-                                                                    ?>
-                                                                        <input class="form-check-input" type="checkbox" name="SikapKhusus[]" value="<?= $nodata; ?>" onclick="return false;" checked>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
-                                                                    <label class="form-check-label"><?= $SikapKhusus; ?></label>
-                                                                </div>
-                                                            </div>
+                                                            <li><?= $indonesia; ?></li>
                                                         </div>
                                                     <?php
                                                     }
