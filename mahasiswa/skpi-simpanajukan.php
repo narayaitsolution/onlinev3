@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('../system/dbconn.php');
+require('../system/myfunc.php');
 require('../system/phpmailer/sendmail.php');
 
 $nama = $_SESSION['nama'];

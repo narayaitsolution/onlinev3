@@ -4,7 +4,7 @@ require('../system/dbconn.php');
 require('../system/phpmailer/sendmail.php');
 $nip = $_SESSION['nip'];
 $nim = $_POST['nim'];
-$nama = $_POST['nama'];
+$namamhs = $_POST['nama'];
 $prodi = $_POST['prodi'];
 $kemampuankerja = $_POST['kemampuankerja'];
 $penguasaanpengetahuan = $_POST['penguasaanpengetahuan'];
@@ -37,8 +37,11 @@ foreach ($kemampuankerja as $kerja) {
     $cpl = $data[2];
     $indonesia = $data[3];
     $english = $data[4];
-    $qsimpan = mysqli_query($dbsurat, "INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikator2,verifikator3) 
-                                        VALUES ('$nim','$nama','$prodi','$cpl','$indonesia','$english',1,'$nip','$tgl','$nipkaprodi','$nipwd1')");
+    $status = 1;
+    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikator2,verifikator3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssss", $nim, $nama, $prodi, $cpl, $indonesia, $english, $status, $nip, $tgl, $nipkaprodi, $nipwd1);
+    $stmt->execute();
 }
 
 foreach ($penguasaanpengetahuan as $pengetahuan) {
@@ -47,8 +50,11 @@ foreach ($penguasaanpengetahuan as $pengetahuan) {
     $cpl = $data2[2];
     $indonesia = $data2[3];
     $english = $data2[4];
-    $qsimpan2 = mysqli_query($dbsurat, "INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikator2,verifikator3) VALUES 
-																			('$nim','$nama','$prodi','$cpl','$indonesia','$english',1,'$nip','$tgl','$nipkaprodi','$nipwd1')");
+    $status = 1;
+    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikator2,verifikator3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssss", $nim, $nama, $prodi, $cpl, $indonesia, $english, $status, $nip, $tgl, $nipkaprodi, $nipwd1);
+    $stmt->execute();
 }
 
 foreach ($SikapKhusus as $khusus) {
@@ -57,8 +63,11 @@ foreach ($SikapKhusus as $khusus) {
     $cpl = $data3[2];
     $indonesia = $data3[3];
     $english = $data3[4];
-    $qsimpan3 = mysqli_query($dbsurat, "INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikator2,verifikator3) VALUES 
-																			('$nim','$nama','$prodi','$cpl','$indonesia','$english',1,'$nip','$tgl','$nipkaprodi','$nipwd1')");
+    $status = 1;
+    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikator2,verifikator3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssss", $nim, $nama, $prodi, $cpl, $indonesia, $english, $status, $nip, $tgl, $nipkaprodi, $nipwd1);
+    $stmt->execute();
 }
 
 //kemampuan tambahan
@@ -96,7 +105,7 @@ $pesan = "Yth. " . $namakajur . "<br/>
 		<br />
 		Dengan hormat,
 		<br />
-        Terdapat pengajuan surat " . $surat . " atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
+        Terdapat pengajuan surat " . $surat . " atas nama " . $namamhs . " di sistem SAINTEK e-Office.<br/>
         Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
         <br/>
         <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>

@@ -1505,15 +1505,15 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi1 == 0) {
                                                             ?>
-                                                                Menunggu verifikasi Dosen Pembimbing <?= namadosen($dbsurat, $verifikator1); ?><br />
+                                                                Menunggu verifikasi Dosen Wali <?= namadosen($dbsurat, $verifikator1); ?><br />
                                                             <?php
                                                             } elseif ($verifikasi1 == 1) {
                                                             ?>
-                                                                Telah disetujui Dosen Pembimbing <?= namadosen($dbsurat, $verifikator1); ?> <br />
+                                                                Telah disetujui Dosen Wali <?= namadosen($dbsurat, $verifikator1); ?> <br />
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                Ditolak Dosen Pembimbing <?= namadosen($dbsurat, $verifikator1); ?> dengan alasan <?= $keterangan; ?><br />
+                                                                Ditolak Dosen Wali <?= namadosen($dbsurat, $verifikator1); ?> dengan alasan <?= $keterangan; ?><br />
                                                             <?php
                                                             };
                                                             ?>
@@ -1533,26 +1533,10 @@ $no = 1;
                                                             <?php
                                                             };
                                                             ?>
-                                                            <!-- WD-1 -->
-                                                            <?php
-                                                            if ($verifikasi3 == 0) {
-                                                            ?>
-                                                                Menunggu verifikasi Wakil Dekan Bidang Akademik <?= namadosen($dbsurat, $verifikator3); ?><br />
-                                                            <?php
-                                                            } elseif ($verifikasi3 == 1) {
-                                                            ?>
-                                                                Telah disetujui Wakil Dekan Bidang Akademik <?= namadosen($dbsurat, $verifikator3); ?> <br />
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                Ditolak oleh Wakil Dekan Bidang Akademik <?= namadosen($dbsurat, $verifikator3); ?> dengan alasan <?= $keterangan; ?><br />
-                                                            <?php
-                                                            };
-                                                            ?>
                                                             <?php
                                                             if ($verifikasi3 == 1) {
                                                             ?>
-                                                                <b><i>Pengajuan SKPI anda telah disetujui dan akan di proses di SIAKAD. Silahkan hubungi administrasi Program Studi untuk informasi lebih lanjut. </i></b>
+                                                                <b><i style="color:blue;">Pengajuan SKPI anda telah disetujui dan akan di proses di SIAKAD. Silahkan hubungi administrasi Program Studi untuk informasi lebih lanjut. </i></b>
                                                             <?php
                                                             }
                                                             ?>

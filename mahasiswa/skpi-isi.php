@@ -65,14 +65,23 @@ $no = 1;
                     <div class="row mb-2">
                         <div class="col">
                             <?php
+                            $pesan = $_GET['pesan'];
                             if (isset($pesan)) {
-                                $pesan = $_GET['pesan'];
+                                if ($pesan = 'success') {
                             ?>
-                                <div class="alert alert-danger alert-dismissible fade show">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>ERROR!!</strong> <?= $pesan; ?>
-                                </div>
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        Penambahan data berhasil
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>ERROR!!</strong> <?= $pesan; ?>
+                                    </div>
                             <?php
+                                }
                             }
                             ?>
                         </div>
@@ -117,7 +126,7 @@ $no = 1;
                                                 <br />
                                             </div>
                                             <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn btn-success" value="simpan" formaction="skpi-upload.php"> <i class="fa fa-file-upload"></i> Upload</button>
                                             </div>
                                         </div>
@@ -165,6 +174,7 @@ $no = 1;
                                     ?>
                                 </tbody>
                             </table>
+                            <small style="color:red">Apabila tidak memiliki sertifikat Profesional / Pelatihan, pengajuan SKPI tetap dapat dilakukan dengan langsung klik tombol Ajukan</small>
                             <hr>
                             <form method="POST" action="skpi-simpanajukan.php">
                                 <label>Dosen Wali </label>
@@ -185,7 +195,7 @@ $no = 1;
                                 <br />
                                 <button type="submit" class="btn btn-success btn-block" value="ajukan" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fas fa-graduation-cap"></i> Ajukan</button>
                             </form>
-                            <small style="color:red">Apabila tidak memiliki sertifikat keahlian / workshop, pengajuan SKPI tetap dapat dilakukan dengan langsung klik tombol Ajukan</small>
+
                             <br />
                         </div>
                     </div>

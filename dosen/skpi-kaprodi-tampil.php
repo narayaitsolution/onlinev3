@@ -174,9 +174,9 @@ $prodimhs = $data['prodi'];
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card card-primary">
+                            <div class="card card-danger">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Surat Keterangan Pendamping Ijazah</h3>
+                                    <h3 class="card-title">Capaian Pembelajaran</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -185,12 +185,14 @@ $prodimhs = $data['prodi'];
                                 <div class="card-body p-0">
                                     <div class="card-body text-sm">
                                         <form role="form" id="my-form" method="POST" action="skpi-setujui.php">
-                                            <div class="card">
+                                            <div class="card card-warning">
                                                 <div class="card-header">
-                                                    <h3 class="card-title"><label>Capaian Pembelajaran</label></h3>
+                                                    <h3 class="card-title"><label>Kemampuan Kerja</label></h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
-                                                    <b>Kemampuan Kerja</b><br />
                                                     <?php
                                                     $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Kemampuan Kerja' ORDER BY indonesia");
                                                     while ($cpl = mysqli_fetch_array($qcpl)) {
@@ -204,8 +206,16 @@ $prodimhs = $data['prodi'];
                                                     <?php
                                                     }
                                                     ?>
-                                                    <br />
-                                                    <b>Penguasaan Pengetahuan</b>
+                                                </div>
+                                            </div>
+                                            <div class="card card-success">
+                                                <div class="card-header">
+                                                    <h3 class="card-title"><label>Penguasaan Kemampuan</label></h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
                                                     <?php
                                                     $qcpl2 = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Penguasaan Pengetahuan' ORDER BY indonesia");
                                                     while ($cpl2 = mysqli_fetch_array($qcpl2)) {
@@ -219,8 +229,16 @@ $prodimhs = $data['prodi'];
                                                     <?php
                                                     }
                                                     ?>
-                                                    <br />
-                                                    <b>Sikap Khusus</b>
+                                                </div>
+                                            </div>
+                                            <div class="card card-info">
+                                                <div class="card-header">
+                                                    <h3 class="card-title"><label>Sikap Khusus</label></h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
                                                     <?php
                                                     $qcpl3 = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Sikap Khusus' ORDER BY indonesia");
                                                     while ($cpl3 = mysqli_fetch_array($qcpl3)) {
@@ -237,6 +255,7 @@ $prodimhs = $data['prodi'];
                                                     <br />
                                                 </div>
                                             </div>
+
                                             <hr />
                                             <input type="hidden" name="nosurat" value="<?= $nosurat; ?>" />
                                             <input type="hidden" name="nama" value="<?= $namamhs; ?>" />

@@ -35,50 +35,6 @@ $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipwd1 = $dhasil['nip'];
 
-/*
-//hapus data existing
-$qhapus = mysqli_query($dbsurat, "DELETE FROM skpi WHERE nim='$nimmhs'");
-
-foreach ($kemampuankerja as $kerja) {
-    $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE no='$kerja' ");
-    $data = mysqli_fetch_array($qcpl);
-    $cpl = $data[2];
-    $indonesia = $data[3];
-    $english = $data[4];
-    $verifikasi = 1;
-    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
-                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $verifikasi, $nip, $tgl, $verifikasi, $nipkaprodi, $tgl, $verifikasi, $nipwd1, $tgl);
-    $stmt->execute();
-}
-
-foreach ($penguasaanpengetahuan as $pengetahuan) {
-    $qcpl2 = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE no='$pengetahuan' ");
-    $data2 = mysqli_fetch_array($qcpl2);
-    $cpl = $data2[2];
-    $indonesia = $data2[3];
-    $english = $data2[4];
-    $verifikasi = 1;
-    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
-                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $verifikasi, $nip, $tgl, $verifikasi, $nipkaprodi, $tgl, $verifikasi, $nipwd1, $tgl);
-    $stmt->execute();
-}
-
-foreach ($SikapKhusus as $khusus) {
-    $qcpl3 = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE no='$khusus' ");
-    $data3 = mysqli_fetch_array($qcpl3);
-    $cpl = $data3[2];
-    $indonesia = $data3[3];
-    $english = $data3[4];
-    $verifikasi = 1;
-    $stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
-                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $verifikasi, $nip, $tgl, $verifikasi, $nipkaprodi, $tgl, $verifikasi, $nipwd1, $tgl);
-    $stmt->execute();
-}
-*/
-
 //setujui sertifikat
 $qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan 
 								    SET verifikasi2=1,
@@ -98,8 +54,8 @@ $qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi
 //cari email admin dari NIP
 $sql2 = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE prodi='$prodi'");
 $dsql2 = mysqli_fetch_array($sql2);
-$nip = $dsql2['kode'];
-$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwd1'");
+$nipadmin = $dsql2['kode'];
+$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE user='$nipadmin'");
 $dsql3 = mysqli_fetch_array($sql3);
 $namaadmin = $dsql3['nama'];
 $emailadmin = $dsql3['email'];
