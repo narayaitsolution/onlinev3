@@ -35,10 +35,6 @@ require('system/dbconn.php');
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">NIM</th>
                                 <th class="text-center">Tanggal Ujian</th>
-                                <th class="text-center">Pembimbing 1</th>
-                                <th class="text-center">Pembimbing 2</th>
-                                <th class="text-center">Penguji 1</th>
-                                <th class="text-center">Penguji 2</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,10 +57,6 @@ require('system/dbconn.php');
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>
                                     <td><?= tgl_indo($tglujian); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji1); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji2); ?></td>
                                 </tr>
                             <?php
                                 $no++;
@@ -88,10 +80,6 @@ require('system/dbconn.php');
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>
                                     <td><?= tgl_indo($tglujian); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji1); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji2); ?></td>
                                 </tr>
                             <?php
                                 $no++;
@@ -115,10 +103,6 @@ require('system/dbconn.php');
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>
                                     <td><?= tgl_indo($tglujian); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji1); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji2); ?></td>
                                 </tr>
                             <?php
                                 $no++;
@@ -142,10 +126,6 @@ require('system/dbconn.php');
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>
                                     <td><?= tgl_indo($tglujian); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
-                                    <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji1); ?></td>
-                                    <td><?= namadosen($dbsurat, $penguji2); ?></td>
                                 </tr>
                             <?php
                                 $no++;

@@ -59,31 +59,25 @@ $tahun = date('Y');
             </section>
             <?php
             if (isset($_GET['pesan'])) {
-                if ($_GET['pesan'] == "success") {
+                $pesan = $_GET['pesan'];
+                if ($pesan == "success") {
             ?>
                     <div class="alert alert-success alert-dismissible fade show">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>UPDATE</strong> data berhasil
                     </div>
+                <?php
+                } elseif ($pesan == "exist") {
+                ?>
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>ERROR!!</strong> data sudah ada!!
+                    </div>
             <?php
                 }
             }
             ?>
-            <!-- cari data pengunjung -->
-            <?php
-            $tglhariini = date('Y-m-d', strtotime('-3 weeks'));
-            $qtotal = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE()");
-            $jtotal = mysqli_num_rows($qtotal);
-            $qmhs = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE() AND hakakses='mahasiswa'");
-            $jmhs = mysqli_num_rows($qmhs);
-            $qtendik = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE() AND hakakses='tendik'");
-            $jtendik = mysqli_num_rows($qtendik);
-            $qdosen = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE() AND hakakses='dosen'");
-            $jdosen = mysqli_num_rows($qdosen);
-            $qtamu = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE() AND hakakses='tamu'");
-            $jtamu = mysqli_num_rows($qtamu);
-            ?>
-            <!-- data pengunjung fakultas -->
+            <!-- rekap progress -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -155,17 +149,24 @@ $tahun = date('Y');
                 <div class="container-fluid">
                     <div class="card card-danger">
                         <div class="card-header">
-                            <h3 class="card-title">Data Progress Mahasiswa</h3>
+                            <h3 class="card-title">Data Progress Skripsi Mahasiswa <?= $prodi; ?></h3>
                         </div>
                         <div class="card-body">
                             <form method="POST">
-                                <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tambah" class="btn btn-primary btn-sm"> <i class="fa fa-plus"></i> Tambah Data</button>
+                                <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tambah" class="btn btn-primary"> <i class="fa fa-plus"></i> Tambah Data</button>
+                                <?php
+                                if ($prodi == 'Fisika') {
+                                ?>
+                                    <a href="#" class="btn btn-warning"><i class="fa fa-refresh"></i> Tarik Data</a>
+                                <?php
+                                }
+                                ?>
                                 <!-- modal tambah -->
                                 <div class="modal fade" id="modal-tambah">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Tambah Data</h4>
+                                                <h5 class="modal-title">Tambah Data</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -178,7 +179,6 @@ $tahun = date('Y');
                                                     <option value="semhas">Seminar Hasil</option>
                                                     <option value="skripsi">Skripsi</option>
                                                 </select>
-                                                <br />
                                                 <label>Mahasiswa</label><br />
                                                 <select name="nim" class="form-control">
                                                     <?php
@@ -192,64 +192,78 @@ $tahun = date('Y');
                                                     }
                                                     ?>
                                                 </select>
-                                                <label>Pembimbing 1</label><br />
-                                                <select name="pembimbing1" class="form-control">
-                                                    <?php
-                                                    $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
-                                                    while ($ddosen = mysqli_fetch_array($qdosen)) {
-                                                        $namadosen = $ddosen['nama'];
-                                                        $nip = $ddosen['nip'];
-                                                    ?>
-                                                        <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <label>Pembimbing 2</label><br />
-                                                <select name="pembimbing2" class="form-control">
-                                                    <option value=""></option>
-                                                    <?php
-                                                    $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
-                                                    while ($ddosen = mysqli_fetch_array($qdosen)) {
-                                                        $namadosen = $ddosen['nama'];
-                                                        $nip = $ddosen['nip'];
-                                                    ?>
-                                                        <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <label>Penguji 1</label><br />
-                                                <select name="penguji1" class="form-control">
-                                                    <option value=""></option>
-                                                    <?php
-                                                    $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
-                                                    while ($ddosen = mysqli_fetch_array($qdosen)) {
-                                                        $namadosen = $ddosen['nama'];
-                                                        $nip = $ddosen['nip'];
-                                                    ?>
-                                                        <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <label>Penguji 2</label><br />
-                                                <select name="penguji2" class="form-control">
-                                                    <option value=""></option>
-                                                    <?php
-                                                    $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
-                                                    while ($ddosen = mysqli_fetch_array($qdosen)) {
-                                                        $namadosen = $ddosen['nama'];
-                                                        $nip = $ddosen['nip'];
-                                                    ?>
-                                                        <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </select>
-                                                <label>Tanggal Pelaksanaan</label><br />
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label>Pembimbing 1</label><br />
+                                                        <select name="pembimbing1" class="form-control">
+                                                            <?php
+                                                            $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
+                                                            while ($ddosen = mysqli_fetch_array($qdosen)) {
+                                                                $namadosen = $ddosen['nama'];
+                                                                $nip = $ddosen['nip'];
+                                                            ?>
+                                                                <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <label>Pembimbing 2</label><br />
+                                                        <select name="pembimbing2" class="form-control">
+                                                            <option value=""></option>
+                                                            <?php
+                                                            $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
+                                                            while ($ddosen = mysqli_fetch_array($qdosen)) {
+                                                                $namadosen = $ddosen['nama'];
+                                                                $nip = $ddosen['nip'];
+                                                            ?>
+                                                                <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label>Penguji 1</label><br />
+                                                        <select name="penguji1" class="form-control">
+                                                            <option value=""></option>
+                                                            <?php
+                                                            $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
+                                                            while ($ddosen = mysqli_fetch_array($qdosen)) {
+                                                                $namadosen = $ddosen['nama'];
+                                                                $nip = $ddosen['nip'];
+                                                            ?>
+                                                                <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <label>Penguji 2</label><br />
+                                                        <select name="penguji2" class="form-control">
+                                                            <option value=""></option>
+                                                            <?php
+                                                            $qdosen = mysqli_query($dbsurat, "SELECT nama,nip FROM pengguna WHERE hakakses='dosen' and prodi='$prodi' order by nama");
+                                                            while ($ddosen = mysqli_fetch_array($qdosen)) {
+                                                                $namadosen = $ddosen['nama'];
+                                                                $nip = $ddosen['nip'];
+                                                            ?>
+                                                                <option value="<?= $nip; ?>"><?= $namadosen; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <label>Tanggal Ujian</label><br />
                                                 <input type="date" class="form-control" id="tglujian" name="tglujian" required>
-                                                <br />
                                             </div>
                                             <div class="modal-footer justify-content-between">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">TUTUP</button>

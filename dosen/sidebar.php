@@ -66,6 +66,21 @@
                 <?php
                 }
                 ?>
+                <?php
+                if ($jabatan == 'wadek1') {
+                ?>
+                    <li class="nav-item">
+                        <a href="skripsi-progress.php" class="nav-link">
+                            <i class="nav-icon fa-solid fas fa-graduation-cap"></i>
+                            <p>
+                                Progress Skripsi
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item has-treeview menu-close">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-regular fa-file-lines"></i>
