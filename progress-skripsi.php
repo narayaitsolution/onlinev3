@@ -31,6 +31,7 @@ require('system/dbconn.php');
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
+                                <th class="text-center">Program Studi</th>
                                 <th class="text-center">Tahapan</th>
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">NIM</th>
@@ -45,6 +46,7 @@ require('system/dbconn.php');
                             while ($data = mysqli_fetch_array($qprestasi)) {
                                 $nodata = $data[0];
                                 $nim = $data['nim'];
+                                $prodi = $data['prodi'];
                                 $pembimbing1 = $data['pembimbing1'];
                                 $pembimbing2 = $data['pembimbing2'];
                                 $penguji1 = $data['penguji1'];
@@ -53,6 +55,7 @@ require('system/dbconn.php');
                             ?>
                                 <tr>
                                     <td><?= $no; ?></td>
+                                    <td><?= $prodi; ?></td>
                                     <td>Seminar Proposal</td>
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>
@@ -76,6 +79,7 @@ require('system/dbconn.php');
                             ?>
                                 <tr>
                                     <td><?= $no; ?></td>
+                                    <td><?= $prodi; ?></td>
                                     <td>Ujian Komprehensif</td>
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>
@@ -99,6 +103,7 @@ require('system/dbconn.php');
                             ?>
                                 <tr>
                                     <td><?= $no; ?></td>
+                                    <td><?= $prodi; ?></td>
                                     <td>Seminar Hasil</td>
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>
@@ -122,6 +127,7 @@ require('system/dbconn.php');
                             ?>
                                 <tr>
                                     <td><?= $no; ?></td>
+                                    <td><?= $prodi; ?></td>
                                     <td>Ujian Skripsi</td>
                                     <td><?= namadosen($dbsurat, $nim); ?></td>
                                     <td><?= $nim; ?></td>

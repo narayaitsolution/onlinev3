@@ -127,114 +127,6 @@ $tahun = date('Y');
       chart.draw(data, google.charts.Bar.convertOptions(options));
     }
   </script>
-
-  <!-- grafik aktivitas mahasiswa di fakutlas -->
-  <script type="text/javascript">
-    google.charts.load("current", {
-      packages: ["corechart"]
-    });
-    google.charts.setOnLoadCallback(drawChart);
-
-    <?php
-    //ambil data
-    $qkuliah = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Kuliah' AND DATE(tanggal) = CURDATE()");
-    $jkuliah = mysqli_num_rows($qkuliah);
-    $qpraktikum = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Praktikum' AND DATE(tanggal) = CURDATE()");
-    $jpraktikum = mysqli_num_rows($qpraktikum);
-    $qdosen = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Konsultasi' AND DATE(tanggal) = CURDATE()");
-    $jdosen = mysqli_num_rows($qdosen);
-    $qadmin = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Administrasi' AND DATE(tanggal) = CURDATE()");
-    $jadmin = mysqli_num_rows($qadmin);
-    $qskripsi = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Ujian Skripsi' AND DATE(tanggal) = CURDATE()");
-    $jskripsi = mysqli_num_rows($qskripsi);
-    $qtesis = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Ujian Tesis' AND DATE(tanggal) = CURDATE()");
-    $jtesis = mysqli_num_rows($qtesis);
-    $qpenelitian = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Penelitian' AND DATE(tanggal) = CURDATE()");
-    $jpenelitian = mysqli_num_rows($qpenelitian);
-    $qpertemuan = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan='Pertemuan' AND DATE(tanggal) = CURDATE()");
-    $jpertemuan = mysqli_num_rows($qpertemuan);
-    $qlain2 = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE keperluan<>'Pertemuan' AND keperluan<>'Penelitian' AND keperluan<>'Ujian Tesis' AND keperluan<>'Ujian Skripsi' AND keperluan<>'Administrasi' AND keperluan<>'Konsultasi' AND keperluan<>'Praktikum' AND keperluan<>'Kuliah' AND DATE(tanggal) = CURDATE()");
-    $jlain2 = mysqli_num_rows($qlain2);
-    ?>
-
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Tujuan', 'Jumlah'],
-        ['Kuliah', <?= $jkuliah; ?>],
-        ['Praktikum', <?= $jpraktikum; ?>],
-        ['Konsultasi', <?= $jdosen; ?>],
-        ['Administrasi', <?= $jadmin; ?>],
-        ['Ujian Skripsi', <?= $jskripsi; ?>],
-        ['Ujian Tesis', <?= $jtesis; ?>],
-        ['Penelitian', <?= $jpenelitian; ?>],
-        ['Pertemuan', <?= $jpertemuan; ?>],
-        ['Lain - Lain', <?= $jlain2; ?>],
-      ]);
-
-      var options = {
-        is3D: true,
-        legend: {
-          position: 'none'
-        },
-      };
-
-      var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-      chart.draw(data, options);
-    }
-  </script>
-
-  <!-- Grafik Prodi Paling banyak dikunjungi -->
-  <script type="text/javascript">
-    google.charts.load('current', {
-      'packages': ['bar']
-    });
-    google.charts.setOnLoadCallback(drawChart);
-
-    <?php
-    //ambil data
-    $qsaintek = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='SAINTEK' AND DATE(tanggal) = CURDATE()");
-    $jsaintek = mysqli_num_rows($qsaintek);
-    $qbiologi = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Biologi' AND DATE(tanggal) = CURDATE()");
-    $jbiologi = mysqli_num_rows($qbiologi);
-    $qfisika = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Fisika' AND DATE(tanggal) = CURDATE()");
-    $jfisika = mysqli_num_rows($qfisika);
-    $qkimia = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Kimia' AND DATE(tanggal) = CURDATE()");
-    $jkimia = mysqli_num_rows($qkimia);
-    $qinformatika = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Teknik Informatika' AND DATE(tanggal) = CURDATE()");
-    $jinfomatika = mysqli_num_rows($qinformatika);
-    $qmatematika = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Matematika' AND DATE(tanggal) = CURDATE()");
-    $jmatematika = mysqli_num_rows($qmatematika);
-    $qarsitektur = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Teknik Arsitektur' AND DATE(tanggal) = CURDATE()");
-    $jarsitektur = mysqli_num_rows($qarsitektur);
-    $qperpus = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Perpustakaan dan Ilmu Informasi' AND DATE(tanggal) = CURDATE()");
-    $jperpus = mysqli_num_rows($qperpus);
-    $qmit = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Magister Informatika' AND DATE(tanggal) = CURDATE()");
-    $jmit = mysqli_num_rows($qmit);
-    $qmbio = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE prodi='Magister Biologi' AND DATE(tanggal) = CURDATE()");
-    $jmbio = mysqli_num_rows($qmbio);
-    ?>
-
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Program Studi', 'Fakultas', 'Biologi', 'Fisika', 'Kimia', 'Informatika', 'Matematika', 'Arsitektur', 'Perpustakaan', 'Magister TI', 'Magister Biologi'],
-        ['Pengunjung', <?= $jsaintek; ?>, <?= $jbiologi; ?>, <?= $jfisika; ?>, <?= $jkimia; ?>, <?= $jinfomatika; ?>, <?= $jmatematika; ?>, <?= $jarsitektur; ?>, <?= $jperpus; ?>, <?= $jmit; ?>, <?= $jmbio; ?>]
-      ]);
-
-      var options = {
-        legend: {
-          position: 'top'
-        },
-        legend: {
-          position: 'none'
-        },
-        bars: 'horizontal' // Required for Material Bar Charts.
-      };
-
-      var chart = new google.charts.Bar(document.getElementById('barchart_material2'));
-
-      chart.draw(data, google.charts.Bar.convertOptions(options));
-    }
-  </script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -259,23 +151,11 @@ $tahun = date('Y');
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h3>Dashboard</h3>
+              <h3>Progress Skripsi Mahasiswa</h3>
             </div>
           </div>
         </div><!-- /.container-fluid -->
       </section>
-      <?php
-      if (isset($_GET['pesan'])) {
-        if ($_GET['pesan'] == "success") {
-      ?>
-          <div class="alert alert-success alert-dismissible fade show">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>UPDATE</strong> data berhasil
-          </div>
-      <?php
-        }
-      }
-      ?>
 
       <!-- data pengunjung fakultas -->
       <section class="content">
@@ -355,249 +235,156 @@ $tahun = date('Y');
         </div>
       </section>
 
+      <!-- data progress mahasiswa -->
       <section class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-4">
-              <!-- Default box -->
-              <div class="card card-info">
-                <div class="card-header">
-                  <h3 class="card-title">Aktivitas Mahasiswa</h3>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                  </div>
-                </div>
-                <!-- /.card-header -->
-                <?php $no = 1; ?>
-                <div class="card-body p-0">
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <div id="piechart_3d" style="height: 300px;"></div>
-                  </div>
-                </div>
-              </div>
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">Data Progress Mahasiswa</h3>
             </div>
-            <div class="col-8">
-              <!-- Default box -->
-              <div class="card card-warning">
-                <div class="card-header">
-                  <h3 class="card-title">Grafik Pengunjung Prodi (total)</h3>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                  </div>
-                </div>
-                <!-- /.card-header -->
-                <?php $no = 1; ?>
-                <div class="card-body p-0">
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <div id="barchart_material2" style="height:300px;"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- data suhu -->
-      <?php
-      $suhumin = 36;
-      $suhumax = 36;
-      $suhurata = 0;
-      $suhutotal = 0;
-      $qdata = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE()");
-      $jdata = mysqli_num_rows($qdata);
-      $qsuhu = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = CURDATE()");
-      while ($dsuhu = mysqli_fetch_array($qsuhu)) {
-        $suhutotal = $suhutotal + $dsuhu['suhu'];
-        //suhu minimal
-        if ($dsuhu['suhu'] < $suhumin) {
-          $suhumin = $dsuhu['suhu'];
-          $mhsmin = $dsuhu['nama'];
-        };
-        //suhu maksimal
-        if ($dsuhu['suhu'] > $suhumax) {
-          $suhumax = $dsuhu['suhu'];
-          $mhsmax = $dsuhu['nama'];
-        }
-      }
-      $suhurata = $suhutotal / $jdata;
-      ?>
-      <!--
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-
-                        <div class="col-12 col-sm-3 col-md-3">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Total Pengunjung</span>
-                                    <span class="info-box-number"><?= $jdata; ?><small> orang</small></span>
-                                </div>
-                            </div>
-                        </div>
-
-                      
-                        <div class="col-12 col-sm-3 col-md-3">
-                            <div class="info-box mb-3">
-                                <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-thermometer-half"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Rata - Rata Suhu</span>
-                                    <?php
-                                    if ($suhurata > 36) {
-                                    ?>
-                                        <span class="info-box-number" style="color:green"><?= number_format($suhurata, 2); ?> <small><sup>o</sup>C</small></span>
-                                    <?php
-                                    } elseif ($suhurata > 37) {
-                                    ?>
-                                        <span class="info-box-number" style="color:orange"><?= number_format($suhurata, 2); ?><small><sup>o</sup>C</small></span>
-                                    <?php
-                                    } elseif ($suhurata > 38) {
-                                    ?>
-                                        <span class="info-box-number" style="color:red"><?= number_format($suhurata, 2); ?><small><sup>o</sup>C</small></span>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <span class="info-box-number" style="color:blue"><?= number_format($suhurata, 2); ?><small><sup>o</sup>C</small></span>
-                                    <?php
-                                    }
-                                    ?>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="clearfix hidden-md-up"></div>
-                        <div class="col-12 col-sm-9 col-md-3">
-                            <div class="info-box mb-3">
-                                <?php
-                                if ($suhumin <= 36) {
-                                ?>
-                                    <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-thermometer-quarter"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text" style="color:blue">Suhu Minimal <?= number_format($suhumin, 1); ?> <small><sup>o</sup>C</small></span>
-                                        <span class="info-box-number" style="color:blue"><small><?= $mhsmin; ?></small></span>
-                                    </div>
-                                <?php
-                                } elseif ($suhumax <= 36.5) {
-                                ?>
-                                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-thermometer-quarter"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text" style="color:green">Suhu Minimal <?= number_format($suhumin, 1); ?> <small><sup>o</sup>C</small></span>
-                                        <span class="info-box-number" style="color:green"><small><?= $mhsmin; ?></small></span>
-                                    </div>
-                                <?php
-                                } else {
-                                ?>
-                                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thermometer-quarter"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text" style="color:orange">Suhu Minimal <?= number_format($suhumin, 1); ?> <small><sup>o</sup>C</small></span>
-                                        <span class="info-box-number" style="color:orange"><small><?= $mhsmin; ?></small></span>
-                                    </div>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-9 col-md-3">
-                            <div class="info-box mb-3">
-                                <?php
-                                if ($suhumax <= 36.5) {
-                                ?>
-                                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-thermometer-full"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text" style="color:green">Suhu Maksimal <?= number_format($suhumax, 1); ?> <small><sup>o</sup>C</small></span>
-                                        <span class="info-box-number" style="color:green"><small><?= $mhsmax; ?></small></span>
-                                    </div>
-                                <?php
-                                } elseif ($suhumax <= 37) {
-                                ?>
-                                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-thermometer-full"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text" style="color:orange">Suhu Maksimal <?= number_format($suhumax, 1); ?> <small><sup>o</sup>C</small></span>
-                                        <span class="info-box-number" style="color:orange"><small><?= $mhsmax; ?></small></span>
-                                    </div>
-                                <?php
-                                } else {
-                                ?>
-                                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thermometer-full"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text" style="color:red">Suhu Maksimal <?= number_format($suhumax, 1); ?> <small><sup>o</sup>C</small></span>
-                                        <span class="info-box-number" style="color:red"><small><?= $mhsmax; ?></small></span>
-                                    </div>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-             -->
-      <section class="content text-sm">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Daftar Pengunjung Fakultas</h3>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                  </div>
-                </div>
-
-                <?php $no = 1; ?>
-                <div class="card-body p-0">
-                  <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover text-sm">
-                      <thead>
-                        <tr>
-                          <th width="5%">No</th>
-                          <th>Nama</th>
-                          <th>Tanggal</th>
-                          <th>Prodi</th>
-                          <th>Keperluan</th>
-                          <th>Jam Masuk</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        $query = mysqli_query($dbsurat, "SELECT * FROM masukfakultas WHERE DATE(tanggal) = DATE(NOW()) ORDER BY tanggal DESC");
-                        while ($data = mysqli_fetch_array($query)) {
-                          $nodata = $data['nodata'];
-                          $tanggal = $data['tanggal'];
-                          $nama = $data['nama'];
-                          $prodi = $data['prodi'];
-                          $suhu = $data['suhu'];
-                          $keperluan = $data['keperluan'];
-                          $jammasuk = $data['jammasuk'];
-                          $jamkeluar = $data['jamkeluar'];
-                        ?>
-                          <tr>
-                            <td><?= $no; ?></td>
-                            <td><?= $nama; ?></td>
-                            <td><?= tgl_indo($tanggal); ?></td>
-                            <td><?= $prodi; ?></td>
-                            <td><?= $keperluan; ?></td>
-                            <td><?= tgljam_indo($jammasuk); ?></td>
-                          </tr>
-                        <?php
-                          $no++;
-                        }
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+            <div class="card-body">
+              <table id="example1" class="table table-bordered text-sm">
+                <thead>
+                  <tr>
+                    <th class="text-center">No.</th>
+                    <th class="text-center">Program Studi</th>
+                    <th class="text-center">Tahapan</th>
+                    <th class="text-center">Nama</th>
+                    <th class="text-center">NIM</th>
+                    <th class="text-center">Tanggal Ujian</th>
+                    <th class="text-center">Pembimbing 1</th>
+                    <th class="text-center">Pembimbing 2</th>
+                    <th class="text-center">Penguji 1</th>
+                    <th class="text-center">Penguji 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $no = 1;
+                  //sempro
+                  $qprestasi = mysqli_query($dbsurat, "SELECT * FROM sempro ORDER BY tglujian DESC, nim ASC");
+                  while ($data = mysqli_fetch_array($qprestasi)) {
+                    $nodata = $data[0];
+                    $nim = $data['nim'];
+                    $prodi = $data['prodi'];
+                    $pembimbing1 = $data['pembimbing1'];
+                    $pembimbing2 = $data['pembimbing2'];
+                    $penguji1 = $data['penguji1'];
+                    $penguji2 = $data['penguji2'];
+                    $tglujian = $data['tglujian'];
+                  ?>
+                    <tr>
+                      <td><?= $no; ?></td>
+                      <td><?= $prodi; ?></td>
+                      <td>Seminar Proposal</td>
+                      <td><?= namadosen($dbsurat, $nim); ?></td>
+                      <td><?= $nim; ?></td>
+                      <td><?= tgl_indo($tglujian); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji1); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji2); ?></td>
+                    </tr>
+                  <?php
+                    $no++;
+                  }
+                  ?>
+                  <?php
+                  //kompre
+                  $qprestasi = mysqli_query($dbsurat, "SELECT * FROM kompre ORDER BY tglujian DESC, nim ASC");
+                  while ($data = mysqli_fetch_array($qprestasi)) {
+                    $nodata = $data[0];
+                    $nim = $data['nim'];
+                    $prodi = $data['prodi'];
+                    $pembimbing1 = $data['pembimbing1'];
+                    $pembimbing2 = $data['pembimbing2'];
+                    $penguji1 = $data['penguji1'];
+                    $penguji2 = $data['penguji2'];
+                    $tglujian = $data['tglujian'];
+                  ?>
+                    <tr>
+                      <td><?= $no; ?></td>
+                      <td><?= $prodi; ?></td>
+                      <td>Ujian Komprehensif</td>
+                      <td><?= namadosen($dbsurat, $nim); ?></td>
+                      <td><?= $nim; ?></td>
+                      <td><?= tgl_indo($tglujian); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji1); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji2); ?></td>
+                    </tr>
+                  <?php
+                    $no++;
+                  }
+                  ?>
+                  <?php
+                  //semhas
+                  $qprestasi = mysqli_query($dbsurat, "SELECT * FROM semhas ORDER BY tglujian DESC, nim ASC");
+                  while ($data = mysqli_fetch_array($qprestasi)) {
+                    $nodata = $data[0];
+                    $nim = $data['nim'];
+                    $prodi = $data['prodi'];
+                    $pembimbing1 = $data['pembimbing1'];
+                    $pembimbing2 = $data['pembimbing2'];
+                    $penguji1 = $data['penguji1'];
+                    $penguji2 = $data['penguji2'];
+                    $tglujian = $data['tglujian'];
+                  ?>
+                    <tr>
+                      <td><?= $no; ?></td>
+                      <td><?= $prodi; ?></td>
+                      <td>Seminar Hasil</td>
+                      <td><?= namadosen($dbsurat, $nim); ?></td>
+                      <td><?= $nim; ?></td>
+                      <td><?= tgl_indo($tglujian); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji1); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji2); ?></td>
+                    </tr>
+                  <?php
+                    $no++;
+                  }
+                  ?>
+                  <?php
+                  //skripsi
+                  $qprestasi = mysqli_query($dbsurat, "SELECT * FROM skripsi ORDER BY tglujian DESC, nim ASC");
+                  while ($data = mysqli_fetch_array($qprestasi)) {
+                    $nodata = $data[0];
+                    $nim = $data['nim'];
+                    $prodi = $data['prodi'];
+                    $pembimbing1 = $data['pembimbing1'];
+                    $pembimbing2 = $data['pembimbing2'];
+                    $penguji1 = $data['penguji1'];
+                    $penguji2 = $data['penguji2'];
+                    $tglujian = $data['tglujian'];
+                  ?>
+                    <tr>
+                      <td><?= $no; ?></td>
+                      <td><?= $prodi; ?></td>
+                      <td>Ujian Skripsi</td>
+                      <td><?= namadosen($dbsurat, $nim); ?></td>
+                      <td><?= $nim; ?></td>
+                      <td><?= tgl_indo($tglujian); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing1); ?></td>
+                      <td><?= namadosen($dbsurat, $pembimbing2); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji1); ?></td>
+                      <td><?= namadosen($dbsurat, $penguji2); ?></td>
+                    </tr>
+                  <?php
+                    $no++;
+                  }
+                  ?>
+                </tbody>
+              </table>
+              <br />
             </div>
           </div>
         </div>
       </section>
+
     </div>
-    <!-- /.content-wrapper -->
 
     <!-- footer -->
     <?php
@@ -633,9 +420,13 @@ $tahun = date('Y');
   <script>
     $(function() {
       $("#example1").DataTable({
-        "responsive": true,
+        "paging": true,
         "lengthChange": false,
-        "autoWidth": false,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": true,
+        "responsive": true,
         "buttons": ["excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
