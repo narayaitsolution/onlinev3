@@ -156,6 +156,15 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="skripsi-progress.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-graduation-cap"></i>
+                            <p>
+                                Progress Skripsi
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
                 <?php
                 }
                 ?>
