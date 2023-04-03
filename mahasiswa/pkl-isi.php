@@ -14,12 +14,6 @@ if ($_SESSION['hakakses'] != "mahasiswa") {
 $tahun = date('Y');
 $no = 1;
 
-//jika sudah ijin pkl tidak boleh ijin lagi
-$qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim' and statussurat<3");
-$jpkl = mysqli_num_rows($qpkl);
-if ($jpkl > 0) {
-    header("location:index.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -52,104 +46,110 @@ if ($jpkl > 0) {
         require('sidebar.php');
         ?>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+        <?php
+        $qpkl = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota='$nim' and statussurat<2");
+        $jpkl = mysqli_num_rows($qpkl);
+        if ($jpkl > 0) {
+        ?>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1>Dashboard</h1>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- alert bukti vaksin -->
-            <?php
-            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
-            $qdata = mysqli_fetch_array($quser);
-            $buktivaksin = $qdata['buktivaksin'];
-            if (empty($buktivaksin)) {
-                echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
-            }
-            ?>
+                <!-- alert bukti vaksin -->
+                <?php
+                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                $qdata = mysqli_fetch_array($quser);
+                $buktivaksin = $qdata['buktivaksin'];
+                if (empty($buktivaksin)) {
+                    echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
+                }
+                ?>
 
-            <!-- tabel pengajuan pribadi -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin PKL</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <!-- tabel pengajuan pribadi -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Pengajuan Izin PKL</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php $no = 1; ?>
-                                <div class="card-body p-0">
-                                    <div class="card-body">
-                                        <form action="pkl-isitempat-simpan.php" method="POST" id="my-form">
-                                            <div class="form-group row">
-                                                <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="instansi" name="instansi" required>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body p-0">
+                                        <div class="card-body">
+                                            <form action="pkl-isitempat-simpan.php" method="POST" id="my-form">
+                                                <div class="form-group row">
+                                                    <label for="instansi" class="col-sm-2 col-form-label">Instansi Tujuan</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="instansi" name="instansi" required>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="tempatpkl" class="col-sm-2 col-form-label">Unit / Bagian</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="tempatpkl" name="tempatpkl" required>
+                                                <div class="form-group row">
+                                                    <label for="tempatpkl" class="col-sm-2 col-form-label">Unit / Bagian</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="tempatpkl" name="tempatpkl" required>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="alamat" name="alamat" required>
+                                                <div class="form-group row">
+                                                    <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="alamat" name="alamat" required>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tgl. Mulai</label>
-                                                <div class="col-sm-10">
-                                                    <input type="date" class="form-control" id="tglmulai" name="tglmulai" required>
+                                                <div class="form-group row">
+                                                    <label for="tglmulai" class="col-sm-2 col-form-label">Tgl. Mulai</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="date" class="form-control" id="tglmulai" name="tglmulai" required>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="tglselesai" class="col-sm-2 col-form-label">Tgl. Selesai</label>
-                                                <div class="col-sm-10">
-                                                    <input type="date" class="form-control" id="tglselesai" name="tglselesai" required>
+                                                <div class="form-group row">
+                                                    <label for="tglselesai" class="col-sm-2 col-form-label">Tgl. Selesai</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="date" class="form-control" id="tglselesai" name="tglselesai" required>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <input type="hidden" name="pklmagang" value="PKL">
-                                            <div class="form-group row">
-                                                <label for="jenispkl" class="col-sm-2 col-form-label">Luring / Daring</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" id="jenispkl" name="jenispkl">
-                                                        <option value="Offline" selected>Luring / Offline</option>
-                                                        <option value="Online">Daring / Online</option>
-                                                    </select>
-                                                    <small style="color:red">
-                                                        <li>Upload <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>
-                                                        <li>Pastikan seluruh peserta PKL sudah meng-upload bukti vaksin pada <b>Profile pengguna</b></li>
-                                                    </small>
+                                                <input type="hidden" name="pklmagang" value="PKL">
+                                                <div class="form-group row">
+                                                    <label for="jenispkl" class="col-sm-2 col-form-label">Luring / Daring</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="jenispkl" name="jenispkl">
+                                                            <option value="Offline" selected>Luring / Offline</option>
+                                                            <option value="Online">Daring / Online</option>
+                                                        </select>
+                                                        <small style="color:red">
+                                                            <li>Upload <b>Pakta Integritas (<a href="../doc/paktaintegritaspkl.docx">klik disini </a>) oleh ketua kelompok</b><br /></li>
+                                                            <li>Pastikan seluruh peserta PKL sudah meng-upload bukti vaksin pada <b>Profile pengguna</b></li>
+                                                        </small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <hr>
-                                            <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-users"></i> Anggota Kelompok <i class="fa fa-arrow-right"></i></button>
-                                        </form>
+                                                <hr>
+                                                <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-users"></i> Anggota Kelompok <i class="fa fa-arrow-right"></i></button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-        </div>
+            </div>
     </div>
     <?php
-    require('footer.php');
+            require('footer.php');
     ?>
 
     <script src="../template/plugins/jquery/jquery.min.js"></script>
@@ -190,3 +190,6 @@ if ($jpkl > 0) {
 </body>
 
 </html>
+<?php
+        }
+?>
