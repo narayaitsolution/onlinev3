@@ -259,6 +259,26 @@
                 }
                 ?>
 
+                <!-- menu koordinator PKL Fakultas -->
+                <?php
+                $qoperator = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE prodi='SAINTEK' and kdjabatan='koorpkl' and nip='$nip'");
+                $jmldata = mysqli_num_rows($qoperator);
+                if ($jmldata == 1) {
+                ?>
+                    <li class="nav-item">
+                        <a href="pkl-rekap.php" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Rekap PKL
+                                <span class="right badge badge-danger">*</span>
+                            </p>
+                        </a>
+                    </li>
+
+                <?php
+                }
+                ?>
+
                 <!-- menu operator SKPI -->
                 <?php
                 $qoperator = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
