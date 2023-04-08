@@ -1534,9 +1534,13 @@ $no = 1;
                                                             };
                                                             ?>
                                                             <?php
-                                                            if ($verifikasi3 == 1) {
+                                                            if ($verifikasi3 == 1 && $keterangan == 'done') {
                                                             ?>
-                                                                <b><i style="color:blue;">Pengajuan SKPI anda telah disetujui dan akan di proses di SIAKAD. Silahkan hubungi administrasi Program Studi untuk informasi lebih lanjut. </i></b>
+                                                                <i style="color:blue;">Pengajuan SKPI anda telah di input ke SIAKAD. </i>
+                                                            <?php
+                                                            } else {
+                                                            ?>
+                                                                <i style="color:blue;">Pengajuan SKPI anda telah disetujui dan akan di proses di SIAKAD oleh Administrasi Program Studi. </i>
                                                             <?php
                                                             }
                                                             ?>

@@ -70,14 +70,6 @@ foreach ($SikapKhusus as $khusus) {
     $stmt->execute();
 }
 
-//kemampuan tambahan
-/*
-if (!empty($kemampuantambahan_ind)) {
-	$qsimpan4 = mysqli_query($dbsurat, "INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikator2,verifikator3) VALUES 
-																				('$nim','$nama','$prodi','$opsicpl','$kemampuantambahan_ind','$kemampuantambahan_eng',1,'$nip','$tgl','$nipkaprodi','$nipwd1')");
-}
-*/
-
 //setujui sertifikat
 $qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan 
 										SET verifikasi1=1,

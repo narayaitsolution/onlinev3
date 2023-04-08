@@ -194,18 +194,32 @@ $prodimhs = $data['prodi'];
                                                 </div>
                                                 <div class="card-body">
                                                     <?php
-                                                    $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Kemampuan Kerja' ORDER BY indonesia");
-                                                    while ($cpl = mysqli_fetch_array($qcpl)) {
-                                                        $nodata = $cpl['no'];
-                                                        $indonesia = $cpl['indonesia'];
-                                                        $english = $cpl['english'];
-                                                    ?>
-                                                        <div class="row">
-                                                            <li><?= $indonesia; ?></li>
-                                                        </div>
-                                                    <?php
+                                                    $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE jurusan='$prodi' AND cpl='Kemampuan Kerja' ORDER BY indonesia");
+                                                    //data skpi masukin array
+                                                    $qskpi = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Kemampuan Kerja' ORDER BY indonesia");
+                                                    $noskpi = array();
+                                                    $recskpi = array();
+                                                    while ($rskpi = mysqli_fetch_array($qskpi)) {
+                                                        $noskpi[] = $rskpi['no'];
+                                                        $recskpi[] = $rskpi['indonesia'];
                                                     }
                                                     ?>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <?php
+                                                                while ($cpl = mysqli_fetch_array($qcpl)) {
+                                                                    $checked = in_array($cpl['indonesia'], $recskpi) ? 'checked' : '';
+                                                                ?>
+                                                                    <input class="form-check-input" type="checkbox" name="kemampuankerja[]" value="<?= $cpl['indonesia']; ?>" <?= $checked; ?>>
+                                                                    <label class="form-check-label"><?= $cpl['indonesia']; ?></label>
+                                                                    <br>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="card card-success">
@@ -217,18 +231,30 @@ $prodimhs = $data['prodi'];
                                                 </div>
                                                 <div class="card-body">
                                                     <?php
-                                                    $qcpl2 = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Penguasaan Pengetahuan' ORDER BY indonesia");
-                                                    while ($cpl2 = mysqli_fetch_array($qcpl2)) {
-                                                        $nodata = $cpl2['no'];
-                                                        $indonesia = $cpl2['indonesia'];
-                                                        $english = $cpl2['english'];
-                                                    ?>
-                                                        <div class="row">
-                                                            <li><?= $indonesia; ?></li>
-                                                        </div>
-                                                    <?php
+                                                    $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE jurusan='$prodi' AND cpl='Penguasaan Pengetahuan' ORDER BY indonesia");
+                                                    //data skpi masukin array
+                                                    $qskpi = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Penguasaan Pengetahuan' ORDER BY indonesia");
+                                                    $recskpi = array();
+                                                    while ($rskpi = mysqli_fetch_array($qskpi)) {
+                                                        $recskpi[] = $rskpi['indonesia'];
                                                     }
                                                     ?>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <?php
+                                                                while ($rec = mysqli_fetch_array($qcpl)) {
+                                                                    $checked = in_array($rec['indonesia'], $recskpi) ? 'checked' : '';
+                                                                ?>
+                                                                    <input class="form-check-input" type="checkbox" name="penguasaanpengetahuan[]" value="<?= $rec['indonesia']; ?>" <?= $checked; ?>>
+                                                                    <label class="form-check-label"><?= $rec['indonesia']; ?></label>
+                                                                    <br>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="card card-info">
@@ -240,19 +266,31 @@ $prodimhs = $data['prodi'];
                                                 </div>
                                                 <div class="card-body">
                                                     <?php
-                                                    $qcpl3 = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Sikap Khusus' ORDER BY indonesia");
-                                                    while ($cpl3 = mysqli_fetch_array($qcpl3)) {
-                                                        $nodata = $cpl3['no'];
-                                                        $indonesia = $cpl3['indonesia'];
-                                                        $english = $cpl3['english'];
-                                                    ?>
-                                                        <div class="row">
-                                                            <li><?= $indonesia; ?></li>
-                                                        </div>
-                                                    <?php
+                                                    $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE jurusan='$prodi' AND cpl='Sikap Khusus' ORDER BY indonesia");
+                                                    //data skpi masukin array
+                                                    $qskpi = mysqli_query($dbsurat, "SELECT * FROM skpi WHERE nim='$nimmhs' and cpl='Sikap Khusus' ORDER BY indonesia");
+                                                    $recskpi = array();
+                                                    while ($rskpi = mysqli_fetch_array($qskpi)) {
+                                                        $noskpi = $rskpi['no'];
+                                                        $recskpi[] = $rskpi['indonesia'];
                                                     }
                                                     ?>
-                                                    <br />
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="form-check">
+                                                                <?php
+                                                                while ($rec = mysqli_fetch_array($qcpl)) {
+                                                                    $checked = in_array($rec['indonesia'], $recskpi) ? 'checked' : '';
+                                                                ?>
+                                                                    <input class="form-check-input" type="checkbox" name="SikapKhusus[]" value="<?= $rec['indonesia']; ?>" <?= $checked; ?>>
+                                                                    <label class="form-check-label"><?= $rec['indonesia']; ?></label>
+                                                                    <br>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 

@@ -8,11 +8,9 @@ $nip = $_SESSION['nip'];
 $nimmhs = mysqli_real_escape_string($dbsurat, $_POST['nim']);
 $namamhs = mysqli_real_escape_string($dbsurat, $_POST['nama']);
 $prodi = mysqli_real_escape_string($dbsurat, $_POST['prodi']);
-/*
 $kemampuankerja = $_POST['kemampuankerja'];
 $penguasaanpengetahuan = $_POST['penguasaanpengetahuan'];
 $SikapKhusus = $_POST['SikapKhusus'];
-*/
 
 date_default_timezone_set("Asia/Jakarta");
 $tgl = date('Y-m-d H:i:s');
@@ -35,14 +33,48 @@ $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipwd1 = $dhasil['nip'];
 
+//hapus dulu data sebelumnya
+$dskpi = mysqli_query($dbsurat, "DELETE FROM skpi WHERE nim='$nimmhs'");
+//add data baru
+foreach ($kemampuankerja as $kerja) {
+	$qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE indonesia='$kerja' ");
+	$data = mysqli_fetch_array($qcpl);
+	$cpl = $data[2];
+	$indonesia = $data[3];
+	$english = $data[4];
+	$status = 1;
+	$stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $status, $nip, $tgl, $status, $nipkaprodi, $tgl, $status, $nipwd1, $tgl);
+	$stmt->execute();
+}
+foreach ($penguasaanpengetahuan as $pengetahuan) {
+	$qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE indonesia='$pengetahuan' ");
+	$data = mysqli_fetch_array($qcpl);
+	$cpl = $data[2];
+	$indonesia = $data[3];
+	$english = $data[4];
+	$status = 1;
+	$stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $status, $nip, $tgl, $status, $nipkaprodi, $tgl, $status, $nipwd1, $tgl);
+	$stmt->execute();
+}
+foreach ($SikapKhusus as $sikap) {
+	$qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE indonesia='$sikap' ");
+	$data = mysqli_fetch_array($qcpl);
+	$cpl = $data[2];
+	$indonesia = $data[3];
+	$english = $data[4];
+	$status = 1;
+	$stmt = $dbsurat->prepare("INSERT INTO skpi (nim,nama,jurusan,cpl,indonesia,english,verifikasi1,verifikator1,tglverifikasi1,verifikasi2,verifikator2,tglverifikasi2,verifikasi3,verifikator3,tglverifikasi3)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$stmt->bind_param("sssssssssssssss", $nimmhs, $namamhs, $prodi, $cpl, $indonesia, $english, $status, $nip, $tgl, $status, $nipkaprodi, $tgl, $status, $nipwd1, $tgl);
+	$stmt->execute();
+}
+
 //setujui sertifikat
 $qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan 
-								    SET verifikasi2=1,
-										tglverifikasi2='$tgl',
-								        verifikasi3=1,
-										tglverifikasi3='$tgl'
-									WHERE nim='$nimmhs'");
-$qsimpan5 = mysqli_query($dbsurat, "UPDATE skpi
 								    SET verifikasi2=1,
 										tglverifikasi2='$tgl',
 								        verifikasi3=1,
