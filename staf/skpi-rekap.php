@@ -1,16 +1,21 @@
 <?php
 session_start();
+require('../system/dbconn.php');
+require('../system/myfunc.php');
 $user = $_SESSION['user'];
 $nip = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "tendik") {
+
+//cek apakah pengelola skpi
+$qpengelolaskpi = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
+$jpengelolaskpi = mysqli_num_rows($qpengelolaskpi);
+if ($jpengelolaskpi = 0) {
     header("location:../deauth.php");
 }
-require('../system/dbconn.php');
-require('../system/myfunc.php');
+
 $no = 1;
 $tahun = date('Y');
 ?>

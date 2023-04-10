@@ -8,6 +8,14 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
+
+//cek apakah pengelola skpi
+$qpengelolaskpi = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
+$jpengelolaskpi = mysqli_num_rows($qpengelolaskpi);
+if ($jpengelolaskpi = 0) {
+    header("location:../deauth.php");
+}
+
 $tahun = date('Y');
 $no = 1;
 ?>

@@ -1,16 +1,13 @@
 <?php
 session_start();
+require('../system/dbconn.php');
+require('../system/myfunc.php');
 $user = $_SESSION['user'];
 $nip = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['hakakses'] != "dosen") {
-    header("location:../deauth.php");
-}
-require('../system/dbconn.php');
-require('../system/myfunc.php');
 $tahun = date('Y');
 $no = 1;
 

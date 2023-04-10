@@ -284,7 +284,6 @@
                 $qoperator = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
                 $jmldata = mysqli_num_rows($qoperator);
                 if ($jmldata == 1) {
-
                 ?>
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link">
