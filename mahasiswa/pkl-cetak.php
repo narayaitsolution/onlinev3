@@ -1,19 +1,11 @@
-<html>
-
-<head>
-	<link rel="stylesheet" href="../system/surat.css">
-</head>
-
-<script>
-	window.print();
-</script>
-
 <!-- connect to db -->
 <?php
 require('../system/dbconn.php');
 require('../system/myfunc.php');
 ?>
 <!-- ./db -->
+
+
 
 <?php
 session_start();
@@ -65,6 +57,15 @@ if ($statussurat == 1) {
 	$namafile = $nim . "_" . $tgl . "_" . $jam;
 	QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
 ?>
+	<html>
+
+	<head>
+		<link rel="stylesheet" href="../system/surat.css">
+	</head>
+
+	<script>
+		window.print();
+	</script>
 
 	<body>
 		<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
@@ -234,15 +235,23 @@ if ($statussurat == 1) {
 			</tbody>
 		</table>
 	</body>
+
+	</html>
 <?php
 } else {
 ?>
-	<br>
-	<br>
-	<br>
-	<h1 style="text-align: center;">SURAT TIDAK DITEMUKAN / SUDAH DIBATALKAN!!</h1>
+	<html>
+
+	<body>
+		<br>
+		<br>
+		<br>
+		<h1 style="text-align: center;">SURAT TIDAK DITEMUKAN / SUDAH DIBATALKAN!!</h1>
+		<h3 style="text-align: center;">SILAHKAN HUBUNGI BAGIAN ADMINISTRASI UNTUK VERIFIKASI SURAT MANUAL</h3>
+		<h3 style="text-align: center;"><a href="https://saintek.uin-malang.ac.id">KLIK DISINI UNTUK KEMBALI</a></h3>
+	</body>
+
+	</html>
 <?php
 }
 ?>
-
-</html>
