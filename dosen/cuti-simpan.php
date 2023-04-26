@@ -62,16 +62,16 @@ if ($jabatan == 'kaprodi' or $jabatan == 'dekan' or $jabatan == 'wadek1' or $jab
     $dhasil = $result->fetch_assoc();
     $nipkaprodi = $dhasil['nip'];
     $namakaprodi = $dhasil['nama'];
-
-    //cari nip wd-2
-    $jabatanwd = 'wadek2';
-    $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
-    $stmt->bind_param("s", $jabatanwd);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $dhasil = $result->fetch_assoc();
-    $nipwd = $dhasil['nip'];
 }
+
+//cari nip wd-2
+$jabatanwd = 'wadek2';
+$stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
+$stmt->bind_param("s", $jabatanwd);
+$stmt->execute();
+$result = $stmt->get_result();
+$dhasil = $result->fetch_assoc();
+$nipwd = $dhasil['nip'];
 
 if ($jabatan == 'dosen') {
     $jabatan = 'Dosen';
