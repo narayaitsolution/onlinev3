@@ -52,7 +52,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+                            <h1>Pengajuan Izin</h1>
                         </div>
                     </div>
                 </div>
@@ -78,10 +78,10 @@ $no = 1;
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3><?= $sisacuti; ?> <sup style="font-size: 20px">hari</sup></h3>
-                                    <p>Sisa Izin Cuti</p>
+                                    <p>Sisa Izin</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-email"></i>
+                                    <i class="ion ion-clock"></i>
                                 </div>
                             </div>
                         </div>
@@ -138,25 +138,62 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="pangkat" class="col-sm-2 col-form-label">Pangkat / Golongan</label>
+                                                <label for="pangkat" class="col-sm-2 col-form-label">Pangkat</label>
                                                 <div class="col-sm-10">
                                                     <select class="form-control" name="pangkat">
-                                                        <option value="IV/d">IV/d</option>
-                                                        <option value="IV/c">IV/c</option>
-                                                        <option value="IV/b">IV/b</option>
-                                                        <option value="IV/a">IV/a</option>
-                                                        <option value="III/d">III/d</option>
-                                                        <option value="III/c">III/c</option>
-                                                        <option value="III/b" selected>III/b</option>
-                                                        <option value="III/a">III/a</option>
-                                                        <option value="II/d">II/d</option>
-                                                        <option value="II/c">II/c</option>
-                                                        <option value="II/b">II/b</option>
-                                                        <option value="II/a">II/a</option>
-                                                        <option value="I/d">I/d</option>
-                                                        <option value="I/c">I/c</option>
-                                                        <option value="I/b">I/b</option>
-                                                        <option value="I/a">I/a</option>
+                                                        <?php
+                                                        if ($hakakses == 'dosen') {
+                                                        ?>
+                                                            <option value="Guru Besar">Guru Besar</option>
+                                                            <option value="Lektor Kepala">Lektor Kepala</option>
+                                                            <option value="Lektor" selected>Lektor</option>
+                                                            <option value="Asisten Ahli">Asisten Ahli</option>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <option value="Pembina Utama - IV/e">Pembina Utama - IV/e</option>
+                                                            <option value="Pembina Utama Madya - IV/d">Pembina Utama Madya - IV/d</option>
+                                                            <option value="Pembina Utama Muda - IV/c">Pembina Utama Muda - IV/c</option>
+                                                            <option value="Pembina Tk. I - IV/b">Pembina Tk. I - IV/b</option>
+                                                            <option value="Pembina - IV/a">Pembina - IV/a</option>
+                                                            <option value="Penata Tk. I - III/d">Penata Tk. I - III/d</option>
+                                                            <option value="Penata - III/c">Penata - III/c</option>
+                                                            <option value="Penata Muda Tk. I - III/b">Penata Muda Tk. I - III/b</option>
+                                                            <option value="Penata Muda - III/a" selected>Penata Muda - III/a</option>
+                                                            <option value="Pengatur Tk. I - II/d">Pengatur Tk. I - II/d</option>
+                                                            <option value="Pengatur - II/c">Pengatur - II/c</option>
+                                                            <option value="Pengatur Muda Tk. I - II/b">Pengatur Muda Tk. I - II/b</option>
+                                                            <option value="Pengatur Muda - II/a">Pengatur Muda - II/a</option>
+                                                            <option value="Juru Tk. I - I/d">Juru Tk. I - I/d</option>
+                                                            <option value="Juru - I/c">Juru - I/c</option>
+                                                            <option value="Juru Muda Tk. I - I/b">Juru Muda Tk. I - I/b</option>
+                                                            <option value="Juru Muda - I/b">Juru Muda - I/b</option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="golongan" class="col-sm-2 col-form-label">Golongan</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" name="golongan">
+                                                        <option value="IV/d" selected>IV-d</option>
+                                                        <option value="IV/c">IV-c</option>
+                                                        <option value="IV/b">IV-b</option>
+                                                        <option value="IV/a">IV-a</option>
+                                                        <option value="III/d">III-d</option>
+                                                        <option value="III/c">III-c</option>
+                                                        <option value="III/b">III-b</option>
+                                                        <option value="III/a">III-a</option>
+                                                        <option value="II/d">II-d</option>
+                                                        <option value="II/c">II-c</option>
+                                                        <option value="II/b">II-b</option>
+                                                        <option value="II/a">II-a</option>
+                                                        <option value="I/d">I-d</option>
+                                                        <option value="I/c">I-c</option>
+                                                        <option value="I/b">I-b</option>
+                                                        <option value="I/a">I-a</option>
                                                     </select>
                                                 </div>
                                             </div>

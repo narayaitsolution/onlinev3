@@ -1,19 +1,10 @@
-<html>
-
-<head>
-    <link rel="stylesheet" href="../system/surat.css">
-</head>
-
-<script>
-    window.print();
-</script>
-
 <!-- connect to db -->
 <?php
 require('../system/dbconn.php');
 require('../system/myfunc.php');
 ?>
 <!-- ./db -->
+
 
 <?php
 $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
@@ -35,180 +26,212 @@ $validator2 = $row['validator2'];
 $validasi2 = $row['validasi2'];
 $tglvalidasi2 = $row['tglvalidasi2'];
 $keterangan = $row['keterangan'];
+$statussurat = $row['statussurat'];
 
-//data wd
-$datawd = mysqli_query($dbsurat, "SELECT * FROM pejabat where nip='$validator2'");
-$rowwd = mysqli_fetch_array($datawd);
-$idwd = $rowwd['iddosen'];
-$nipwd = $rowwd['nip'];
-$namawd = $rowwd['nama'];
-$jabatanwd = $rowwd['jabatan'];
+if ($statussurat == 1) {
 
-//buat qrcode
-include "../system/phpqrcode/qrlib.php";
-$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-//echo $actual_link;
-$codeContents = $actual_link;
-$namafile = uniqid();
-QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
+    //data wd
+    $datawd = mysqli_query($dbsurat, "SELECT * FROM pejabat where nip='$validator2'");
+    $rowwd = mysqli_fetch_array($datawd);
+    $idwd = $rowwd['iddosen'];
+    $nipwd = $rowwd['nip'];
+    $namawd = $rowwd['nama'];
+    $jabatanwd = $rowwd['jabatan'];
+
+    //buat qrcode
+    include "../system/phpqrcode/qrlib.php";
+    $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    //echo $actual_link;
+    $codeContents = $actual_link;
+    $namafile = uniqid();
+    QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
 ?>
+    <html>
 
-<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
-    <tbody>
-        <td colspan="5" align="center"><img src="../system/kopsurat.jpg" width="100%" /></td>
-    </tbody>
-</table>
+    <head>
+        <link rel="stylesheet" href="../system/surat.css">
+    </head>
 
-<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
-    <thead>
-        <tr>
-            <td>&nbsp;</td>
-            <td width="20%">&nbsp;</td>
-            <td colspan="2">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>&nbsp;</td>
-            <td>Nomor </td>
-            <td colspan="2">: <?= $keterangan; ?></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>Lampiran </td>
-            <td colspan="2">: 1 lembar</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>Hal </td>
-            <td colspan="2">: Permohonan Surat Izin <?= $jeniscuti; ?> <br /> atas nama <?= $nama; ?> </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">Yth. Kepala Biro Administrasi Umum</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">Perencanaan dan Keuangan</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">UIN Maulana Malik Ibrahim Malang</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">Dengan hormat,</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3" style="text-align: justify;">Sehubungan dengan izin <?= strtolower($jeniscuti); ?> <?= $jabatan; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang atas nama :</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    </tbody>
-</table>
-<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
-    <tbody>
-        <tr>
-            <td>&nbsp;</td>
-            <td width="30%">Nama</td>
-            <td colspan="2">: <?= $nama; ?></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>NIP</td>
-            <td colspan="2">: <?= $nip; ?></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>Pangkat / Golongan</td>
-            <td colspan="2">: <?= $pangkat; ?> - <?= $golongan; ?></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>Jabatan</td>
-            <td colspan="2">: <?= $jabatan; ?> pada Program Studi <?= $prodi; ?></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>Satuan Organisasi</td>
-            <td colspan="2">: Fakultas Sains dan Teknologi UIN Malang</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3" style="text-align: justify;">Maka kami mohon untuk diberikan izin cuti <?= $jeniscuti; ?> kepada pegawai tersebut selama <?= $jmlizin; ?> hari kerja terhitung mulai <?= tgl_indo($tglizin1); ?> s.d <?= tgl_indo($tglizin2); ?> karena <?= $alasan; ?>.</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3">&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td colspan="3" style="text-align: justify;">Demikian surat permohonan ini dibuat, atas perhatian dan kerja sama yang baik disampaikan terima kasih.</td>
-            <td>&nbsp;</td>
-        </tr>
-    </tbody>
-</table>
+    <script>
+        window.print();
+    </script>
 
-<!-- table bawah -->
-<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
-    <tbody>
-        <tr>
-            <td>&nbsp;</td>
-            <td>
-                <small><i>Scan QRCode ini </i></small><br />
-                <img src="../qrcode/<?php echo $namafile; ?>.png" width="80" /><br />
-                <small><i>untuk verifikasi surat</i></small>
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <?php
-            if ($validasi2 == 1) {
-                $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip = '$validator2'");
-                $hasil = mysqli_fetch_array($sql);
-                $ttd = $hasil['ttd'];
-            ?>
-                <td style="text-align:center">Malang, <?= tgl_indo($tglvalidasi2); ?> <br /><img src="../ttd/<?= $ttd; ?>" width="300" /></td>
-            <?php
-            }
-            ?>
-            <td>&nbsp;</td>
-        </tr>
-    </tbody>
-</table>
+    <body>
+        <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
+            <tbody>
+                <td colspan="5" align="center"><img src="../system/kopsurat.jpg" width="100%" /></td>
+            </tbody>
+        </table>
 
-</html>
+        <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td width="20%">&nbsp;</td>
+                    <td colspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Nomor </td>
+                    <td colspan="2">: <?= $keterangan; ?></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Lampiran </td>
+                    <td colspan="2">: 1 lembar</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Hal </td>
+                    <td colspan="2">: Permohonan Surat Izin <?= $jeniscuti; ?> <br /> atas nama <?= $nama; ?> </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">Yth. Kepala Biro Administrasi Umum</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">Perencanaan dan Keuangan</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">UIN Maulana Malik Ibrahim Malang</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">Dengan hormat,</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3" style="text-align: justify;">Sehubungan dengan izin <?= strtolower($jeniscuti); ?> <?= $jabatan; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang atas nama :</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td width="30%">Nama</td>
+                    <td colspan="2">: <?= $nama; ?></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>NIP</td>
+                    <td colspan="2">: <?= $nip; ?></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Pangkat / Golongan</td>
+                    <td colspan="2">: <?= $pangkat; ?> - <?= $golongan; ?></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Jabatan</td>
+                    <td colspan="2">: <?= $jabatan; ?> pada Program Studi <?= $prodi; ?></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Satuan Organisasi</td>
+                    <td colspan="2">: Fakultas Sains dan Teknologi UIN Malang</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3" style="text-align: justify;">Maka kami mohon untuk diberikan izin cuti <?= $jeniscuti; ?> kepada pegawai tersebut selama <?= $jmlizin; ?> hari kerja terhitung mulai <?= tgl_indo($tglizin1); ?> s.d <?= tgl_indo($tglizin2); ?> karena <?= $alasan; ?>.</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3" style="text-align: justify;">Demikian surat permohonan ini dibuat, atas perhatian dan kerja sama yang baik disampaikan terima kasih.</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- table bawah -->
+        <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <small><i>Scan QRCode ini </i></small><br />
+                        <img src="../qrcode/<?php echo $namafile; ?>.png" width="80" /><br />
+                        <small><i>untuk verifikasi surat</i></small>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <?php
+                    if ($validasi2 == 1) {
+                        $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip = '$validator2'");
+                        $hasil = mysqli_fetch_array($sql);
+                        $ttd = $hasil['ttd'];
+                    ?>
+                        <td style="text-align:center">Malang, <?= tgl_indo($tglvalidasi2); ?> <br /><img src="../ttd/<?= $ttd; ?>" width="300" /></td>
+                    <?php
+                    }
+                    ?>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+
+    </html>
+<?php
+} else {
+?>
+    <html>
+
+    <body>
+        <br>
+        <br>
+        <br>
+        <h1 style="text-align: center;">SURAT TIDAK DITEMUKAN / SUDAH DIBATALKAN!!</h1>
+        <h3 style="text-align: center;">SILAHKAN HUBUNGI BAGIAN ADMINISTRASI UNTUK VERIFIKASI SURAT MANUAL</h3>
+        <h3 style="text-align: center;"><a href="https://saintek.uin-malang.ac.id">KLIK DISINI UNTUK KEMBALI</a></h3>
+    </body>
+
+    </html>
+<?php
+}
+?>

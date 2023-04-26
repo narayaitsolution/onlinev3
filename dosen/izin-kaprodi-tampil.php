@@ -22,6 +22,7 @@ $tglsurat = $dizin['tglsurat'];
 $nipbawahan = $dizin['nip'];
 $namabawahan = $dizin['nama'];
 $pangkatbawahan = $dizin['pangkat'];
+$golonganbawahan = $dizin['golongan'];
 $jabatanbawahan = $dizin['jabatan'];
 $tglizin1 = $dizin['tglizin1'];
 $tglizin2 = $dizin['tglizin2'];
@@ -113,7 +114,7 @@ $sisa = $dsisa['sisa'];
                                         <div class="form-group row">
                                             <label for="pangkat" class="col-sm-2 col-form-label">Pangkat / Golongan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" value="<?= $pangkatbawahan; ?>" name="pangkatbawahan" readonly>
+                                                <input type="text" class="form-control" value="<?= $pangkatbawahan; ?> - <?= $golonganbawahan; ?>" name="pangkatbawahan" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../system/dbconn.php');
+require('../system/dbconn.php');
 require('../system/phpmailer/sendmail.php');
 
 $token = mysqli_real_escape_string($dbsurat, $_POST['token']);
@@ -49,6 +49,5 @@ $pesan = "Yth. " . $namapengaju . "<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
 sendmail($emailpengaju, $namapengaju, $subject, $pesan);
-header("location:index.php");
 
 header("location:index.php");
