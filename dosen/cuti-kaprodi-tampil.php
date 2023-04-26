@@ -22,6 +22,7 @@ $tglsurat = $dizin['tglsurat'];
 $nipbawahan = $dizin['nip'];
 $namabawahan = $dizin['nama'];
 $pangkatbawahan = $dizin['pangkat'];
+$golonganbawahan = $dizin['golongan'];
 $jabatanbawahan = $dizin['jabatan'];
 $tglizin1 = $dizin['tglizin1'];
 $tglizin2 = $dizin['tglizin2'];
@@ -69,7 +70,7 @@ $lampiran = $dizin['lampiran'];
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+                            <h1>Pengajuan Cuti</h1>
                         </div>
                     </div>
                 </div>
@@ -82,7 +83,7 @@ $lampiran = $dizin['lampiran'];
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Izin Tidak Masuk Kerja</h3>
+                                    <h3 class="card-title">Pengajuan Cuti</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -111,7 +112,7 @@ $lampiran = $dizin['lampiran'];
                                         <div class="form-group row">
                                             <label for="pangkat" class="col-sm-2 col-form-label">Pangkat / Golongan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" value="<?= $pangkatbawahan; ?>" name="pangkatbawahan" readonly>
+                                                <input type="text" class="form-control" value="<?= $pangkatbawahan; ?> - <?= $golonganbawahan; ?>" name="pangkatbawahan" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -121,19 +122,19 @@ $lampiran = $dizin['lampiran'];
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Awal Izin</label>
+                                            <label for="instansi" class="col-sm-2 col-form-label">Awal Cuti</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" value="<?= tgl_indo($tglizin1); ?>" name="tglizin1" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Akhir Izin</label>
+                                            <label for="instansi" class="col-sm-2 col-form-label">Akhir Cuti</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" value="<?= tgl_indo($tglizin2); ?>" name="tglizin2" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Jumlah Izin</label>
+                                            <label for="instansi" class="col-sm-2 col-form-label">Jumlah Cuti (hari)</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" value="<?= $jmlizin; ?>" name="jmlizin" readonly>
                                             </div>
