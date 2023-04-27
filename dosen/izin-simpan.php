@@ -88,8 +88,10 @@ if ($cuti > $sisacuti) {
         $jabatan = 'Kepala Sub Bagian';
     }
 
-    $sql = mysqli_query($dbsurat, "INSERT INTO izin (prodi, tglsurat, nama, nip,pangkat,golongan,jabatan, tglizin1, tglizin2,jmlizin,jenisizin,alasan,validator1,validator2,token) 
-			                    VALUES ('$prodi','$tglsurat','$nama','$nip','$pangkat','$golongan','$jabatan','$tgl1','$tgl2','$cuti','$jenisizin','$alasan','$nipkaprodi','$nipwd','$token')");
+    $stmt = $dbsurat->prepare("INSERT INTO izin (prodi, tglsurat, nama, nip,pangkat,golongan,jabatan, tglizin1, tglizin2,jmlizin,jenisizin,alasan,validator1,validator2,token)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssss", $prodi, $tglsurat, $nama, $nip, $pangkat, $golongan, $jabatan, $tgl1, $tgl2, $cuti, $jenisizin, $alasan, $nipkaprodi, $nipwd, $token);
+    $stmt->execute();
 
     //kirim email;
     //cari email kaprodi berdasarkan NIP

@@ -96,8 +96,11 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
     $fileSize = filesize($dest_path);
     $info = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $dest_path);
     if (($info == 'image/jpg' || $info == 'image/jpeg') && $filesize < 1048576) {
-        $sql = mysqli_query($dbsurat, "INSERT INTO cuti (prodi, tglsurat, nama, nip,pangkat,golongan,jabatan, tglizin1, tglizin2,jmlizin,jeniscuti,alasan,validator1,validator2,lampiran,token) 
-                                        VALUES ('$prodi','$tglsurat','$nama','$nip','$pangkat','$golongan','$jabatan','$tgl1','$tgl2','$cuti','$jeniscuti','$alasan','$nipatasan1','$nipatasan2','$dest_path','$token')");
+
+        $stmt = $dbsurat->prepare("INSERT INTO cuti (prodi, tglsurat, nama, nip,pangkat,golongan,jabatan, tglizin1, tglizin2,jmlizin,jeniscuti,alasan,validator1,validator2,lampiran,token)
+                                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssssssssssss", $prodi, $tglsurat, $nama, $nip, $pangkat, $golongan, $jabatan, $tgl1, $tgl2, $cuti, $jeniscuti, $alasan, $nipatasan1, $nipatasan2, $dest_path, $token);
+        $stmt->execute();
 
         //kirim email;
         //cari email kaprodi berdasarkan NIP
