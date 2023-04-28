@@ -52,7 +52,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cuti</h1>
+                            <h1>Pengajuan Cuti</h1>
                         </div>
                     </div>
                 </div>
@@ -139,66 +139,6 @@ $no = 1;
                                                     <input type="text" class="form-control" id="nip" name="nip" value="<?= $_SESSION['nip']; ?>" readonly>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="pangkat" class="col-sm-2 col-form-label">Pangkat</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" name="pangkat">
-                                                        <?php
-                                                        if ($hakakses == 'dosen') {
-                                                        ?>
-                                                            <option value="Guru Besar">Guru Besar</option>
-                                                            <option value="Lektor Kepala">Lektor Kepala</option>
-                                                            <option value="Lektor" selected>Lektor</option>
-                                                            <option value="Asisten Ahli">Asisten Ahli</option>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <option value="Pembina Utama - IV/e">Pembina Utama - IV/e</option>
-                                                            <option value="Pembina Utama Madya - IV/d">Pembina Utama Madya - IV/d</option>
-                                                            <option value="Pembina Utama Muda - IV/c">Pembina Utama Muda - IV/c</option>
-                                                            <option value="Pembina Tk. I - IV/b">Pembina Tk. I - IV/b</option>
-                                                            <option value="Pembina - IV/a">Pembina - IV/a</option>
-                                                            <option value="Penata Tk. I - III/d">Penata Tk. I - III/d</option>
-                                                            <option value="Penata - III/c">Penata - III/c</option>
-                                                            <option value="Penata Muda Tk. I - III/b">Penata Muda Tk. I - III/b</option>
-                                                            <option value="Penata Muda - III/a" selected>Penata Muda - III/a</option>
-                                                            <option value="Pengatur Tk. I - II/d">Pengatur Tk. I - II/d</option>
-                                                            <option value="Pengatur - II/c">Pengatur - II/c</option>
-                                                            <option value="Pengatur Muda Tk. I - II/b">Pengatur Muda Tk. I - II/b</option>
-                                                            <option value="Pengatur Muda - II/a">Pengatur Muda - II/a</option>
-                                                            <option value="Juru Tk. I - I/d">Juru Tk. I - I/d</option>
-                                                            <option value="Juru - I/c">Juru - I/c</option>
-                                                            <option value="Juru Muda Tk. I - I/b">Juru Muda Tk. I - I/b</option>
-                                                            <option value="Juru Muda - I/b">Juru Muda - I/b</option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="golongan" class="col-sm-2 col-form-label">Golongan</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" name="golongan">
-                                                        <option value="IV/d" selected>IV-d</option>
-                                                        <option value="IV/c">IV-c</option>
-                                                        <option value="IV/b">IV-b</option>
-                                                        <option value="IV/a">IV-a</option>
-                                                        <option value="III/d">III-d</option>
-                                                        <option value="III/c">III-c</option>
-                                                        <option value="III/b">III-b</option>
-                                                        <option value="III/a">III-a</option>
-                                                        <option value="II/d">II-d</option>
-                                                        <option value="II/c">II-c</option>
-                                                        <option value="II/b">II-b</option>
-                                                        <option value="II/a">II-a</option>
-                                                        <option value="I/d">I-d</option>
-                                                        <option value="I/c">I-c</option>
-                                                        <option value="I/b">I-b</option>
-                                                        <option value="I/a">I-a</option>
-                                                    </select>
-                                                </div>
-                                            </div>
                                             <!-- cari jabatan -->
                                             <?php
                                             $qjabatan = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip='$nip'");
@@ -223,6 +163,27 @@ $no = 1;
                                                     <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?= strtoupper($_SESSION['jabatan']); ?>" readonly>
                                                 </div>
                                             </div>
+                                            <!-- cari masa kerja -->
+                                            <?php
+                                            $tahunini = date('Y');
+                                            $bulanini = date('m');
+                                            $tahunkerja = substr($nip, 8, 4);
+                                            $bulankerja = substr($nip, 12, 2);
+                                            $masakerjatahun = $tahunini - $tahunkerja;
+                                            $masakerjabulan = $bulanini - $bulankerja;
+                                            ?>
+                                            <div class="form-group row">
+                                                <label for="masakerja" class="col-sm-2 col-form-label">Masa Kerja</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="masakerja" name="masakerja" value="<?= $masakerjatahun; ?> Tahun <?= $masakerjabulan; ?> Bulan" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="unitkerja" class="col-sm-2 col-form-label">Unit Kerja</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="unitkerja" name="unitkerja" value="Program Studi <?= $prodi; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang" readonly>
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label for="cuti" class="col-sm-2 col-form-label">Jenis Cuti yang Diambil</label>
                                                 <div class="col-sm-10">
@@ -237,7 +198,7 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="alasan" class="col-sm-2 col-form-label">Alasan</label>
+                                                <label for="alasan" class="col-sm-2 col-form-label">Alasan Cuti</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="alasan" required>
                                                 </div>
@@ -255,12 +216,170 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label for="instansi" class="col-sm-2 col-form-label">Catatan Cuti (hari)</label>
+                                                <div class="col-sm-10">
+                                                    <label>Cuti Tahunan</label>
+                                                    <!-- hitung cuti bersama pemerintah -->
+                                                    <?php
+                                                    //cuti pemerintah
+                                                    $jmlcuti = 0;
+                                                    $qcuti = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunini-2' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
+                                                    $jcuti = mysqli_num_rows($qcuti);
+                                                    //cuti tahunan
+                                                    $jcutitahunan = 0;
+                                                    $qcutitahunan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini-2' AND jeniscuti = 'Cuti Tahunan'");
+                                                    while ($dcutitahunan = mysqli_fetch_array($qcutitahunan)) {
+                                                        $jcutitahunan = $jcutitahunan + $dcutitahunan['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            Tahun <?= $tahunini - 2; ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="0" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- hitung cuti bersama pemerintah -->
+                                                    <?php
+                                                    //cuti pemerintah
+                                                    $tahunlalu = $tahunini - 1;
+                                                    $qcuti = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunlalu' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
+                                                    $jcuti = mysqli_num_rows($qcuti);
+                                                    //cuti tahunan
+                                                    $jcutitahunan = 0;
+                                                    $qcutitahunan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunlalu' AND jeniscuti = 'Cuti Tahunan'");
+                                                    while ($dcutitahunan = mysqli_fetch_array($qcutitahunan)) {
+                                                        $jcutitahunan = $jcutitahunan + $dcutitahunan['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            Tahun <?= $tahunlalu; ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="<?= 12 - $jcuti - $jcutitahunan; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- hitung cuti bersama pemerintah -->
+                                                    <?php
+                                                    //cuti pemerintah
+                                                    $qcuti = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunini' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
+                                                    $jcuti = mysqli_num_rows($qcuti);
+                                                    //cuti tahunan
+                                                    $jcutitahunan = 0;
+                                                    $qcutitahunan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Tahunan'");
+                                                    while ($dcutitahunan = mysqli_fetch_array($qcutitahunan)) {
+                                                        $jcutitahunan = $jcutitahunan + $dcutitahunan['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            Tahun <?= $tahunini; ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="<?= 12 - $jcuti - $jcutitahunan; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- cari data cuti besar -->
+                                                    <?php
+                                                    $jcutibesar = 0;
+                                                    $qcutibesar = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Besar'");
+                                                    while ($dcutibesar = mysqli_fetch_array($qcutibesar)) {
+                                                        $jcutibesar = $jcutibesar + $dcutibesar['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <label>Cuti Besar</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="<?= $jcutibesar; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- cari data cuti sakit -->
+                                                    <?php
+                                                    $jcutisakit = 0;
+                                                    $qcutisakit = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Sakit'");
+                                                    while ($dcutisakit = mysqli_fetch_array($qcutisakit)) {
+                                                        $jcutisakit = $jcutisakit + $dcutisakit['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <label>Cuti Sakit</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="<?= $jcutisakit; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- cari data cuti melahirkan -->
+                                                    <?php
+                                                    $jcutimelahirkan = 0;
+                                                    $qcutimelahirkan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Melahirkan'");
+                                                    while ($dcutimelahirkan = mysqli_fetch_array($qcutimelahirkan)) {
+                                                        $jcutimelahirkan = $jcutimelahirkan + $dcutimelahirkan['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <label>Cuti Melahirkan</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="<?= $jcutimelahirkan; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- cari data cuti karena alasan penting -->
+                                                    <?php
+                                                    $jcutialasan = 0;
+                                                    $qcutialasan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Karena Alasan Penting'");
+                                                    while ($dcutialasan = mysqli_fetch_array($qcutialasan)) {
+                                                        $jcutialasan = $jcutialasan + $dcutialasan['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <label>Cuti Karena Alasan Penting</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="<?= $jcutialasan; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- cari data cuti diluar tanggungan negara -->
+                                                    <?php
+                                                    $jcutiluar = 0;
+                                                    $qcutiluar = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Diluar Tanggungan Negara'");
+                                                    while ($dcutiluar = mysqli_fetch_array($qcutiluar)) {
+                                                        $jcutiluar = $jcutiluar + $dcutiluar['jmlizin'];
+                                                    }
+                                                    ?>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <label>Cuti Diluar Tanggungan Negara</label>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="text" class="form-control" value="<?= $jcutiluar; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <small style="color:red">Ket: Sisa cuti tahunan tertera setelah dipotong cuti bersama pemerintah</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="alamatcuti" class="col-sm-2 col-form-label">Alamat selama menjalankan cuti</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" name="alamatcuti" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                            <!--
+                                            <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Lampiran</label>
                                                 <div class="col-sm-10">
                                                     <input type="file" class="form-control" name="lampiran" accept=".jpg,.jpeg">
                                                     <small style="color:red">Jenis File JPG/JPEG ukuran file maksimal 1MB</small>
                                                 </div>
                                             </div>
+                                        -->
                                             <hr>
                                             <button type="submit" id="btn-submit" class="btn btn-primary btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> Ajukan</button>
                                         </form>

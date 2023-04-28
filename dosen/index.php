@@ -1791,7 +1791,7 @@ $tahun = date('Y');
                                     $query = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE nip='$nip' ORDER BY tglizin1 DESC");
                                     while ($data = mysqli_fetch_array($query)) {
                                         $nodata = $data['no'];
-                                        $jenissurat = 'Surat Izin Cuti';
+                                        $jenissurat = 'Surat Cuti';
                                         $keterangan = $data['keterangan'];
                                         $validasi1 = $data['validasi1'];
                                         $validator1 = $data['validator1'];
