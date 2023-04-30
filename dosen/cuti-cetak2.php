@@ -51,64 +51,12 @@ if ($statussurat == 1) {
     </head>
 
     <script>
-        //window.print();
+        window.print();
     </script>
 
     <body>
-        <table table style="width:90%; margin-left:auto;margin-right:auto;" cellspacing="0" border="1">
-            <tbody>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%">ANAK LAMPIRAN 1.b</td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%">PERATURAN BADAN KEPEGAWAIAN NEGARA</td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%">REPUBLIK INDONESIA</td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%">NOMOR 24 TAHUN 2017</td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%">TENTANG</td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%">TATA CARA PEMBERIAN CUTI PEGAWAI NEGERI SIPIL</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%;text-align:center;">Malang, <?= tgl_indo($tglvalidasi2); ?></td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%;text-align:center;">Kepada</td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%;text-align:center;">Yth. Kepala Biro AUPK UIN Maulana Malik Ibrahim Malang</td>
-                </tr>
-                <tr>
-                    <td style="width:40%"></td>
-                    <td style="width:60%;text-align:center;">Di Tempat</td>
-                </tr>
-            </tbody>
-        </table>
 
-        <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
+        <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="1">
             <thead>
                 <tr>
                     <td>&nbsp;</td>
@@ -118,6 +66,49 @@ if ($statussurat == 1) {
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Nomor </td>
+                    <td colspan="2">: <?= $keterangan; ?></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Lampiran </td>
+                    <td colspan="2">: 1 lembar</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Hal </td>
+                    <td colspan="2">: Permohonan Surat Izin <?= $jeniscuti; ?> </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">Yth. Kepala Biro Administrasi Umum</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">Perencanaan dan Keuangan</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">UIN Maulana Malik Ibrahim Malang</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
                 <tr>
                     <td>&nbsp;</td>
                     <td colspan="3">Dengan hormat,</td>

@@ -14,6 +14,7 @@ $tahun = date('Y');
 $qurutan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglsurat)=$tahun");
 $urutan = mysqli_num_rows($qurutan);
 $nosurat = "B-" . $urutan . ".O/FST/KP.08.2/" . $bulan . "/" . $tahun . "";
+
 //update status validasi dosen
 $sql = mysqli_query($dbsurat, "UPDATE cuti
 					SET tglvalidasi2 = '$tgl', 

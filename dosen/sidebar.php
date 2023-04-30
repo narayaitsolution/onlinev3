@@ -147,6 +147,7 @@
                                 </p>
                             </a>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a href="cuti-isi.php" class="nav-link">
                                 <i class=" nav-icon fa-solid fa-plane-departure"></i>
@@ -156,6 +157,7 @@
                                 </p>
                             </a>
                         </li>
+                            -->
                     </ul>
                 </li>
                 <!--

@@ -17,7 +17,7 @@ $jeniscuti = $_POST['cuti'];
 $cutitahun2 = $_POST['cutitahun2'];
 $cutitahun1 = $_POST['cutitahun1'];
 $cutitahunini = $_POST['cutitahunini'];
-$sisacutitahunan = $_POST['sisacutitahunan'];
+$totalcutitahunan = $_POST['totalcutitahunan'];
 $alasan = $_POST['alasan'];
 $tgl1 = $_POST['tgl1'];
 $tgl2 = $_POST['tgl2'];
@@ -27,9 +27,8 @@ $uniqid = random_str(12);
 $cuti = jmlcuti($tgl1, $tgl2, $dbsurat);
 
 if ($jeniscuti == 'Cuti Tahunan') {
-    $jatahcuti = $cutitahun2 + $cutitahun1 + $cutitahunini;
 
-    if ($sisacutitahunan > $jatahcuti) {
+    if ($totalcutitahunan > 36) {
         header("location:cuti-isi.php?pesan=over");
     } else {
         //kaprodi keatas verifikasi wd2

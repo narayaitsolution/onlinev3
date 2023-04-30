@@ -120,6 +120,8 @@ $no = 1;
             }
             $totalcutitahunini = $jcuti + $jcutitahunan;
 
+            $totalcutitahunan = $totalcutitahunini + $totalcutitahunlalu1 + $totalcutitahunlalu2;
+
             //cuti besar
             $jcutibesar = 0;
             $qcutibesar = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Besar' AND nip='$nip' AND statussurat='1'");
@@ -385,6 +387,7 @@ $no = 1;
                                             </div>
                                         -->
                                             <hr>
+                                            <input type="hidden" name="totalcutitahunan" value="<? -$totalcutitahunan; ?>">
                                             <button type="submit" id="btn-submit" class="btn btn-primary btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> Ajukan</button>
                                         </form>
                                     </div>
