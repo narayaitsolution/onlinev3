@@ -58,39 +58,6 @@ $no = 1;
                 </div>
             </section>
 
-            <?php
-            //cek datacuti
-            $qsisa = mysqli_query($dbsurat, "SELECT * FROM izinsisa WHERE nip = '$nip'");
-            $jsisa = mysqli_num_rows($qsisa);
-            if ($jsisa > 0) {
-                $dsisa = mysqli_fetch_array($qsisa);
-                $sisacuti = $dsisa['sisa'];
-            } else {
-                $qinputsisa = mysqli_query($dbsurat, "INSERT INTO izinsisa (nip,sisa) VALUES ('$nip',12)");
-                $sisacuti = 12;
-            }
-            ?>
-
-            <!--
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg">
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3><?= $sisacuti; ?> <sup style="font-size: 20px">hari</sup></h3>
-                                    <p>Sisa Izin Cuti</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-email"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        -->
-
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -218,76 +185,94 @@ $no = 1;
                                             <div class="form-group row">
                                                 <label for="instansi" class="col-sm-2 col-form-label">Catatan Cuti (hari)</label>
                                                 <div class="col-sm-10">
-                                                    <label>Cuti Tahunan</label>
-                                                    <!-- hitung cuti bersama pemerintah 2 thn lalu-->
-                                                    <?php
-                                                    //cuti pemerintah
-                                                    $jcuti2 = 0;
-                                                    $tahunlalu2 = $tahun - 2;
-                                                    $qcuti2 = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunlalu2' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
-                                                    $jcuti2 = mysqli_num_rows($qcuti2);
-                                                    //cuti tahunan
-                                                    $jcutitahunan2 = 0;
-                                                    $qcutitahunan2 = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunlalu2' AND jeniscuti = 'Cuti Tahunan'");
-                                                    while ($dcutitahunan2 = mysqli_fetch_array($qcutitahunan2)) {
-                                                        $jcutitahunan2 = $jcutitahunan2 + $dcutitahunan2['jmlizin'];
-                                                    }
-                                                    ?>
+                                                    <label>Cuti Tahunan <small style="color:red">Ket: Jumlah cuti tahunan maksimal 12 hari / tahun (termasuk cuti bersama)</small></label>
                                                     <div class="row">
-                                                        <div class="col-4">
-                                                            Tahun <?= $tahunlalu2; ?>
+                                                        <div class="col">
+                                                            <!-- hitung cuti bersama pemerintah 2 thn lalu-->
+                                                            <?php
+                                                            //cuti pemerintah
+                                                            $jcuti2 = 0;
+                                                            $tahunlalu2 = $tahun - 2;
+                                                            $qcuti2 = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunlalu2' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
+                                                            $jcuti2 = mysqli_num_rows($qcuti2);
+                                                            //cuti tahunan
+                                                            $jcutitahunan2 = 0;
+                                                            $qcutitahunan2 = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunlalu2' AND jeniscuti = 'Cuti Tahunan' AND nip='$nip' AND statussurat='1'");
+                                                            while ($dcutitahunan2 = mysqli_fetch_array($qcutitahunan2)) {
+                                                                $jcutitahunan2 = $jcutitahunan2 + $dcutitahunan2['jmlizin'];
+                                                            }
+                                                            ?>
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    Tahun <?= $tahunlalu2; ?>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <input type="text" class="form-control" name="cutitahun2" value="<?= $jcuti2 + $jcutitahunan2; ?>" readonly>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="text" class="form-control" name="cutitahun2" value="<?= 12 - $jcuti2 - $jcutitahunan2; ?>" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- hitung cuti bersama pemerintah tahun lalu-->
-                                                    <?php
-                                                    //cuti pemerintah
-                                                    $jcuti1 = 0;
-                                                    $tahunlalu = $tahunini - 1;
-                                                    $qcuti1 = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunlalu' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
-                                                    $jcuti1 = mysqli_num_rows($qcuti1);
-                                                    //cuti tahunan
-                                                    $jcutitahunan1 = 0;
-                                                    $qcutitahunan1 = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunlalu' AND jeniscuti = 'Cuti Tahunan'");
-                                                    while ($dcutitahunan1 = mysqli_fetch_array($qcutitahunan1)) {
-                                                        $jcutitahunan1 = $jcutitahunan1 + $dcutitahunan1['jmlizin'];
-                                                    }
-                                                    ?>
-                                                    <div class="row">
-                                                        <div class="col-4">
-                                                            Tahun <?= $tahunlalu; ?>
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="text" class="form-control" name="cutitahun1" value="<?= 12 - $jcuti1 - $jcutitahunan1; ?>" readonly>
-                                                        </div>
-                                                    </div>
-                                                    <!-- hitung cuti bersama pemerintah -->
-                                                    <?php
-                                                    //cuti pemerintah
-                                                    $jcuti = 0;
-                                                    $qcuti = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunini' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
-                                                    $jcuti = mysqli_num_rows($qcuti1);
-                                                    //cuti tahunan
-                                                    $jcutitahunan = 0;
-                                                    $qcutitahunan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Tahunan'");
-                                                    while ($dcutitahunan = mysqli_fetch_array($qcutitahunan)) {
-                                                        $jcutitahunan = $jcutitahunan + $dcutitahunan['jmlizin'];
-                                                    }
-                                                    ?>
-                                                    <div class="row">
-                                                        <div class="col-4">
-                                                            Tahun <?= $tahunini; ?>
+                                                            <!-- hitung cuti bersama pemerintah tahun lalu-->
+                                                            <?php
+                                                            //cuti pemerintah
+                                                            $jcuti1 = 0;
+                                                            $tahunlalu = $tahunini - 1;
+                                                            $qcuti1 = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunlalu' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
+                                                            $jcuti1 = mysqli_num_rows($qcuti1);
+                                                            //cuti tahunan
+                                                            $jcutitahunan1 = 0;
+                                                            $qcutitahunan1 = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunlalu' AND jeniscuti = 'Cuti Tahunan' AND nip='$nip' AND statussurat='1'");
+                                                            while ($dcutitahunan1 = mysqli_fetch_array($qcutitahunan1)) {
+                                                                $jcutitahunan1 = $jcutitahunan1 + $dcutitahunan1['jmlizin'];
+                                                            }
+                                                            ?>
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    Tahun <?= $tahunlalu; ?>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <input type="text" class="form-control" name="cutitahun1" value="<?= $jcuti1 + $jcutitahunan1; ?>" readonly>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="text" class="form-control" name="cutitahunini" value="<?= 12 - $jcuti - $jcutitahunan; ?>" readonly>
+                                                            <!-- hitung cuti bersama pemerintah -->
+                                                            <?php
+                                                            //cuti pemerintah
+                                                            $jcuti = 0;
+                                                            $qcuti = mysqli_query($dbsurat, "SELECT *  FROM liburnasional WHERE YEAR(tanggal) = '$tahunini' AND SUBSTRING(keterangan,1,4) = 'Cuti'");
+                                                            $jcuti = mysqli_num_rows($qcuti);
+                                                            //cuti tahunan
+                                                            $jcutitahunan = 0;
+                                                            $qcutitahunan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Tahunan' AND nip='$nip' AND statussurat='1'");
+                                                            while ($dcutitahunan = mysqli_fetch_array($qcutitahunan)) {
+                                                                $jcutitahunan = $jcutitahunan + $dcutitahunan['jmlizin'];
+                                                            }
+                                                            ?>
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    Tahun <?= $tahunini; ?>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <input type="text" class="form-control" name="cutitahunini" value="<?= $jcuti + $jcutitahunan; ?>" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    <label style="color: blue;">Sisa Cuti Tahunan</label>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <input type="text" class="form-control" name="sisacutitahunan" value="<?= 36 - (($jcuti + $jcutitahunan) + ($jcuti1 + $jcutitahunan1) + ($jcuti2 + $jcutitahunan2)); ?>" readonly>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!-- cari data cuti besar -->
                                                     <?php
                                                     $jcutibesar = 0;
-                                                    $qcutibesar = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Besar'");
+                                                    $qcutibesar = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Besar' AND nip='$nip' AND statussurat='1'");
                                                     while ($dcutibesar = mysqli_fetch_array($qcutibesar)) {
                                                         $jcutibesar = $jcutibesar + $dcutibesar['jmlizin'];
                                                     }
@@ -303,7 +288,7 @@ $no = 1;
                                                     <!-- cari data cuti sakit -->
                                                     <?php
                                                     $jcutisakit = 0;
-                                                    $qcutisakit = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Sakit'");
+                                                    $qcutisakit = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Sakit' AND nip='$nip' AND statussurat='1'");
                                                     while ($dcutisakit = mysqli_fetch_array($qcutisakit)) {
                                                         $jcutisakit = $jcutisakit + $dcutisakit['jmlizin'];
                                                     }
@@ -319,7 +304,7 @@ $no = 1;
                                                     <!-- cari data cuti melahirkan -->
                                                     <?php
                                                     $jcutimelahirkan = 0;
-                                                    $qcutimelahirkan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Melahirkan'");
+                                                    $qcutimelahirkan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Melahirkan' AND nip='$nip' AND statussurat='1'");
                                                     while ($dcutimelahirkan = mysqli_fetch_array($qcutimelahirkan)) {
                                                         $jcutimelahirkan = $jcutimelahirkan + $dcutimelahirkan['jmlizin'];
                                                     }
@@ -335,7 +320,7 @@ $no = 1;
                                                     <!-- cari data cuti karena alasan penting -->
                                                     <?php
                                                     $jcutialasan = 0;
-                                                    $qcutialasan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Karena Alasan Penting'");
+                                                    $qcutialasan = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Karena Alasan Penting' AND nip='$nip' AND statussurat='1'");
                                                     while ($dcutialasan = mysqli_fetch_array($qcutialasan)) {
                                                         $jcutialasan = $jcutialasan + $dcutialasan['jmlizin'];
                                                     }
@@ -351,7 +336,7 @@ $no = 1;
                                                     <!-- cari data cuti diluar tanggungan negara -->
                                                     <?php
                                                     $jcutiluar = 0;
-                                                    $qcutiluar = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Diluar Tanggungan Negara'");
+                                                    $qcutiluar = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE year(tglizin1) = '$tahunini' AND jeniscuti = 'Cuti Diluar Tanggungan Negara' AND nip='$nip' AND statussurat='1'");
                                                     while ($dcutiluar = mysqli_fetch_array($qcutiluar)) {
                                                         $jcutiluar = $jcutiluar + $dcutiluar['jmlizin'];
                                                     }
@@ -364,14 +349,14 @@ $no = 1;
                                                             <input type="text" class="form-control" value="<?= $jcutiluar; ?>" readonly>
                                                         </div>
                                                     </div>
-                                                    <small style="color:red">Ket: Sisa cuti tahunan setelah dipotong cuti bersama pemerintah</small>
+
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
                                                 <label for="alamatcuti" class="col-sm-2 col-form-label">Alamat selama menjalankan cuti</label>
                                                 <div class="col-sm-10">
-                                                    <textarea class="form-control" name="alamatcuti" rows="5"></textarea>
+                                                    <textarea class="form-control" name="alamatcuti" rows="5" required></textarea>
                                                 </div>
                                             </div>
                                             <!--

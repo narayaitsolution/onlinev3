@@ -309,7 +309,7 @@ $tahun = date('Y');
                                         $tanggal = $data['tglsurat'];
                                         $prodimhs = $data['prodi'];
                                         $nama = stripslashes($data['nama']);
-                                        $surat = 'Surat Izin';
+                                        $surat = 'Pengajuan Cuti';
                                         $validasi1 = $data['validasi1'];
                                         $token = $data['token'];
                                     ?>
