@@ -31,10 +31,6 @@ $alasan = $dizin['alasan'];
 $validator1 = $dizin['validator1'];
 $validasi1 = $dizin['validasi1'];
 $tglvalidasi1 = $dizin['tglvalidasi1'];
-
-$qsisa = mysqli_query($dbsurat, "SELECT * FROM izinsisa WHERE nip='$nipbawahan'");
-$dsisa = mysqli_fetch_array($qsisa);
-$sisa = $dsisa['sisa'];
 ?>
 
 <!DOCTYPE html>
@@ -138,15 +134,9 @@ $sisa = $dsisa['sisa'];
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Jumlah Izin</label>
+                                            <label for="instansi" class="col-sm-2 col-form-label">Jumlah Izin (hari)</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" value="<?= $jmlizin; ?>" name="jmlizin" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Sisa Izin</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" value="<?= $sisa; ?>" name="sisaizin" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">

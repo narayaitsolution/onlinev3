@@ -58,37 +58,6 @@ $no = 1;
                 </div>
             </section>
 
-            <?php
-            //cek datacuti
-            $qsisa = mysqli_query($dbsurat, "SELECT * FROM izinsisa WHERE nip = '$nip'");
-            $jsisa = mysqli_num_rows($qsisa);
-            if ($jsisa > 0) {
-                $dsisa = mysqli_fetch_array($qsisa);
-                $sisacuti = $dsisa['sisa'];
-            } else {
-                $qinputsisa = mysqli_query($dbsurat, "INSERT INTO izinsisa (nip,sisa) VALUES ('$nip',12)");
-                $sisacuti = 12;
-            }
-            ?>
-
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg">
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3><?= $sisacuti; ?> <sup style="font-size: 20px">hari</sup></h3>
-                                    <p>Sisa Izin Cuti</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-email"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -240,7 +209,6 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <hr>
-                                            <input type="hidden" name="sisacuti" value="<?= $sisacuti; ?>">
                                             <button type="submit" id="btn-submit" class="btn btn-primary btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> Ajukan</button>
                                         </form>
                                     </div>

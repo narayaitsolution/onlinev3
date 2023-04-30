@@ -13,94 +13,90 @@ $pangkat = $_POST['pangkat'];
 $golongan = $_POST['golongan'];
 $jabatan = $_SESSION['jabatan'];
 $prodi = $_SESSION['prodi'];
-$jenisizin = mysqli_real_escape_string($dbsurat, $_POST['jenisizin']);
-$alasan = mysqli_real_escape_string($dbsurat, $_POST['alasan']);
-$sisacuti = mysqli_real_escape_string($dbsurat, $_POST['sisacuti']);
+$jenisizin = $_POST['jenisizin'];
+$alasan = $_POST['alasan'];
 $tgl1 = $_POST['tgl1'];
 $tgl2 = $_POST['tgl2'];
 $token = md5(uniqid());
 $cuti = jmlcuti($tgl1, $tgl2, $dbsurat);
 
-if ($cuti > $sisacuti) {
-    header("location:izin-isi.php?pesan=over");
-} else {
-    //kaprodi keatas verifikasi wd2
-    if ($jabatan == 'kaprodi' or $jabatan == 'dekan' or $jabatan == 'wadek1' or $jabatan == 'wadek3' or $jabatan == 'kabag-tu') {
-        //cari nip kaprodi
-        $jabatanwd = 'wadek2';
-        $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
-        $stmt->bind_param("s", $jabatanwd);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $dhasil = $result->fetch_assoc();
-        $nipkaprodi = $dhasil['nip'];
-        $namakaprodi = $dhasil['nama'];
-        //cari nip wd-2
-        $nipwd = $dhasil['nip'];
-    } elseif ($jabatan == 'wadek2') {
-        //cari nip kaprodi
-        $jabatanwd = 'dekan';
-        $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
-        $stmt->bind_param("s", $jabatanwd);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $dhasil = $result->fetch_assoc();
-        $nipkaprodi = $dhasil['nip'];
-        $namakaprodi = $dhasil['nama'];
-        //cari nip wd-2
-        $nipwd = $dhasil['nip'];
-    } else {
-        //cari nip kaprodi
-        $kdjabatan = 'kaprodi';
-        $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE prodi=? AND kdjabatan=?");
-        $stmt->bind_param("ss", $prodi, $kdjabatan);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $dhasil = $result->fetch_assoc();
-        $nipkaprodi = $dhasil['nip'];
-        $namakaprodi = $dhasil['nama'];
-
-        //cari nip wd-2
-        $jabatanwd = 'kabag-tu';
-        $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
-        $stmt->bind_param("s", $jabatanwd);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $dhasil = $result->fetch_assoc();
-        $nipwd = $dhasil['nip'];
-    }
-
-    if ($jabatan == 'dosen') {
-        $jabatan = 'Dosen';
-    } elseif ($jabatan == 'kaprodi') {
-        $jabatan = 'Ketua Program Studi';
-    } elseif ($jabatan == 'wadek1') {
-        $jabatan = 'Wakil Dekan bidang Akademik';
-    } elseif ($jabatan == 'wadek2') {
-        $jabatan = 'Wakil Dekan bidang AUPK';
-    } elseif ($jabatan == 'wadek3') {
-        $jabatan = 'Wakil Dekan bidang Kemahasiswaan';
-    } elseif ($jabatan == 'tendik') {
-        $jabatan = 'Tenaga Kependidikan';
-    } elseif ($jabatan == 'kabag') {
-        $jabatan = 'Kepala Bagian AUPK';
-    } elseif ($jabatan == 'kasubag') {
-        $jabatan = 'Kepala Sub Bagian';
-    }
-
-    $stmt = $dbsurat->prepare("INSERT INTO izin (prodi, tglsurat, nama, nip,pangkat,golongan,jabatan, tglizin1, tglizin2,jmlizin,jenisizin,alasan,validator1,validator2,token)
-                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssss", $prodi, $tglsurat, $nama, $nip, $pangkat, $golongan, $jabatan, $tgl1, $tgl2, $cuti, $jenisizin, $alasan, $nipkaprodi, $nipwd, $token);
+//kaprodi keatas verifikasi wd2
+if ($jabatan == 'kaprodi' or $jabatan == 'dekan' or $jabatan == 'wadek1' or $jabatan == 'wadek3' or $jabatan == 'kabag-tu') {
+    //cari nip kaprodi
+    $jabatanwd = 'wadek2';
+    $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
+    $stmt->bind_param("s", $jabatanwd);
     $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $nipkaprodi = $dhasil['nip'];
+    $namakaprodi = $dhasil['nama'];
+    //cari nip wd-2
+    $nipwd = $dhasil['nip'];
+} elseif ($jabatan == 'wadek2') {
+    //cari nip kaprodi
+    $jabatanwd = 'dekan';
+    $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
+    $stmt->bind_param("s", $jabatanwd);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $nipkaprodi = $dhasil['nip'];
+    $namakaprodi = $dhasil['nama'];
+    //cari nip wd-2
+    $nipwd = $dhasil['nip'];
+} else {
+    //cari nip kaprodi
+    $kdjabatan = 'kaprodi';
+    $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE prodi=? AND kdjabatan=?");
+    $stmt->bind_param("ss", $prodi, $kdjabatan);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $nipkaprodi = $dhasil['nip'];
+    $namakaprodi = $dhasil['nama'];
 
-    //kirim email;
-    //cari email kaprodi berdasarkan NIP
-    $sql2 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkaprodi'");
-    $dsql2 = mysqli_fetch_array($sql2);
-    $emailkaprodi = $dsql2['email'];
+    //cari nip wd-2
+    $jabatanwd = 'kabag-tu';
+    $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
+    $stmt->bind_param("s", $jabatanwd);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $nipwd = $dhasil['nip'];
+}
 
-    $subject = "Pengajuan Izin";
-    $pesan = "Yth. " . $namakaprodi . "<br/>
+if ($jabatan == 'dosen') {
+    $jabatan = 'Dosen';
+} elseif ($jabatan == 'kaprodi') {
+    $jabatan = 'Ketua Program Studi';
+} elseif ($jabatan == 'wadek1') {
+    $jabatan = 'Wakil Dekan bidang Akademik';
+} elseif ($jabatan == 'wadek2') {
+    $jabatan = 'Wakil Dekan bidang AUPK';
+} elseif ($jabatan == 'wadek3') {
+    $jabatan = 'Wakil Dekan bidang Kemahasiswaan';
+} elseif ($jabatan == 'tendik') {
+    $jabatan = 'Tenaga Kependidikan';
+} elseif ($jabatan == 'kabag') {
+    $jabatan = 'Kepala Bagian AUPK';
+} elseif ($jabatan == 'kasubag') {
+    $jabatan = 'Kepala Sub Bagian';
+}
+
+$stmt = $dbsurat->prepare("INSERT INTO izin (prodi, tglsurat, nama, nip,pangkat,golongan,jabatan, tglizin1, tglizin2,jmlizin,jenisizin,alasan,validator1,validator2,token)
+                                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("sssssssssssssss", $prodi, $tglsurat, $nama, $nip, $pangkat, $golongan, $jabatan, $tgl1, $tgl2, $cuti, $jenisizin, $alasan, $nipkaprodi, $nipwd, $token);
+$stmt->execute();
+
+//kirim email;
+//cari email kaprodi berdasarkan NIP
+$sql2 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkaprodi'");
+$dsql2 = mysqli_fetch_array($sql2);
+$emailkaprodi = $dsql2['email'];
+
+$subject = "Pengajuan Izin";
+$pesan = "Yth. " . $namakaprodi . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
         <br />
@@ -118,6 +114,5 @@ if ($cuti > $sisacuti) {
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
-    sendmail($emailkaprodi, $namakaprodi, $subject, $pesan);
-    header("location:index.php");
-}
+sendmail($emailkaprodi, $namakaprodi, $subject, $pesan);
+header("location:index.php");

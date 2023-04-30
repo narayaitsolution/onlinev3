@@ -29,10 +29,6 @@ $tglizin2 = $dizin['tglizin2'];
 $jmlizin = $dizin['jmlizin'];
 $jenisizin = $dizin['jenisizin'];
 $alasan = $dizin['alasan'];
-
-$qsisa = mysqli_query($dbsurat, "SELECT * FROM izinsisa WHERE nip='$nipbawahan'");
-$dsisa = mysqli_fetch_array($qsisa);
-$sisa = $dsisa['sisa'];
 ?>
 
 <!DOCTYPE html>
@@ -142,13 +138,7 @@ $sisa = $dsisa['sisa'];
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="instansi" class="col-sm-2 col-form-label">Sisa Izin</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" value="<?= $sisa; ?>" name="sisaizin" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="jenisizin" class="col-sm-2 col-form-label">Jenis Izin</label>
+                                            <label for="jenisizin" class="col-sm-2 col-form-label">Jenis Izin (hari)</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" value="<?= $jenisizin; ?>" name="jenisizin" readonly>
                                             </div>
