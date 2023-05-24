@@ -12,6 +12,27 @@ function tgl_indo($tanggal)
     }
 }
 
+function blnthn_indo($blnthn)
+{
+    if (isset($blnthn)) {
+        $bulan = array(
+            1 =>   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        );
+        $pecahkan = explode('-', substr($blnthn, 0, 7));
+        return $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+    }
+}
+
+function bln_indo($bln)
+{
+    if (isset($bln)) {
+        $bulan = array(
+            1 =>   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        );
+        return $bulan[(int)$bln];
+    }
+}
+
 function tgljam_indo($tanggal)
 {
     if (isset($tanggal)) {
