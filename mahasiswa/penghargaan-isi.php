@@ -142,7 +142,7 @@ $no = 1;
                                                         </ul>
                                                         <b>Kategori Non Akademik :</b>
                                                         <ul>
-                                                            <li>- Kompetisi/kejuaraan/perlombaan dalam bidang ilmiah, teknologi, olah raga, seni, budaya, sosial, riset dan keagamaan.</li>
+                                                            <li>Kompetisi/kejuaraan/perlombaan dalam bidang ilmiah, teknologi, olah raga, seni, budaya, sosial, riset dan keagamaan.</li>
                                                         </ul>
                                                     </small>
                                                 </div>
@@ -170,12 +170,11 @@ $no = 1;
                                                     </select>
                                                 </div>
                                             </div>
-
                                             <div class="form-group row">
                                                 <label for="keperluan" class="col-sm-3 col-form-label">Bukti</label>
                                                 <div class="col-sm-9">
                                                     <input type="file" class="form-control" id="bukti" name="bukti" accept="image/jpg, image/jpeg" required>
-                                                    <li style="color: red;"><small>Format File JPG / JPEG, ukuran file maksimal 10MB</small></li>
+                                                    <li style="color: red;"><small>Format File JPG / JPEG, ukuran file maksimal 2MB</small></li>
                                                 </div>
                                             </div>
                                             <hr>
