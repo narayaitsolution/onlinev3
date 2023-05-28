@@ -14,6 +14,7 @@ if ($_SESSION['hakakses'] != "mahasiswa") {
 $tglsekarang = date('Y-m-d');
 $tahun = date('Y');
 $no = 1;
+
 $token = $_GET['token'];
 $qpenghargaan = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE token='$token'");
 $dpenghargaan = mysqli_fetch_array($qpenghargaan);
@@ -72,6 +73,41 @@ $bukti = $dpenghargaan['bukti'];
         </div>
       </section>
 
+      <!-- alert -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col">
+              <?php
+              $pesan = $_GET['pesan'];
+              if ($pesan == 'succes') {
+              ?>
+                <div class="alert alert-success alert-dismissible fade show">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  Penambahan anggota <b>BERHASIL!!</b>
+                </div>
+              <?php
+              } elseif ($pesan == 'gagal') {
+              ?>
+                <div class="alert alert-danger alert-dismissible fade show">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  Penambahan anggota <b>GAGAL!!</b>
+                </div>
+              <?php
+              } elseif ($pesan == 'hapusok') {
+              ?>
+                <div class="alert alert-success alert-dismissible fade show">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  Penghapusan anggota <b>BERHASIL!!</b>
+                </div>
+              <?php
+              }
+              ?>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- tabel pengajuan pribadi -->
       <section class="content">
         <div class="container-fluid">
@@ -86,65 +122,138 @@ $bukti = $dpenghargaan['bukti'];
                 </div>
                 <div class="card-body p-0">
                   <div class="card-body">
-                    <form action="penghargaan-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Ketua</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="nama" name="nama" value="<?= $namaketua; ?>" readonly>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Nama Ketua</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $namaketua; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">NIM</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nim" name="nim" value="<?= $nimketua; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Kegiatan</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="kegiatan" name="kegiatan" value="<?= $kegiatan; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Nama Kegiatan / Media Publikasi</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="namakegiatan" name="namakegiatan" value="<?= $namakegiatan; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Level Kegiatan</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="tingkat" name="tingkat" value="<?= $tingkat; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Kategori</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="kategori" name="kategori" value="<?= $kategori; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Jenis Kegiatan</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="jeniskegiatan" name="jeniskegiatan" value="<?= $jeniskegiatan; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Peringkat</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="peringkat" name="peringkat" value="<?= $peringkat; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="keperluan" class="col-sm-3 col-form-label">Bukti</label>
+                      <div class="col-sm-9">
+                        <img src="<?= $bukti; ?>" class="img-fluid">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="card card-info">
+                      <div class="card-header">
+                        <h3 class="card-title">Anggota Kelompok</h3>
+                        <div class="card-tools">
+                          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">NIM</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="nim" name="nim" value="<?= $nimketua; ?>" readonly>
+                      <div class="card-body p-0">
+                        <div class="card-body">
+                          <form action="penghargaan-anggota-tambah.php" method="POST">
+                            <div class="form-group row">
+                              <label for="keperluan" class="col-sm-3 col-form-label">NIM Anggota</label>
+                              <div class="col-sm-7">
+                                <input type="number" class="form-control" id="nimanggota" name="nimanggota">
+                              </div>
+                              <div class="col-sm-2">
+                                <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                                <input type="hidden" name="nimketua" value="<?= $nimketua; ?>">
+                                <input type="hidden" name="token" value="<?= $token; ?>">
+                                <button type="submit" class="btn btn-success btn-block"><i class="fa-solid fa-user-plus"></i> Tambah</button>
+                              </div>
+                            </div>
+                          </form>
+                          <hr>
+                          <table id="example2" class="table table-bordered table-hover text-sm">
+                            <thead>
+                              <tr>
+                                <th width="5%" style="text-align: center;">No</th>
+                                <th style="text-align: center;">Nama</th>
+                                <th style="text-align: center;">NIM</th>
+                                <th style="text-align: center;">Aksi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              $nourut = 1;
+                              $qpenghargaananggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata'");
+                              while ($dpenghargaananggota = mysqli_fetch_array($qpenghargaananggota)) {
+                                $nimanggota = $dpenghargaananggota['nimanggota'];
+                                $no = $dpenghargaananggota['no'];
+                              ?>
+                                <tr>
+                                  <td>
+                                    <?= $nourut; ?>
+                                  </td>
+                                  <td>
+                                    <?= namadosen($dbsurat, $nimanggota); ?>
+                                  </td>
+                                  <td>
+                                    <?= $nimanggota; ?>
+                                  </td>
+                                  <td style="text-align: center;">
+                                    <form action="penghargaan-anggota-hapus.php" method="post">
+                                      <input type="hidden" name="no" value="<?= $no; ?>">
+                                      <input type="hidden" name="token" value="<?= $token; ?>">
+                                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin menghapus anggota ini ?')"><i class="fa-solid fa-user-xmark"></i> HAPUS</button>
+                                    </form>
+                                  </td>
+                                </tr>
+                              <?php
+                                $nourut++;
+                              }
+                              ?>
+                            </tbody>
+                          </table>
+                          <hr>
+                          <div class="row">
+                            <div class="col">
+                              <a href="penghargaan-hapus.php?token=<?= $token; ?>" class="btn btn-block btn-secondary" onclick="return confirm('Yakin melakukan pembatalan ?')"><i class=" fa-solid fa-backward"></i> Batalkan</a>
+                            </div>
+                            <div class="col">
+                              <a href="penghargaan-anggota-simpan.php?token=<?= $token; ?>" class="btn btn-block btn-success" onclick="return confirm('Yakin mengajukan data ini ?')"><i class="fa-solid fa-file-arrow-up"></i> AJUKAN</a>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Kegiatan</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="kegiatan" name="kegiatan" value="<?= $kegiatan; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Kegiatan / Media Publikasi</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="namakegiatan" name="namakegiatan" value="<?= $namakegiatan; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Level Kegiatan</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="tingkat" name="tingkat" value="<?= $tingkat; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Kategori</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="kategori" name="kategori" value="<?= $kategori; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Jenis Kegiatan</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="jeniskegiatan" name="jeniskegiatan" value="<?= $jeniskegiatan; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Peringkat</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="peringkat" name="peringkat" value="<?= $peringkat; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="keperluan" class="col-sm-3 col-form-label">Bukti</label>
-                        <div class="col-sm-9">
-                          <img src="<?= $bukti; ?>" class="img-fluid">
-                        </div>
-                      </div>
-                      <hr>
-                      ==============Anggota diisni ==============
-                      <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Ajukan</button>
-                    </form>
+                    </div>
                   </div>
                 </div>
               </div>
