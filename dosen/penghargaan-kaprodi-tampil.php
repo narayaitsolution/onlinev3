@@ -65,6 +65,7 @@ $no = 1;
             $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
             $datamhs = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE token='$token'");
             $row = mysqli_fetch_array($datamhs);
+            $nodata = $row['no'];
             $tanggal = $row['tanggal'];
             $nimmhs = $row['nim'];
             $namamhs = $row['nama'];
@@ -165,6 +166,56 @@ $no = 1;
                                                 <small style="color: red;">Klik pada gambar untuk memperbersar</small>
                                             </div>
                                         </div>
+                                        <?php
+                                        if ($jeniskegiatan == 'Kelompok') {
+                                        ?> <div class="card card-info">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Anggota Kelompok</h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body p-0">
+                                                    <div class="card-body">
+                                                        <table id="example2" class="table table-bordered table-hover text-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th width="5%" style="text-align: center;">No</th>
+                                                                    <th style="text-align: center;">Nama</th>
+                                                                    <th style="text-align: center;">NIM</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $nourut = 1;
+                                                                $qpenghargaananggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata'");
+                                                                while ($dpenghargaananggota = mysqli_fetch_array($qpenghargaananggota)) {
+                                                                    $nimanggota = $dpenghargaananggota['nimanggota'];
+                                                                    $no = $dpenghargaananggota['no'];
+                                                                ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?= $nourut; ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?= namadosen($dbsurat, $nimanggota); ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?= $nimanggota; ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php
+                                                                    $nourut++;
+                                                                }
+                                                                ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
                                         <hr>
                                         <form role="form" method="POST" id="my-form">
                                             <input type="hidden" name="token" value="<?= $token; ?>">
@@ -237,11 +288,11 @@ $no = 1;
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
-                "paging": true,
+                "paging": false,
                 "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
+                "searching": false,
+                "ordering": false,
+                "info": false,
                 "autoWidth": false,
                 "responsive": true,
             });

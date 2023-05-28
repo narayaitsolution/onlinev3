@@ -242,15 +242,15 @@ $bukti = $dpenghargaan['bukti'];
                               ?>
                             </tbody>
                           </table>
-                          <hr>
-                          <div class="row">
-                            <div class="col">
-                              <a href="penghargaan-hapus.php?token=<?= $token; ?>" class="btn btn-block btn-secondary" onclick="return confirm('Yakin melakukan pembatalan ?')"><i class=" fa-solid fa-backward"></i> Batalkan</a>
-                            </div>
-                            <div class="col">
-                              <a href="penghargaan-anggota-simpan.php?token=<?= $token; ?>" class="btn btn-block btn-success" onclick="return confirm('Yakin mengajukan data ini ?')"><i class="fa-solid fa-file-arrow-up"></i> AJUKAN</a>
-                            </div>
-                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col">
+                          <a href="penghargaan-hapus.php?token=<?= $token; ?>" class="btn btn-block btn-secondary" onclick="return confirm('Yakin melakukan pembatalan ?')"><i class=" fa-solid fa-backward"></i> Batalkan</a>
+                        </div>
+                        <div class="col">
+                          <a href="penghargaan-anggota-simpan.php?token=<?= $token; ?>" class="btn btn-block btn-success" onclick="return confirm('Yakin mengajukan data ini ?')"><i class="fa-solid fa-file-arrow-up"></i> AJUKAN</a>
                         </div>
                       </div>
                     </div>
