@@ -50,14 +50,14 @@ $fileType = $_FILES['bukti']['type'];
 $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
 
-if (!empty($fileName)) {
-    $bukti = imgresize($fileTmpPath);
-    $allowedfileExtensions = array('jpg', 'jpeg');
-    if (in_array($fileExtension, $allowedfileExtensions)) {
-        $dest_path = $target_dir . $kode . '.jpg';
-        move_uploaded_file($bukti, $dest_path);
+$bukti = imgresize($fileTmpPath);
+$allowedfileExtensions = array('jpg', 'jpeg');
+if (in_array($fileExtension, $allowedfileExtensions)) {
+    $dest_path = $target_dir . $kode . '.jpg';
+    move_uploaded_file($bukti, $dest_path);
+    if ($jeniskegiatan == 'Individu') {
         $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3, token) 
-                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $token);
         $stmt->execute();
 
@@ -71,29 +71,38 @@ if (!empty($fileName)) {
         //kirim email
         $subject = "Pengajuan " . $jenissurat . "";
         $pesan = "Yth. " . $namadosen . "<br/>
-        <br/>
-		Assalamualaikum wr. wb.
-        <br />
-		<br />
-		Dengan hormat,
-		<br />
-        Terdapat pengajuan " . $jenissurat . " atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
-        Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
-        <br/>
-        <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
-        <br/>
-        atau klik URL berikut ini <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
-        <br/>
-        Wassalamualaikum wr. wb.
-		<br/>
-        <br/>
-        <b>SAINTEK e-Office</b>";
+            <br/>
+            Assalamualaikum wr. wb.
+            <br />
+            <br />
+            Dengan hormat,
+            <br />
+            Terdapat pengajuan " . $jenissurat . " atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
+            Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
+            <br/>
+            <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
+            <br/>
+            atau klik URL berikut ini <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
+            <br/>
+            Wassalamualaikum wr. wb.
+            <br/>
+            <br/>
+            <b>SAINTEK e-Office</b>";
         sendmail($emaildosen, $namadosen, $subject, $pesan);
 
         header("location:index.php?pesan=success");
     } else {
-        header("location:penghargaan-isi.php?nip=$nip&pesan=gagal");
-    };
+        $statussurat = '-1';
+        $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3,statussurat, token) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $statussurat, $token);
+        $stmt->execute();
+
+        $qnodata = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim' ORDER BY tanggal DESC");
+        $dnodata = mysqli_fetch_array($qnodata);
+        $token = $dnodata['token'];
+        header("location:penghargaan-anggota.php?token=$token");
+    }
 } else {
     header("location:penghargaan-isi.php?nip=$nip&pesan=gagal");
-}
+};

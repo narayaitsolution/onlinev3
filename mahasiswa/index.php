@@ -1639,6 +1639,12 @@ $no = 1;
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
+                                                            } elseif ($statussurat == '-1') {
+                                                            ?>
+                                                                <a class="btn btn-info btn-sm" href="penghargaan-anggota.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-check"></i> Lengkapi
+                                                                </a>
+                                                            <?php
                                                             } else {
                                                             ?>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="penghargaan-hapus.php?token=<?= $token; ?>">
