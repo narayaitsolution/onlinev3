@@ -74,7 +74,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             }
 
             ?>
-            <td colspan='3' style="text-align: center;"><b>PERIODE SEMESTER<?= $semester; ?> TAHUN AJARAN <?= $tahunajaran; ?></b></td>
+            <td colspan='3' style="text-align: center;"><b>PERIODE SEMESTER <?= $semester; ?> TAHUN AJARAN <?= $tahunajaran; ?></b></td>
             <td>&nbsp;</td>
         </tr>
 
@@ -106,18 +106,38 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             $no = 1;
             $qpenghargaan = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE statussurat='1' ORDER BY prodi, kegiatan, tingkat, peringkat");
             while ($dpenghargaan = mysqli_fetch_array($qpenghargaan)) {
+                $nodata = $dpenghargaan['no'];
                 $prodi = $dpenghargaan['prodi'];
                 $namamhs = $dpenghargaan['nama'];
                 $nim = $dpenghargaan['nim'];
                 $kegiatan = $dpenghargaan['kegiatan'];
                 $namakegiatan = $dpenghargaan['namakegiatan'];
+                $jeniskegiatan = $dpenghargaan['jeniskegiatan'];
                 $tingkat = $dpenghargaan['tingkat'];
                 $peringkat = $dpenghargaan['peringkat'];
+                if ($jeniskegiatan == 'Kelompok') {
+                    $qanggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata' AND nimketua='$nim'");
+                    while ($danggota = mysqli_fetch_array($qanggota)) {
+                        $nimanggota = $danggota['nimanggota'];
             ?>
+                        <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $prodi; ?></td>
+                            <td><?= namadosen($dbsurat, $nimanggota); ?></td>
+                            <td><?= $nimanggota; ?></td>
+                            <td><?= $kegiatan; ?></td>
+                            <td><?= $namakegiatan; ?></td>
+                            <td><?= $tingkat; ?></td>
+                            <td><?= $peringkat; ?></td>
+                        </tr>
+                <?php
+                    }
+                }
+                ?>
                 <tr>
                     <td><?= $no; ?></td>
                     <td><?= $prodi; ?></td>
-                    <td><?= $namamhs; ?></td>
+                    <td><?= namadosen($dbsurat, $nim); ?></td>
                     <td><?= $nim; ?></td>
                     <td><?= $kegiatan; ?></td>
                     <td><?= $namakegiatan; ?></td>

@@ -167,6 +167,58 @@ $tahunini = date('Y-m');
               echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini4) . ' : ' . $rataWaktu4;
               echo '<hr>';
 
+              //bulan ini -5
+              $totalWaktu5 = 0;
+              $jumlahData5 = 0;
+              $bulanini5 = $bulanini - 5;
+              if (($bulanini5) <= '0') {
+                $bulanini5 = 12 - $bulanini5;
+              }
+              echo 'Bulan = ' . bln_indo($bulanini5) . '<br>';
+              $qbulanini5 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini5' AND statussurat = 1");
+              while ($dbulanini5 = mysqli_fetch_array($qbulanini5)) {
+                $waktuawal5 = strtotime($dbulanini5['tanggal']);
+                $waktuakhir5 = strtotime($dbulanini5['tglvalidasi3']);
+                $selisihWaktu5 = $waktuakhir5 - $waktuawal5;
+                $totalWaktu5 += $selisihWaktu5;
+                $jumlahData5++;
+              }
+              echo 'Jumlah pengajuan surat = ' . $jumlahData5 . '<br>';
+              if ($jumlahData5 > 0) {
+                $rataWaktu5 = $totalWaktu5 / $jumlahData5;
+                $rataWaktu5 = gmdate('H:i:s', $rataWaktu5); // Format waktu dalam jam:menit:detik
+              } else {
+                $rataWaktu5 = 'Tidak ada data';
+              }
+              echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini5) . ' : ' . $rataWaktu5;
+              echo '<hr>';
+
+              //bulan ini -6
+              $totalWaktu6 = 0;
+              $jumlahData6 = 0;
+              $bulanini6 = $bulanini - 6;
+              if (($bulanini6) <= '0') {
+                $bulanini6 = 12 - $bulanini6;
+              }
+              echo 'Bulan = ' . bln_indo($bulanini6) . '<br>';
+              $qbulanini6 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini6' AND statussurat = 1");
+              while ($dbulanini6 = mysqli_fetch_array($qbulanini6)) {
+                $waktuawal6 = strtotime($dbulanini6['tanggal']);
+                $waktuakhir6 = strtotime($dbulanini6['tglvalidasi3']);
+                $selisihWaktu6 = $waktuakhir6 - $waktuawal6;
+                $totalWaktu6 += $selisihWaktu6;
+                $jumlahData6++;
+              }
+              echo 'Jumlah pengajuan surat = ' . $jumlahData6 . '<br>';
+              if ($jumlahData6 > 0) {
+                $rataWaktu6 = $totalWaktu6 / $jumlahData6;
+                $rataWaktu6 = gmdate('H:i:s', $rataWaktu6); // Format waktu dalam jam:menit:detik
+              } else {
+                $rataWaktu6 = 'Tidak ada data';
+              }
+              echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini6) . ' : ' . $rataWaktu6;
+              echo '<hr>';
+
               ?>
             </div>
           </div>
