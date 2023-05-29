@@ -748,6 +748,7 @@ $tahun = date('Y');
                                     $nim = $data['nim'];
                                     $prodi = $data['prodi'];
                                     $nama = $data['nama'];
+                                    $jeniskegiatan = $data['jeniskegiatan'];
                                     $surat = 'Pengajuan Penghargaan';
                                     $validasi2 = $data['validasi2'];
                                     $validator2 = $data['validator2'];
@@ -756,7 +757,71 @@ $tahun = date('Y');
                                     $statussurat = $data['statussurat'];
                                     $keterangan = $data['keterangan'];
                                     $token = $data['token'];
+                                    if ($jeniskegiatan == 'Kelompok') {
+                                        $qanggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata' AND nimketua='$nim'");
+                                        while ($danggota = mysqli_fetch_array($qanggota)) {
+                                            $nimanggota = $danggota['nimanggota'];
                                 ?>
+                                            <tr>
+                                                <td><?= $no; ?></td>
+                                                <td><?= $surat; ?></td>
+                                                <td><?= namadosen($dbsurat, $nimanggota); ?><br />NIM. <?= $nimanggota; ?></td>
+                                                <td><?= $prodi; ?></td>
+                                                <td> <?php
+                                                        //kaprodi
+                                                        echo namadosen($dbsurat, $validator2);
+                                                        if ($validasi2 == 0) {
+                                                            echo ' <b>menunggu verifikasi</b>';
+                                                        } elseif ($validasi2 == 1) {
+                                                            echo ' <b style="color:green;">telah disetujui</b>';
+                                                        } elseif ($validasi2 == 2) {
+                                                            echo ' <b style="color:red;">ditolak</b>';
+                                                        };
+                                                        echo '<br/>';
+
+                                                        //WD-3
+                                                        echo namadosen($dbsurat, $validator3);
+                                                        if ($validasi3 == 0) {
+                                                            echo ' <b>menunggu verifikasi</b>';
+                                                        } elseif ($validasi3 == 1) {
+                                                            echo ' <b style="color:green;">telah disetujui</b>';
+                                                        } elseif ($validasi3 == 2) {
+                                                            echo ' <b style="color:red;">ditolak</b>';
+                                                        };
+                                                        echo '<br/>';
+
+                                                        ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if ($statussurat == 1) {
+                                                    ?>
+                                                        <a href="penghargaan-cetak.php" class="btn btn-success btn-sm">
+                                                            <i class="fas fa-print"></i>
+                                                        </a>
+                                                        <?php
+                                                        ?>
+                                                    <?php
+                                                    } elseif ($statussurat == 2) {
+                                                    ?>
+                                                        <a class="btn btn-danger btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                            <i class="fas fa-ban"></i>
+                                                        </a>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <a class="btn btn-secondary btn-sm" onclick="return alert('Dalam proses verifikasi')">
+                                                            <i class="fas fa-spinner"></i>
+                                                        </a>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                     <tr>
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
