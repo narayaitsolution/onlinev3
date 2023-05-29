@@ -16,13 +16,8 @@ $tahunini = date('Y-m');
   <link rel="stylesheet" href="template/plugins/fontawesome6/css/all.css">
   <link rel="stylesheet" href="template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
-  <style>
-    .login-page {
-      background-image: url('system/saintek-bg.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  </style>
+
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body class="hold-transition ">
@@ -36,7 +31,7 @@ $tahunini = date('Y-m');
     </div>
   </section>
 
-  <!-- grafik -->
+  <!-- surat pengantar PKL -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row">
@@ -51,6 +46,8 @@ $tahunini = date('Y-m');
             </div>
             <?php $no = 1; ?>
             <div class="card-body">
+              <div id="chart_div"></div>
+
               <!-- cari data PKL 1 tahun terakhir -->
               <?php
               //bulan ini
@@ -68,7 +65,7 @@ $tahunini = date('Y-m');
               echo 'Jumlah pengajuan surat = ' . $jumlahData . '<br>';
               if ($jumlahData > 0) {
                 $rataWaktu = $totalWaktu / $jumlahData;
-                $rataWaktu = gmdate('H:i:s', $rataWaktu); // Format waktu dalam jam:menit:detik
+                $rataWaktu = floor($rataWaktu / 3600);
               } else {
                 $rataWaktu = 'Tidak ada data';
               }
@@ -91,7 +88,7 @@ $tahunini = date('Y-m');
               echo 'Jumlah pengajuan surat = ' . $jumlahData1 . '<br>';
               if ($jumlahData1 > 0) {
                 $rataWaktu1 = $totalWaktu1 / $jumlahData1;
-                $rataWaktu1 = gmdate('H:i:s', $rataWaktu1); // Format waktu dalam jam:menit:detik
+                $rataWaktu1 = floor($rataWaktu1 / 3600);
               } else {
                 $rataWaktu1 = 'Tidak ada data';
               }
@@ -114,7 +111,7 @@ $tahunini = date('Y-m');
               echo 'Jumlah pengajuan surat = ' . $jumlahData2 . '<br>';
               if ($jumlahData2 > 0) {
                 $rataWaktu2 = $totalWaktu2 / $jumlahData2;
-                $rataWaktu2 = gmdate('H:i:s', $rataWaktu2); // Format waktu dalam jam:menit:detik
+                $rataWaktu2 = floor($rataWaktu2 / 3600);
               } else {
                 $rataWaktu2 = 'Tidak ada data';
               }
@@ -198,7 +195,7 @@ $tahunini = date('Y-m');
               $jumlahData6 = 0;
               $bulanini6 = $bulanini - 6;
               if (($bulanini6) <= '0') {
-                $bulanini6 = 12 - $bulanini6;
+                $bulanini6 = 12 + $bulanini6;
               }
               echo 'Bulan = ' . bln_indo($bulanini6) . '<br>';
               $qbulanini6 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini6' AND statussurat = 1");
@@ -219,7 +216,174 @@ $tahunini = date('Y-m');
               echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini6) . ' : ' . $rataWaktu6;
               echo '<hr>';
 
+              //bulan ini -7
+              $totalWaktu7 = 0;
+              $jumlahData7 = 0;
+              $bulanini7 = $bulanini - 7;
+              if (($bulanini7) <= '0') {
+                $bulanini7 = 12 + $bulanini7;
+              }
+              echo 'Bulan = ' . bln_indo($bulanini7) . '<br>';
+              $qbulanini7 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini7' AND statussurat = 1");
+              while ($dbulanini7 = mysqli_fetch_array($qbulanini7)) {
+                $waktuawal7 = strtotime($dbulanini7['tanggal']);
+                $waktuakhir7 = strtotime($dbulanini7['tglvalidasi3']);
+                $selisihWaktu7 = $waktuakhir7 - $waktuawal7;
+                $totalWaktu7 += $selisihWaktu7;
+                $jumlahData7++;
+              }
+              echo 'Jumlah pengajuan surat = ' . $jumlahData7 . '<br>';
+              if ($jumlahData7 > 0) {
+                $rataWaktu7 = $totalWaktu7 / $jumlahData7;
+                $rataWaktu7 = gmdate('H:i:s', $rataWaktu7); // Format waktu dalam jam:menit:detik
+              } else {
+                $rataWaktu7 = 'Tidak ada data';
+              }
+              echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini7) . ' : ' . $rataWaktu7;
+              echo '<hr>';
+
+              //bulan ini -8
+              $totalWaktu8 = 0;
+              $jumlahData8 = 0;
+              $bulanini8 = $bulanini - 8;
+              if (($bulanini8) <= '0') {
+                $bulanini8 = 12 + $bulanini8;
+              }
+              echo 'Bulan = ' . bln_indo($bulanini8) . '<br>';
+              $qbulanini8 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini8' AND statussurat = 1");
+              while ($dbulanini8 = mysqli_fetch_array($qbulanini8)) {
+                $waktuawal8 = strtotime($dbulanini8['tanggal']);
+                $waktuakhir8 = strtotime($dbulanini8['tglvalidasi3']);
+                $selisihWaktu8 = $waktuakhir8 - $waktuawal8;
+                $totalWaktu8 += $selisihWaktu8;
+                $jumlahData8++;
+              }
+              echo 'Jumlah pengajuan surat = ' . $jumlahData8 . '<br>';
+              if ($jumlahData8 > 0) {
+                $rataWaktu8 = $totalWaktu8 / $jumlahData8;
+                $rataWaktu8 = gmdate('H:i:s', $rataWaktu8); // Format waktu dalam jam:menit:detik
+              } else {
+                $rataWaktu8 = 'Tidak ada data';
+              }
+              echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini8) . ' : ' . $rataWaktu8;
+              echo '<hr>';
+
+              //bulan ini -9
+              $totalWaktu9 = 0;
+              $jumlahData9 = 0;
+              $bulanini9 = $bulanini - 9;
+              if (($bulanini9) <= '0') {
+                $bulanini9 = 12 + $bulanini9;
+              }
+              echo 'Bulan = ' . bln_indo($bulanini9) . '<br>';
+              $qbulanini9 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini9' AND statussurat = 1");
+              while ($dbulanini9 = mysqli_fetch_array($qbulanini9)) {
+                $waktuawal9 = strtotime($dbulanini9['tanggal']);
+                $waktuakhir9 = strtotime($dbulanini9['tglvalidasi3']);
+                $selisihWaktu9 = $waktuakhir9 - $waktuawal9;
+                $totalWaktu9 += $selisihWaktu9;
+                $jumlahData9++;
+              }
+              echo 'Jumlah pengajuan surat = ' . $jumlahData9 . '<br>';
+              if ($jumlahData9 > 0) {
+                $rataWaktu9 = $totalWaktu9 / $jumlahData9;
+                $rataWaktu9 = gmdate('H:i:s', $rataWaktu9); // Format waktu dalam jam:menit:detik
+              } else {
+                $rataWaktu9 = 'Tidak ada data';
+              }
+              echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini9) . ' : ' . $rataWaktu9;
+              echo '<hr>';
+
+              //bulan ini -10
+              $totalWaktu10 = 0;
+              $jumlahData10 = 0;
+              $bulanini10 = $bulanini - 10;
+              if (($bulanini10) <= '0') {
+                $bulanini10 = 12 + $bulanini10;
+              }
+              echo 'Bulan = ' . bln_indo($bulanini10) . '<br>';
+              $qbulanini10 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini10' AND statussurat = 1");
+              while ($dbulanini10 = mysqli_fetch_array($qbulanini10)) {
+                $waktuawal10 = strtotime($dbulanini10['tanggal']);
+                $waktuakhir10 = strtotime($dbulanini10['tglvalidasi3']);
+                $selisihWaktu10 = $waktuakhir10 - $waktuawal10;
+                $totalWaktu10 += $selisihWaktu10;
+                $jumlahData10++;
+              }
+              echo 'Jumlah pengajuan surat = ' . $jumlahData10 . '<br>';
+              if ($jumlahData10 > 0) {
+                $rataWaktu10 = $totalWaktu10 / $jumlahData10;
+                $rataWaktu10 = gmdate('H:i:s', $rataWaktu10); // Format waktu dalam jam:menit:detik
+              } else {
+                $rataWaktu10 = 'Tidak ada data';
+              }
+              echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini10) . ' : ' . $rataWaktu10;
+              echo '<hr>';
+
+              //bulan ini -11
+              $totalWaktu11 = 0;
+              $jumlahData11 = 0;
+              $bulanini11 = $bulanini - 11;
+              if (($bulanini11) <= '0') {
+                $bulanini11 = 12 + $bulanini11;
+              }
+              echo 'Bulan = ' . bln_indo($bulanini11) . '<br>';
+              $qbulanini11 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE MONTH(tanggal) = '$bulanini11' AND statussurat = 1");
+              while ($dbulanini11 = mysqli_fetch_array($qbulanini11)) {
+                $waktuawal11 = strtotime($dbulanini11['tanggal']);
+                $waktuakhir11 = strtotime($dbulanini11['tglvalidasi3']);
+                $selisihWaktu11 = $waktuakhir11 - $waktuawal11;
+                $totalWaktu11 += $selisihWaktu11;
+                $jumlahData11++;
+              }
+              echo 'Jumlah pengajuan surat = ' . $jumlahData11 . '<br>';
+              if ($jumlahData11 > 0) {
+                $rataWaktu11 = $totalWaktu11 / $jumlahData11;
+                $rataWaktu11 = gmdate('H:i:s', $rataWaktu11); // Format waktu dalam jam:menit:detik
+              } else {
+                $rataWaktu11 = 'Tidak ada data';
+              }
+              echo 'Rata-rata waktu proses bulan ' . bln_indo($bulanini11) . ' : ' . $rataWaktu11;
+              echo '<hr>';
               ?>
+
+              <script>
+                // Load the Visualization API and the corechart package
+                google.charts.load('current', {
+                  'packages': ['corechart']
+                });
+
+                // Set a callback to run when the Google Visualization API is loaded
+                google.charts.setOnLoadCallback(drawChart);
+
+                //set value
+                var bulanini = <?= $bulanini; ?>;
+
+                // Callback function to create and populate the chart
+                function drawChart() {
+                  // Create the data table
+                  var data = new google.visualization.DataTable();
+                  data.addColumn('string', 'Bulan');
+                  data.addColumn('number', 'Jam');
+                  data.addRows([
+                    ['<?= bln_indo($bulanini); ?>', <?= $rataWaktu; ?>]
+                  ]);
+
+                  // Set chart options
+                  var options = {
+                    title: 'Rata - Rata Lama Proses Surat Pengantar PKL (dalam jam)',
+                    legend: {
+                      position: 'none'
+                    }
+                  };
+
+                  // Instantiate and draw the chart
+                  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                  chart.draw(data, options);
+                }
+              </script>
+
+
             </div>
           </div>
         </div>
