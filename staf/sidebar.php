@@ -229,15 +229,13 @@
                 <?php
                 $qoperator = mysqli_query($dbsurat, "SELECT * FROM skripsi_operator WHERE kode='$nip'");
                 $jmldata = mysqli_num_rows($qoperator);
-                if ($jmldata == 1) {
-
+                if ($jmldata > 0) {
                 ?>
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
                                 SKRIPSI
-                                <!--<span class="right badge badge-danger">BARU</span>-->
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
