@@ -31,17 +31,6 @@ $nipwd = $rowwd['nip'];
 $namawd = $rowwd['nama'];
 $jabatanwd = $rowwd['jabatan'];
 
-/*
-//buat qrcode
-include "../system/phpqrcode/qrlib.php";
-$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-//echo $actual_link;
-$tgl = date('Y-m-d');
-$jam = date('H-m-s');
-$codeContents = $actual_link;
-$namafile = $nim . "-" . "suket" . $nodata;
-QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
-*/
 ?>
 
 <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
@@ -104,7 +93,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             </tr>
             <?php
             $no = 1;
-            $qpenghargaan = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE statussurat='1' ORDER BY prodi, kegiatan, tingkat, peringkat");
+            $qpenghargaan = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE statussurat='1' AND MONTH(tanggal) BETWEEN 1 and 6 ORDER BY prodi, kegiatan, tingkat, peringkat");
             while ($dpenghargaan = mysqli_fetch_array($qpenghargaan)) {
                 $nodata = $dpenghargaan['no'];
                 $prodi = $dpenghargaan['prodi'];
