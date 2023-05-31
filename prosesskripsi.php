@@ -117,9 +117,13 @@ require('system/dbconn.php');
     <script>
         $(function() {
             $("#example1").DataTable({
-                "responsive": true,
+                "paging": true,
                 "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
                 "autoWidth": false,
+                "responsive": true,
                 "buttons": ["excel", "pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
