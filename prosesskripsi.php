@@ -33,7 +33,7 @@ require('system/dbconn.php');
     <section class="content-header">
         <div class="container-fluid">
             <div class="row">
-                <div id="piechart" style="width: 900px; height: 500px;"></div>
+                <div id="piechart" style="width: 100%;height: 100%"></div>
             </div>
         </div>
     </section>
@@ -130,9 +130,9 @@ require('system/dbconn.php');
                         <!-- itung prosentase -->
                         <?php
                         $totalmhs = $jmlsempro;
-                        $prosentasesemhas = ceil($jmlsemhas / $jmlsempro);
-                        $prosentasekompre = ceil($jmlkompre / $jmlsempro);
-                        $prosentaseskripsi = ceil($jmlskripsi / $jmlsempro);
+                        $prosentasesemhas = ceil(($jmlsemhas / $jmlsempro) * 100);
+                        $prosentasekompre = ceil(($jmlkompre / $jmlsempro) * 100);
+                        $prosentaseskripsi = ceil(($jmlskripsi / $jmlsempro) * 100);
                         ?>
                         <div class="col">
                             Seminar Proposal = <?= $jmlsempro; ?>
@@ -146,8 +146,6 @@ require('system/dbconn.php');
                         <div class="col">
                             Ujian Skripsi = <?= $prosentaseskripsi; ?>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -172,7 +170,8 @@ require('system/dbconn.php');
             ]);
 
             var options = {
-                title: 'Grafik Prosentase Proses Skripsi Mahasiswa'
+                title: '',
+                legend: 'none'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
