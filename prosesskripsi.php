@@ -33,7 +33,7 @@ require('system/dbconn.php');
     <section class="content-header">
         <div class="container-fluid">
             <div class="row">
-                <div id="piechart" style="width: 100%;height: 100%"></div>
+                <div id="piechart" style="width: 200%;height: 200%"></div>
             </div>
         </div>
     </section>
