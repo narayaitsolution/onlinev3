@@ -48,7 +48,7 @@ require('system/dbconn.php');
 
                         <!-- PKL Koordinator-->
                         <?php
-                        $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validasi2='1' AND statussurat<'2' ORDER BY peringkat,tingkat,prodi");
+                        $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validasi2='1' AND statussurat<'2' ORDER BY tanggal DESC, peringkat,tingkat,prodi ASC");
                         $jmldata = mysqli_num_rows($query);
                         while ($data = mysqli_fetch_array($query)) {
                             $nodata = $data['no'];
