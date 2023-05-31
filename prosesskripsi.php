@@ -20,6 +20,25 @@ require('system/dbconn.php');
 </head>
 
 <body class="hold-transition text-sm">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h1 style="text-align: center;">Monitoring Proses Skripsi Mahasiswa</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="piechart" style="width: 900px; height: 500px;"></div>
+            </div>
+        </div>
+    </section>
+    <hr>
+
     <section class="content">
         <div class="container-fluid">
             <div class="card card-danger">
@@ -43,6 +62,10 @@ require('system/dbconn.php');
                         <tbody>
                             <?php
                             $no = 1;
+                            $jmlsempro = 0;
+                            $jmlkompre = 0;
+                            $jmlsemhas = 0;
+                            $jmlskripsi = 0;
                             //sempro
                             $qsempro = mysqli_query($dbsurat, "SELECT * FROM sempro ORDER BY tglujian DESC, nim ASC");
                             while ($data = mysqli_fetch_array($qsempro)) {
@@ -50,27 +73,37 @@ require('system/dbconn.php');
                                 $nodata = $data[0];
                                 $prodi = $data['prodi'];
                                 $sempro = tgl_indo($data['tglujian']);
+                                $jmlsempro++;
+
+                                //kompre
                                 $qkompre = mysqli_query($dbsurat, "SELECT * FROM kompre WHERE nim='$nim'");
                                 $jkompre = mysqli_num_rows($qkompre);
                                 if ($jkompre > 0) {
                                     $dkompre = mysqli_fetch_array($qkompre);
                                     $kompre = tgl_indo($dkompre['tglujian']);
+                                    $jmlkompre++;
                                 } else {
                                     $kompre = 'Belum Terjadwal';
                                 }
+
+                                //semhas
                                 $qsemhas = mysqli_query($dbsurat, "SELECT * FROM semhas WHERE nim='$nim'");
                                 $jsemhas = mysqli_num_rows($qsemhas);
                                 if ($jsemhas > 0) {
                                     $dsemhas = mysqli_fetch_array($qsemhas);
                                     $semhas = tgl_indo($dsemhas['tglujian']);
+                                    $jmlsemhas++;
                                 } else {
                                     $semhas = 'Belum Terjadwal';
                                 }
+
+                                //skripsi
                                 $qskripsi = mysqli_query($dbsurat, "SELECT * FROM skripsi WHERE nim='$nim'");
                                 $jskripsi = mysqli_num_rows($qskripsi);
                                 if ($jskripsi > 0) {
                                     $dskripsi = mysqli_fetch_array($qskripsi);
                                     $skripsi = tgl_indo($dskripsi['tglujian']);
+                                    $jmlskripsi++;
                                 } else {
                                     $skripsi = 'Belum Terjadwal';
                                 }
@@ -92,11 +125,61 @@ require('system/dbconn.php');
                             ?>
                         </tbody>
                     </table>
-                    <br />
+                    <hr />
+                    <div class="row">
+                        <!-- itung prosentase -->
+                        <?php
+                        $totalmhs = $jmlsempro;
+                        $prosentasesemhas = ceil($jmlsemhas / $jmlsempro);
+                        $prosentasekompre = ceil($jmlkompre / $jmlsempro);
+                        $prosentaseskripsi = ceil($jmlskripsi / $jmlsempro);
+                        ?>
+                        <div class="col">
+                            Seminar Proposal = <?= $jmlsempro; ?>
+                        </div>
+                        <div class="col">
+                            Seminar Hasil = <?= $prosentasesemhas; ?>
+                        </div>
+                        <div class="col">
+                            Ujian Komprehensif = <?= $prosentasekompre; ?>
+                        </div>
+                        <div class="col">
+                            Ujian Skripsi = <?= $prosentaseskripsi; ?>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Proses', 'Jumlah Mahasiswa'],
+                ['Seminar Proposal', <?= $jmlsempro; ?>],
+                ['Ujian Komprehensif', <?= $prosentasekompre; ?>],
+                ['Seminar Hasil', <?= $prosentasesemhas; ?>],
+                ['Ujian Skripsi', <?= $prosentaseskripsi; ?>]
+            ]);
+
+            var options = {
+                title: 'Grafik Prosentase Proses Skripsi Mahasiswa'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
 
     <script src="template/plugins/jquery/jquery.min.js"></script>
     <script src="template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
