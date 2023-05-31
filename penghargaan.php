@@ -60,6 +60,8 @@ require('system/dbconn.php');
                             $tingkat = $data['tingkat'];
                             $peringkat = $data['peringkat'];
                             $bukti = $data['bukti'];
+                            $panjang = strlen($bukti);
+                            $sertifikat = substr($bukti, 3, $panjang);
                             $namakegiatan = $data['namakegiatan'];
                             $token = $data['token'];
                         ?>
@@ -73,7 +75,7 @@ require('system/dbconn.php');
                                 <td><?= $nim; ?></td>
                                 <td><?= $prodi; ?></td>
                                 <td><?= $namakegiatan; ?></td>
-                                <td><a href="<?= $bukti; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
+                                <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                             </tr>
                         <?php
                             $no++;
