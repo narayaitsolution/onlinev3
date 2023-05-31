@@ -108,3 +108,5 @@ while ($dkomprepii = mysqli_fetch_array($qkomprepii)) {
     echo 'Insert data ' . $nim . '<br>';
 }
 echo 'Insert data SKRIPSI done!! <br>';
+
+echo '<a href="index.php" class="btn btn-lg btn-block btn-success">KEMBALI</a>';

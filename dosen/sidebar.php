@@ -389,6 +389,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="skripsi-fispii.php" class="nav-link">
+                                    <i class="nav-icon fas fa-graduation-cap"></i>
+                                    <p>
+                                        Tarik Data Skripsi
+                                        <span class="right badge badge-danger"></span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="loginas.php" class="nav-link">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
