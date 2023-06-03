@@ -619,7 +619,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?token=<?= $token; ?>">
@@ -724,7 +724,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="rekomendasi-hapus.php?token=<?= $token; ?>">
@@ -807,7 +807,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?= $nodata; ?>">
@@ -911,7 +911,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?token=<?= $token; ?>">
@@ -1015,7 +1015,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinujian-hapus.php?token=<?= $token; ?>">
@@ -1124,7 +1124,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?token=<?= $token; ?>">
@@ -1228,7 +1228,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?token=<?= $token; ?>">
@@ -1331,7 +1331,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap <b style=" color:orange;">Menunggu</b> proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pengambilandata-hapus.php?token=<?= $token; ?>">
@@ -1562,7 +1562,7 @@ $no = 1;
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('harap <b style=" color:orange;">Menunggu</b> proses')" disabled>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('harap Menunggu proses')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpi-hapus.php?nodata=<?= $nodata; ?>">

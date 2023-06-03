@@ -1621,6 +1621,102 @@ $tahun = date('Y');
                                 }
                                 ?>
                                 <!-- /penghargaan as WD-->
+
+                                <!-- delegasi as kaprodi-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator1='$nip' AND validasi1 = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as kaprodi-->
+
+                                <!-- delegasi as koorodinator-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator2='$nip' AND validasi2 = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-koor-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as kaprodi-->
+
+                                <!-- delegasi as WD-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator3='$nip' AND validasi3 = 0 AND validasi2=1");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as WD-->
                             </tbody>
                         </table>
                     </div>
