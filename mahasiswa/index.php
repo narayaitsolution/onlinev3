@@ -1733,6 +1733,11 @@ $no = 1;
                                                         <td>
                                                             <?php
                                                             if ($statussurat == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-sm" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak
+                                                                </a>
+                                                            <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="delegasi-hapus.php?token=<?= $token; ?>">
