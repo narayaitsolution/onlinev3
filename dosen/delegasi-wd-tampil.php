@@ -8,7 +8,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['jabatan'] != "koormhsalumni") {
+if ($_SESSION['jabatan'] != "wadek3") {
   header("location:../deauth.php");
 }
 $tglsekarang = date('Y-m-d');
@@ -78,6 +78,8 @@ $no = 1;
       $bukti = $row['bukti'];
       $validator1 = $row['validator1'];
       $tglvalidasi1 = $row['tglvalidasi1'];
+      $validator2 = $row['validator2'];
+      $tglvalidasi2 = $row['tglvalidasi2'];
       ?>
 
       <!-- tabel pengajuan pribadi -->
@@ -208,13 +210,25 @@ $no = 1;
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Kaprodi</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="validator2" value="<?= namadosen($dbsurat, $validator1); ?>" readonly>
+                        <input type="text" class="form-control" name="validator1" value="<?= namadosen($dbsurat, $validator1); ?>" readonly>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Disetujui pada</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="tglvalidasi2" value="<?= tgljam_indo($tglvalidasi1); ?>" readonly>
+                        <input type="text" class="form-control" name="tglvalidasi1" value="<?= tgljam_indo($tglvalidasi1); ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Koordinator Mahasiswa</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="validator2" value="<?= namadosen($dbsurat, $validator2); ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Disetujui pada</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="tglvalidasi2" value="<?= tgljam_indo($tglvalidasi2); ?>" readonly>
                       </div>
                     </div>
                     <hr>

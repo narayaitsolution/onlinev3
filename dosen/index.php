@@ -1656,7 +1656,7 @@ $tahun = date('Y');
 
                                 <!-- delegasi as koorodinator-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator2='$nip' AND validasi2 = 0");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator2='$nip' AND validasi1 = 1 AND validasi2 = 0");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $tanggal = $data['tanggal'];
@@ -1688,7 +1688,7 @@ $tahun = date('Y');
 
                                 <!-- delegasi as WD-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator3='$nip' AND validasi3 = 0 AND validasi2=1");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator3='$nip' AND validasi1 = 1 AND validasi2=1 AND validasi3 = 0");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
                                     $tanggal = $data['tanggal'];
