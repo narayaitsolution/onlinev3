@@ -156,6 +156,25 @@
                             }
                             ?>
 
+                            <!-- RKM -->
+                            <?php
+                            //cek status menu pkl
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='RKM'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                            ?>
+                                <li class="nav-item">
+                                    <a href="rkm-isi.php" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-book-open-reader"></i>
+                                        <p>Pendaftaran RKM</p>
+                                        <span class="badge badge-danger right">Baru</span>
+                                    </a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
                             <!-- surat keterangan -->
                             <?php
                             //cek status menu ijinlab
