@@ -122,136 +122,80 @@ $bukti = $ddelegasi['bukti'];
                 </div>
                 <div class="card-body p-0">
                   <div class="card-body">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Nama Ketua</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $namaketua; ?>" readonly>
+                    <form action="delegasi-anggota-tambah.php" method="POST">
+                      <div class="form-group row">
+                        <label for="keperluan" class="col-sm-3 col-form-label">NIM Anggota Delegasi</label>
+                        <div class="col-sm-7">
+                          <input type="number" class="form-control" id="nimanggota" name="nimanggota">
+                        </div>
+                        <div class="col-sm-2">
+                          <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                          <input type="hidden" name="nimketua" value="<?= $nimketua; ?>">
+                          <input type="hidden" name="token" value="<?= $token; ?>">
+                          <button type="submit" class="btn btn-success btn-block"><i class="fa-solid fa-user-plus"></i> Tambah</button>
+                        </div>
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">NIM</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="nim" name="nim" value="<?= $nimketua; ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Kategori</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="kategori" name="kategori" value="<?= $kategori; ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Nama Kegiatan</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="namakegiatan" name="namakegiatan" value="<?= $namakegiatan; ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Level Kegiatan</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="tingkat" name="tingkat" value="<?= $tingkat; ?>" readonly>
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Jenis Kegiatan</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" id="jeniskegiatan" name="jeniskegiatan" value="<?= $jeniskegiatan; ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="keperluan" class="col-sm-3 col-form-label">Rekomendasi HMJ</label>
-                      <div class="col-sm-9">
-                        <img src="<?= $bukti; ?>" class="img-fluid">
-                      </div>
-                    </div>
+                    </form>
                     <hr>
-                    <div class="card card-info">
-                      <div class="card-header">
-                        <h3 class="card-title">Anggota Kelompok</h3>
-                        <div class="card-tools">
-                          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                        </div>
-                      </div>
-                      <div class="card-body p-0">
-                        <div class="card-body">
-                          <form action="delegasi-anggota-tambah.php" method="POST">
-                            <div class="form-group row">
-                              <label for="keperluan" class="col-sm-3 col-form-label">NIM Anggota Delegasi</label>
-                              <div class="col-sm-7">
-                                <input type="number" class="form-control" id="nimanggota" name="nimanggota">
-                              </div>
-                              <div class="col-sm-2">
-                                <input type="hidden" name="nodata" value="<?= $nodata; ?>">
-                                <input type="hidden" name="nimketua" value="<?= $nimketua; ?>">
+                    <table id="example2" class="table table-bordered table-hover text-sm">
+                      <thead>
+                        <tr>
+                          <th width="5%" style="text-align: center;">No</th>
+                          <th style="text-align: center;">Nama</th>
+                          <th style="text-align: center;">NIM</th>
+                          <th style="text-align: center;">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $nourut = 1;
+                        $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE nodata='$nodata'");
+                        while ($ddelegasianggota = mysqli_fetch_array($qdelegasianggota)) {
+                          $nimanggota = $ddelegasianggota['nimanggota'];
+                          $no = $ddelegasianggota['no'];
+                        ?>
+                          <tr>
+                            <td>
+                              <?= $nourut; ?>
+                            </td>
+                            <td>
+                              <?= namadosen($dbsurat, $nimanggota); ?>
+                            </td>
+                            <td>
+                              <?= $nimanggota; ?>
+                            </td>
+                            <td style="text-align: center;">
+                              <form action="delegasi-anggota-hapus.php" method="post">
+                                <input type="hidden" name="no" value="<?= $no; ?>">
                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                <button type="submit" class="btn btn-success btn-block"><i class="fa-solid fa-user-plus"></i> Tambah</button>
-                              </div>
-                            </div>
-                          </form>
-                          <hr>
-                          <table id="example2" class="table table-bordered table-hover text-sm">
-                            <thead>
-                              <tr>
-                                <th width="5%" style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama</th>
-                                <th style="text-align: center;">NIM</th>
-                                <th style="text-align: center;">Aksi</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                              $nourut = 1;
-                              $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE nodata='$nodata'");
-                              while ($ddelegasianggota = mysqli_fetch_array($qdelegasianggota)) {
-                                $nimanggota = $ddelegasianggota['nimanggota'];
-                                $no = $ddelegasianggota['no'];
-                              ?>
-                                <tr>
-                                  <td>
-                                    <?= $nourut; ?>
-                                  </td>
-                                  <td>
-                                    <?= namadosen($dbsurat, $nimanggota); ?>
-                                  </td>
-                                  <td>
-                                    <?= $nimanggota; ?>
-                                  </td>
-                                  <td style="text-align: center;">
-                                    <form action="delegasi-anggota-hapus.php" method="post">
-                                      <input type="hidden" name="no" value="<?= $no; ?>">
-                                      <input type="hidden" name="token" value="<?= $token; ?>">
-                                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin menghapus anggota ini ?')"><i class="fa-solid fa-user-xmark"></i> HAPUS</button>
-                                    </form>
-                                  </td>
-                                </tr>
-                              <?php
-                                $nourut++;
-                              }
-                              ?>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col">
-                          <a href="delegasi-hapus.php?token=<?= $token; ?>" class="btn btn-block btn-secondary" onclick="return confirm('Yakin melakukan pembatalan ?')"><i class=" fa-solid fa-backward"></i> Batalkan</a>
-                        </div>
-                        <div class="col">
-                          <a href="delegasi-anggota-simpan.php?token=<?= $token; ?>" class="btn btn-block btn-success" onclick="return confirm('Yakin mengajukan data ini ?')"><i class="fa-solid fa-file-arrow-up"></i> AJUKAN</a>
-                        </div>
-                      </div>
-                    </div>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin menghapus anggota ini ?')"><i class="fa-solid fa-user-xmark"></i> HAPUS</button>
+                              </form>
+                            </td>
+                          </tr>
+                        <?php
+                          $nourut++;
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col">
+                    <a href="delegasi-hapus.php?token=<?= $token; ?>" class="btn btn-block btn-secondary" onclick="return confirm('Yakin melakukan pembatalan ?')"><i class=" fa-solid fa-backward"></i> Batalkan</a>
+                  </div>
+                  <div class="col">
+                    <a href="delegasi-anggota-simpan.php?token=<?= $token; ?>" class="btn btn-block btn-success" onclick="return confirm('Yakin mengajukan data ini ?')"><i class="fa-solid fa-file-arrow-up"></i> AJUKAN</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
     </div>
   </div>
+  </section>
   <?php
   //require('footer.php');
   ?>

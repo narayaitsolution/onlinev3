@@ -105,7 +105,7 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
     $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan,  $dest_path, $nipkaprodi, $nipkoor, $nipwd, $statussurat, $token);
     $stmt->execute();
 
-    $qnodata = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim' ORDER BY tanggal DESC");
+    $qnodata = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE nim='$nim' ORDER BY tanggal DESC");
     $dnodata = mysqli_fetch_array($qnodata);
     $token = $dnodata['token'];
     header("location:delegasi-anggota.php?token=$token");
