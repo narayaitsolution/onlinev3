@@ -1757,7 +1757,7 @@ $no = 1;
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                                 <?php
-                                                                if (empty($laporan) && $statuslaporan <> 1) {
+                                                                if ($statuslaporan != 1) {
                                                                 ?>
                                                                     <a class="btn btn-primary btn-sm" href="delegasi-laporan-isi.php?token=<?= $token; ?>" target="_blank">
                                                                         <i class="fas fa-file-upload"></i> Laporan

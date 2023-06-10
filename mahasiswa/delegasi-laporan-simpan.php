@@ -8,6 +8,7 @@ date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
 
 $token = $_POST['token'];
+$statuslaporan = 0;
 
 $target_dir = "../lampiran/";
 $fileTmpPath = $_FILES['laporan']['tmp_name'];
@@ -30,9 +31,9 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
     move_uploaded_file($laporan, $dest_path);
 
     $stmt = $dbsurat->prepare("UPDATE delegasi 
-                                  SET laporan=?, tgllaporan=?
+                                  SET laporan=?, tgllaporan=?,statuslaporan=?
                                   WHERE token=?");
-    $stmt->bind_param("sss", $dest_path, $tanggal, $token);
+    $stmt->bind_param("ssss", $dest_path, $tanggal, $statuslaporan, $token);
     $stmt->execute();
 
     //cari nip koordinator mahasiswa alumni

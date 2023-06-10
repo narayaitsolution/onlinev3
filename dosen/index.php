@@ -1684,7 +1684,39 @@ $tahun = date('Y');
                                     $no++;
                                 }
                                 ?>
-                                <!-- /delegasi as kaprodi-->
+                                <!-- /delegasi as koordinator-->
+
+                                <!-- delegasi as koorodinator cek laporan-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator2='$nip' AND laporan is not null AND statuslaporan = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Laporan Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-koor-laporan-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as koordinator cek laporan-->
 
                                 <!-- delegasi as WD-->
                                 <?php
