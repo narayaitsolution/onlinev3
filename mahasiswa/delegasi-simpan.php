@@ -51,33 +51,40 @@ $nipwd = $dhasil['nip'];
 
 $target_dir = "../lampiran/";
 $fileTmpPath = $_FILES['bukti']['tmp_name'];
-$fileName = $_FILES['bukti']['name'];
-$fileSize = $_FILES['bukti']['size'];
-$fileType = $_FILES['bukti']['type'];
-$fileNameCmps = explode(".", $fileName);
-$fileExtension = strtolower(end($fileNameCmps));
 
-$bukti = imgresize($fileTmpPath);
-$allowedfileExtensions = array('jpg', 'jpeg');
-if (in_array($fileExtension, $allowedfileExtensions)) {
-  $dest_path = $target_dir . $kode . '.jpg';
-  move_uploaded_file($bukti, $dest_path);
-  if ($jeniskegiatan == 'Individu') {
-    $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$file_mime = finfo_file($finfo, $_FILES['bukti']['tmp_name']);
+finfo_close($finfo);
+
+if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
+  $fileName = $_FILES['bukti']['name'];
+  $fileSize = $_FILES['bukti']['size'];
+  $fileType = $_FILES['bukti']['type'];
+  $fileNameCmps = explode(".", $fileName);
+  $fileExtension = strtolower(end($fileNameCmps));
+
+  $bukti = imgresize($fileTmpPath);
+  $allowedfileExtensions = array('jpg', 'jpeg');
+  if (in_array($fileExtension, $allowedfileExtensions)) {
+    $dest_path = $target_dir . $kode . '.jpg';
+
+    move_uploaded_file($bukti, $dest_path);
+    if ($jeniskegiatan == 'Individu') {
+      $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipkoor, $nipwd, $token);
-    $stmt->execute();
+      $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipkoor, $nipwd, $token);
+      $stmt->execute();
 
-    //kirim email ke kaprodi
-    //cari email dosen dari NIP
-    $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkaprodi'");
-    $dsql3 = mysqli_fetch_array($sql3);
-    $namadosen = $dsql3['nama'];
-    $emaildosen = $dsql3['email'];
+      //kirim email ke kaprodi
+      //cari email dosen dari NIP
+      $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkaprodi'");
+      $dsql3 = mysqli_fetch_array($sql3);
+      $namadosen = $dsql3['nama'];
+      $emaildosen = $dsql3['email'];
 
-    //kirim email
-    $subject = "Pengajuan " . $jenissurat . "";
-    $pesan = "Yth. " . $namadosen . "<br/>
+      //kirim email
+      $subject = "Pengajuan " . $jenissurat . "";
+      $pesan = "Yth. " . $namadosen . "<br/>
             <br/>
             Assalamualaikum wr. wb.
             <br />
@@ -95,21 +102,24 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
             <br/>
             <br/>
             <b>SAINTEK e-Office</b>";
-    sendmail($emaildosen, $namadosen, $subject, $pesan);
+      sendmail($emaildosen, $namadosen, $subject, $pesan);
 
-    header("location:index.php?pesan=success");
-  } else {
-    $statussurat = '-1';
-    $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, bukti,validator1, validator2, validator3,statussurat, token) 
+      header("location:index.php?pesan=success");
+    } else {
+      $statussurat = '-1';
+      $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, bukti,validator1, validator2, validator3,statussurat, token) 
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan,  $dest_path, $nipkaprodi, $nipkoor, $nipwd, $statussurat, $token);
-    $stmt->execute();
+      $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan,  $dest_path, $nipkaprodi, $nipkoor, $nipwd, $statussurat, $token);
+      $stmt->execute();
 
-    $qnodata = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE nim='$nim' ORDER BY tanggal DESC");
-    $dnodata = mysqli_fetch_array($qnodata);
-    $token = $dnodata['token'];
-    header("location:delegasi-anggota.php?token=$token");
+      $qnodata = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE nim='$nim' ORDER BY tanggal DESC");
+      $dnodata = mysqli_fetch_array($qnodata);
+      $token = $dnodata['token'];
+      header("location:delegasi-anggota.php?token=$token");
+    }
+  } else {
+    header("location:delegasi-isi.php?nip=$nip&pesan=gagal");
   }
 } else {
   header("location:delegasi-isi.php?nip=$nip&pesan=gagal");
-};
+}

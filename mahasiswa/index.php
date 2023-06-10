@@ -1674,7 +1674,10 @@ $no = 1;
                                                     $validasi3 = $q['validasi3'];
                                                     $validator3 = $q['validator3'];
                                                     $keterangan = $q['keterangan'];
+                                                    $keteranganlaporan = $q['keteranganlaporan'];
                                                     $statussurat = $q['statussurat'];
+                                                    $laporan = $q['laporan'];
+                                                    $statuslaporan = $q['statuslaporan'];
                                                     $token = $q['token'];
                                                 ?>
                                                     <tr>
@@ -1729,6 +1732,22 @@ $no = 1;
                                                             <?php
                                                             };
                                                             ?>
+                                                            <!-- upload laporan -->
+                                                            <?php
+                                                            if (!empty($laporan) && $statuslaporan == 0) {
+                                                            ?>
+                                                                <b style="color:orange;">Menunggu</b> verifikasi laporan oleh Koordinator Mahasiswa & Alumni <?= namadosen($dbsurat, $validator2); ?><br />
+                                                            <?php
+                                                            } elseif (!empty($laporan) && $statuslaporan == 1) {
+                                                            ?>
+                                                                Laporan Kegiatan <b style="color:green;">Telah disetujui</b> Koordinator Mahasiswa & Alumni <?= namadosen($dbsurat, $validator2); ?> <br />
+                                                            <?php
+                                                            } elseif (!empty($laporan) && $statuslaporan == 2) {
+                                                            ?>
+                                                                Laporan Kegiatan <b style="color:red;">Ditolak</b> oleh Koordinator Mahasiswa & Alumni <?= namadosen($dbsurat, $validator2); ?> dengan alasan <b style="color:red"> <?= $keteranganlaporan; ?></b><br />
+                                                            <?php
+                                                            };
+                                                            ?>
                                                         </td>
                                                         <td>
                                                             <?php
@@ -1737,6 +1756,15 @@ $no = 1;
                                                                 <a class="btn btn-success btn-sm" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
+                                                                <?php
+                                                                if (empty($laporan) && $statuslaporan <> 1) {
+                                                                ?>
+                                                                    <a class="btn btn-primary btn-sm" href="delegasi-laporan-isi.php?token=<?= $token; ?>" target="_blank">
+                                                                        <i class="fas fa-file-upload"></i> Laporan
+                                                                    </a>
+                                                                <?php
+                                                                }
+                                                                ?>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
