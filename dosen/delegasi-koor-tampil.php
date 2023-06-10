@@ -222,7 +222,7 @@ $no = 1;
                       <input type="hidden" name="token" value="<?= $token; ?>">
                       <div class="row">
                         <div class="col-6">
-                          <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="delegasi-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                          <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="delegasi-koor-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
                         </div>
                         <div class="col-6">
                           <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
@@ -243,7 +243,7 @@ $no = 1;
                             </div>
                             <div class="modal-footer justify-content-between">
                               <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                              <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="delegasi-wd-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
+                              <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="delegasi-koor-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
                             </div>
                           </div>
                         </div>

@@ -84,6 +84,7 @@ $bulan = date('m');
         $tglvalidasi3 = $ddelegasi['tglvalidasi3'];
         $validasi3 = $ddelegasi['validasi3'];
         $validator3 = $ddelegasi['validator3'];
+        $keterangan = $ddelegasi['keterangan'];
       ?>
         <tr>
           <td><?= $nomer; ?></td>
@@ -114,10 +115,13 @@ $bulan = date('m');
       </tr>
 
       <tr>
-        <td colspan="6">Dengan tujuan delegasi adalah untuk <?= $namakegiatan; ?>, maka dengan ini saya sampaikan bahwa pengajuan delegasi telah <b>DISETUJUI</b>. Dan dengan ini pula, mohon pihak administrasi dapat dengan segera menerbitkan SK terkait mahasiswa yang akan didelegasikan.</td>
+        <td colspan="6" style="text-align: justify;">Dengan tujuan delegasi adalah untuk <?= $namakegiatan; ?>, maka dengan ini saya sampaikan bahwa pengajuan delegasi telah <b>DISETUJUI dengan pembiayaan sebesar Rp. <?= number_format($keterangan, 0, '.', '.'); ?> (<?= terbilang($keterangan); ?> rupiah)</b>.</td>
       </tr>
       <tr>
-        <td colspan="6">Demikian surat ini dibuat sebenar - benarnya.</td>
+        <td colspan="6" style="text-align: justify;">Dan dengan ini pula, mohon pihak administrasi dapat dengan segera menerbitkan SK terkait mahasiswa yang akan didelegasikan.</td>
+      </tr>
+      <tr>
+        <td colspan="6" style="text-align: justify;">Demikian surat ini dibuat sebenar - benarnya.</td>
       </tr>
 
     </tbody>

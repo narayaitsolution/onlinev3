@@ -142,7 +142,6 @@ $no = 1;
                         <input type="text" class="form-control" name="tingkat" value="<?= $tingkat; ?>" readonly>
                       </div>
                     </div>
-
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Jenis Kegiatan</label>
                       <div class="col-sm-10">
@@ -206,33 +205,41 @@ $no = 1;
                     <?php
                     }
                     ?>
-                    <hr>
-                    <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Kaprodi</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="validator1" value="<?= namadosen($dbsurat, $validator1); ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Disetujui pada</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="tglvalidasi1" value="<?= tgljam_indo($tglvalidasi1); ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Koordinator Mahasiswa</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="validator2" value="<?= namadosen($dbsurat, $validator2); ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Disetujui pada</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="tglvalidasi2" value="<?= tgljam_indo($tglvalidasi2); ?>" readonly>
-                      </div>
-                    </div>
-                    <hr>
                     <form role="form" method="POST" id="my-form">
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Biaya Disetujui</label>
+                        <div class="col-sm-10">
+                          <input type="number" pattern="[0-9]*" class="form-control" name="biaya" required>
+                          <small style="color: red;">Tuliskan HANYA ANGKA 0 - 9 tanpa titik / koma</small>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Kaprodi</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="validator1" value="<?= namadosen($dbsurat, $validator1); ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Disetujui pada</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="tglvalidasi1" value="<?= tgljam_indo($tglvalidasi1); ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Koordinator Mahasiswa</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="validator2" value="<?= namadosen($dbsurat, $validator2); ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Disetujui pada</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="tglvalidasi2" value="<?= tgljam_indo($tglvalidasi2); ?>" readonly>
+                        </div>
+                      </div>
+                      <hr>
+
                       <input type="hidden" name="token" value="<?= $token; ?>">
                       <div class="row">
                         <div class="col-6">

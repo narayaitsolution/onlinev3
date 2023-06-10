@@ -9,7 +9,7 @@ $token = mysqli_real_escape_string($dbsurat, $_POST['token']);
 date_default_timezone_set("Asia/Jakarta");
 $tgl = date('Y-m-d H:i:s');
 
-//update status validasi kaprodi
+//update status validasi koor mhs
 $sql = mysqli_query($dbsurat, "UPDATE delegasi
 					SET tglvalidasi2 = '$tgl', 
 					validasi2 = '1'
