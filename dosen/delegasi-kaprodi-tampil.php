@@ -117,12 +117,11 @@ $no = 1;
                         <small style="color: blue;">
                           <b>Kategori Akademik :</b>
                           <ul>
-                            <li>Penulisan karya ilmiah di media cetak nasional/internasional, sebagai penulis pertama.</li>
-                            <li>Penulisan karya ilmiah di jurnal ilmiah bereputasi nasional/international, sebagai penulis pertama.</li>
+                            <li>Kompetisi / kejuaraan / perlombaan dalam bidang ilmiah, teknologi dan riset</li>
                           </ul>
                           <b>Kategori Non Akademik :</b>
                           <ul>
-                            <li>- Kompetisi/kejuaraan/perlombaan dalam bidang ilmiah, teknologi, olah raga, seni, budaya, sosial, riset dan keagamaan.</li>
+                            <li>Kompetisi / kejuaraan / perlombaan dalam bidang olah raga, seni, budaya, sosial dan keagamaan.</li>
                           </ul>
                         </small>
                       </div>
@@ -175,7 +174,7 @@ $no = 1;
                               <tbody>
                                 <?php
                                 $nourut = 1;
-                                $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE nodata='$nodata'");
+                                $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE token='$token'");
                                 while ($ddelegasianggota = mysqli_fetch_array($qdelegasianggota)) {
                                   $nimanggota = $ddelegasianggota['nimanggota'];
                                   $no = $ddelegasianggota['no'];

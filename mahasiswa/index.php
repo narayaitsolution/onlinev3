@@ -1759,7 +1759,7 @@ $no = 1;
                                                                 <?php
                                                                 if ($statuslaporan != 1) {
                                                                 ?>
-                                                                    <a class="btn btn-primary btn-sm" href="delegasi-laporan-isi.php?token=<?= $token; ?>" target="_blank">
+                                                                    <a class="btn btn-primary btn-sm" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
                                                                         <i class="fas fa-file-upload"></i> Laporan
                                                                     </a>
                                                                 <?php

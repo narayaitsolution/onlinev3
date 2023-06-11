@@ -9,15 +9,14 @@ $tanggal = date('Y-m-d H:i:s');
 
 $nimketua = $_POST['nimketua'];
 $nimanggota = $_POST['nimanggota'];
-$nodata = $_POST['nodata'];
 $token = $_POST['token'];
 
 $qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip = '$nimanggota'");
 $jpengguna = mysqli_num_rows($qpengguna);
 if ($jpengguna > 0) {
-  $stmt = $dbsurat->prepare("INSERT INTO delegasianggota (nodata, nimketua, nimanggota) 
+  $stmt = $dbsurat->prepare("INSERT INTO delegasianggota (token, nimketua, nimanggota) 
                 VALUES (?,?,?)");
-  $stmt->bind_param("sss", $nodata, $nimketua, $nimanggota);
+  $stmt->bind_param("sss", $token, $nimketua, $nimanggota);
   $stmt->execute();
   header("location:delegasi-anggota.php?pesan=succes&&token=$token");
 } else {

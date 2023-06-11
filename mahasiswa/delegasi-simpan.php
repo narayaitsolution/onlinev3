@@ -71,8 +71,13 @@ if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
     move_uploaded_file($bukti, $dest_path);
     if ($jeniskegiatan == 'Individu') {
       $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
       $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipkoor, $nipwd, $token);
+      $stmt->execute();
+
+      $stmt = $dbsurat->prepare("INSERT INTO delegasianggota (token, nimketua, nimanggota) 
+                                  VALUES (?,?,?)");
+      $stmt->bind_param("sss", $token, $nim, $nim);
       $stmt->execute();
 
       //kirim email ke kaprodi

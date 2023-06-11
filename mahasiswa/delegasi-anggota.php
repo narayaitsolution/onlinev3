@@ -79,34 +79,45 @@ $bukti = $ddelegasi['bukti'];
           <div class="row mb-2">
             <div class="col">
               <?php
-              $pesan = $_GET['pesan'];
-              if ($pesan == 'succes') {
+              if (isset($_GET['pesan'])) {
+                $pesan = $_GET['pesan'];
+                if ($pesan == 'succes') {
               ?>
-                <div class="alert alert-success alert-dismissible fade show">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  Penambahan anggota <b>BERHASIL!!</b>
-                </div>
+                  <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    Penambahan anggota <b>BERHASIL!!</b>
+                  </div>
+                <?php
+                } elseif ($pesan == 'gagal') {
+                ?>
+                  <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    Penambahan anggota <b>GAGAL!!</b>
+                  </div>
+                <?php
+                } elseif ($pesan == 'hapusok') {
+                ?>
+                  <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    Penghapusan anggota <b>BERHASIL!!</b>
+                  </div>
               <?php
-              } elseif ($pesan == 'gagal') {
-              ?>
-                <div class="alert alert-danger alert-dismissible fade show">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  Penambahan anggota <b>GAGAL!!</b>
-                </div>
-              <?php
-              } elseif ($pesan == 'hapusok') {
-              ?>
-                <div class="alert alert-success alert-dismissible fade show">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  Penghapusan anggota <b>BERHASIL!!</b>
-                </div>
-              <?php
-              }
+                }
+              };
               ?>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- masukkan data ketua -->
+      <?php
+      $qdelegaasi = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE token='$token'");
+      $jdelegaasi = mysqli_num_rows($qdelegaasi);
+      if ($jdelegaasi == 0) {
+        $qdelegasianggota = mysqli_query($dbsurat, "INSERT INTO delegasianggota (token,nimketua,nimanggota) VALUES ('$token','$nimketua','$nimketua')");
+      }
+      ?>
 
       <!-- tabel pengajuan pribadi -->
       <section class="content">
@@ -126,7 +137,7 @@ $bukti = $ddelegasi['bukti'];
                       <div class="form-group row">
                         <label for="keperluan" class="col-sm-3 col-form-label">NIM Anggota Delegasi</label>
                         <div class="col-sm-7">
-                          <input type="number" class="form-control" id="nimanggota" name="nimanggota">
+                          <input type="number" class="form-control" id="nimanggota" name="nimanggota" required>
                         </div>
                         <div class="col-sm-2">
                           <input type="hidden" name="nodata" value="<?= $nodata; ?>">
@@ -149,7 +160,7 @@ $bukti = $ddelegasi['bukti'];
                       <tbody>
                         <?php
                         $nourut = 1;
-                        $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE nodata='$nodata'");
+                        $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE token='$token'");
                         while ($ddelegasianggota = mysqli_fetch_array($qdelegasianggota)) {
                           $nimanggota = $ddelegasianggota['nimanggota'];
                           $no = $ddelegasianggota['no'];
@@ -178,15 +189,8 @@ $bukti = $ddelegasi['bukti'];
                         ?>
                       </tbody>
                     </table>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col">
-                    <a href="delegasi-hapus.php?token=<?= $token; ?>" class="btn btn-block btn-secondary" onclick="return confirm('Yakin melakukan pembatalan ?')"><i class=" fa-solid fa-backward"></i> Batalkan</a>
-                  </div>
-                  <div class="col">
-                    <a href="delegasi-anggota-simpan.php?token=<?= $token; ?>" class="btn btn-block btn-success" onclick="return confirm('Yakin mengajukan data ini ?')"><i class="fa-solid fa-file-arrow-up"></i> AJUKAN</a>
+                    <hr>
+                    <a href="delegasi-anggota-simpan.php?token=<?= $token; ?>" class="btn btn-block btn-lg btn-success" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya masukkan adalah benar')"><i class="fa-solid fa-file-arrow-up"></i> AJUKAN</a>
                   </div>
                 </div>
               </div>

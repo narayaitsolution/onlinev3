@@ -195,7 +195,7 @@ $no = 1;
                               <tbody>
                                 <?php
                                 $nourut = 1;
-                                $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE nodata='$nodata'");
+                                $qdelegasianggota = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE token='$token'");
                                 while ($ddelegasianggota = mysqli_fetch_array($qdelegasianggota)) {
                                   $nimanggota = $ddelegasianggota['nimanggota'];
                                   $no = $ddelegasianggota['no'];

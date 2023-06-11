@@ -42,17 +42,7 @@ $bulan = date('m');
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td colspan="6">&nbsp;</td>
     </tr>
   </tbody>
 </table>
@@ -75,26 +65,29 @@ $bulan = date('m');
       <?php
       $nomer = 1;
       $qdelegasi = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE token='$token'");
-      while ($ddelegasi = mysqli_fetch_array($qdelegasi)) {
-        $nodata = $ddelegasi['no'];
-        $nim = $ddelegasi['nim'];
-        $prodi = $ddelegasi['prodi'];
-        $jeniskegiatan = $ddelegasi['jeniskegiatan'];
-        $namakegiatan = $ddelegasi['namakegiatan'];
-        $tglvalidasi3 = $ddelegasi['tglvalidasi3'];
-        $validasi3 = $ddelegasi['validasi3'];
-        $validator3 = $ddelegasi['validator3'];
-        $keterangan = $ddelegasi['keterangan'];
+      $ddelegasi = mysqli_fetch_array($qdelegasi);
+      $nodata = $ddelegasi['no'];
+      $nim = $ddelegasi['nim'];
+      $prodi = $ddelegasi['prodi'];
+      $jeniskegiatan = $ddelegasi['jeniskegiatan'];
+      $namakegiatan = $ddelegasi['namakegiatan'];
+      $tglvalidasi3 = $ddelegasi['tglvalidasi3'];
+      $validasi3 = $ddelegasi['validasi3'];
+      $validator3 = $ddelegasi['validator3'];
+      $keterangan = $ddelegasi['keterangan'];
+      $qdelegasikelompok = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE token='$token'");
+      while ($ddelegasikelompok = mysqli_fetch_array($qdelegasikelompok)) {
+        $nimanggota = $ddelegasikelompok['nimanggota'];
       ?>
         <tr>
           <td><?= $nomer; ?></td>
           <td>Nama</td>
-          <td colspan="4">: <?= namadosen($dbsurat, $nim); ?></td>
+          <td colspan="4">: <?= namadosen($dbsurat, $nimanggota); ?></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
           <td>NIM</td>
-          <td colspan="4">: <?= $nim; ?></td>
+          <td colspan="4">: <?= $nimanggota; ?></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
@@ -102,12 +95,7 @@ $bulan = date('m');
           <td colspan="4">: <?= $prodi; ?></td>
         </tr>
       <?php
-        if ($jeniskegiatan == 'Kelompok') {
-          $qdelegasikelompok = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE nodata='$nodata'");
-          while ($ddelegasikelompok = mysqli_fetch_array($qdelegasikelompok)) {
-            $nimanggota = $ddelegasikelompok['nimanggota'];
-          }
-        }
+        $nomer++;
       }
       ?>
       <tr>

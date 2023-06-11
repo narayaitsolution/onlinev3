@@ -17,6 +17,7 @@ $sql = mysqli_query($dbsurat, "UPDATE delegasi
                     keterangan='$biaya',
                     statussurat = '1'
 					WHERE token = '$token' AND validator3='$nip'");
+$qanggota = mysqli_query($dbsurat, "UPDATE delegasianggota SET statussurat=1 WHERE token='$token'");
 
 //kirim email ke wadek3
 //cari email wadek3 dari NIP
