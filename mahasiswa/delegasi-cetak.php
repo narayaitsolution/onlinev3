@@ -75,6 +75,7 @@ $bulan = date('m');
       $validasi3 = $ddelegasi['validasi3'];
       $validator3 = $ddelegasi['validator3'];
       $keterangan = $ddelegasi['keterangan'];
+      $biaya = $ddelegasi['biaya'];
       $qdelegasikelompok = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE token='$token'");
       while ($ddelegasikelompok = mysqli_fetch_array($qdelegasikelompok)) {
         $nimanggota = $ddelegasikelompok['nimanggota'];
@@ -103,7 +104,7 @@ $bulan = date('m');
       </tr>
 
       <tr>
-        <td colspan="6" style="text-align: justify;">Dengan tujuan delegasi adalah untuk <?= $namakegiatan; ?>, maka dengan ini saya sampaikan bahwa pengajuan delegasi telah <b>DISETUJUI dengan pembiayaan sebesar Rp. <?= number_format($keterangan, 0, '.', '.'); ?> (<?= terbilang($keterangan); ?> rupiah)</b>.</td>
+        <td colspan="6" style="text-align: justify;">Dengan tujuan delegasi adalah untuk <?= $namakegiatan; ?>, maka dengan ini saya sampaikan bahwa pengajuan delegasi telah <b>DISETUJUI dengan pembiayaan sebesar Rp. <?= number_format($biaya, 0, '.', '.'); ?> (<?= terbilang($biaya); ?> rupiah)</b> untuk <?= $keterangan; ?>.</td>
       </tr>
       <tr>
         <td colspan="6" style="text-align: justify;">Dan dengan ini pula, mohon pihak administrasi dapat dengan segera menerbitkan SK terkait mahasiswa yang akan didelegasikan.</td>

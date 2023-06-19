@@ -213,6 +213,13 @@ $no = 1;
                           <small style="color: red;">Tuliskan HANYA ANGKA 0 - 9 tanpa titik / koma</small>
                         </div>
                       </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Keterangan</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" name="keterangan"></textarea>
+                          <small style="color: red;">Tuliskan HANYA ANGKA 0 - 9 tanpa titik / koma</small>
+                        </div>
+                      </div>
                       <hr>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Kaprodi</label>
