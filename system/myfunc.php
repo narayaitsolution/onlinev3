@@ -194,37 +194,114 @@ function random_str(
     return implode('', $pieces);
 }
 
-function terbilang($angka)
+function terbilang($number)
 {
-    $angka = abs($angka);
-    $huruf = array(
-        "", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan",
-        "sembilan", "sepuluh", "sebelas"
+    $number = trim($number);
+    $number = (string)preg_replace("/[^0-9.\-]/", "", $number); // Hapus karakter non-numeric
+
+    $number_words = array(
+        '',
+        'satu',
+        'dua',
+        'tiga',
+        'empat',
+        'lima',
+        'enam',
+        'tujuh',
+        'delapan',
+        'sembilan',
+        'sepuluh',
+        'sebelas',
+        'dua belas',
+        'tiga belas',
+        'empat belas',
+        'lima belas',
+        'enam belas',
+        'tujuh belas',
+        'delapan belas',
+        'sembilan belas'
     );
 
-    $terbilang = "";
-    if ($angka < 12) {
-        $terbilang = $huruf[$angka];
-    } elseif ($angka < 20) {
-        $terbilang = terbilang($angka - 10) . " belas";
-    } elseif ($angka < 100) {
-        $terbilang = terbilang($angka / 10) . " puluh " . terbilang($angka % 10);
-    } elseif ($angka < 200) {
-        $terbilang = "seratus " . terbilang($angka - 100);
-    } elseif ($angka < 1000) {
-        $terbilang = terbilang($angka / 100) . " ratus " . terbilang($angka % 100);
-    } elseif ($angka < 2000) {
-        $terbilang = "seribu " . terbilang($angka - 1000);
-    } elseif ($angka < 1000000) {
-        $terbilang = terbilang($angka / 1000) . " ribu " . terbilang($angka % 1000);
-    } elseif ($angka < 1000000000) {
-        $terbilang = terbilang($angka / 1000000) . " juta " . terbilang($angka % 1000000);
-    } else {
-        $terbilang = "Angka terlalu besar";
+    $unit_words = array(
+        '',
+        'ribu',
+        'juta',
+        'miliar',
+        'triliun',
+        'kuadriliun' // Sesuaikan dengan kebutuhan Anda
+    );
+
+    // Handle angka nol secara khusus
+    if ($number == 0) {
+        return 'nol';
     }
 
-    return $terbilang;
+    $number_parts = explode('.', $number); // Pisahkan angka desimal jika ada
+    $whole_number = $number_parts[0];
+
+    $result = '';
+
+    if (strlen($whole_number) > 0) {
+        $whole_number = strrev($whole_number); // Balik urutan string
+
+        for ($i = 0, $length = strlen($whole_number); $i < $length; $i += 3) {
+            $chunk = strrev(substr($whole_number, $i, 3)); // Potong dalam kelompok 3 digit dan balik urutan stringnya
+
+            if ($chunk > 0) {
+                $chunk_words = '';
+
+                if ($chunk == 1 && $i == 1) {
+                    $chunk_words = 'seribu'; // Kasus khusus untuk seribu
+                } else {
+                    $digit1 = $chunk % 10;
+                    $digit2 = ($chunk % 100 - $digit1) / 10;
+                    $digit3 = ($chunk % 1000 - $digit2 * 10 - $digit1) / 100;
+
+                    if ($digit3 > 0) {
+                        $chunk_words .= $number_words[$digit3] . ' ratus ';
+                    }
+
+                    if ($digit2 > 0) {
+                        if ($digit2 == 1) {
+                            $chunk_words .= $number_words[$digit1 + 10] . ' ';
+                            $digit1 = 0;
+                        } else {
+                            $chunk_words .= $number_words[$digit2] . ' puluh ';
+                        }
+                    }
+
+                    if ($digit1 > 0) {
+                        $chunk_words .= $number_words[$digit1] . ' ';
+                    }
+                }
+
+                $chunk_words .= $unit_words[$i / 3];
+
+                $result = $chunk_words . ' ' . $result;
+            }
+        }
+    }
+
+    // Tambahkan bagian desimal jika ada
+    if (isset($number_parts[1])) {
+        $decimal_number = trim($number_parts[1]);
+        $decimal_number = (string)preg_replace("/[^0-9.\-]/", "", $decimal_number); // Hapus karakter non-numeric
+
+        if (!empty($decimal_number)) {
+            $decimal_words = '';
+
+            for ($i = 0, $length = strlen($decimal_number); $i < $length; $i++) {
+                $digit = $decimal_number[$i];
+                $decimal_words .= $number_words[$digit] . ' ';
+            }
+
+            $result .= 'koma ' . $decimal_words;
+        }
+    }
+
+    return trim($result);
 }
+
 ?>
 
 
