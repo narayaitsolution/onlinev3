@@ -234,19 +234,26 @@
                                 </p>
                             </a>
                         </li>
-                        <!--
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-square-envelope"></i>
-                                <p>
-                                    Disposisi Surat
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
-                        </li>
-                    -->
                     </ul>
                 </li>
+
+                <!-- koordinator mahasiswa -->
+                <?php
+                if ($jabatan == 'koormhsalumni') {
+                ?>
+                    <li class="nav-item">
+                        <a href="koormhs-pkl-tampil.php" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Izin PKL
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+
                 <?php
                 $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Pengguna Lab.'");
                 $dmenu = mysqli_fetch_array($qmenu);
