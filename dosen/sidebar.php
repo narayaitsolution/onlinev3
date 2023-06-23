@@ -239,7 +239,7 @@
 
                 <!-- koordinator mahasiswa -->
                 <?php
-                if ($jabatan == 'koormhsalumni') {
+                if ($jabatan == 'koormhsalumni' || $jabatan == 'wadek3') {
                 ?>
                     <li class="nav-item">
                         <a href="koormhs-pkl-tampil.php" class="nav-link">

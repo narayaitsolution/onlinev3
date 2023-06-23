@@ -6,7 +6,8 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($jabatan != "koormhsalumni") {
+if ($jabatan == "koormhsalumni" || $jabatan == "wadek3") {
+} else {
     header("location:../deauth.php");
 }
 require('../system/dbconn.php');
@@ -81,7 +82,10 @@ $tahun = date('Y');
                                     <th style="text-align:center;">Tgl. Pengajuan</th>
                                     <th style="text-align:center;">Nama</th>
                                     <th style="text-align:center;">Prodi</th>
-                                    <th style="text-align:center;">Status</th>
+                                    <th style="text-align:center;">Instansi</th>
+                                    <th style="text-align:center;">Unit Kerja</th>
+                                    <th style="text-align:center;">Alamat</th>
+                                    <th style="text-align:center;">Keterangan</th>
                                     <th width="5%">Aksi</th>
                                 </tr>
                             </thead>
@@ -98,7 +102,9 @@ $tahun = date('Y');
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
-                                    $surat = 'Ijin PKL';
+                                    $instansi = $data['instansi'];
+                                    $tempatpkl = $data['tempatpkl'];
+                                    $alamat = $data['alamat'];
                                     $validasi1 = $data['validasi1'];
                                     $validator1 = $data['validator1'];
                                     $validasi2 = $data['validasi2'];
@@ -114,47 +120,10 @@ $tahun = date('Y');
                                         <td><?= tgl_indo($tanggal) ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td> <?php
-                                                //koordinator PKL
-                                                echo namadosen($dbsurat, $validator1);
-                                                if ($validasi1 == 0) {
-                                                    echo ' <b>menunggu verifikasi</b>';
-                                                } elseif ($validasi1 == 1) {
-                                                    echo ' <b style="color:green;">telah disetujui</b>';
-                                                } elseif ($validasi1 == 2) {
-                                                    echo ' <b style="color:red;">ditolak</b>';
-                                                } elseif ($validasi1 == 3) {
-                                                    echo ' <b style="color:red;">dibatalkan</b>';
-                                                };
-                                                echo '<br/>';
-
-                                                //kaprodi
-                                                echo namadosen($dbsurat, $validator2);
-                                                if ($validasi2 == 0) {
-                                                    echo ' <b>menunggu verifikasi</b>';
-                                                } elseif ($validasi2 == 1) {
-                                                    echo ' <b style="color:green;">telah disetujui</b>';
-                                                } elseif ($validasi2 == 2) {
-                                                    echo ' <b style="color:red;">ditolak</b>';
-                                                } elseif ($validasi2 == 3) {
-                                                    echo ' <b style="color:red;">dibatalkan</b>';
-                                                };
-                                                echo '<br/>';
-
-                                                //WD-3
-                                                echo namadosen($dbsurat, $validator3);
-                                                if ($validasi3 == 0) {
-                                                    echo ' <b>menunggu verifikasi</b>';
-                                                } elseif ($validasi3 == 1) {
-                                                    echo ' <b style="color:green;">telah disetujui</b>';
-                                                } elseif ($validasi3 == 2) {
-                                                    echo ' <b style="color:red;">ditolak</b>';
-                                                } elseif ($validasi3 == 3) {
-                                                    echo ' <b style="color:red;">dibatalkan</b>';
-                                                };
-                                                echo '<br/>';
-                                                ?>
-                                        </td>
+                                        <td><?= $instansi; ?></td>
+                                        <td><?= $tempatpkl; ?></td>
+                                        <td><?= $alamat; ?></td>
+                                        <td><?= $keterangan; ?></td>
                                         <td>
                                             <?php
                                             if ($statussurat == 1) {
