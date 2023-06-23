@@ -12,6 +12,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $kegiatan = $_POST['kegiatan'];
 $namakegiatan = $_POST['namakegiatan'];
+$penyelenggara = $_POST['penyelenggara'];
 $tingkat = $_POST['tingkat'];
 $kategori = $_POST['kategori'];
 $jeniskegiatan = $_POST['jeniskegiatan'];
@@ -56,9 +57,9 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
     $dest_path = $target_dir . $kode . '.jpg';
     move_uploaded_file($bukti, $dest_path);
     if ($jeniskegiatan == 'Individu') {
-        $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3, token) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $token);
+        $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3, token) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $token);
         $stmt->execute();
 
         //kirim email ke kaprodi

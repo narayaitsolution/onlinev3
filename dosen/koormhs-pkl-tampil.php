@@ -81,6 +81,7 @@ $tahun = date('Y');
                                     <th width="5%">No.</th>
                                     <th style="text-align:center;">Tgl. Pengajuan</th>
                                     <th style="text-align:center;">Nama</th>
+                                    <th style="text-align:center;">NIM</th>
                                     <th style="text-align:center;">Prodi</th>
                                     <th style="text-align:center;">Instansi</th>
                                     <th style="text-align:center;">Unit Kerja</th>
@@ -118,7 +119,8 @@ $tahun = date('Y');
                                     <tr>
                                         <td><?= $no; ?></td>
                                         <td><?= tgl_indo($tanggal) ?></td>
-                                        <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
                                         <td><?= $instansi; ?></td>
                                         <td><?= $tempatpkl; ?></td>
