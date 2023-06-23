@@ -13,7 +13,13 @@ if ($jabatan == "koormhsalumni" || $jabatan == "wadek3") {
 require('../system/dbconn.php');
 require('../system/myfunc.php');
 $no = 1;
-$tahun = date('Y');
+$thn = date('Y');
+
+if (isset($_POST['tahun'])) {
+    $tahun = $_POST['tahun'];
+} else {
+    $tahun = $thn;
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +81,28 @@ $tahun = date('Y');
                         </div>
                     </div>
                     <div class="card-body">
+                        <section>
+                            <form action="koormhs-pkl-tampil.php" method="post">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label for="tahun">Tahun</label>
+                                    </div>
+                                    <div class="col">
+                                        <select name="tahun" class="form-control">
+                                            <option value="<?= $thn; ?>" selected><?= $thn; ?></option>
+                                            <option value="<?= $thn - 1; ?>"><?= $thn - 1; ?></option>
+                                            <option value="<?= $thn - 2; ?>"><?= $thn - 2; ?></option>
+                                            <option value="<?= $thn - 3; ?>"><?= $thn - 3; ?></option>
+                                            <option value="0000">Semua tahun</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-filter"></i> Filter</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                        <hr>
                         <table id="example1" class="table table-bordered table-striped text-sm">
                             <thead>
                                 <tr>
@@ -95,7 +123,11 @@ $tahun = date('Y');
 
                                 <!-- PKL Koordinator-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
+                                if ($tahun == '0000') {
+                                    $query = mysqli_query($dbsurat, "SELECT * FROM pkl ORDER BY tanggal DESC, prodi ASC");
+                                } else {
+                                    $query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' AND statussurat='1' ORDER BY tanggal DESC, prodi ASC, instansi ASC");
+                                }
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -159,8 +191,62 @@ $tahun = date('Y');
                                             </a>
                                         </td>
                                     </tr>
+                                    <?php
+                                    //cari data anggota
+                                    $qpklanggota = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nodata='$nodata'");
+                                    $jpklanggota = mysqli_num_rows($qpklanggota);
+                                    while ($dpklanggota = mysqli_fetch_array($qpklanggota)) {
+                                        $nimanggota = $dpklanggota['nimanggota'];
+                                        $namaanggota = $dpklanggota['nama'];
+                                        if ($nimanggota <> $nim) {
+                                    ?>
+                                            <tr>
+                                                <td><?= $no; ?></td>
+                                                <td><?= tgl_indo($tanggal) ?></td>
+                                                <td><?= $namaanggota; ?></td>
+                                                <td><?= $nimanggota; ?></td>
+                                                <td><?= $prodi; ?></td>
+                                                <td><?= $instansi; ?></td>
+                                                <td><?= $tempatpkl; ?></td>
+                                                <td><?= $alamat; ?></td>
+                                                <td><?= $keterangan; ?></td>
+                                                <td>
+                                                    <?php
+                                                    if ($statussurat == 1) {
+                                                    ?>
+                                                        <a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                            <i class="fas fa-print"></i>
+                                                        </a>
+                                                    <?php
+                                                    } elseif ($statussurat == 2) {
+                                                    ?>
+                                                        <a class="btn btn-danger btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                            <i class="fas fa-ban"></i>
+                                                        </a>
+                                                    <?php
+                                                    } elseif ($statussurat == 3) {
+                                                    ?>
+                                                        <a class="btn btn-warning btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                            <i class="fa-solid fa-circle-exclamation"></i>
+                                                        </a>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <a class="btn btn-secondary btn-sm" onclick="return alert('Dalam proses verifikasi')">
+                                                            <i class="fas fa-spinner"></i>
+                                                        </a>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <a class="btn btn-danger btn-sm" href="pengajuanmhs-pklhapus.php?nodata=<?= $nodata; ?>" onclick="return alert('Membatalkan pengajuan ini ?')">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                 <?php
-                                    $no++;
+                                        }
+                                        $no++;
+                                    }
                                 }
                                 ?>
                                 <!-- /. PKL koordinator-->
