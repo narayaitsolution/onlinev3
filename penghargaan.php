@@ -40,6 +40,7 @@ require('system/dbconn.php');
                             <th style="text-align: center;">NIM</th>
                             <th style="text-align: center;">Prodi</th>
                             <th style="text-align: center;">Nama Kegiatan</th>
+                            <th style="text-align: center;">Penyelenggara</th>
                             <th style="text-align: center;">Bukti</th>
                         </tr>
                     </thead>
@@ -63,6 +64,7 @@ require('system/dbconn.php');
                             $panjang = strlen($bukti);
                             $sertifikat = substr($bukti, 3, $panjang);
                             $namakegiatan = $data['namakegiatan'];
+                            $penyelenggara = $data['penyelenggara'];
                             $token = $data['token'];
                         ?>
                             <tr>
@@ -75,6 +77,7 @@ require('system/dbconn.php');
                                 <td><?= $nim; ?></td>
                                 <td><?= $prodi; ?></td>
                                 <td><?= $namakegiatan; ?></td>
+                                <td><?= $penyelenggara; ?></td>
                                 <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                             </tr>
                         <?php

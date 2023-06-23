@@ -94,9 +94,9 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
         header("location:index.php?pesan=success");
     } else {
         $statussurat = '-1';
-        $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3,statussurat, token) 
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $statussurat, $token);
+        $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3,statussurat, token) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $statussurat, $token);
         $stmt->execute();
 
         $qnodata = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim' ORDER BY tanggal DESC");
