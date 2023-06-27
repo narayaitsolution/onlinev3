@@ -107,13 +107,13 @@ if (isset($_POST['tahun'])) {
                             <thead>
                                 <tr>
                                     <th width="5%">No.</th>
-                                    <th style="text-align:center;">Tgl. Pengajuan</th>
                                     <th style="text-align:center;">Nama</th>
                                     <th style="text-align:center;">NIM</th>
                                     <th style="text-align:center;">Prodi</th>
                                     <th style="text-align:center;">Instansi</th>
                                     <th style="text-align:center;">Unit Kerja</th>
                                     <th style="text-align:center;">Alamat</th>
+                                    <th style="text-align:center;">Tgl. Surat</th>
                                     <th style="text-align:center;">Keterangan</th>
                                     <th width="5%">Aksi</th>
                                 </tr>
@@ -144,19 +144,20 @@ if (isset($_POST['tahun'])) {
                                     $validator2 = $data['validator2'];
                                     $validasi3 = $data['validasi3'];
                                     $validator3 = $data['validator3'];
+                                    $tglvalidasi3 = $data['tglvalidasi3'];
                                     $keterangan = $data['keterangan'];
                                     $token = $data['token'];
                                     $statussurat = $data['statussurat'];
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
-                                        <td><?= tgl_indo($tanggal) ?></td>
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
                                         <td><?= $instansi; ?></td>
                                         <td><?= $tempatpkl; ?></td>
                                         <td><?= $alamat; ?></td>
+                                        <td><?= tgl_indo($tglvalidasi3) ?></td>
                                         <td><?= $keterangan; ?></td>
                                         <td>
                                             <?php
@@ -202,13 +203,13 @@ if (isset($_POST['tahun'])) {
                                     ?>
                                             <tr>
                                                 <td><?= $no; ?></td>
-                                                <td><?= tgl_indo($tanggal) ?></td>
                                                 <td><?= $namaanggota; ?></td>
                                                 <td><?= $nimanggota; ?></td>
                                                 <td><?= $prodi; ?></td>
                                                 <td><?= $instansi; ?></td>
                                                 <td><?= $tempatpkl; ?></td>
                                                 <td><?= $alamat; ?></td>
+                                                <td><?= tgl_indo($tglvalidasi3) ?></td>
                                                 <td><?= $keterangan; ?></td>
                                                 <td>
                                                     <?php
