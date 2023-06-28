@@ -13,7 +13,7 @@ $tahun = date('Y');
 $qurutan = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' and statussurat='1'");
 $urutan = mysqli_num_rows($qurutan);
 
-$nosurat = "B-" . $urutan . ".O/FST.3/PP.06/" . $bulan . "/" . $tahun . "";
+$nosurat = "B-" . $urutan + 1 . ".O/FST.3/PP.06/" . $bulan . "/" . $tahun . "";
 
 $sql = mysqli_query($dbsurat, "UPDATE pkl
 					SET tglvalidasi3 = '$tgl', 
