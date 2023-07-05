@@ -278,7 +278,7 @@ $no = 1;
 
                                                 <!-- Ijin PKL -->
                                                 <?php
-                                                $query1 = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota = '$nim'");
+                                                $query1 = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nimanggota = '$nim' AND statussurat < '3'");
                                                 $jquery1 = mysqli_num_rows($query1);
                                                 if ($jquery1 > 0) {
                                                     $dquery1 = mysqli_fetch_array($query1);
@@ -287,7 +287,7 @@ $no = 1;
                                                     $nimketuapkl = $nim;
                                                 }
 
-                                                $query2 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE nim = '$nimketuapkl'");
+                                                $query2 = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE nim = '$nimketuapkl' and statussurat < '3'");
                                                 while ($q = mysqli_fetch_array($query2)) {
                                                     $nodata = $q['no'];
                                                     $nimketua = $q['nim'];
