@@ -151,7 +151,7 @@ if (isset($_POST['tahun'])) {
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
-                                        <td><?= $nama; ?></td>
+                                        <td><b>Ketua:</b><br><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
                                         <td><?= $instansi; ?></td>
@@ -203,7 +203,7 @@ if (isset($_POST['tahun'])) {
                                     ?>
                                             <tr>
                                                 <td><?= $no; ?></td>
-                                                <td><?= $namaanggota; ?></td>
+                                                <td><b>Anggota :</b><br><?= $namaanggota; ?></td>
                                                 <td><?= $nimanggota; ?></td>
                                                 <td><?= $prodi; ?></td>
                                                 <td><?= $instansi; ?></td>
@@ -246,8 +246,8 @@ if (isset($_POST['tahun'])) {
                                             </tr>
                                 <?php
                                         }
-                                        $no++;
                                     }
+                                    $no++;
                                 }
                                 ?>
                                 <!-- /. PKL koordinator-->

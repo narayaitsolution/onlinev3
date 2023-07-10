@@ -9,11 +9,18 @@ $tgl = date('Y-m-d H:i:s');
 $nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
 $bulan = date('m');
 $tahun = date('Y');
-//cari urutan surat di tahun ini untuk no surat
-$qurutan = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' and statussurat='1'");
-$urutan = mysqli_num_rows($qurutan);
 
-$nosurat = "B-" . $urutan + 1 . ".O/FST.3/PP.06/" . $bulan . "/" . $tahun . "";
+//cari urutan surat di tahun ini untuk no surat
+$qurutan = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' and statussurat='1' ORDER BY tanggal DESC LIMIT 1");
+$durutan = mysqli_fetch_array($qurutan);
+$noterakhir = $durutan['keterangan'];
+//echo 'noterakhir = ' . $noterakhir . '<br>';
+$nosurat = substr($noterakhir, 2, 3);
+//echo 'nosurat = ' . $nosurat . '<br>';
+$nosekarang = $nosurat + 1;
+//echo 'nosekarang = ' . $nosekarang . '<br>';
+
+$nosurat = 'B-' . $nosekarang . '.O/FST.3/PP.06/' . $bulan . '/' . $tahun;
 
 $sql = mysqli_query($dbsurat, "UPDATE pkl
 					SET tglvalidasi3 = '$tgl', 

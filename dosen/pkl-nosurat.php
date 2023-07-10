@@ -3,8 +3,9 @@ require('../system/dbconn.php');
 require('../system/myfunc.php');
 
 $no = 1;
-$query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE statussurat='1' ORDER BY tanggal DESC");
+$query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE statussurat='1' and year(tanggal)='2023' ORDER BY tanggal DESC");
 $jmldata = mysqli_num_rows($query);
+echo $jmldata . '<br>';
 while ($data = mysqli_fetch_array($query)) {
   $nodata = $data['no'];
   $tanggal = $data['tanggal'];
@@ -24,6 +25,6 @@ while ($data = mysqli_fetch_array($query)) {
   $keterangan = $data['keterangan'];
   $token = $data['token'];
   $statussurat = $data['statussurat'];
-  echo $no . ' ' . $tglvalidasi3 . ' ' . $keterangan . '<br/>';
+  echo $no . ' ' . $nim . ' ' . $tglvalidasi3 . ' ' . $keterangan . '<br/>';
   $no++;
 }
