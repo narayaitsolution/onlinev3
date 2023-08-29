@@ -6,7 +6,7 @@ require_once('../system/phpmailer/sendmail.php');
 $nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
 $token = mysqli_real_escape_string($dbsurat, $_POST['token']);
 $biaya = mysqli_real_escape_string($dbsurat, $_POST['biaya']);
-$keterangan = mysqli_real_escape_string($dbsurat, $_POST['keterangan']);
+$peruntukan = mysqli_real_escape_string($dbsurat, $_POST['peruntukan']);
 
 date_default_timezone_set("Asia/Jakarta");
 $tgl = date('Y-m-d H:i:s');
@@ -16,7 +16,7 @@ $sql = mysqli_query($dbsurat, "UPDATE delegasi
 					SET tglvalidasi3 = '$tgl', 
 					validasi3 = '1',
                     biaya ='$biaya',
-                    keterangan='$keterangan',
+                    keterangan='$peruntukan',
                     statussurat = '1'
 					WHERE token = '$token' AND validator3='$nip'");
 $qanggota = mysqli_query($dbsurat, "UPDATE delegasianggota SET statussurat=1 WHERE token='$token'");

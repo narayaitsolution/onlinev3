@@ -149,7 +149,7 @@ $no = 1;
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="keperluan" class="col-sm-2 col-form-label">Rekomendasi HMJ</label>
+                      <label for="keperluan" class="col-sm-2 col-form-label">Undangan / LoA Kegiatan</label>
                       <div class="col-sm-10">
                         <a href="<?= $bukti; ?>" target="_blank"><img src="<?= $bukti; ?>" width="200px"></a><br>
                         <small style="color: red;">Klik pada gambar untuk memperbersar</small>
@@ -214,9 +214,9 @@ $no = 1;
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Keterangan</label>
+                        <label class="col-sm-2 col-form-label">Peruntukan Biaya</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" name="keterangan"></textarea>
+                          <textarea class="form-control" name="peruntukan" required></textarea>
                         </div>
                       </div>
                       <hr>
