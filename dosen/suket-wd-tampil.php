@@ -54,7 +54,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+                            <h1>Surat Rekomendasi</h1>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Surat Keterangan</h3>
+                                    <h3 class="card-title">Pengajuan Surat Rekomendasi</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -114,13 +114,13 @@ $no = 1;
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="dosen" class="col-sm-2 col-form-label">Jenis Surat Keterangan</label>
+                                            <label for="dosen" class="col-sm-2 col-form-label">Rekomendasi</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="jenissurat" value="<?= $jenissurat; ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="keperluan" class="col-sm-2 col-form-label">Keperluan</label>
+                                            <label for="keperluan" class="col-sm-2 col-form-label">Keterangan</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" id="keperluan" name="keperluan" value="<?= $keperluan; ?>" readonly>
                                             </div>
