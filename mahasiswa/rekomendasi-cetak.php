@@ -28,6 +28,15 @@ $tgl = $tglvalidasi3;
 $jam = date('H-i-s');
 $tahun = date('Y');
 $bulan = date('m');
+if ($bulan < 7) {
+    $semester = 'Genap';
+    $tahuna = $tahun - 1;
+    $tahunb = $tahun;
+} else {
+    $semester = 'Ganjil';
+    $tahuna = $tahun;
+    $tahunb = $tahun + 1;
+}
 
 if ($statussurat == 1) {
 
@@ -76,12 +85,9 @@ if ($statussurat == 1) {
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <?php if ($jenissurat == "Surat Keterangan Kelakuan Baik") {
-                        echo "<td colspan='3' align='center'><b>SURAT KETERANGAN</b></td>";
-                    } else {
-                        echo "<td colspan='3' align='center'><b>SURAT REKOMENDASI</b></td>";
-                    }
-                    ?>
+                    <td colspan="4" align="center">
+                        <h2>SURAT REKOMENDASI</h2>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -139,7 +145,7 @@ if ($statussurat == 1) {
                     <tr>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td colspan="3"> Universitas Islam Negeri Maulana Malik Ibrahim Malang</td>
+                        <td colspan="3"></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
@@ -150,23 +156,11 @@ if ($statussurat == 1) {
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
-                    <?php if ($jenissurat == "Surat Keterangan Kelakuan Baik") {
-                    ?>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td colspan="3">Dengan ini menerangkan bahwa :</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    <?php
-                    } else {
-                    ?>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td colspan="4">Dengan ini memberikan rekomendasi kepada :</td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="3">Dengan ini memberikan rekomendasi kepada :</td>
+                        <td>&nbsp;</td>
+                    </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>Nama</td>
@@ -193,91 +187,44 @@ if ($statussurat == 1) {
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
-                    <?php if ($jenissurat == "Surat Keterangan Rekomendasi") {
-                    ?>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td colspan="4" style="text-align: justify;">untuk <?= $keperluan; ?> </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td colspan="4" style="text-align: justify;">Demikian Surat Rekomendasi ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    <?php
-                    } else {
-                    ?>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <?php
-                            if ($bulan < 7) {
-                                $semester = "Genap";
-                                $tahuna = $tahun - 1;
-                                $tahunb = $tahun;
-                            } else {
-                                $semester = "Ganjil";
-                                $tahuna = $tahun;
-                                $tahunb = $tahun + 1;
-                            }
-                            ?>
-                            <td colspan="4" style="text-align: justify;">Pada Semester <?= $semester; ?> Tahun Akademik <?= $tahuna . "/" . $tahunb; ?> adalah mahasiswa di Program Studi <?= $prodi; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang dan
-                                <?php
-                                if ($jenissurat == "Surat Keterangan Keringanan UKT") {
-                                ?>
-                                    telah memenuhi syarat administrasi untuk mendapatkan <b> KERINGANAN UKT semester <?= $semester ?> Tahun Akademik <?= $tahuna . "/" . $tahunb; ?></b>.</td>
+
+                    <tr>
+                        <td>&nbsp;</td>
                         <?php
-                                } elseif ($jenissurat == "Surat Keterangan Penurunan UKT") {
+                        if ($jenissurat == 'Surat Rekomendasi Magang') {
                         ?>
-                            telah memenuhi syarat administrasi untuk mendapatkan <b> PENURUNAN UKT semester <?= $semester ?> Tahun Akademik <?= $tahuna . "/" . $tahunb; ?></b>.</td>
+                            <td colspan="4" style="text-align: justify;">Untuk mendaftar pada program Magang di <?= $keperluan; ?> </td>
                         <?php
-                                } elseif ($jenissurat == "Surat Keterangan Perpanjangan Waktu Pembayaran UKT") {
+                        } elseif ($jenissurat == 'Surat Rekomendasi Beasiswa') {
                         ?>
-                            telah memenuhi syarat administrasi untuk mendapatkan <b> PERPANJANGAN WAKTU PEMBAYARAN UKT semester <?= $semester ?> Tahun Akademik <?= $tahuna . "/" . $tahunb; ?></b>.</td>
-                        <?php
-                                } else {
-                        ?>
-                            <b>memiliki perilaku baik dalam aktivitas akademik</b>.</td>
-                        <?php
-                                }
-                        ?>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <?php
-                        if ($jenissurat == "Surat Keterangan Rekomendasi" or $jenissurat == "Surat Keterangan Kelakuan Baik") {
-                        ?>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colspan="4" style="text-align: justify;">Demikian Surat Keterangan ini dibuat dengan sebenarnya.</td>
-                            </tr>
-                        <?php
-                        } else {
-                        ?>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colspan="4" style="text-align: justify;">Demikian Surat Keterangan ini dibuat dengan sebenarnya.</td>
-                            </tr>
+                            <td colspan="4" style="text-align: justify;">Untuk mendaftar pada program Beasiswa <?= $keperluan; ?> </td>
                         <?php
                         }
                         ?>
-                    <?php
-                    }
-                    ?>
+
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="4" style="text-align: justify;">Demikian Surat Rekomendasi ini dibuat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
                 </tbody>
             </table>
 
