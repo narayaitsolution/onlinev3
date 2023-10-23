@@ -117,6 +117,12 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Penyelenggara</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="penyelenggara" name="penyelenggara" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Level Kegiatan</label>
                                                 <div class="col-sm-9">
                                                     <select name="tingkat" class="form-control">

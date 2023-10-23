@@ -139,8 +139,8 @@ $tahun = date('Y');
                                         <td style="text-align:center">No</td>
                                         <td style="text-align:center">Surat</td>
                                         <td style="text-align:center">Nama</td>
-                                        <td style="text-align:center">PRODI</td>
                                         <td style="text-align:center">Aksi</td>
+                                        <td style="text-align:center">PRODI</td>
                                         <td style="text-align:center">Tgl. Pengajuan</td>
                                     </tr>
                                 </thead>
@@ -162,12 +162,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="wfh-atasan-tampil.php?token=<?= $token; ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                     <?php
@@ -193,12 +193,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="wfh-wd-tampil.php?token=<?= $token; ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                     <?php
@@ -224,12 +224,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="surattugas-atasan-tampil.php?token=<?= $token; ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                     <?php
@@ -255,12 +255,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="surattugas-dekan-tampil.php?token=<?= $token; ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                     <?php
@@ -286,12 +286,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="izin-kaprodi-tampil.php?token=<?= $token; ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                     <?php
@@ -317,12 +317,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="cuti-kaprodi-tampil.php?token=<?= $token; ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                     <?php
@@ -348,12 +348,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="cuti-dekan-tampil.php?token=<?= $token; ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                     <?php
@@ -388,8 +388,8 @@ $tahun = date('Y');
                                     <td style="text-align:center">No</td>
                                     <td style="text-align:center">Surat</td>
                                     <td style="text-align:center">Nama</td>
-                                    <td style="text-align:center">PRODI</td>
                                     <td style="text-align:center">Aksi</td>
+                                    <td style="text-align:center">PRODI</td>
                                     <td style="text-align:center">Tgl. Pengajuan</td>
                                 </tr>
                             </thead>
@@ -413,12 +413,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="pkl-koor-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -446,12 +446,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="pkl-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -479,12 +479,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="pkl-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -512,12 +512,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="magang-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -545,12 +545,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= 'Surat Pengantar ' . $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="magang-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -579,7 +579,6 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <?php
                                             if ($verifikasi0 == 0) {
@@ -591,6 +590,7 @@ $tahun = date('Y');
                                             };
                                             ?>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -619,7 +619,6 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <?php
                                             if ($verifikasi1 == 0) {
@@ -631,6 +630,7 @@ $tahun = date('Y');
                                             };
                                             ?>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -659,7 +659,6 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <?php
                                             if ($verifikasi2 == 0) {
@@ -671,6 +670,7 @@ $tahun = date('Y');
                                             };
                                             ?>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -698,7 +698,6 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <?php
                                             if ($verifikasi3 == 0) {
@@ -710,6 +709,7 @@ $tahun = date('Y');
                                             };
                                             ?>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -736,12 +736,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinpenelitian-dosen-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -768,12 +768,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinpenelitian-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -800,12 +800,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinpenelitian-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -832,12 +832,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinujian-dosen-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -864,12 +864,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinujian-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -896,12 +896,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinujian-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -928,12 +928,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinbimbingan-dosen-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -960,12 +960,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinbimbingan-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -992,12 +992,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="ijinbimbingan-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1024,12 +1024,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="peminjamanalat-dosen-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1056,12 +1056,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="peminjamanalat-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1088,12 +1088,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="peminjamanalat-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1120,12 +1120,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodi; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="observasi-dosen-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodi; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1152,12 +1152,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="observasi-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1184,12 +1184,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="observasi-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1216,12 +1216,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="pengambilandata-dosen-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1248,12 +1248,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="pengambilandata-kaprodi-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1280,12 +1280,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="pengambilandata-wd-tampil.php?token=<?= $token; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1312,12 +1312,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="suket-dosen-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1344,12 +1344,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="suket-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1376,12 +1376,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="suket-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1410,12 +1410,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="skpi-dosen-tampil.php?nim=<?= mysqli_real_escape_string($dbsurat, $nim); ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                 <?php
@@ -1445,12 +1445,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="skpi-kaprodi-tampil.php?nim=<?= mysqli_real_escape_string($dbsurat, $nim); ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                 <?php
@@ -1480,12 +1480,12 @@ $tahun = date('Y');
                                             <td><?= $no; ?></td>
                                             <td><?= $surat; ?></td>
                                             <td><?= $nama; ?></td>
-                                            <td><?= $prodimhs; ?></td>
                                             <td>
                                                 <a class="btn btn-info btn-sm" href="skpi-wd-tampil.php?nim=<?= mysqli_real_escape_string($dbsurat, $nim); ?>">
                                                     <i class="fas fa-eye"></i> Lihat
                                                 </a>
                                             </td>
+                                            <td><?= $prodimhs; ?></td>
                                             <td><?= tgl_indo($tanggal); ?></td>
                                         </tr>
                                 <?php
@@ -1512,12 +1512,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="cetakkhs-kaprodi-tampil.php?nodata=<?= $nodata; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1544,12 +1544,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="cetakkhs-wd-tampil.php?nodata=<?= $nodata; ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1576,12 +1576,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="penghargaan-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1608,12 +1608,12 @@ $tahun = date('Y');
                                         <td><?= $no; ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?></td>
-                                        <td><?= $prodimhs; ?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="penghargaan-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
                                                 <i class="fas fa-eye"></i> Lihat
                                             </a>
                                         </td>
+                                        <td><?= $prodimhs; ?></td>
                                         <td><?= tgl_indo($tanggal); ?></td>
                                     </tr>
                                 <?php
@@ -1621,6 +1621,134 @@ $tahun = date('Y');
                                 }
                                 ?>
                                 <!-- /penghargaan as WD-->
+
+                                <!-- delegasi as kaprodi-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator1='$nip' AND validasi1 = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as kaprodi-->
+
+                                <!-- delegasi as koorodinator-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator2='$nip' AND validasi1 = 1 AND validasi2 = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-koor-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as koordinator-->
+
+                                <!-- delegasi as koorodinator cek laporan-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator2='$nip' AND laporan is not null AND statuslaporan = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Laporan Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-koor-laporan-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as koordinator cek laporan-->
+
+                                <!-- delegasi as WD-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE validator3='$nip' AND validasi1 = 1 AND validasi2=1 AND validasi3 = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nama = stripslashes($data['nama']);
+                                    $surat = 'Delegasi';
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= $nama; ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="delegasi-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /delegasi as WD-->
                             </tbody>
                         </table>
                     </div>

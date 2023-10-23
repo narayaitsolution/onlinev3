@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../system/dbconn.php');
 require('../system/phpmailer/sendmail.php');
 

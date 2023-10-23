@@ -124,7 +124,7 @@ if ($statussurat == 1) {
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td colspan="3" align="justify">Sehubungan dengan persiapan pelaksanaan <?= $pklmagang; ?> Mahasiswa Program Studi <?= $prodi; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang, maka dengan ini kami mengajukan permohonan untuk menerima penempatan mahasiswa kami di <?= $instansi; ?> pada Unit Kerja / Bagian <?= $tempatpkl ?> dengan waktu pelaksanaan mulai tanggal <?= tgl_indo($tglmulai); ?> sampai dengan tanggal <?= tgl_indo($tglselesai); ?>. </td>
+					<td colspan="3" align="justify">Sehubungan dengan persiapan pelaksanaan <?= $pklmagang; ?> Mahasiswa Program Studi <?= $prodi; ?> Fakultas Sains dan Teknologi UIN Maulana Malik Ibrahim Malang, maka dengan ini kami mengajukan permohonan untuk menerima penempatan mahasiswa kami di Unit Kerja / Bagian <?= $tempatpkl ?> dengan waktu pelaksanaan mulai tanggal <?= tgl_indo($tglmulai); ?> sampai dengan tanggal <?= tgl_indo($tglselesai); ?>. </td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>

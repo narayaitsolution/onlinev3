@@ -17,8 +17,14 @@ if ($hasil > 0) {
     if ($buktivaksin == null) {
         $ket = "novaksin";
     } else {
+        $stmt = $dbsurat->prepare("INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
+        VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("ssssss", $nodata, $nim, $nimanggota2, $namaanggota2, $notelepon, $buktivaksin);
+        $stmt->execute();
+        /*
         $sql = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
                 values('$nodata','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')";
+                */
         if (mysqli_query($dbsurat, $sql)) {
             $ket = "ok";
         } else {

@@ -54,7 +54,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Dashboard</h1>
+                            <h1>Surat Rekomendasi</h1>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Surat Keterangan</h3>
+                                    <h3 class="card-title">Pengajuan Surat Rekomendasi</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -86,15 +86,24 @@ $no = 1;
                                     <div class="card-body">
                                         <form action="suket-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
-                                                <label for="dosen" class="col-sm-2 col-form-label">Surat Keterangan</label>
+                                                <label for="dosen" class="col-sm-2 col-form-label">Rekomendasi</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="jenissurat" name="jenissurat" value="Surat Keterangan Rekomendasi" readonly>
+                                                    <select name="jenissurat" class="form-control">
+                                                        <option value="Surat Rekomendasi Beasiswa" selected>Beasiswa</option>
+                                                        <option value="Surat Rekomendasi Magang">Magang</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="keperluan" class="col-sm-2 col-form-label">Keperluan</label>
+                                                <label for="keperluan" class="col-sm-2 col-form-label">Keterangan</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="keperluan" name="keperluan" required>
+                                                    <small style="color: blue;">
+                                                        <li>Rekomendasi beasiswa tuliskan nama beasiswa yang dituju</li>
+                                                    </small>
+                                                    <small style="color: blue;">
+                                                        <li>Rekomendasi magang tuliskan nama instansi yang dituju</li>
+                                                    </small>
                                                 </div>
                                             </div>
                                             <hr>

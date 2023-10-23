@@ -79,6 +79,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
               <thead>
                 <tr>
                   <th width="5%">No.</th>
+                  <th>Tgl. Pengajuan</th>
                   <th>Nama</th>
                   <th>NIM</th>
                   <th>No. HP</th>
@@ -100,6 +101,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                 $jmldata = mysqli_num_rows($query);
                 while ($data = mysqli_fetch_array($query)) {
                   $nodata = $data['no'];
+                  $tanggal = $data['tanggal'];
                   $nim = $data['nim'];
                   $nama = $data['nama'];
                   $prodi = $data['prodi'];
@@ -116,6 +118,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                 ?>
                   <tr>
                     <td><?= $no; ?></td>
+                    <td><?= tgl_indo($tanggal); ?></td>
                     <td><?= $nama; ?></td>
                     <td><?= $nim; ?></td>
                     <td><?= $nohp; ?></td>

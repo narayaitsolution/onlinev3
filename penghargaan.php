@@ -40,6 +40,7 @@ require('system/dbconn.php');
                             <th style="text-align: center;">NIM</th>
                             <th style="text-align: center;">Prodi</th>
                             <th style="text-align: center;">Nama Kegiatan</th>
+                            <th style="text-align: center;">Penyelenggara</th>
                             <th style="text-align: center;">Bukti</th>
                         </tr>
                     </thead>
@@ -48,7 +49,7 @@ require('system/dbconn.php');
 
                         <!-- PKL Koordinator-->
                         <?php
-                        $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validasi2='1' AND statussurat<'2' ORDER BY peringkat,tingkat,prodi");
+                        $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validasi2='1' AND statussurat<'2' ORDER BY tanggal DESC, peringkat,tingkat,prodi ASC");
                         $jmldata = mysqli_num_rows($query);
                         while ($data = mysqli_fetch_array($query)) {
                             $nodata = $data['no'];
@@ -60,7 +61,10 @@ require('system/dbconn.php');
                             $tingkat = $data['tingkat'];
                             $peringkat = $data['peringkat'];
                             $bukti = $data['bukti'];
+                            $panjang = strlen($bukti);
+                            $sertifikat = substr($bukti, 3, $panjang);
                             $namakegiatan = $data['namakegiatan'];
+                            $penyelenggara = $data['penyelenggara'];
                             $token = $data['token'];
                         ?>
                             <tr>
@@ -73,7 +77,8 @@ require('system/dbconn.php');
                                 <td><?= $nim; ?></td>
                                 <td><?= $prodi; ?></td>
                                 <td><?= $namakegiatan; ?></td>
-                                <td><a href="<?= $bukti; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
+                                <td><?= $penyelenggara; ?></td>
+                                <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                             </tr>
                         <?php
                             $no++;
