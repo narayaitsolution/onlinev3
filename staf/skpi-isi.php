@@ -178,7 +178,7 @@ $no = 1;
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl ORDER BY cpl, indonesia");
+                                                $qcpl = mysqli_query($dbsurat, "SELECT * FROM skpi_cpl WHERE jurusan='$prodi' ORDER BY cpl, indonesia");
                                                 while ($dcpl = mysqli_fetch_array($qcpl)) {
                                                     $nodata = $dcpl['no'];
                                                     $cpl = $dcpl['cpl'];

@@ -227,7 +227,7 @@
                 ?>
                 <!-- menu operator SKRIPSI -->
                 <?php
-                $qoperator = mysqli_query($dbsurat, "SELECT * FROM skripsi_operator WHERE kode='$nip'");
+                $qoperator = mysqli_query($dbsurat, "SELECT * FROM skripsi WHERE operator='$nip'");
                 $jmldata = mysqli_num_rows($qoperator);
                 if ($jmldata > 0) {
                 ?>

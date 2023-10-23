@@ -344,7 +344,7 @@ $tahun = date('Y');
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' and keterangan is null GROUP BY nim ORDER BY tanggal");
+                                                    $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' and keterangan is null GROUP BY nim  ORDER BY tanggal");
                                                     while ($data = mysqli_fetch_array($query)) {
                                                         $nodata = $data['no'];
                                                         $nim = $data['nim'];
