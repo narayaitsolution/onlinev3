@@ -37,7 +37,8 @@ require('system/dbconn.php');
                             <th style="text-align: center;">Tingkat</th>
                             <th style="text-align: center;">Kegiatan</th>
                             <th style="text-align: center;">Nama</th>
-                            <th style="text-align: center;">NIM</th>
+                            <th style="text-align: center;">NIM </th>
+                            <th style="text-align: center;">Keanggotaan</th>
                             <th style="text-align: center;">Prodi</th>
                             <th style="text-align: center;">Nama Kegiatan</th>
                             <th style="text-align: center;">Penyelenggara</th>
@@ -65,6 +66,7 @@ require('system/dbconn.php');
                             $sertifikat = substr($bukti, 3, $panjang);
                             $namakegiatan = $data['namakegiatan'];
                             $penyelenggara = $data['penyelenggara'];
+                            $anggota = 'Ketua';
                             $token = $data['token'];
                         ?>
                             <tr>
@@ -75,12 +77,40 @@ require('system/dbconn.php');
                                 <td><?= $kegiatan; ?></td>
                                 <td><?= $nama; ?></td>
                                 <td><?= $nim; ?></td>
+                                <td><?= $anggota; ?></td>
                                 <td><?= $prodi; ?></td>
                                 <td><?= $namakegiatan; ?></td>
                                 <td><?= $penyelenggara; ?></td>
                                 <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                             </tr>
+                            <?php
+                            $qanggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata'");
+                            $janggota = mysqli_num_rows($qanggota);
+                            if ($janggota > 0) {
+                                while ($danggota = mysqli_fetch_array($qanggota)) {
+                                    $nimanggota = $danggota['nimanggota'];
+                                    $qnamaanggota = mysqli_query($dbsurat, "SELECT nama FROM pengguna WHERE nip='$nimanggota'");
+                                    $dnamaanggota = mysqli_fetch_array($qnamaanggota);
+                                    $namaanggota = $dnamaanggota['nama'];
+                                    $anggota = 'Anggota';
+                            ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= semester(date('Y', strtotime($tanggal)), date('m', strtotime($tanggal))); ?></td>
+                                        <td><?= $peringkat; ?></td>
+                                        <td><?= $tingkat; ?></td>
+                                        <td><?= $kegiatan; ?></td>
+                                        <td><?= $namaanggota; ?></td>
+                                        <td><?= $nimanggota ?></td>
+                                        <td><?= $anggota; ?></td>
+                                        <td><?= $prodi; ?></td>
+                                        <td><?= $namakegiatan; ?></td>
+                                        <td><?= $penyelenggara; ?></td>
+                                        <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
+                                    </tr>
                         <?php
+                                }
+                            }
                             $no++;
                         }
                         ?>
