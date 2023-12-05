@@ -32,6 +32,7 @@ require('system/dbconn.php');
                     <thead>
                         <tr>
                             <th width="5%">No.</th>
+                            <th style="text-align: center;">Tanggal Pengajuan</th>
                             <th style="text-align: center;">Semester</th>
                             <th style="text-align: center;">Peringkat</th>
                             <th style="text-align: center;">Tingkat</th>
@@ -71,6 +72,7 @@ require('system/dbconn.php');
                         ?>
                             <tr>
                                 <td><?= $no; ?></td>
+                                <td><?= tgljam_indo($tanggal); ?></td>
                                 <td><?= semester(date('Y', strtotime($tanggal)), date('m', strtotime($tanggal))); ?></td>
                                 <td><?= $peringkat; ?></td>
                                 <td><?= $tingkat; ?></td>
