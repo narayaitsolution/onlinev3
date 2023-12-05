@@ -98,6 +98,7 @@ require('system/dbconn.php');
                             ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= semester(date('Y', strtotime($tanggal)), date('m', strtotime($tanggal))); ?></td>
                                         <td><?= $peringkat; ?></td>
                                         <td><?= $tingkat; ?></td>
