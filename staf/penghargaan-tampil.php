@@ -62,34 +62,29 @@ $tahunlalu = date('Y', strtotime('-1 year'));
       <!-- Main content -->
       <section class="content">
         <!-- Pengajuan Surat Mahasiswa -->
-        <div class="card card-info">
+        <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Pengajuan Penghargaan Mahasiswa</h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
+            <h3 class="card-title">Penghargaan Mahasiswa</h3>
           </div>
           <div class="card-body">
             <table id="example1" class="table table-bordered table-striped text-sm">
               <thead>
                 <tr>
                   <th width="5%">No.</th>
-                  <th>Tgl. Pengajuan</th>
-                  <th>Nama</th>
-                  <th>NIM</th>
-                  <th>No. HP</th>
-                  <th>E-Mail</th>
-                  <th>Prodi</th>
-                  <th>Kegiatan</th>
-                  <th>Tingkat</th>
-                  <th>Peringkat</th>
-                  <th>Nama Kegiatan</th>
-                  <th>Bukti</th>
+                  <th style="text-align: center;">Tanggal Pengajuan</th>
+                  <th style="text-align: center;">Semester</th>
+                  <th style="text-align: center;">Peringkat</th>
+                  <th style="text-align: center;">Tingkat</th>
+                  <th style="text-align: center;">Kegiatan</th>
+                  <th style="text-align: center;">Nama</th>
+                  <th style="text-align: center;">NIM </th>
+                  <th style="text-align: center;">No. HP</th>
+                  <th style="text-align: center;">E-Mail</th>
+                  <th style="text-align: center;">Keanggotaan</th>
+                  <th style="text-align: center;">Prodi</th>
+                  <th style="text-align: center;">Nama Kegiatan</th>
+                  <th style="text-align: center;">Penyelenggara</th>
+                  <th style="text-align: center;">Bukti</th>
                 </tr>
               </thead>
               <tbody>
@@ -97,7 +92,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                 <!-- PKL Koordinator-->
                 <?php
-                $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE statussurat=1 ORDER BY tanggal DESC");
+                $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validasi2='1' AND statussurat<'2' ORDER BY tanggal DESC, peringkat,tingkat,prodi ASC");
                 $jmldata = mysqli_num_rows($query);
                 while ($data = mysqli_fetch_array($query)) {
                   $nodata = $data['no'];
@@ -109,26 +104,33 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                   $tingkat = $data['tingkat'];
                   $peringkat = $data['peringkat'];
                   $bukti = $data['bukti'];
+                  $panjang = strlen($bukti);
+                  $sertifikat = substr($bukti, 3, $panjang);
                   $namakegiatan = $data['namakegiatan'];
+                  $penyelenggara = $data['penyelenggara'];
+                  $anggota = 'Ketua';
                   $token = $data['token'];
-                  $qnohp = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                  $dnohp = mysqli_fetch_array($qnohp);
-                  $nohp = $dnohp['nohp'];
-                  $email = $dnohp['email'];
+                  $qanggota = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
+                  $danggota = mysqli_fetch_array($qanggota);
+                  $nohp = $danggota['nohp'];
+                  $email = $danggota['email'];
                 ?>
                   <tr>
                     <td><?= $no; ?></td>
-                    <td><?= tgl_indo($tanggal); ?></td>
+                    <td><?= tgljam_indo($tanggal); ?></td>
+                    <td><?= semester(date('Y', strtotime($tanggal)), date('m', strtotime($tanggal))); ?></td>
+                    <td><?= $peringkat; ?></td>
+                    <td><?= $tingkat; ?></td>
+                    <td><?= $kegiatan; ?></td>
                     <td><?= $nama; ?></td>
                     <td><?= $nim; ?></td>
                     <td><?= $nohp; ?></td>
                     <td><?= $email; ?></td>
+                    <td><?= $anggota; ?></td>
                     <td><?= $prodi; ?></td>
-                    <td><?= $kegiatan; ?></td>
-                    <td><?= $tingkat; ?></td>
-                    <td><?= $peringkat; ?></td>
                     <td><?= $namakegiatan; ?></td>
-                    <td><a href="<?= $bukti; ?>" target="_blank">Lihat</a></td>
+                    <td><?= $penyelenggara; ?></td>
+                    <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                   </tr>
                   <?php
                   $qanggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata'");
@@ -136,9 +138,11 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                   if ($janggota > 0) {
                     while ($danggota = mysqli_fetch_array($qanggota)) {
                       $nimanggota = $danggota['nimanggota'];
-                      $qnamaanggota = mysqli_query($dbsurat, "SELECT nama FROM pengguna WHERE nip='$nimanggota'");
+                      $qnamaanggota = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimanggota'");
                       $dnamaanggota = mysqli_fetch_array($qnamaanggota);
                       $namaanggota = $dnamaanggota['nama'];
+                      $nohpanggota = $dnamaanggota['nohp'];
+                      $emailanggota = $dnamaanggota['email'];
                       $anggota = 'Anggota';
                   ?>
                       <tr>
@@ -150,6 +154,8 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                         <td><?= $kegiatan; ?></td>
                         <td><?= $namaanggota; ?></td>
                         <td><?= $nimanggota ?></td>
+                        <td><?= $nohpanggota ?></td>
+                        <td><?= $emailanggota ?></td>
                         <td><?= $anggota; ?></td>
                         <td><?= $prodi; ?></td>
                         <td><?= $namakegiatan; ?></td>
@@ -162,11 +168,12 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                   $no++;
                 }
                 ?>
-                <!-- /. PKL koordinator-->
+
               </tbody>
             </table>
           </div>
         </div>
+        <a href="https://saintek.uin-malang.ac.id" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-backward-fast"></i> Kembali</a>
       </section>
     </div>
 
