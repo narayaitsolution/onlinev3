@@ -9,12 +9,13 @@ $jawaban = mysqli_real_escape_string($dbsurat, $_POST['jawaban']);
 $token = $_POST['token'];
 $token2 = md5(uniqid());
 $passmd5 = md5($pass1);
+$status = 1;
 
 if ($kunci == $jawaban) {
     if ($pass1 == $pass2) {
         //cek token
-        $stmt = $dbsurat->prepare('SELECT * FROM pengguna WHERE token=?');
-        $stmt->bind_param('s', $token);
+        $stmt = $dbsurat->prepare('SELECT * FROM pengguna WHERE token=? AND status=?');
+        $stmt->bind_param('ss', $token, $status);
         $stmt->execute();
         $result = $stmt->get_result();
         $jhasil = $result->num_rows;
@@ -56,7 +57,7 @@ if ($kunci == $jawaban) {
 
             header("location:index.php?pesan=resetok");
         } else {
-            header("location:index.php?pesan=token");
+            header("location:index.php?pesan=notaktif");
         }
     } else {
         header("location:lupa-reset.php?pesan=pass&token=$token");

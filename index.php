@@ -54,6 +54,12 @@ require('system/myfunc.php');
             <div class="alert alert-success alert-dismissible fade show">
               <strong>Pendaftaran Berhasil</strong> tunggu verifikasi akun.
             </div>
+          <?php
+          } elseif ($_GET['pesan'] == 'notaktif') {
+          ?>
+            <div class="alert alert-danger alert-dismissible fade show">
+              <strong>ERROR!!</strong> tunggu verifikasi akun.
+            </div>
         <?php
           }
         }
