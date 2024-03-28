@@ -1785,7 +1785,7 @@ $no = 1;
                                                             }
                                                             ?>
                                                             <!--cetak-->
-                                                            <a class="btn btn-success btn-sm" href="delegasi-cetak.php?token=<?= $token; ?>">
+                                                            <a class="btn btn-success btn-sm" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                 <i class="fas fa-print"></i> Cetak SK
                                                             </a>
 
