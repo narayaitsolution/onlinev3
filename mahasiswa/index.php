@@ -1700,7 +1700,7 @@ $no = 1;
                                                             <?php
                                                             };
                                                             ?>
-                                                            <!-- koormhs -->
+                                                            <!-- koormhs
                                                             <?php
                                                             if ($validasi2 == 0) {
                                                             ?>
@@ -1716,6 +1716,7 @@ $no = 1;
                                                             <?php
                                                             };
                                                             ?>
+                                                            -->
                                                             <!-- WD-3 -->
                                                             <?php
                                                             if ($validasi3 == 0) {
@@ -1736,15 +1737,15 @@ $no = 1;
                                                             <?php
                                                             if (!empty($laporan) && $statuslaporan == 0) {
                                                             ?>
-                                                                <b style="color:orange;">Menunggu</b> verifikasi laporan oleh Koordinator Mahasiswa & Alumni <?= namadosen($dbsurat, $validator2); ?><br />
+                                                                <b style="color:orange;">Menunggu</b> verifikasi laporan oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator2); ?><br />
                                                             <?php
                                                             } elseif (!empty($laporan) && $statuslaporan == 1) {
                                                             ?>
-                                                                Laporan Kegiatan <b style="color:green;">Telah disetujui</b> Koordinator Mahasiswa & Alumni <?= namadosen($dbsurat, $validator2); ?> <br />
+                                                                Laporan Kegiatan <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator2); ?> <br />
                                                             <?php
                                                             } elseif (!empty($laporan) && $statuslaporan == 2) {
                                                             ?>
-                                                                Laporan Kegiatan <b style="color:red;">Ditolak</b> oleh Koordinator Mahasiswa & Alumni <?= namadosen($dbsurat, $validator2); ?> dengan alasan <b style="color:red"> <?= $keteranganlaporan; ?></b><br />
+                                                                Laporan Kegiatan <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator2); ?> dengan alasan <b style="color:red"> <?= $keteranganlaporan; ?></b><br />
                                                             <?php
                                                             };
                                                             ?>
@@ -1753,13 +1754,10 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak
-                                                                </a>
                                                                 <?php
-                                                                if ($statuslaporan != 1) {
+                                                                if (empty($laporan)) {
                                                                 ?>
-                                                                    <a class="btn btn-primary btn-sm" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
+                                                                    <a class="btn btn-primary btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
                                                                         <i class="fas fa-file-upload"></i> Laporan
                                                                     </a>
                                                                 <?php
@@ -1786,6 +1784,11 @@ $no = 1;
                                                             <?php
                                                             }
                                                             ?>
+                                                            <!--cetak-->
+                                                            <a class="btn btn-success btn-sm" href="delegasi-cetak.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-print"></i> Cetak SK
+                                                            </a>
+
                                                         </td>
                                                     </tr>
                                                 <?php

@@ -38,7 +38,7 @@ $bulan = date('m');
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td colspan="3" style="text-align: center;"><b>SURAT PERSETUJUAN DELEGASI</b></td>
+      <td colspan="3" style="text-align: center;"><b>SURAT KETERANGAN DELEGASI</b></td>
       <td>&nbsp;</td>
     </tr>
     <tr>
@@ -104,10 +104,10 @@ $bulan = date('m');
       </tr>
 
       <tr>
-        <td colspan="6" style="text-align: justify;">Dengan tujuan delegasi adalah untuk <?= $namakegiatan; ?>, maka dengan ini saya sampaikan bahwa pengajuan delegasi telah <b>DISETUJUI dengan pembiayaan sebesar Rp. <?= number_format($biaya, 0, '.', '.'); ?> (<?= terbilang($biaya); ?> rupiah)</b> untuk <?= $keterangan; ?>.</td>
+        <td colspan="6" style="text-align: justify;">Dengan ini saya nyatakan bahwa kegiatan tersebut telah selesai dilaksanakan.</td>
       </tr>
       <tr>
-        <td colspan="6" style="text-align: justify;">Dan dengan ini pula, mohon pihak administrasi dapat dengan segera menerbitkan SK terkait mahasiswa yang akan didelegasikan.</td>
+        <td colspan="6" style="text-align: justify;">Dan dengan ini pula mohon Bagian Keuangan dapat dengan segera mencairkan biaya untuk kegiatan ini.</td>
       </tr>
       <tr>
         <td colspan="6" style="text-align: justify;">Demikian surat ini dibuat sebenar - benarnya.</td>

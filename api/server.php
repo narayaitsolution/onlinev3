@@ -18,6 +18,7 @@ if ($jhasil > 0) {
     $nohp = $dhasil['nohp'];
     $email = $dhasil['email'];
     $prodi = $dhasil['prodi'];
+    $userid = $dhasil['user'];
     $hakakses = $dhasil['hakakses'];
-    echo json_encode(array('nama' => $nama, 'nip' => $nip, 'nohp' => $nohp, 'email' => $email, 'prodi' => $prodi, 'hakakses' => $hakakses));
+    echo json_encode(array('nama' => $nama, 'nip' => $nip, 'nohp' => $nohp, 'email' => $email, 'prodi' => $prodi, 'userid' => $userid, 'hakakses' => $hakakses));
 }

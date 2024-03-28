@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('../system/dbconn.php');
+require_once('../system/myfunc.php');
 require_once('../system/phpmailer/sendmail.php');
 
 $nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
@@ -11,8 +12,8 @@ $tgl = date('Y-m-d H:i:s');
 
 //update status validasi kaprodi
 $sql = mysqli_query($dbsurat, "UPDATE delegasi
-					SET tglvalidasi1 = '$tgl', 
-					validasi1 = '1'
+					SET tglvalidasi1 = '$tgl', validasi1 = '1',
+					tglvalidasi2 = '$tgl', validasi2 = '1'
 					WHERE token = '$token' AND validator1='$nip'");
 
 //kirim email ke wadek3
@@ -20,15 +21,15 @@ $sql = mysqli_query($dbsurat, "UPDATE delegasi
 $sql2 = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE token='$token'");
 $dsql2 = mysqli_fetch_array($sql2);
 $nama = $dsql2['nama'];
-$nipkoor = $dsql2['validator2'];
-$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkoor'");
+$nipwd3 = $dsql2['validator3'];
+$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwd3'");
 $dsql3 = mysqli_fetch_array($sql3);
-$namakoor = $dsql3['nama'];
-$emailkoor = $dsql3['email'];
+$namawd3 = $dsql3['nama'];
+$emailwd3 = $dsql3['email'];
 
 //kirim email
 $subject = "Pengajuan Delegasi";
-$pesan = "Yth. " . $namakoor . "<br/>
+$pesan = "Yth. " . $namawd3 . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
         <br />
@@ -46,6 +47,6 @@ $pesan = "Yth. " . $namakoor . "<br/>
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
-sendmail($emailkoor, $namakoor, $subject, $pesan);
+sendmail($emailwd3, $namawd3, $subject, $pesan);
 
 header("location:index.php");

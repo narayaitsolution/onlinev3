@@ -21,6 +21,7 @@ $jenissurat = 'Delegasi';
 
 
 //cari nip koordinator mahasiswa alumni
+/*
 $kdjabatan = 'koormhsalumni';
 $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
 $stmt->bind_param("s", $kdjabatan);
@@ -28,6 +29,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipkoor = $dhasil['nip'];
+*/
 
 //cari nip kajur
 $kdjabatan = 'kaprodi';
@@ -38,7 +40,7 @@ $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipkaprodi = $dhasil['nip'];
 
-//cari nip wd-1
+//cari nip wd-3
 $jabatan = 'wadek3';
 $level = 4;
 $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
@@ -72,7 +74,7 @@ if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
     if ($jeniskegiatan == 'Individu') {
       $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
                                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-      $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipkoor, $nipwd, $token);
+      $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipwd, $nipwd, $token);
       $stmt->execute();
 
       $stmt = $dbsurat->prepare("INSERT INTO delegasianggota (token, nimketua, nimanggota) 
@@ -114,7 +116,7 @@ if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
       $statussurat = '-1';
       $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, bukti,validator1, validator2, validator3,statussurat, token) 
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-      $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan,  $dest_path, $nipkaprodi, $nipkoor, $nipwd, $statussurat, $token);
+      $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan,  $dest_path, $nipkaprodi, $nipwd, $nipwd, $statussurat, $token);
       $stmt->execute();
 
       $qnodata = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE nim='$nim' ORDER BY tanggal DESC");

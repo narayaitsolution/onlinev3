@@ -36,19 +36,20 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
     $stmt->bind_param("ssss", $dest_path, $tanggal, $statuslaporan, $token);
     $stmt->execute();
 
-    //cari nip koordinator mahasiswa alumni
-    $kdjabatan = 'koormhsalumni';
+    //cari nip wd-3
+    $jabatan = 'wadek3';
+    $level = 4;
     $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE kdjabatan=?");
-    $stmt->bind_param("s", $kdjabatan);
+    $stmt->bind_param("s", $jabatan);
     $stmt->execute();
     $result = $stmt->get_result();
     $dhasil = $result->fetch_assoc();
-    $nipkoor = $dhasil['nip'];
+    $nipwd = $dhasil['nip'];
 
 
     //kirim email ke koordinator
     //cari email dosen dari NIP
-    $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkoor'");
+    $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwd'");
     $dsql3 = mysqli_fetch_array($sql3);
     $namakoor = $dsql3['nama'];
     $emailkoor = $dsql3['email'];

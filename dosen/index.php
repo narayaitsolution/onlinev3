@@ -118,7 +118,7 @@ $tahun = date('Y');
             ?>
 
 
-            <!-- pengajuan bawahan -->
+            <!-- pengajuan bawahan
             <?php
             if ($jabatan == 'dekan' or $jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
             ?>
@@ -145,7 +145,7 @@ $tahun = date('Y');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- WFH as kaprodi -->
+                                    // WFH as kaprodi
                                     <?php
                                     $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorprodi='$nip' AND verifikasiprodi = 0 and verifikasifakultas=0 order by tglsurat desc");
                                     $jmldata = mysqli_num_rows($query);
@@ -174,9 +174,9 @@ $tahun = date('Y');
                                         $no++;
                                     }
                                     ?>
-                                    <!-- /. WFH as kaprodi-->
+                                    
 
-                                    <!-- WFH as WD -->
+                                    // WFH as WD
                                     <?php
                                     $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE verifikatorfakultas='$nip' AND verifikasiprodi=1 and verifikasifakultas = 0 order by tglsurat desc");
                                     $jmldata = mysqli_num_rows($query);
@@ -205,9 +205,9 @@ $tahun = date('Y');
                                         $no++;
                                     }
                                     ?>
-                                    <!-- /. WFH as WD-->
+                                   
 
-                                    <!-- Surattugas as kaprodi -->
+                                    // Surattugas as kaprodi
                                     <?php
                                     $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator1='$nip' AND validasi1 = 0 and validasi2=0 order by tglsurat desc");
                                     $jmldata = mysqli_num_rows($query);
@@ -236,9 +236,9 @@ $tahun = date('Y');
                                         $no++;
                                     }
                                     ?>
-                                    <!-- /. surat tugas as kaprodi-->
+                                    
 
-                                    <!-- surat tugas as WD -->
+                                    // surat tugas as WD
                                     <?php
                                     $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator2='$nip' AND validasi1=1 and validasi2 = 0 order by tglsurat desc");
                                     $jmldata = mysqli_num_rows($query);
@@ -267,9 +267,9 @@ $tahun = date('Y');
                                         $no++;
                                     }
                                     ?>
-                                    <!-- /. surat tugas as WD-->
+                                    
 
-                                    <!-- izin as kaprodi -->
+                                    // izin as kaprodi
                                     <?php
                                     $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE validator1='$nip' AND validasi1 = 0 and validasi2=0 order by tglsurat desc");
                                     $jmldata = mysqli_num_rows($query);
@@ -298,9 +298,9 @@ $tahun = date('Y');
                                         $no++;
                                     }
                                     ?>
-                                    <!-- /. izin as kaprodi-->
+                                    
 
-                                    <!-- cuti as kaprodi -->
+                                    // cuti as kaprodi
                                     <?php
                                     $query = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE validator1='$nip' AND validasi1 = 0 and validasi2=0 order by tglsurat desc");
                                     $jmldata = mysqli_num_rows($query);
@@ -329,9 +329,9 @@ $tahun = date('Y');
                                         $no++;
                                     }
                                     ?>
-                                    <!-- /. izin as kaprodi-->
+                                    
 
-                                    <!-- cuti as dekan -->
+                                    // cuti as dekan
                                     <?php
                                     $query = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE validator2='$nip' AND validasi1 = 1 and validasi2=0 order by tglsurat desc");
                                     $jmldata = mysqli_num_rows($query);
@@ -360,17 +360,18 @@ $tahun = date('Y');
                                         $no++;
                                     }
                                     ?>
-                                    <!-- /. izin as kaprodi-->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            <?php
+                                   
+            </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+<?php
             }
-            ?>
+?>
+-->
 
-            <!-- tabel pengajuan bawahan & mahasiswa -->
+            <!-- tabel pengajuan mahasiswa -->
             <div class="col">
                 <div class="card card-warning">
                     <div class="card-header">
