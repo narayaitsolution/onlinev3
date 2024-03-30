@@ -138,6 +138,7 @@ $bukti = $ddelegasi['bukti'];
                         <label for="keperluan" class="col-sm-3 col-form-label">NIM Anggota Delegasi</label>
                         <div class="col-sm-7">
                           <input type="number" class="form-control" id="nimanggota" name="nimanggota" required>
+                          <p class="blink"> Wajib memasukkan seluruh anggota delegasi, karena berpengaruh pada biaya delegasi yang diterima </p>
                         </div>
                         <div class="col-sm-2">
                           <input type="hidden" name="nodata" value="<?= $nodata; ?>">

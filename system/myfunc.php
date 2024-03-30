@@ -377,3 +377,18 @@ function terbilang($number)
         });
     });
 </script>
+
+<!-- blink -->
+<style>
+    .blink {
+        animation: blinker 1.5s linear infinite;
+        color: red;
+        font-family: sans-serif;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>

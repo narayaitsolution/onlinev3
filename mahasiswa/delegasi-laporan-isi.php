@@ -54,7 +54,7 @@ $no = 1;
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Pengajuan Delegasi</h1>
+              <h1>Laporan Delegasi</h1>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ $no = 1;
             <div class="col-12">
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Pengajuan Delegasi</h3>
+                  <h3 class="card-title">Laporan Delegasi</h3>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                   </div>
@@ -234,7 +234,7 @@ $no = 1;
                       </div>
                       <hr>
                       <input type="hidden" name="token" value="<?= $token; ?>">
-                      <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya unggah adalah benar')"> <i class="fa-solid fa-upload"></i> Upload Laporan Kegiatan</button>
+                      <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya unggah adalah benar')"> <i class="fa-solid fa-upload"></i> Upload Laporan Kegiatan</button>
                     </form>
                   </div>
                 </div>

@@ -1760,35 +1760,43 @@ $no = 1;
                                                                     <a class="btn btn-primary btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
                                                                         <i class="fas fa-file-upload"></i> Laporan
                                                                     </a>
+                                                                    <p class="blink" style="text-align: center;">Pencairan dana dilakukan setelah selesai kegiatan & meng-upload laporan</p>
                                                                 <?php
                                                                 }
                                                                 ?>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="delegasi-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="delegasi-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == '-1') {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="delegasi-anggota.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-lg btn-block" href="delegasi-anggota.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-check"></i> Lengkapi
+                                                                </a>
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="delegasi-hapus.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="delegasi-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="delegasi-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             }
                                                             ?>
-                                                            <!--cetak-->
-                                                            <a class="btn btn-success btn-sm" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                                <i class="fas fa-print"></i> Cetak SK
-                                                            </a>
-
+                                                            <?php
+                                                            if ($statuslaporan == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-lg btn-block" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak SK
+                                                                </a>
+                                                            <?php
+                                                            }
+                                                            ?>
                                                         </td>
                                                     </tr>
                                                 <?php

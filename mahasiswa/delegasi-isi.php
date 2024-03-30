@@ -65,7 +65,7 @@ $no = 1;
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-12">
-              <div class="alert alert-warning alert-dismissible fade show">
+              <div class="alert alert-danger alert-dismissible fade show">
                 Pastikan sudah memperbarui data email & no. hp anda di profile pengguna!!
               </div>
             </div>
@@ -156,7 +156,7 @@ $no = 1;
                         </div>
                       </div>
                       <hr>
-                      <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Ajukan</button>
+                      <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Ajukan</button>
                     </form>
                   </div>
                 </div>
