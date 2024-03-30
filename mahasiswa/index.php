@@ -1755,7 +1755,7 @@ $no = 1;
                                                             if ($statussurat == 1) {
                                                             ?>
                                                                 <?php
-                                                                if (empty($laporan)) {
+                                                                if (empty($laporan) || ($statuslaporan == 2)) {
                                                                 ?>
                                                                     <a class="btn btn-primary btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
                                                                         <i class="fas fa-file-upload"></i> Laporan
