@@ -80,6 +80,16 @@ $no = 1;
       $tglvalidasi1 = $row['tglvalidasi1'];
       $laporan = $row['laporan'];
       $tgllaporan = $row['tgllaporan'];
+
+      //ambil data dokumen
+      $qdokumenmhs = mysqli_query($dbsurat, "SELECT * FROM delegasiupload WHERE token='$token'");
+      $ddokumenmhs = mysqli_fetch_array($qdokumenmhs);
+      $noktp = $ddokumenmhs['noktp'];
+      $fotoktp = $ddokumenmhs['fotoktp'];
+      $norek = $ddokumenmhs['norek'];
+      $bank = $ddokumenmhs['bank'];
+      $butab = $ddokumenmhs['butab'];
+
       ?>
 
       <!-- tabel pengajuan pribadi -->
@@ -208,15 +218,41 @@ $no = 1;
                     ?>
                     <hr>
                     <div class="form-group row">
-                      <label class="col-sm-2 col-form-label">Tanggal Upload Laporan</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="tgllaporan" value="<?= tgljam_indo($tgllaporan); ?>" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Laporan Kegiatan</label>
                       <div class="col-sm-10">
                         <a href="<?= $laporan; ?>" class="btn btn-primary" target="_blank"><i class="fa fa-file-download"></i> Laporan Kegiatan</a>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">No. KTP</label>
+                      <div class="col-sm-10">
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="form-control" name="noktp" value="<?= $noktp; ?>" readonly>
+                          </div>
+                          <div class="col">
+                            <a href="<?= $fotoktp; ?>" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i> Foto KTP</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Bank</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="bank" value="<?= $bank; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">No. Rekening</label>
+                      <div class="col-sm-10">
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="form-control" name="norek" value="<?= $norek; ?>" readonly>
+                          </div>
+                          <div class="col">
+                            <a href="<?= $butab; ?>" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i> Buku Tabungan</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <hr>

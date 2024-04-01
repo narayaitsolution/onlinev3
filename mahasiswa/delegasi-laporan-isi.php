@@ -61,7 +61,7 @@ $no = 1;
       </section>
 
       <?php
-      if (isset($pesan)) {
+      if (isset($_GET['pesan'])) {
       ?>
         <section class="content-header">
           <div class="container-fluid">
@@ -69,7 +69,7 @@ $no = 1;
               <div class="col">
                 <div class="alert alert-danger alert-dismissible fade show">
                   <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <strong>ERROR!!</strong> Pastikan file laporan sesuai ketentuan
+                  <strong>ERROR!!</strong> <?= $_GET['pesan']; ?>
                 </div>
               </div>
             </div>
@@ -226,15 +226,52 @@ $no = 1;
                     <hr>
                     <form action="delegasi-laporan-simpan.php" role="form" method="POST" id="my-form" enctype="multipart/form-data">
                       <div class="form-group row">
-                        <label for="keperluan" class="col-sm-2 col-form-label">Laporan Kegiatan</label>
+                        <label for="laporan" class="col-sm-2 col-form-label">Laporan Kegiatan</label>
                         <div class="col-sm-10">
                           <input type="file" class="form-control" id="laporan" name="laporan" accept="application/pdf" required>
                           <small style="color: red;">Format File PDF, ukuran file maksimal 5MB</small>
                         </div>
                       </div>
+                      <div class="form-group row">
+                        <label for="noktp" class="col-sm-2 col-form-label">No. KTP</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" id="noktp" name="noktp" required>
+                          <small style="color: red;">Masukkan hanya angka</small>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="ktp" class="col-sm-2 col-form-label">Foto KTP</label>
+                        <div class="col-sm-10">
+                          <input type="file" class="form-control" id="ktp" name="ktp" accept="image/jpeg" required>
+                          <small style="color: red;">Nama di KTP <b>HARUS SAMA</b> dengan nama ketua delegasi</small><br>
+                          <small style="color: red;">Format File JPG, ukuran file maksimal 1MB</small>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="norek" class="col-sm-2 col-form-label">No. Rekening</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" id="norek" name="norek" required>
+                          <small style="color: red;">Masukkan hanya angka</small>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="bank" class="col-sm-2 col-form-label">Bank</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="bank" name="bank" required>
+                          <small style="color: red;">Selain BRI dikenakan potongan biaya transfer</small>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="butab" class="col-sm-2 col-form-label">Foto Buku Tabungan</label>
+                        <div class="col-sm-10">
+                          <input type="file" class="form-control" id="butab" name="butab" accept="image/jpeg" required>
+                          <small style="color: red;">Nama pemegang buku <b>HARUS SAMA</b> dengan nama KTP</small><br>
+                          <small style="color: red;">Format File JPG, ukuran file maksimal 1MB</small>
+                        </div>
+                      </div>
                       <hr>
                       <input type="hidden" name="token" value="<?= $token; ?>">
-                      <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya unggah adalah benar')"> <i class="fa-solid fa-upload"></i> Upload Laporan Kegiatan</button>
+                      <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya unggah adalah benar')"> <i class="fa-solid fa-upload"></i> Upload</button>
                     </form>
                   </div>
                 </div>

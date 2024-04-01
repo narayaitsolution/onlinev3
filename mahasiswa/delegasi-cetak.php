@@ -104,13 +104,16 @@ $bulan = date('m');
       </tr>
 
       <tr>
-        <td colspan="6" style="text-align: justify;">Dengan ini saya nyatakan bahwa kegiatan tersebut telah selesai dilaksanakan.</td>
+        <td colspan="6" style="text-align: justify;">Untuk melakukan kegiatan <?= $namakegiatan; ?>.</td>
       </tr>
       <tr>
-        <td colspan="6" style="text-align: justify;">Dan dengan ini pula mohon Bagian Keuangan dapat dengan segera mencairkan biaya untuk kegiatan ini.</td>
+        <td colspan="6" style="text-align: justify;">Dengan ini saya sampaikan bahwa kegiatan tersebut telah selesai dilaksanakan. Dan mohon kepada Bagian Keuangan Fakultas untuk memproses pencairan dana pendelegasian mahasiswa tersebut.</td>
       </tr>
       <tr>
-        <td colspan="6" style="text-align: justify;">Demikian surat ini dibuat sebenar - benarnya.</td>
+        <td colspan="6" style="text-align: justify;"></td>
+      </tr>
+      <tr>
+        <td colspan="6" style="text-align: justify;">Demikian surat keterangan ini dibuat agar dapat dipergunakan sebagaimana mestinya.</td>
       </tr>
 
     </tbody>

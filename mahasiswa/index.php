@@ -1761,7 +1761,7 @@ $no = 1;
                                                                         <i class="fas fa-file-download"></i> Download Format LPJ
                                                                     </a>
                                                                     <hr>
-                                                                    <a class="btn btn-primary btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
+                                                                    <a class="btn btn-success btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
                                                                         <i class="fas fa-file-upload"></i> Upload Laporan
                                                                     </a>
                                                                     <p class="blink" style="text-align: center;">Pencairan dana dilakukan setelah selesai kegiatan & meng-upload laporan</p>
