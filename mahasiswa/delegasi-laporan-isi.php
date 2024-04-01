@@ -262,7 +262,7 @@ $no = 1;
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="butab" class="col-sm-2 col-form-label">Foto Buku Tabungan</label>
+                        <label for="butab" class="col-sm-2 col-form-label">Foto Buku Rekening</label>
                         <div class="col-sm-10">
                           <input type="file" class="form-control" id="butab" name="butab" accept="image/jpeg" required>
                           <small style="color: red;">Nama pemegang buku <b>HARUS SAMA</b> dengan nama KTP</small><br>
