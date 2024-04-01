@@ -1757,8 +1757,12 @@ $no = 1;
                                                                 <?php
                                                                 if (empty($laporan) || ($statuslaporan == 2)) {
                                                                 ?>
+                                                                    <a class="btn btn-info btn-lg btn-block" href="../doc/LPJ-delegasi.docx" target="_blank">
+                                                                        <i class="fas fa-file-download"></i> Download Format LPJ
+                                                                    </a>
+                                                                    <hr>
                                                                     <a class="btn btn-primary btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
-                                                                        <i class="fas fa-file-upload"></i> Laporan
+                                                                        <i class="fas fa-file-upload"></i> Upload Laporan
                                                                     </a>
                                                                     <p class="blink" style="text-align: center;">Pencairan dana dilakukan setelah selesai kegiatan & meng-upload laporan</p>
                                                                 <?php
