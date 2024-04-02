@@ -1762,7 +1762,7 @@ $no = 1;
                                                                     </a>
                                                                     <hr>
                                                                     <a class="btn btn-success btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
-                                                                        <i class="fas fa-file-upload"></i> Upload Laporan
+                                                                        <i class="fas fa-file-upload"></i> Upload LPJ
                                                                     </a>
                                                                     <p class="blink" style="text-align: center;">Pencairan dana dilakukan setelah selesai kegiatan & meng-upload laporan</p>
                                                                 <?php
