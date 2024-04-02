@@ -100,11 +100,10 @@ $bulan = date('m');
       }
       ?>
       <tr>
-        <td colspan="6">&nbsp;</td>
-      </tr>
-
-      <tr>
         <td colspan="6" style="text-align: justify;">Untuk melakukan kegiatan <?= $namakegiatan; ?>.</td>
+      </tr>
+      <tr>
+        <td colspan="6">&nbsp;</td>
       </tr>
       <tr>
         <td colspan="6" style="text-align: justify;">Dengan ini saya sampaikan bahwa kegiatan tersebut telah selesai dilaksanakan. Dan mohon kepada Bagian Keuangan Fakultas untuk memproses pencairan dana pendelegasian mahasiswa tersebut.</td>
