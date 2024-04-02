@@ -87,6 +87,8 @@ $no = 1;
                 </div>
                 <div class="card-body p-0">
                   <div class="card-body">
+                    <a href="https://saintek.uin-malang.ac.id/download/sk-juknis-pendelegasian-mahasiswa-revisi-1/" class="btn btn-info btn-block" target="_blank"><i class="fas fa-download"></i> Download SK Juknis Pendelegasian</a>
+                    <hr>
                     <form action="delegasi-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Nama</label>
