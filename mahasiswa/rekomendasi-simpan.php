@@ -10,7 +10,15 @@ $nim = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $jenissurat = $_POST['jenissurat'];
-$keperluan = mysqli_real_escape_string($dbsurat, $_POST['keperluan']);
+$keperluan = $_POST['keperluan'];
+$individukelompok = $_POST['individukelompok'];
+$tglmulai = date('Y-m-d', strtotime($_POST['tglmulai']));
+$tglselesai = date('Y-m-d', strtotime($_POST['tglselesai']));
+if ($jenissurat == 'Surat Rekomendasi Delegasi Lomba') {
+    if (empty($tglmulai) or empty($tglselesai)) {
+        header("location:rekomendasi-isi.php?pesan=Tanggal wajib diisi!!");
+    }
+}
 $token = md5(uniqid());
 
 //cari nip kajur
@@ -35,9 +43,9 @@ $nipwd = $dhasil['nip'];
 $statussurat = 0;
 
 //masukin data
-$stmt = $dbsurat->prepare("INSERT INTO suket (tanggal, nim, nama, prodi, jenissurat, keperluan, validator2, validator3,statussurat,token) 
-                            VALUES (?,?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("ssssssssis", $tanggal, $nim, $nama, $prodi, $jenissurat, $keperluan, $nipkaprodi, $nipwd, $statussurat, $token);
+$stmt = $dbsurat->prepare("INSERT INTO suket (tanggal, nim, nama, prodi, jenissurat, keperluan, tglmulai, tglselesai, validator2, validator3,statussurat,token) 
+                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("ssssssssssis", $tanggal, $nim, $nama, $prodi, $jenissurat, $keperluan, $tglmulai, $tglselesai, $nipkaprodi, $nipwd, $statussurat, $token);
 $stmt->execute();
 
 //kirim email ke kaprodi
@@ -56,7 +64,7 @@ $pesan = "Yth. " . $namadosen . "<br/>
 		<br />
 		Dengan hormat,
 		<br />
-        Terdapat pengajuan " . $surat . " atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
+        Terdapat pengajuan " . $jenissurat . " atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
         Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
         <br/>
         <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
@@ -69,4 +77,8 @@ $pesan = "Yth. " . $namadosen . "<br/>
         <b>SAINTEK e-Office</b>";
 sendmail($emaildosen, $namadosen, $subject, $pesan);
 
-header("location:index.php");
+if ($individukelompok == 'Individu') {
+    header("location:index.php");
+} else {
+    header("location:rekomendasi-kelompok.php?token=$token");
+}

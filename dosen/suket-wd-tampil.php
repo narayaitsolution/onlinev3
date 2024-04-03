@@ -71,6 +71,8 @@ $no = 1;
             $prodimhs = $row['prodi'];
             $jenissurat = $row['jenissurat'];
             $keperluan = $row['keperluan'];
+            $tglmulai = $row['tglmulai'];
+            $tglselesai = $row['tglselesai'];
             $validasi2 = $row['validasi2'];
             $validator2 = $row['validator2'];
             $tglvalidasi2 = $row['tglvalidasi2'];
@@ -125,6 +127,24 @@ $no = 1;
                                                 <input type="text" class="form-control" id="keperluan" name="keperluan" value="<?= $keperluan; ?>" readonly>
                                             </div>
                                         </div>
+                                        <?php
+                                        if ($jenissurat == 'Surat Rekomendasi Delegasi Lomba') {
+                                        ?>
+                                            <div class="form-group row">
+                                                <label for="keperluan" class="col-sm-2 col-form-label">Tgl. Mulai</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="tglmulai" name="tglmulai" value="<?= tgl_indo($tglmulai); ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="keperluan" class="col-sm-2 col-form-label">Tgl. Selesai</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="tglselesai" name="tglselesai" value="<?= tgl_indo($tglselesai); ?>" readonly>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
                                         <div class="form-group row">
                                             <label for="tglselesai" class="col-sm-2 col-form-label">Bukti Vaksin</label>
                                             <div class="col-sm-10">

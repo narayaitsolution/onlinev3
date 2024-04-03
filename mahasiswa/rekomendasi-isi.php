@@ -60,17 +60,26 @@ $no = 1;
                 </div>
             </section>
 
-            <!-- alert bukti vaksin -->
-            <?php
-            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
-            $qdata = mysqli_fetch_array($quser);
-            $buktivaksin = $qdata['buktivaksin'];
-            if (empty($buktivaksin)) {
-                //echo "<script>alert('Segera upload bukti vaksin terakhir pada profil pengguna!!')</script>";
-            }
-            ?>
+            <!-- alert -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <?php
+                            if (!empty($_GET['pesan'])) {
+                            ?>
+                                <div class="alert alert-danger alert-dismissible fade show">
+                                    <strong>ERROR!</strong> <?= $_GET['pesan']; ?>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <!-- tabel pengajuan pribadi -->
+            <!-- tabel pengajuan rekomendasi -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -84,7 +93,7 @@ $no = 1;
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="suket-simpan.php" method="POST" id="my-form">
+                                        <form action="rekomendasi-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="dosen" class="col-sm-2 col-form-label">Rekomendasi</label>
                                                 <div class="col-sm-10">
@@ -110,8 +119,35 @@ $no = 1;
                                                     </small>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label for="tglmulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" id="tglmulai" name="tglmulai">
+                                                    <small style="color: red;">
+                                                        <li>KHUSUS Rekomendasi Delegasi Lomba</li>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="tglselesai" class="col-sm-2 col-form-label">Tanggal Selesai</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" id="tglselesai" name="tglselesai">
+                                                    <small style="color: red;">
+                                                        <li>KHUSUS Rekomendasi Delegasi Lomba</li>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="dosen" class="col-sm-2 col-form-label">Individu / Kelompok</label>
+                                                <div class="col-sm-10">
+                                                    <select name="individukelompok" class="form-control">
+                                                        <option value="Individu" selected>Individu</option>
+                                                        <option value="Kelompok">Kelompok</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <hr>
-                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Ajukan</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Ajukan</button>
                                         </form>
                                     </div>
                                 </div>

@@ -18,6 +18,8 @@ $nama = $row['nama'];
 $prodi = $row['prodi'];
 $jenissurat = $row['jenissurat'];
 $keperluan = $row['keperluan'];
+$tglmulai = $row['tglmulai'];
+$tglselesai = $row['tglselesai'];
 $validator3 = $row['validator3'];
 $validasi3 = $row['validasi3'];
 $tglvalidasi3 = $row['tglvalidasi3'];
@@ -201,7 +203,7 @@ if ($statussurat == 1) {
                         <?php
                         } elseif ($jenissurat == 'Surat Rekomendasi Delegasi Lomba') {
                         ?>
-                            <td colspan="4" style="text-align: justify;">Untuk mengikuti <?= $keperluan; ?> </td>
+                            <td colspan="4" style="text-align: justify;">Untuk mengikuti <?= $keperluan; ?> pada tanggal <?= tgl_indo($tglmulai); ?> sampai dengan <?= tgl_indo($tglselesai); ?> </td>
                         <?php
                         }
                         ?>
