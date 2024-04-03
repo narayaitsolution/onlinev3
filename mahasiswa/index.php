@@ -1754,11 +1754,15 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
+                                                                <a class="btn btn-warning btn-lg btn-block" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fas fa-file-download"></i> Rekomendasi Delegasi
+                                                                </a>
+                                                                <hr>
                                                                 <?php
                                                                 if (empty($laporan) || ($statuslaporan == 2)) {
                                                                 ?>
                                                                     <a class="btn btn-info btn-lg btn-block" href="../doc/LPJ-delegasi.docx" target="_blank">
-                                                                        <i class="fas fa-file-download"></i> Download Format LPJ
+                                                                        <i class="fas fa-file-download"></i> Format Template LPJ
                                                                     </a>
                                                                     <hr>
                                                                     <a class="btn btn-success btn-lg btn-block" href="delegasi-laporan-isi.php?token=<?= $token; ?>">
@@ -1795,7 +1799,7 @@ $no = 1;
                                                             <?php
                                                             if ($statuslaporan == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-lg btn-block" href="delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg btn-block" href="delegasi-selesai-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak SK
                                                                 </a>
                                                             <?php

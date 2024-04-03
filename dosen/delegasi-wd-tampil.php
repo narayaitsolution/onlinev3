@@ -178,7 +178,7 @@ $no = 1;
                     </div>
                     <?php
                     if ($jeniskegiatan == 'Kelompok') {
-                    ?> <div class="card card-info">
+                    ?> <div class="card card-primary">
                         <div class="card-header">
                           <h3 class="card-title">Anggota Kelompok</h3>
                           <div class="card-tools">
@@ -226,6 +226,30 @@ $no = 1;
                     <?php
                     }
                     ?>
+                    <div class="card card-info">
+                      <div class="card-header">
+                        <h3 class="card-title">Verifikasi Pengajuan</h3>
+                        <div class="card-tools">
+                          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                      </div>
+                      <div class="card-body p-0">
+                        <div class="card-body">
+                          <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Verifikator</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" name="verifikator" value="<?= namadosen($dbsurat, $validator1); ?>" readonly>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Tanggal Verifikasi</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" name="tglverifikasi" value="<?= tgljam_indo($tglvalidasi1); ?>" readonly>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <form role="form" method="POST" id="my-form">
                       <!--
                       <div class="form-group row">
@@ -270,12 +294,13 @@ $no = 1;
                       <hr>
                   -->
                       <input type="hidden" name="token" value="<?= $token; ?>">
+                      <hr>
                       <div class="row">
                         <div class="col-6">
-                          <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="delegasi-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                          <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="delegasi-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> SETUJUI</button>
                         </div>
                         <div class="col-6">
-                          <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
+                          <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> TOLAK</button>
                         </div>
                       </div>
                       <!-- modal tolak -->

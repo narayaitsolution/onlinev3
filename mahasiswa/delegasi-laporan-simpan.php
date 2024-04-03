@@ -69,6 +69,31 @@ if ($ktpSize < 1048576) {
   header("location:delegasi-laporan-isi.php?token=$token&pesan=gagal=Ukuran file KTP maksimal 1MB!!");
 }
 
+//cek file KTM
+$kodeacak4 = random_str(12);
+$ktmTmpPath = $_FILES['ktm']['tmp_name'];
+$ktmName = $_FILES['ktm']['name'];
+$ktmSize = $_FILES['ktm']['size'];
+$ktmPecah = explode(".", $ktmName);
+$fileExtension = strtolower(end($ktmPecah));
+if ($ktmSize < 1048576) {
+  if (in_array($fileExtension, $allowedfileExtensions)) {
+    $ktmPath = $target_dir . $kodeacak4 . '.jpg';
+    move_uploaded_file($ktmTmpPath, $ktmPath);
+    $info = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $ktmPath);
+    if ($info == 'image/jpeg') {
+      $statusktm = '1';
+    } else {
+      $statusktm = '0';
+      header("location:delegasi-laporan-isi.php?token=$token&pesan=File KTM WAJIB format JPG!!");
+    };
+  } else {
+    header("location:delegasi-laporan-isi.php?token=$token&pesan=gagal=File KTM WAJIB format JPG!!");
+  };
+} else {
+  header("location:delegasi-laporan-isi.php?token=$token&pesan=gagal=Ukuran file KTM maksimal 1MB!!");
+}
+
 //cek file buku tabungan
 $kodeacak3 = random_str(12);
 $butabTmpPath = $_FILES['butab']['tmp_name'];
@@ -97,7 +122,7 @@ if ($butabSize < 1048576) {
 }
 
 //jika semua ok maka upload
-if ($statusLaporan == '1' && $statusktp == '1' && $statusbutab == '1') {
+if ($statusLaporan == '1' && $statusktp == '1' && $statusktm == '1' && $statusbutab == '1') {
   //update tabel delegasi
   $stmt = $dbsurat->prepare("UPDATE delegasi 
                             SET laporan=?, tgllaporan=?,statuslaporan=?
@@ -106,9 +131,9 @@ if ($statusLaporan == '1' && $statusktp == '1' && $statusbutab == '1') {
   $stmt->execute();
 
   //insert data tabel delegasiupload
-  $stmt = $dbsurat->prepare("INSERT INTO delegasiupload (tanggal,token,nimketua,laporan,noktp,fotoktp,norek,bank,butab) 
-                            VALUES (?,?,?,?,?,?,?,?,?)");
-  $stmt->bind_param("sssssssss", $tanggal, $token, $nimketua, $laporanPath, $noktp, $ktpPath, $norek, $bank, $butabPath);
+  $stmt = $dbsurat->prepare("INSERT INTO delegasiupload (tanggal,token,nimketua,laporan,noktp,fotoktp,fotoktm,norek,bank,butab) 
+                            VALUES (?,?,?,?,?,?,?,?,?,?)");
+  $stmt->bind_param("ssssssssss", $tanggal, $token, $nimketua, $laporanPath, $noktp, $ktpPath, $ktmPath, $norek, $bank, $butabPath);
   $stmt->execute();
 
   //cari nip wd-3

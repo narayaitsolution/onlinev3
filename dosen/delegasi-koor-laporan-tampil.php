@@ -86,6 +86,7 @@ $no = 1;
       $ddokumenmhs = mysqli_fetch_array($qdokumenmhs);
       $noktp = $ddokumenmhs['noktp'];
       $fotoktp = $ddokumenmhs['fotoktp'];
+      $fotoktm = $ddokumenmhs['fotoktm'];
       $norek = $ddokumenmhs['norek'];
       $bank = $ddokumenmhs['bank'];
       $butab = $ddokumenmhs['butab'];
@@ -220,7 +221,7 @@ $no = 1;
                     <div class="form-group row">
                       <label class="col-sm-2 col-form-label">Laporan Kegiatan</label>
                       <div class="col-sm-10">
-                        <a href="<?= $laporan; ?>" class="btn btn-primary" target="_blank"><i class="fa fa-file-download"></i> Laporan Kegiatan</a>
+                        <a href="<?= $laporan; ?>" class="btn btn-primary btn-block" target="_blank"><i class="fa fa-file-download"></i> Laporan Kegiatan</a>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -231,7 +232,20 @@ $no = 1;
                             <input type="text" class="form-control" name="noktp" value="<?= $noktp; ?>" readonly>
                           </div>
                           <div class="col">
-                            <a href="<?= $fotoktp; ?>" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i> Foto KTP</a>
+                            <a href="<?= $fotoktp; ?>" class="btn btn-info btn-block" target="_blank"><i class="fa fa-eye"></i> Foto KTP</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">No. KTM</label>
+                      <div class="col-sm-10">
+                        <div class="row">
+                          <div class="col">
+                            <input type="text" class="form-control" name="noktm" value="<?= $nimmhs; ?>" readonly>
+                          </div>
+                          <div class="col">
+                            <a href="<?= $fotoktm; ?>" class="btn btn-info btn-block" target="_blank"><i class="fa fa-eye"></i> Foto KTM</a>
                           </div>
                         </div>
                       </div>
@@ -250,7 +264,7 @@ $no = 1;
                             <input type="text" class="form-control" name="norek" value="<?= $norek; ?>" readonly>
                           </div>
                           <div class="col">
-                            <a href="<?= $butab; ?>" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i> Buku Tabungan</a>
+                            <a href="<?= $butab; ?>" class="btn btn-info btn-block" target="_blank"><i class="fa fa-eye"></i> Buku Tabungan</a>
                           </div>
                         </div>
                       </div>

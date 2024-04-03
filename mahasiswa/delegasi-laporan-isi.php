@@ -248,6 +248,14 @@ $no = 1;
                         </div>
                       </div>
                       <div class="form-group row">
+                        <label for="ktm" class="col-sm-2 col-form-label">Foto KTM</label>
+                        <div class="col-sm-10">
+                          <input type="file" class="form-control" id="ktm" name="ktm" accept="image/jpeg" required>
+                          <small style="color: red;">Nama di KTM <b>HARUS SAMA</b> dengan nama ketua delegasi</small><br>
+                          <small style="color: red;">Format File JPG, ukuran file maksimal 1MB</small>
+                        </div>
+                      </div>
+                      <div class="form-group row">
                         <label for="norek" class="col-sm-2 col-form-label">No. Rekening</label>
                         <div class="col-sm-10">
                           <input type="number" class="form-control" id="norek" name="norek" required>
@@ -271,7 +279,14 @@ $no = 1;
                       </div>
                       <hr>
                       <input type="hidden" name="token" value="<?= $token; ?>">
-                      <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya unggah adalah benar')"> <i class="fa-solid fa-upload"></i> Upload</button>
+                      <div class="row">
+                        <div class="col">
+                          <a href="index.php" class="btn btn-secondary btn-block btn-lg"><i class="fa-solid fa-backward"></i> Kembali</a>
+                        </div>
+                        <div class="col">
+                          <button type="submit" id="btn-submit" class="btn btn-success btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya unggah adalah benar')"> <i class="fa-solid fa-upload"></i> Upload</button>
+                        </div>
+                      </div>
                     </form>
                   </div>
                 </div>
