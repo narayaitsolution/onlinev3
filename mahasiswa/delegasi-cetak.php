@@ -78,18 +78,10 @@ $bulan = date('m');
                 <td colspan="4">: Wakil Dekan Bidang Kemahasiswaan dan Kerja Sama</td>
             </tr>
             <tr>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="4"> Fakultas Sains dan Teknologi</td>
-            </tr>
-            <tr>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="3"> Universitas Islam Negeri Maulana Malik Ibrahim Malang</td>
-            </tr>
-            <tr>
                 <td colspan="6">&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="6">Dengan ini menerangkan bahwa :</td>
+                <td colspan="6">Dengan ini memberikan rekomendasi kepada :</td>
             </tr>
             <!-- ambil data -->
             <?php
@@ -139,7 +131,7 @@ $bulan = date('m');
                 <td colspan="6">&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="6" style="text-align: justify;">Demikian surat keterangan ini dibuat agar dapat dipergunakan sebagaimana mestinya.</td>
+                <td colspan="6" style="text-align: justify;">Demikian surat rekomendasi ini dibuat agar dapat dipergunakan sebagaimana mestinya.</td>
             </tr>
         </tbody>
     </table>
