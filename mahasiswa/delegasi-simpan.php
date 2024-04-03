@@ -11,6 +11,9 @@ $nim = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $namakegiatan = $_POST['namakegiatan'];
+$tglmulai = date('Y-m-d', strtotime($_POST['tglmulai']));
+$tglselesai = date('Y-m-d', strtotime($_POST['tglselesai']));
+$tempat = $_POST['tempat'];
 $tingkat = $_POST['tingkat'];
 $kategori = $_POST['kategori'];
 $jeniskegiatan = $_POST['jeniskegiatan'];
@@ -72,9 +75,9 @@ if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
 
     move_uploaded_file($bukti, $dest_path);
     if ($jeniskegiatan == 'Individu') {
-      $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
-                                  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-      $stmt->bind_param("ssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipwd, $nipwd, $token);
+      $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tglmulai, tglselesai, tempat, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
+                                  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+      $stmt->bind_param("sssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tglmulai, $tglselesai, $tempat, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipwd, $nipwd, $token);
       $stmt->execute();
 
       $stmt = $dbsurat->prepare("INSERT INTO delegasianggota (token, nimketua, nimanggota) 
@@ -114,9 +117,9 @@ if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
       header("location:index.php?pesan=success");
     } else {
       $statussurat = '-1';
-      $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tingkat, kategori, jeniskegiatan, bukti,validator1, validator2, validator3,statussurat, token) 
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-      $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tingkat, $kategori, $jeniskegiatan,  $dest_path, $nipkaprodi, $nipwd, $nipwd, $statussurat, $token);
+      $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tglmulai, tglselesai, tempat, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
+                                  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+      $stmt->bind_param("sssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $tglmulai, $tglselesai, $tempat, $tingkat, $kategori, $jeniskegiatan, $dest_path, $nipkaprodi, $nipwd, $nipwd, $token);
       $stmt->execute();
 
       $qnodata = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE nim='$nim' ORDER BY tanggal DESC");

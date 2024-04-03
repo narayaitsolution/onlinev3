@@ -91,6 +91,7 @@ $no = 1;
                                                     <select name="jenissurat" class="form-control">
                                                         <option value="Surat Rekomendasi Beasiswa" selected>Beasiswa</option>
                                                         <option value="Surat Rekomendasi Magang">Magang</option>
+                                                        <option value="Surat Rekomendasi Magang">Delegasi Lomba</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -103,6 +104,9 @@ $no = 1;
                                                     </small>
                                                     <small style="color: blue;">
                                                         <li>Rekomendasi magang tuliskan nama instansi yang dituju</li>
+                                                    </small>
+                                                    <small style="color: blue;">
+                                                        <li>Rekomendasi Delegasi lomba tuliskan lomba yang diikuti</li>
                                                     </small>
                                                 </div>
                                             </div>

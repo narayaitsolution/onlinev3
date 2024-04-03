@@ -72,6 +72,9 @@ $no = 1;
       $prodimhs = $row['prodi'];
       $jenissurat = 'Pengajuan delegasi';
       $namakegiatan = $row['namakegiatan'];
+      $tglmulai = $row['tglmulai'];
+      $tglselesai = $row['tglselesai'];
+      $tempat = $row['tempat'];
       $tingkat = $row['tingkat'];
       $kategori = $row['kategori'];
       $jeniskegiatan = $row['jeniskegiatan'];
@@ -134,6 +137,24 @@ $no = 1;
                       <label class="col-sm-2 col-form-label">Nama Kegiatan</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" name="namakegiatan" value="<?= $namakegiatan; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Tanggal Mulai</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="tglmulai" value="<?= tgl_indo($tglmulai); ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Tanggal Selesai</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="tglselesai" value="<?= tgl_indo($tglselesai); ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-form-label">Tempat</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="tempat" value="<?= $tempat; ?>" readonly>
                       </div>
                     </div>
                     <div class="form-group row">

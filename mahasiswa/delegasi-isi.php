@@ -128,6 +128,24 @@ $no = 1;
                         </div>
                       </div>
                       <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Tanggal Kegiatan Mulai</label>
+                        <div class="col-sm-9">
+                          <input type="date" class="form-control" id="tglmulai" name="tglmulai" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Tanggal Kegiatan Selesai</label>
+                        <div class="col-sm-9">
+                          <input type="date" class="form-control" id="tglselesai" name="tglselesai" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Tempat Kegiatan</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="tempat" name="tempat" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Level Kegiatan</label>
                         <div class="col-sm-9">
                           <select name="tingkat" class="form-control">
