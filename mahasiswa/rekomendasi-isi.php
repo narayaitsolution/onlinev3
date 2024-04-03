@@ -91,7 +91,7 @@ $no = 1;
                                                     <select name="jenissurat" class="form-control">
                                                         <option value="Surat Rekomendasi Beasiswa" selected>Beasiswa</option>
                                                         <option value="Surat Rekomendasi Magang">Magang</option>
-                                                        <option value="Surat Rekomendasi Magang">Delegasi Lomba</option>
+                                                        <option value="Surat Rekomendasi Delegasi Lomba">Delegasi Lomba</option>
                                                     </select>
                                                 </div>
                                             </div>

@@ -199,6 +199,10 @@ if ($statussurat == 1) {
                         ?>
                             <td colspan="4" style="text-align: justify;">Untuk mendaftar pada program Beasiswa <?= $keperluan; ?> </td>
                         <?php
+                        } elseif ($jenissurat == 'Surat Rekomendasi Delegasi Lomba') {
+                        ?>
+                            <td colspan="4" style="text-align: justify;">Untuk mengikuti <?= $keperluan; ?> </td>
+                        <?php
                         }
                         ?>
 

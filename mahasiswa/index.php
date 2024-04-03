@@ -637,7 +637,7 @@ $no = 1;
 
                                                 <!-- Surat Rekomendasi -->
                                                 <?php
-                                                $data = mysqli_query($dbsurat, "SELECT * FROM suket WHERE nim='$nim' and (jenissurat='Surat Rekomendasi Beasiswa' OR jenissurat='Surat Rekomendasi Magang')");
+                                                $data = mysqli_query($dbsurat, "SELECT * FROM suket WHERE nim='$nim' and (jenissurat='Surat Rekomendasi Beasiswa' OR jenissurat='Surat Rekomendasi Magang' OR jenissurat='Surat Rekomendasi Delegasi Lomba')");
                                                 $cek = mysqli_num_rows($data);
                                                 while ($q = mysqli_fetch_array($data)) {
                                                     $nodata = $q['no'];
