@@ -104,6 +104,7 @@ $tahun = date('Y');
                                                     $statussurat = $data['statussurat'];
                                                     $keterangan = $data['keterangan'];
                                                     $laporan = $data['laporan'];
+                                                    $statuslaporan = $data['statuslaporan'];
                                                     $token = $data['token'];
                                                     //cari data upload
                                                     $qupload = mysqli_query($dbsurat, "SELECT * FROM delegasiupload WHERE token='$token'");
@@ -170,7 +171,18 @@ $tahun = date('Y');
                                                         <?php
                                                         }
                                                         ?>
-                                                        <td style="text-align: center;"><a href="delegasi-disposisi-cetak.php?token=<?= $token; ?>" class="btn btn-success" target="_blank"><i class="fas fa-print"></i></a></td>
+                                                        <?php
+                                                        if ($statuslaporan == 1) {
+                                                        ?>
+                                                            <td style="text-align: center;"><a href="delegasi-disposisi-cetak.php?token=<?= $token; ?>" class="btn btn-success" target="_blank"><i class="fas fa-print"></i></a></td>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <td style="text-align: center;"><a href="#" class="btn btn-sm btn-secondary" onclick="alert ('LPJ belum di setujui')"><span>&#10006;</span></a></td>
+                                                        <?php
+                                                        }
+                                                        ?>
+
                                                     </tr>
                                                 <?php
                                                     $no++;
