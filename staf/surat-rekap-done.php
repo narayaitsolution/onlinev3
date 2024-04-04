@@ -101,7 +101,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                         <!-- Delegasi -->
                         <?php
-                        $qdelegasi = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat= 0 AND year(tanggal)=$tahun");
+                        $qdelegasi = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat=1 AND year(tanggal)=$tahun");
                         $jdelegasi = mysqli_num_rows($qdelegasi);
                         ?>
                         <div class="col-lg-3 col-6">
@@ -119,7 +119,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                         <!-- Surat Keterangan -->
                         <?php
-                        $qsuket = mysqli_query($dbsurat, "SELECT * FROM suket WHERE statussurat= 0 AND year(tanggal)=$tahun");
+                        $qsuket = mysqli_query($dbsurat, "SELECT * FROM suket WHERE statussurat=1 AND year(tanggal)=$tahun");
                         $jsuket = mysqli_num_rows($qsuket);
                         ?>
                         <div class="col-lg-3 col-6">
@@ -140,7 +140,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                     <div class="row">
                         <!-- Pengambilan Data -->
                         <?php
-                        $qdata = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE statussurat= 0 AND year(tanggal)=$tahun");
+                        $qdata = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE statussurat=1 AND year(tanggal)=$tahun");
                         $jdata = mysqli_num_rows($qdata);
                         ?>
                         <div class="col-lg-3 col-6">
@@ -158,7 +158,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                         <!-- ijin observasi -->
                         <?php
-                        $qobservasi = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE statussurat= 0 AND year(tanggal)=$tahun");
+                        $qobservasi = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE statussurat=1 AND year(tanggal)=$tahun");
                         $jobservasi = mysqli_num_rows($qobservasi);
                         ?>
                         <div class="col-lg-3 col-6">
@@ -176,7 +176,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                         <!-- Penelitian -->
                         <?php
-                        $qpenelitian = mysqli_query($dbsurat, "SELECT * FROM ijinpenelitian WHERE statussurat= 0 AND year(tanggal)=$tahun");
+                        $qpenelitian = mysqli_query($dbsurat, "SELECT * FROM ijinpenelitian WHERE statussurat=1 AND year(tanggal)=$tahun");
                         $jpenelitian = mysqli_num_rows($qpenelitian);
                         ?>
                         <div class="col-lg-3 col-6">
@@ -194,7 +194,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                         <!-- Surat Ijin lab -->
                         <?php
-                        $qlab = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan= 0 AND year(tanggal)=$tahun");
+                        $qlab = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan=1 AND year(tanggal)=$tahun");
                         $jlab = mysqli_num_rows($qlab);
                         ?>
                         <div class="col-lg-3 col-6">
@@ -239,9 +239,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     <th style="text-align: center;">Nama</th>
                                     <th style="text-align: center;">NIM</th>
                                     <th style="text-align: center;">Prodi</th>
-                                    <th style="text-align: center;">Verifikator 1</th>
-                                    <th style="text-align: center;">Verifikator 2</th>
-                                    <th style="text-align: center;">Verifikator 3</th>
+                                    <th style="text-align: center;">Print</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -249,7 +247,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- PKL-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE statussurat=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -274,29 +272,10 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php
@@ -307,7 +286,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Magang-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM magang WHERE statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM magang WHERE statussurat=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -332,30 +311,11 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/magang-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
                                         </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
+
                                     </tr>
                                 <?php
                                     $no++;
@@ -365,7 +325,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Delegasi-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -390,29 +350,9 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/delegasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-file-download"></i> Cetak
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php
@@ -423,7 +363,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Suket-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM suket WHERE statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM suket WHERE statussurat=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -448,30 +388,11 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/suket-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
                                         </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
+
                                     </tr>
                                 <?php
                                     $no++;
@@ -481,7 +402,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Pengambilan Data-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE statussurat=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -506,29 +427,9 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/pengambilandata-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php
@@ -539,7 +440,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Observasi-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE statussurat=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -547,7 +448,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
-                                    $surat = 'Pengambilan Data';
+                                    $surat = 'Observasi';
                                     $validasi1 = $data['validasi1'];
                                     $validator1 = $data['validator1'];
                                     $validasi2 = $data['validasi2'];
@@ -564,29 +465,9 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/observasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php
@@ -597,7 +478,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Ijin Penelitian-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinpenelitian WHERE statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinpenelitian WHERE statussurat=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -605,7 +486,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
-                                    $surat = 'Pengambilan Data';
+                                    $surat = 'Ijin Penelitian';
                                     $validasi1 = $data['validasi1'];
                                     $validator1 = $data['validator1'];
                                     $validasi2 = $data['validasi2'];
@@ -622,29 +503,9 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/ijinpenelitian-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php
@@ -655,7 +516,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- Ijin Lab.-->
                                 <?php
-                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $query = mysqli_query($dbsurat, "SELECT * FROM ijinlab WHERE statuspengajuan=1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
@@ -663,7 +524,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
-                                    $surat = 'Pengambilan Data';
+                                    $surat = 'Ijin Lab';
                                     $validasi1 = $data['validasi1'];
                                     $validator1 = $data['validator1'];
                                     $validasi2 = $data['validasi2'];
@@ -680,29 +541,9 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td><?= namadosen($dbsurat, $validator1); ?>
-                                            <?php if ($validasi1 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator2); ?>
-                                            <?php if ($validasi2 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?= namadosen($dbsurat, $validator3); ?>
-                                            <?php if ($validasi3 == 1) {
-                                                echo "&#9989;";
-                                            } else {
-                                                echo "&#10067;";
-                                            }
-                                            ?>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="../mahasiswa/ijinlab-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php
