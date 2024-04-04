@@ -174,6 +174,15 @@
                     if ($jabatan == 'kasubag-akademik') {
                     ?>
                         <li class="nav-item">
+                            <a href="../dosen/delegasi-rekap.php" class="nav-link">
+                                <i class="nav-icon fa-solid fas fa-plane-departure"></i>
+                                <p>
+                                    Rekap Delegasi
+                                    <span class="right badge badge-danger">Baru</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="pengajuanmhs-tampil.php" class="nav-link">
                                 <i class="nav-icon fa-solid fa-square-envelope"></i>
                                 <p>

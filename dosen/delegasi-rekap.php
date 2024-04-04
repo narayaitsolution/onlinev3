@@ -7,7 +7,9 @@ $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
 if ($_SESSION['jabatan'] != "wadek3") {
-    header("location:../deauth.php");
+    if ($_SESSION['jabatan'] != "kasubag-akademik") {
+        header("location:../deauth.php");
+    }
 }
 require('../system/dbconn.php');
 require('../system/myfunc.php');
