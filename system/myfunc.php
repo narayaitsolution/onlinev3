@@ -125,6 +125,15 @@ function nipdosen($conn, $iduser)
     return $nip;
 }
 
+function nohp($conn, $iduser)
+{
+    require_once('../system/dbconn.php');
+    $qdosen = mysqli_query($conn, "SELECT * FROM pengguna WHERE nip='$iduser'");
+    $ddosen = mysqli_fetch_array($qdosen);
+    $nohp = $ddosen['nohp'];
+    return $nohp;
+}
+
 function multibaris($pesan)
 {
     str_replace(["\r\n", "\r", "\n"], "<br/>", $pesan);

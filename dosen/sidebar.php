@@ -66,6 +66,7 @@
                 <?php
                 }
                 ?>
+                <!-- progress skripsi -->
                 <?php
                 if ($jabatan == 'wadek1') {
                 ?>
@@ -75,6 +76,22 @@
                             <p>
                                 Progress Skripsi
                                 <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+                <!-- delegasi -->
+                <?php
+                if ($jabatan == 'wadek3') {
+                ?>
+                    <li class="nav-item">
+                        <a href="delegasi-rekap.php" class="nav-link">
+                            <i class="nav-icon fa-solid fas fa-plane-departure"></i>
+                            <p>
+                                Rekap Delegasi
+                                <span class="right badge badge-danger">Baru</span>
                             </p>
                         </a>
                     </li>
