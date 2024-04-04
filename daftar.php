@@ -91,6 +91,7 @@ require('system/myfunc.php');
               <option value="Perpustakaan dan Ilmu Informasi">Perpustakaan dan Ilmu Informasi</option>
               <option value="Magister Biologi">Magister Biologi</option>
               <option value="Magister Informatika">Magister Informatika</option>
+              <option value="Fakultas">Fakultas</option>
             </select>
             <div class="input-group-append">
               <div class="input-group-text">

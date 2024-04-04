@@ -19,7 +19,7 @@ if ($_SESSION['nip'] != "198312132019031004") {
     $emailmhs = $duser['email'];
 
     //kirim email ke user
-    $subject = "Pendaftaran Akun SAINTEK e-Office";
+    $subject = "Aktivasi Akun SAINTEK e-Office";
     $pesan = "Yth. " . $namamhs . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
