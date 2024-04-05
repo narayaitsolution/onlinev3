@@ -92,7 +92,7 @@ $bukti = $ddelegasi['bukti'];
                 ?>
                   <div class="alert alert-danger alert-dismissible fade show">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    Penambahan anggota <b>GAGAL!!</b>
+                    Penambahan anggota <b>GAGAL!! NIM salah / belum terdaftar</b>
                   </div>
                 <?php
                 } elseif ($pesan == 'hapusok') {
