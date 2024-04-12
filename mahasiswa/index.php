@@ -1855,7 +1855,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($verifikasi2 == 1) {
                                                             ?>
-                                                                <b style="color:green;">Telah disetujui</b> Bagian Umum Fakultas. Silahkan ambik SK di Bagian Umum Fakultas <br />
+                                                                <b style="color:green;">Telah selesai diproses</b> oleh Bagian Umum Fakultas.<br />
                                                             <?php
                                                             } else {
                                                             ?>
@@ -1878,7 +1878,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == '-1') {
                                                             ?>
-                                                                <a class="btn btn-info btn-lg btn-block" href="delegasi-anggota.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-lg btn-block" href="narasumber-data-isi.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-check"></i> Lengkapi
                                                                 </a>
                                                                 <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="narasumber-hapus.php?token=<?= $token; ?>">

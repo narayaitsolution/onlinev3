@@ -14,9 +14,10 @@ $jadwal = date('Y-m-d H:i:s', strtotime($_POST['jadwal']));
 $token = $_POST['token'];
 
 //simpandata
-$stmt = $dbsurat->prepare("INSERT INTO sknarsum (token,nama,materi,jadwal)
+if (!empty($namanarsum) && !empty($materi) && !empty($jadwal)) {
+    $stmt = $dbsurat->prepare("INSERT INTO sknarsum (token,nama,materi,jadwal)
                             VALUES(?,?,?,?)");
-$stmt->bind_param("ssss", $token, $namanarsum, $materi, $jadwal);
-$stmt->execute();
-
+    $stmt->bind_param("ssss", $token, $namanarsum, $materi, $jadwal);
+    $stmt->execute();
+}
 header("location:narasumber-data-isi.php?token=$token");

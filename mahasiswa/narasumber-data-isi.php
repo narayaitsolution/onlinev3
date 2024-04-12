@@ -108,19 +108,19 @@ $no = 1;
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="namanarsum">
+                                                    <input type="text" class="form-control" name="namanarsum" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">Materi</label>
                                                 <div class="col">
-                                                    <textarea class="form-control" name="materi" rows="3"></textarea>
+                                                    <textarea class="form-control" name="materi" rows="3" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">Jadwal</label>
                                                 <div class="col">
-                                                    <input type="datetime-local" class="form-control" name="jadwal">
+                                                    <input type="datetime-local" class="form-control" name="jadwal" required>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />

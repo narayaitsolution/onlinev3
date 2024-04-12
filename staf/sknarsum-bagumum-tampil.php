@@ -58,8 +58,6 @@ $no = 1;
         ?>
 
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-
             <!-- ambil data SK dari database -->
             <?php
             $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
