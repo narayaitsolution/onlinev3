@@ -20,8 +20,8 @@ $ddosen = mysqli_fetch_array($qdosen);
 $iddosen = $ddosen['user'];
 $nipdosen = $ddosen['nip'];
 
-$qsimpan = mysqli_query($dbsurat, "INSERT INTO pejabat(prodi,kdjabatan,iddosen,nip,nama)
-                                    VALUES ('$prodipejabat','$kdjabatan','$iddosen','$nipdosen','$namapejabat')");
+$qsimpan = mysqli_query($dbsurat, "INSERT INTO pejabat(prodi,kdjabatan,iddosen,nip,nama,jabatan)
+                                    VALUES ('$prodipejabat','$kdjabatan','$iddosen','$nipdosen','$namapejabat','$kdjabatan')");
 if ($qsimpan) {
     header("location:pejabat-tampil.php?pesan=success");
 } else {

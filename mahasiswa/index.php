@@ -1812,6 +1812,94 @@ $no = 1;
                                                 ?>
                                                 <!-- /delegasi -->
 
+                                                <!-- SK -->
+                                                <?php
+                                                $data = mysqli_query($dbsurat, "SELECT * FROM sk WHERE nim='$nim'");
+                                                while ($q = mysqli_fetch_array($data)) {
+                                                    $nodata = $q['no'];
+                                                    $nim = $q['nim'];
+                                                    $jensissk = $q['jenissk'];
+                                                    $verifikasi1 = $q['verifikasi1'];
+                                                    $verifikator1 = $q['verifikator1'];
+                                                    $verifikasi2 = $q['verifikasi2'];
+                                                    $verifikator2 = $q['verifikator2'];
+                                                    $keterangan = $q['keterangan'];
+                                                    $statussurat = $q['statussurat'];
+                                                    $token = $q['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td>Pengajuan SK <?= $jensissk; ?></td>
+                                                        <td>
+                                                            <!-- WD-3 -->
+                                                            <?php
+                                                            if ($verifikasi1 == 0) {
+                                                            ?>
+                                                                <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?><br />
+                                                            <?php
+                                                            } elseif ($verifikasi1 == 1) {
+                                                            ?>
+                                                                <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> <br />
+                                                            <?php
+                                                            } else {
+                                                            ?>
+                                                                <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                            <!-- ketua jurusan -->
+                                                            <?php
+                                                            if ($verifikasi2 == 0) {
+                                                            ?>
+                                                                <b style="color:orange;">Menunggu</b> verifikasi Bagian Umum Fakultas<br />
+                                                            <?php
+                                                            } elseif ($verifikasi2 == 1) {
+                                                            ?>
+                                                                <b style="color:green;">Telah disetujui</b> Bagian Umum Fakultas. Silahkan ambik SK di Bagian Umum Fakultas <br />
+                                                            <?php
+                                                            } else {
+                                                            ?>
+                                                                <b style="color:red;">Ditolak</b> oleh Bagian Umum Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php
+                                                            if ($statussurat == 1) {
+                                                            ?>
+                                                                Silahkan Ambil SK di Bagian Umum Fakultas
+                                                            <?php
+                                                            } elseif ($statussurat == 2) {
+                                                            ?>
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan SK ini ?')" href="narasumber-hapus.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-trash"></i> Hapus
+                                                                </a>
+                                                            <?php
+                                                            } elseif ($statussurat == '-1') {
+                                                            ?>
+                                                                <a class="btn btn-info btn-lg btn-block" href="delegasi-anggota.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-check"></i> Lengkapi
+                                                                </a>
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="narasumber-hapus.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-trash"></i> Batalkan
+                                                                </a>
+                                                            <?php
+                                                            } else {
+                                                            ?>
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="narasumber-hapus.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-trash"></i> Batalkan
+                                                                </a>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                                ?>
+                                                <!-- /delegasi -->
+
                                             </tbody>
                                         </table>
                                     </div>

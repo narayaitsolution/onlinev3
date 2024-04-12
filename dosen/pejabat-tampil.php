@@ -134,7 +134,7 @@ $tahun = date('Y');
                                                                 <div class="col-sm-10">
                                                                     <select name="dosen" class="form-control">
                                                                         <?php
-                                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE hakakses='dosen' order by nama");
+                                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE hakakses='dosen' OR hakakses='tendik' order by nama");
                                                                         while ($ddosen = mysqli_fetch_array($qdosen)) {
                                                                             $namadosen = $ddosen['nama'];
                                                                         ?>

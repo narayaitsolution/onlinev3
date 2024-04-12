@@ -156,6 +156,37 @@
                             }
                             ?>
 
+                            <!-- SK kegiatan -->
+                            <li class="nav-item has-treeview menu-close">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-file-text"></i>
+                                    <p>Pengajuan SK <i class="right fas fa-angle-left"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="nav-icon fas fa-user"></i>
+                                            <p>SK Kepanitiaan</p>
+                                            <span class="badge badge-danger right">Baru</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="narasumber-isi.php" class="nav-link">
+                                            <i class="nav-icon fas fa-user-secret"></i>
+                                            <p>SK Narasumber</p>
+                                            <span class="badge badge-danger right">Baru</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="nav-icon fas fa-users"></i>
+                                            <p>SK Peserta</p>
+                                            <span class="badge badge-danger right">Baru</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <!-- surat keterangan -->
                             <?php
                             //cek status menu ijinlab
