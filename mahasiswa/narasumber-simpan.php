@@ -7,6 +7,7 @@ date_default_timezone_set("Asia/Jakarta");
 $tahun = date('Y');
 $tanggal = date('Y-m-d H:i:s');
 
+$prodi = $_SESSION['prodi'];
 $nim = $_SESSION['nip'];
 $namakegiatan = $_POST['namakegiatan'];
 $ormas = $_POST['ormas'];
@@ -25,9 +26,9 @@ $nipwd3 = $dwd3['nip'];
 //simpandata
 $jenissk = 'narasumber';
 $token = md5(uniqid());
-$stmt = $dbsurat->prepare("INSERT INTO sk (tanggal,nim,jenissk,namakegiatan,ormas,tema,verifikator1,verifikator2,token)
-                            VALUES(?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("sssssssss", $tanggal, $nim, $jenissk, $namakegiatan, $ormas, $tema, $nipwd3, $nipumum, $token);
+$stmt = $dbsurat->prepare("INSERT INTO sk (tanggal,prodi,nim,jenissk,namakegiatan,ormas,tema,verifikator1,verifikator2,token)
+                            VALUES(?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("ssssssssss", $tanggal, $prodi, $nim, $jenissk, $namakegiatan, $ormas, $tema, $nipwd3, $nipumum, $token);
 $stmt->execute();
 
 header("location:narasumber-data-isi.php?token=$token");

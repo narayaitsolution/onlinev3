@@ -1,36 +1,41 @@
 <?php
 session_start();
-require('../system/dbconn.php');
-require('../system/phpmailer/sendmail.php');
+require_once('../system/dbconn.php');
+require_once('../system/phpmailer/sendmail.php');
+
+$nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
+$token = mysqli_real_escape_string($dbsurat, $_POST['token']);
 
 date_default_timezone_set("Asia/Jakarta");
+$tgl = date('Y-m-d H:i:s');
 
-$nim = $_SESSION['nip'];
-$token = $_POST['token'];
+//update status validasi kaprodi
+$sql = mysqli_query($dbsurat, "UPDATE sk
+					SET tglverifikasi1 = '$tgl', 
+					verifikasi1 = '1'
+					WHERE token = '$token' AND verifikator1='$nip'");
 
-//updatestatussurat
-$qupdatestatus = mysqli_query($dbsurat, "UPDATE sk SET statussurat=0 WHERE token='$token' AND nim='$nim'");
-
-//kirim email ke wadek3
+//kirim email ke bagumum
 //cari email wadek3 dari NIP
 $sql2 = mysqli_query($dbsurat, "SELECT * FROM sk WHERE token='$token'");
 $dsql2 = mysqli_fetch_array($sql2);
-$nipwadek3 = $dsql2['verifikator1'];
-$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipwadek3'");
+$nipbagumum = $dsql2['verifikator2'];
+$jenissk = $dsql2['jenissk'];
+$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipbagumum'");
 $dsql3 = mysqli_fetch_array($sql3);
-$namawadek3 = $dsql3['nama'];
-$emailwadek3 = $dsql3['email'];
+$namabagumum = $dsql3['nama'];
+$emailbagumum = $dsql3['email'];
 
 //kirim email
-$subject = "Pengajuan SK Narasumber";
-$pesan = "Yth. " . $namawadek3 . "<br/>
+$subject = "Pengajuan SK " . $jenissk . ".";
+$pesan = "Yth. " . $namabagumum . "<br/>
         <br/>
 		Assalamualaikum wr. wb.
         <br />
 		<br />
 		Dengan hormat,
 		<br />
-        Terdapat pengajuan SK Narasumber di sistem SAINTEK e-Office.<br/>
+        Terdapat pengajuan SK " . $jenissk . " di sistem SAINTEK e-Office.<br/>
         Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
         <br/>
         <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
@@ -41,6 +46,6 @@ $pesan = "Yth. " . $namawadek3 . "<br/>
 		<br/>
         <br/>
         <b>SAINTEK e-Office</b>";
-sendmail($emailwadek3, $namawadek3, $subject, $pesan);
+sendmail($emailbagumum, $namabagumum, $subject, $pesan);
 
 header("location:index.php");

@@ -96,6 +96,7 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <hr>
+                                            <input type="hidden" name="prodi" value="<?= $prodi; ?>">
                                             <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')">Input Data Narasumber <i class="fa-solid fa-fast-forward"></i></button>
                                         </form>
                                     </div>

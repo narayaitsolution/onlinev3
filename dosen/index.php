@@ -1750,6 +1750,35 @@ $tahun = date('Y');
                                 }
                                 ?>
                                 <!-- /delegasi as WD-->
+
+                                <!-- SK Narsum-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE verifikator1='$nip' AND verifikasi1 = 0 AND statussurat=0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $nimmhs = $data['nim'];
+                                    $prodimhs = $data['prodi'];
+                                    $jenissk = $data['jenissk'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td>Pengajuan SK <?= $jenissk; ?></td>
+                                        <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="sknarsum-wd-tampil.php?token=<?= $token; ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /SK Narsum-->
                             </tbody>
                         </table>
                     </div>
