@@ -134,7 +134,6 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                 <a href="#" class="small-box-footer" onclick="alert('Jumlah Ijin Surat Keterangan Selesai')">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="row">
@@ -209,7 +208,26 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                 <a href="#" class="small-box-footer" onclick="alert('Jumlah Surat Ijin Lab Selesai')">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="row">
+                        <!-- Pengajuan SK Narasumber -->
+                        <?php
+                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat= 1 AND year(tanggal)=$tahun");
+                        $jnarsum = mysqli_num_rows($qnarsum);
+                        ?>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3><?= $jnarsum; ?> <sup style="font-size: 20px">SK Narasumber</sup></h3>
+                                    <p>Dalam proses</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-file-text"></i>
+                                </div>
+                                <a href="#" class="small-box-footer" onclick="alert('Jumlah Pengajuan SK Narasumber dalam proses')">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -552,6 +570,40 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                 ?>
                                 <!-- Ijin Lab. -->
 
+                                <!-- SK Narsum-->
+                                <?php
+                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat= 1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $jmldata = mysqli_num_rows($qnarsum);
+                                while ($data = mysqli_fetch_array($qnarsum)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $nim = $data['nim'];
+                                    $prodi = $data['prodi'];
+                                    $surat = 'SK Narasumber';
+                                    $verifikasi1 = $data['verifikasi1'];
+                                    $verifikator1 = $data['verifikator1'];
+                                    $verifikasi2 = $data['verifikasi2'];
+                                    $verifikator2 = $data['verifikator2'];
+                                    $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                        <td><?= namadosen($dbsurat, $nim); ?></td>
+                                        <td><?= $nim; ?></td>
+                                        <td><?= $prodi; ?></td>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="sknarsum-bagumum-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- SK Narsum -->
 
                             </tbody>
                         </table>

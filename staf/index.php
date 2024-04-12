@@ -111,12 +111,80 @@ $tahun = date('Y');
                 </div>
             </section>
 
+            <!-- tabel pengajuan mahasiswa -->
+            <?php
+            if ($jabatan == 'bagumum') {
+            ?>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- Pengajuan Mahasiswa -->
+                            <div class="col-sm">
+                                <div class="card card-success">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Pengajuan Surat Mahasiswa</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body">
+                                        <table id="example3" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <tr>
+                                                    <td style="text-align:center">No</td>
+                                                    <td style="text-align:center">Surat</td>
+                                                    <td style="text-align:center">Nama</td>
+                                                    <td style="text-align:center">Aksi</td>
+                                                    <td style="text-align:center">PRODI</td>
+                                                    <td style="text-align:center">Tgl. Pengajuan</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- SK Narsum-->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE verifikator2='$nip' AND verifikasi2 = 0 AND verifikasi1 = 1");
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tanggal'];
+                                                    $nimmhs = $data['nim'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $jenissk = $data['jenissk'];
+                                                    $token = $data['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td>Pengajuan SK <?= $jenissk; ?></td>
+                                                        <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                                        <td style="text-align: center;">
+                                                            <a class="btn btn-info btn-sm" href="sknarsum-bagumum-tampil.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /SK Narsum-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <?php
+            }
+            ?>
 
-            <!-- tabel pengajuan bawahan & mahasiswa -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- Pengajuan Mahasiswa -->
                         <?php
                         if ($jabatan == 'wadek3' or $jabatan == 'wadek2' or $jabatan == 'wadek1' or $jabatan == 'kaprodi' or $jabatan == 'kabag-tu') {
                         ?>

@@ -1,0 +1,574 @@
+<?php
+session_start();
+require('../system/dbconn.php');
+require('../system/myfunc.php');
+$user = $_SESSION['user'];
+$nip = $_SESSION['nip'];
+$nama = $_SESSION['nama'];
+$prodi = $_SESSION['prodi'];
+$hakakses = $_SESSION['hakakses'];
+$jabatan = $_SESSION['jabatan'];
+if ($_SESSION['jabatan'] != "bagumum") {
+    header("location:../deauth.php");
+}
+$tglsekarang = date('Y-m-d');
+$tahun = date('Y');
+$bulan = date('m');
+$no = 1;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SAINTEK e-Office</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
+    <link rel="stylesheet" href="../template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+        table,
+        th,
+        td {
+            border: none;
+            font-family: Cambria,
+                'MyCambria',
+                serif;
+
+        }
+
+        @font-face {
+            font-family: 'MyCambria';
+            src: url('../system/cambria.ttf') format('truetype');
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini text-sm">
+    <div class="wrapper">
+        <?php
+        require('navbar.php');
+        require('sidebar.php');
+        ?>
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+
+            <!-- ambil data SK dari database -->
+            <?php
+            $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
+            $qsk = mysqli_query($dbsurat, "SELECT * FROM sk WHERE token='$token' AND verifikasi1=1 AND verifikator2='$nip' AND verifikasi2=0");
+            $dsk = mysqli_fetch_array($qsk);
+            $tanggal = $dsk['tanggal'];
+            $prodi = $dsk['prodi'];
+            $nimmhs = $dsk['nim'];
+            $jenissk = $dsk['jenissk'];
+            $namakegiatan = $dsk['namakegiatan'];
+            $ormas = $dsk['ormas'];
+            $tema = $dsk['tema'];
+            $verifikator1 = $dsk['verifikator1'];
+            $verifikasi1 = $dsk['verifikasi1'];
+            $tglverifikasi1 = $dsk['tglverifikasi1'];
+            $keterangan = $dsk['keterangan'];
+            $token = $dsk['token'];
+            ?>
+
+            <!-- tabel pengajuan pribadi -->
+            <section class="content">
+                <!-- Pengajuan Surat Mahasiswa -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Draft SK</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="sknarsum-bagumum-setujui.php" method="POST">
+                            <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><img src="../system/uinlogo-bw.png" width="100px"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>SURAT KEPUTUSAN DEKAN</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>FAKULTAS SAINS DAN TEKNOLOGI</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>UNIVERSITAS ISLAM NEGERI MAULANA MALIK IBRAHIM MALANG</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>Nomor : <input type="number" name="nosurat" style="width: 7em" required>/FST/<?= $bulan; ?>/<?= $tahun; ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">Tentang</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>PENETAPAN NARASUMBER </b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>KEGIATAN <?= $namakegiatan; ?> </b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b><?= strtoupper($ormas); ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>FAKULTAS SAINS DAN TEKNOLOGI</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>UIN MAULANA MALIK IBRAHIM MALANG</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>TAHUN ANGGARAN <?= $tahun; ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- table body -->
+                            <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>DEKAN FAKULTAS SAINS DAN TEKNOLOGI</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>UNIVERSITAS ISLAM NEGERI MAULANA MALIK IBRAHIM MALANG</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Menimbang</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td style="vertical-align:top;">a.</td>
+                                        <td colspan="2" style="text-align: justify;">bahwa guna mendukung Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”, maka perlu adanya Narasumber;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;">b.</td>
+                                        <td colspan="2" style="text-align: justify;">bahwa berdasarkan poin a, maka perlu ditetapkan dengan Keputusan Dekan tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Mengingat</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td style="vertical-align:top;">1.</td>
+                                        <td colspan="2" style="text-align: justify;">Undang-undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b></b></td>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;">2.</td>
+                                        <td colspan="2" style="text-align: justify;">Keputusan Menteri Agama Republik Indonesia Nomor 8 tahun 2013 tentang Tata kerja Universitas Islam Negeri Maulana Malik Ibrahim Malang;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b></b></td>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;">3.</td>
+                                        <td colspan="2" style="text-align: justify;">Peraturan Menteri Agama Republik Indonesia Nomor 15 Tahun 2017 tentang Statuta Universitas Islam Negeri Maulana Malik Ibrahim Malang;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b></b></td>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;">4.</td>
+                                        <td colspan="2" style="text-align: justify;">Surat Keputusan Dekan Fakultas Sains dan Teknologi Nomor Un.03.6/PP.01.2/2452/2017 tentang Pedoman Pendidikan Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang Tahun Akademik 2017/2018;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b></b></td>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;">5.</td>
+                                        <td colspan="2" style="text-align: justify;">Surat Keputusan Rektor Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor 1676 Tahun 2021 tanggal 12 Mei 2021 tentang Pedoman Pendidikan Universitas Islam Negeri Maulana Malik Ibrahim Malang.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Memperhatikan</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td style="vertical-align:top;">1.</td>
+                                        <td colspan="2" style="text-align: justify;">Surat Permohonan dari <?= $ormas; ?> tanggal <?= tgl_indo($tanggal); ?>;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;"></td>
+                                        <td style="vertical-align:top;">2.</td>
+                                        <td colspan="2" style="text-align: justify;">Disposisi Pimpinan tanggal <?= tgl_indo($tanggal); ?>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>MEMUTUSKAN</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Menetapkan</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;"><b>Keputusan Dekan Fakultas Sains dan Teknologi tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Pertama</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;">Menetapkan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”, seperti yang tersebut dalam daftar keputusan ini.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Kedua</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;">Menugaskan kepada Narasumber sebagaimana dimaksud dalam daftar terlampir.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Ketiga</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;">Segala pembiayaan yang dikeluarkan sebagai akibat pelaksanaan Keputusan ini dibebankan kepada <br><textarea name="pembiayaan" rows="2" class="form-control">DIPA Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor DIPA- 025.04.2.423812/2023 Tanggal 30 November 2024.</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;"><b>Keempat</b></td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;">Keputusan ini berlaku Sejak tanggal ditetapkan dengan ketentuan apabila dikemudian hari terdapat kekeliruan dalam penetapannya akan diadakan perbaikan sebagaimana mestinya.</textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- table footer -->
+                            <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">Ditetapkan di Malang</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">Pada tanggal <?= tgl_indo($tglverifikasi1); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">DEKAN,</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">SRI HARINI</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- table tembusan -->
+                            <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5"><b><u>Tembusan disampaikan kepada :</u></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">1. Yth. Para Wakil Dekan;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">2. Yth. Para Ketua Jurusan;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">3. Yth. Bendahara Pembantu Pengeluaran;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">4. Yang bersangkutan;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">5. Arsip;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td style="vertical-align:top;">Lampiran</td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;">Surat Keputusan Dekan Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;">Nomor</td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;"><?= $keterangan; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;">Tanggal</td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;"><?= tgl_indo($tglverifikasi1); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="vertical-align:top;">Tentang</td>
+                                        <td style="vertical-align:top;">:</td>
+                                        <td colspan="3" style="text-align: justify;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>PENETAPAN NARASUMBER </b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>KEGIATAN <?= $namakegiatan; ?> </b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b><?= strtoupper($ormas); ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>FAKULTAS SAINS DAN TEKNOLOGI</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>UIN MAULANA MALIK IBRAHIM MALANG</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;"><b>TAHUN ANGGARAN <?= $tahun; ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- table narasumber -->
+                            <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <td style="border: 1px solid;text-align: center;"><b>NO</b></td>
+                                        <td style="border: 1px solid;text-align: center;"><b>NAMA</b></td>
+                                        <td style="border: 1px solid;text-align: center;"><b>MATERI</b></td>
+                                        <td style="border: 1px solid;text-align: center;"><b>JADWAL</b></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    $qnarasumber = mysqli_query($dbsurat, "SELECT * FROM sknarsum WHERE token='$token'");
+                                    while ($dnarasumber = mysqli_fetch_array($qnarasumber)) {
+                                        $namanarsum = $dnarasumber['nama'];
+                                        $materi = $dnarasumber['materi'];
+                                        $jadwal = $dnarasumber['jadwal'];
+                                    ?>
+                                        <tr>
+                                            <td style="border: 1px solid;"><?= $no; ?></td>
+                                            <td style="border: 1px solid;"><?= $namanarsum; ?></td>
+                                            <td style="border: 1px solid;"><?= $materi; ?></td>
+                                            <td style="border: 1px solid;"><?= tgljam_indo($jadwal); ?></td>
+                                        <tr>
+                                        <?php
+                                        $no++;
+                                    }
+                                        ?>
+                                </tbody>
+                            </table>
+                            <!-- table ttd lampiran -->
+                            <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">Ditetapkan di Malang</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">Pada tanggal <?= tgl_indo($tglverifikasi1); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">DEKAN,</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">SRI HARINI</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60%">&nbsp;</td>
+                                        <td width="40%">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <div class=" row">
+                                <div class="col-2">
+                                    <a href="index.php" class="btn btn-lg btn-block btn-secondary"><i class="fas fa-backward"></i> Kembali</a>
+                                </div>
+                                <div class="col">
+                                    <input type="hidden" name="token" value="<?= $token; ?>">
+                                    <button type="submit" class="btn btn-lg btn-block btn-success" onclick="return confirm ('Apakah anda sudah melakukan pengecekan terhadap dokumen ini ?')"><i class="fas fa-save"></i> SIMPAN</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    <?php
+    require('footer.php');
+    ?>
+
+    <script src="../template/plugins/jquery/jquery.min.js"></script>
+    <script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../template/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../template/plugins/jszip/jszip.min.js"></script>
+    <script src="../template/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../template/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="../template/dist/js/adminlte.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": false,
+                "info": false,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+
+</html>
