@@ -55,7 +55,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Pengajuan SK Panitia</h1>
+                            <h1>Pengajuan SK Peserta</h1>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Input Data Panitia</h3>
+                                    <h3 class="card-title">Input Data Peserta</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -116,7 +116,7 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="skpanitia-data-simpan.php" id="my-form">
+                                        <form role="form" method="post" action="skpeserta-data-simpan.php" id="my-form">
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">NIM</label>
                                                 <div class="col">
@@ -129,29 +129,23 @@ $no = 1;
                                                     <input type="text" class="form-control" id="namaanggota" name="namaanggota" required>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="siepanitia" class="col-sm-2 col-form-label">Seksi Kepanitiaan</label>
-                                                <div class="col">
-                                                    <input type="text" class="form-control" id="siepanitia" name="siepanitia" required>
-                                                </div>
-                                            </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
-                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block"> <i class="fa fa-users"></i> Tambah Panitia</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block"> <i class="fa fa-users"></i> Tambah Peserta</button>
                                         </form>
                                         <hr>
-                                        <form role="form" method="post" action="skpanitia-data-upload.php" enctype="multipart/form-data" id="my-form">
+                                        <form role="form" method="post" action="skpeserta-data-upload.php" enctype="multipart/form-data" id="my-form">
                                             <div class="form-group row">
-                                                <label for="filepanitia" class="col-sm-2 col-form-label">Upload File</label>
+                                                <label for="filepeserta" class="col-sm-2 col-form-label">Upload File</label>
                                                 <div class="col-sm-8">
-                                                    <input type="file" class="form-control" id="filepanitia" name="filepanitia" accept=".csv">
-                                                    <small style="color: red;">Gunakan File Template (File CSV)</small>
+                                                    <input type="file" class="form-control" id="filepeserta" name="filepeserta" accept=".csv">
+                                                    <small style="color: red;">Gunakan File Template (File .csv)</small>
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <a href="../system/templatepanitia.csv" class="btn btn-primary btn-block"><i class="fa fa-download"></i> Template File</a>
+                                                    <a href="../system/templatepeserta.csv" class="btn btn-primary btn-block"><i class="fa fa-download"></i> Template File</a>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
-                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block" onclick="return confirm ('Data Panitia akan dihapus dan diganti dengan data di file ini')"><i class="fa fa-upload"></i> Upload Daftar Panitia</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block" onclick="return confirm ('Data Panitia akan dihapus dan diganti dengan data di file ini')"><i class="fa fa-upload"></i> Upload Daftar Peserta</button>
                                         </form>
                                     </div>
                                 </div>
@@ -168,7 +162,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Daftar Panitia</h3>
+                                    <h3 class="card-title">Daftar Peserta</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -178,29 +172,26 @@ $no = 1;
                                         <table id="example2" class="table table-bordered table-hover text-sm">
                                             <thead>
                                                 <th width="5%" style="text-align: center;">No.</th>
-                                                <th width="20%" style="text-align: center;">Nama</th>
+                                                <th style="text-align: center;">Nama</th>
                                                 <th style="text-align: center;">NIM</th>
-                                                <th style="text-align: center;">Seksi Kepanitiaan</th>
                                                 <th width="5%" style="text-align: center;">Aksi</th>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                 $no = 1;
-                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM skpanitia WHERE token='$token'");
-                                                $no = 1;
-                                                while ($q = mysqli_fetch_array($dataanggota)) {
+                                                $datapeserta = mysqli_query($dbsurat, "SELECT * FROM skpeserta WHERE token='$token'");
+                                                while ($q = mysqli_fetch_array($datapeserta)) {
                                                     $nodata = $q['no'];
-                                                    $nimpanitia = $q['nim'];
-                                                    $namapanitia = $q['nama'];
-                                                    $siepanitia = $q['siepanitia'];
+                                                    $nimpeserta = $q['nim'];
+                                                    $namapeserta = $q['nama'];
+                                                    $token = $q['token'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
-                                                        <td><?= $namapanitia; ?></td>
-                                                        <td><?= $nimpanitia; ?></td>
-                                                        <td><?= $siepanitia; ?></td>
+                                                        <td><?= $namapeserta; ?></td>
+                                                        <td><?= $nimpeserta; ?></td>
                                                         <td>
-                                                            <form action="skpanitia-data-hapus.php" method="POST" id="my-form">
+                                                            <form action="skpeserta-data-hapus.php" method="POST" id="my-form">
                                                                 <input type="hidden" name="nodata" value="<?= $nodata; ?>">
                                                                 <input type="hidden" name="token" value="<?= $token; ?>">
                                                                 <button type="submit" id="btn-submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus panitia ini ?');"><i class="fa fa-trash"></i></button>
@@ -216,7 +207,7 @@ $no = 1;
                                     </div>
                                 </div>
                             </div>
-                            <a href="skpanitia-ajukan.php?token=<?= $token; ?>" class="btn btn-success btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN</a>
+                            <a href="skpeserta-ajukan.php?token=<?= $token; ?>" class="btn btn-success btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN</a>
                         </div>
                     </div>
                 </div>

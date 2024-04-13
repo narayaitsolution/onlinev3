@@ -67,7 +67,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan SK Narasumber</h3>
+                                    <h3 class="card-title">Data Kegiatan</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>

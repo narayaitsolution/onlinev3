@@ -178,7 +178,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="skpeserta-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-users"></i>
                                             <p>SK Peserta</p>
                                             <span class="badge badge-danger right">Baru</span>

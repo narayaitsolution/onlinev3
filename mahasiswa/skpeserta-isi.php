@@ -54,7 +54,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Pengajuan SK Panitia</h1>
+                            <h1>Pengajuan SK Peserta</h1>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ $no = 1;
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="skpanitia-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
+                                        <form action="skpeserta-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Nama Kegiatan</label>
                                                 <div class="col-sm-9">
@@ -97,7 +97,7 @@ $no = 1;
                                             </div>
                                             <hr>
                                             <input type="hidden" name="prodi" value="<?= $prodi; ?>">
-                                            <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')">Input Data Narasumber <i class="fa-solid fa-fast-forward"></i></button>
+                                            <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')">Input Data Peserta <i class="fa-solid fa-fast-forward"></i></button>
                                         </form>
                                     </div>
                                 </div>
