@@ -54,7 +54,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Pengajuan SK Narasumber</h1>
+                            <h1>Pengajuan SK Panitia</h1>
                         </div>
                     </div>
                 </div>
@@ -137,23 +137,23 @@ $no = 1;
                                                 <textarea class="form-control" name="tema" rows="3" readonly> <?= $tema; ?></textarea>
                                             </div>
                                         </div>
-                                        <!-- nara sumber -->
+                                        <!-- panitia -->
                                         <div class="card card-info">
                                             <div class="card-header">
-                                                <h3 class="card-title">Daftar Panitia</h3>
+                                                <h3 class="card-title">Data Panitia</h3>
                                                 <div class="card-tools">
                                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="card-body p-0">
                                                 <div class="card-body">
-                                                    <table id="example2" class="table table-bordered table-hover text-sm">
+                                                    <table id="example1" class="table table-bordered table-hover text-sm">
                                                         <thead>
                                                             <tr>
                                                                 <th width="5%" style="text-align: center;">No</th>
                                                                 <th style="text-align: center;">Nama</th>
-                                                                <th style="text-align: center;">Materi</th>
-                                                                <th style="text-align: center;">Seksi Panitia</th>
+                                                                <th style="text-align: center;">NIM</th>
+                                                                <th style="text-align: center;">Seksi Kepanitiaan</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -195,7 +195,7 @@ $no = 1;
                                             <hr>
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="sknarsum-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> SETUJUI</button>
+                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="skpanitia-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> SETUJUI</button>
                                                 </div>
                                                 <div class="col-6">
                                                     <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> TOLAK</button>
@@ -216,7 +216,7 @@ $no = 1;
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                            <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="sknarsum-wd-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
+                                                            <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="skpanitia-wd-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -258,8 +258,7 @@ $no = 1;
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "autoWidth": false
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": false,
