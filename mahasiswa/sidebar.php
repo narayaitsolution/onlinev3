@@ -164,14 +164,14 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="skpanitia-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-user"></i>
                                             <p>SK Kepanitiaan</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="narasumber-isi.php" class="nav-link">
+                                        <a href="sknarasumber-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-user-secret"></i>
                                             <p>SK Narasumber</p>
                                             <span class="badge badge-danger right">Baru</span>

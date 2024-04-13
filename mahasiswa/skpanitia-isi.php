@@ -54,7 +54,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Pengajuan SK Narasumber</h1>
+                            <h1>Pengajuan SK Panitia</h1>
                         </div>
                     </div>
                 </div>
@@ -67,14 +67,14 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan SK Narasumber</h3>
+                                    <h3 class="card-title">Pengajuan SK Panitia</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="narasumber-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
+                                        <form action="skpanitia-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Nama Kegiatan</label>
                                                 <div class="col-sm-9">

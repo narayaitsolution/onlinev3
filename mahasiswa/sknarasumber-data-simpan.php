@@ -20,4 +20,4 @@ if (!empty($namanarsum) && !empty($materi) && !empty($jadwal)) {
     $stmt->bind_param("ssss", $token, $namanarsum, $materi, $jadwal);
     $stmt->execute();
 }
-header("location:narasumber-data-isi.php?token=$token");
+header("location:sknarasumber-data-isi.php?token=$token");

@@ -1,7 +1,5 @@
 <?php
 session_start();
-require('../system/dbconn.php');
-require('../system/myfunc.php');
 $user = $_SESSION['user'];
 $nim = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
@@ -11,6 +9,8 @@ $jabatan = $_SESSION['jabatan'];
 if ($_SESSION['hakakses'] != "mahasiswa") {
     header("location:../deauth.php");
 }
+require('../system/dbconn.php');
+require('../system/myfunc.php');
 
 $token = $_GET['token'];
 
@@ -55,7 +55,7 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Pengajuan SK Narasumber</h1>
+                            <h1>Pengajuan SK Panitia</h1>
                         </div>
                     </div>
                 </div>
@@ -68,17 +68,29 @@ $no = 1;
                         <div class="col">
 
                             <?php
-                            if (isset($_GET['hasil'])) {
-                                if ($_GET['hasil'] == 'ok') {
+                            if (isset($_GET['ket'])) {
+                                if ($_GET['ket'] == 'novaksin') {
                             ?>
-                                    <div class="alert alert-success alert-dismissible fade show">
-                                        Penambahan narasumber berhasil
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>ERROR!</strong> Anggota belum upload bukti vaksin!!
                                     </div>
                                 <?php
-                                } elseif ($_GET['hasil'] == 'notok') {
+                                } elseif ($_GET['ket'] == 'notfound') {
                                 ?>
                                     <div class="alert alert-danger alert-dismissible fade show">
-                                        <strong>ERROR!</strong> Penambahan narasumber gagal!!
+                                        <strong>ERROR!</strong> data tidak ditemukan!!
+                                    </div>
+                                <?php
+                                } elseif ($_GET['ket'] == 'notok') {
+                                ?>
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        <strong>ERROR!</strong> penambahan anggota gagal!!
+                                    </div>
+                                <?php
+                                } elseif ($_GET['ket'] == 'ok') {
+                                ?>
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        <strong>SUKSES</strong> penambahan anggota berhasil
                                     </div>
                             <?php
                                 }
@@ -96,7 +108,7 @@ $no = 1;
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Input Data Narasumber</h3>
+                                    <h3 class="card-title">Input Data Panitia</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
@@ -104,27 +116,42 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" id="my-form">
+                                        <form role="form" method="post" action="skpanitia-data-simpan.php" id="my-form">
                                             <div class="form-group row">
-                                                <label for="nimanggota" class="col-sm-2 col-form-label">Nama</label>
+                                                <label for="nimanggota" class="col-sm-2 col-form-label">NIM</label>
                                                 <div class="col">
-                                                    <input type="text" class="form-control" name="namanarsum" required>
+                                                    <input type="number" class="form-control" id="nimanggota" name="nimanggota" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="nimanggota" class="col-sm-2 col-form-label">Materi</label>
+                                                <label for="namaanggota" class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col">
-                                                    <textarea class="form-control" name="materi" rows="3" required></textarea>
+                                                    <input type="text" class="form-control" id="namaanggota" name="namaanggota" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="nimanggota" class="col-sm-2 col-form-label">Jadwal</label>
+                                                <label for="siepanitia" class="col-sm-2 col-form-label">Seksi Kepanitiaan</label>
                                                 <div class="col">
-                                                    <input type="datetime-local" class="form-control" name="jadwal" required>
+                                                    <input type="text" class="form-control" id="siepanitia" name="siepanitia" required>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
-                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block" formaction="narasumber-data-simpan.php"><i class=" fa fa-plus"></i> Tambah</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block"> <i class="fa fa-users"></i> Tambah Panitia</button>
+                                        </form>
+                                        <hr>
+                                        <form role="form" method="post" action="skpanitia-data-upload.php" enctype="multipart/form-data" id="my-form">
+                                            <div class="form-group row">
+                                                <label for="filepanitia" class="col-sm-2 col-form-label">Upload File</label>
+                                                <div class="col-sm-8">
+                                                    <input type="file" class="form-control" id="filepanitia" name="filepanitia" accept=".csv">
+                                                    <small style="color: red;">Gunakan File Template (File CSV)</small>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <a href="../system/template.csv" class="btn btn-primary btn-block"><i class="fa fa-download"></i> Template File</a>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="token" value="<?= $token; ?>" />
+                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block" onclick="return confirm ('Data Panitia akan dihapus dan diganti dengan data di file ini')"><i class="fa fa-upload"></i> Upload Daftar Panitia</button>
                                         </form>
                                     </div>
                                 </div>
@@ -134,67 +161,62 @@ $no = 1;
                 </div>
             </section>
 
-            <!-- narasumber -->
+            <!-- Panitia -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Daftar Narasumber</h3>
+                                    <h3 class="card-title">Daftar Panitia</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                     </div>
                                 </div>
-                                <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="narasumber-data-simpan.php">
-                                            <table id="example2" class="table table-bordered table-hover text-sm">
-                                                <thead>
-                                                    <th width="5%" style="text-align: center;">No.</th>
-                                                    <th width="20%" style="text-align: center;">Nama</th>
-                                                    <th style="text-align: center;">Materi</th>
-                                                    <th style="text-align: center;">Jadwal</th>
-                                                    <th width="5%" style="text-align: center;">Aksi</th>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    $dataanggota = mysqli_query($dbsurat, "SELECT * FROM sknarsum WHERE token='$token'");
-                                                    while ($q = mysqli_fetch_array($dataanggota)) {
-                                                        $nama = $q['nama'];
-                                                        $materi = $q['materi'];
-                                                        $jadwal = $q['jadwal'];
-                                                        $token = $q['token'];
-                                                    ?>
-                                                        <tr>
-                                                            <td><?= $no; ?></td>
-                                                            <td><?= $nama; ?></td>
-                                                            <td><?= $materi; ?></td>
-                                                            <td><?= tgljam_indo($jadwal); ?></td>
-                                                            <td>
-                                                                <form action="narasumber-data-hapus.php" method="POST" id="my-form">
-                                                                    <input type="hidden" name="token" value="<?= $token; ?>">
-                                                                    <input type="hidden" name="namanarsum" value="<?= $nama; ?>">
-                                                                    <button type="submit" id="btn-submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus narasumber ini ?');"><i class="fa fa-trash"></i></button>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                        $no++;
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                            <form action="narasumber-ajukan.php" method="POST" id="my-form">
-                                                <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN SK</a>
-                                            </form>
-                                        </form>
+                                        <table id="example2" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <th width="5%" style="text-align: center;">No.</th>
+                                                <th width="20%" style="text-align: center;">Nama</th>
+                                                <th style="text-align: center;">NIM</th>
+                                                <th style="text-align: center;">Seksi Kepanitiaan</th>
+                                                <th width="5%" style="text-align: center;">Aksi</th>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM skpanitia WHERE token='$token'");
+                                                $no = 1;
+                                                while ($q = mysqli_fetch_array($dataanggota)) {
+                                                    $nodata = $q['no'];
+                                                    $nimpanitia = $q['nim'];
+                                                    $namapanitia = $q['nama'];
+                                                    $siepanitia = $q['siepanitia'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $namapanitia; ?></td>
+                                                        <td><?= $nimpanitia; ?></td>
+                                                        <td><?= $siepanitia; ?></td>
+                                                        <td>
+                                                            <form action="skpanitia-data-hapus.php" method="POST" id="my-form">
+                                                                <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                                                                <input type="hidden" name="token" value="<?= $token; ?>">
+                                                                <button type="submit" id="btn-submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus panitia ini ?');"><i class="fa fa-trash"></i></button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
+                            <a href="skpanitia-ajukan.php?token=<?= $token; ?>" class="btn btn-success btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN</a>
                         </div>
                     </div>
                 </div>

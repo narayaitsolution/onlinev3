@@ -24,11 +24,11 @@ $dwd3 = mysqli_fetch_array($qwd3);
 $nipwd3 = $dwd3['nip'];
 
 //simpandata
-$jenissk = 'narasumber';
+$jenissk = 'panitia';
 $token = md5(uniqid());
 $stmt = $dbsurat->prepare("INSERT INTO sk (tanggal,prodi,nim,jenissk,namakegiatan,ormas,tema,verifikator1,verifikator2,token)
                             VALUES(?,?,?,?,?,?,?,?,?,?)");
 $stmt->bind_param("ssssssssss", $tanggal, $prodi, $nim, $jenissk, $namakegiatan, $ormas, $tema, $nipwd3, $nipumum, $token);
 $stmt->execute();
 
-header("location:narasumber-data-isi.php?token=$token");
+header("location:skpanitia-data-isi.php?token=$token");
