@@ -211,15 +211,15 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                         </div>
                     </div>
                     <div class="row">
-                        <!-- Pengajuan SK Narasumber -->
+                        <!-- Pengajuan SK -->
                         <?php
-                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat= 0 AND year(tanggal)=$tahun");
+                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE statussurat= 0 AND year(tanggal)=$tahun");
                         $jnarsum = mysqli_num_rows($qnarsum);
                         ?>
                         <div class="col-lg-3 col-6">
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3><?= $jnarsum; ?> <sup style="font-size: 20px">SK Narasumber</sup></h3>
+                                    <h3><?= $jnarsum; ?> <sup style="font-size: 20px">SK</sup></h3>
                                     <p>Dalam proses</p>
                                 </div>
                                 <div class="icon">
@@ -778,6 +778,56 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                 }
                                 ?>
                                 <!-- SK Narsum -->
+
+                                <!-- SK Panitia-->
+                                <?php
+                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='panitia' AND statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $jmldata = mysqli_num_rows($qnarsum);
+                                while ($data = mysqli_fetch_array($qnarsum)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $nim = $data['nim'];
+                                    $prodi = $data['prodi'];
+                                    $surat = 'SK Panitia';
+                                    $verifikasi1 = $data['verifikasi1'];
+                                    $verifikator1 = $data['verifikator1'];
+                                    $verifikasi2 = $data['verifikasi2'];
+                                    $verifikator2 = $data['verifikator2'];
+                                    $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                        <td><?= namadosen($dbsurat, $nim); ?></td>
+                                        <td><?= $nim; ?></td>
+                                        <td><?= $prodi; ?></td>
+                                        <td><?= namadosen($dbsurat, $verifikator1); ?>
+                                            <?php if ($verifikasi1 == 1) {
+                                                echo "&#9989;";
+                                            } else {
+                                                echo "&#10067;";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><?= namadosen($dbsurat, $verifikator2); ?>
+                                            <?php if ($verifikasi2 == 1) {
+                                                echo "&#9989;";
+                                            } else {
+                                                echo "&#10067;";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- SK Panitia -->
 
 
                             </tbody>

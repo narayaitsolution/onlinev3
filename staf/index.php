@@ -144,7 +144,7 @@ $tahun = date('Y');
                                             <tbody>
                                                 <!-- SK Narsum-->
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE verifikator2='$nip' AND verifikasi2 = 0 AND verifikasi1 = 1");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND verifikator2='$nip' AND verifikasi2 = 0 AND verifikasi1 = 1");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
                                                     $tanggal = $data['tanggal'];
@@ -170,6 +170,35 @@ $tahun = date('Y');
                                                 }
                                                 ?>
                                                 <!-- /SK Narsum-->
+
+                                                <!-- SK panitia-->
+                                                <?php
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='panitia' AND verifikator2='$nip' AND verifikasi2 = 0 AND verifikasi1 = 1");
+                                                while ($data = mysqli_fetch_array($query)) {
+                                                    $nodata = $data['no'];
+                                                    $tanggal = $data['tanggal'];
+                                                    $nimmhs = $data['nim'];
+                                                    $prodimhs = $data['prodi'];
+                                                    $jenissk = $data['jenissk'];
+                                                    $token = $data['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td>Pengajuan SK <?= $jenissk; ?></td>
+                                                        <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                                        <td style="text-align: center;">
+                                                            <a class="btn btn-info btn-sm" href="skpanitia-bagumum-tampil.php?token=<?= $token; ?>">
+                                                                <i class="fas fa-eye"></i> Lihat
+                                                            </a>
+                                                        </td>
+                                                        <td><?= $prodimhs; ?></td>
+                                                        <td><?= tgl_indo($tanggal); ?></td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                                <!-- /SK panitia-->
                                             </tbody>
                                         </table>
                                     </div>
