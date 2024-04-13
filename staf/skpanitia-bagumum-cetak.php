@@ -50,6 +50,13 @@ $keterangan = $dsk['keterangan'];
 $pembiayaan = $dsk['pembiayaan'];
 $token = $dsk['token'];
 $tahunsurat = date('Y', strtotime($tglverifikasi1));
+
+//buat qrcode
+include "../system/phpqrcode/qrlib.php";
+$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$codeContents = $actual_link;
+$namafile = uniqid();
+QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
 ?>
 
 <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
@@ -249,19 +256,12 @@ $tahunsurat = date('Y', strtotime($tglverifikasi1));
             <td width="40%">DEKAN,</td>
         </tr>
         <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
+            <td width="60%" class="text-center">
+                <small><i>Scan QRCode ini </i></small><br />
+                <img src="../qrcode/<?php echo $namafile; ?>.png" width="70" /><br />
+                <small><i>untuk verifikasi</i></small><br />
+                <small><i>keaslian surat</i></small><br />
+            </td>
             <td width="40%">&nbsp;</td>
         </tr>
         <tr>
@@ -354,7 +354,7 @@ $tahunsurat = date('Y', strtotime($tglverifikasi1));
     </tbody>
 </table>
 <!-- table Panitia -->
-<table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
+<table style="width:90%; margin-left:auto;margin-right:auto;" cellspacing="0">
     <thead>
         <tr>
             <td style="border: 1px solid;text-align: center;" width="5%"><b>NO</b></td>
@@ -404,19 +404,12 @@ $tahunsurat = date('Y', strtotime($tglverifikasi1));
             <td width="40%">DEKAN,</td>
         </tr>
         <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
+            <td width="60%" class="text-center">
+                <small><i>Scan QRCode ini </i></small><br />
+                <img src="../qrcode/<?php echo $namafile; ?>.png" width="70" /><br />
+                <small><i>untuk verifikasi</i></small><br />
+                <small><i>keaslian surat</i></small><br />
+            </td>
             <td width="40%">&nbsp;</td>
         </tr>
         <tr>
