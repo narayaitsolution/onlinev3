@@ -640,6 +640,41 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                 ?>
                                 <!-- SK Panitia -->
 
+                                <!-- SK peserta-->
+                                <?php
+                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='peserta' AND statussurat= 1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $jmldata = mysqli_num_rows($qnarsum);
+                                while ($data = mysqli_fetch_array($qnarsum)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $nim = $data['nim'];
+                                    $prodi = $data['prodi'];
+                                    $surat = 'SK Peserta';
+                                    $verifikasi1 = $data['verifikasi1'];
+                                    $verifikator1 = $data['verifikator1'];
+                                    $verifikasi2 = $data['verifikasi2'];
+                                    $verifikator2 = $data['verifikator2'];
+                                    $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                        <td><?= namadosen($dbsurat, $nim); ?></td>
+                                        <td><?= $nim; ?></td>
+                                        <td><?= $prodi; ?></td>
+                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="skpeserta-bagumum-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                <i class="fas fa-print"></i> Cetak
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- SK peserta -->
+
                             </tbody>
                         </table>
                     </div>

@@ -829,6 +829,56 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                 ?>
                                 <!-- SK Panitia -->
 
+                                <!-- SK Peserta-->
+                                <?php
+                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='peserta' AND statussurat= 0 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $jmldata = mysqli_num_rows($qnarsum);
+                                while ($data = mysqli_fetch_array($qnarsum)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $nim = $data['nim'];
+                                    $prodi = $data['prodi'];
+                                    $surat = 'SK Panitia';
+                                    $verifikasi1 = $data['verifikasi1'];
+                                    $verifikator1 = $data['verifikator1'];
+                                    $verifikasi2 = $data['verifikasi2'];
+                                    $verifikator2 = $data['verifikator2'];
+                                    $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?= $surat; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
+                                        <td><?= namadosen($dbsurat, $nim); ?></td>
+                                        <td><?= $nim; ?></td>
+                                        <td><?= $prodi; ?></td>
+                                        <td><?= namadosen($dbsurat, $verifikator1); ?>
+                                            <?php if ($verifikasi1 == 1) {
+                                                echo "&#9989;";
+                                            } else {
+                                                echo "&#10067;";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><?= namadosen($dbsurat, $verifikator2); ?>
+                                            <?php if ($verifikasi2 == 1) {
+                                                echo "&#9989;";
+                                            } else {
+                                                echo "&#10067;";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- SK Peserta -->
+
 
                             </tbody>
                         </table>
