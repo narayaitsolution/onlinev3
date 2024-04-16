@@ -120,7 +120,7 @@ $no = 1;
                                             <div class="form-group row">
                                                 <label for="nimanggota" class="col-sm-2 col-form-label">Jadwal</label>
                                                 <div class="col">
-                                                    <input type="datetime-local" class="form-control" name="jadwal" required>
+                                                    <input type="date" class="form-control" name="jadwal" required>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
@@ -149,49 +149,47 @@ $no = 1;
                                 <?php $no = 1; ?>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form role="form" method="post" action="narasumber-data-simpan.php">
-                                            <table id="example2" class="table table-bordered table-hover text-sm">
-                                                <thead>
-                                                    <th width="5%" style="text-align: center;">No.</th>
-                                                    <th width="20%" style="text-align: center;">Nama</th>
-                                                    <th style="text-align: center;">Materi</th>
-                                                    <th style="text-align: center;">Jadwal</th>
-                                                    <th width="5%" style="text-align: center;">Aksi</th>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    $dataanggota = mysqli_query($dbsurat, "SELECT * FROM sknarsum WHERE token='$token'");
-                                                    while ($q = mysqli_fetch_array($dataanggota)) {
-                                                        $nodata = $q['no'];
-                                                        $nama = $q['nama'];
-                                                        $materi = $q['materi'];
-                                                        $jadwal = $q['jadwal'];
-                                                        $token = $q['token'];
-                                                    ?>
-                                                        <tr>
-                                                            <td><?= $no; ?></td>
-                                                            <td><?= $nama; ?></td>
-                                                            <td><?= $materi; ?></td>
-                                                            <td><?= tgljam_indo($jadwal); ?></td>
-                                                            <td>
-                                                                <form action="sknarasumber-data-hapus.php" method="POST" id="my-form">
-                                                                    <input type="hidden" name="token" value="<?= $token; ?>">
-                                                                    <input type="hidden" name="nodata" value="<?= $nodata; ?>">
-                                                                    <button type="submit" id="btn-submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus narasumber ini ?');"><i class="fa fa-trash"></i></button>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    <?php
-                                                        $no++;
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                            <form action="sknarasumber-ajukan.php" method="POST" id="my-form">
-                                                <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN SK</a>
-                                            </form>
+                                        <table id="example2" class="table table-bordered table-hover text-sm">
+                                            <thead>
+                                                <th width="5%" style="text-align: center;">No.</th>
+                                                <th width="20%" style="text-align: center;">Nama</th>
+                                                <th style="text-align: center;">Materi</th>
+                                                <th style="text-align: center;">Jadwal</th>
+                                                <th width="5%" style="text-align: center;">Aksi</th>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM sknarsum WHERE token='$token'");
+                                                while ($q = mysqli_fetch_array($dataanggota)) {
+                                                    $nodata = $q['no'];
+                                                    $nama = $q['nama'];
+                                                    $materi = $q['materi'];
+                                                    $jadwal = $q['jadwal'];
+                                                    $token = $q['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $materi; ?></td>
+                                                        <td><?= tgl_indo($jadwal); ?></td>
+                                                        <td>
+                                                            <form action="sknarasumber-data-hapus.php" method="POST" id="my-form">
+                                                                <input type="hidden" name="token" value="<?= $token; ?>">
+                                                                <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                                                                <button type="submit" id="btn-submit" class="btn btn-danger btn-sm" onclick="return confirm ('Yakin menghapus narasumber ini ?');"><i class="fa fa-trash"></i></button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $no++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                        <form action="sknarasumber-ajukan.php" method="POST" id="my-form">
+                                            <input type="hidden" name="token" value="<?= $token; ?>">
+                                            <button type="submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN SK</a>
                                         </form>
                                     </div>
                                 </div>

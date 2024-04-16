@@ -92,7 +92,7 @@ $no = 1;
                                         <div class="form-group row">
                                             <label for="dosen" class="col-sm-2 col-form-label">Tanggal Pengajuan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="namamhs" value="<?= tgljam_indo($tanggal); ?>" readonly>
+                                                <input type="text" class="form-control" name="namamhs" value="<?= tgl_indo($tanggal); ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
