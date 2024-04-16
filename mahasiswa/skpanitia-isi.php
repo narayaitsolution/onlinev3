@@ -85,7 +85,7 @@ $no = 1;
                                                 <label class="col-sm-3 col-form-label">Organisasi Mahasiswa</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" name="ormas" required>
-                                                    <small style="color: red;">Nama HMJ / Organisasi Mahasiswa yang mengajukan SK</small>
+                                                    <small style="color: red;">Nama HMPS / Organisasi Mahasiswa yang mengajukan SK</small>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

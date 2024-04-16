@@ -504,338 +504,344 @@ $tahun = date('Y');
             ?>
 
             <!-- tabel pengajuan pribadi -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Surat Pribadi</h3>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+            <?php
+            if ($hakakses == 'tendik' && $user <> 'bagianumum') {
+            ?>
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Pengajuan Surat Pribadi</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php $no = 1; ?>
-                                <div class="card-body p-0">
-                                    <div class="card-body">
-                                        <table id="example2" class="table table-bordered table-hover text-sm">
-                                            <thead>
-                                                <tr>
-                                                    <th width="5%" style="text-align: center;">No</th>
-                                                    <th width="20%" style="text-align: center;">Jenis Surat</th>
-                                                    <th style="text-align: center;">Status Surat</th>
-                                                    <th width="20%" style="text-align: center;">Keterangan</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- surat tugas-->
-                                                <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE nip='$nip' ORDER BY tglsurat DESC");
-                                                while ($data = mysqli_fetch_array($query)) {
-                                                    $nodata = $data['no'];
-                                                    $jenissurat = 'Surat Tugas';
-                                                    $keterangan = $data['keterangan'];
-                                                    $validasi1 = $data['validasi1'];
-                                                    $validator1 = $data['validator1'];
-                                                    $validasi2 = $data['validasi2'];
-                                                    $validator2 = $data['validator2'];
-                                                    $statussurat = $data['statussurat'];
-                                                    $keterangan = $data['keterangan'];
-                                                    $token = $data['token'];
-                                                ?>
+                                    <?php $no = 1; ?>
+                                    <div class="card-body p-0">
+                                        <div class="card-body">
+                                            <table id="example2" class="table table-bordered table-hover text-sm">
+                                                <thead>
                                                     <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= $jenissurat; ?></td>
-                                                        <td>
-                                                            <?php
-                                                            if ($validasi1 == 0) {
-                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
-                                                            } elseif ($validasi1 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
-                                                            } elseif ($validasi1 == 2) {
-                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
-                                                            }
-                                                            ?>
-                                                            <br />
-                                                            <?php
-                                                            if ($validasi2 == 0) {
-                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
-                                                            } elseif ($validasi2 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
-                                                            } elseif ($validasi2 == 2) {
-                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php
-                                                            if ($statussurat == 2 or $statussurat == 0) {
-                                                            ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="surattugas-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Hapus
-                                                                </a>
-                                                            <?php
-                                                            } elseif ($statussurat == 1) {
-                                                            ?>
-                                                                <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak
-                                                                </a>
-                                                                <a class="btn btn-primary btn-sm" href="surattugas-bukti.php?token=<?= $token; ?>">
-                                                                    <i class="fa fa-upload" aria-hidden="true"></i> Upload Bukti
-                                                                </a>
-                                                            <?php
-                                                            } elseif ($statussurat == 3) {
-                                                            ?>
-                                                                <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak
-                                                                </a>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </td>
+                                                        <th width="5%" style="text-align: center;">No</th>
+                                                        <th width="20%" style="text-align: center;">Jenis Surat</th>
+                                                        <th style="text-align: center;">Status Surat</th>
+                                                        <th width="20%" style="text-align: center;">Keterangan</th>
                                                     </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
-                                                <!-- Cuti-->
-                                                <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE nip='$nip' ORDER BY tglizin1 DESC");
-                                                while ($data = mysqli_fetch_array($query)) {
-                                                    $nodata = $data['no'];
-                                                    $jenissurat = 'Surat Cuti';
-                                                    $keterangan = $data['keterangan'];
-                                                    $validasi1 = $data['validasi1'];
-                                                    $validator1 = $data['validator1'];
-                                                    $validasi2 = $data['validasi2'];
-                                                    $validator2 = $data['validator2'];
-                                                    $keterangan = $data['keterangan'];
-                                                    $token = $data['token'];
-                                                    $statussurat = $data['statussurat'];
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= $jenissurat; ?></td>
-                                                        <td>
-                                                            <?php
-                                                            if ($validasi1 == 0) {
-                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
-                                                            } elseif ($validasi1 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
-                                                            } elseif ($validasi1 == 2) {
-                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
-                                                            }
-                                                            ?>
-                                                            <br />
-                                                            <?php
-                                                            if ($validasi2 == 0) {
-                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
-                                                            } elseif ($validasi2 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
-                                                            } elseif ($validasi2 == 2) {
-                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php
-                                                            if ($statussurat == 2 or $statussurat == 0) {
-                                                            ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Hapus
-                                                                </a>
-                                                            <?php
-                                                            } elseif ($statussurat == 1) {
-                                                            ?>
-                                                                <a class="btn btn-success btn-sm" href="cuti-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak
-                                                                </a>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- surat tugas-->
+                                                    <?php
+                                                    $query = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE nip='$nip' ORDER BY tglsurat DESC");
+                                                    while ($data = mysqli_fetch_array($query)) {
+                                                        $nodata = $data['no'];
+                                                        $jenissurat = 'Surat Tugas';
+                                                        $keterangan = $data['keterangan'];
+                                                        $validasi1 = $data['validasi1'];
+                                                        $validator1 = $data['validator1'];
+                                                        $validasi2 = $data['validasi2'];
+                                                        $validator2 = $data['validator2'];
+                                                        $statussurat = $data['statussurat'];
+                                                        $keterangan = $data['keterangan'];
+                                                        $token = $data['token'];
+                                                    ?>
+                                                        <tr>
+                                                            <td><?= $no; ?></td>
+                                                            <td><?= $jenissurat; ?></td>
+                                                            <td>
+                                                                <?php
+                                                                if ($validasi1 == 0) {
+                                                                    echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
+                                                                } elseif ($validasi1 == 1) {
+                                                                    echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
+                                                                } elseif ($validasi1 == 2) {
+                                                                    echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                                }
+                                                                ?>
+                                                                <br />
+                                                                <?php
+                                                                if ($validasi2 == 0) {
+                                                                    echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
+                                                                } elseif ($validasi2 == 1) {
+                                                                    echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
+                                                                } elseif ($validasi2 == 2) {
+                                                                    echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php
+                                                                if ($statussurat == 2 or $statussurat == 0) {
+                                                                ?>
+                                                                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="surattugas-hapus.php?token=<?= $token; ?>">
+                                                                        <i class="fas fa-trash"></i> Hapus
+                                                                    </a>
+                                                                <?php
+                                                                } elseif ($statussurat == 1) {
+                                                                ?>
+                                                                    <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                        <i class="fas fa-print"></i> Cetak
+                                                                    </a>
+                                                                    <a class="btn btn-primary btn-sm" href="surattugas-bukti.php?token=<?= $token; ?>">
+                                                                        <i class="fa fa-upload" aria-hidden="true"></i> Upload Bukti
+                                                                    </a>
+                                                                <?php
+                                                                } elseif ($statussurat == 3) {
+                                                                ?>
+                                                                    <a class="btn btn-success btn-sm" href="surattugas-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                        <i class="fas fa-print"></i> Cetak
+                                                                    </a>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $no++;
+                                                    }
+                                                    ?>
+                                                    <!-- Cuti-->
+                                                    <?php
+                                                    $query = mysqli_query($dbsurat, "SELECT * FROM cuti WHERE nip='$nip' ORDER BY tglizin1 DESC");
+                                                    while ($data = mysqli_fetch_array($query)) {
+                                                        $nodata = $data['no'];
+                                                        $jenissurat = 'Surat Cuti';
+                                                        $keterangan = $data['keterangan'];
+                                                        $validasi1 = $data['validasi1'];
+                                                        $validator1 = $data['validator1'];
+                                                        $validasi2 = $data['validasi2'];
+                                                        $validator2 = $data['validator2'];
+                                                        $keterangan = $data['keterangan'];
+                                                        $token = $data['token'];
+                                                        $statussurat = $data['statussurat'];
+                                                    ?>
+                                                        <tr>
+                                                            <td><?= $no; ?></td>
+                                                            <td><?= $jenissurat; ?></td>
+                                                            <td>
+                                                                <?php
+                                                                if ($validasi1 == 0) {
+                                                                    echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
+                                                                } elseif ($validasi1 == 1) {
+                                                                    echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
+                                                                } elseif ($validasi1 == 2) {
+                                                                    echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                                }
+                                                                ?>
+                                                                <br />
+                                                                <?php
+                                                                if ($validasi2 == 0) {
+                                                                    echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
+                                                                } elseif ($validasi2 == 1) {
+                                                                    echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
+                                                                } elseif ($validasi2 == 2) {
+                                                                    echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php
+                                                                if ($statussurat == 2 or $statussurat == 0) {
+                                                                ?>
+                                                                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?token=<?= $token; ?>">
+                                                                        <i class="fas fa-trash"></i> Hapus
+                                                                    </a>
+                                                                <?php
+                                                                } elseif ($statussurat == 1) {
+                                                                ?>
+                                                                    <a class="btn btn-success btn-sm" href="cuti-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                        <i class="fas fa-print"></i> Cetak
+                                                                    </a>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $no++;
+                                                    }
+                                                    ?>
 
-                                                <!-- Izin-->
-                                                <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE nip='$nip' ORDER BY tglizin1 DESC");
-                                                while ($data = mysqli_fetch_array($query)) {
-                                                    $nodata = $data['no'];
-                                                    $jenissurat = 'Surat Izin';
-                                                    $keterangan = $data['keterangan'];
-                                                    $validasi1 = $data['validasi1'];
-                                                    $validator1 = $data['validator1'];
-                                                    $validasi2 = $data['validasi2'];
-                                                    $validator2 = $data['validator2'];
-                                                    $keterangan = $data['keterangan'];
-                                                    $token = $data['token'];
-                                                    $statussurat = $data['statussurat'];
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= $jenissurat; ?></td>
-                                                        <td>
-                                                            <?php
-                                                            if ($validasi1 == 0) {
-                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
-                                                            } elseif ($validasi1 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
-                                                            } elseif ($validasi1 == 2) {
-                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
-                                                            }
-                                                            ?>
-                                                            <br />
-                                                            <?php
-                                                            if ($validasi2 == 0) {
-                                                                echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
-                                                            } elseif ($validasi2 == 1) {
-                                                                echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
-                                                            } elseif ($validasi2 == 2) {
-                                                                echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php
-                                                            if ($statussurat == 2 or $statussurat == 0) {
-                                                            ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Hapus
-                                                                </a>
-                                                            <?php
-                                                            } elseif ($statussurat == 1) {
-                                                            ?>
-                                                                <a class="btn btn-success btn-sm" href="izin-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak
-                                                                </a>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
+                                                    <!-- Izin-->
+                                                    <?php
+                                                    $query = mysqli_query($dbsurat, "SELECT * FROM izin WHERE nip='$nip' ORDER BY tglizin1 DESC");
+                                                    while ($data = mysqli_fetch_array($query)) {
+                                                        $nodata = $data['no'];
+                                                        $jenissurat = 'Surat Izin';
+                                                        $keterangan = $data['keterangan'];
+                                                        $validasi1 = $data['validasi1'];
+                                                        $validator1 = $data['validator1'];
+                                                        $validasi2 = $data['validasi2'];
+                                                        $validator2 = $data['validator2'];
+                                                        $keterangan = $data['keterangan'];
+                                                        $token = $data['token'];
+                                                        $statussurat = $data['statussurat'];
+                                                    ?>
+                                                        <tr>
+                                                            <td><?= $no; ?></td>
+                                                            <td><?= $jenissurat; ?></td>
+                                                            <td>
+                                                                <?php
+                                                                if ($validasi1 == 0) {
+                                                                    echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator1);
+                                                                } elseif ($validasi1 == 1) {
+                                                                    echo 'telah disetujui ' . namadosen($dbsurat, $validator1);
+                                                                } elseif ($validasi1 == 2) {
+                                                                    echo 'ditolak oleh ' . namadosen($dbsurat, $validator1) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                                }
+                                                                ?>
+                                                                <br />
+                                                                <?php
+                                                                if ($validasi2 == 0) {
+                                                                    echo 'menunggu verifikasi ' . namadosen($dbsurat, $validator2);
+                                                                } elseif ($validasi2 == 1) {
+                                                                    echo 'telah disetujui ' . namadosen($dbsurat, $validator2);
+                                                                } elseif ($validasi2 == 2) {
+                                                                    echo 'ditolak oleh ' . namadosen($dbsurat, $validator2) . 'dengan alasan <b>' . $keterangan . '</b>';
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php
+                                                                if ($statussurat == 2 or $statussurat == 0) {
+                                                                ?>
+                                                                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="izin-hapus.php?token=<?= $token; ?>">
+                                                                        <i class="fas fa-trash"></i> Hapus
+                                                                    </a>
+                                                                <?php
+                                                                } elseif ($statussurat == 1) {
+                                                                ?>
+                                                                    <a class="btn btn-success btn-sm" href="izin-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                        <i class="fas fa-print"></i> Cetak
+                                                                    </a>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $no++;
+                                                    }
+                                                    ?>
 
-                                                <!-- pengajuan WFH-->
-                                                <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE nip='$nip' and year(tglsurat) = $tahun ORDER BY tglwfh1 DESC");
-                                                while ($data = mysqli_fetch_array($query)) {
-                                                    $nodata = $data['no'];
-                                                    $tglwfh1 = $data['tglwfh1'];
-                                                    $tglwfh2 = $data['tglwfh2'];
-                                                    $tglwfh3 = $data['tglwfh3'];
-                                                    $tglwfh4 = $data['tglwfh4'];
-                                                    $tglwfh5 = $data['tglwfh5'];
-                                                    $verifikasiprodi = $data['verifikasiprodi'];
-                                                    $verifikatorprodi = $data['verifikatorprodi'];
-                                                    $verifikasifakultas = $data['verifikasifakultas'];
-                                                    $verifikatorfakultas = $data['verifikatorfakultas'];
-                                                    $jenissurat = 'Izin WFH';
-                                                    $keterangan = $data['keterangan'];
-                                                    $token = $data['token'];
-                                                    if (date($tglwfh5) != 0) {
-                                                        $wfhselesai = $tglwfh5;
-                                                    } else {
-                                                        if (date($tglwfh4) != 0) {
-                                                            $wfhselesai = $tglwfh4;
+                                                    <!-- pengajuan WFH-->
+                                                    <?php
+                                                    $query = mysqli_query($dbsurat, "SELECT * FROM wfh WHERE nip='$nip' and year(tglsurat) = $tahun ORDER BY tglwfh1 DESC");
+                                                    while ($data = mysqli_fetch_array($query)) {
+                                                        $nodata = $data['no'];
+                                                        $tglwfh1 = $data['tglwfh1'];
+                                                        $tglwfh2 = $data['tglwfh2'];
+                                                        $tglwfh3 = $data['tglwfh3'];
+                                                        $tglwfh4 = $data['tglwfh4'];
+                                                        $tglwfh5 = $data['tglwfh5'];
+                                                        $verifikasiprodi = $data['verifikasiprodi'];
+                                                        $verifikatorprodi = $data['verifikatorprodi'];
+                                                        $verifikasifakultas = $data['verifikasifakultas'];
+                                                        $verifikatorfakultas = $data['verifikatorfakultas'];
+                                                        $jenissurat = 'Izin WFH';
+                                                        $keterangan = $data['keterangan'];
+                                                        $token = $data['token'];
+                                                        if (date($tglwfh5) != 0) {
+                                                            $wfhselesai = $tglwfh5;
                                                         } else {
-                                                            if (date($tglwfh3) != 0) {
-                                                                $wfhselesai = $tglwfh3;
+                                                            if (date($tglwfh4) != 0) {
+                                                                $wfhselesai = $tglwfh4;
                                                             } else {
-                                                                if (date($tglwfh2) != 0) {
-                                                                    $wfhselesai = $tglwfh2;
+                                                                if (date($tglwfh3) != 0) {
+                                                                    $wfhselesai = $tglwfh3;
+                                                                } else {
+                                                                    if (date($tglwfh2) != 0) {
+                                                                        $wfhselesai = $tglwfh2;
+                                                                    }
                                                                 }
                                                             }
                                                         }
+                                                    ?>
+                                                        <tr>
+                                                            <td><?= $no; ?></td>
+                                                            <td><?= $jenissurat; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php
+                                                                if ($verifikasiprodi == 0) {
+                                                                ?>
+                                                                    Menunggu verifikasi <?= namadosen($dbsurat, $verifikatorprodi); ?>
+                                                                <?php
+                                                                };
+                                                                ?>
+                                                                <?php
+                                                                if ($verifikasiprodi == 1) {
+                                                                ?>
+                                                                    <a class="btn btn-success btn-sm" href="wfh-cetakrk.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                        <i class="fas fa-print"></i> Cetak Rencana Kerja
+                                                                    </a>
+                                                                <?php
+                                                                };
+                                                                ?>
+                                                                <?php
+                                                                if ($verifikasiprodi == 2) {
+                                                                ?>
+                                                                    Ditolak oleh <?= namadosen($dbsurat, $verifikatorprodi); ?>
+                                                                <?php
+                                                                };
+                                                                ?>
+                                                                <br />
+                                                                <?php
+                                                                if ($verifikasifakultas == 0) {
+                                                                ?>
+                                                                    Menunggu verifikasi <?= namadosen($dbsurat, $verifikatorfakultas); ?>
+                                                                <?php
+                                                                };
+                                                                ?>
+                                                                <?php
+                                                                if ($verifikasifakultas == 1) {
+                                                                ?>
+                                                                    <a class="btn btn-success btn-sm" href="wfh-cetakst.php?nodata=<?php echo $nodata; ?>" target="_blank">
+                                                                        <i class="fas fa-print"></i> Cetak Surat Tugas
+                                                                    </a>
+                                                                <?php
+                                                                };
+                                                                ?>
+                                                                <?php
+                                                                if ($verifikasifakultas == 2) {
+                                                                ?>
+                                                                    Ditolak oleh <?= namadosen($dbsurat, $verifikatorfakultas); ?>
+                                                                <?php
+                                                                };
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= $keterangan; ?>
+                                                                <br />
+                                                                <?php
+                                                                if ($verifikasifakultas <> 1) {
+                                                                ?>
+                                                                    <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="wfh-hapus.php?token=<?= $token; ?>">
+                                                                        <i class="fas fa-trash"></i> Hapus
+                                                                    </a>
+                                                                <?php
+                                                                };
+                                                                ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                        $no++;
                                                     }
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $no; ?></td>
-                                                        <td><?= $jenissurat; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php
-                                                            if ($verifikasiprodi == 0) {
-                                                            ?>
-                                                                Menunggu verifikasi <?= namadosen($dbsurat, $verifikatorprodi); ?>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                            <?php
-                                                            if ($verifikasiprodi == 1) {
-                                                            ?>
-                                                                <a class="btn btn-success btn-sm" href="wfh-cetakrk.php?nodata=<?php echo $nodata; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak Rencana Kerja
-                                                                </a>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                            <?php
-                                                            if ($verifikasiprodi == 2) {
-                                                            ?>
-                                                                Ditolak oleh <?= namadosen($dbsurat, $verifikatorprodi); ?>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                            <br />
-                                                            <?php
-                                                            if ($verifikasifakultas == 0) {
-                                                            ?>
-                                                                Menunggu verifikasi <?= namadosen($dbsurat, $verifikatorfakultas); ?>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                            <?php
-                                                            if ($verifikasifakultas == 1) {
-                                                            ?>
-                                                                <a class="btn btn-success btn-sm" href="wfh-cetakst.php?nodata=<?php echo $nodata; ?>" target="_blank">
-                                                                    <i class="fas fa-print"></i> Cetak Surat Tugas
-                                                                </a>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                            <?php
-                                                            if ($verifikasifakultas == 2) {
-                                                            ?>
-                                                                Ditolak oleh <?= namadosen($dbsurat, $verifikatorfakultas); ?>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= $keterangan; ?>
-                                                            <br />
-                                                            <?php
-                                                            if ($verifikasifakultas <> 1) {
-                                                            ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="wfh-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Hapus
-                                                                </a>
-                                                            <?php
-                                                            };
-                                                            ?>
-                                                        </td>
-                                                    </tr>
-                                                <?php
-                                                    $no++;
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php
+            }
+            ?>
 
         </div>
     </div>

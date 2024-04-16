@@ -140,7 +140,7 @@ $no = 1;
                                         <!-- nara sumber -->
                                         <div class="card card-info">
                                             <div class="card-header">
-                                                <h3 class="card-title">Daftar Panitia</h3>
+                                                <h3 class="card-title">Daftar Narasumber</h3>
                                                 <div class="card-tools">
                                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                                 </div>
@@ -153,30 +153,30 @@ $no = 1;
                                                                 <th width="5%" style="text-align: center;">No</th>
                                                                 <th style="text-align: center;">Nama</th>
                                                                 <th style="text-align: center;">Materi</th>
-                                                                <th style="text-align: center;">Seksi Panitia</th>
+                                                                <th style="text-align: center;">Jadwal</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php
                                                             $nourut = 1;
-                                                            $qnarsum = mysqli_query($dbsurat, "SELECT * FROM skpanitia WHERE token='$token'");
+                                                            $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sknanarsum WHERE token='$token'");
                                                             while ($dnarsum = mysqli_fetch_array($qnarsum)) {
-                                                                $namapanitia = $dnarsum['nama'];
-                                                                $nimpanitia = $dnarsum['nim'];
-                                                                $siepanitia = $dnarsum['siepanitia'];
+                                                                $namanarsum = $dnarsum['nama'];
+                                                                $materi = $dnarsum['materi'];
+                                                                $jadwal = $dnarsum['jadwal'];
                                                             ?>
                                                                 <tr>
                                                                     <td>
                                                                         <?= $nourut; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?= $namapanitia; ?>
+                                                                        <?= $namanarsum; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?= $nimpanitia; ?>
+                                                                        <?= $materi; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?= $siepanitia ?>
+                                                                        <?= tgl_indo($jadwal); ?>
                                                                     </td>
                                                                 </tr>
                                                             <?php

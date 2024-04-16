@@ -60,11 +60,23 @@
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="sktampil.php" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-print"></i>
+                                    <p>
+                                        Cetak SK
+                                        <span class="right badge badge-danger"></span>
+                                    </p>
+                                </a>
+                            </li>
                         </ul>
                     <?php
                 }
                     ?>
-
+                    <!-- surat pribadi -->
+                    <?php
+                    if ($hakakses == 'tendik' && $user <> 'bagianumum') {
+                    ?>
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa-regular fa-file-lines"></i>
@@ -133,7 +145,10 @@
                             </li>
                         </ul>
                     </li>
-                    <!--
+                <?php
+                    }
+                ?>
+                <!--
                 <li class="nav-item">
                     <a href="kinerja-tampil.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-person-digging"></i>
@@ -144,22 +159,22 @@
                     </a>
                 </li>
                             -->
-                    <?php
-                    if ($jabatan == 'kabag-tu') {
-                    ?>
-                        <li class="nav-item">
-                            <a href="pengajuanbawahan-tampil.php" class="nav-link">
-                                <i class="nav-icon fa-solid fa-envelope-open"></i>
-                                <p>
-                                    Surat Bawahan Disetujui
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                    <!--
+                <?php
+                if ($jabatan == 'kabag-tu') {
+                ?>
+                    <li class="nav-item">
+                        <a href="pengajuanbawahan-tampil.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-envelope-open"></i>
+                            <p>
+                                Surat Bawahan Disetujui
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+                <!--
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa-solid fa-square-envelope"></i>
@@ -170,151 +185,151 @@
                     </a>
                 </li>
                 -->
-                    <?php
-                    if ($jabatan == 'kasubag-akademik') {
-                    ?>
-                        <li class="nav-item">
-                            <a href="../dosen/delegasi-rekap.php" class="nav-link">
-                                <i class="nav-icon fa-solid fas fa-plane-departure"></i>
-                                <p>
-                                    Rekap Delegasi
-                                    <span class="right badge badge-danger">Baru</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pengajuanmhs-tampil.php" class="nav-link">
-                                <i class="nav-icon fa-solid fa-square-envelope"></i>
-                                <p>
-                                    Data Surat Mahasiswa
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="penghargaan-tampil.php" class="nav-link">
-                                <i class="nav-icon fa-solid fa-trophy"></i>
-                                <p>
-                                    Pengajuan Penghargaan
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="skripsi-progress.php" class="nav-link">
-                                <i class="nav-icon fa-solid fa-graduation-cap"></i>
-                                <p>
-                                    Progress Skripsi
-                                    <span class="right badge badge-danger"></span>
-                                </p>
-                            </a>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                    <!-- menu operator SKPI -->
-                    <?php
-                    $qoperator = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
-                    $jmldata = mysqli_num_rows($qoperator);
-                    if ($jmldata == 1) {
-                    ?>
-                        <li class="nav-item has-treeview menu-close">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-graduation-cap"></i>
-                                <p>
-                                    SKPI
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <?php
-                                $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Rekap Pengajuan SKPI'");
-                                $dmenu = mysqli_fetch_array($qmenu);
-                                $statussurat = $dmenu['status'];
-                                if ($statussurat == 1) {
-                                ?>
-                                    <li class="nav-item">
-                                        <a href="skpi-rekap.php" class="nav-link">
-                                            <i class="nav-icon fas fa-graduation-cap"></i>
-                                            <p>
-                                                Rekap Pengajuan SKPI
-                                                <!--<span class="right badge badge-danger">BARU</span>-->
-                                            </p>
-                                        </a>
-                                    </li>
-                                <?php
-                                }
-                                ?>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <?php
-                                $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Isi data SKPI'");
-                                $dmenu = mysqli_fetch_array($qmenu);
-                                $statussurat = $dmenu['status'];
-                                if ($statussurat == 1) {
-                                ?>
-                                    <li class="nav-item">
-                                        <a href="skpi-isi.php" class="nav-link">
-                                            <i class="nav-icon fas fa-graduation-cap"></i>
-                                            <p>
-                                                Isi data SKPI
-                                            </p>
-                                        </a>
-                                    </li>
-                                <?php
-                                }
-                                ?>
-                            </ul>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                    <!-- menu operator SKRIPSI -->
-                    <?php
-                    $qoperator = mysqli_query($dbsurat, "SELECT * FROM skripsi WHERE operator='$nip'");
-                    $jmldata = mysqli_num_rows($qoperator);
-                    if ($jmldata > 0) {
-                    ?>
-                        <li class="nav-item has-treeview menu-close">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-graduation-cap"></i>
-                                <p>
-                                    SKRIPSI
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
+                <?php
+                if ($jabatan == 'kasubag-akademik') {
+                ?>
+                    <li class="nav-item">
+                        <a href="../dosen/delegasi-rekap.php" class="nav-link">
+                            <i class="nav-icon fa-solid fas fa-plane-departure"></i>
+                            <p>
+                                Rekap Delegasi
+                                <span class="right badge badge-danger">Baru</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pengajuanmhs-tampil.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-square-envelope"></i>
+                            <p>
+                                Data Surat Mahasiswa
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="penghargaan-tampil.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-trophy"></i>
+                            <p>
+                                Pengajuan Penghargaan
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="skripsi-progress.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-graduation-cap"></i>
+                            <p>
+                                Progress Skripsi
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+                <!-- menu operator SKPI -->
+                <?php
+                $qoperator = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
+                $jmldata = mysqli_num_rows($qoperator);
+                if ($jmldata == 1) {
+                ?>
+                    <li class="nav-item has-treeview menu-close">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                SKPI
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <?php
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Rekap Pengajuan SKPI'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                            ?>
                                 <li class="nav-item">
-                                    <a href="skripsi-isi.php" class="nav-link">
-                                        <i class="nav-icon fas fa-users"></i>
+                                    <a href="skpi-rekap.php" class="nav-link">
+                                        <i class="nav-icon fas fa-graduation-cap"></i>
                                         <p>
-                                            Progress Mahasiswa
+                                            Rekap Pengajuan SKPI
+                                            <!--<span class="right badge badge-danger">BARU</span>-->
                                         </p>
                                     </a>
                                 </li>
-                            </ul>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                    <li class="nav-item">
-                        <a href="https://helpdesk.uin-malang.ac.id" class="nav-link" target="_blank">
-                            <i class="nav-icon fa-solid fa-bullhorn"></i>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <?php
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Isi data SKPI'");
+                            $dmenu = mysqli_fetch_array($qmenu);
+                            $statussurat = $dmenu['status'];
+                            if ($statussurat == 1) {
+                            ?>
+                                <li class="nav-item">
+                                    <a href="skpi-isi.php" class="nav-link">
+                                        <i class="nav-icon fas fa-graduation-cap"></i>
+                                        <p>
+                                            Isi data SKPI
+                                        </p>
+                                    </a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </li>
+                <?php
+                }
+                ?>
+                <!-- menu operator SKRIPSI -->
+                <?php
+                $qoperator = mysqli_query($dbsurat, "SELECT * FROM skripsi WHERE operator='$nip'");
+                $jmldata = mysqli_num_rows($qoperator);
+                if ($jmldata > 0) {
+                ?>
+                    <li class="nav-item has-treeview menu-close">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
-                                Laporkan Keluhan
-                                <span class="right badge badge-danger"></span>
+                                SKRIPSI
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="skripsi-isi.php" class="nav-link">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Progress Mahasiswa
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="https://wa.me/6281234302099" target="_blank" class="nav-link">
-                            <i class="nav-icon fa-brands fa-whatsapp"></i>
-                            <p>
-                                Laporkan Error
-                                <span class="right badge badge-danger"></span>
-                            </p>
-                        </a>
-                    </li>
+                <?php
+                }
+                ?>
+                <li class="nav-item">
+                    <a href="https://helpdesk.uin-malang.ac.id" class="nav-link" target="_blank">
+                        <i class="nav-icon fa-solid fa-bullhorn"></i>
+                        <p>
+                            Laporkan Keluhan
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://wa.me/6281234302099" target="_blank" class="nav-link">
+                        <i class="nav-icon fa-brands fa-whatsapp"></i>
+                        <p>
+                            Laporkan Error
+                            <span class="right badge badge-danger"></span>
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

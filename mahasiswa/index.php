@@ -1835,15 +1835,15 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi1 == 0) {
                                                             ?>
-                                                                <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?><br />
+                                                                <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?><br />
                                                             <?php
                                                             } elseif ($verifikasi1 == 1) {
                                                             ?>
-                                                                <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> <br />
+                                                                <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?> <br />
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                                <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
                                                             };
                                                             ?>
@@ -1923,15 +1923,15 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi1 == 0) {
                                                             ?>
-                                                                <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?><br />
+                                                                <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?><br />
                                                             <?php
                                                             } elseif ($verifikasi1 == 1) {
                                                             ?>
-                                                                <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> <br />
+                                                                <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?> <br />
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                                <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
                                                             };
                                                             ?>
@@ -2011,15 +2011,15 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi1 == 0) {
                                                             ?>
-                                                                <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?><br />
+                                                                <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?><br />
                                                             <?php
                                                             } elseif ($verifikasi1 == 1) {
                                                             ?>
-                                                                <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> <br />
+                                                                <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?> <br />
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                                <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
                                                             };
                                                             ?>

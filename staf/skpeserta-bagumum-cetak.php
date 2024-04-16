@@ -40,8 +40,8 @@ $tanggal = $dsk['tanggal'];
 $prodi = $dsk['prodi'];
 $nimmhs = $dsk['nim'];
 $jenissk = $dsk['jenissk'];
-$namakegiatan = $dsk['namakegiatan'];
-$ormas = $dsk['ormas'];
+$namakegiatan = strtoupper($dsk['namakegiatan']);
+$ormas = strtoupper($dsk['ormas']);
 $tema = $dsk['tema'];
 $verifikator1 = $dsk['verifikator1'];
 $verifikasi1 = $dsk['verifikasi1'];
@@ -49,6 +49,7 @@ $tglverifikasi1 = $dsk['tglverifikasi1'];
 $keterangan = $dsk['keterangan'];
 $pembiayaan = $dsk['pembiayaan'];
 $token = $dsk['token'];
+$cetak = $dsk['cetak'];
 $tahunsurat = date('Y', strtotime($tglverifikasi1));
 
 //buat qrcode
@@ -57,6 +58,10 @@ $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $codeContents = $actual_link;
 $namafile = uniqid();
 QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
+
+//update jumlah cetak
+$jmlcetak = $cetak + 1;
+$qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE token='$token'");
 ?>
 
 <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
@@ -334,7 +339,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             <td colspan="3" style="text-align: justify;">&nbsp;</td>
         </tr>
         <tr>
-            <td colspan="5" style="text-align: center;"><b>PENETAPAN PESERTA KEGIATAN <?= $namakegiatan; ?></b></td>
+            <td colspan="5" style="text-align: center;"><b>PENETAPAN PESERTA KEGIATAN <?= strtoupper($namakegiatan); ?></b></td>
         </tr>
         <tr>
             <td colspan="5" style="text-align: center;"><b><?= strtoupper($ormas); ?></b></td>

@@ -130,9 +130,10 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="siepanitia" class="col-sm-2 col-form-label">Seksi Kepanitiaan</label>
+                                                <label for="siepanitia" class="col-sm-2 col-form-label">Jabatan Kepanitiaan</label>
                                                 <div class="col">
                                                     <input type="text" class="form-control" id="siepanitia" name="siepanitia" required>
+                                                    <small style="color: red;">Jabatan Kepanitiaan ditulis lengkap (contoh : Seksi Konsumsi)</small>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
