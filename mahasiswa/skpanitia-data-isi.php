@@ -137,7 +137,7 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
-                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block"> <i class="fa fa-users"></i> Tambah Panitia</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block"> <i class="fa fa-users"></i> Tambah Panitia</button>
                                         </form>
                                         <hr>
                                         <form role="form" method="post" action="skpanitia-data-upload.php" enctype="multipart/form-data" id="my-form">
@@ -148,11 +148,11 @@ $no = 1;
                                                     <small style="color: red;">Gunakan File Template (File CSV)</small>
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <a href="../system/templatepanitia.csv" class="btn btn-primary btn-block"><i class="fa fa-download"></i> Template File</a>
+                                                    <a href="../system/templatepanitia.csv" class="btn btn-info btn-block"><i class="fa fa-download"></i> Template File</a>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
-                                            <button type="submit" id="btn-submit" class="btn btn-info btn-lg btn-block" onclick="return confirm ('Data Panitia akan dihapus dan diganti dengan data di file ini')"><i class="fa fa-upload"></i> Upload Daftar Panitia</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" onclick="return confirm ('Data Panitia akan dihapus dan diganti dengan data di file ini')"><i class="fa fa-upload"></i> Upload Daftar Panitia</button>
                                         </form>
                                     </div>
                                 </div>
@@ -187,9 +187,10 @@ $no = 1;
                                             <tbody>
                                                 <?php
                                                 $no = 1;
-                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM skpanitia WHERE token='$token'");
+                                                $datapanitia = mysqli_query($dbsurat, "SELECT * FROM skpanitia WHERE token='$token'");
+                                                $jpanitia = mysqli_num_rows($datapanitia);
                                                 $no = 1;
-                                                while ($q = mysqli_fetch_array($dataanggota)) {
+                                                while ($q = mysqli_fetch_array($datapanitia)) {
                                                     $nodata = $q['no'];
                                                     $nimpanitia = $q['nim'];
                                                     $namapanitia = $q['nama'];
@@ -217,7 +218,17 @@ $no = 1;
                                     </div>
                                 </div>
                             </div>
-                            <a href="skpanitia-ajukan.php?token=<?= $token; ?>" class="btn btn-success btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN</a>
+                            <?php
+                            if ($jpanitia > 0) {
+                            ?>
+                                <a href="skpanitia-ajukan.php?token=<?= $token; ?>" class="btn btn-success btn-block btn-lg" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN</a>
+                            <?php
+                            } else {
+                            ?>
+                                <a href="" class="btn btn-secondary btn-block btn-lg" onclick="alert ('Data panitia belum terisi!!')"> <i class="fa fa-upload"></i> AJUKAN</a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

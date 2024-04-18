@@ -174,8 +174,9 @@ $no = 1;
                                             <tbody>
                                                 <?php
                                                 $no = 1;
-                                                $dataanggota = mysqli_query($dbsurat, "SELECT * FROM sknarsum WHERE token='$token'");
-                                                while ($q = mysqli_fetch_array($dataanggota)) {
+                                                $datanarsum = mysqli_query($dbsurat, "SELECT * FROM sknarsum WHERE token='$token'");
+                                                $jnarsum = mysqli_num_rows($datanarsum);
+                                                while ($q = mysqli_fetch_array($datanarsum)) {
                                                     $nodata = $q['no'];
                                                     $nama = $q['nama'];
                                                     $materi = $q['materi'];
@@ -205,10 +206,20 @@ $no = 1;
                                                 ?>
                                             </tbody>
                                         </table>
-                                        <form action="sknarasumber-ajukan.php" method="POST" id="my-form">
-                                            <input type="hidden" name="token" value="<?= $token; ?>">
-                                            <button type="submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN SK</a>
-                                        </form>
+                                        <?php
+                                        if ($jnarsum > 0) {
+                                        ?>
+                                            <form action="sknarasumber-ajukan.php" method="POST" id="my-form">
+                                                <input type="hidden" name="token" value="<?= $token; ?>">
+                                                <button type="submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-upload"></i> AJUKAN SK</a>
+                                            </form>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button type="submit" class="btn btn-secondary btn-block" onclick="alert('Data Narasumber belum terisi')" disabled> <i class="fa fa-upload"></i> AJUKAN SK</a>
+                                            <?php
+                                        }
+                                            ?>
                                     </div>
                                 </div>
                             </div>
