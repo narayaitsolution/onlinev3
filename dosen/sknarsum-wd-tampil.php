@@ -159,7 +159,7 @@ $no = 1;
                                                         <tbody>
                                                             <?php
                                                             $nourut = 1;
-                                                            $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sknanarsum WHERE token='$token'");
+                                                            $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sknarsum WHERE token='$token'");
                                                             while ($dnarsum = mysqli_fetch_array($qnarsum)) {
                                                                 $namanarsum = $dnarsum['nama'];
                                                                 $materi = $dnarsum['materi'];
