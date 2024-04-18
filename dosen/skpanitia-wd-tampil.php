@@ -153,7 +153,7 @@ $no = 1;
                                                                 <th width="5%" style="text-align: center;">No</th>
                                                                 <th style="text-align: center;">Nama</th>
                                                                 <th style="text-align: center;">NIM</th>
-                                                                <th style="text-align: center;">Seksi Kepanitiaan</th>
+                                                                <th style="text-align: center;">Jabatan Kepanitiaan</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>

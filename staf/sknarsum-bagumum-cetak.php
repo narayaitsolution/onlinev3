@@ -382,7 +382,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
                 <td style="border: 1px solid;"><?= $no; ?></td>
                 <td style="border: 1px solid;"><?= $namanarsum; ?></td>
                 <td style="border: 1px solid;"><?= $materi; ?></td>
-                <td style="border: 1px solid;"><?= tgljam_indo($jadwal); ?></td>
+                <td style="border: 1px solid;"><?= tgl_indo($jadwal); ?></td>
             <tr>
             <?php
             $no++;
