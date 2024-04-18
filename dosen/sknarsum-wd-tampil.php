@@ -154,6 +154,8 @@ $no = 1;
                                                                 <th style="text-align: center;">Nama</th>
                                                                 <th style="text-align: center;">Materi</th>
                                                                 <th style="text-align: center;">Jadwal</th>
+                                                                <th style="text-align: center;">Jam Mulai</th>
+                                                                <th style="text-align: center;">Jam Selesai</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -164,6 +166,8 @@ $no = 1;
                                                                 $namanarsum = $dnarsum['nama'];
                                                                 $materi = $dnarsum['materi'];
                                                                 $jadwal = $dnarsum['jadwal'];
+                                                                $jammulai = $dnarsum['jammulai'];
+                                                                $jamselesai = $dnarsum['jamselesai'];
                                                             ?>
                                                                 <tr>
                                                                     <td>
@@ -177,6 +181,12 @@ $no = 1;
                                                                     </td>
                                                                     <td>
                                                                         <?= tgl_indo($jadwal); ?>
+                                                                    </td>
+                                                                    <td style="text-align: center;">
+                                                                        <?= $jammulai; ?> WIB
+                                                                    </td>
+                                                                    <td style="text-align: center;">
+                                                                        <?= $jamselesai; ?> WIB
                                                                     </td>
                                                                 </tr>
                                                             <?php

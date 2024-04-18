@@ -118,9 +118,21 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="nimanggota" class="col-sm-2 col-form-label">Jadwal</label>
+                                                <label for="nimanggota" class="col-sm-2 col-form-label">Tanggal</label>
                                                 <div class="col">
                                                     <input type="date" class="form-control" name="jadwal" required>
+                                                    <small style="color: red;">Tanggal Pelaksanaan</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="nimanggota" class="col-sm-2 col-form-label">Jam</label>
+                                                <div class="col">
+                                                    <input type="time" class="form-control" name="jammulai" required>
+                                                    <small style="color: red;">Jam Mulai</small>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="time" class="form-control" name="jamselesai" required>
+                                                    <small style="color: red;">Jam Selesai</small>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="token" value="<?= $token; ?>" />
@@ -155,6 +167,8 @@ $no = 1;
                                                 <th width="20%" style="text-align: center;">Nama</th>
                                                 <th style="text-align: center;">Materi</th>
                                                 <th style="text-align: center;">Jadwal</th>
+                                                <th style="text-align: center;">Jam Mulai</th>
+                                                <th style="text-align: center;">Jam Selesai</th>
                                                 <th width="5%" style="text-align: center;">Aksi</th>
                                             </thead>
                                             <tbody>
@@ -166,6 +180,8 @@ $no = 1;
                                                     $nama = $q['nama'];
                                                     $materi = $q['materi'];
                                                     $jadwal = $q['jadwal'];
+                                                    $jammulai = $q['jammulai'];
+                                                    $jamselesai = $q['jamselesai'];
                                                     $token = $q['token'];
                                                 ?>
                                                     <tr>
@@ -173,6 +189,8 @@ $no = 1;
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $materi; ?></td>
                                                         <td><?= tgl_indo($jadwal); ?></td>
+                                                        <td style="text-align: center;"><?= $jammulai; ?></td>
+                                                        <td style="text-align: center;"><?= $jamselesai; ?></td>
                                                         <td>
                                                             <form action="sknarasumber-data-hapus.php" method="POST" id="my-form">
                                                                 <input type="hidden" name="token" value="<?= $token; ?>">

@@ -67,7 +67,7 @@ $no = 1;
             $prodi = $dsk['prodi'];
             $nimmhs = $dsk['nim'];
             $jenissk = $dsk['jenissk'];
-            $namakegiatan = $dsk['namakegiatan'];
+            $namakegiatan = strtoupper($dsk['namakegiatan']);
             $ormas = $dsk['ormas'];
             $tema = $dsk['tema'];
             $verifikator1 = $dsk['verifikator1'];
@@ -429,12 +429,14 @@ $no = 1;
                                         $namanarsum = $dnarasumber['nama'];
                                         $materi = $dnarasumber['materi'];
                                         $jadwal = $dnarasumber['jadwal'];
+                                        $jammulai = $dnarasumber['jammulai'];
+                                        $jamselesai = $dnarasumber['jamselesai'];
                                     ?>
                                         <tr>
                                             <td style="border: 1px solid;"><?= $no; ?></td>
                                             <td style="border: 1px solid;"><?= $namanarsum; ?></td>
                                             <td style="border: 1px solid;"><?= $materi; ?></td>
-                                            <td style="border: 1px solid;"><?= tgljam_indo($jadwal); ?></td>
+                                            <td style="border: 1px solid;"><?= tgl_indo($jadwal); ?> jam <?= $jammulai; ?> WIB - <?= $jamselesai; ?> WIB</td>
                                         <tr>
                                         <?php
                                         $no++;

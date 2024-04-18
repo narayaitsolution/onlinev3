@@ -377,12 +377,14 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
             $namanarsum = $dnarasumber['nama'];
             $materi = $dnarasumber['materi'];
             $jadwal = $dnarasumber['jadwal'];
+            $jammulai = $dnarasumber['jammulai'];
+            $jamselesai = $dnarasumber['jamselesai'];
         ?>
             <tr>
                 <td style="border: 1px solid;"><?= $no; ?></td>
                 <td style="border: 1px solid;"><?= $namanarsum; ?></td>
                 <td style="border: 1px solid;"><?= $materi; ?></td>
-                <td style="border: 1px solid;"><?= tgl_indo($jadwal); ?></td>
+                <td style="border: 1px solid;"><?= tgl_indo($jadwal); ?> <br> jam <?= $jammulai; ?> - <?= $jamselesai; ?></td>
             <tr>
             <?php
             $no++;
