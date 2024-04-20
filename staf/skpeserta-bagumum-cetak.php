@@ -320,29 +320,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
     </tbody>
 </table>
-<!-- table tembusan -->
-<table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
-    <tbody>
-        <tr>
-            <td colspan="5"><b><u>Tembusan disampaikan kepada :</u></b></td>
-        </tr>
-        <tr>
-            <td colspan="5">1. Yth. Para Wakil Dekan;</td>
-        </tr>
-        <tr>
-            <td colspan="5">2. Yth. Para Ketua Jurusan;</td>
-        </tr>
-        <tr>
-            <td colspan="5">3. Yth. Bendahara Pembantu Pengeluaran;</td>
-        </tr>
-        <tr>
-            <td colspan="5">4. Yang bersangkutan;</td>
-        </tr>
-        <tr>
-            <td colspan="5">5. Arsip;</td>
-        </tr>
-    </tbody>
-</table>
+
 <p style="page-break-before: always;">&nbsp;</p>
 <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
     <tbody>
@@ -425,14 +403,6 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         <tr>
             <td width="60%">&nbsp;</td>
             <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">Ditetapkan di Malang</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">Pada tanggal <?= tgl_indo($tglverifikasi1); ?></td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
