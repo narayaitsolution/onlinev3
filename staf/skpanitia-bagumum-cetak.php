@@ -138,31 +138,61 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
             <td style="vertical-align:top;"><b>Mengingat</b></td>
             <td style="vertical-align:top;">:</td>
             <td style="vertical-align:top;">1.</td>
-            <td colspan="2" style="text-align: justify;">Undang-undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional;</td>
+            <td colspan="2" style="text-align: justify;">Undang-Undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional;</td>
         </tr>
         <tr>
             <td style="vertical-align:top;"><b></b></td>
             <td style="vertical-align:top;"></td>
             <td style="vertical-align:top;">2.</td>
-            <td colspan="2" style="text-align: justify;">Keputusan Menteri Agama Republik Indonesia Nomor 8 tahun 2013 tentang Tata kerja Universitas Islam Negeri Maulana Malik Ibrahim Malang;</td>
+            <td colspan="2" style="text-align: justify;">Undang-Undang Nomor 12 Tahun 2012 tentang Pendidikan Tinggi;</td>
         </tr>
         <tr>
             <td style="vertical-align:top;"><b></b></td>
             <td style="vertical-align:top;"></td>
             <td style="vertical-align:top;">3.</td>
-            <td colspan="2" style="text-align: justify;">Peraturan Menteri Agama Republik Indonesia Nomor 15 Tahun 2017 tentang Statuta Universitas Islam Negeri Maulana Malik Ibrahim Malang;</td>
+            <td colspan="2" style="text-align: justify;">Peraturan Pemerintah Nomor 4 Tahun 2014 tentang Penyelenggaraan dan Pengelolaan Perguruan Tinggi;</td>
         </tr>
         <tr>
             <td style="vertical-align:top;"><b></b></td>
             <td style="vertical-align:top;"></td>
             <td style="vertical-align:top;">4.</td>
-            <td colspan="2" style="text-align: justify;">Surat Keputusan Dekan Fakultas Sains dan Teknologi Nomor Un.03.6/PP.01.2/2452/2017 tentang Pedoman Pendidikan Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang Tahun Akademik 2017/2018;</td>
+            <td colspan="2" style="text-align: justify;">Keputusan Presiden Nomor 50 Tahun 2004 tentang perubahan Sekolah Tinggi Agama Islam Negeri (STAIN) Malang menjadi Universitas Islam Negeri (UIN) Malang;</td>
         </tr>
         <tr>
             <td style="vertical-align:top;"><b></b></td>
             <td style="vertical-align:top;"></td>
             <td style="vertical-align:top;">5.</td>
-            <td colspan="2" style="text-align: justify;">Surat Keputusan Rektor Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor 1676 Tahun 2021 tanggal 12 Mei 2021 tentang Pedoman Pendidikan Universitas Islam Negeri Maulana Malik Ibrahim Malang.</td>
+            <td colspan="2" style="text-align: justify;">Keputusan Menteri Agama Nomor 65 Tahun 2009 tentang Perubahan Universitas Islam Negeri (UIN) Malang menjadi Universitas Islam Negeri Maulana Malik Ibrahim Malang;</td>
+        </tr>
+        <tr>
+            <td style="vertical-align:top;"><b></b></td>
+            <td style="vertical-align:top;"></td>
+            <td style="vertical-align:top;">6.</td>
+            <td colspan="2" style="text-align: justify;">Keputusan Menteri Agama Nomor 15 Tahun 2017 tentang Statuta Universitas Islam Negeri Malang;</td>
+        </tr>
+        <tr>
+            <td style="vertical-align:top;"><b></b></td>
+            <td style="vertical-align:top;"></td>
+            <td style="vertical-align:top;">7.</td>
+            <td colspan="2" style="text-align: justify;">Peraturan Menteri Agama Nomor 2 Tahun 2018 tentang Organisasi dan Tata Kerja Universitas Islam Negeri Malang;</td>
+        </tr>
+        <tr>
+            <td style="vertical-align:top;"><b></b></td>
+            <td style="vertical-align:top;"></td>
+            <td style="vertical-align:top;">8.</td>
+            <td colspan="2" style="text-align: justify;">Keputusan Direktur Jenderal Pendidikan Islam Nomor 4961 Tahun 2016 tentang Pedoman Umum Organisasi Kemahasiswaan pada Perguruan Tinggi Keagamaan Islam;</td>
+        </tr>
+        <tr>
+            <td style="vertical-align:top;"><b></b></td>
+            <td style="vertical-align:top;"></td>
+            <td style="vertical-align:top;">9.</td>
+            <td colspan="2" style="text-align: justify;">Keputusan Rektor Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor : 4663/Un.3/Hk.00.5/08/2018 tentang Pedoman Umum Pembinaan Organisasi Kemahasiswaan Universitas Islam Negeri Maulana Malik Ibrahim Malang;</td>
+        </tr>
+        <tr>
+            <td style="vertical-align:top;"><b></b></td>
+            <td style="vertical-align:top;"></td>
+            <td style="vertical-align:top;">10.</td>
+            <td colspan="2" style="text-align: justify;">Keputusan Dekan Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor : 2044/FST/HK.00.5/07/2022 tentang Pedoman Umum Pembinaan Organisasi Kemahasiswaan Fakultas Sains dan Teknologi.</td>
         </tr>
         <tr>
             <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -261,29 +291,32 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
             <td width="40%">DEKAN,</td>
         </tr>
         <tr>
-            <td width="60%" class="text-center">
-                <small><i>Scan QRCode ini </i></small><br />
-                <img src="../qrcode/<?php echo $namafile; ?>.png" width="70" /><br />
-                <small><i>untuk verifikasi</i></small><br />
-                <small><i>keaslian surat</i></small><br />
-            </td>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">^</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
             <td width="40%">&nbsp;</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
             <td width="40%">SRI HARINI</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
         </tr>
     </tbody>
 </table>
@@ -409,12 +442,27 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
             <td width="40%">DEKAN,</td>
         </tr>
         <tr>
-            <td width="60%" class="text-center">
-                <small><i>Scan QRCode ini </i></small><br />
-                <img src="../qrcode/<?php echo $namafile; ?>.png" width="70" /><br />
-                <small><i>untuk verifikasi</i></small><br />
-                <small><i>keaslian surat</i></small><br />
-            </td>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">^</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
             <td width="40%">&nbsp;</td>
         </tr>
         <tr>

@@ -203,33 +203,15 @@ if ($statussurat == 1) {
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td style="text-align:center"><small><i>Scan QRCode ini </i><br />
-							<img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br />
-							<small><i>untuk verifikasi surat</i></small>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td style="text-align:center"><br />
+						<?= $jabatan; ?><br />
+						<img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br /><br />
+						<?= $namawd; ?><br />
+						NIP. <?= $nipwd; ?>
 					</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<?php
-					if ($validasi3 == 1) {
-						$sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip = '$validator3'");
-						$jdata = mysqli_num_rows($sql);
-						if ($jdata > 0) {
-							$hasil = mysqli_fetch_array($sql);
-							$ttd = $hasil['ttd'];
-						} else {
-							$ttd = 'imamtazi.jpg';
-						}
-
-					?>
-						<td style="text-align:center"><br />
-							<!--<?= $jabatan; ?><br />-->
-							<img src="../ttd/<?= $ttd; ?>" width="350" /><br />
-							<!--<u><?= $namawd; ?></u><br />
-						NIP. <?= $nipwd; ?>-->
-						</td>
-					<?php
-					}
-					?>
 					<td>&nbsp;</td>
 				</tr>
 			</tbody>
