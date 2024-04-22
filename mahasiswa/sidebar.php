@@ -460,15 +460,7 @@
 
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="https://helpdesk.uin-malang.ac.id" class="nav-link" target="_blank">
-                        <i class="nav-icon fa-solid fa-bullhorn"></i>
-                        <p>
-                            Laporkan Keluhan
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
+                <!--
                 <li class="nav-item">
                     <a href="../penilaianlayanan" class="nav-link">
                         <i class="nav-icon fa-solid fa-thumbs-up"></i>
@@ -478,6 +470,7 @@
                         </p>
                     </a>
                 </li>
+                        -->
                 <li class="nav-item">
                     <a href="mailto:saintekonline@gmail.com" class="nav-link">
                         <i class="nav-icon fa-regular fa-circle-question"></i>

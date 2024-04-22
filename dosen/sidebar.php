@@ -451,24 +451,6 @@
                 }
                 ?>
                 <li class="nav-item">
-                    <a href="https://helpdesk.uin-malang.ac.id" class="nav-link" target="_blank">
-                        <i class="nav-icon fa-solid fa-bullhorn"></i>
-                        <p>
-                            Laporkan Keluhan
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../penilaianlayanan" class="nav-link">
-                        <i class="nav-icon fa-solid fa-thumbs-up"></i>
-                        <p>
-                            Penilaian Layanan
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="https://wa.me/6281234302099" target="_blank" class="nav-link">
                         <i class="nav-icon fa-brands fa-whatsapp"></i>
                         <p>
