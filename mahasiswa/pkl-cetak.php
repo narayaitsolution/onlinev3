@@ -92,8 +92,8 @@ if ($statussurat == 1) {
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td>Hal </td>
-					<td>: Izin <?= $pklmagang; ?></td>
+					<td>Perihal </td>
+					<td>: Permohonan Izin <?= $pklmagang; ?></td>
 					<td></td>
 					<td>&nbsp;</td>
 				</tr>
@@ -170,6 +170,11 @@ if ($statussurat == 1) {
 			<tbody>
 				<tr>
 					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
 					<td colspan="3">Koordinator <?= $pklmagang; ?> Program Studi <?= $prodi ?> <?= $koordinator; ?></td>
 					<td>&nbsp;</td>
 				</tr>
@@ -194,11 +199,11 @@ if ($statussurat == 1) {
 		<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
 			<tbody>
 				<tr>
+					<td width="30%">&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td style="text-align:center">Malang, <?= tgl_indo($tglsurat); ?></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
@@ -206,11 +211,18 @@ if ($statussurat == 1) {
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td style="text-align:center"><br />
+					<td style="text-align:center">a.n. Dekan</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td style="text-align:center">
 						<?= $jabatan; ?><br />
-						<img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br /><br />
-						<?= $namawd; ?><br />
-						NIP. <?= $nipwd; ?>
+						<img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br />
+						<?= $namawd; ?>
 					</td>
 					<td>&nbsp;</td>
 				</tr>
