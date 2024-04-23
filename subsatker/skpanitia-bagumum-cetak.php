@@ -195,6 +195,15 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
             <td colspan="2" style="text-align: justify;">Keputusan Dekan Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor : 2044/FST/HK.00.5/07/2022 tentang Pedoman Umum Pembinaan Organisasi Kemahasiswaan Fakultas Sains dan Teknologi.</td>
         </tr>
         <tr>
+            <td colspan="5" style="text-align: center;page-break-after: always;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: center;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: center;">&nbsp;</td>
+        </tr>
+        <tr>
             <td colspan="5" style="text-align: center;">&nbsp;</td>
         </tr>
         <tr>
@@ -208,15 +217,6 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
             <td style="vertical-align:top;"></td>
             <td style="vertical-align:top;">2.</td>
             <td colspan="2" style="text-align: justify;">Disposisi Pimpinan tanggal <?= tgl_indo($tanggal); ?>.</td>
-        </tr>
-        <tr>
-            <td colspan="5" style="text-align: center;page-break-after: always;">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5" style="text-align: center;">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5" style="text-align: center;">&nbsp;</td>
         </tr>
         <tr>
             <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -280,23 +280,15 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
     <tbody>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%">Ditetapkan di Malang</td>
+            <td width="40%" style="text-align: center;">Ditetapkan di Malang</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%">Pada tanggal <?= tgl_indo($tglverifikasi1); ?></td>
+            <td width="40%" style="text-align: center;">Pada tanggal <?= tgl_indo($tglverifikasi1); ?></td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%">DEKAN,</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">^</td>
+            <td width="40%" style="text-align: center;">DEKAN,</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
@@ -312,11 +304,23 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
+            <td width="40%" style="text-align: center;">^</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
             <td width="40%">&nbsp;</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%">SRI HARINI</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%" style="text-align: center;">SRI HARINI</td>
         </tr>
     </tbody>
 </table>
@@ -409,15 +413,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%">DEKAN,</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="60%">&nbsp;</td>
-            <td width="40%">^</td>
+            <td width="40%" style="text-align: center;">DEKAN,</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
@@ -433,11 +429,23 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
+            <td width="40%" style="text-align: center;">^</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
             <td width="40%">&nbsp;</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%">SRI HARINI</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="60%">&nbsp;</td>
+            <td width="40%" style="text-align: center;">SRI HARINI</td>
         </tr>
     </tbody>
 </table>

@@ -1851,15 +1851,15 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi2 == 0) {
                                                             ?>
-                                                                <b style="color:orange;">Menunggu proses</b> di Bagian Umum Fakultas<br />
+                                                                <b style="color:orange;">Menunggu proses</b> di Bagian Layanan Terpadu Fakultas<br />
                                                             <?php
                                                             } elseif ($verifikasi2 == 1) {
                                                             ?>
-                                                                <b style="color:green;">Telah selesai diproses</b> oleh Bagian Umum Fakultas.<br />
+                                                                <b style="color:green;">Telah selesai diproses</b> oleh Bagian Layanan Terpadu Fakultas.<br />
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <b style="color:red;">Ditolak</b> oleh Bagian Umum Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                                <b style="color:red;">Ditolak</b> oleh Bagian Layanan Terpadu Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
                                                             };
                                                             ?>
@@ -1868,7 +1868,7 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                Silahkan Ambil SK di Bagian Umum Fakultas
+                                                                Silahkan Ambil SK di Bagian Layanan Terpadu Fakultas
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
@@ -1939,15 +1939,15 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi2 == 0) {
                                                             ?>
-                                                                <b style="color:orange;">Menunggu proses</b> di Bagian Umum Fakultas<br />
+                                                                <b style="color:orange;">Menunggu proses</b> di Bagian Layanan Terpadu Fakultas<br />
                                                             <?php
                                                             } elseif ($verifikasi2 == 1) {
                                                             ?>
-                                                                <b style="color:green;">Telah selesai diproses</b> oleh Bagian Umum Fakultas.<br />
+                                                                <b style="color:green;">Telah selesai diproses</b> oleh Bagian Layanan Terpadu Fakultas.<br />
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <b style="color:red;">Ditolak</b> oleh Bagian Umum Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                                <b style="color:red;">Ditolak</b> oleh Bagian Layanan Terpadu Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
                                                             };
                                                             ?>
@@ -1956,7 +1956,7 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                Silahkan Ambil SK di Bagian Umum Fakultas
+                                                                Silahkan Ambil SK di Bagian Layanan Terpadu Fakultas
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
@@ -2027,15 +2027,15 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi2 == 0) {
                                                             ?>
-                                                                <b style="color:orange;">Menunggu proses</b> di Bagian Umum Fakultas<br />
+                                                                <b style="color:orange;">Menunggu proses</b> di Bagian Layanan Terpadu Fakultas<br />
                                                             <?php
                                                             } elseif ($verifikasi2 == 1) {
                                                             ?>
-                                                                <b style="color:green;">Telah selesai diproses</b> oleh Bagian Umum Fakultas.<br />
+                                                                <b style="color:green;">Telah selesai diproses</b> oleh Bagian Layanan Terpadu Fakultas.<br />
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <b style="color:red;">Ditolak</b> oleh Bagian Umum Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                                <b style="color:red;">Ditolak</b> oleh Bagian Layanan Terpadu Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
                                                             };
                                                             ?>
@@ -2044,7 +2044,7 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                Silahkan Ambil SK di Bagian Umum Fakultas
+                                                                Silahkan Ambil SK di Bagian Layanan Terpadu Fakultas
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>

@@ -6,7 +6,7 @@
 </style>
 -->
 
-<aside class="main-sidebar sidebar-light-primary elevation-4">
+<aside class="main-sidebar sidebar-light-Fimary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="../system/uinlogo-sm.png" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -129,7 +129,7 @@
                                 <li class="nav-item">
                                     <a href="penghargaan-isi.php" class="nav-link">
                                         <i class="nav-icon fas fa-trophy"></i>
-                                        <p>Penghargaan</p>
+                                        <p>Penghargaan Prestasi</p>
                                         <span class="badge badge-danger right">Baru</span>
                                     </a>
                                 </li>
@@ -160,7 +160,7 @@
                             <li class="nav-item has-treeview menu-close">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-file-text"></i>
-                                    <p>Pengajuan SK <i class="right fas fa-angle-left"></i></p>
+                                    <p>Pengajuan SK ORMAWA<i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
