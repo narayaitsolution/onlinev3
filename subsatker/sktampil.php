@@ -65,7 +65,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                     <div class="row">
                         <!-- Pengajuan SK narasumber -->
                         <?php
-                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat= 3 AND year(tanggal)=$tahun");
+                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat= 1 AND year(tanggal)=$tahun");
                         $jnarsum = mysqli_num_rows($qnarsum);
                         ?>
                         <div class="col-lg-4 col-6">
@@ -84,7 +84,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                         <!-- Pengajuan SK panitia -->
                         <?php
-                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='panitia' AND statussurat= 3 AND year(tanggal)=$tahun");
+                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='panitia' AND statussurat= 1 AND year(tanggal)=$tahun");
                         $jnarsum = mysqli_num_rows($qnarsum);
                         ?>
                         <div class="col-lg-4 col-6">
@@ -103,7 +103,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                         <!-- Pengajuan SK peserta -->
                         <?php
-                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk = 'peserta' AND statussurat= 3 AND year(tanggal)=$tahun");
+                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk = 'peserta' AND statussurat= 1 AND year(tanggal)=$tahun");
                         $jnarsum = mysqli_num_rows($qnarsum);
                         ?>
                         <div class="col-lg-4 col-6">

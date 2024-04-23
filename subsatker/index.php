@@ -112,7 +112,7 @@ $tahun = date('Y');
                                                         </a>
                                                     </td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -141,7 +141,7 @@ $tahun = date('Y');
                                                         </a>
                                                     </td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -170,7 +170,7 @@ $tahun = date('Y');
                                                         </a>
                                                     </td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -234,7 +234,7 @@ $tahun = date('Y');
                                                         </a>
                                                     </td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -263,7 +263,7 @@ $tahun = date('Y');
                                                         </a>
                                                     </td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -292,7 +292,7 @@ $tahun = date('Y');
                                                         </a>
                                                     </td>
                                                     <td><?= $prodimhs; ?></td>
-                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
                                                 </tr>
                                             <?php
                                                 $no++;

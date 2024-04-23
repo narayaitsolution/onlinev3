@@ -95,6 +95,12 @@ $no = 1;
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Program Studi</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="prodi" value="<?= $prodi; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">ORMAWA</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="ormawa" value="<?= $ormas; ?>" readonly>
@@ -104,6 +110,12 @@ $no = 1;
                                 <label class="col-sm-2 col-form-label">Nama Kegiatan</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="kegiatan" value="<?= $namakegiatan; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Tema</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="kegiatan" rows="2" readonly><?= $tema; ?></textarea>
                                 </div>
                             </div>
                             <hr>
