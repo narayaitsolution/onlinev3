@@ -213,7 +213,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                     <div class="row">
                         <!-- Pengajuan SK -->
                         <?php
-                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE statussurat= 1 AND year(tanggal)=$tahun");
+                        $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE statussurat= 3 AND year(tanggal)=$tahun");
                         $jnarsum = mysqli_num_rows($qnarsum);
                         ?>
                         <div class="col-lg-3 col-6">
@@ -572,7 +572,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- SK Narsum-->
                                 <?php
-                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat= 1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat= 3 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($qnarsum);
                                 while ($data = mysqli_fetch_array($qnarsum)) {
                                     $nodata = $data['no'];
@@ -585,6 +585,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                     $verifikasi2 = $data['verifikasi2'];
                                     $verifikator2 = $data['verifikator2'];
                                     $keterangan = $data['keterangan'];
+                                    $sktte = $data['sktte'];
                                     $token = $data['token'];
                                 ?>
                                     <tr>
@@ -594,8 +595,8 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                                         <td><?= namadosen($dbsurat, $nim); ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
-                                        <td style="text-align: center;"><a class="btn btn-success btn-sm" href="sknarsum-bagumum-cetak.php?token=<?= $token; ?>" target="_blank">
-                                                <i class="fas fa-print"></i> Cetak
+                                        <td style="text-align: center;"><a class="btn btn-info btn-sm" href="<?= $sktte; ?>" target="_blank">
+                                                <i class="fas fa-download"></i> Download
                                             </a>
                                         </td>
                                     </tr>
@@ -607,7 +608,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- SK Panitia-->
                                 <?php
-                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='panitia' AND statussurat= 1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='panitia' AND statussurat= 3 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($qnarsum);
                                 while ($data = mysqli_fetch_array($qnarsum)) {
                                     $nodata = $data['no'];
@@ -642,7 +643,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
 
                                 <!-- SK peserta-->
                                 <?php
-                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='peserta' AND statussurat= 1 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
+                                $qnarsum = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='peserta' AND statussurat= 3 AND year(tanggal)=$tahun ORDER BY prodi ASC, tanggal DESC");
                                 $jmldata = mysqli_num_rows($qnarsum);
                                 while ($data = mysqli_fetch_array($qnarsum)) {
                                     $nodata = $data['no'];

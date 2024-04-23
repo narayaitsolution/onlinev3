@@ -1826,6 +1826,7 @@ $no = 1;
                                                     $keterangan = $q['keterangan'];
                                                     $statussurat = $q['statussurat'];
                                                     $token = $q['token'];
+                                                    $sktte = $q['sktte'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
@@ -1849,15 +1850,15 @@ $no = 1;
                                                             ?>
                                                             <!-- ketua jurusan -->
                                                             <?php
-                                                            if ($verifikasi2 == 0) {
+                                                            if ($statussurat == 0 || $statussurat == 1) {
                                                             ?>
                                                                 <b style="color:orange;">Menunggu proses</b> di Bagian Layanan Terpadu Fakultas<br />
                                                             <?php
-                                                            } elseif ($verifikasi2 == 1) {
+                                                            } elseif ($statussurat == 3) {
                                                             ?>
                                                                 <b style="color:green;">Telah selesai diproses</b> oleh Bagian Layanan Terpadu Fakultas.<br />
                                                             <?php
-                                                            } else {
+                                                            } elseif ($statussurat == 2) {
                                                             ?>
                                                                 <b style="color:red;">Ditolak</b> oleh Bagian Layanan Terpadu Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
@@ -1866,9 +1867,9 @@ $no = 1;
                                                         </td>
                                                         <td>
                                                             <?php
-                                                            if ($statussurat == 1) {
+                                                            if ($statussurat == 3) {
                                                             ?>
-                                                                Silahkan Ambil SK di Bagian Layanan Terpadu Fakultas
+                                                                <a href="<?= $sktte; ?>" class="btn btn-success btn-lg btn-block" target="_blank"><i class="fas fa-file-download"></i> Download</a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
@@ -1885,14 +1886,9 @@ $no = 1;
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
-                                                            } else {
-                                                            ?>
-                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="sknarasumber-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Batalkan
-                                                                </a>
-                                                            <?php
                                                             }
                                                             ?>
+
                                                         </td>
                                                     </tr>
                                                 <?php
@@ -1914,6 +1910,8 @@ $no = 1;
                                                     $keterangan = $q['keterangan'];
                                                     $statussurat = $q['statussurat'];
                                                     $token = $q['token'];
+                                                    $sktte = $q['sktte'];
+
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
@@ -1937,15 +1935,15 @@ $no = 1;
                                                             ?>
                                                             <!-- ketua jurusan -->
                                                             <?php
-                                                            if ($verifikasi2 == 0) {
+                                                            if ($statussurat == 0 || $statussurat == 1) {
                                                             ?>
                                                                 <b style="color:orange;">Menunggu proses</b> di Bagian Layanan Terpadu Fakultas<br />
                                                             <?php
-                                                            } elseif ($verifikasi2 == 1) {
+                                                            } elseif ($statussurat == 3) {
                                                             ?>
                                                                 <b style="color:green;">Telah selesai diproses</b> oleh Bagian Layanan Terpadu Fakultas.<br />
                                                             <?php
-                                                            } else {
+                                                            } elseif ($statussurat == 2) {
                                                             ?>
                                                                 <b style="color:red;">Ditolak</b> oleh Bagian Layanan Terpadu Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
@@ -1954,28 +1952,22 @@ $no = 1;
                                                         </td>
                                                         <td>
                                                             <?php
-                                                            if ($statussurat == 1) {
+                                                            if ($statussurat == 3) {
                                                             ?>
-                                                                Silahkan Ambil SK di Bagian Layanan Terpadu Fakultas
+                                                                <a href="<?= $sktte; ?>" class="btn btn-success btn-lg btn-block" target="_blank"><i class="fas fa-file-download"></i> Download</a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan SK ini ?')" href="skpanitia-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan SK ini ?')" href="sknarasumber-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == '-1') {
                                                             ?>
-                                                                <a class="btn btn-info btn-lg btn-block" href="skpanitia-data-isi.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-lg btn-block" href="sknarasumber-data-isi.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-check"></i> Lengkapi
                                                                 </a>
-                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpanitia-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Batalkan
-                                                                </a>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpanitia-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="sknarasumber-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -2002,6 +1994,7 @@ $no = 1;
                                                     $keterangan = $q['keterangan'];
                                                     $statussurat = $q['statussurat'];
                                                     $token = $q['token'];
+                                                    $sktte = $q['sktte'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
@@ -2025,15 +2018,15 @@ $no = 1;
                                                             ?>
                                                             <!-- ketua jurusan -->
                                                             <?php
-                                                            if ($verifikasi2 == 0) {
+                                                            if ($statussurat == 0 || $statussurat == 1) {
                                                             ?>
                                                                 <b style="color:orange;">Menunggu proses</b> di Bagian Layanan Terpadu Fakultas<br />
                                                             <?php
-                                                            } elseif ($verifikasi2 == 1) {
+                                                            } elseif ($statussurat == 3) {
                                                             ?>
                                                                 <b style="color:green;">Telah selesai diproses</b> oleh Bagian Layanan Terpadu Fakultas.<br />
                                                             <?php
-                                                            } else {
+                                                            } elseif ($statussurat == 2) {
                                                             ?>
                                                                 <b style="color:red;">Ditolak</b> oleh Bagian Layanan Terpadu Fakultas dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
                                                             <?php
@@ -2042,28 +2035,22 @@ $no = 1;
                                                         </td>
                                                         <td>
                                                             <?php
-                                                            if ($statussurat == 1) {
+                                                            if ($statussurat == 3) {
                                                             ?>
-                                                                Silahkan Ambil SK di Bagian Layanan Terpadu Fakultas
+                                                                <a href="<?= $sktte; ?>" class="btn btn-success btn-lg btn-block" target="_blank"><i class="fas fa-file-download"></i> Download</a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan SK ini ?')" href="skpeserta-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan SK ini ?')" href="sknarasumber-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == '-1') {
                                                             ?>
-                                                                <a class="btn btn-info btn-lg btn-block" href="skpeserta-data-isi.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-lg btn-block" href="sknarasumber-data-isi.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-check"></i> Lengkapi
                                                                 </a>
-                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpeserta-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Batalkan
-                                                                </a>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpeserta-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="sknarasumber-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php

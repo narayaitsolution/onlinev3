@@ -71,7 +71,7 @@ $tahun = date('Y');
                         <div class="col-sm">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Pengajuan Surat</h3>
+                                    <h3 class="card-title">Pengajuan Surat Baru</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                         <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
@@ -166,6 +166,128 @@ $tahun = date('Y');
                                                     <td><?= namadosen($dbsurat, $nimmhs); ?></td>
                                                     <td style="text-align: center;">
                                                         <a class="btn btn-info btn-sm" href="skpeserta-bagumum-tampil.php?token=<?= $token; ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <td><?= $prodimhs; ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                            <!-- /SK panitia-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- tabel SK selesai -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">Pengajuan Surat Selesai</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <?php $no = 1; ?>
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover text-sm">
+                                        <thead>
+                                            <tr>
+                                                <td style="text-align:center">No</td>
+                                                <td style="text-align:center">Surat</td>
+                                                <td style="text-align:center">Nama</td>
+                                                <td style="text-align:center">Aksi</td>
+                                                <td style="text-align:center">PRODI</td>
+                                                <td style="text-align:center">Tgl. Pengajuan</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- SK Narsum-->
+                                            <?php
+                                            $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='narasumber' AND statussurat='1'");
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                $nodata = $data['no'];
+                                                $tanggal = $data['tanggal'];
+                                                $nimmhs = $data['nim'];
+                                                $prodimhs = $data['prodi'];
+                                                $jenissk = $data['jenissk'];
+                                                $token = $data['token'];
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td>Pengajuan SK <?= $jenissk; ?></td>
+                                                    <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                                    <td style="text-align: center;">
+                                                        <a class="btn btn-info btn-sm" href="sknarsum-bagumum-tte.php?token=<?= $token; ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <td><?= $prodimhs; ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                            <!-- /SK Narsum-->
+
+                                            <!-- SK panitia-->
+                                            <?php
+                                            $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='panitia' AND statussurat='1'");
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                $nodata = $data['no'];
+                                                $tanggal = $data['tanggal'];
+                                                $nimmhs = $data['nim'];
+                                                $prodimhs = $data['prodi'];
+                                                $jenissk = $data['jenissk'];
+                                                $token = $data['token'];
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td>Pengajuan SK <?= $jenissk; ?></td>
+                                                    <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                                    <td style="text-align: center;">
+                                                        <a class="btn btn-info btn-sm" href="sknarsum-bagumum-tte.php?token=<?= $token; ?>">
+                                                            <i class="fas fa-eye"></i> Lihat
+                                                        </a>
+                                                    </td>
+                                                    <td><?= $prodimhs; ?></td>
+                                                    <td><?= tgl_indo($tanggal); ?></td>
+                                                </tr>
+                                            <?php
+                                                $no++;
+                                            }
+                                            ?>
+                                            <!-- /SK panitia-->
+
+                                            <!-- SK panitia-->
+                                            <?php
+                                            $query = mysqli_query($dbsurat, "SELECT * FROM sk WHERE jenissk='peserta' AND statussurat='1'");
+                                            while ($data = mysqli_fetch_array($query)) {
+                                                $nodata = $data['no'];
+                                                $tanggal = $data['tanggal'];
+                                                $nimmhs = $data['nim'];
+                                                $prodimhs = $data['prodi'];
+                                                $jenissk = $data['jenissk'];
+                                                $token = $data['token'];
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no; ?></td>
+                                                    <td>Pengajuan SK <?= $jenissk; ?></td>
+                                                    <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                                    <td style="text-align: center;">
+                                                        <a class="btn btn-info btn-sm" href="sknarsum-bagumum-tte.php?token=<?= $token; ?>">
                                                             <i class="fas fa-eye"></i> Lihat
                                                         </a>
                                                     </td>
