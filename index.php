@@ -100,6 +100,11 @@ require('system/myfunc.php');
           <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-right-to-bracket"></i> Masuk</button>
         </form>
         <hr>
+        <div class="text-center">
+          <a href="authgoogle.php" class="btn btn-danger btn-lg btn-block"><i class="fa-brands fa-google"></i> &nbsp;GOOGLE</a>
+          <small style="color: red;">Gunakan email uin-malang.ac.id</small>
+        </div>
+        <hr>
         <div class="row">
           <div class="col text-sm">
             <a href="lupa.php" class="btn btn-success btn-block">LUPA Password</a>
