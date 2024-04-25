@@ -18,7 +18,6 @@ $kategori = $_POST['kategori'];
 $jeniskegiatan = $_POST['jeniskegiatan'];
 $peringkat = $_POST['peringkat'];
 $token = md5(uniqid());
-$kode = substr(md5(microtime()), rand(0, 26), 12);
 $statussurat = 0;
 $jenissurat = 'Penghargaan';
 
@@ -41,37 +40,69 @@ $stmt->execute();
 $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipwd = $dhasil['nip'];
+$target_dir = '../lampiran/';
 
+//upload bukti
+$kodeacak1 = random_str(12);
+$buktiTmpPath = $_FILES['bukti']['tmp_name'];
+$buktiName = $_FILES['bukti']['name'];
+$buktiSize = $_FILES['bukti']['size'];
+$buktiNameCmps = explode(".", $buktiName);
+$fileExtension = strtolower(end($buktiNameCmps));
 
-$target_dir = "../lampiran/";
-$fileTmpPath = $_FILES['bukti']['tmp_name'];
-$fileName = $_FILES['bukti']['name'];
-$fileSize = $_FILES['bukti']['size'];
-$fileType = $_FILES['bukti']['type'];
-$fileNameCmps = explode(".", $fileName);
-$fileExtension = strtolower(end($fileNameCmps));
-
-$bukti = imgresize($fileTmpPath);
+$bukti = imgresize($buktiTmpPath);
 $allowedfileExtensions = array('jpg', 'jpeg');
 if (in_array($fileExtension, $allowedfileExtensions)) {
-    $dest_path = $target_dir . $kode . '.jpg';
-    move_uploaded_file($bukti, $dest_path);
-    if ($jeniskegiatan == 'Individu') {
-        $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3, token) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $token);
-        $stmt->execute();
+    $buktipath = $target_dir . $kodeacak1 . '.jpg';
+    move_uploaded_file($bukti, $buktipath);
+    $buktiinfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $buktipath);
+    if ($buktiinfo == 'image/jpeg' && $buktiSize < 2097152) {
+        $statusbukti = '1';
+    } else {
+        $statusbukti = '0';
+        header("location:penghargaan-isi.php?nip=$nip&pesan=gagal");
+    }
+}
 
-        //kirim email ke kaprodi
-        //cari email dosen dari NIP
-        $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkaprodi'");
-        $dsql3 = mysqli_fetch_array($sql3);
-        $namadosen = $dsql3['nama'];
-        $emaildosen = $dsql3['email'];
+//upload dok
+$kodeacak2 = random_str(12);
+$dokTmpPath = $_FILES['dok']['tmp_name'];
+$dokName = $_FILES['dok']['name'];
+$dokSize = $_FILES['dok']['size'];
+$dokNameCmps = explode(".", $dokName);
+$fileExtension = strtolower(end($dokNameCmps));
 
-        //kirim email
-        $subject = "Pengajuan " . $jenissurat . "";
-        $pesan = "Yth. " . $namadosen . "<br/>
+$dok = imgresize($dokTmpPath);
+$allowedfileExtensions = array('jpg', 'jpeg');
+if (in_array($fileExtension, $allowedfileExtensions)) {
+    $dokpath = $target_dir . $kodeacak2 . '.jpg';
+    move_uploaded_file($dok, $dokpath);
+    $dokinfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $dokpath);
+    if ($dokinfo == 'image/jpeg' && $dokSize < 2097152) {
+        $statusdok = '1';
+    } else {
+        $statusdok = '0';
+        header("location:penghargaan-isi.php?nip=$nip&pesan=gagal");
+    }
+}
+
+
+if ($jeniskegiatan == 'Individu') {
+    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti,dokumentasi, validator2, validator3, token) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("ssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $token);
+    $stmt->execute();
+
+    //kirim email ke kaprodi
+    //cari email dosen dari NIP
+    $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipkaprodi'");
+    $dsql3 = mysqli_fetch_array($sql3);
+    $namadosen = $dsql3['nama'];
+    $emaildosen = $dsql3['email'];
+
+    //kirim email
+    $subject = "Pengajuan " . $jenissurat . "";
+    $pesan = "Yth. " . $namadosen . "<br/>
             <br/>
             Assalamualaikum wr. wb.
             <br />
@@ -89,21 +120,18 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
             <br/>
             <br/>
             <b>SAINTEK e-Office</b>";
-        sendmail($emaildosen, $namadosen, $subject, $pesan);
+    sendmail($emaildosen, $namadosen, $subject, $pesan);
 
-        header("location:index.php?pesan=success");
-    } else {
-        $statussurat = '-1';
-        $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti, validator2, validator3,statussurat, token) 
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $dest_path, $nipkaprodi, $nipwd, $statussurat, $token);
-        $stmt->execute();
-
-        $qnodata = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim' ORDER BY tanggal DESC");
-        $dnodata = mysqli_fetch_array($qnodata);
-        $token = $dnodata['token'];
-        header("location:penghargaan-anggota.php?token=$token");
-    }
+    header("location:index.php?pesan=success");
 } else {
-    header("location:penghargaan-isi.php?nip=$nip&pesan=gagal");
-};
+    $statussurat = '-1';
+    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti, dokumentasi, validator2, validator3,statussurat, token) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $statussurat, $token);
+    $stmt->execute();
+
+    $qnodata = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim' ORDER BY tanggal DESC");
+    $dnodata = mysqli_fetch_array($qnodata);
+    $token = $dnodata['token'];
+    header("location:penghargaan-anggota.php?token=$token&pesan=success");
+}

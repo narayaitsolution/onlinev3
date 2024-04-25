@@ -43,7 +43,7 @@ require('system/dbconn.php');
                             <th style="text-align: center;">Prodi</th>
                             <th style="text-align: center;">Nama Kegiatan</th>
                             <th style="text-align: center;">Penyelenggara</th>
-                            <th style="text-align: center;">Bukti</th>
+                            <th style="text-align: center;">Bukti & Dokumentasi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,6 +63,7 @@ require('system/dbconn.php');
                             $tingkat = $data['tingkat'];
                             $peringkat = $data['peringkat'];
                             $bukti = $data['bukti'];
+                            $dokumentasi = $data['dokumentasi'];
                             $panjang = strlen($bukti);
                             $sertifikat = substr($bukti, 3, $panjang);
                             $namakegiatan = $data['namakegiatan'];
@@ -83,8 +84,19 @@ require('system/dbconn.php');
                                 <td><?= $prodi; ?></td>
                                 <td><?= $namakegiatan; ?></td>
                                 <td><?= $penyelenggara; ?></td>
-                                <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
+                                <td>
+                                    <a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank"> <i class="fas fa-eye"></i> Lihat</a>
+                                    <?php
+                                    if (!empty($dokumentasi)) {
+                                    ?>
+                                        <a href="<?= $dokumentasi; ?>" class="btn btn-sm btn-warning" target="_blank"> <i class="fas fa-eye"></i> Lihat</a>
+                                    <?php
+                                    }
+                                    ?>
+                                </td>
                             </tr>
+
+                            <!--anggota-->
                             <?php
                             $qanggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata'");
                             $janggota = mysqli_num_rows($qanggota);
@@ -109,7 +121,16 @@ require('system/dbconn.php');
                                         <td><?= $prodi; ?></td>
                                         <td><?= $namakegiatan; ?></td>
                                         <td><?= $penyelenggara; ?></td>
-                                        <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
+                                        <td>
+                                            <a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank"> <i class="fas fa-eye"></i> Lihat</a>
+                                            <?php
+                                            if (!empty($dokumentasi)) {
+                                            ?>
+                                                <a href="<?= $dokumentasi; ?>" class="btn btn-sm btn-warning" target="_blank"> <i class="fas fa-eye"></i> Lihat</a>
+                                            <?php
+                                            }
+                                            ?>
+                                        </td>
                                     </tr>
                         <?php
                                 }

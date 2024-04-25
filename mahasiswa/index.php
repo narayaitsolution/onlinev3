@@ -1633,6 +1633,9 @@ $no = 1;
                                                         <td>
                                                             <?php
                                                             if ($statussurat == 1) {
+                                                            ?>
+                                                                <a href="../penghargaan.php" class="btn btn-lg btn-block btn-info" target="_blank"><i class="fas fa-eye"></i> Lihat</a>
+                                                            <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
                                                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="penghargaan-hapus.php?token=<?= $token; ?>">
@@ -1911,7 +1914,6 @@ $no = 1;
                                                     $statussurat = $q['statussurat'];
                                                     $token = $q['token'];
                                                     $sktte = $q['sktte'];
-
                                                 ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>

@@ -89,20 +89,20 @@ $no = 1;
                                     <div class="card-body">
                                         <form action="penghargaan-simpan.php" method="post" enctype="multipart/form-data" id="my-form">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Nama</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Nama</label>
+                                                <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="nama" name="nama" value="<?= $nama; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">NIM</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">NIM</label>
+                                                <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="nim" name="nim" value="<?= $nim; ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Kegiatan</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Kegiatan</label>
+                                                <div class="col-sm-10">
                                                     <select name="kegiatan" class="form-control">
                                                         <option value="Penulisan karya ilmiah di media cetak">Penulisan karya ilmiah di media cetak</option>
                                                         <option value="Penulisan karya ilmiah di jurnal ilmiah bereputasi">Penulisan karya ilmiah di jurnal ilmiah bereputasi</option>
@@ -111,20 +111,20 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Nama Kegiatan / Media Publikasi</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Nama Kegiatan / Media Publikasi</label>
+                                                <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="namakegiatan" name="namakegiatan" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Penyelenggara</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Penyelenggara</label>
+                                                <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="penyelenggara" name="penyelenggara" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Level Kegiatan</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Level Kegiatan</label>
+                                                <div class="col-sm-10">
                                                     <select name="tingkat" class="form-control">
                                                         <option value="Internasional">Internasional</option>
                                                         <option value="Nasional" selected>Nasional</option>
@@ -134,8 +134,8 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Kategori</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Kategori</label>
+                                                <div class="col-sm-10">
                                                     <select name="kategori" class="form-control">
                                                         <option value="Akademik">Akademik</option>
                                                         <option value="Non Akademik">Non Akademik</option>
@@ -154,8 +154,8 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Jenis Kegiatan</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Jenis Kegiatan</label>
+                                                <div class="col-sm-10">
                                                     <select name="jeniskegiatan" class="form-control">
                                                         <option value="Individu" selected>Individu</option>
                                                         <option value="Kelompok">Kelompok</option>
@@ -166,8 +166,8 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Peringkat</label>
-                                                <div class="col-sm-9">
+                                                <label class="col-sm-2 col-form-label">Peringkat</label>
+                                                <div class="col-sm-10">
                                                     <select name="peringkat" class="form-control">
                                                         <option value="Penulis 1">Penulis 1</option>
                                                         <option value="Juara 1" selected>Juara 1</option>
@@ -177,14 +177,22 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="keperluan" class="col-sm-3 col-form-label">Bukti</label>
-                                                <div class="col-sm-9">
+                                                <label for="keperluan" class="col-sm-2 col-form-label">Bukti</label>
+                                                <div class="col-sm-10">
                                                     <input type="file" class="form-control" id="bukti" name="bukti" accept="image/jpg, image/jpeg" required>
                                                     <li style="color: red;"><small>Format File JPG / JPEG, ukuran file maksimal 2MB</small></li>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label for="keperluan" class="col-sm-2 col-form-label">Dokumentasi (opsional)</label>
+                                                <div class="col-sm-10">
+                                                    <input type="file" class="form-control" id="dok" name="dok" accept="image/jpg, image/jpeg">
+                                                    <li style="color: red;"><small>Format File JPG / JPEG, ukuran file maksimal 2MB</small></li>
+                                                    <li style="color: red;"><small>Foto menunjukkan pemenang / penerima hadiah</small></li>
+                                                </div>
+                                            </div>
                                             <hr>
-                                            <button type="submit" id="btn-submit" class="btn btn-primary btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> Ajukan</button>
+                                            <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa-solid fa-upload"></i> AJUKAN</button>
                                         </form>
                                     </div>
                                 </div>

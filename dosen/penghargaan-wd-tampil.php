@@ -79,6 +79,7 @@ $no = 1;
             $jeniskegiatan = $row['jeniskegiatan'];
             $peringkat = $row['peringkat'];
             $bukti = $row['bukti'];
+            $dokumentasi = $row['dokumentasi'];
             $validator2 = $row['validator2'];
             $tglvalidasi2 = $row['tglvalidasi2'];
             ?>
@@ -181,6 +182,13 @@ $no = 1;
                                                 <small style="color: red;">Klik pada gambar untuk memperbersar</small>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="keperluan" class="col-sm-2 col-form-label">Dokumentasi</label>
+                                            <div class="col-sm-10">
+                                                <a href="<?= $dokumentasi; ?>" target="_blank"><img src="<?= $dokumentasi; ?>" width="200px"></a><br>
+                                                <small style="color: red;">Klik pada gambar untuk memperbersar</small>
+                                            </div>
+                                        </div>
                                         <?php
                                         if ($jeniskegiatan == 'Kelompok') {
                                         ?> <div class="card card-info">
@@ -251,10 +259,10 @@ $no = 1;
                                             <input type="hidden" name="nimmhs" value="<?= $nimmhs; ?>">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="penghargaan-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                                                    <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="penghargaan-wd-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> SETUJUI</button>
                                                 </div>
                                                 <div class="col-6">
-                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
+                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> TOLAK</button>
                                                 </div>
                                             </div>
                                             <!-- modal tolak -->
