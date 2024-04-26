@@ -5,8 +5,8 @@ session_start();
 include_once 'template/plugins/google-client/Google_Client.php';
 include_once 'template/plugins/google-client/contrib/Google_Oauth2Service.php';
 
-$client_id = ''; // Google client ID
-$client_secret = ''; // Google Client Secret
+$client_id = '238634160161-83o4frumk38h8va3t68cu0e9s7tm4rsp.apps.googleusercontent.com'; // Google client ID
+$client_secret = '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'; // Google Client Secret
 $redirect_url = 'http://localhost/onlinev3/authgoogle.php'; // Callback URL
 
 // Call Google API
