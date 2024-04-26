@@ -54,8 +54,8 @@ if ($kunci == $antibot) {
             header('location:mahasiswa/index.php');
         }
     } else {
-        header('location:index.php?pesan=gagal');
+        header('location:index.php?pesan= Pengguna tidak ditemukan atau UserID / Password salah');
     }
 } else {
-    header('location:index.php?pesan=antibot');
+    header('location:index.php?pesan=Perhitungan salah');
 }

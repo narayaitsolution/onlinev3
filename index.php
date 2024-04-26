@@ -16,6 +16,7 @@ require('system/myfunc.php');
   <link rel="stylesheet" href="template/plugins/fontawesome6/css/all.css">
   <link rel="stylesheet" href="template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <style>
     .login-page {
       background-image: url('system/saintek-bg.jpg');
@@ -34,37 +35,12 @@ require('system/myfunc.php');
       <div class="card-body">
         <?php
         if (isset($_GET['pesan'])) {
-          if ($_GET['pesan'] == "antibot") {
+          $pesan = $_GET['pesan'];
         ?>
-            <div class="alert alert-danger alert-dismissible fade show">
-              <strong>ERROR!</strong> perhitungan salah!!
-            </div>
-          <?php
-          } elseif ($_GET['pesan'] == "gagal") {
-          ?>
-            <div class="alert alert-danger alert-dismissible fade show">
-              <strong>ERROR!</strong> User ID / Password salah
-            </div>
-          <?php
-          } elseif ($_GET['pesan'] == "resetok") {
-          ?>
-            <div class="alert alert-success alert-dismissible fade show">
-              <strong>RESET berhasil</strong> cek email anda
-            </div>
-          <?php
-          } elseif ($_GET['pesan'] == "daftarok") {
-          ?>
-            <div class="alert alert-success alert-dismissible fade show">
-              <strong>Pendaftaran Berhasil</strong> tunggu verifikasi akun.
-            </div>
-          <?php
-          } elseif ($_GET['pesan'] == 'notaktif') {
-          ?>
-            <div class="alert alert-danger alert-dismissible fade show">
-              <strong>ERROR!!</strong> tunggu verifikasi akun.
-            </div>
+          <script>
+            swal('ERROR!', '<?= $pesan; ?>', 'error');
+          </script>
         <?php
-          }
         }
         ?>
         <p class="login-box-msg h3"><b>SAINTEK</b> e-Office</p>
@@ -104,10 +80,12 @@ require('system/myfunc.php');
         </form>
         <hr>
         <div class="text-center">
-          <a href="authgoogle.php" class="btn btn-danger btn-lg btn-block"><i class="fa-brands fa-google"></i> &nbsp;GOOGLE</a>
-          <small style="color: red;">Gunakan email uin-malang.ac.id</small>
+          <small style="color: red;">Masuk menggunakan akun</small>
+          <a href="authg.php" class="btn btn-danger btn-lg btn-block"><i class="fa-solid fa-envelope-circle-check"></i> &nbsp;e-Mail</a>
+          <small style="color: blue;">Gunakan akun email <b>uin-malang.ac.id</b></small>
         </div>
         <hr>
+        <!--
         <div class="row">
           <div class="col text-sm">
             <a href="lupa.php" class="btn btn-success btn-block">LUPA Password</a>
@@ -115,14 +93,13 @@ require('system/myfunc.php');
           <div class="col text-sm">
             <a href="daftar.php" class="btn btn-warning btn-block">DAFTAR Akun</a>
           </div>
-          <!--
           <div class="col text-sm">
             <a href="laporkan/" class="btn btn-danger btn-block">LAPORKAN Keluhan</a>
           </div>
       -->
-        </div>
       </div>
     </div>
+  </div>
   </div>
 
   <script src="template/plugins/jquery/jquery.min.js"></script>

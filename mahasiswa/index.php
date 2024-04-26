@@ -30,6 +30,7 @@ $no = 1;
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -70,11 +71,11 @@ $no = 1;
                             $buktivaksin = $qdata['buktivaksin'];
                             $nohp = $qdata['nohp'];
                             if (empty($buktivaksin) && empty($nohp)) {
-                                echo "<script>alert('Pengajuan Surat dapat dilakukan setelah Bukti Vaksin Terakhir di-upload pada Profil Pengguna (klik gambar pojok kanan atas)')</script>";
+                                $pesan = 'Upoad bukti baksin Terakhir di Profil Pengguna (klik icon Mahasiswa di pojok kanan atas)';
                             ?>
-                                <div class="alert alert-danger alert-dismissible fade show">
-                                    <strong>ERROR!</strong> Pengajuan Surat dapat dilakukan setelah Bukti Vaksin Terakhir di-upload pada Profil Pengguna (klik gambar pojok kanan atas)
-                                </div>
+                                <script>
+                                    swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                </script>
                             <?php
                             }
                             ?>

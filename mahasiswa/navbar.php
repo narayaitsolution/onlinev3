@@ -42,7 +42,7 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                     <a href="profile-tampil.php" class="btn btn-default btn-flat">Profil</a>
-                    <a href="../deauth.php" class="btn btn-default btn-flat float-right" onclick="return confirm ('Keluar dari SAINTEK e-Office ?')">Keluar</a>
+                    <a href="../index.php" class="btn btn-default btn-flat float-right" onclick="return confirm ('Keluar dari SAINTEK e-Office ?')">Keluar</a>
                 </li>
             </ul>
         </li>
