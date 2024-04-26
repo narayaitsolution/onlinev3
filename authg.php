@@ -87,6 +87,9 @@ if ($gclient->getAccessToken()) {
 		$nip = $pecahemail[0];
 		$email = $gemail;
 		$prodi = cariprodi($dbsurat, $nip);
+		if (empty($prodi)) {
+			header('location:index.php?pesan=Mohon Maaf, Sistem ini hanya untuk Mahasiswa & Dosen SAINTEK!!');
+		}
 		$fakultas = 'Sains dan Teknologi';
 		$username = $nip;
 		$passmd5 = md5('oauth');

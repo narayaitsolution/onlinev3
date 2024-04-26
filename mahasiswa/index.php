@@ -71,7 +71,7 @@ $no = 1;
                             $buktivaksin = $qdata['buktivaksin'];
                             $nohp = $qdata['nohp'];
                             if (empty($buktivaksin) && empty($nohp)) {
-                                $pesan = 'Upoad bukti baksin Terakhir di Profil Pengguna (klik icon Mahasiswa di pojok kanan atas)';
+                                $pesan = 'Upoad bukti Vaksin Terakhir di Profil Pengguna (klik icon Mahasiswa di pojok kanan atas)';
                             ?>
                                 <script>
                                     swal('ERROR!', '<?= $pesan; ?>', 'error');
