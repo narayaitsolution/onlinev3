@@ -65,10 +65,11 @@ $no = 1;
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <?php
-                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip=$nim");
+                            $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
-                            if (empty($buktivaksin)) {
+                            $nohp = $qdata['nohp'];
+                            if (empty($buktivaksin) && empty($nohp)) {
                                 echo "<script>alert('Pengajuan Surat dapat dilakukan setelah Bukti Vaksin Terakhir di-upload pada Profil Pengguna (klik gambar pojok kanan atas)')</script>";
                             ?>
                                 <div class="alert alert-danger alert-dismissible fade show">

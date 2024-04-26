@@ -107,6 +107,16 @@ function nilai($nilai)
     return $angka;
 }
 
+function cariprodi($conn, $nip)
+{
+    require_once('system/dbconn.php');
+    $kdprodi = substr($nip, 3, 4);
+    $qprodi = mysqli_query($conn, "SELECT * FROM prodi WHERE kdjurusan='$kdprodi'");
+    $dprodi = mysqli_fetch_array($qprodi);
+    $namaprodi = $dprodi['namaprodi'];
+    return $namaprodi;
+}
+
 function namadosen($conn, $nip)
 {
     require_once('../system/dbconn.php');

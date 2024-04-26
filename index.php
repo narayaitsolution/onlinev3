@@ -1,4 +1,7 @@
 <?php
+session_start();
+session_unset();
+session_destroy();
 require('system/myfunc.php');
 ?>
 <!DOCTYPE html>
