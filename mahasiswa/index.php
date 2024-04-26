@@ -1622,6 +1622,7 @@ $no = 1;
                                                             } elseif ($validasi3 == 1) {
                                                             ?>
                                                                 <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> <br />
+                                                                <small style="color: red;text-align: center;">Informasi penerimaan penghargaan akan disampaikan melalui WA oleh Bag. Akademik dan Kemahasiswaan Fakultas SAINTEK</small>
                                                             <?php
                                                             } else {
                                                             ?>

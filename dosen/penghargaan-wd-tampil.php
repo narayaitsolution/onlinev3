@@ -74,6 +74,7 @@ $no = 1;
             $kegiatan = $row['kegiatan'];
             $namakegiatan = $row['namakegiatan'];
             $penyelenggara = $row['penyelenggara'];
+            $tglpelaksanaan = $row['tglpelaksanaan'];
             $tingkat = $row['tingkat'];
             $kategori = $row['kategori'];
             $jeniskegiatan = $row['jeniskegiatan'];
@@ -138,6 +139,12 @@ $no = 1;
                                             <label class="col-sm-2 col-form-label">Penyelenggara</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="penyelenggara" value="<?= $penyelenggara; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Tanggal Kegiatan</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="tglpelaksanaan" value="<?= tgl_indo($tglpelaksanaan); ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">

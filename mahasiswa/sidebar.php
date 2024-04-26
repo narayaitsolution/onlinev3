@@ -125,15 +125,19 @@
                             $dmenu = mysqli_fetch_array($qmenu);
                             $statussurat = $dmenu['status'];
                             if ($statussurat == 1) {
+                                $qpenghargaan = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim'");
+                                $jpenghargaan = mysqli_fetch_array($qpenghargaan);
+                                if ($jpenghargaan == 0) {
                             ?>
-                                <li class="nav-item">
-                                    <a href="penghargaan-isi.php" class="nav-link">
-                                        <i class="nav-icon fas fa-trophy"></i>
-                                        <p>Penghargaan Prestasi</p>
-                                        <span class="badge badge-danger right">Baru</span>
-                                    </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a href="penghargaan-isi.php" class="nav-link">
+                                            <i class="nav-icon fas fa-trophy"></i>
+                                            <p>Penghargaan Prestasi</p>
+                                            <span class="badge badge-danger right">Baru</span>
+                                        </a>
+                                    </li>
                             <?php
+                                }
                             }
                             ?>
 

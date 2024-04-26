@@ -13,6 +13,7 @@ $prodi = $_SESSION['prodi'];
 $kegiatan = $_POST['kegiatan'];
 $namakegiatan = $_POST['namakegiatan'];
 $penyelenggara = $_POST['penyelenggara'];
+$tglpelaksanaan = date('Y-m-d', strtotime($_POST['tglpelaksanaan']));
 $tingkat = $_POST['tingkat'];
 $kategori = $_POST['kategori'];
 $jeniskegiatan = $_POST['jeniskegiatan'];
@@ -50,11 +51,11 @@ $buktiSize = $_FILES['bukti']['size'];
 $buktiNameCmps = explode(".", $buktiName);
 $fileExtension = strtolower(end($buktiNameCmps));
 
-$bukti = imgresize($buktiTmpPath);
+//$bukti = imgresize($buktiTmpPath);
 $allowedfileExtensions = array('jpg', 'jpeg');
 if (in_array($fileExtension, $allowedfileExtensions)) {
     $buktipath = $target_dir . $kodeacak1 . '.jpg';
-    move_uploaded_file($bukti, $buktipath);
+    move_uploaded_file($buktiTmpPath, $buktipath);
     $buktiinfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $buktipath);
     if ($buktiinfo == 'image/jpeg' && $buktiSize < 2097152) {
         $statusbukti = '1';
@@ -72,11 +73,11 @@ $dokSize = $_FILES['dok']['size'];
 $dokNameCmps = explode(".", $dokName);
 $fileExtension = strtolower(end($dokNameCmps));
 
-$dok = imgresize($dokTmpPath);
+//$dok = imgresize($dokTmpPath);
 $allowedfileExtensions = array('jpg', 'jpeg');
 if (in_array($fileExtension, $allowedfileExtensions)) {
     $dokpath = $target_dir . $kodeacak2 . '.jpg';
-    move_uploaded_file($dok, $dokpath);
+    move_uploaded_file($dokTmpPath, $dokpath);
     $dokinfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $dokpath);
     if ($dokinfo == 'image/jpeg' && $dokSize < 2097152) {
         $statusdok = '1';
@@ -88,9 +89,9 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
 
 
 if ($jeniskegiatan == 'Individu') {
-    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti,dokumentasi, validator2, validator3, token) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("ssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $token);
+    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti,dokumentasi, validator2, validator3, token) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tglpelaksanaan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $token);
     $stmt->execute();
 
     //kirim email ke kaprodi
@@ -125,9 +126,9 @@ if ($jeniskegiatan == 'Individu') {
     header("location:index.php?pesan=success");
 } else {
     $statussurat = '-1';
-    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tingkat, kategori, jeniskegiatan, peringkat, bukti, dokumentasi, validator2, validator3,statussurat, token) 
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $statussurat, $token);
+    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara,tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti, dokumentasi, validator2, validator3,statussurat, token) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("ssssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tglpelaksanaan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $statussurat, $token);
     $stmt->execute();
 
     $qnodata = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim' ORDER BY tanggal DESC");

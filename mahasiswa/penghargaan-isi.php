@@ -123,6 +123,12 @@ $no = 1;
                                                 </div>
                                             </div>
                                             <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Tanggal Pelaksanaan</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" id="tglpelaksanaan" name="tglpelaksanaan" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Level Kegiatan</label>
                                                 <div class="col-sm-10">
                                                     <select name="tingkat" class="form-control">
