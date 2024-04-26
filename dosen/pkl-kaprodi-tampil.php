@@ -82,6 +82,9 @@ $no = 1;
             $tglvalidasi1 = $dpkl['tglvalidasi1'];
             $validasi1 = $dpkl['validasi1'];
 
+            $qbuktivaksin = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nimmhs'");
+            $dbuktivaksin = mysqli_fetch_array($qbuktivaksin);
+            $buktivaksin = $dbuktivaksin['buktivaksin'];
             ?>
 
             <!-- tabel pengajuan pribadi -->
@@ -151,6 +154,12 @@ $no = 1;
                                             <label for="jenispkl" class="col-sm-2 col-form-label">Luring / Daring</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" id="jenispkl" name="jenispkl" value="<?= $jenispkl; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="paktaintegritas" class="col-sm-2 col-form-label">Bukti vaksin</label>
+                                            <div class="col-sm-10 text-center">
+                                                <a href="<?= $buktivaksin; ?>" target="_blank"><img src="<?= $buktivaksin; ?>" class="img-fluid" width="50%"></a>
                                             </div>
                                         </div>
                                         <div class="form-group row">
