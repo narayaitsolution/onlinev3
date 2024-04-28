@@ -27,6 +27,7 @@ $tahun = date('Y');
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../template/plugins/fontawesome6/css/all.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -99,6 +100,10 @@ $tahun = date('Y');
                         $user = $duser['user'];
                         $pass = $duser['pass'];
                         $buktivaksin = $duser['buktivaksin'];
+                        $golongan = $duser['golongan'];
+                        $pangkat = $duser['pangkat'];
+                        $jafung = $duser['jafung'];
+                        $token = $duser['token'];
                         ?>
                         <div class="col-md-9">
                             <?php
@@ -124,6 +129,27 @@ $tahun = date('Y');
                                 }
                             }
                             ?>
+                            <!--alert-->
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil = 'ok') {
+                            ?>
+                                    <script>
+                                        swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                                    </script>
+
+                                <?php
+                                } else {
+                                ?>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
+                            <?php
+                                }
+                            }
+                            ?>
                             <div class="card card-primary">
                                 <div class="card-header p-2">
                                     <h3 class="card-title">Data Pribadi</h3>
@@ -143,6 +169,69 @@ $tahun = date('Y');
                                             <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" id="nip" name="nip" value="<?= $nip; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nip" class="col-sm-2 col-form-label">Golongan</label>
+                                            <div class="col-sm-10">
+                                                <select name="golongan" class="form-control">
+                                                    <option value="<?= $golongan; ?>"><?= $golongan; ?></option>
+                                                    <option value="Juru Muda">Juru Muda</option>
+                                                    <option value="Juru Muda Tingkat ">Juru Muda Tingkat </option>
+                                                    <option value="Juru">Juru</option>
+                                                    <option value="Juru Tingkat I">Juru Tingkat I</option>
+                                                    <option value="Pengatur Muda">Pengatur Muda</option>
+                                                    <option value="Pengatur Muda Tingkat I">Pengatur Muda Tingkat I</option>
+                                                    <option value="Pengatur">Pengatur</option>
+                                                    <option value="Pengatur Tingkat I">Pengatur Tingkat I</option>
+                                                    <option value="Penata Muda">Penata Muda</option>
+                                                    <option value="Penata Muda Tingkat I">Penata Muda Tingkat I</option>
+                                                    <option value="Penata">Penata</option>
+                                                    <option value="Penata Tingkat I">Penata Tingkat I</option>
+                                                    <option value="Pembina">Pembina</option>
+                                                    <option value="Pembina Tingkat I">Pembina Tingkat I</option>
+                                                    <option value="Pembina Utama Muda">Pembina Utama Muda</option>
+                                                    <option value="Pembina Utama Madya">Pembina Utama Madya</option>
+                                                    <option value="Pembina Utama">Pembina Utama</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nip" class="col-sm-2 col-form-label">Pangkat</label>
+                                            <div class="col-sm-10">
+                                                <select name="pangkat" class="form-control">
+                                                    <option value="<?= $pangkat; ?>"><?= $pangkat; ?></option>
+                                                    <option value="I/a">I/a</option>
+                                                    <option value="I/b">I/b</option>
+                                                    <option value="I/c">I/c</option>
+                                                    <option value="I/d">I/d</option>
+                                                    <option value="II/a">II/a</option>
+                                                    <option value="II/b">II/b</option>
+                                                    <option value="II/c">II/c</option>
+                                                    <option value="II/d">II/d</option>
+                                                    <option value="III/a">III/a</option>
+                                                    <option value="III/b">III/b</option>
+                                                    <option value="III/c">III/c</option>
+                                                    <option value="III/d">III/d</option>
+                                                    <option value="IV/a">IV/a</option>
+                                                    <option value="IV/b">IV/b</option>
+                                                    <option value="IV/c">IV/c</option>
+                                                    <option value="IV/d">IV/d</option>
+                                                    <option value="IV/e">IV/e</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nip" class="col-sm-2 col-form-label">Jabatan Fungsional</label>
+                                            <div class="col-sm-10">
+                                                <select name="jafung" class="form-control">
+                                                    <option value="<?= $jafung; ?>"><?= $jafung; ?></option>
+                                                    <option value="Asisten Ahli">Asisten Ahli</option>
+                                                    <option value="Lektor">Lektor</option>
+                                                    <option value="Lektor Kepala">Lektor Kepala</option>
+                                                    <option value="Guru Besar">Guru Besar</option>
+                                                </select>
+
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -203,7 +292,7 @@ $tahun = date('Y');
                                         </div>
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')">UPDATE DATA</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')"><i class="fas fa-refresh"></i> UPDATE DATA</button>
                                             </div>
                                         </div>
                                     </FORM>

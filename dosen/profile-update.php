@@ -10,13 +10,16 @@ require('../system/myfunc.php');
 $no = 1;
 $tahun = date('Y');
 
-$nama = mysqli_real_escape_string($dbsurat, $_POST['nama']);
-$nip = mysqli_real_escape_string($dbsurat, $_POST['nip']);
-$nohp = mysqli_real_escape_string($dbsurat, $_POST['nohp']);
-$email = mysqli_real_escape_string($dbsurat, $_POST['email']);
-$prodi = mysqli_real_escape_string($dbsurat, $_POST['prodi']);
-$userid = mysqli_real_escape_string($dbsurat, $_POST['userid']);
-$pass = mysqli_real_escape_string($dbsurat, $_POST['pass']);
+$nama = $_POST['nama'];
+$nip = $_POST['nip'];
+$nohp = $_POST['nohp'];
+$email = $_POST['email'];
+$prodi = $_POST['prodi'];
+$userid = $_POST['userid'];
+$pass = $_POST['pass'];
+$pangkat = $_POST['pangkat'];
+$golongan = $_POST['golongan'];
+$jafung = $_POST['jafung'];
 $passmd5 = md5(strtolower($pass));
 
 $target_dir = "../lampiran/";
@@ -34,24 +37,24 @@ if (!empty($fileName)) {
         if ($fileSize <= 1048576) {
             $dest_path = $target_dir . $nip . '-buktivaksin.jpg';
             if (move_uploaded_file($buktivaksin_low, $dest_path)) {
-                $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,user=?,pass=?,buktivaksin=? 
+                $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,golongan=?,pangkat=?,jafung=?,nohp=?,email=?,prodi=?,user=?,pass=?,buktivaksin=? 
                                         WHERE nip=?");
-                $stmt->bind_param("sssssssss", $nama, $nip, $nohp, $email, $prodi, $userid, $passmd5, $dest_path, $nip);
+                $stmt->bind_param("ssssssssssss", $nama, $nip, $golongan, $pangkat, $jafung, $nohp, $email, $prodi, $userid, $passmd5, $dest_path, $nip);
                 $stmt->execute();
-                header("location:profile-tampil.php?nip=$nip&pesan=success");
+                header("location:profile-tampil.php?nip=$nip&hasil=ok&pesan=Perubahan data berhasil");
             } else {
-                header("location:profile-tampil.php?nip=$nip&pesan=gagal");
+                header("location:profile-tampil.php?nip=$nip&hasil=notok&pesan=Perubahan data gagal");
             };
         } else {
-            header("location:profile-tampil.php?nip=$nip&pesan=filesize");
+            header("location:profile-tampil.php?nip=$nip&hasil=notok&pesan=Ukuran file terlalu besar");
         };
     } else {
-        header("location:profile-tampil.php?nip=$nip&pesan=extention");
+        header("location:profile-tampil.php?nip=$nip&hasil=notok&pesan=File harus format JPG");
     };
 } else {
-    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,user=?,pass=? 
+    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,golongan=?,pangkat=?,jafung=?,nohp=?,email=?,prodi=?,user=?,pass=? 
                                         WHERE nip=?");
-    $stmt->bind_param("ssssssss", $nama, $nip, $nohp, $email, $prodi, $userid, $passmd5, $nip);
+    $stmt->bind_param("sssssssssss", $nama, $nip, $golongan, $pangkat, $jafung, $nohp, $email, $prodi, $userid, $passmd5, $nip);
     $stmt->execute();
-    header("location:profile-tampil.php?nip=$nip&pesan=success");
+    header("location:profile-tampil.php?nip=$nip&hasil=ok&pesan=Perubahan data berhasil");
 }

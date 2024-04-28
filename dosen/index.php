@@ -30,6 +30,7 @@ $tahun = date('Y');
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -54,6 +55,26 @@ $tahun = date('Y');
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Dashboard</h1>
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil = 'ok') {
+                            ?>
+                                    <script>
+                                        swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                                    </script>
+
+                                <?php
+                                } else {
+                                ?>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
+                            <?php
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -103,9 +124,13 @@ $tahun = date('Y');
                                                 <a class="btn btn-info btn-sm" href="daftar-aktifkan.php?token=<?= $token; ?>" onclick="return confirm('Apakah anda yakin mengaktifkan akun ini ?')">
                                                     <i class="fas fa-eye"></i> Aktifkan
                                                 </a>
+                                                <a class="btn btn-danger btn-sm" href="daftar-hapus.php?token=<?= $token; ?>" onclick="return confirm('Apakah anda yakin menghapus akun ini ?')">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php
+                                        $no++;
                                     }
                                     ?>
                                 </tbody>

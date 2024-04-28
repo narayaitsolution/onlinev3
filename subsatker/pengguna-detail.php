@@ -129,23 +129,23 @@ $tahun = date('Y');
                                             <div class="col-sm-10">
                                                 <select name="pangkat" class="form-control">
                                                     <option value="<?= $pangkat; ?>"><?= $pangkat; ?></option>
-                                                    <option value="Ia">Ia</option>
-                                                    <option value="Ib">Ib</option>
-                                                    <option value="Ic">Ic</option>
-                                                    <option value="Id">Id</option>
-                                                    <option value="IIa">IIa</option>
-                                                    <option value="IIb">IIb</option>
-                                                    <option value="IIc">IIc</option>
-                                                    <option value="IId">IId</option>
-                                                    <option value="IIIa">IIIa</option>
-                                                    <option value="IIIb">IIIb</option>
-                                                    <option value="IIIc">IIIc</option>
-                                                    <option value="IIId">IIId</option>
-                                                    <option value="IVa">IVa</option>
-                                                    <option value="IVb">IVb</option>
-                                                    <option value="IVc">IVc</option>
-                                                    <option value="IVd">IVd</option>
-                                                    <option value="IVe">IVe</option>
+                                                    <option value="I/a">I/a</option>
+                                                    <option value="I/b">I/b</option>
+                                                    <option value="I/c">I/c</option>
+                                                    <option value="I/d">I/d</option>
+                                                    <option value="II/a">II/a</option>
+                                                    <option value="II/b">II/b</option>
+                                                    <option value="II/c">II/c</option>
+                                                    <option value="II/d">II/d</option>
+                                                    <option value="III/a">III/a</option>
+                                                    <option value="III/b">III/b</option>
+                                                    <option value="III/c">III/c</option>
+                                                    <option value="III/d">III/d</option>
+                                                    <option value="IV/a">IV/a</option>
+                                                    <option value="IV/b">IV/b</option>
+                                                    <option value="IV/c">IV/c</option>
+                                                    <option value="IV/d">IV/d</option>
+                                                    <option value="IV/e">IV/e</option>
                                                 </select>
                                             </div>
                                         </div>
