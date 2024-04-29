@@ -55,6 +55,8 @@ $tahun = date('Y');
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Dashboard</h1>
+
+                            <!--alert-->
                             <?php
                             if (isset($_GET['pesan'])) {
                                 $pesan = $_GET['pesan'];

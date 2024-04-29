@@ -179,6 +179,7 @@ $tahun = date('Y');
                                                 </select>
                                             </div>
                                         </div>
+                                        <!--
                                         <div class="form-group row">
                                             <label for="userid" class="col-sm-2 col-form-label">User ID</label>
                                             <div class="col-sm-10">
@@ -191,6 +192,7 @@ $tahun = date('Y');
                                                 <input type="password" class="form-control" name="pass" id="pass" required>
                                             </div>
                                         </div>
+                -->
                                         <div class="form-group row">
                                             <label for="pass" class="col-sm-2 col-form-label">Sertifikat Vaksin Terakhir</label>
                                             <div class="col-sm-10">
@@ -211,7 +213,7 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
                                                 <input type="hidden" name="token" value="<?= $token; ?>">
-                                                <button type="submit" id="btn-submit" class="btn btn-warning btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')">UPDATE DATA</button>
+                                                <button type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')"><i class="fas fa-refresh"></i> UPDATE DATA</button>
                                             </div>
                                         </div>
                                     </FORM>

@@ -11,12 +11,12 @@ $no = 1;
 $tahun = date('Y');
 
 $nama = $_POST['nama'];
-$nip = mysqli_real_escape_string($dbsurat, $_POST['nip']);
-$nohp = mysqli_real_escape_string($dbsurat, $_POST['nohp']);
-$email = mysqli_real_escape_string($dbsurat, $_POST['email']);
-$prodi = mysqli_real_escape_string($dbsurat, $_POST['prodi']);
-$userid = mysqli_real_escape_string($dbsurat, $_POST['userid']);
-$pass = $_POST['pass'];
+$nip = $_POST['nip'];
+$nohp = $_POST['nohp'];
+$email = $_POST['email'];
+$prodi = $_POST['prodi'];
+//$userid = $_POST['userid'];
+//$pass = $_POST['pass'];
 $passmd5 = md5(strtolower($pass));
 $kodeacak = random_str(12);
 
@@ -37,9 +37,9 @@ if (!empty($fileName)) {
         $fileSize = filesize($dest_path);
         $info = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $dest_path);
         if (($info == 'image/jpg' || $info == 'image/jpeg') && $filesize < 1048576) {
-            $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=?,user=?,pass=?,buktivaksin=? 
+            $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=?,buktivaksin=? 
                                         WHERE nip=?");
-            $stmt->bind_param("ssssssss", $nama, $nohp, $email, $prodi, $userid, $passmd5, $dest_path, $nip);
+            $stmt->bind_param("ssssssss", $nama, $nohp, $email, $prodi, $dest_path, $nip);
             $stmt->execute();
             header("location:profile-tampil.php?nip=$nip&pesan=success");
         } else {
@@ -49,9 +49,9 @@ if (!empty($fileName)) {
         header("location:profile-tampil.php?nip=$nip&pesan=extention");
     };
 } else {
-    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=?,user=?,pass=? 
+    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=? 
                                         WHERE nip=?");
-    $stmt->bind_param("sssssss", $nama, $nohp, $email, $prodi, $userid, $passmd5, $nip);
+    $stmt->bind_param("sssssss", $nama, $nohp, $email, $prodi, $nip);
     $stmt->execute();
     header("location:profile-tampil.php?nip=$nip&pesan=success");
 }
