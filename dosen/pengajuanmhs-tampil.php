@@ -219,19 +219,6 @@ $tahun = date('Y');
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
                                         <td> <?php
-                                                //koordinator PKL
-                                                echo namadosen($dbsurat, $validator1);
-                                                if ($validasi1 == 0) {
-                                                    echo ' <b>menunggu verifikasi</b>';
-                                                } elseif ($validasi1 == 1) {
-                                                    echo ' <b style="color:green;">telah disetujui</b>';
-                                                } elseif ($validasi1 == 2) {
-                                                    echo ' <b style="color:red;">ditolak</b>';
-                                                } elseif ($validasi1 == 3) {
-                                                    echo ' <b style="color:red;">dibatalkan</b>';
-                                                };
-                                                echo '<br/>';
-
                                                 //kaprodi
                                                 echo namadosen($dbsurat, $validator2);
                                                 if ($validasi2 == 0) {
@@ -780,17 +767,6 @@ $tahun = date('Y');
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
                                         <td> <?php
-                                                //dosen pembimbing
-                                                echo namadosen($dbsurat, $validator1);
-                                                if ($validasi1 == 0) {
-                                                    echo ' <b>menunggu verifikasi</b>';
-                                                } elseif ($validasi1 == 1) {
-                                                    echo ' <b style="color:green;">telah disetujui</b>';
-                                                } elseif ($validasi1 == 2) {
-                                                    echo ' <b style="color:red;">ditolak</b>';
-                                                };
-                                                echo '<br/>';
-
                                                 //kaprodi
                                                 echo namadosen($dbsurat, $validator2);
                                                 if ($validasi2 == 0) {
@@ -961,7 +937,7 @@ $tahun = date('Y');
                                             <?php
                                             if ($statussurat == 1) {
                                             ?>
-                                                <a href="penghargaan-cetak.php" class="btn btn-success btn-sm">
+                                                <a href="penghargaan-cetak.php" class="btn btn-success btn-sm" target="_blank">
                                                     <i class="fas fa-print"></i>
                                                 </a>
                                                 <?php
