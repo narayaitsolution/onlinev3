@@ -70,11 +70,10 @@ $no = 1;
                             $qdata = mysqli_fetch_array($quser);
                             $buktivaksin = $qdata['buktivaksin'];
                             $nohp = $qdata['nohp'];
-                            if (empty($buktivaksin) && empty($nohp)) {
-                                $pesan = 'Upoad bukti Vaksin Terakhir di Profil Pengguna (klik icon Mahasiswa di pojok kanan atas)';
+                            if (empty($buktivaksin) || empty($nohp)) {
                             ?>
                                 <script>
-                                    swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    swal('ERROR!', 'SILAHKAN LENGKAPI PROFIL PENGGUNA DAHULU!! (klik icon mahasiswa di pojok kanan atas)', 'error');
                                 </script>
                             <?php
                             }
