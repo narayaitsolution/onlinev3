@@ -31,6 +31,17 @@ $nipwd = $rowwd['nip'];
 $namawd = $rowwd['nama'];
 $jabatanwd = $rowwd['jabatan'];
 
+//buat qrcode
+$tgl = date('Y-m-d');
+$jam = date('H-m-i');
+include "../system/phpqrcode/qrlib.php";
+$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+//echo $actual_link;
+$codeContents = $actual_link;
+$namafile = $nipwd . '-' . $tgl . $jam;
+QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
+?>
+
 ?>
 
 <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
@@ -144,7 +155,7 @@ $jabatanwd = $rowwd['jabatan'];
     <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
         <tbody>
             <tr>
-                <td>&nbsp;</td>
+                <td width="30%">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -156,34 +167,23 @@ $jabatanwd = $rowwd['jabatan'];
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td style="text-align:center">Malang, <?= tgl_indo(date('Y-m-d', strtotime('now'))); ?></td>
+                <td style="text-align:center">a.n. Dekan</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td style="text-align:center">
-                    <!--
-                    <small><i>Scan QRCode ini </i></small><br />
+                    <?= $jabatanwd; ?><br />
                     <img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br />
-                    <small><i>untuk verifikasi surat</i></small>
-        -->
+                    <?= $namawd; ?>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <?php
-                $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip = '$nipwd'");
-                $jdata = mysqli_num_rows($sql);
-                if ($jdata > 0) {
-                    $hasil = mysqli_fetch_array($sql);
-                    $ttd = $hasil['ttd'];
-                } else {
-                    $ttd = 'imamtazi.jpg';
-                }
-                ?>
-                <td style="text-align:center"><img src="../ttd/<?= $ttd; ?>" width="300" /></td>
                 <td>&nbsp;</td>
             </tr>
         </tbody>
+    </table>
 </font>
 </table>
 

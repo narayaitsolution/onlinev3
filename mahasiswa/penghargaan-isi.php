@@ -106,7 +106,7 @@ $no = 1;
                                                     <select name="kegiatan" class="form-control">
                                                         <option value="Penulisan karya ilmiah di media cetak">Penulisan karya ilmiah di media cetak</option>
                                                         <option value="Penulisan karya ilmiah di jurnal ilmiah bereputasi">Penulisan karya ilmiah di jurnal ilmiah bereputasi</option>
-                                                        <option value="Kompetisi/kejuaraan/perlombaan">Kompetisi/kejuaraan/perlombaan</option>
+                                                        <option value="Kompetisi / Kejuaraan / Perlombaan">Kompetisi / Kejuaraan / Perlombaan</option>
                                                     </select>
                                                 </div>
                                             </div>

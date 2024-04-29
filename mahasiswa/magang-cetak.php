@@ -54,7 +54,7 @@ include "../system/phpqrcode/qrlib.php";
 $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 //echo $actual_link;
 $codeContents = $actual_link;
-$namafile = $nim . "_" . $tgl . "_" . $jam;
+$namafile = $token;
 QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
 ?>
 
@@ -163,6 +163,7 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
     <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
         <tbody>
             <tr>
+                <td width="30%">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -171,35 +172,22 @@ QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td style="text-align:center"><small><i>Scan QRCode ini </i><br />
-                        <img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br />
-                        <small><i>untuk verifikasi surat</i></small>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td style="text-align:center">a.n. Dekan</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td style="text-align:center">
+                    <?= $jabatan; ?><br />
+                    <img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br />
+                    <?= $namawd; ?>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <?php
-                if ($validasi3 == 1) {
-                    $sql = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip = '$validator3'");
-                    $jdata = mysqli_num_rows($sql);
-                    if ($jdata > 0) {
-                        $hasil = mysqli_fetch_array($sql);
-                        $ttd = $hasil['ttd'];
-                    } else {
-                        $ttd = 'imamtazi.jpg';
-                    }
-
-                ?>
-                    <td style="text-align: center;">
-                    </td>
-                    <td style="text-align:center">Malang, <?= tgl_indo($tglsurat); ?><br />
-                        <!--<?= $jabatan; ?><br />-->
-                        <img src="../ttd/<?= $ttd; ?>" width="350" /><br />
-                        <!--<u><?= $namawd; ?></u><br />
-						NIP. <?= $nipwd; ?>-->
-                    </td>
-                <?php
-                }
-                ?>
                 <td>&nbsp;</td>
             </tr>
         </tbody>
