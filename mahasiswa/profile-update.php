@@ -17,13 +17,13 @@ $email = $_POST['email'];
 $prodi = $_POST['prodi'];
 //$userid = $_POST['userid'];
 //$pass = $_POST['pass'];
-$passmd5 = md5(strtolower($pass));
+//$passmd5 = md5(strtolower($pass));
 $kodeacak = random_str(12);
 
 $target_dir = "../lampiran/";
 $fileTmpPath = $_FILES['fileToUpload']['tmp_name'];
 $fileName = $_FILES['fileToUpload']['name'];
-//$fileSize = $_FILES['fileToUpload']['size'];
+$fileSize = $_FILES['fileToUpload']['size'];
 $fileType = $_FILES['fileToUpload']['type'];
 $fileNameCmps = explode(".", $fileName);
 $fileExtension = strtolower(end($fileNameCmps));
@@ -34,12 +34,11 @@ if (!empty($fileName)) {
     if (in_array($fileExtension, $allowedfileExtensions)) {
         $dest_path = $target_dir . $kodeacak . '.jpg';
         move_uploaded_file($buktivaksin_low, $dest_path);
-        $fileSize = filesize($dest_path);
         $info = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $dest_path);
-        if (($info == 'image/jpg' || $info == 'image/jpeg') && $filesize < 1048576) {
+        if (($info == 'image/jpg' || $info == 'image/jpeg') && $fileSize < 1048576) {
             $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=?,buktivaksin=? 
                                         WHERE nip=?");
-            $stmt->bind_param("ssssssss", $nama, $nohp, $email, $prodi, $dest_path, $nip);
+            $stmt->bind_param("ssssss", $nama, $nohp, $email, $prodi, $dest_path, $nip);
             $stmt->execute();
             header("location:profile-tampil.php?nip=$nip&pesan=success");
         } else {
@@ -51,7 +50,7 @@ if (!empty($fileName)) {
 } else {
     $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nohp=?,email=?,prodi=? 
                                         WHERE nip=?");
-    $stmt->bind_param("sssssss", $nama, $nohp, $email, $prodi, $nip);
+    $stmt->bind_param("sssss", $nama, $nohp, $email, $prodi, $nip);
     $stmt->execute();
     header("location:profile-tampil.php?nip=$nip&pesan=success");
 }
