@@ -209,7 +209,7 @@
                                         <a href="rekomendasi-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-id-card"></i>
                                             <p>
-                                                Rekomendasi
+                                                Rekomendasi Beasiswa
                                                 <span class="right badge badge-danger"></span>
                                             </p>
                                         </a>

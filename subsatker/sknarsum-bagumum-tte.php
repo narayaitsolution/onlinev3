@@ -120,6 +120,12 @@ $no = 1;
                             </div>
                             <hr>
                             <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Download SK</label>
+                                <div class="col-sm-10">
+                                    <a href="sknarsum-bagumum-cetak.php?token=<?= $token; ?>" class="btn btn-lg btn-success" target="_blank"><i class="fas fa-download"></i> Download</a>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">File SK TTE</label>
                                 <div class="col-sm-10">
                                     <input type="file" class="form-control" name="sktte" accept=".pdf" required>
