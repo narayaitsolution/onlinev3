@@ -111,12 +111,6 @@ $no = 1;
                                                     <small style="color: blue;">
                                                         <li>Rekomendasi beasiswa tuliskan nama beasiswa yang dituju</li>
                                                     </small>
-                                                    <small style="color: blue;">
-                                                        <li>Rekomendasi magang tuliskan nama instansi yang dituju</li>
-                                                    </small>
-                                                    <small style="color: blue;">
-                                                        <li>Rekomendasi Delegasi lomba tuliskan lomba yang diikuti</li>
-                                                    </small>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

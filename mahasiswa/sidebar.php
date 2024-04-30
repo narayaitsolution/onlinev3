@@ -62,7 +62,7 @@
                                         <li class="nav-item">
                                             <a href="#" class="nav-link" onclick="return alert('Anda hanya diijinkan mengajukan izin PKL 1x. Hubungi Koor. PKL untuk membatalkan pengajuan anda sebelumnya')">
                                                 <i class="nav-icon fas fa-users"></i>
-                                                <p>Pengantar PKL</p>
+                                                <p>Izin PKL PKL</p>
                                             </a>
                                         </li>
                                     <?php
@@ -71,7 +71,7 @@
                                         <li class="nav-item">
                                             <a href="pkl-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
                                                 <i class="nav-icon fas fa-users"></i>
-                                                <p>Pengantar PKL</p>
+                                                <p>Izin PKL</p>
                                             </a>
                                         </li>
                             <?php
@@ -99,7 +99,7 @@
                                         <li class="nav-item">
                                             <a href="#" class="nav-link" onclick="return alert('Anda hanya diijinkan mengajukan izin Magang 1x. Hubungi Koor. Magang untuk membatalkan pengajuan anda sebelumnya')">
                                                 <i class="nav-icon fas fa-users"></i>
-                                                <p>Pengantar Magang</p>
+                                                <p>Izin Magang</p>
                                             </a>
                                         </li>
                                     <?php
@@ -108,7 +108,7 @@
                                         <li class="nav-item">
                                             <a href="magang-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
                                                 <i class="nav-icon fas fa-users"></i>
-                                                <p>Pengantar Magang</p>
+                                                <p>Izin Magang</p>
                                             </a>
                                         </li>
                             <?php
