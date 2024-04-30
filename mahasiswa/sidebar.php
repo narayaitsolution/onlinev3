@@ -164,27 +164,27 @@
                             <li class="nav-item has-treeview menu-close">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-file-text"></i>
-                                    <p>Pengajuan SK ORMAWA<i class="right fas fa-angle-left"></i></p>
+                                    <p>Surat Keterangan <br> ORMAWA<i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="skpanitia-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-user"></i>
-                                            <p>SK Kepanitiaan</p>
+                                            <p>Suket. Kepanitiaan</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="sknarasumber-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-user-secret"></i>
-                                            <p>SK Narasumber</p>
+                                            <p>Suket. Narasumber</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="skpeserta-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-users"></i>
-                                            <p>SK Peserta</p>
+                                            <p>Suket. Peserta</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
@@ -209,8 +209,19 @@
                                         <a href="rekomendasi-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-id-card"></i>
                                             <p>
-                                                Rekomendasi Beasiswa
+                                                Rekomendasi
                                                 <span class="right badge badge-danger"></span>
+                                            </p>
+                                        </a>
+                                    </li>
+
+                                    <!-- rekomendasi beasiswa -->
+                                    <li class="nav-item">
+                                        <a href="beasiswa-isi.php" class="nav-link">
+                                            <i class="nav-icon fas fa-id-card"></i>
+                                            <p>
+                                                Rekomendasi Beasiswa
+                                                <span class="right badge badge-danger">Baru</span>
                                             </p>
                                         </a>
                                     </li>

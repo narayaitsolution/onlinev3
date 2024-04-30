@@ -83,25 +83,30 @@ $no = 1;
                 </div>
             </section>
 
-            <!--
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col">
-                            <div class="alert alert-warning alert-dismissible fade show">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>WAJIB!!</strong> Upload Bukti Vaksin <b>TERAKHIR</b> di profile user anda
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-                        -->
-
             <!-- tabel pengajuan pribadi -->
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <!-- alert -->
+                        <?php
+                        if (isset($_GET['pesan'])) {
+                            $pesan = $_GET['pesan'];
+                            $hasil = $_GET['hasil'];
+                            if ($hasil == 'ok') {
+                        ?>
+                                <script>
+                                    swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                                </script>
+                            <?php
+                            } elseif ($hasil == 'notok') {
+                            ?>
+                                <script>
+                                    swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                </script>
+                        <?php
+                            }
+                        }
+                        ?>
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">
@@ -740,6 +745,93 @@ $no = 1;
                                                 }
                                                 ?>
                                                 <!-- /surat rekomendasi -->
+
+                                                <!-- Surat Rekomendasi Beasiswa -->
+                                                <?php
+                                                $data = mysqli_query($dbsurat, "SELECT * FROM beasiswa WHERE nim='$nim'");
+                                                $cek = mysqli_num_rows($data);
+                                                while ($q = mysqli_fetch_array($data)) {
+                                                    $nodata = $q['no'];
+                                                    $nim = $q['nim'];
+                                                    $validasi1 = $q['validasi1'];
+                                                    $validator1 = $q['validator1'];
+                                                    $validasi2 = $q['validasi2'];
+                                                    $validator2 = $q['validator2'];
+                                                    $keterangan = $q['keterangan'];
+                                                    $statussurat = $q['statussurat'];
+                                                    $token = $q['token'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td>Surat Rekomendasi Beasiswa</td>
+                                                        <td>
+                                                            <!-- dosen wali -->
+                                                            <?php
+                                                            if ($validator1 <> '') {
+                                                                if ($validasi1 == 0) {
+                                                            ?>
+                                                                    <b style="color:orange;">Menunggu</b> verifikasi Dosen Wali <?= namadosen($dbsurat, $validator1); ?><br />
+                                                                <?php
+                                                                } elseif ($validasi1 == 1) {
+                                                                ?>
+                                                                    <b style="color:green;">Telah disetujui</b> Dosen Wali <?= namadosen($dbsurat, $validator1); ?> <br />
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <b style="color:red;">Ditolak</b> oleh Dosen Wali <?= namadosen($dbsurat, $validator1); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                            <?php
+                                                                }
+                                                            };
+                                                            ?>
+
+                                                            <!-- ketua jurusan -->
+                                                            <?php
+                                                            if ($validasi2 == 0) {
+                                                            ?>
+                                                                <b style="color:orange;">Menunggu</b> verifikasi Ketua Program Studi <?= namadosen($dbsurat, $validator2); ?><br />
+                                                            <?php
+                                                            } elseif ($validasi2 == 1) {
+                                                            ?>
+                                                                <b style="color:green;">Telah disetujui</b> Ketua Program Studi <?= namadosen($dbsurat, $validator2); ?> <br />
+                                                            <?php
+                                                            } else {
+                                                            ?>
+                                                                <b style="color:red;">Ditolak</b> oleh Ketua Program Studi <?= namadosen($dbsurat, $validator2); ?> dengan alasan <b style="color:red"> <?= $keterangan; ?></b><br />
+                                                            <?php
+                                                            };
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php
+                                                            if ($statussurat == 1) {
+                                                            ?>
+                                                                <a class="btn btn-success btn-sm" href="beasiswa-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                    <i class="fas fa-print"></i> Cetak
+                                                                </a>
+                                                            <?php
+                                                            } elseif ($statussurat == 2) {
+                                                            ?>
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="beasiswa-hapus.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-trash"></i> Hapus
+                                                                </a>
+                                                            <?php
+                                                            } else {
+                                                            ?>
+                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                    <i class="fas fa-spinner"></i> Proses
+                                                                </a>
+                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="beasiswa-hapus.php?token=<?= $token; ?>">
+                                                                    <i class="fas fa-trash"></i> Batalkan
+                                                                </a>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                                ?>
+                                                <!-- /surat rekomendasi beasiswa-->
 
                                                 <!-- Permohonan Cetak KHS -->
                                                 <?php
