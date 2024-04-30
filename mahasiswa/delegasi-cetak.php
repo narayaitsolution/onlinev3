@@ -2,6 +2,18 @@
 
 <head>
     <link rel="stylesheet" href="../system/surat.css">
+    <style>
+        table,
+        thead,
+        tbody,
+        tfoot,
+        tr,
+        th,
+        td {
+            padding: 0;
+            border-spacing: 0;
+        }
+    </style>
 </head>
 
 <script>
