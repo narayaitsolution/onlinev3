@@ -56,7 +56,7 @@ $bulan = date('m');
     <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
         <tbody>
             <tr>
-                <td colspan="6">Terkait dengan pengajuan delegasi mahasiswa :</td>
+                <td colspan="6">Sehubungan dengan pengajuan delegasi mahasiswa :</td>
             </tr>
             <!-- ambil data -->
             <?php
@@ -100,13 +100,13 @@ $bulan = date('m');
             }
             ?>
             <tr>
-                <td colspan="6" style="text-align: justify;">Untuk melaksanakan kegiatan <?= $namakegiatan; ?> di <?= $tempat; ?> pada tanggal <?= tgl_indo($tglmulai); ?> - <?= tgl_indo($tglselesai); ?></td>
+                <td colspan="6" style="text-align: justify;">Untuk melaksanakan kegiatan <?= $namakegiatan; ?> di <?= $tempat; ?> pada tanggal <?= tgl_indo($tglmulai); ?> - <?= tgl_indo($tglselesai); ?>.</td>
             </tr>
             <tr>
                 <td colspan="6">&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="6" style="text-align: justify;">Maka kami mohon kepada PPK dan BPP Fakulas Sains dan Teknologi untuk memproses pencairan dana pendelegasian mahasiswa tersebut sebesar Rp. .....................................</td>
+                <td colspan="6" style="text-align: justify;">Maka dengan ini kami mohon kepada PPK dan BPP Fakulas Sains dan Teknologi untuk memproses pencairan dana pendelegasian mahasiswa tersebut sebesar Rp. ............................</td>
             </tr>
             <tr>
                 <td colspan="6" style="text-align: justify;">Atas bantuannya disampaikan terima kasih</td>
@@ -114,8 +114,8 @@ $bulan = date('m');
         </tbody>
     </table>
 
-    <!-- ambil data wd --?>
-  <?php
+    <!-- ambil data wd -->
+    <?php
     //data wd
     $datawd = mysqli_query($dbsurat, "SELECT * FROM pejabat WHERE nip='$validator3'");
     $rowwd = mysqli_fetch_array($datawd);
@@ -135,7 +135,7 @@ $bulan = date('m');
     QRcode::png($codeContents, "../qrcode/$namafile.png", "L", 4, 4);
 
     ?>
-  <!-- table bawah -->
+    <!-- table bawah -->
     <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
         <tbody>
             <tr>
@@ -159,7 +159,7 @@ $bulan = date('m');
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td style="text-align:center">WD Bidang Kemahasiswaan dan Kerjasama</td>
+                <td style="text-align:center">Wakil Dekan Bidang Kemahasiswaan dan Kerjasama</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -202,15 +202,8 @@ $bulan = date('m');
                 <td style="text-align:center">Dr. Dwi Suheriyanto, S.Si, M.P.</td>
                 <td>&nbsp;</td>
             </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td style="text-align:center">NIP. 197403252003121001</td>
-                <td>&nbsp;</td>
-            </tr>
         </tbody>
+    </table>
 </font>
 </table>
 
