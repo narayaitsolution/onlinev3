@@ -24,7 +24,7 @@ $sql = mysqli_query($dbsurat, "UPDATE suket
 					statussurat = 1
 					WHERE token = '$token'");
 
-//cari NIP pembuat surat dulu
+//cari NIM mahasiswa
 $sql1 = mysqli_query($dbsurat, "SELECT * FROM suket WHERE token='$token'");
 $dsql1 = mysqli_fetch_array($sql1);
 $nim = $dsql1['nim'];

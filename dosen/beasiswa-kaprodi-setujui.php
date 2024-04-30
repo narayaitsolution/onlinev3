@@ -3,8 +3,8 @@ session_start();
 require_once('../system/dbconn.php');
 require_once('../system/phpmailer/sendmail.php');
 
-$nip = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
-$token = mysqli_real_escape_string($dbsurat, $_POST['token']);
+$nip = $_SESSION['nip'];
+$token = $_POST['token'];
 
 date_default_timezone_set("Asia/Jakarta");
 $tgl = date('Y-m-d H:i:s');
