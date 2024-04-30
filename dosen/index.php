@@ -1418,6 +1418,66 @@ $tahun = date('Y');
                                 ?>
                                 <!-- /Surat Keterangan as WD-->
 
+                                <!-- Surat Rekomendasi Beasiswa as kaprodi-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM beasiswa WHERE validator1='$nip' AND validasi1 = 0");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nimmhs = $data['nim'];
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td>Surat Rekomendasi Beasiswa</td>
+                                        <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="beasiswa-kaprodi-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /Surat Rekomendasi Beasiswa as kaprodi-->
+
+                                <!-- Surat Rekomendasi Beasiswa as WD-->
+                                <?php
+                                $query = mysqli_query($dbsurat, "SELECT * FROM beasiswa WHERE validator2='$nip' AND validasi2 = 0 AND validasi1=1");
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $prodimhs = $data['prodi'];
+                                    $nimmhs = $data['nim'];
+                                    $validasi1 = $data['validasi1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $token = $data['token'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td>Surat Rekomendasi Beasiswa</td>
+                                        <td><?= namadosen($dbsurat, $nimmhs); ?></td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="beasiswa-wd-tampil.php?token=<?= mysqli_real_escape_string($dbsurat, $token); ?>">
+                                                <i class="fas fa-eye"></i> Lihat
+                                            </a>
+                                        </td>
+                                        <td><?= $prodimhs; ?></td>
+                                        <td><?= tgl_indo($tanggal); ?></td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /Surat Rekomendasi Beasiswa as WD-->
+
                                 <!-- SKPI as Dosen PA -->
                                 <?php
                                 $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikator1='$nip' AND verifikasi1='0'");
