@@ -26,4 +26,4 @@ while ($data = mysqli_fetch_array($query4)) {
 $query2 = mysqli_query($dbsurat, "DELETE FROM pklanggota WHERE nodata = '$nodata'");
 $query3 = mysqli_query($dbsurat, "DELETE FROM pkl WHERE no = '$nodata'");
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Pengajuan PKL berhasil di batalkan");

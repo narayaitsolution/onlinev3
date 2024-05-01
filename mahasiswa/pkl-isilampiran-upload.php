@@ -32,10 +32,10 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
         $stmt = $dbsurat->prepare("UPDATE pkl SET lampiran=? WHERE no=?");
         $stmt->bind_param("si", $dest_path, $nodata);
         $stmt->execute();
-        header("location:pkl-isilampiran.php?nodata=$nodata&pesan=success");
+        header("location:pkl-isilampiran.php?nodata=$nodata&hasil=ok&pesan=Upload Pakta Integritas berhasil");
     } else {
-        header("location:pkl-isilampiran.php?nodata=$nodata&pesan=gagal");
+        header("location:pkl-isilampiran.php?nodata=$nodata&hasil=notok&pesan=Gagal upload File, pastikan File sesuai ketentuan");
     };
 } else {
-    header("location:pkl-isilampiran.php?nodata=$nodata&pesan=gagal");
+    header("location:pkl-isilampiran.php?nodata=$nodata&hasil=notok&pesan=Format File harus JPG/JPEG!!");
 };

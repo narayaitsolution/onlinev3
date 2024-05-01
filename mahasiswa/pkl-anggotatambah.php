@@ -15,23 +15,14 @@ if ($hasil > 0) {
     $notelepon = $data['nohp'];
     $buktivaksin = $data['buktivaksin'];
     if ($buktivaksin == null) {
-        $ket = "novaksin";
+        header("location:pkl-isianggota.php?nodata=$nodata&hasil=notok&pesan=Anggota belum upload bukti vaksin terakhir!!");
     } else {
         $stmt = $dbsurat->prepare("INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
         VALUES (?,?,?,?,?,?)");
         $stmt->bind_param("ssssss", $nodata, $nim, $nimanggota2, $namaanggota2, $notelepon, $buktivaksin);
         $stmt->execute();
-        /*
-        $sql = "INSERT INTO pklanggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
-                values('$nodata','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')";
-                */
-        if (mysqli_query($dbsurat, $sql)) {
-            $ket = "ok";
-        } else {
-            $ket = "notok";
-        }
+        header("location:pkl-isianggota.php?nodata=$nodata&hasil=ok&pesan=Penambahan anggota kelompok PKL berhasil");
     }
 } else {
-    $ket = "notfound";
+    header("location:pkl-isianggota.php?nodata=$nodata&hasil=notok&pesan=Penambahan anggota kelompok PKL gagal, pastikan NIM benar / anggota PKL sudah terdaftar di SAINTEK e-Office");
 }
-header("location:pkl-isianggota.php?nodata=$nodata&ket=$ket");

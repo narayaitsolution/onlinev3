@@ -8,4 +8,4 @@ $nodata = mysqli_real_escape_string($dbsurat, $_POST['nodata']);
 $id = mysqli_real_escape_string($dbsurat, $_POST['id']);
 $qhapus = mysqli_query($dbsurat, "DELETE FROM pklanggota WHERE id='$id'");
 
-header("location:pkl-isianggota.php?nodata=$nodata&ket=$ket");
+header("location:pkl-isianggota.php?nodata=$nodata&hasil=ok&pesan=Hapus anggota berhasil");
