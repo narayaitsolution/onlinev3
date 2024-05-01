@@ -29,6 +29,7 @@ $no = 1;
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -91,6 +92,27 @@ $no = 1;
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <!--alert-->
+                        <?php
+                        if (isset($_GET['pesan'])) {
+                            $pesan = $_GET['pesan'];
+                            $hasil = $_GET['hasil'];
+                            if ($hasil = 'ok') {
+                        ?>
+                                <script>
+                                    swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                                </script>
+
+                            <?php
+                            } else {
+                            ?>
+                                <script>
+                                    swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                </script>
+                        <?php
+                            }
+                        }
+                        ?>
                         <div class="col-12">
                             <div class="card card-primary">
                                 <div class="card-header">

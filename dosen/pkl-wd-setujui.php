@@ -11,16 +11,11 @@ $bulan = date('m');
 $tahun = date('Y');
 
 //cari urutan surat di tahun ini untuk no surat
-$qurutan = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' and statussurat='1' ORDER BY tanggal DESC LIMIT 1");
-$durutan = mysqli_fetch_array($qurutan);
-$noterakhir = $durutan['keterangan'];
-//echo 'noterakhir = ' . $noterakhir . '<br>';
-$nosurat = substr($noterakhir, 2, 3);
-//echo 'nosurat = ' . $nosurat . '<br>';
-$nosekarang = $nosurat + 1;
-//echo 'nosekarang = ' . $nosekarang . '<br>';
+$qurutan = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE year(tanggal)='$tahun' and statussurat='1' ORDER BY tanggal");
+$jurutan = mysqli_num_rows($qurutan);
+$noterakhir = $jurutan + 1;
 
-$nosurat = 'B-' . $nosekarang . '.O/FST.3/PP.06/' . $bulan . '/' . $tahun;
+$nosurat = 'B-' . $noterakhir . '.O/FST.3/PP.06/' . $bulan . '/' . $tahun;
 
 $sql = mysqli_query($dbsurat, "UPDATE pkl
 					SET tglvalidasi3 = '$tgl', 
@@ -63,4 +58,4 @@ $pesan = "Yth. " . $namamhs . "<br/>
         <b>SAINTEK e-Office</b>";
 sendmail($emailmhs, $namamhs, $subject, $pesan);
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Persetujuan Izin PKL / Magang berhasil. Terima kasih");

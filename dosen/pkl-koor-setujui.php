@@ -92,4 +92,4 @@ if ($prodi == 'Perpustakaan dan Ilmu Informasi') {
 }
 
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Persetujuan Izin PKL / Magang berhasil. Terima kasih");

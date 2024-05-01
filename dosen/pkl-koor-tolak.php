@@ -16,4 +16,4 @@ $sql = mysqli_query($dbsurat, "UPDATE pkl
                     statussurat=2
 					WHERE token = '$token' AND validator1='$nip'");
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Penolakan Izin PKL / Magang berhasil. Terima kasih");
