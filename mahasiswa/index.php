@@ -393,6 +393,31 @@ $no = 1;
                                                                     <i class="fas fa-print"></i>
                                                                     Cetak
                                                                 </a>
+                                                                <form role="form" method="post">
+                                                                    <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-warning btn-sm"> <i class="fa fa-ban"></i> Batalkan</button>
+                                                                    <!-- modal tolak -->
+                                                                    <div class="modal fade" id="modal-tolak">
+                                                                        <div class="modal-dialog modal-lg">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title">Alasan Pembatalan</h4>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <textarea class="form-control" rows="3" name="keterangan"></textarea>
+                                                                                </div>
+                                                                                <div class="modal-footer justify-content-between">
+                                                                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                                                                    <button name="aksi" value="tolak" type="submit" formaction="pkl-batalkan.php" class="btn btn-warning btn-sm" onclick="return confirm('Apakah anda yakin mengajukan pembatalan Izin PKL ini  ?')"> <i class="fa fa-ban"></i> Batalkan</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- ./modal tolak-->
+                                                                </form>
                                                             <?php
                                                             } elseif ($statussurat == 0) {
                                                             ?>

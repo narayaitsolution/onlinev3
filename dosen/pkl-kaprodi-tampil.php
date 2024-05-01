@@ -263,7 +263,7 @@ $no = 1;
                                         </div>
                                         <hr>
                                         <form role="form" method="POST">
-                                            <input type="hidden" name="token" value="<?= $token; ?>"></input>
+                                            <input type="hidden" name="token" value="<?= $token; ?>">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <button name="aksi" value="setujui" type="submit" formaction="pkl-kaprodi-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>

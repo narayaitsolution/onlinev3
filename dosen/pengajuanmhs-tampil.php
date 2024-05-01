@@ -60,10 +60,31 @@ $tahun = date('Y');
 
             <!-- Main content -->
             <section class="content">
+                <!--alert-->
+                <?php
+                if (isset($_GET['pesan'])) {
+                    $pesan = $_GET['pesan'];
+                    $hasil = $_GET['hasil'];
+                    if ($hasil = 'ok') {
+                ?>
+                        <script>
+                            swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                        </script>
+
+                    <?php
+                    } else {
+                    ?>
+                        <script>
+                            swal('ERROR!', '<?= $pesan; ?>', 'error');
+                        </script>
+                <?php
+                    }
+                }
+                ?>
                 <!-- Pengajuan Surat Mahasiswa -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Surat Mahasiswa Disetujui</h3>
+                        <h3 class="card-title">Surat Mahasiswa Disetujui Tahun <?= $tahun; ?></h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
@@ -78,7 +99,8 @@ $tahun = date('Y');
                             <thead>
                                 <tr>
                                     <th width="5%">No.</th>
-                                    <th> Surat</th>
+                                    <th>Tgl. Pengajuan</th>
+                                    <th>Surat</th>
                                     <th>Nama</th>
                                     <th>Prodi</th>
                                     <th>Status</th>
@@ -94,6 +116,7 @@ $tahun = date('Y');
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
@@ -110,6 +133,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -199,6 +223,7 @@ $tahun = date('Y');
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
@@ -215,6 +240,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -291,6 +317,7 @@ $tahun = date('Y');
                                 $jmldata = mysqli_num_rows($query);
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
@@ -309,6 +336,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -393,6 +421,7 @@ $tahun = date('Y');
                                 $query = mysqli_query($dbsurat, "SELECT * FROM ijinpenelitian WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
@@ -409,6 +438,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -482,6 +512,7 @@ $tahun = date('Y');
                                 $query = mysqli_query($dbsurat, "SELECT * FROM peminjamanalat WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
@@ -496,6 +527,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -569,6 +601,7 @@ $tahun = date('Y');
                                 $query = mysqli_query($dbsurat, "SELECT * FROM observasi WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $nama = $data['nama'];
                                     $prodi = $data['prodi'];
@@ -585,6 +618,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -658,6 +692,8 @@ $tahun = date('Y');
                                 $query = mysqli_query($dbsurat, "SELECT * FROM pengambilandata WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $nim = $data['nim'];
                                     $prodi = $data['prodi'];
                                     $nama = $data['nama'];
                                     $surat = 'Ijin Pengambilan Data';
@@ -673,6 +709,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -747,6 +784,7 @@ $tahun = date('Y');
                                 $query = mysqli_query($dbsurat, "SELECT * FROM suket WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $prodi = $data['prodi'];
                                     $nama = $data['nama'];
@@ -826,6 +864,7 @@ $tahun = date('Y');
                                 $query = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE validator1='$nip' OR validator2='$nip' OR validator3='$nip' AND statussurat='1' AND year(tanggal)='$tahun' ORDER BY tanggal DESC, prodi ASC");
                                 while ($data = mysqli_fetch_array($query)) {
                                     $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
                                     $nim = $data['nim'];
                                     $prodi = $data['prodi'];
                                     $nama = $data['nama'];
