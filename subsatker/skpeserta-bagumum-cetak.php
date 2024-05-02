@@ -280,15 +280,15 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
     <tbody>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%" style="text-align: center;">Ditetapkan di Malang</td>
+            <td width="40%">Ditetapkan di Malang</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%" style="text-align: center;">Pada tanggal <?= tgl_indo($tglverifikasi1); ?></td>
+            <td width="40%">Pada tanggal <?= tgl_indo($tglverifikasi1); ?></td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%" style="text-align: center;">DEKAN,</td>
+            <td width="40%">DEKAN,</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
@@ -320,7 +320,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%" style="text-align: center;">SRI HARINI</td>
+            <td width="40%">SRI HARINI</td>
         </tr>
     </tbody>
 </table>
@@ -410,7 +410,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%" style="text-align: center;">DEKAN,</td>
+            <td width="40%">DEKAN,</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
@@ -442,7 +442,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="40%" style="text-align: center;">SRI HARINI</td>
+            <td width="40%">SRI HARINI</td>
         </tr>
     </tbody>
 </table>

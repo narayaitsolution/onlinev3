@@ -183,13 +183,13 @@ $no = 1;
                                         <td style="vertical-align:top;"><b>Menimbang</b></td>
                                         <td style="vertical-align:top;">:</td>
                                         <td style="vertical-align:top;">a.</td>
-                                        <td colspan="2" style="text-align: justify;">bahwa guna mendukung Kegiatan <input type="text" name="namakegiatan" value="<?= $namakegiatan; ?>" style="width: 20em" required> yang dilaksanakan oleh <input type="text" name="ormas" value="<?= strtoupper($ormas); ?>" style="width: 10em" required> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<input type="text" name="tema" value="<?= $tema; ?>" style="width: 30em" required>”, maka perlu adanya Narasumber;</td>
+                                        <td colspan="2" style="text-align: justify;">bahwa guna mendukung Kegiatan <input type="text" name="namakegiatan" value="<?= $namakegiatan; ?>" style="width: 20em" required> yang dilaksanakan oleh <input type="text" name="ormas" value="<?= strtoupper($ormas); ?>" style="width: 10em" required> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<input type="text" name="tema" value="<?= $tema; ?>" style="width: 30em" required>”, maka perlu adanya Peserta;</td>
                                     </tr>
                                     <tr>
                                         <td style="vertical-align:top;"></td>
                                         <td style="vertical-align:top;"></td>
                                         <td style="vertical-align:top;">b.</td>
-                                        <td colspan="2" style="text-align: justify;">bahwa berdasarkan poin a, maka perlu ditetapkan dengan Keputusan Dekan tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</td>
+                                        <td colspan="2" style="text-align: justify;">bahwa berdasarkan poin a, maka perlu ditetapkan dengan Keputusan Dekan tentang Penetapan Peserta Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -287,7 +287,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;"><b>Menetapkan</b></td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;"><b>Keputusan Dekan Fakultas Sains dan Teknologi tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</b></td>
+                                        <td colspan="3" style="text-align: justify;"><b>Keputusan Dekan Fakultas Sains dan Teknologi tentang Penetapan Peserta Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -295,7 +295,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;"><b>Pertama</b></td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;">Menetapkan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”, seperti yang tersebut dalam daftar keputusan ini.</td>
+                                        <td colspan="3" style="text-align: justify;">Menetapkan Peserta Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”, seperti yang tersebut dalam daftar keputusan ini.</td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -303,7 +303,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;"><b>Kedua</b></td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;">Menugaskan kepada Narasumber sebagaimana dimaksud dalam daftar terlampir.</td>
+                                        <td colspan="3" style="text-align: justify;">Menugaskan kepada Peserta sebagaimana dimaksud dalam daftar terlampir.</td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
