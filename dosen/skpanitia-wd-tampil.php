@@ -116,7 +116,7 @@ $no = 1;
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jenis SK</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="jenissk" value="<?= $jenissk; ?>" readonly>
+                                                <input type="text" class="form-control" name="jenissk" value="<?= ucfirst($jenissk); ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">

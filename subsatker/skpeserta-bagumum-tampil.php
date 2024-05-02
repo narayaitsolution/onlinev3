@@ -139,7 +139,7 @@ $no = 1;
                                         <td colspan="5" style="text-align: center;">Tentang</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5" style="text-align: center;"><b>PENETAPAN NARASUMBER </b></td>
+                                        <td colspan="5" style="text-align: center;"><b>PENETAPAN PESERTA </b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;"><b>KEGIATAN <?= strtoupper($namakegiatan); ?> </b></td>
