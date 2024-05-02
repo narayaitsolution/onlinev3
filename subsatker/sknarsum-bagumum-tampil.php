@@ -311,7 +311,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;"><b>Ketiga</b></td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;">Segala pembiayaan yang dikeluarkan sebagai akibat pelaksanaan Keputusan ini dibebankan kepada <br><textarea name="pembiayaan" rows="2" class="form-control">DIPA Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor DIPA- 025.04.2.423812/2023 Tanggal 30 November 2024.</textarea></td>
+                                        <td colspan="3" style="text-align: justify;">Segala pembiayaan yang dikeluarkan sebagai akibat pelaksanaan Keputusan ini dibebankan kepada <br><textarea name="pembiayaan" rows="2" class="form-control">DIPA Universitas Islam Negeri Maulana Malik Ibrahim Malang Nomor DIPA- 025.04.2.423812/2023 Tanggal 28 November 2023.</textarea></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
