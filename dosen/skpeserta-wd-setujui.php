@@ -17,6 +17,7 @@ $sql = mysqli_query($dbsurat, "UPDATE sk
 
 //kirim email ke bagumum
 //cari email wadek3 dari NIP
+/*
 $sql2 = mysqli_query($dbsurat, "SELECT * FROM sk WHERE token='$token'");
 $dsql2 = mysqli_fetch_array($sql2);
 $nipbagumum = $dsql2['verifikator2'];
@@ -25,6 +26,9 @@ $sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipbagumum'")
 $dsql3 = mysqli_fetch_array($sql3);
 $namabagumum = $dsql3['nama'];
 $emailbagumum = $dsql3['email'];
+*/
+$namabagumum = 'Weni Susilowati, S.AB';
+$emailbagumum = 'cikwen@uin-malang.ac.id';
 
 //kirim email
 $subject = "Pengajuan SK " . $jenissk . ".";
