@@ -64,11 +64,11 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
         <b>SAINTEK e-Office</b>";
         sendmail($emailmhs, $namamhs, $subject, $pesan);
 
-        header("location:index.php");
+        header("location:index.php?hasil=ok&pesan=Upload SK berhasil");
     } else {
         $statussktte = '0';
-        header("location:sknarsum-bagumum-tte.php?token=$token&pesan=Upload GAGAL!!");
+        header("location:sknarsum-bagumum-tte.php?token=$token&hasil=notok&pesan=Upload GAGAL!!");
     };
 } else {
-    header("location:sknarsum-bagumum-tte.php?token=$token&pesan=File harus format PDF!!");
+    header("location:sknarsum-bagumum-tte.php?token=$token&hasil=notok&pesan=File harus format PDF!!");
 };

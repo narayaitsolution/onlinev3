@@ -23,33 +23,4 @@ $stmt = $dbsurat->prepare("UPDATE sk
 $stmt->bind_param("sssssss", $keterangan, $pembiayaan, $verifikasi2, $tglsekarang, $nosurat, $statussurat, $token);
 $stmt->execute();
 
-//kirim email ke mhs
-//cari email wadek3 dari NIP
-$sql2 = mysqli_query($dbsurat, "SELECT * FROM sk WHERE token='$token'");
-$dsql2 = mysqli_fetch_array($sql2);
-$nipmhs = $dsql2['nim'];
-$jenissk = $dsql2['jenissk'];
-$sql3 = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nipmhs'");
-$dsql3 = mysqli_fetch_array($sql3);
-$namamhs = $dsql3['nama'];
-$emailmhs = $dsql3['email'];
-
-//kirim email
-$subject = "Status Pengajuan SK " . $jenissk . ".";
-$pesan = "Yth. " . $namamhs . "<br/>
-        <br/>
-		Assalamualaikum wr. wb.
-        <br />
-		<br />
-		Dengan hormat,
-		<br />
-        Pengajuan SK " . $jenissk . " anda di sistem SAINTEK e-Office <b>TELAH DISETUJUI</b>.<br>
-        Silahkan mengambil SK anda di Bagian Umum Fakultas <b>pada Hari dan Jam Kerja</b>. <br>
-        <br/>
-        Wassalamualaikum wr. wb.
-		<br/>
-        <br/>
-        <b>SAINTEK e-Office</b>";
-sendmail($emailmhs, $namamhs, $subject, $pesan);
-
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Silahkan cetak sebagai PDF / unduh SK ini untuk diberi Tanda Tangan Elektronik di sistem TTE Kemenag");

@@ -61,7 +61,7 @@ $tahun = date('Y');
                             if (isset($_GET['pesan'])) {
                                 $pesan = $_GET['pesan'];
                                 $hasil = $_GET['hasil'];
-                                if ($hasil = 'ok') {
+                                if ($hasil == 'ok') {
                             ?>
                                     <script>
                                         swal('BERHASIL!', '<?= $pesan; ?>', 'success');
@@ -2294,8 +2294,7 @@ $tahun = date('Y');
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
-                "responsive": true,
-                "buttons": ["excel", "pdf", "print", "colvis"]
+                "responsive": true
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,

@@ -21,9 +21,9 @@ $statussurat = 1;
 $verifikasi2 = 1;
 
 $stmt = $dbsurat->prepare("UPDATE sk 
-                            SET namakegiatan=?,ormas=?,tema=?,keterangan=?, pembiayaan=?,verifikasi2=?,tglverifikasi2=?,nosurat=?,statussurat=?
+                            SET namakegiatan=?,ormas=?,tema=?,pembiayaan=?,nosurat=?
                             WHERE token=?");
-$stmt->bind_param("ssssssssss", $namakegiatan, $ormas, $tema, $keterangan, $pembiayaan, $verifikasi2, $tglsekarang, $nosurat, $statussurat, $token);
+$stmt->bind_param("ssssss", $namakegiatan, $ormas, $tema, $pembiayaan, $nosurat, $token);
 $stmt->execute();
 
-header("location:index.php?hasil=ok&pesan=Silahkan cetak sebagai PDF / unduh SK ini untuk diberi Tanda Tangan Elektronik di sistem TTE Kemenag");
+header("location:sknarsum-bagumum-tampil.php?token=$token&hasil=ok&pesan=Update data berhasil");

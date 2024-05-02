@@ -269,6 +269,16 @@ $no = 1;
             });
         });
     </script>
+
+    <!-- disable button once it clicked -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#my-form").submit(function(e) {
+                $("#btn-submit").attr("disabled", true);
+                return true;
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -122,7 +122,7 @@ $no = 1;
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Nama Kegiatan</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="namakegiatan" value="<?= $namakegiatan; ?>" readonly>
+                                                <textarea class="form-control" name="namakegiatan" rows="2" readonly><?= $namakegiatan; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">

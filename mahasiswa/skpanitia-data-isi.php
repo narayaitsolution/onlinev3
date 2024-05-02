@@ -32,6 +32,7 @@ $no = 1;
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -67,31 +68,23 @@ $no = 1;
                     <div class="row mb-2">
                         <div class="col">
 
+                            <!--alert-->
                             <?php
-                            if (isset($_GET['ket'])) {
-                                if ($_GET['ket'] == 'novaksin') {
+                            if (isset($_GET['pesan'])) {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil == 'ok') {
                             ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <strong>ERROR!</strong> Anggota belum upload bukti vaksin!!
-                                    </div>
+                                    <script>
+                                        swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                                    </script>
+
                                 <?php
-                                } elseif ($_GET['ket'] == 'notfound') {
+                                } else {
                                 ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <strong>ERROR!</strong> data tidak ditemukan!!
-                                    </div>
-                                <?php
-                                } elseif ($_GET['ket'] == 'notok') {
-                                ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <strong>ERROR!</strong> penambahan anggota gagal!!
-                                    </div>
-                                <?php
-                                } elseif ($_GET['ket'] == 'ok') {
-                                ?>
-                                    <div class="alert alert-success alert-dismissible fade show">
-                                        <strong>SUKSES</strong> penambahan anggota berhasil
-                                    </div>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
                             <?php
                                 }
                             }
@@ -272,6 +265,15 @@ $no = 1;
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+            });
+        });
+    </script>
+    <!-- disable button once it clicked -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#my-form").submit(function(e) {
+                $("#btn-submit").attr("disabled", true);
+                return true;
             });
         });
     </script>

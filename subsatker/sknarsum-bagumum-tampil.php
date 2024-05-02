@@ -32,6 +32,7 @@ $no = 1;
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         table,
         th,
@@ -70,6 +71,7 @@ $no = 1;
             $namakegiatan = strtoupper($dsk['namakegiatan']);
             $ormas = $dsk['ormas'];
             $tema = $dsk['tema'];
+            $nosurat = $dsk['nosurat'];
             $verifikator1 = $dsk['verifikator1'];
             $verifikasi1 = $dsk['verifikasi1'];
             $tglverifikasi1 = $dsk['tglverifikasi1'];
@@ -83,9 +85,30 @@ $no = 1;
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Draft SK</h3>
+                        <!--alert-->
+                        <?php
+                        if (isset($_GET['pesan'])) {
+                            $pesan = $_GET['pesan'];
+                            $hasil = $_GET['hasil'];
+                            if ($hasil == 'ok') {
+                        ?>
+                                <script>
+                                    swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                                </script>
+
+                            <?php
+                            } else {
+                            ?>
+                                <script>
+                                    swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                </script>
+                        <?php
+                            }
+                        }
+                        ?>
                     </div>
                     <div class="card-body">
-                        <form action="sknarsum-bagumum-setujui.php" method="POST">
+                        <form method="POST">
                             <table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0">
                                 <tbody>
                                     <tr>
@@ -101,7 +124,7 @@ $no = 1;
                                         <td colspan="5" style="text-align: center;"><b>UNIVERSITAS ISLAM NEGERI MAULANA MALIK IBRAHIM MALANG</b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5" style="text-align: center;"><b>Nomor : <input type="number" name="nosurat" style="width: 7em" required>/FST/<?= $bulan; ?>/<?= $tahun; ?></b></td>
+                                        <td colspan="5" style="text-align: center;"><b>Nomor : <input type="number" name="nosurat" style="width: 7em" value="<?= $nosurat; ?>" required>/FST/<?= $bulan; ?>/<?= $tahun; ?></b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -119,7 +142,7 @@ $no = 1;
                                         <td colspan="5" style="text-align: center;"><b>PENETAPAN NARASUMBER </b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5" style="text-align: center;"><b>KEGIATAN <?= $namakegiatan; ?> </b></td>
+                                        <td colspan="5" style="text-align: center;"><b>KEGIATAN <?= strtoupper($namakegiatan); ?></b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;"><b><?= strtoupper($ormas); ?></b></td>
@@ -160,13 +183,13 @@ $no = 1;
                                         <td style="vertical-align:top;"><b>Menimbang</b></td>
                                         <td style="vertical-align:top;">:</td>
                                         <td style="vertical-align:top;">a.</td>
-                                        <td colspan="2" style="text-align: justify;">bahwa guna mendukung Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”, maka perlu adanya Narasumber;</td>
+                                        <td colspan="2" style="text-align: justify;">bahwa guna mendukung Kegiatan <input type="text" name="namakegiatan" value="<?= $namakegiatan; ?>" style="width: 20em" required> yang dilaksanakan oleh <input type="text" name="ormas" value="<?= strtoupper($ormas); ?>" style="width: 10em" required> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<input type="text" name="tema" value="<?= $tema; ?>" style="width: 30em" required>”, maka perlu adanya Narasumber;</td>
                                     </tr>
                                     <tr>
                                         <td style="vertical-align:top;"></td>
                                         <td style="vertical-align:top;"></td>
                                         <td style="vertical-align:top;">b.</td>
-                                        <td colspan="2" style="text-align: justify;">bahwa berdasarkan poin a, maka perlu ditetapkan dengan Keputusan Dekan tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</td>
+                                        <td colspan="2" style="text-align: justify;">bahwa berdasarkan poin a, maka perlu ditetapkan dengan Keputusan Dekan tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= strtoupper($ormas); ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -238,7 +261,7 @@ $no = 1;
                                         <td style="vertical-align:top;"><b>Memperhatikan</b></td>
                                         <td style="vertical-align:top;">:</td>
                                         <td style="vertical-align:top;">1.</td>
-                                        <td colspan="2" style="text-align: justify;">Surat Permohonan dari <?= $ormas; ?> tanggal <?= tgl_indo($tanggal); ?>;</td>
+                                        <td colspan="2" style="text-align: justify;">Surat Permohonan dari <?= strtoupper($ormas); ?> tanggal <?= tgl_indo($tanggal); ?>;</td>
                                     </tr>
                                     <tr>
                                         <td style="vertical-align:top;"></td>
@@ -264,7 +287,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;"><b>Menetapkan</b></td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;"><b>Keputusan Dekan Fakultas Sains dan Teknologi tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</b></td>
+                                        <td colspan="3" style="text-align: justify;"><b>Keputusan Dekan Fakultas Sains dan Teknologi tentang Penetapan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= strtoupper($ormas); ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”.</b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -272,7 +295,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;"><b>Pertama</b></td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;">Menetapkan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= $ormas; ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”, seperti yang tersebut dalam daftar keputusan ini.</td>
+                                        <td colspan="3" style="text-align: justify;">Menetapkan Narasumber Kegiatan <?= $namakegiatan; ?> yang dilaksanakan oleh <?= strtoupper($ormas); ?> Fakultas Sains dan Teknologi Universitas Islam Negeri Maulana Malik Ibrahim Malang dengan tema “<?= $tema; ?>”, seperti yang tersebut dalam daftar keputusan ini.</td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -400,7 +423,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;">Nomor</td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;"><?= $keterangan; ?></td>
+                                        <td colspan="3" style="text-align: justify;"><?= $nosurat; ?>/FST/<?= $bulan; ?>/<?= $tahun; ?></td>
                                     </tr>
                                     <tr>
                                         <td style="vertical-align:top;">Tanggal</td>
@@ -416,7 +439,7 @@ $no = 1;
                                         <td colspan="5" style="text-align: center;"><b>PENETAPAN NARASUMBER </b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5" style="text-align: center;"><b>KEGIATAN <?= $namakegiatan; ?> </b></td>
+                                        <td colspan="5" style="text-align: center;"><b>KEGIATAN <?= strtoupper($namakegiatan); ?> </b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;"><b><?= strtoupper($ormas); ?></b></td>
@@ -550,7 +573,10 @@ $no = 1;
                                 </div>
                                 <div class="col">
                                     <input type="hidden" name="token" value="<?= $token; ?>">
-                                    <button type="submit" class="btn btn-lg btn-block btn-success" onclick="return confirm ('Apakah anda sudah melakukan pengecekan terhadap dokumen ini ?')"><i class="fas fa-save"></i> SIMPAN</button>
+                                    <button type="submit" formaction="sknarsum-bagumum-setujui.php" class="btn btn-lg btn-block btn-success" onclick="return confirm ('Apakah anda sudah melakukan pengecekan terhadap dokumen ini ?')"><i class="fas fa-save"></i> SIMPAN</button>
+                                </div>
+                                <div class="col">
+                                    <button type="submit" formaction="sknarsum-bagumum-update.php" class="btn btn-lg btn-block btn-warning" onclick="return confirm('Update data ?')"><i class="fas fa-refresh"></i> Update Data</button>
                                 </div>
                             </div>
                         </form>

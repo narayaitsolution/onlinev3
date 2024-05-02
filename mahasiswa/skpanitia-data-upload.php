@@ -7,7 +7,8 @@ $qhapus = mysqli_query($dbsurat, "DELETE FROM skpanitia WHERE token='$token'");
 //upload file
 $filepanitia = $_FILES['filepanitia']['tmp_name'];
 $filepanitiasize = $_FILES['filepanitia']['size'];
-if ($filepanitiasize > 0) {
+$filepanitiatype = $_FILES['filepanitia']['type'];
+if ($filepanitiatype == 'text/csv' && $filepanitiasize > 0) {
     $fileupload = fopen($filepanitia, 'r');
     while (($getData = fgetcsv($fileupload, 10000, ';')) !== FALSE) {
         $nimpanitia = $getData[0];
@@ -18,8 +19,8 @@ if ($filepanitiasize > 0) {
         $stmt->bind_param("ssss", $token, $nimpanitia, $namapanitia, $siepanitia);
         $stmt->execute();
     }
+    fclose($fileupload);
+    header("location:skpanitia-data-isi.php?token=$token&hasil=ok&pesan=Upload File berhasil");
+} else {
+    header("location:skpanitia-data-isi.php?token=$token&hasil=notok&pesan=Upload File GAGAL");
 }
-
-fclose($fileupload);
-
-header("location:skpanitia-data-isi.php?token=$token");

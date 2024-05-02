@@ -2168,7 +2168,7 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == '-1') {
                                                             ?>
-                                                                <a class="btn btn-info btn-lg btn-block" href="sknarasumber-data-isi.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-lg btn-block" href="skpeserta-data-isi.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-check"></i> Lengkapi
                                                                 </a>
                                                                 <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="sknarasumber-hapus.php?token=<?= $token; ?>">
