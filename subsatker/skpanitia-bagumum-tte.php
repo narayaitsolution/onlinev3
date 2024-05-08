@@ -159,10 +159,34 @@ $no = 1;
                                 <div class="col-2">
                                     <a href="index.php" class="btn btn-lg btn-block btn-secondary"><i class="fas fa-backward"></i> Kembali</a>
                                 </div>
-                                <div class="col-10">
+                                <div class="col-5">
                                     <button type="submit" class="btn btn-lg btn-block btn-success" onclick="return confirm('Yakin mengunggah file ini ?')"><i class="fas fa-file-upload"></i> UPLOAD</button>
                                 </div>
+                                <div class="col-5">
+                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-ban"></i> TOLAK</button>
+                                </div>
                             </div>
+                            <!-- modal tolak -->
+                            <div class="modal fade" id="modal-tolak">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Alasan Penolakan</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <textarea class="form-control" rows="3" name="keterangan"></textarea>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                            <button name="aksi" id="btn-submit" value="tolak" type="submit" formaction="sknarsum-bagumum-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ./modal tolak-->
                         </form>
                     </div>
                 </div>
