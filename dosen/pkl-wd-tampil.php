@@ -79,6 +79,7 @@ $no = 1;
             $pklmagang = $dpkl['pklmagang'];
             $jenispkl = $dpkl['jenispkl'];
             $lampiran = $dpkl['lampiran'];
+            $tembusan = $dpkl['tembusan'];
             $validator1 = $dpkl['validator1'];
             $tglvalidasi1 = $dpkl['tglvalidasi1'];
             $validasi1 = $dpkl['validasi1'];
@@ -134,7 +135,7 @@ $no = 1;
                                         <div class="form-group row">
                                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $alamat; ?>" readonly>
+                                                <textarea class="form-control" id="alamat" name="alamat" rows="3" readonly><?= $alamat; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -161,6 +162,20 @@ $no = 1;
                                                 <input type="text" class="form-control" id="jenispkl" name="jenispkl" value="<?= $jenispkl; ?>" readonly>
                                             </div>
                                         </div>
+                                        <!-- tampilkan tembusan jika ada -->
+                                        <?php
+                                        if (!empty($tembusan)) {
+                                        ?>
+                                            <div class="form-group row">
+                                                <label for="tembusan" class="col-sm-2 col-form-label">Tembusan</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" id="tembusan" name="tembusan" rows="5" readonly><?= $tembusan; ?></textarea>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+
                                         <div class="form-group row">
                                             <label for="paktaintegritas" class="col-sm-2 col-form-label">Bukti vaksin</label>
                                             <div class="col-sm-10 text-center">

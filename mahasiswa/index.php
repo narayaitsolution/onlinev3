@@ -237,37 +237,37 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == -1) {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="ijinlab-isi2.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-lg" href="ijinlab-isi2.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-file"></i>
                                                                     Lengkapi
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="ijinlab-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="ijinlab-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i>
                                                                     Cetak Surat Izin
                                                                 </a>
-                                                                <a class="btn btn-success btn-sm" href="ijinlab-cetakidcard.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="ijinlab-cetakidcard.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i>
                                                                     Cetak ID Card
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 0) {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" disabled>
+                                                                <a class="btn btn-secondary btn-lg" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinlab-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -380,22 +380,28 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == -1) {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="pkl-isianggota.php?nodata=<?= $nodata; ?>">
-                                                                    <i class="fas fa-file"></i> Lengkapi
-                                                                </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
-                                                                    <i class="fas fa-trash"></i> Batalkan
-                                                                </a>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <a class="btn btn-info btn-lg btn-block" href="pkl-isianggota.php?nodata=<?= $nodata; ?>">
+                                                                            <i class="fas fa-file"></i> Lengkapi
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <a class="btn btn-danger btn-lg btn-block" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
+                                                                            <i class="fas fa-trash"></i> Batalkan
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             <?php
                                                             } elseif ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="pkl-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="pkl-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i>
                                                                     Cetak
                                                                 </a>
                                                                 <form role="form" method="post">
                                                                     <input type="hidden" name="nodata" value="<?= $nodata; ?>">
-                                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-warning btn-sm"> <i class="fa fa-ban"></i> Batalkan</button>
+                                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-warning btn-lg"> <i class="fa fa-ban"></i> Batalkan</button>
                                                                     <!-- modal tolak -->
                                                                     <div class="modal fade" id="modal-tolak">
                                                                         <div class="modal-dialog modal-lg">
@@ -410,8 +416,8 @@ $no = 1;
                                                                                     <textarea class="form-control" rows="3" name="keterangan"></textarea>
                                                                                 </div>
                                                                                 <div class="modal-footer justify-content-between">
-                                                                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                                                    <button name="aksi" value="tolak" type="submit" formaction="pkl-batalkan.php" class="btn btn-warning btn-sm" onclick="return confirm('Apakah anda yakin mengajukan pembatalan Izin PKL ini  ?')"> <i class="fa fa-ban"></i> Batalkan</button>
+                                                                                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                                                                                    <button name="aksi" value="tolak" type="submit" formaction="pkl-batalkan.php" class="btn btn-warning btn-lg" onclick="return confirm('Apakah anda yakin mengajukan pembatalan Izin PKL ini  ?')"> <i class="fa fa-ban"></i> Batalkan</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -421,16 +427,16 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == 0) {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" disabled>
+                                                                <a class="btn btn-secondary btn-lg" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pkl-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -523,32 +529,32 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == -1) {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="magang-isianggota.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-info btn-lg" href="magang-isianggota.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-file"></i> Lengkapi
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="magang-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="magang-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="magang-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="magang-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i>
                                                                     Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 0) {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" disabled>
+                                                                <a class="btn btn-secondary btn-lg" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="magang-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="magang-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="magang-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="magang-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
@@ -638,22 +644,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="suket-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="suket-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="suket-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -743,22 +749,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="rekomendasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="rekomendasi-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="rekomendasi-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="rekomendasi-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="rekomendasi-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="rekomendasi-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -830,22 +836,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="beasiswa-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="beasiswa-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="beasiswa-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="beasiswa-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="beasiswa-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="beasiswa-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -913,22 +919,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="cetakkhs-cetak.php?nodata='.$nodata.'" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="cetakkhs-cetak.php?nodata='.$nodata.'" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="cetakkhs-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1017,22 +1023,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="ijinpenelitian-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="ijinpenelitian-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinpenelitian-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1121,22 +1127,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="ijinujian-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="ijinujian-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinujian-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinujian-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinujian-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinujian-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1225,27 +1231,27 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="ijinbimbingan-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="ijinbimbingan-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } elseif ($validator1 == null or $validator2 == null or $validator3 == null) {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="ijinbimbingan-isi2.php?token=<?= $token; ?>"><i class="fas fa-lup"></i> Upload
+                                                                <a class="btn btn-info btn-lg" href="ijinbimbingan-isi2.php?token=<?= $token; ?>"><i class="fas fa-lup"></i> Upload
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="ijinbimbingan-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1334,22 +1340,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="peminjamanalat-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="peminjamanalat-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="peminjamanalat-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1437,22 +1443,22 @@ $no = 1;
                                                             <?php
                                                             if ($statussurat == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="pengambilandata-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="pengambilandata-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                     <i class="fas fa-print"></i> Cetak
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pengambilandata-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pengambilandata-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('Harap Menunggu proses verifikasi')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pengambilandata-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="pengambilandata-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1558,33 +1564,33 @@ $no = 1;
                                                                     <?php
                                                                     if ($statussurat == -1) {
                                                                     ?>
-                                                                        <a class="btn btn-info btn-sm" href="observasi-isianggota.php?token=<?= $token; ?>">
+                                                                        <a class="btn btn-info btn-lg" href="observasi-isianggota.php?token=<?= $token; ?>">
                                                                             <i class="fas fa-file"></i>
                                                                             Lengkapi
                                                                         </a>
-                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
+                                                                        <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
                                                                             <i class="fas fa-trash"></i> Batalkan
                                                                         </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 1) {
                                                                     ?>
-                                                                        <a class="btn btn-success btn-sm" href="observasi-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                                        <a class="btn btn-success btn-lg" href="observasi-cetak.php?token=<?= $token; ?>" target="_blank">
                                                                             <i class="fas fa-print"></i>
                                                                             Cetak
                                                                         </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 0) {
                                                                     ?>
-                                                                        <a class="btn btn-secondary btn-sm" disabled>
+                                                                        <a class="btn btn-secondary btn-lg" disabled>
                                                                             <i class="fas fa-spinner"></i> Proses
                                                                         </a>
-                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
+                                                                        <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
                                                                             <i class="fas fa-trash"></i> Batalkan
                                                                         </a>
                                                                     <?php
                                                                     } elseif ($statussurat == 2) {
                                                                     ?>
-                                                                        <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
+                                                                        <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="observasi-hapus.php?token=<?= $token; ?>">
                                                                             <i class="fas fa-trash"></i> Hapus
                                                                         </a>
                                                                     <?php
@@ -1667,23 +1673,23 @@ $no = 1;
                                                             <?php
                                                             if ($verifikasi3 == 1) {
                                                             ?>
-                                                                <a class="btn btn-success btn-sm" href="https://siakad.uin-malang.ac.id" target="_blank">
+                                                                <a class="btn btn-success btn-lg" href="https://siakad.uin-malang.ac.id" target="_blank">
                                                                     <i class="fas fa-graduation-cap"></i>
                                                                     SIAKAD
                                                                 </a>
                                                             <?php
                                                             } elseif ($verifikasi1 == 2 or $verifikasi2 == 2 or $verifikasi3 == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpi-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpi-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-secondary btn-sm" onclick="return alert('harap Menunggu proses')" disabled>
+                                                                <a class="btn btn-secondary btn-lg" onclick="return alert('harap Menunggu proses')" disabled>
                                                                     <i class="fas fa-spinner"></i> Proses
                                                                 </a>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpi-hapus.php?nodata=<?= $nodata; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="skpi-hapus.php?nodata=<?= $nodata; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php
@@ -1757,19 +1763,19 @@ $no = 1;
                                                             <?php
                                                             } elseif ($statussurat == 2) {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="penghargaan-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="penghargaan-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Hapus
                                                                 </a>
                                                             <?php
                                                             } elseif ($statussurat == '-1') {
                                                             ?>
-                                                                <a class="btn btn-info btn-sm" href="penghargaan-anggota.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-info btn-lg" href="penghargaan-anggota.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-check"></i> Lengkapi
                                                                 </a>
                                                             <?php
                                                             } else {
                                                             ?>
-                                                                <a class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="penghargaan-hapus.php?token=<?= $token; ?>">
+                                                                <a class="btn btn-danger btn-lg" onclick="return confirm('Yakin menghapus pengajuan ini ?')" href="penghargaan-hapus.php?token=<?= $token; ?>">
                                                                     <i class="fas fa-trash"></i> Batalkan
                                                                 </a>
                                                             <?php

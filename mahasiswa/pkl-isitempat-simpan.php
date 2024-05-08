@@ -4,12 +4,13 @@ require_once('../system/dbconn.php');
 
 date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
-$nim = mysqli_real_escape_string($dbsurat, $_SESSION['nip']);
-$nama = mysqli_real_escape_string($dbsurat, $_SESSION['nama']);
-$prodi = mysqli_real_escape_string($dbsurat, $_SESSION['prodi']);
-$instansi = mysqli_real_escape_string($dbsurat, $_POST['instansi']);
-$tempatpkl = mysqli_real_escape_string($dbsurat, $_POST['tempatpkl']);
-$alamat = mysqli_real_escape_string($dbsurat, $_POST['alamat']);
+$nim = $_SESSION['nip'];
+$nama = $_SESSION['nama'];
+$prodi = $_SESSION['prodi'];
+$instansi = $_POST['instansi'];
+$tempatpkl = $_POST['tempatpkl'];
+$alamat = $_POST['alamat'];
+$tembusan = $_POST['tembusan'];
 $tglmulai = $_POST['tglmulai'];
 $tglselesai = $_POST['tglselesai'];
 $jenispkl = $_POST['jenispkl'];
@@ -17,9 +18,9 @@ $pklmagang = $_POST['pklmagang'];
 $token = md5(microtime());
 
 //masukin data
-$stmt = $dbsurat->prepare("INSERT INTO pkl (tanggal, prodi, nim, nama, instansi, tempatpkl, alamat, tglmulai, tglselesai, pklmagang, jenispkl,token) 
-                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-$stmt->bind_param("ssssssssssss", $tanggal, $prodi, $nim, $nama, $instansi, $tempatpkl, $alamat, $tglmulai, $tglselesai, $pklmagang, $jenispkl, $token);
+$stmt = $dbsurat->prepare("INSERT INTO pkl (tanggal, prodi, nim, nama, instansi, tempatpkl, alamat, tglmulai, tglselesai, pklmagang, tembusan, jenispkl,token) 
+                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+$stmt->bind_param("sssssssssssss", $tanggal, $prodi, $nim, $nama, $instansi, $tempatpkl, $alamat, $tglmulai, $tglselesai, $pklmagang, $tembusan, $jenispkl, $token);
 $stmt->execute();
 
 $qpkl = mysqli_query($dbsurat, "SELECT * FROM pkl WHERE nim='$nim' and statussurat=-1");

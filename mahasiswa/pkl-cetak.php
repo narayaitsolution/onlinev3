@@ -5,8 +5,6 @@ require('../system/myfunc.php');
 ?>
 <!-- ./db -->
 
-
-
 <?php
 session_start();
 $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
@@ -31,6 +29,7 @@ $validasi3 = $rowsurat['validasi3'];
 $tglsurat = date('Y-m-d', strtotime($tglvalidasi3));
 $pklmagang = $rowsurat['pklmagang'];
 $statussurat = $rowsurat['statussurat'];
+$tembusan = $rowsurat['tembusan'];
 
 if ($statussurat == 1) {
 
@@ -228,6 +227,36 @@ if ($statussurat == 1) {
 				</tr>
 			</tbody>
 		</table>
+		<br>
+		<br>
+
+		<!-- tembusan -->
+		<?php
+		if (!empty($tembusan)) {
+		?>
+			<table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
+				<tbody>
+					<tr>
+						<td colspan="6">Tembusan :</td>
+					</tr>
+					<?php
+					$teks = explode("\n", $tembusan);
+					$nomer = 1;
+					foreach ($teks as $baris) {
+					?>
+						<tr>
+							<td colspan="6"><?= $nomer; ?>. <?= $baris; ?></td>
+						</tr>
+					<?php
+						$nomer++;
+					}
+					?>
+				</tbody>
+			</table>
+		<?php
+		}
+		?>
+
 	</body>
 
 	</html>

@@ -119,6 +119,17 @@ $no = 1;
                                                     </small>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <label for="tembusan" class="col-sm-2 col-form-label">Tembusan (opsional)</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" id="tembusan" name="tembusan" rows="3"></textarea>
+                                                    <small style="color: red;">
+                                                        <li><b>Isi hanya jika dibutuhkan</b></li>
+                                                        <li>Tulis tujuan tembusan per baris <b><u>(tanpa nomor)</u></b></li>
+                                                        <li>Nomor urut dibuat oleh sistem secara otomatis</li>
+                                                    </small>
+                                                </div>
+                                            </div>
                                             <hr>
                                             <button type="submit" id="btn-submit" class="btn btn-success btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fa fa-users"></i> Anggota Kelompok <i class="fa fa-arrow-right"></i></button>
                                         </form>
