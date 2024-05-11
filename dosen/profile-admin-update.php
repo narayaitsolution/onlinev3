@@ -23,14 +23,14 @@ $jafung = $_POST['jafung'];
 $aktif = $_POST['aktif'];
 
 if ($hakakses == 'dosen' || $hakakses == 'tendik') {
-    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,golongan=?,pangkat=?,jafung=?,nohp=?,email=?,prodi=?,aktif=?
+    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,golongan=?,pangkat=?,jafung=?,nohp=?,email=?,prodi=?,hakakses=?,aktif=?
                                             WHERE token=?");
-    $stmt->bind_param("ssssssssss", $nama, $nip, $golongan, $pangkat, $jafung, $nohp, $email, $prodi, $aktif, $token);
+    $stmt->bind_param("sssssssssss", $nama, $nip, $golongan, $pangkat, $jafung, $nohp, $email, $prodi, $hakakses, $aktif, $token);
     $stmt->execute();
 } else {
-    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,aktif=?
+    $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,hakakses=?,aktif=?
                                             WHERE token=?");
-    $stmt->bind_param("sssssss", $nama, $nip, $nohp, $email, $prodi, $aktif, $token);
+    $stmt->bind_param("ssssssss", $nama, $nip, $nohp, $email, $prodi, $hakakses, $aktif, $token);
     $stmt->execute();
 }
 header("location:index.php?nip=$nip&hasil=ok&pesan=Perubahan data berhasil");

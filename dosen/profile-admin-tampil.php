@@ -247,6 +247,18 @@ $tahun = date('Y');
                                                     <option value="Perpustakaan dan Ilmu Informasi">Perpustakaan dan Ilmu Informasi</option>
                                                     <option value="Magister Biologi">Magister Biologi</option>
                                                     <option value="Magister Informatika">Magister Informatika</option>
+                                                    <option value="SAINTEK">SAINTEK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="hakakses" class="col-sm-2 col-form-label">Hak Akses</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control" name="hakakses">
+                                                    <option value="<?= $hakaksesuser; ?>"><?= $hakaksesuser; ?></option>
+                                                    <option value="dosen">dosen</option>
+                                                    <option value="tendik">tendik</option>
+                                                    <option value="mahasiswa">mahasiswa</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -262,7 +274,6 @@ $tahun = date('Y');
                                         </div>
                                         <div class="offset-sm-2 col-sm-10">
                                             <input type="hidden" name="token" value="<?= $tokenuser; ?>">
-                                            <input type="hidden" name="hakakses" value="<?= $hakaksesuser; ?>">
                                             <button type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')"><i class="fas fa-refresh"></i> UPDATE DATA</button>
                                         </div>
                                     </form>
