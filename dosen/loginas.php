@@ -101,6 +101,7 @@ require('../system/myfunc.php');
                                     <th width="5%" style="text-align:center">No</th>
                                     <th style="text-align:center">Nama</th>
                                     <th style="text-align:center">NIP / NIM</th>
+                                    <th style="text-align:center">Status</th>
                                     <th style="text-align:center">Prodi</th>
                                     <th width="10%" style="text-align:center">Aksi</th>
                                 </tr>
@@ -118,24 +119,31 @@ require('../system/myfunc.php');
                                         $nip = $data['nip'];
                                         $nama = $data['nama'];
                                         $prodi = $data['prodi'];
+                                        $hakakses = $data['hakakses'];
                                         $user = $data['user'];
                                         $pass = $data['pass'];
+                                        $tokenuser = $data['token'];
                                 ?>
                                         <tr>
                                             <td><?= $no; ?></td>
                                             <td><?= $nama; ?></td>
                                             <td><?= $nip; ?></td>
+                                            <td><?= strtoupper($hakakses); ?></td>
                                             <td><?= $prodi; ?></td>
                                             <td>
                                                 <form action="../auth-as.php" method="POST">
                                                     <input type="hidden" name="username" value="<?= $user; ?>">
                                                     <input type="hidden" name="password" value="<?= $pass; ?>">
-                                                    <input type="submit" class="btn btn-danger btn-sm" value="Log In" name="loginas" onclick="return confirm ('Login As <?= $nama; ?> ?');">
+                                                    <input type="submit" class="btn btn-danger btn-lg btn-block" value="Log In" name="loginas" onclick="return confirm ('Login As <?= $nama; ?> ?');">
                                                 </form>
                                                 <form action="passreset.php" method="POST">
                                                     <input type="hidden" name="nodata" value="<?= $nodata; ?>">
                                                     <input type="hidden" name="nip" value="<?= $nip; ?>">
-                                                    <input type="submit" class="btn btn-warning btn-sm" value="Reset" name="reset" onclick="return confirm ('Reset Password <?= $nama; ?> ?');">
+                                                    <input type="submit" class="btn btn-warning btn-lg btn-block" value="Reset" name="reset" onclick="return confirm ('Reset Password <?= $nama; ?> ?');">
+                                                </form>
+                                                <form action="profile-admin-tampil.php" method="POST">
+                                                    <input type="hidden" name="tokenuser" value="<?= $tokenuser; ?>">
+                                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Profile" name="profile" onclick="return confirm ('Masuk ke profile <?= $nama; ?> ?');">
                                                 </form>
                                             </td>
                                         </tr>
