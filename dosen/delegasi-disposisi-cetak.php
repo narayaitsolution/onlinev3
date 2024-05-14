@@ -183,7 +183,11 @@ $bulan = date('m');
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td style="text-align:center">
+						<?= $jabatan; ?><br />
+						<img src="../qrcode/<?= $namafile; ?>.png" width="80" /><br />
+						<?= $namawd; ?>
+					</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

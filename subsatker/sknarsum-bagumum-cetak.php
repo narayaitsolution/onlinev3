@@ -301,7 +301,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="20%" style="text-align: center;">^</td>
+            <td width="40%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
@@ -427,7 +427,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
-            <td width="20%" style="text-align: center;">#</td>
+            <td width="40%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</td>
         </tr>
         <tr>
             <td width="60%">&nbsp;</td>
