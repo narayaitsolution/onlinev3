@@ -9,7 +9,7 @@ $nim = $_SESSION['nip'];
 $token = $_POST['token'];
 
 //updatestatussurat
-$qupdatestatus = mysqli_query($dbsurat, "UPDATE sk SET statussurat=0 WHERE token='$token' AND nim='$nim'");
+$qupdatestatus = mysqli_query($dbsurat, "UPDATE sk SET verifikasi1=0,verifikasi2=0,statussurat=0 WHERE token='$token' AND nim='$nim'");
 
 //kirim email ke wadek3
 //cari email wadek3 dari NIP

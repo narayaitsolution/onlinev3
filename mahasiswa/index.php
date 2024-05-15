@@ -1962,7 +1962,11 @@ $no = 1;
                                                         <td>
                                                             <!-- WD-3 -->
                                                             <?php
-                                                            if ($verifikasi1 == 0) {
+                                                            if ($verifikasi1 == -1) {
+                                                            ?>
+                                                                <b style="color:red;">LENGKAPI </b> data yang di ajukan!!<br />
+                                                            <?php
+                                                            } elseif ($verifikasi1 == 0) {
                                                             ?>
                                                                 <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?><br />
                                                             <?php
@@ -2046,7 +2050,12 @@ $no = 1;
                                                         <td>
                                                             <!-- WD-3 -->
                                                             <?php
-                                                            if ($verifikasi1 == 0) {
+                                                            if ($verifikasi1 == -1) {
+                                                            ?>
+                                                                <b style="color:red;">LENGKAPI </b> data yang di ajukan!!<br />
+                                                            <?php
+                                                            } elseif ($verifikasi1 == 0) {
+
                                                             ?>
                                                                 <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?><br />
                                                             <?php
@@ -2129,7 +2138,11 @@ $no = 1;
                                                         <td>
                                                             <!-- WD-3 -->
                                                             <?php
-                                                            if ($verifikasi1 == 0) {
+                                                            if ($verifikasi1 == -1) {
+                                                            ?>
+                                                                <b style="color:red;">LENGKAPI </b> data yang di ajukan!!<br />
+                                                            <?php
+                                                            } elseif ($verifikasi1 == 0) {
                                                             ?>
                                                                 <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $verifikator1); ?><br />
                                                             <?php
