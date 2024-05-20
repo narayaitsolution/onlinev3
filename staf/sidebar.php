@@ -145,6 +145,24 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="surat-rekap-proses.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-envelope-open"></i>
+                            <p>
+                                Surat Dalam Proses
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="surat-rekap-done.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-envelope"></i>
+                            <p>
+                                Surat Selesai
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
                 <?php
                     }
                 ?>
