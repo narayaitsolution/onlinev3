@@ -801,6 +801,7 @@ $tahun = date('Y');
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -884,6 +885,7 @@ $tahun = date('Y');
                                 ?>
                                             <tr>
                                                 <td><?= $no; ?></td>
+                                                <td><?= tgljam_indo($tanggal); ?></td>
                                                 <td><?= $surat; ?></td>
                                                 <td><?= namadosen($dbsurat, $nimanggota); ?><br />NIM. <?= $nimanggota; ?></td>
                                                 <td><?= $prodi; ?></td>
@@ -944,6 +946,7 @@ $tahun = date('Y');
                                     ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td><?= tgljam_indo($tanggal); ?></td>
                                         <td><?= $surat; ?></td>
                                         <td><?= $nama; ?><br />NIM. <?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
