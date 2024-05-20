@@ -259,6 +259,7 @@ $tahun = date('Y');
                                                     <option value="dosen">dosen</option>
                                                     <option value="tendik">tendik</option>
                                                     <option value="mahasiswa">mahasiswa</option>
+                                                    <option value="subsatker">subsatker</option>
                                                 </select>
                                             </div>
                                         </div>

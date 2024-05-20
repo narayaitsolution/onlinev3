@@ -134,7 +134,7 @@ $tahun = date('Y');
                                                                 <div class="col-sm-10">
                                                                     <select name="dosen" class="form-control">
                                                                         <?php
-                                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE hakakses='dosen' OR hakakses='tendik' order by nama");
+                                                                        $qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE hakakses<>'mahasiswa' order by nama");
                                                                         while ($ddosen = mysqli_fetch_array($qdosen)) {
                                                                             $namadosen = $ddosen['nama'];
                                                                         ?>
@@ -149,15 +149,15 @@ $tahun = date('Y');
                                                                 <label for="matakuliah" class="col-sm-2 col-form-label">Jabatan</label>
                                                                 <div class="col-sm-10">
                                                                     <select name="kdjabatan" class="form-control">
-                                                                        <?php
-                                                                        $qkdjabatan = mysqli_query($dbsurat, "SELECT DISTINCT (kdjabatan) FROM pejabat ORDER BY kdjabatan");
-                                                                        while ($dkdjabatan = mysqli_fetch_array($qkdjabatan)) {
-                                                                            $kdjab = $dkdjabatan['kdjabatan'];
-                                                                        ?>
-                                                                            <option value="<?= $kdjab; ?>"><?= $kdjab; ?></option>
-                                                                        <?php
-                                                                        }
-                                                                        ?>
+                                                                        <option value="DEKAN">DEKAN</option>
+                                                                        <option value="wadek1">WD-1</option>
+                                                                        <option value="wadek2">WD-2</option>
+                                                                        <option value="wadek3">WD-3</option>
+                                                                        <option value="bagumum">Bagian Umum</option>
+                                                                        <option value="bagkeu">Bagian Keuangan</option>
+                                                                        <option value="kaprodi">Kaprodi</option>
+                                                                        <option value="sekprodi">Sekprodi</option>
+                                                                        <option value="koorpkl">Koordinator PKL</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -196,19 +196,7 @@ $tahun = date('Y');
                                                         <td><?= $prodi; ?></td>
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $nip; ?></td>
-                                                        <td><select name="kdjabatan" class="form-control">
-                                                                <option value="<?= $kdjabatan; ?>"><?= $kdjabatan; ?></option>
-                                                                <?php
-                                                                $qkdjabatan = mysqli_query($dbsurat, "SELECT DISTINCT (kdjabatan) FROM pejabat ORDER BY kdjabatan");
-                                                                while ($dkdjabatan = mysqli_fetch_array($qkdjabatan)) {
-                                                                    $kdjab = $dkdjabatan['kdjabatan'];
-                                                                ?>
-                                                                    <option value="<?= $kdjab; ?>"><?= $kdjab; ?></option>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                        </td>
+                                                        <td><?= $kdjabatan; ?></td>
                                                         <td>
                                                             <a class="btn btn-sm btn-danger" href="pejabat-hapus.php?no=<?= $nodata; ?>" onclick="return confirm ('Hapus ?')">Delete</a>
                                                         </td>

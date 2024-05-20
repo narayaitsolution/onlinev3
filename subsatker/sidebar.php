@@ -31,44 +31,51 @@
                     </a>
                 </li>
 
-
-                <li class="nav-item">
-                    <a href="surat-rekap-proses.php" class="nav-link">
-                        <i class="nav-icon fa-solid fa-envelope-open"></i>
-                        <p>
-                            Surat Dalam Proses
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="surat-rekap-done.php" class="nav-link">
-                        <i class="nav-icon fa-solid fa-envelope"></i>
-                        <p>
-                            Surat Selesai
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="sktampil.php" class="nav-link">
-                        <i class="nav-icon fa-solid fa-print"></i>
-                        <p>
-                            Cetak SK
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pengguna-tampil.php" class="nav-link">
-                        <i class="nav-icon fa-solid fa-users"></i>
-                        <p>
-                            Data User
-                            <span class="right badge badge-danger"></span>
-                        </p>
-                    </a>
-                </li>
-
+                <?php
+                if ($hakakses == 'subsatker' && $jabatan == 'bagumum') {
+                ?>
+                    <li class="nav-item">
+                        <a href="surat-rekap-proses.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-envelope-open"></i>
+                            <p>
+                                Surat Dalam Proses
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="surat-rekap-done.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-envelope"></i>
+                            <p>
+                                Surat Selesai
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sktampil.php" class="nav-link">
+                            <i class="nav-icon fa-solid fa-print"></i>
+                            <p>
+                                Cetak SK
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                } elseif ($hakakses == 'subsatker' && $jabatan == 'bagkeu') {
+                ?>
+                    <li class="nav-item">
+                        <a href="delegasi-rekap.php" class="nav-link">
+                            <i class="nav-icon fas fa-plane-departure"></i>
+                            <p>
+                                Laporan Delegasi
+                                <span class="right badge badge-danger"></span>
+                            </p>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="nav-item">
                     <a href="https://wa.me/6281234302099" target="_blank" class="nav-link">
                         <i class="nav-icon fa-brands fa-whatsapp"></i>
