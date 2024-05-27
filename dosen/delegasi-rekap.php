@@ -81,24 +81,25 @@ $tahun = date('Y');
                                             <thead>
                                                 <tr>
                                                     <th width="5%">No</th>
-                                                    <th>Prodi</th>
-                                                    <th>Nama Ketua</th>
-                                                    <th>NIM</th>
-                                                    <th>No. HP</th>
-                                                    <th>Surat Rekomendasi</th>
-                                                    <th>LPJ</th>
-                                                    <th>No. KTP</th>
-                                                    <th>Foto KTP</th>
-                                                    <th>Foto KTM</th>
-                                                    <th>Bank</th>
-                                                    <th>No. Rekening</th>
-                                                    <th>Foto Buku Tabungan</th>
-                                                    <th>Disposisi</th>
+                                                    <th style="text-align: center;">Prodi</th>
+                                                    <th style="text-align: center;">Nama Ketua</th>
+                                                    <th style="text-align: center;">NIM</th>
+                                                    <th style="text-align: center;">No. HP</th>
+                                                    <th style="text-align: center;">Surat Rekomendasi</th>
+                                                    <th style="text-align: center;">LPJ</th>
+                                                    <th style="text-align: center;">No. KTP</th>
+                                                    <th style="text-align: center;">Foto KTP</th>
+                                                    <th style="text-align: center;">Foto KTM</th>
+                                                    <th style="text-align: center;">Bank</th>
+                                                    <th style="text-align: center;">No. Rekening</th>
+                                                    <th style="text-align: center;">Foto Buku Tabungan</th>
+                                                    <th style="text-align: center;">Disposisi</th>
+                                                    <th style="text-align: center;">Tgl. Persetujuan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat =1 and year(tanggal) = '$tahun' ORDER BY tanggal DESC, prodi ASC");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat =1 and year(tanggal) = '$tahun' ORDER BY tglvalidasi3 DESC");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nim = $data['nim'];
                                                     $nama = $data['nama'];
@@ -107,6 +108,7 @@ $tahun = date('Y');
                                                     $keterangan = $data['keterangan'];
                                                     $laporan = $data['laporan'];
                                                     $statuslaporan = $data['statuslaporan'];
+                                                    $tglvalidasi3 = $data['tglvalidasi3'];
                                                     $token = $data['token'];
                                                     //cari data upload
                                                     $qupload = mysqli_query($dbsurat, "SELECT * FROM delegasiupload WHERE token='$token'");
@@ -184,7 +186,7 @@ $tahun = date('Y');
                                                         <?php
                                                         }
                                                         ?>
-
+                                                        <td><?= tgljam_indo($tglvalidasi3); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
