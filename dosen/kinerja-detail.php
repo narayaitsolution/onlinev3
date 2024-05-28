@@ -119,15 +119,16 @@ $no = 1;
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Bukti</label>
                                             <div class="col-sm-10">
-                                                <img src="<?= $bukti; ?>" width="200px" class="img-float">
+                                                <a href="<?= $bukti; ?>" target="_blank"><img src="<?= $bukti; ?>" width="200px" class="img-float"></a>
+                                                <br>
+                                                <small style="color: red;">Klik pada gambar untuk memperbesar</small>
                                             </div>
                                         </div>
 
                                         <hr>
                                         <div class="row">
                                             <div class="col">
-                                                <a href="kinerja-tampil.php?nipbawahan=<?= $nipbawahan; ?>" class="btn btn-secondary btn-lg btn-block">
-                                                    << Kembali</a>
+                                                <a href="kinerja-tampil.php?nipbawahan=<?= $nipbawahan; ?>" class="btn btn-secondary btn-lg btn-block"><i class="fas fa-backward"></i> KEMBALI</a>
                                             </div>
                                         </div>
                                     </div>
