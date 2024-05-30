@@ -99,7 +99,7 @@ $tahun = date('Y');
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat =1 and year(tanggal) = '$tahun' ORDER BY tglvalidasi3 DESC");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE statussurat =1 and year(tanggal) = '$tahun' ORDER BY tgllaporan DESC");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nim = $data['nim'];
                                                     $nama = $data['nama'];
@@ -108,7 +108,7 @@ $tahun = date('Y');
                                                     $keterangan = $data['keterangan'];
                                                     $laporan = $data['laporan'];
                                                     $statuslaporan = $data['statuslaporan'];
-                                                    $tglvalidasi3 = $data['tglvalidasi3'];
+                                                    $tgllaporan = $data['tgllaporan'];
                                                     $token = $data['token'];
                                                     //cari data upload
                                                     $qupload = mysqli_query($dbsurat, "SELECT * FROM delegasiupload WHERE token='$token'");
@@ -186,7 +186,7 @@ $tahun = date('Y');
                                                         <?php
                                                         }
                                                         ?>
-                                                        <td><?= tgljam_indo($tglvalidasi3); ?></td>
+                                                        <td><?= tgljam_indo($tgllaporan); ?></td>
                                                     </tr>
                                                 <?php
                                                     $no++;
