@@ -14,6 +14,7 @@
             border-spacing: 0;
         }
     </style>
+    <title>Surat Delegasi</title>
 </head>
 
 <script>
@@ -111,6 +112,7 @@ $bulan = date('m');
             $tglvalidasi3 = $ddelegasi['tglvalidasi3'];
             $validasi3 = $ddelegasi['validasi3'];
             $validator3 = $ddelegasi['validator3'];
+            $tglvalidasi3 = $ddelegasi['tglvalidasi3'];
             $keterangan = $ddelegasi['keterangan'];
             $biaya = $ddelegasi['biaya'];
             $qdelegasikelompok = mysqli_query($dbsurat, "SELECT * FROM delegasianggota WHERE token='$token'");
@@ -177,6 +179,22 @@ $bulan = date('m');
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="30%">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="30%">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td style="text-align: center;">Malang, <?= tgl_indo($tglvalidasi3); ?></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

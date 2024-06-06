@@ -2,6 +2,7 @@
 
 <head>
   <link rel="stylesheet" href="../system/surat.css">
+  <title>Surat Keterangan Delegasi</title>
 </head>
 
 <script>
@@ -37,12 +38,19 @@ $bulan = date('m');
       <td>&nbsp;</td>
     </tr>
     <tr>
+      <?php
+      $qdelegasi = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE token='$token'");
+      $ddelegasi = mysqli_fetch_array($qdelegasi);
+      $keterangan = $ddelegasi['keterangan'];
+      ?>
       <td>&nbsp;</td>
-      <td colspan="3" style="text-align: center;"><b>SURAT KETERANGAN DELEGASI</b></td>
+      <td colspan="4" style="text-align: center;"><b>SURAT KETERANGAN DELEGASI</b></td>
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td colspan="6">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td colspan="4" style="text-align: center;">Nomor : <?= $keterangan; ?></td>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
@@ -150,6 +158,30 @@ $bulan = date('m');
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="30%">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="30%">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="30%">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td style="text-align: center;">Malang, <?= tgl_indo($tglvalidasi3); ?></td>
         <td>&nbsp;</td>
       </tr>
       <tr>
