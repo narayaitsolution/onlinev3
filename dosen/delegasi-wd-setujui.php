@@ -14,10 +14,10 @@ $tgl = date('Y-m-d H:i:s');
 $bulan = date('m');
 $tahun = date('Y');
 //cari urutan surat di tahun ini untuk no surat
-$qurutan = mysqli_query($dbsurat, "SELECT * FROM suket WHERE year(tanggal)=$tahun");
+$qurutan = mysqli_query($dbsurat, "SELECT * FROM delegasi WHERE year(tanggal)=$tahun");
 $urutan = mysqli_num_rows($qurutan);
 
-$nosurat = "B-" . $urutan + 1 . ".O/FST.3/KM.01.2/" . $bulan . "/" . $tahun . "";
+$nosurat = "B-" . $urutan + 1 . ".O/FST.3/OT.01.7/" . $bulan . "/" . $tahun . "";
 
 
 //update status validasi kaprodi
