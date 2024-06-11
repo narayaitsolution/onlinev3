@@ -10,7 +10,11 @@ $qlampiran = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE token='$tok
 $dlampiran = mysqli_fetch_array($qlampiran);
 $nodata = $dlampiran['no'];
 $bukti = $dlampiran['bukti'];
+$dokumentasi = $dlampiran['dokumentasi'];
+$skkm = $dlampiran['skkm'];
 unlink($bukti);
+unlink($dokumentasi);
+unlink($skkm);
 
 $query3 = mysqli_query($dbsurat, "DELETE FROM penghargaan WHERE token = '$token' AND nim='$nim'");
 $query4 = mysqli_query($dbsurat, "DELETE FROM penghargaananggota WHERE nodata='$nodata' AND nimketua='$nim'");

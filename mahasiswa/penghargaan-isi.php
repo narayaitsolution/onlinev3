@@ -65,9 +65,26 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <div class="alert alert-warning alert-dismissible fade show">
-                                Pastikan sudah memperbarui data email & no. hp anda di profile pengguna!!
-                            </div>
+                            <!-- alert -->
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil == 'ok') {
+                            ?>
+                                    <script>
+                                        swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                                    </script>
+                                <?php
+                                } elseif ($hasil == 'notok') {
+                                ?>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
+                            <?php
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -195,6 +212,14 @@ $no = 1;
                                                     <input type="file" class="form-control" id="dok" name="dok" accept="image/jpg, image/jpeg">
                                                     <li style="color: red;"><small>Format File JPG / JPEG, ukuran file maksimal 2MB</small></li>
                                                     <li style="color: red;"><small>Foto menunjukkan pemenang / penerima hadiah</small></li>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="keperluan" class="col-sm-2 col-form-label">Bukti upload SKKM</label>
+                                                <div class="col-sm-10">
+                                                    <input type="file" class="form-control" id="skkm" name="skkm" accept="image/jpg, image/jpeg" required>
+                                                    <li style="color: red;"><small>Format File JPG / JPEG, ukuran file maksimal 2MB</small></li>
+                                                    <li style="color: red;"><small>Screenshot upload SKKM di <u><a href="https://siakad.uin-malang.ac.id" target="_blank"><b>SIAKAD</b></a></u></small></li>
                                                 </div>
                                             </div>
                                             <hr>

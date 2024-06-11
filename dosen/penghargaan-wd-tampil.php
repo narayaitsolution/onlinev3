@@ -81,6 +81,7 @@ $no = 1;
             $peringkat = $row['peringkat'];
             $bukti = $row['bukti'];
             $dokumentasi = $row['dokumentasi'];
+            $skkm = $row['skkm'];
             $validator2 = $row['validator2'];
             $tglvalidasi2 = $row['tglvalidasi2'];
             ?>
@@ -193,6 +194,13 @@ $no = 1;
                                             <label for="keperluan" class="col-sm-2 col-form-label">Dokumentasi</label>
                                             <div class="col-sm-10">
                                                 <a href="<?= $dokumentasi; ?>" target="_blank"><img src="<?= $dokumentasi; ?>" width="200px"></a><br>
+                                                <small style="color: red;">Klik pada gambar untuk memperbersar</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="keperluan" class="col-sm-2 col-form-label">Bukti Upload SKKM</label>
+                                            <div class="col-sm-10">
+                                                <a href="<?= $skkm; ?>" target="_blank"><img src="<?= $skkm; ?>" width="200px"></a><br>
                                                 <small style="color: red;">Klik pada gambar untuk memperbersar</small>
                                             </div>
                                         </div>

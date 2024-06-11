@@ -61,7 +61,7 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
         $statusbukti = '1';
     } else {
         $statusbukti = '0';
-        header("location:penghargaan-isi.php?nip=$nip&pesan=gagal");
+        header("location:penghargaan-isi.php?nip=$nip&hasil=notok&pesan=Pengajuan penghargaan gagal!!");
     }
 }
 
@@ -83,15 +83,37 @@ if (in_array($fileExtension, $allowedfileExtensions)) {
         $statusdok = '1';
     } else {
         $statusdok = '0';
-        header("location:penghargaan-isi.php?nip=$nip&pesan=gagal");
+        header("location:penghargaan-isi.php?nip=$nip&hasil=notok&pesan=Pengajuan penghargaan gagal!!");
+    }
+}
+
+//upload SKKM
+$kodeacak3 = random_str(12);
+$skkmTmpPath = $_FILES['skkm']['tmp_name'];
+$skkmName = $_FILES['skkm']['name'];
+$skkmSize = $_FILES['skkm']['size'];
+$skkmNameCmps = explode(".", $skkmName);
+$fileExtension = strtolower(end($skkmNameCmps));
+
+//$skkm = imgresize($skkmTmpPath);
+$allowedfileExtensions = array('jpg', 'jpeg');
+if (in_array($fileExtension, $allowedfileExtensions)) {
+    $skkmpath = $target_dir . $kodeacak3 . '.jpg';
+    move_uploaded_file($skkmTmpPath, $skkmpath);
+    $skkminfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $skkmpath);
+    if ($skkminfo == 'image/jpeg' && $skkmSize < 2097152) {
+        $statusskkm = '1';
+    } else {
+        $statusskkm = '0';
+        header("location:penghargaan-isi.php?nip=$nip&hasil=notok&pesan=Pengajuan penghargaan gagal!!");
     }
 }
 
 
 if ($jeniskegiatan == 'Individu') {
-    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti,dokumentasi, validator2, validator3, token) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("sssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tglpelaksanaan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $token);
+    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti,dokumentasi,skkm,validator2, validator3, token) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("ssssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tglpelaksanaan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $skkmpath, $nipkaprodi, $nipwd, $token);
     $stmt->execute();
 
     //kirim email ke kaprodi
@@ -126,13 +148,13 @@ if ($jeniskegiatan == 'Individu') {
     header("location:index.php?pesan=success");
 } else {
     $statussurat = '-1';
-    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara,tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti, dokumentasi, validator2, validator3,statussurat, token) 
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("ssssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tglpelaksanaan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $nipkaprodi, $nipwd, $statussurat, $token);
+    $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara,tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti, dokumentasi, skkm, validator2, validator3,statussurat, token) 
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssssssss", $tanggal, $nim, $nama, $prodi, $kegiatan, $namakegiatan, $penyelenggara, $tglpelaksanaan, $tingkat, $kategori, $jeniskegiatan, $peringkat, $buktipath, $dokpath, $skkmpath, $nipkaprodi, $nipwd, $statussurat, $token);
     $stmt->execute();
 
     $qnodata = mysqli_query($dbsurat, "SELECT * FROM penghargaan WHERE nim='$nim' ORDER BY tanggal DESC");
     $dnodata = mysqli_fetch_array($qnodata);
     $token = $dnodata['token'];
-    header("location:penghargaan-anggota.php?token=$token&pesan=success");
+    header("location:penghargaan-anggota.php?token=$token&hasil=ok&pesan=Pengajuan berhasil!!");
 }
