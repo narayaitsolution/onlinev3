@@ -17,13 +17,10 @@ if ($hasil > 0) {
     if ($buktivaksin == null) {
         $ket = "novaksin";
     } else {
-        $sql = "INSERT INTO maganganggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
-                values('$nodata','$nim','$nimanggota2','$namaanggota2','$notelepon','$buktivaksin')";
-        if (mysqli_query($dbsurat, $sql)) {
-            $ket = "ok";
-        } else {
-            $ket = "notok";
-        }
+        $stmt = $dbsurat->prepare("INSERT INTO maganganggota (nodata,nimketua, nimanggota, nama, telepon, buktivaksin) 
+        VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("ssssss", $nodata, $nim, $nimanggota2, $namaanggota2, $notelepon, $buktivaksin);
+        $stmt->execute();
     }
 } else {
     $ket = "notfound";
