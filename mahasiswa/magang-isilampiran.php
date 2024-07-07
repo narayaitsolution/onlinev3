@@ -31,6 +31,7 @@ $no = 1;
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -71,61 +72,27 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
+                            <!-- alert -->
                             <?php
                             if (isset($_GET['pesan'])) {
-                                if ($_GET['pesan'] == "gagal") {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil == 'ok') {
                             ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>ERROR!</strong> Upload file gagal
-                                    </div>
+                                    <script>
+                                        swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                                    </script>
                                 <?php
-                                } else if ($_GET['pesan'] == "filesize") {
+                                } elseif ($hasil == 'notok') {
                                 ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>ERROR! </strong> ukuran file terlalu besar
-                                    </div>
-                                <?php
-                                } else if ($_GET['pesan'] == "extention") {
-                                ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>ERROR! </strong> format file harus JPG/JPEG
-                                    </div>
-                                <?php
-                                } else if ($_GET['pesan'] == "registered") {
-                                ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>ERROR!</strong> Anda telah terdaftar<br />
-                                        Klik Lupa Password apabila anda lupa password
-                                    </div>
-                                <?php
-                                } else if ($_GET['pesan'] == "success") {
-                                ?>
-                                    <div class="alert alert-success alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>BERHASIL! </strong> upload file berhasil
-                                    </div>
-                                <?php
-                                } else if ($_GET['pesan'] == "noaccess") {
-                                ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>ERROR! </strong> Anda tidak memiliki akses
-                                    </div>
-                                <?php
-                                } else if ($_GET['pesan'] == "antibot") {
-                                ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>ERROR! </strong> penjumlahan salah
-                                    </div>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
                             <?php
                                 }
                             }
                             ?>
+
                             <?php
                             $no = 1;
                             $statussurat = 0;

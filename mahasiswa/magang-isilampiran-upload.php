@@ -32,7 +32,7 @@ if (move_uploaded_file($lampiran_low, $dest_path)) {
     $stmt = $dbsurat->prepare("UPDATE magang SET lampiran=? WHERE no=?");
     $stmt->bind_param("si", $dest_path, $nodata);
     $stmt->execute();
-    header("location:magang-isilampiran.php?nodata=$nodata&pesan=success");
+    header("location:magang-isilampiran.php?nodata=$nodata&hasil=ok&pesan=success");
 } else {
-    header("location:magang-isilampiran.php?nodata=$nodata&pesan=gagal");
+    header("location:magang-isilampiran.php?nodata=$nodata&hasil=notok&pesan=gagal");
 };

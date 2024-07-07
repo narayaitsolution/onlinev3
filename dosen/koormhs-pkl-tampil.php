@@ -39,16 +39,9 @@ if (isset($_POST['tahun'])) {
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
-    <!-- Site wrapper -->
     <div class="wrapper">
-        <!-- Navbar -->
         <?php
         require('navbar.php');
-        ?>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <?php
         require('sidebar.php');
         ?>
 
@@ -60,6 +53,27 @@ if (isset($_POST['tahun'])) {
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <a href="index.php" class="btn btn-primary"><i class="nav-icon fas fa-arrow-left"></i> KEMBALI</a>
+                            <!--alert-->
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil == 'ok') {
+                            ?>
+                                    <script>
+                                        swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                                    </script>
+
+                                <?php
+                                } else {
+                                ?>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
+                            <?php
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -70,7 +84,7 @@ if (isset($_POST['tahun'])) {
                 <!-- Pengajuan Surat Mahasiswa -->
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Izin PKL Mahasiswa</h3>
+                        <h3 class="card-title">Izin PKL / Magang Mahasiswa</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
@@ -107,6 +121,7 @@ if (isset($_POST['tahun'])) {
                             <thead>
                                 <tr>
                                     <th width="5%">No.</th>
+                                    <th width="5%">Surat</th>
                                     <th style="text-align:center;">Nama</th>
                                     <th style="text-align:center;">NIM</th>
                                     <th style="text-align:center;">Prodi</th>
@@ -121,7 +136,7 @@ if (isset($_POST['tahun'])) {
                             <tbody>
                                 <?php $no = 1; ?>
 
-                                <!-- PKL Koordinator-->
+                                <!-- PKL-->
                                 <?php
                                 if ($tahun == '0000') {
                                     $query = mysqli_query($dbsurat, "SELECT * FROM pkl ORDER BY tanggal DESC, prodi ASC");
@@ -151,6 +166,7 @@ if (isset($_POST['tahun'])) {
                                 ?>
                                     <tr>
                                         <td><?= $no; ?></td>
+                                        <td>PKL</td>
                                         <td><b>Ketua:</b><br><?= $nama; ?></td>
                                         <td><?= $nim; ?></td>
                                         <td><?= $prodi; ?></td>
@@ -203,6 +219,7 @@ if (isset($_POST['tahun'])) {
                                     ?>
                                             <tr>
                                                 <td><?= $no; ?></td>
+                                                <td>PKL</td>
                                                 <td><b>Anggota :</b><br><?= $namaanggota; ?></td>
                                                 <td><?= $nimanggota; ?></td>
                                                 <td><?= $prodi; ?></td>
@@ -251,6 +268,140 @@ if (isset($_POST['tahun'])) {
                                 }
                                 ?>
                                 <!-- /. PKL koordinator-->
+
+                                <!-- MAGANG-->
+                                <?php
+                                if ($tahun == '0000') {
+                                    $query = mysqli_query($dbsurat, "SELECT * FROM magang ORDER BY tanggal DESC, prodi ASC");
+                                } else {
+                                    $query = mysqli_query($dbsurat, "SELECT * FROM magang WHERE year(tanggal)='$tahun' AND statussurat='1' ORDER BY tanggal DESC, prodi ASC, instansi ASC");
+                                }
+                                $jmldata = mysqli_num_rows($query);
+                                while ($data = mysqli_fetch_array($query)) {
+                                    $nodata = $data['no'];
+                                    $tanggal = $data['tanggal'];
+                                    $nim = $data['nim'];
+                                    $nama = $data['nama'];
+                                    $prodi = $data['prodi'];
+                                    $instansi = $data['instansi'];
+                                    $tempatmagang = $data['tempatpkl'];
+                                    $alamat = $data['alamat'];
+                                    $validasi1 = $data['validasi1'];
+                                    $validator1 = $data['validator1'];
+                                    $validasi2 = $data['validasi2'];
+                                    $validator2 = $data['validator2'];
+                                    $validasi3 = $data['validasi3'];
+                                    $validator3 = $data['validator3'];
+                                    $tglvalidasi3 = $data['tglvalidasi3'];
+                                    $keterangan = $data['keterangan'];
+                                    $token = $data['token'];
+                                    $statussurat = $data['statussurat'];
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td>MAGANG</td>
+                                        <td><b>Ketua:</b><br><?= $nama; ?></td>
+                                        <td><?= $nim; ?></td>
+                                        <td><?= $prodi; ?></td>
+                                        <td><?= $instansi; ?></td>
+                                        <td><?= $tempatmagang; ?></td>
+                                        <td><?= $alamat; ?></td>
+                                        <td><?= tgl_indo($tglvalidasi3) ?></td>
+                                        <td><?= $keterangan; ?></td>
+                                        <td>
+                                            <?php
+                                            if ($statussurat == 1) {
+                                            ?>
+                                                <a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                    <i class="fas fa-print"></i>
+                                                </a>
+                                            <?php
+                                            } elseif ($statussurat == 2) {
+                                            ?>
+                                                <a class="btn btn-danger btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                    <i class="fas fa-ban"></i>
+                                                </a>
+                                            <?php
+                                            } elseif ($statussurat == 3) {
+                                            ?>
+                                                <a class="btn btn-warning btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                                </a>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <a class="btn btn-secondary btn-sm" onclick="return alert('Dalam proses verifikasi')">
+                                                    <i class="fas fa-spinner"></i>
+                                                </a>
+                                            <?php
+                                            }
+                                            ?>
+                                            <a class="btn btn-danger btn-sm" href="pengajuanmhs-maganghapus.php?nodata=<?= $nodata; ?>" onclick="return alert('Membatalkan pengajuan ini ?')">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    //cari data anggota
+                                    $qpklanggota = mysqli_query($dbsurat, "SELECT * FROM pklanggota WHERE nodata='$nodata'");
+                                    $jpklanggota = mysqli_num_rows($qpklanggota);
+                                    while ($dpklanggota = mysqli_fetch_array($qpklanggota)) {
+                                        $nimanggota = $dpklanggota['nimanggota'];
+                                        $namaanggota = $dpklanggota['nama'];
+                                        if ($nimanggota <> $nim) {
+                                    ?>
+                                            <tr>
+                                                <td><?= $no; ?></td>
+                                                <td>MAGANG</td>
+                                                <td><b>Anggota :</b><br><?= $namaanggota; ?></td>
+                                                <td><?= $nimanggota; ?></td>
+                                                <td><?= $prodi; ?></td>
+                                                <td><?= $instansi; ?></td>
+                                                <td><?= $tempatmagang; ?></td>
+                                                <td><?= $alamat; ?></td>
+                                                <td><?= tgl_indo($tglvalidasi3) ?></td>
+                                                <td><?= $keterangan; ?></td>
+                                                <td>
+                                                    <?php
+                                                    if ($statussurat == 1) {
+                                                    ?>
+                                                        <a class="btn btn-success btn-sm" href="../mahasiswa/pkl-cetak.php?token=<?= $token; ?>" target="_blank">
+                                                            <i class="fas fa-print"></i> Cetak
+                                                        </a>
+                                                    <?php
+                                                    } elseif ($statussurat == 2) {
+                                                    ?>
+                                                        <a class="btn btn-danger btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                            <i class="fas fa-ban"></i>
+                                                        </a>
+                                                    <?php
+                                                    } elseif ($statussurat == 3) {
+                                                    ?>
+                                                        <a class="btn btn-warning btn-sm" onclick="return alert('<?= $keterangan; ?>')">
+                                                            <i class="fa-solid fa-circle-exclamation"></i>
+                                                        </a>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <a class="btn btn-secondary btn-sm" onclick="return alert('Dalam proses verifikasi')">
+                                                            <i class="fas fa-spinner"></i>
+                                                        </a>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <a class="btn btn-danger btn-sm" href="pengajuanmhs-maganghapus.php?nodata=<?= $nodata; ?>" onclick="return alert('Membatalkan pengajuan ini ?')">
+                                                        <i class="fas fa-trash"></i> Batalkan
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                <?php
+                                        }
+                                    }
+                                    $no++;
+                                }
+                                ?>
+                                <!-- /. PKL koordinator-->
+
                             </tbody>
                         </table>
                     </div>

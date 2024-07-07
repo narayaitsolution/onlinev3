@@ -13,13 +13,6 @@ if ($_SESSION['hakakses'] != "mahasiswa") {
 }
 $tahun = date('Y');
 $no = 1;
-
-//jika sudah ijin magang tidak boleh ijin lagi
-$qmagang = mysqli_query($dbsurat, "SELECT * FROM maganganggota WHERE nimanggota='$nim'");
-$jmagang = mysqli_num_rows($qmagang);
-if ($jmagang > 0) {
-    header("location:index.php");
-}
 ?>
 
 <!DOCTYPE html>

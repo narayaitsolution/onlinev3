@@ -88,13 +88,14 @@
                             $dmenu = mysqli_fetch_array($qmenu);
                             $statussurat = $dmenu['status'];
                             if ($statussurat == 1) {
-                                $quser = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nip='$nim'");
-                                $qdata = mysqli_fetch_array($quser);
-                                $buktivaksin = $qdata['buktivaksin'];
-                                if (!empty($buktivaksin)) {
-                                    $qMagang = mysqli_query($dbsurat, "SELECT * FROM maganganggota WHERE nimanggota='$nim'");
-                                    $jMagang = mysqli_num_rows($qMagang);
-                                    if ($jMagang > 0) {
+                                //jika surat magang aktif maka cek pengajuan sebelumnya
+                                $qmagang = mysqli_query($dbsurat, "SELECT * FROM magang WHERE nim='$nim'");
+                                $jmagang = mysqli_num_rows($qmagang);
+                                if ($jmagang > 0) {
+                                    //jika sudah mengajukan cek status pengajian
+                                    $dmagang = mysqli_fetch_array($qmagang);
+                                    $statussurat = $dmagang['statussurat'];
+                                    if ($statussurat == 1) {
                             ?>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link" onclick="return alert('Anda hanya diijinkan mengajukan izin Magang 1x. Hubungi Koor. Magang untuk membatalkan pengajuan anda sebelumnya')">
@@ -111,9 +112,17 @@
                                                 <p>Izin Magang</p>
                                             </a>
                                         </li>
-                            <?php
-
+                                    <?php
                                     }
+                                } else {
+                                    ?>
+                                    <li class="nav-item">
+                                        <a href="magang-isi.php" class="nav-link" onclick="return alert('Pastikan telah meng-upload bukti vaksin terakhir di User Profile')">
+                                            <i class="nav-icon fas fa-users"></i>
+                                            <p>Izin Magang</p>
+                                        </a>
+                                    </li>
+                            <?php
                                 }
                             }
                             ?>

@@ -262,8 +262,8 @@
                         <a href="koormhs-pkl-tampil.php" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                Izin PKL
-                                <span class="right badge badge-danger"></span>
+                                Izin PKL / Magang
+                                <span class="right badge badge-danger">Baru</span>
                             </p>
                         </a>
                     </li>
