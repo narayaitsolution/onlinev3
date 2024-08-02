@@ -181,7 +181,7 @@ $qupdatecetak = mysqli_query($dbsurat, "UPDATE sk SET cetak='$jmlcetak' WHERE to
             <td style="vertical-align:top;"><b></b></td>
             <td style="vertical-align:top;"></td>
             <td style="vertical-align:top;">8.</td>
-            <td colspan="2" style="text-align: justify;">Keputusan Direktur Jenderal Pendidikan Islam Nomor 4961 Tahun 2016 tentang Pedoman Umum Organisasi Kemahasiswaan pada Perguruan Tinggi Keagamaan Islam;</td>
+            <td colspan="2" style="text-align: justify;">Keputusan Direktur Jenderal Pendidikan Islam Nomor 3814 Tahun 2024 tentang Petunjuk Teknis Organisasi Kemahasiswaan pada Perguruan Tinggi Keagamaan Islam;</td>
         </tr>
         <tr>
             <td style="vertical-align:top;"><b></b></td>
