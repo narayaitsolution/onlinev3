@@ -128,7 +128,7 @@
                         <li class="nav-item">
                             <?php
                             //cek apakah menu diaktifkan
-                            $qjenissurat = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat = 'Pengajuan WFH'");
+                            $qjenissurat = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat = 'Surat Tugas'");
                             $djenissurat = mysqli_fetch_array($qjenissurat);
                             $status = $djenissurat['status'];
                             if ($status == '1') {
