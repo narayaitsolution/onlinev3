@@ -160,7 +160,7 @@
                                     <li class="nav-item">
                                         <a href="delegasi-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-plane-departure"></i>
-                                            <p>Pengajuan Delegasi</p>
+                                            <p>Delegasi Mahasiswa</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
@@ -173,27 +173,27 @@
                             <li class="nav-item has-treeview menu-close">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-file-text"></i>
-                                    <p>Surat Keterangan <br> ORMAWA<i class="right fas fa-angle-left"></i></p>
+                                    <p>Surat Keputusan ORMAWA<i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="skpanitia-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-user"></i>
-                                            <p>Suket. Kepanitiaan</p>
+                                            <p>SK. Kepanitiaan</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="sknarasumber-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-user-secret"></i>
-                                            <p>Suket. Narasumber</p>
+                                            <p>SK. Narasumber</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="skpeserta-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-users"></i>
-                                            <p>Suket. Peserta</p>
+                                            <p>SK. Peserta</p>
                                             <span class="badge badge-danger right">Baru</span>
                                         </a>
                                     </li>
@@ -203,7 +203,7 @@
                             <!-- surat keterangan -->
                             <?php
                             //cek status menu ijinlab
-                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Surat Keterangan'");
+                            $qmenu = mysqli_query($dbsurat, "SELECT * FROM jenissurat WHERE namasurat='Rekomendasi'");
                             $dmenu = mysqli_fetch_array($qmenu);
                             $statussurat = $dmenu['status'];
                             if ($statussurat == 1) {
@@ -213,7 +213,7 @@
                                 if (!empty($buktivaksin)) {
 
                             ?>
-                                    <!-- surat rekomendasi -->
+                                    <!-- surat rekomendasi
                                     <li class="nav-item">
                                         <a href="rekomendasi-isi.php" class="nav-link">
                                             <i class="nav-icon fas fa-id-card"></i>
@@ -223,6 +223,7 @@
                                             </p>
                                         </a>
                                     </li>
+                                -->
 
                                     <!-- rekomendasi beasiswa -->
                                     <li class="nav-item">
