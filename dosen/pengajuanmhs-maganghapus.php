@@ -13,6 +13,6 @@ $namafile = $data['lampiran'];
 unlink($namafile);
 
 $query3 = mysqli_query($dbsurat, "UPDATE magang SET validasi1=3,validasi2=3,validasi3=3,statussurat=3,keterangan='permintaan pembatalan oleh mahasiswa pada tanggal $tgl' WHERE no = '$nodata'");
-$query3 = mysqli_query($dbsurat, "UPDATE magang SET statussurat=3 WHERE nodata = '$nodata'");
+$query3 = mysqli_query($dbsurat, "UPDATE magang SET statussurat=3 WHERE no = '$nodata'");
 
-header("location:pengajuanmhs-tampil.php?hasil=ok&pesan=Pembatalan Surat Izin PKL berhasil");
+header("location:pengajuanmhs-tampil.php?hasil=ok&pesan=Pembatalan Surat Magang berhasil");

@@ -401,7 +401,7 @@ $no = 1;
                                                                 </a>
                                                                 <form role="form" method="post">
                                                                     <input type="hidden" name="nodata" value="<?= $nodata; ?>">
-                                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-warning btn-lg"> <i class="fa fa-ban"></i> Batalkan</button>
+                                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-warning btn-lg"> <i class="fa fa-ban"></i> Ajukan Pembatalan</button>
                                                                     <!-- modal tolak -->
                                                                     <div class="modal fade" id="modal-tolak">
                                                                         <div class="modal-dialog modal-lg">
@@ -417,7 +417,7 @@ $no = 1;
                                                                                 </div>
                                                                                 <div class="modal-footer justify-content-between">
                                                                                     <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-                                                                                    <button name="aksi" value="tolak" type="submit" formaction="pkl-batalkan.php" class="btn btn-warning btn-lg" onclick="return confirm('Apakah anda yakin mengajukan pembatalan Izin PKL ini  ?')"> <i class="fa fa-ban"></i> Batalkan</button>
+                                                                                    <button name="aksi" value="tolak" type="submit" formaction="pkl-batalkan.php" class="btn btn-warning btn-lg" onclick="return confirm('Apakah anda yakin mengajukan pembatalan Izin PKL ini  ?')"> <i class="fa fa-envelope"></i> Ajukan</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -542,6 +542,31 @@ $no = 1;
                                                                     <i class="fas fa-print"></i>
                                                                     Cetak
                                                                 </a>
+                                                                <form role="form" method="post">
+                                                                    <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                                                                    <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak2" class="btn btn-warning btn-lg"> <i class="fa fa-ban"></i> Ajukan Pembatalan</button>
+                                                                    <!-- modal tolak -->
+                                                                    <div class="modal fade" id="modal-tolak2">
+                                                                        <div class="modal-dialog modal-lg">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title">Alasan Pembatalan</h4>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <textarea class="form-control" rows="3" name="keterangan"></textarea>
+                                                                                </div>
+                                                                                <div class="modal-footer justify-content-between">
+                                                                                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                                                                                    <button name="aksi" value="tolak" type="submit" formaction="magang-batalkan.php" class="btn btn-warning btn-lg" onclick="return confirm('Apakah anda yakin mengajukan pembatalan Magang ini  ?')"> <i class="fa fa-envelope"></i> Ajukan</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- ./modal tolak-->
+                                                                </form>
                                                             <?php
                                                             } elseif ($statussurat == 0) {
                                                             ?>
