@@ -77,6 +77,7 @@ $no = 1;
             $tglverifikasi1 = $dsk['tglverifikasi1'];
             $keterangan = $dsk['keterangan'];
             $token = $dsk['token'];
+            $bulanverifikasi1 = date('m', strtotime($tglverifikasi1));
             ?>
 
             <!-- tabel pengajuan pribadi -->
@@ -124,7 +125,7 @@ $no = 1;
                                         <td colspan="5" style="text-align: center;"><b>UNIVERSITAS ISLAM NEGERI MAULANA MALIK IBRAHIM MALANG</b></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5" style="text-align: center;"><b>Nomor : <input type="number" name="nosurat" style="width: 7em" value="<?= $nosurat; ?>" required>/FST/<?= $bulan; ?>/<?= $tahun; ?></b></td>
+                                        <td colspan="5" style="text-align: center;"><b>Nomor : <input type="number" name="nosurat" style="width: 7em" value="<?= $nosurat; ?>" required>/FST/<?= $bulanverifikasi1; ?>/<?= $tahun; ?></b></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5" style="text-align: center;">&nbsp;</td>
@@ -423,7 +424,7 @@ $no = 1;
                                     <tr>
                                         <td style="vertical-align:top;">Nomor</td>
                                         <td style="vertical-align:top;">:</td>
-                                        <td colspan="3" style="text-align: justify;"><?= $nosurat; ?>/FST/<?= $bulan; ?>/<?= $tahun; ?></td>
+                                        <td colspan="3" style="text-align: justify;"><?= $nosurat; ?>/FST/<?= $bulanverifikasi1; ?>/<?= $tahun; ?></td>
                                     </tr>
                                     <tr>
                                         <td style="vertical-align:top;">Tanggal</td>
