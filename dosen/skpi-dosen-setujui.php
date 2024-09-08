@@ -110,4 +110,4 @@ $pesan = "Yth. " . $namakajur . "<br/>
         <b>SAINTEK e-Office</b>";
 sendmail($emailkajur, $namakajur, $subject, $pesan);
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Berhasil menyetujui pengajuan SKPI");

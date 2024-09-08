@@ -97,8 +97,8 @@ $bukti = $ddelegasi['bukti'];
                                 </script>
                         <?php
                             }
-                        }
-                        ?>
+                }
+                ?>
             </div>
           </div>
         </div>

@@ -19,5 +19,5 @@ if (empty($keterangan)) {
 								keterangan = '$keterangan'
 						WHERE no = '$nosurat' AND nim = '$nim'");
 
-    header("location:index.php");
+    header("location:index.php?hasil=ok&pesan=Berhasil menolak pengajuan SKPI");
 }

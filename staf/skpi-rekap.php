@@ -75,43 +75,8 @@ $tahun = date('Y');
                             $qst = mysqli_query($dbsurat, "SELECT * FROM surattugas WHERE validator1='$nip' AND validasi1 = 0 and validasi2=0");
                             $jst = mysqli_num_rows($qst);
                             $tbawahan = $jwfh + $jst;
-
-                        ?>
-                            <!--
-                            <div class="col-lg col-6">
-                                <a href="pengajuanbawahan-tampil.php">
-                                    <div class="small-box bg-success">
-                                        <div class="inner">
-                                            <h3><?= $tbawahan; ?> <sup style="font-size: 20px">surat</sup></h3>
-                                            <p>Bawahan <br /> menunggu verifikasi</p>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion ion-email"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        -->
-                        <?php
                         }
                         ?>
-                        <!-- ./col -->
-                        <!--
-                        <div class="col-lg col-6">
-                            <a href="#">
-                                <div class="small-box bg-danger">
-                                    <div class="inner">
-                                        <h3>2 <sup style="font-size: 20px">surat</sup></h3>
-                                        <p>Disposisi <br />masuk</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="ion ion-android-mail"></i>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    -->
-
                     </div>
                 </div>
             </section>
@@ -397,6 +362,7 @@ $tahun = date('Y');
                                             <thead>
                                                 <tr>
                                                     <th width="5%" style="text-align: center;">No</th>
+                                                    <th style="text-align: center;">Tanggal</th>
                                                     <th style="text-align: center;">Nama</th>
                                                     <th style="text-align: center;">NIM</th>
                                                     <th width="20%" style="text-align: center;">Aksi</th>
@@ -404,14 +370,16 @@ $tahun = date('Y');
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' GROUP BY nim ORDER BY tanggal");
+                                                $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' ORDER BY tanggal");
                                                 while ($data = mysqli_fetch_array($query)) {
+                                                    $tanggal = $data['tanggal'];
                                                     $nodata = $data['no'];
                                                     $nim = $data['nim'];
                                                     $nama = $data['nama'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
+                                                        <td><?= tgljam_indo($tanggal); ?></td>   
                                                         <td><?= $nama; ?></td>
                                                         <td><?= $nim; ?></td>
                                                         <td style="text-align: center;">

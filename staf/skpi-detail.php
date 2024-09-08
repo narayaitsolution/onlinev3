@@ -262,6 +262,9 @@ $prodimhs = $data['prodi'];
                                     <input type="hidden" name="nodata" value="<?= $nodata; ?>">
                                     <div class="row">
                                         <div class="col">
+                                            <a href="index.php" class="btn btn-secondary btn-block"><i class="fa fa-backward"></i> Kembali</a>
+                                        </div>
+                                        <div class="col">
                                             <button name="aksi" id="btn-submit" value="setujui" type="submit" formaction="skpi-done.php" class="btn btn-success btn-block" onclick="return confirm('Data SKPI Sudah di input di SIAKAD ?')"> <i class="fa fa-check"></i> Data Sudah di input ke SIAKAD</button>
                                         </div>
                                     </div>

@@ -16,7 +16,7 @@ $stmt = $dbsurat->prepare("INSERT INTO skpi_cpl (jurusan,cpl,indonesia,english,d
                             VALUES (?,?,?,?,?)");
 $stmt->bind_param("ssssi", $prodi, $cpl, $indonesia, $english, $sifat);
 if ($stmt->execute()) {
-    header("location:skpi-isi.php?pesan=berhasil");
+    header("location:skpi-isi.php?hasil=ok&pesan=Berhasil menyimpan data");
 } else {
-    header("location:skpi-isi.php?pesan=gagal");
+    header("location:skpi-isi.php?hasil=notok&pesan=Gagal menyimpan data");
 }

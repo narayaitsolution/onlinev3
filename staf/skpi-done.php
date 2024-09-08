@@ -16,4 +16,4 @@ $nim = $_POST['nim'];
 $qskpi = mysqli_query($dbsurat, "UPDATE skpi_prestasipenghargaan SET keterangan='done' WHERE nim='$nim'");
 $qskpi = mysqli_query($dbsurat, "UPDATE skpi SET keterangan='done' WHERE nim='$nim'");
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Verifikasi SKPI berhasil");

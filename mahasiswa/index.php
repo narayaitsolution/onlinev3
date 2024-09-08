@@ -1675,6 +1675,7 @@ $no = 1;
                                                             } elseif ($verifikasi2 == 1) {
                                                             ?>
                                                                 <b style="color:green;">Telah disetujui</b> Ketua Program Studi <?= namadosen($dbsurat, $verifikator2); ?> <br />
+                                                                <i style="color:blue;">Pengajuan SKPI anda <b style="color:green;">Telah disetujui</b> dan akan di proses di SIAKAD oleh Administrasi Program Studi. </i>
                                                             <?php
                                                             } else {
                                                             ?>
@@ -1686,10 +1687,6 @@ $no = 1;
                                                             if ($verifikasi3 == 1 && $keterangan == 'done') {
                                                             ?>
                                                                 <i style="color:blue;">Pengajuan SKPI anda telah di input ke SIAKAD. </i>
-                                                            <?php
-                                                            } else {
-                                                            ?>
-                                                                <i style="color:blue;">Pengajuan SKPI anda <b style="color:green;">Telah disetujui</b> dan akan di proses di SIAKAD oleh Administrasi Program Studi. </i>
                                                             <?php
                                                             }
                                                             ?>

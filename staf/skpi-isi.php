@@ -34,6 +34,7 @@ $no = 1;
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -67,22 +68,22 @@ $no = 1;
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col">
+                            <!-- alert -->
                             <?php
-                            if (isset($pesan)) {
+                            if (isset($_GET['pesan'])) {
                                 $pesan = $_GET['pesan'];
-                                if ($pesan = 'berhasil') {
+                                $hasil = $_GET['hasil'];
+                                if ($hasil == 'ok') {
                             ?>
-                                    <div class="alert alert-success alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>BERHASIL!!</strong> aksi data berhasil
-                                    </div>
+                                    <script>
+                                        swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                                    </script>
                                 <?php
-                                } else {
+                                } elseif ($hasil == 'notok') {
                                 ?>
-                                    <div class="alert alert-danger alert-dismissible fade show">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>GAGAL!!</strong> aksi gagal!!
-                                    </div>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
                             <?php
                                 }
                             }

@@ -15,4 +15,4 @@ $no = $_GET['no'];
 
 $qskpi = mysqli_query($dbsurat, "DELETE FROM skpi_cpl WHERE no='$no'");
 
-header("location:skpi-isi.php");
+header("location:skpi-isi.php?hasil=ok&pesan=Berhasil menghapus data");

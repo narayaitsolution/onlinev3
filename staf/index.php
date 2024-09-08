@@ -29,6 +29,7 @@ $tahun = date('Y');
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -53,6 +54,26 @@ $tahun = date('Y');
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Dashboard</h1>
+                             <!-- alert -->
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil == 'ok') {
+                            ?>
+                                    <script>
+                                        swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                                    </script>
+                                <?php
+                                } elseif ($hasil == 'notok') {
+                                ?>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
+                            <?php
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -437,6 +458,8 @@ $tahun = date('Y');
                     </div>
                 </div>
             </section>
+            
+            <!-- Setting SKPI -->
             <?php
             $qoperatorskpi = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
             $joperatorskpi = mysqli_num_rows($qoperatorskpi);
@@ -470,7 +493,7 @@ $tahun = date('Y');
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $query = mysqli_query($dbsurat, "SELECT * FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' and keterangan is null GROUP BY nim  ORDER BY tanggal");
+                                                    $query = mysqli_query($dbsurat, "SELECT no, nim, nama FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' ORDER BY tanggal");
                                                     while ($data = mysqli_fetch_array($query)) {
                                                         $nodata = $data['no'];
                                                         $nim = $data['nim'];
