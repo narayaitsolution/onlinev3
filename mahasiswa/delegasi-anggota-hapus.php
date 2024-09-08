@@ -15,4 +15,4 @@ $stmt = $dbsurat->prepare("DELETE FROM delegasianggota WHERE no=? and token=?");
 $stmt->bind_param("ss", $no, $token);
 $stmt->execute();
 
-header("location:delegasi-anggota.php?pesan=hapusok&&token=$token");
+header("location:delegasi-anggota.php?hasil=ok&pesan=Hapus anggota berhasil&token=$token");

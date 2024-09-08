@@ -46,4 +46,4 @@ $pesan = "Yth. " . $nama . "<br/>
         <b>SAINTEK e-Office</b>";
 sendmail($email, $nama, $subject, $pesan);
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Laporan delegasi berhasil disetujui");

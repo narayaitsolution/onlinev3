@@ -44,6 +44,7 @@ $bukti = $ddelegasi['bukti'];
   <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -78,33 +79,26 @@ $bukti = $ddelegasi['bukti'];
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col">
-              <?php
-              if (isset($_GET['pesan'])) {
-                $pesan = $_GET['pesan'];
-                if ($pesan == 'succes') {
-              ?>
-                  <div class="alert alert-success alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    Penambahan anggota <b>BERHASIL!!</b>
-                  </div>
-                <?php
-                } elseif ($pesan == 'gagal') {
-                ?>
-                  <div class="alert alert-danger alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    Penambahan anggota <b>GAGAL!! NIM salah / belum terdaftar</b>
-                  </div>
-                <?php
-                } elseif ($pesan == 'hapusok') {
-                ?>
-                  <div class="alert alert-success alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    Penghapusan anggota <b>BERHASIL!!</b>
-                  </div>
-              <?php
-                }
-              };
-              ?>
+                <!-- alert -->
+                        <?php
+                        if (isset($_GET['pesan'])) {
+                            $pesan = $_GET['pesan'];
+                            $hasil = $_GET['hasil'];
+                            if ($hasil == 'ok') {
+                        ?>
+                                <script>
+                                    swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                                </script>
+                            <?php
+                            } elseif ($hasil == 'notok') {
+                            ?>
+                                <script>
+                                    swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                </script>
+                        <?php
+                            }
+                        }
+                        ?>
             </div>
           </div>
         </div>

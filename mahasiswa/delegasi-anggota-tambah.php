@@ -18,7 +18,7 @@ if ($jpengguna > 0) {
                 VALUES (?,?,?)");
   $stmt->bind_param("sss", $token, $nimketua, $nimanggota);
   $stmt->execute();
-  header("location:delegasi-anggota.php?pesan=succes&&token=$token");
+  header("location:delegasi-anggota.php?hasil=ok&pesan=Penambahan Anggota Berhasil&token=$token");
 } else {
-  header("location:delegasi-anggota.php?pesan=gagal&&token=$token");
+  header("location:delegasi-anggota.php?hasil=notok&pesan=Penambahan Anggota Gagal karena NIM Salah / Belum Terdaftar&token=$token");
 }

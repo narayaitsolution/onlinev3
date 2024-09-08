@@ -48,4 +48,4 @@ $pesan = "Yth. " . $namawd3 . "<br/>
         <b>SAINTEK e-Office</b>";
 sendmail($emailwd3, $namawd3, $subject, $pesan);
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Pengajuan delegasi berhasil disetujui");

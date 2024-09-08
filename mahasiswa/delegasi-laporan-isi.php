@@ -31,6 +31,7 @@ $no = 1;
   <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -67,10 +68,26 @@ $no = 1;
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col">
-                <div class="alert alert-danger alert-dismissible fade show">
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <strong>ERROR!!</strong> <?= $_GET['pesan']; ?>
-                </div>
+                 <!-- alert -->
+                 <?php
+                 if (isset($_GET['pesan'])) {
+                     $pesan = $_GET['pesan'];
+                     $hasil = $_GET['hasil'];
+                     if ($hasil == 'ok') {
+                         ?>
+                         <script>
+                             swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                         </script>
+                         <?php
+                     } elseif ($hasil == 'notok') {
+                         ?>
+                         <script>
+                             swal('ERROR!', '<?= $pesan; ?>', 'error');
+                         </script>
+                         <?php
+                     }
+                 }
+                 ?>
               </div>
             </div>
           </div>

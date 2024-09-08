@@ -114,7 +114,7 @@ if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
             <b>SAINTEK e-Office</b>";
       sendmail($emaildosen, $namadosen, $subject, $pesan);
 
-      header("location:index.php?pesan=success");
+      header("location:index.php?hasil=ok&pesan=success");
     } else {
       $statussurat = '-1';
       $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tglmulai, tglselesai, tempat, tingkat, kategori, jeniskegiatan,bukti, validator1, validator2, validator3, token) 
@@ -128,8 +128,8 @@ if ($file_mime === 'image/jpg' || $file_mime === 'image/jpeg') {
       header("location:delegasi-anggota.php?token=$token");
     }
   } else {
-    header("location:delegasi-isi.php?nip=$nip&pesan=gagal");
+    header("location:delegasi-isi.php?nip=$nip&pesan=gagal&hasil=notok");
   }
 } else {
-  header("location:delegasi-isi.php?nip=$nip&pesan=gagal");
+  header("location:delegasi-isi.php?nip=$nip&pesan=gagal&hasil=notok");
 }

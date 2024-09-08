@@ -16,4 +16,4 @@ $sql = mysqli_query($dbsurat, "UPDATE delegasi
               statuslaporan=2
 					WHERE token = '$token'");
 
-header("location:index.php");
+header("location:index.php?hasil=notok&pesan=Laporan delegasi berhasil ditolak");
