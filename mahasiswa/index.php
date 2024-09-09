@@ -358,7 +358,7 @@ $no = 1;
                                                                 <?php
                                                                 };
                                                                 ?>
-                                                                <!-- WD-1 -->
+                                                                <!-- WD-3 -->
                                                                 <?php
                                                                 if ($validasi3 == 0) {
                                                                 ?>
@@ -507,7 +507,7 @@ $no = 1;
                                                                 <?php
                                                                 };
                                                                 ?>
-                                                                <!-- WD-1 -->
+                                                                <!-- WD-3 -->
                                                                 <?php
                                                                 if ($validasi3 == 0) {
                                                                 ?>
@@ -1571,15 +1571,15 @@ $no = 1;
                                                                         <?php
                                                                         if ($validasi3 == 0) {
                                                                         ?>
-                                                                            <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?><br />
+                                                                            <b style="color:orange;">Menunggu</b> verifikasi Wakil Dekan Bidang Akademik <?= namadosen($dbsurat, $validator3); ?><br />
                                                                         <?php
                                                                         } elseif ($validasi3 == 1) {
                                                                         ?>
-                                                                            <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> <br />
+                                                                            <b style="color:green;">Telah disetujui</b> Wakil Dekan Bidang Akademik <?= namadosen($dbsurat, $validator3); ?> <br />
                                                                         <?php
                                                                         } else {
                                                                         ?>
-                                                                            <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Kemahasiswaan <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
+                                                                            <b style="color:red;">Ditolak</b> oleh Wakil Dekan Bidang Akademik <?= namadosen($dbsurat, $validator3); ?> dengan alasan <b style="color:red"><?= $keterangan; ?></b><br />
                                                                     <?php
                                                                         }
                                                                     };
