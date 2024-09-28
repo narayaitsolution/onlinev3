@@ -84,7 +84,7 @@ $no = 1;
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="card-body">
-                                        <form action="rekomendasi-simpan.php" method="POST" id="my-form">
+                                        <form action="suket-simpan.php" method="POST" id="my-form">
                                             <div class="form-group row">
                                                 <label for="dosen" class="col-sm-2 col-form-label">Surat Keterangan</label>
                                                 <div class="col-sm-10">
