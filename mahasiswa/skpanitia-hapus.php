@@ -11,4 +11,4 @@ $token = $_GET['token'];
 //hapus pengajuan SK
 $qhapusnarsum = mysqli_query($dbsurat, "DELETE FROM skpanitia WHERE token='$token'");
 $qhapussk = mysqli_query($dbsurat, "DELETE FROM sk WHERE token='$token'");
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Pengajuan SK berhasil dihapus");

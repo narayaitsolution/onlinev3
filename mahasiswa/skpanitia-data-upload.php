@@ -2,12 +2,6 @@
 session_start();
 require('../system/dbconn.php');
 
-// Verify user authentication
-if (!isset($_SESSION['nim'])) {
-    header("Location: ../deauth.php");
-    exit();
-}
-
 // Validate and sanitize input
 $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
 if (!$token) {
