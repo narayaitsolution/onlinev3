@@ -22,7 +22,8 @@ if ($hasil > 0) {
         $stmt->bind_param("ssssss", $nodata, $nim, $nimanggota2, $namaanggota2, $notelepon, $buktivaksin);
         $stmt->execute();
     }
+    header("location:magang-isianggota.php?nodata=$nodata&hasil=ok&pesan=Penambahan Anggota Berhasil");
 } else {
-    $ket = "notfound";
+    header("location:magang-isianggota.php?nodata=$nodata&hasil=notok&pesan=Anggota tidak ditemukan / belum terdaftar");
 }
-header("location:magang-isianggota.php?nodata=$nodata&ket=$ket");
+

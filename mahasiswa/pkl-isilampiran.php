@@ -133,7 +133,7 @@ $no = 1;
                                                     <a href="<?= $namafile; ?>" target="_blank"><img src="<?= $namafile; ?>" class="img-fluid" width="200px"></img></a>
                                                     <br />
                                                     <form action="pkl-isilampiran-upload.php" enctype="multipart/form-data" class="form-horizontal" method="post">
-                                                        <input type="file" name="fileToUpload" class="form-control" accept=".jpg,.jpeg">
+                                                        <input type="file" name="fileToUpload" class="form-control" accept=".jpg,.jpeg" required>
                                                         <button class="btn btn-block btn-primary btn-upload" name="fileToUpload" value="fileToUpload"><i class="fa fa-file-upload"></i> Upload </button>
                                                         <small style="color:red"><i>Ukuran file maksimal 1MB format JPEG / JPG</i></small>
                                                         <input type="hidden" name="nodata" value="<?= $nodata; ?>">

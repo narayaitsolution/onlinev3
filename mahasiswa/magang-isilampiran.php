@@ -136,7 +136,7 @@ $no = 1;
                                                     <form action="magang-isilampiran-upload.php" enctype="multipart/form-data" class="form-horizontal" method="post">
                                                         <div class="row">
                                                             <div class="col">
-                                                                <input type="file" name="fileToUpload" class="form-control" accept=".jpg,.jpeg">
+                                                                <input type="file" name="fileToUpload" class="form-control" accept=".jpg,.jpeg" required>
                                                             </div>
                                                             <div class="col-3">
                                                                 <button class="btn btn-block btn-primary btn-upload" name="fileToUpload" value="fileToUpload"><i class="fa fa-file-upload"></i> Upload </button>
