@@ -44,6 +44,7 @@ require('system/myfunc.php');
         }
         ?>
         <p class="login-box-msg h3"><b>SAINTEK</b> e-Office</p>
+        <!--
         <form action="auth.php" method="post" id="my-form">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="User ID" name="userid" required>
@@ -78,10 +79,11 @@ require('system/myfunc.php');
           <input type="hidden" name="kunci" value="<?= $kunci; ?>">
           <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-right-to-bracket"></i> Masuk</button>
         </form>
+      -->
         <hr>
         <div class="text-center">
-          <small style="color: red;">Masuk menggunakan akun</small>
-          <a href="authg.php" class="btn btn-danger btn-lg btn-block"><i class="fa-solid fa-envelope-circle-check"></i> &nbsp;e-Mail</a>
+          <small style="color: blue;">Masuk menggunakan akun</small>
+          <a href="authg.php" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-envelope-circle-check"></i> &nbsp;e-Mail</a>
           <small style="color: blue;">Gunakan akun email <b>uin-malang.ac.id</b></small>
         </div>
         <hr>
