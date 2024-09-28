@@ -29,8 +29,8 @@ if ($gclient->getAccessToken()) {
 	$nip = $pecahemail[0];
 
 	//cek apakah menggunakan email UIN, jika bukan out!!
-	//$cekdomain = substr($pecahemail[1], -16);
-	//if ($cekdomain == 'uin-malang.ac.id') {
+	$cekdomain = substr($pecahemail[1], -16);
+	if ($cekdomain == 'uin-malang.ac.id') {
 
 	// Buat query untuk mengecek apakah data user dengan email tersebut sudah ada atau belum
 	// Jika ada, ambil id, username, dan nama dari user tersebut
@@ -124,9 +124,9 @@ if ($gclient->getAccessToken()) {
 
 		header('location:mahasiswa/index.php');
 	}
-	//} else {
-	//	header('location: index.php?pesan=harus menggunakan email UIN Malang');
-	//}
+	} else {
+		header('location: index.php?pesan=harus menggunakan email UIN Malang');
+	}
 } else {
 	$authUrl = $gclient->createAuthUrl();
 	header("location: " . $authUrl);
