@@ -42,73 +42,66 @@ $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipwd = $dhasil['nip'];
 $target_dir = '../lampiran/';
+$allowed_extensions = ['jpg', 'jpeg'];
+$max_file_size = 2 * 1024 * 1024; // 2MB
 
-//upload bukti
-$kodeacak1 = random_str(12);
-$buktiTmpPath = $_FILES['bukti']['tmp_name'];
-$buktiName = $_FILES['bukti']['name'];
-$buktiSize = $_FILES['bukti']['size'];
-$buktiNameCmps = explode(".", $buktiName);
-$fileExtension = strtolower(end($buktiNameCmps));
+function secure_upload($file, $kodeacak) {
+    global $target_dir, $allowed_extensions, $max_file_size;
 
-//$bukti = imgresize($buktiTmpPath);
-$allowedfileExtensions = array('jpg', 'jpeg');
-if (in_array($fileExtension, $allowedfileExtensions)) {
-    $buktipath = $target_dir . $kodeacak1 . '.jpg';
-    move_uploaded_file($buktiTmpPath, $buktipath);
-    $buktiinfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $buktipath);
-    if ($buktiinfo == 'image/jpeg' && $buktiSize < 2097152) {
-        $statusbukti = '1';
+    $file_tmp_path = $file['tmp_name'];
+    $file_name = $file['name'];
+    $file_size = $file['size'];
+    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+    // Check file extension
+    if (!in_array($file_ext, $allowed_extensions)) {
+        return ['status' => false, 'message' => 'Format file harus JPG/JPEG'];
+    }
+
+    // Check file size
+    if ($file_size > $max_file_size) {
+        return ['status' => false, 'message' => 'Ukuran file maksimal 2MB'];
+    }
+
+    $new_file_name = $kodeacak . '.' . $file_ext;
+    $destination = $target_dir . $new_file_name;
+
+    if (move_uploaded_file($file_tmp_path, $destination)) {
+        // Verify file type after upload
+        $file_info = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $destination);
+        if ($file_info !== 'image/jpeg') {
+            unlink($destination); // Delete the file if it's not a JPEG
+            return ['status' => false, 'message' => 'Type file harus JPG/JPEG'];
+        }
+        return ['status' => true, 'path' => $destination];
     } else {
-        $statusbukti = '0';
-        header("location:penghargaan-isi.php?nip=$nip&hasil=notok&pesan=Pengajuan penghargaan gagal!!");
+        return ['status' => false, 'message' => 'File gagal diupload'];
     }
 }
 
-//upload dok
-$kodeacak2 = random_str(12);
-$dokTmpPath = $_FILES['dok']['tmp_name'];
-$dokName = $_FILES['dok']['name'];
-$dokSize = $_FILES['dok']['size'];
-$dokNameCmps = explode(".", $dokName);
-$fileExtension = strtolower(end($dokNameCmps));
-
-//$dok = imgresize($dokTmpPath);
-$allowedfileExtensions = array('jpg', 'jpeg');
-if (in_array($fileExtension, $allowedfileExtensions)) {
-    $dokpath = $target_dir . $kodeacak2 . '.jpg';
-    move_uploaded_file($dokTmpPath, $dokpath);
-    $dokinfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $dokpath);
-    if ($dokinfo == 'image/jpeg' && $dokSize < 2097152) {
-        $statusdok = '1';
-    } else {
-        $statusdok = '0';
-        header("location:penghargaan-isi.php?nip=$nip&hasil=notok&pesan=Pengajuan penghargaan gagal!!");
-    }
+// Upload bukti
+$bukti_result = secure_upload($_FILES['bukti'], random_str(12));
+if (!$bukti_result['status']) {
+    header("location:penghargaan-isi.php?nip=$nim&hasil=notok&pesan=" . $bukti_result['message']);
+    exit;
 }
+$buktipath = $bukti_result['path'];
 
-//upload SKKM
-$kodeacak3 = random_str(12);
-$skkmTmpPath = $_FILES['skkm']['tmp_name'];
-$skkmName = $_FILES['skkm']['name'];
-$skkmSize = $_FILES['skkm']['size'];
-$skkmNameCmps = explode(".", $skkmName);
-$fileExtension = strtolower(end($skkmNameCmps));
-
-//$skkm = imgresize($skkmTmpPath);
-$allowedfileExtensions = array('jpg', 'jpeg');
-if (in_array($fileExtension, $allowedfileExtensions)) {
-    $skkmpath = $target_dir . $kodeacak3 . '.jpg';
-    move_uploaded_file($skkmTmpPath, $skkmpath);
-    $skkminfo = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $skkmpath);
-    if ($skkminfo == 'image/jpeg' && $skkmSize < 2097152) {
-        $statusskkm = '1';
-    } else {
-        $statusskkm = '0';
-        header("location:penghargaan-isi.php?nip=$nip&hasil=notok&pesan=Pengajuan penghargaan gagal!!");
-    }
+// Upload dok
+$dok_result = secure_upload($_FILES['dok'], random_str(12));
+if (!$dok_result['status']) {
+    header("location:penghargaan-isi.php?nip=$nim&hasil=notok&pesan=" . $dok_result['message']);
+    exit;
 }
+$dokpath = $dok_result['path'];
 
+// Upload SKKM
+$skkm_result = secure_upload($_FILES['skkm'], random_str(12));
+if (!$skkm_result['status']) {
+    header("location:penghargaan-isi.php?nip=$nim&hasil=notok&pesan=" . $skkm_result['message']);
+    exit;
+}
+$skkmpath = $skkm_result['path'];
 
 if ($jeniskegiatan == 'Individu') {
     $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara, tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti,dokumentasi,skkm,validator2, validator3, token) 
@@ -145,7 +138,7 @@ if ($jeniskegiatan == 'Individu') {
             <b>SAINTEK e-Office</b>";
     sendmail($emaildosen, $namadosen, $subject, $pesan);
 
-    header("location:index.php?pesan=success");
+    header("location:index.php?hasil=ok&pesan=Pengajuan berhasil!!");
 } else {
     $statussurat = '-1';
     $stmt = $dbsurat->prepare("INSERT INTO penghargaan (tanggal, nim, nama, prodi, kegiatan, namakegiatan, penyelenggara,tglpelaksanaan, tingkat, kategori, jeniskegiatan, peringkat, bukti, dokumentasi, skkm, validator2, validator3,statussurat, token) 
