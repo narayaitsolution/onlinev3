@@ -11,4 +11,4 @@ $bukti = $dskpi['bukti'];
 unlink($bukti);
 
 $sql = mysqli_query($dbsurat, "DELETE FROM skpi_prestasipenghargaan WHERE no='$nodata' AND nim='$nim'");
-header("location:skpi-isi.php");
+header("location:skpi-isi.php?hasil=ok&pesan=Hapus sertifikat berhasil");

@@ -177,7 +177,7 @@ $no = 1;
                             </table>
                             <small style="color:red">Apabila tidak memiliki sertifikat Profesional / Pelatihan, pengajuan SKPI tetap dapat dilakukan dengan langsung klik tombol Ajukan</small>
                             <hr>
-                            <form method="POST" action="skpi-simpanajukan.php">
+                            <form method="POST" action="skpi-simpanajukan.php" id="ajukanForm">
                                 <label>Dosen Wali </label>
                                 <small><i>(pilih dari nama dosen yang tampil)</i></small><br />
                                 <div class="form-group">
@@ -194,7 +194,7 @@ $no = 1;
                                     </select>
                                 </div>
                                 <br />
-                                <button type="submit" class="btn btn-success btn-block" value="ajukan" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fas fa-graduation-cap"></i> Ajukan</button>
+                                <button type="submit" class="btn btn-success btn-block" id="ajukanButton" value="ajukan" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya isi adalah benar')"> <i class="fas fa-graduation-cap"></i> Ajukan</button>
                             </form>
 
                             <br />
@@ -243,6 +243,22 @@ $no = 1;
             });
         });
     </script>
+
+<script>
+document.getElementById('ajukanForm').addEventListener('submit', function() {
+    document.getElementById('ajukanButton').disabled = true;
+    
+    // Simpan status tombol ke localStorage
+    localStorage.setItem('ajukanButtonDisabled', 'true');
+});
+
+// Cek status tombol saat halaman dimuat
+window.addEventListener('load', function() {
+    if (localStorage.getItem('ajukanButtonDisabled') === 'true') {
+        document.getElementById('ajukanButton').disabled = true;
+    }
+});
+</script>
 </body>
 
 </html>

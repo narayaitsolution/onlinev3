@@ -16,4 +16,4 @@ while ($dskpi = mysqli_fetch_array($qskpi)) {
 //hapus
 $sql2 = mysqli_query($dbsurat, "DELETE FROM  skpi_prestasipenghargaan WHERE no='$nodata' AND nim='$nim'");
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Penghapusan SKPI berhasil");

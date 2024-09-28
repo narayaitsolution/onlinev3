@@ -13,4 +13,4 @@ unlink($lampiran);
 */
 $query3 = mysqli_query($dbsurat, "DELETE FROM suket WHERE token = '$token' AND nim='$nim'");
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Pembatalan Surat Keterangan berhasil");
