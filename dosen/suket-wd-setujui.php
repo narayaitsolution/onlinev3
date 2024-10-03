@@ -48,9 +48,9 @@ $pesan = "Yth. " . $namamhs . "<br/>
         Pengajuan Surat Keterangan anda telah disetujui.<br/>
         Silahkan klik tombol dibawah ini mencetak Surat Pengantar tersebut<br/>
         <br/>
-        <a href='https://saintek.uin-malang.ac.id/online/mahasiswa/suket-cetak.php?token=$token' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Cetak Surat Pengantar PKL</a><br/>
+        <a href='https://eoffice.saintek.uin-malang.ac.id/mahasiswa/suket-cetak.php?token=$token' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Cetak Surat Pengantar PKL</a><br/>
         <br/>
-        atau silahkan mencetak melalui website SAINTEK e-Office di <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
+        atau silahkan mencetak melalui website SAINTEK e-Office di <a href='https://eoffice.saintek.uin-malang.ac.id/'>https://eoffice.saintek.uin-malang.ac.id/</a> apabila tombol diatas tidak berfungsi.<br/>
         <br/>
         Wassalamualaikum wr. wb.
 		<br/>

@@ -37,11 +37,11 @@ $pesan = "Yth. " . $namawd3 . "<br/>
         dengan alasan <b>" . $keterangan . "</b>.<br/>
         Silahkan klik tombol dibawah ini untuk pembatalan surat Magang tersebut <br/>
         <br/>
-        <a href='https://saintek.uin-malang.ac.id/online/dosen/pengajuanmhs-maganghapus.php?nodata=$nodata' style=' background-color: #ff0000;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
+        <a href='https://eoffice.saintek.uin-malang.ac.id/dosen/pengajuanmhs-maganghapus.php?nodata=$nodata' style=' background-color: #ff0000;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
         <br/>
         History Surat Magang yang telah dibatalkan dapat dilihat di SAINTEK e-Office dari menu <b>Surat Mahasiswa Disetujui</b>.
         <br/>
-        atau klik tombol dibawah ini <br><a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a> <br>Untuk mengakses SAINTEK e-Office.<br/>
+        atau klik tombol dibawah ini <br><a href='https://eoffice.saintek.uin-malang.ac.id/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a> <br>Untuk mengakses SAINTEK e-Office.<br/>
         <br/>
         Wassalamualaikum wr. wb.
 		<br/>

@@ -32,78 +32,78 @@ if ($gclient->getAccessToken()) {
 	$cekdomain = substr($pecahemail[1], -16);
 	if ($cekdomain == 'uin-malang.ac.id') {
 
-	// Buat query untuk mengecek apakah data user dengan email tersebut sudah ada atau belum
-	// Jika ada, ambil id, username, dan nama dari user tersebut
+		// Buat query untuk mengecek apakah data user dengan email tersebut sudah ada atau belum
+		// Jika ada, ambil id, username, dan nama dari user tersebut
 
-	$qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE email='$gemail' OR nip='$nip'");
-	$jpengguna = mysqli_num_rows($qpengguna);
-	//jika data pengguna di temukan, langsung login ke dashboard
-	if ($jpengguna > 0) {
-		$dpengguna = mysqli_fetch_array($qpengguna);
+		$qpengguna = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE email='$gemail' OR nip='$nip'");
+		$jpengguna = mysqli_num_rows($qpengguna);
+		//jika data pengguna di temukan, langsung login ke dashboard
+		if ($jpengguna > 0) {
+			$dpengguna = mysqli_fetch_array($qpengguna);
 
-		//ambil data pengguna
-		$nama = $dpengguna['nama'];
-		$nip = $dpengguna['nip'];
-		$nohp = $dpengguna['nohp'];
-		$email = $dpengguna['email'];
-		$prodi = $dpengguna['prodi'];
-		$hakakses = $dpengguna['hakakses'];
+			//ambil data pengguna
+			$nama = $dpengguna['nama'];
+			$nip = $dpengguna['nip'];
+			$nohp = $dpengguna['nohp'];
+			$email = $dpengguna['email'];
+			$prodi = $dpengguna['prodi'];
+			$hakakses = $dpengguna['hakakses'];
 
-		//cari jabatan
-		$stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE nip=?");
-		$stmt->bind_param("s", $nip);
-		$stmt->execute();
-		$result = $stmt->get_result();
-		$jhasil = $result->num_rows;
-		if ($jhasil > 0) {
-			$dhasil = $result->fetch_array();
-			$jabatan = $dhasil['kdjabatan'];
+			//cari jabatan
+			$stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE nip=?");
+			$stmt->bind_param("s", $nip);
+			$stmt->execute();
+			$result = $stmt->get_result();
+			$jhasil = $result->num_rows;
+			if ($jhasil > 0) {
+				$dhasil = $result->fetch_array();
+				$jabatan = $dhasil['kdjabatan'];
+			} else {
+				$jabatan = $hakakses;
+			};
+
+			$_SESSION['user'] = $gnama;
+			$_SESSION['nama'] = $nama;
+			$_SESSION['nip'] = $nip;
+			$_SESSION['prodi'] = $prodi;
+			$_SESSION['hakakses'] = $hakakses;
+			$_SESSION['jabatan'] = $jabatan;
+
+			if ($hakakses == 'dosen') {
+				header('location:dosen/index.php');
+			} elseif ($hakakses == 'tendik') {
+				header('location:staf/index.php');
+			} elseif ($hakakses == 'subsatker') {
+				header('location:subsatker/index.php');
+			} else {
+				header('location:mahasiswa/index.php');
+			}
 		} else {
-			$jabatan = $hakakses;
-		};
+			//jika data pengguna tidak ditemukan, insert data dan lempar ke profile user
 
-		$_SESSION['user'] = $gnama;
-		$_SESSION['nama'] = $nama;
-		$_SESSION['nip'] = $nip;
-		$_SESSION['prodi'] = $prodi;
-		$_SESSION['hakakses'] = $hakakses;
-		$_SESSION['jabatan'] = $jabatan;
+			$hakakses = 'mahasiswa';
+			$aktif = 1;
+			$nama = $gnama;
+			$nip = $pecahemail[0];
+			$email = $gemail;
+			$prodi = cariprodi($dbsurat, $nip);
+			if (empty($prodi)) {
+				header('location:index.php?pesan=Mohon Maaf, Sistem ini hanya untuk Mahasiswa dan Dosen SAINTEK!!');
+			}
+			$fakultas = 'Sains dan Teknologi';
+			$username = $nip;
+			$passmd5 = md5('oauth');
+			$token = md5(uniqid());
 
-		if ($hakakses == 'dosen') {
-			header('location:dosen/index.php');
-		} elseif ($hakakses == 'tendik') {
-			header('location:staf/index.php');
-		} elseif ($hakakses == 'subsatker') {
-			header('location:subsatker/index.php');
-		} else {
-			header('location:mahasiswa/index.php');
-		}
-	} else {
-		//jika data pengguna tidak ditemukan, insert data dan lempar ke profile user
+			$stmt = $dbsurat->prepare("INSERT INTO pengguna (nama, nip, nohp, email, prodi, fakultas, user, pass,hakakses,token,aktif) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+			$stmt->bind_param("sssssssssss", $nama, $nip, $nohp, $email, $prodi, $fakultas, $username, $passmd5, $hakakses, $token, $aktif);
+			$stmt->execute();
 
-		$hakakses = 'mahasiswa';
-		$aktif = 1;
-		$nama = $gnama;
-		$nip = $pecahemail[0];
-		$email = $gemail;
-		$prodi = cariprodi($dbsurat, $nip);
-		if (empty($prodi)) {
-			header('location:index.php?pesan=Mohon Maaf, Sistem ini hanya untuk Mahasiswa & Dosen SAINTEK!!');
-		}
-		$fakultas = 'Sains dan Teknologi';
-		$username = $nip;
-		$passmd5 = md5('oauth');
-		$token = md5(uniqid());
-
-		$stmt = $dbsurat->prepare("INSERT INTO pengguna (nama, nip, nohp, email, prodi, fakultas, user, pass,hakakses,token,aktif) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("sssssssssss", $nama, $nip, $nohp, $email, $prodi, $fakultas, $username, $passmd5, $hakakses, $token, $aktif);
-		$stmt->execute();
-
-		//kirim email admin
-		$namaadmin = 'Admin SAINTEK e-Office';
-		$emailadmin = 'saintekonline@gmail.com';
-		$subject = "Pendaftaran Akun SAINTEK e-Office Baru";
-		$pesan = "Yth. " . $namaadmin . "<br/>
+			//kirim email admin
+			$namaadmin = 'Admin SAINTEK e-Office';
+			$emailadmin = 'saintekonline@gmail.com';
+			$subject = "Pendaftaran Akun SAINTEK e-Office Baru";
+			$pesan = "Yth. " . $namaadmin . "<br/>
 			 <br/>
 			 Assalamualaikum wr. wb.<br />
 			 <br />
@@ -113,17 +113,17 @@ if ($gclient->getAccessToken()) {
 			 <br/>
 			 <br/>
 			 <b>SAINTEK e-Office</b>";
-		sendmail($emailadmin, $namaadmin, $subject, $pesan);
+			sendmail($emailadmin, $namaadmin, $subject, $pesan);
 
-		$_SESSION['user'] = $username;
-		$_SESSION['nama'] = $nama;
-		$_SESSION['nip'] = $nip;
-		$_SESSION['prodi'] = $prodi;
-		$_SESSION['hakakses'] = $hakakses;
-		$_SESSION['jabatan'] = $hakakses;
+			$_SESSION['user'] = $username;
+			$_SESSION['nama'] = $nama;
+			$_SESSION['nip'] = $nip;
+			$_SESSION['prodi'] = $prodi;
+			$_SESSION['hakakses'] = $hakakses;
+			$_SESSION['jabatan'] = $hakakses;
 
-		header('location:mahasiswa/index.php');
-	}
+			header('location:mahasiswa/index.php');
+		}
 	} else {
 		header('location: index.php?pesan=harus menggunakan email UIN Malang');
 	}

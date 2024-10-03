@@ -6,6 +6,7 @@ require('../system/phpmailer/sendmail.php');
 $nim = $_SESSION['nip'];
 $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
+$nodata = $_POST['nodata'];
 
 //cari nip koordinator pkl
 $stmt = $dbsurat->prepare("SELECT * FROM pejabat WHERE prodi=? AND kdjabatan='koorpkl'");
@@ -33,7 +34,6 @@ $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipwd = $dhasil['nip'];
 
-$nodata = $_GET['nodata'];
 $statussurat = 0;
 
 $qupdate = mysqli_query($dbsurat, "UPDATE pkl SET validator1='$nipkoor', validator2='$nipkaprodi', validator3='$nipwd', statussurat='0' WHERE no='$nodata' AND nim='$nim'");
@@ -57,9 +57,9 @@ $pesan = "Yth. " . $namakoor . "<br/>
         Terdapat pengajuan surat Pengantar PKL atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
         Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
         <br/>
-        <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
+        <a href='https://eoffice.saintek.uin-malang.ac.id/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
         <br/>
-        atau klik URL berikut ini <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
+        atau klik URL berikut ini <a href='https://eoffice.saintek.uin-malang.ac.id/'>https://eoffice.saintek.uin-malang.ac.id/</a> apabila tombol diatas tidak berfungsi.<br/>
         <br/>
         Wassalamualaikum wr. wb.
 		<br/>

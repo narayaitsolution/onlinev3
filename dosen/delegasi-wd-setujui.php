@@ -53,9 +53,9 @@ $pesan = "Yth. " . $namamhs . "<br/>
         Pengajuan Delegasi anda telah disetujui.<br/>
         Silahkan klik tombol dibawah ini untuk masuk ke dalam sistem SAINTEK e-Office dan mencetak surat persetujuan delegasi.<br/>
         <br/>
-        <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
+        <a href='https://eoffice.saintek.uin-malang.ac.id/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
         <br/>
-        atau klik URL berikut ini <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
+        atau klik URL berikut ini <a href='https://eoffice.saintek.uin-malang.ac.id/'>https://eoffice.saintek.uin-malang.ac.id/</a> apabila tombol diatas tidak berfungsi.<br/>
         <br/>
         Wassalamualaikum wr. wb.
 		<br/>

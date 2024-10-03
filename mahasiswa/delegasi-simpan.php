@@ -47,7 +47,8 @@ $target_dir = "../lampiran/";
 $allowed_extensions = ['jpg', 'jpeg'];
 $max_file_size = 2 * 1024 * 1024; // 2MB
 
-function secure_upload($file, $kode) {
+function secure_upload($file, $kode)
+{
     global $target_dir, $allowed_extensions, $max_file_size;
 
     $file_tmp_path = $file['tmp_name'];
@@ -128,9 +129,9 @@ if ($jeniskegiatan == 'Individu') {
           Terdapat pengajuan " . $jenissurat . " atas nama " . $nama . " di sistem SAINTEK e-Office.<br/>
           Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
           <br/>
-          <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
+          <a href='https://eoffice.saintek.uin-malang.ac.id/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
           <br/>
-          atau klik URL berikut ini <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
+          atau klik URL berikut ini <a href='https://eoffice.saintek.uin-malang.ac.id/'>https://eoffice.saintek.uin-malang.ac.id/</a> apabila tombol diatas tidak berfungsi.<br/>
           <br/>
           Wassalamualaikum wr. wb.
           <br/>

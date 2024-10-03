@@ -19,7 +19,8 @@ $target_dir = "../lampiran/";
 $allowedfileExtensions = array('jpg', 'jpeg', 'pdf');
 
 // Function to check and upload file
-function checkAndUploadFile($file, $allowedExtensions, $maxSize, $targetDir, $newFileName) {
+function checkAndUploadFile($file, $allowedExtensions, $maxSize, $targetDir, $newFileName)
+{
     $tmpPath = $file['tmp_name'];
     $fileName = $file['name'];
     $fileSize = $file['size'];
@@ -82,8 +83,19 @@ if ($allFilesValid) {
     // Insert data tabel delegasiupload
     $stmt = $dbsurat->prepare("INSERT INTO delegasiupload (tanggal, token, nimketua, laporan, noktp, fotoktp, fotoktm, norek, bank, butab) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssss", $tanggal, $token, $nimketua, $uploadResults['laporan']['path'], $noktp, 
-                        $uploadResults['ktp']['path'], $uploadResults['ktm']['path'], $norek, $bank, $uploadResults['butab']['path']);
+    $stmt->bind_param(
+        "ssssssssss",
+        $tanggal,
+        $token,
+        $nimketua,
+        $uploadResults['laporan']['path'],
+        $noktp,
+        $uploadResults['ktp']['path'],
+        $uploadResults['ktm']['path'],
+        $norek,
+        $bank,
+        $uploadResults['butab']['path']
+    );
     $stmt->execute();
 
     // Cari nip wd-3
@@ -114,9 +126,9 @@ if ($allFilesValid) {
               Terdapat pengajuan " . $jenissurat . " di sistem SAINTEK e-Office.<br/>
               Silahkan klik tombol dibawah ini untuk melakukan verifikasi surat di website SAINTEK e-Office<br/>
               <br/>
-              <a href='https://saintek.uin-malang.ac.id/online/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
+              <a href='https://eoffice.saintek.uin-malang.ac.id/' style=' background-color: #0045CE;border: none;color: white;padding: 8px 16px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>SAINTEK e-Office</a><br/>
               <br/>
-              atau klik URL berikut ini <a href='https://saintek.uin-malang.ac.id/online/'>https://saintek.uin-malang.ac.id/online/</a> apabila tombol diatas tidak berfungsi.<br/>
+              atau klik URL berikut ini <a href='https://eoffice.saintek.uin-malang.ac.id/'>https://eoffice.saintek.uin-malang.ac.id/</a> apabila tombol diatas tidak berfungsi.<br/>
               <br/>
               Wassalamualaikum wr. wb.
               <br/>

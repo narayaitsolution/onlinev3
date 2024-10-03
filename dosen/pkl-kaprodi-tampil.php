@@ -205,12 +205,6 @@ $no = 1;
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="paktaintegritas" class="col-sm-2 col-form-label">Pakta Integritas</label>
-                                            <div class="col-sm-10 text-center">
-                                                <a href="<?= $lampiran; ?>" target="_blank"><img src="<?= $lampiran; ?>" class="img-fluid" width="50%"></a>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label for="paktaintegritas" class="col-sm-2 col-form-label">Anggota PKL / Magang</label>
                                             <div class="col-sm-10">
                                                 <table id="example2" class="table table-bordered table-hover text-sm">
@@ -282,11 +276,11 @@ $no = 1;
                                             </div>
                                         </div>
                                         <hr>
-                                        <form role="form" method="POST">
+                                        <form role="form" method="POST" id="my-form">
                                             <input type="hidden" name="token" value="<?= $token; ?>">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <button name="aksi" value="setujui" type="submit" formaction="pkl-kaprodi-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
+                                                    <button name="aksi" value="setujui" type="submit" id="btn-submit" formaction="pkl-kaprodi-setujui.php" class="btn btn-success btn-block btn-lg" onclick="return confirm('Apakah anda menyetujui pengajuan ini ?')"> <i class="fa fa-check"></i> Setujui</button>
                                                 </div>
                                                 <div class="col-6">
                                                     <button name="aksi" value="tolak" type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-block btn-lg"> <i class="fa fa-times"></i> Tolak</button>
@@ -371,6 +365,19 @@ $no = 1;
                 "responsive": true,
             });
 
+        });
+    </script>
+    <script>
+        document.getElementById('my-form').addEventListener('submit', function(e) {
+            var submitButton = document.getElementById('btn-submit');
+            if (!submitButton.disabled) {
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Proses persetujuan...';
+                submitButton.style.backgroundColor = '#5cb85c';
+                submitButton.style.color = 'white';
+            } else {
+                e.preventDefault(); // Prevent form submission if button is already disabled
+            }
         });
     </script>
 </body>

@@ -82,9 +82,9 @@ require('system/myfunc.php');
       -->
         <hr>
         <div class="text-center">
-          <small style="color: blue;">Masuk menggunakan akun</small>
-          <a href="authg.php" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-envelope-circle-check"></i> &nbsp;e-Mail</a>
-          <small style="color: blue;">Gunakan akun email <b>uin-malang.ac.id</b></small>
+          <small style="color: blue;">Masuk gunakan email <b>uin-malang.ac.id</b></small>
+          <a href="authg.php" class="btn btn-primary btn-lg btn-block"><i class="fas fa-envelope"></i> &nbsp;MASUK</a>
+          <small style="color: blue;">Butuh bantuan ? klik <a href="mailto:saintek@uin-malang.ac.id">disini</a></small>
         </div>
         <hr>
         <!--

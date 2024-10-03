@@ -147,7 +147,10 @@ $no = 1;
                                     <?php
                                     if ($lampiran <> '') {
                                     ?>
-                                        <a href="pkl-ajukan.php?nodata=<?= $nodata; ?>" class="btn btn-success btn-block" onclick="return confirm ('Saya menyatakan kebenaran data yang saya kirimkan')"><i class="fa fa-file-upload "></i> Ajukan Pengantar PKL </a>
+                                        <form action="pkl-ajukan.php" method="POST" id="my-form">
+                                            <input type="hidden" name="nodata" value="<?= $nodata; ?>">
+                                            <button type="submit" class="btn btn-success btn-block" id="btn-submit" onclick="return confirm ('Saya menyatakan kebenaran data yang saya kirimkan')"><i class="fa fa-file-upload "></i> Ajukan Pengantar PKL </a>
+                                        </form>
                                     <?php
                                     } else {
                                     ?>
@@ -200,6 +203,19 @@ $no = 1;
                 "autoWidth": false,
                 "responsive": true,
             });
+        });
+    </script>
+    <script>
+        document.getElementById('my-form').addEventListener('submit', function(e) {
+            var submitButton = document.getElementById('btn-submit');
+            if (!submitButton.disabled) {
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Proses pengajuan...';
+                submitButton.style.backgroundColor = '#5cb85c';
+                submitButton.style.color = 'white';
+            } else {
+                e.preventDefault(); // Prevent form submission if button is already disabled
+            }
         });
     </script>
 </body>
