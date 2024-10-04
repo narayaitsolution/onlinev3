@@ -10,7 +10,7 @@ session_destroy();
 <body>
 
     <?php
-    header('location:index.php?pesan=logout');
+    header('location:index.php?hasil=ok&pesan=Anda telah keluar dari SAINTEK e-Office');
     ?>
 
 </body>

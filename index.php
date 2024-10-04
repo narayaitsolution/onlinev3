@@ -33,14 +33,24 @@ require('system/myfunc.php');
         <a href="#" class="h1"><img src="system/saintek-logo.png" width="100%"></a>
       </div>
       <div class="card-body">
+        <!-- alert -->
         <?php
         if (isset($_GET['pesan'])) {
           $pesan = $_GET['pesan'];
+          $hasil = $_GET['hasil'];
+          if ($hasil == 'ok') {
         ?>
-          <script>
-            swal('ERROR!', '<?= $pesan; ?>', 'error');
-          </script>
+            <script>
+              swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+            </script>
+          <?php
+          } elseif ($hasil == 'notok') {
+          ?>
+            <script>
+              swal('ERROR!', '<?= $pesan; ?>', 'error');
+            </script>
         <?php
+          }
         }
         ?>
         <p class="login-box-msg h3"><b>SAINTEK</b> e-Office</p>

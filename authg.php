@@ -125,7 +125,7 @@ if ($gclient->getAccessToken()) {
 			header('location:mahasiswa/index.php');
 		}
 	} else {
-		header('location: index.php?pesan=harus menggunakan email UIN Malang');
+		header('location: index.php?hasil=notok&pesan=Harus menggunakan email UIN Malang');
 	}
 } else {
 	$authUrl = $gclient->createAuthUrl();
