@@ -8,7 +8,7 @@ $nama = $_SESSION['nama'];
 $prodi = $_SESSION['prodi'];
 $hakakses = $_SESSION['hakakses'];
 $jabatan = $_SESSION['jabatan'];
-if ($_SESSION['jabatan'] != "bagumum") {
+if ($hakakses != "subsatker") {
     header("location:../deauth.php");
 }
 $tglsekarang = date('Y-m-d');

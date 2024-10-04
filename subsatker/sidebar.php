@@ -32,7 +32,7 @@
                 </li>
 
                 <?php
-                if ($hakakses == 'subsatker' && $jabatan == 'bagumum') {
+                if ($hakakses == 'subsatker') {
                 ?>
                     <li class="nav-item">
                         <a href="surat-rekap-proses.php" class="nav-link">
@@ -57,18 +57,6 @@
                             <i class="nav-icon fa-solid fa-print"></i>
                             <p>
                                 Cetak SK
-                                <span class="right badge badge-danger"></span>
-                            </p>
-                        </a>
-                    </li>
-                <?php
-                } elseif ($hakakses == 'subsatker' && $jabatan == 'bagkeu') {
-                ?>
-                    <li class="nav-item">
-                        <a href="delegasi-rekap.php" class="nav-link">
-                            <i class="nav-icon fas fa-plane-departure"></i>
-                            <p>
-                                Laporan Delegasi
                                 <span class="right badge badge-danger"></span>
                             </p>
                         </a>

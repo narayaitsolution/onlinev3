@@ -10,27 +10,27 @@ require('../system/myfunc.php');
 $no = 1;
 $tahun = date('Y');
 
-$token = $_POST['token'];
-$hakakses = $_POST['hakakses'];
-$nama = $_POST['nama'];
-$nip = $_POST['nip'];
-$nohp = $_POST['nohp'];
-$email = $_POST['email'];
-$prodi = $_POST['prodi'];
-$pangkat = $_POST['pangkat'];
-$golongan = $_POST['golongan'];
-$jafung = $_POST['jafung'];
-$aktif = $_POST['aktif'];
+$tokenuser = $_POST['tokenuser'];
+$hakaksesuser = $_POST['hakaksesuser'];
+$namauser = $_POST['namauser'];
+$nipuser = $_POST['nipuser'];
+$nohpuser = $_POST['nohpuser'];
+$emailuser = $_POST['emailuser'];
+$prodiuser = $_POST['prodiuser'];
+$pangkatuser = $_POST['pangkatuser'];
+$golonganuser = $_POST['golonganuser'];
+$jafunguser = $_POST['jafunguser'];
+$aktifuser = $_POST['aktifuser'];
 
-if ($hakakses == 'dosen' || $hakakses == 'tendik') {
+if ($hakaksesuser == 'dosen' || $hakaksesuser == 'tendik') {
     $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,golongan=?,pangkat=?,jafung=?,nohp=?,email=?,prodi=?,hakakses=?,aktif=?
                                             WHERE token=?");
-    $stmt->bind_param("sssssssssss", $nama, $nip, $golongan, $pangkat, $jafung, $nohp, $email, $prodi, $hakakses, $aktif, $token);
+    $stmt->bind_param("sssssssssss", $namauser, $nipuser, $golonganuser, $pangkatuser, $jafunguser, $nohpuser, $emailuser, $prodiuser, $hakaksesuser, $aktifuser, $tokenuser);
     $stmt->execute();
 } else {
     $stmt = $dbsurat->prepare("UPDATE pengguna SET nama=?,nip=?,nohp=?,email=?,prodi=?,hakakses=?,aktif=?
                                             WHERE token=?");
-    $stmt->bind_param("ssssssss", $nama, $nip, $nohp, $email, $prodi, $hakakses, $aktif, $token);
+    $stmt->bind_param("ssssssss", $namauser, $nipuser, $nohpuser, $emailuser, $prodiuser, $hakaksesuser, $aktifuser, $tokenuser);
     $stmt->execute();
 }
-header("location:index.php?nip=$nip&hasil=ok&pesan=Perubahan data berhasil");
+header("location:index.php?nip=$nipuser&hasil=ok&pesan=Perubahan data berhasil");

@@ -48,8 +48,12 @@ if ($kunci == $antibot) {
             header('location:dosen/index.php');
         } elseif ($hakakses == 'tendik') {
             header('location:staf/index.php');
-        } else {
+        } elseif ($hakakses == 'subsatker') {
+            header('location:subsatker/index.php');
+        } elseif ($hakakses == 'mahasiswa') {
             header('location:mahasiswa/index.php');
+        } else {
+            header('location:index.php?pesan=gagal');
         }
     } else {
         header('location:index.php?pesan=gagal');

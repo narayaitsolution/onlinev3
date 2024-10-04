@@ -142,13 +142,13 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nama" name="nama" value="<?= $namauser; ?>" required>
+                                                <input type="text" class="form-control" id="namauser" name="nama" value="<?= $namauser; ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nip" name="nip" value="<?= $nipuser; ?>" required>
+                                                <input type="text" class="form-control" id="nipuser" name="nip" value="<?= $nipuser; ?>" required>
                                             </div>
                                         </div>
                                         <!-- tampilkan hanya untuk dosen -->
@@ -158,7 +158,7 @@ $tahun = date('Y');
                                             <div class="form-group row">
                                                 <label for="nip" class="col-sm-2 col-form-label">Golongan</label>
                                                 <div class="col-sm-10">
-                                                    <select name="golongan" class="form-control">
+                                                    <select name="golonganuser" class="form-control">
                                                         <option value="<?= $golongan; ?>"><?= $golonganuser; ?></option>
                                                         <option value="Juru Muda">Juru Muda</option>
                                                         <option value="Juru Muda Tingkat ">Juru Muda Tingkat </option>
@@ -183,7 +183,7 @@ $tahun = date('Y');
                                             <div class="form-group row">
                                                 <label for="nip" class="col-sm-2 col-form-label">Pangkat</label>
                                                 <div class="col-sm-10">
-                                                    <select name="pangkat" class="form-control">
+                                                    <select name="pangkatuser" class="form-control">
                                                         <option value="<?= $pangkat; ?>"><?= $pangkatuser; ?></option>
                                                         <option value="I/a">I/a</option>
                                                         <option value="I/b">I/b</option>
@@ -208,7 +208,7 @@ $tahun = date('Y');
                                             <div class="form-group row">
                                                 <label for="nip" class="col-sm-2 col-form-label">Jabatan Fungsional</label>
                                                 <div class="col-sm-10">
-                                                    <select name="jafung" class="form-control">
+                                                    <select name="jafunguser" class="form-control">
                                                         <option value="<?= $jafung; ?>"><?= $jafunguser; ?></option>
                                                         <option value="Asisten Ahli">Asisten Ahli</option>
                                                         <option value="Lektor">Lektor</option>
@@ -224,19 +224,19 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <label for="nohp" class="col-sm-2 col-form-label">No. HP</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="nohp" name="nohp" value="<?= $nohpuser; ?>" required>
+                                                <input type="number" class="form-control" id="nohp" name="nohpuser" value="<?= $nohpuser; ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail" name="email" value="<?= $emailuser; ?>" required>
+                                                <input type="email" class="form-control" id="inputEmail" name="emailuser" value="<?= $emailuser; ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="prodi" class="col-sm-2 col-form-label">Program Studi</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" name="prodi">
+                                                <select class="form-control" name="prodiuser">
                                                     <option value="<?= $prodi; ?>"><?= $prodiuser; ?></option>
                                                     <option value="Biologi">Biologi</option>
                                                     <option value="Fisika">Fisika</option>
@@ -254,7 +254,7 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <label for="hakakses" class="col-sm-2 col-form-label">Hak Akses</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" name="hakakses">
+                                                <select class="form-control" name="hakaksesuser">
                                                     <option value="<?= $hakaksesuser; ?>"><?= $hakaksesuser; ?></option>
                                                     <option value="dosen">dosen</option>
                                                     <option value="tendik">tendik</option>
@@ -266,7 +266,7 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <label for="aktif" class="col-sm-2 col-form-label">Aktif</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" name="aktif">
+                                                <select class="form-control" name="aktifuser">
                                                     <option value="<?= $aktif; ?>"><?= $aktif; ?></option>
                                                     <option value="1">1</option>
                                                     <option value="0">0</option>
@@ -274,7 +274,7 @@ $tahun = date('Y');
                                             </div>
                                         </div>
                                         <div class="offset-sm-2 col-sm-10">
-                                            <input type="hidden" name="token" value="<?= $tokenuser; ?>">
+                                            <input type="hidden" name="tokenuser" value="<?= $tokenuser; ?>">
                                             <button type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan data yang saya isikan adalah benar')"><i class="fas fa-refresh"></i> UPDATE DATA</button>
                                         </div>
                                     </form>
