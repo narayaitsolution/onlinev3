@@ -142,13 +142,13 @@ $tahun = date('Y');
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="namauser" name="nama" value="<?= $namauser; ?>" required>
+                                                <input type="text" class="form-control" id="namauser" name="namauser" value="<?= $namauser; ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nipuser" name="nip" value="<?= $nipuser; ?>" required>
+                                                <input type="text" class="form-control" id="nipuser" name="nipuser" value="<?= $nipuser; ?>" required>
                                             </div>
                                         </div>
                                         <!-- tampilkan hanya untuk dosen -->
