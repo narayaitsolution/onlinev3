@@ -13,15 +13,15 @@ if ($nip != "198312132019031004") {
 }
 $prodipejabat = $_POST['prodi'];
 $namapejabat = $_POST['dosen'];
+$nippejabat = $_POST['nip'];
 $kdjabatan = $_POST['kdjabatan'];
 
-$qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nama='$nama'");
+$qdosen = mysqli_query($dbsurat, "SELECT * FROM pengguna WHERE nama='$namapejabat'");
 $ddosen = mysqli_fetch_array($qdosen);
-$iddosen = $ddosen['user'];
-$nipdosen = $ddosen['nip'];
+$idpejabat = $ddosen['user'];
 
 $qsimpan = mysqli_query($dbsurat, "INSERT INTO pejabat(prodi,kdjabatan,iddosen,nip,nama,jabatan)
-                                    VALUES ('$prodipejabat','$kdjabatan','$iddosen','$nipdosen','$namapejabat','$kdjabatan')");
+                                    VALUES ('$prodipejabat','$kdjabatan','$idpejabat','$nippejabat','$namapejabat','$kdjabatan')");
 if ($qsimpan) {
     header("location:pejabat-tampil.php?pesan=success");
 } else {

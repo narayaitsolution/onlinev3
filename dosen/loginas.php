@@ -28,6 +28,7 @@ require('../system/myfunc.php');
     <link rel="stylesheet" href="../template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="../template/dist/css/adminlte.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
@@ -52,6 +53,27 @@ require('../system/myfunc.php');
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Dashboard</h1>
+                            <!--alert-->
+                            <?php
+                            if (isset($_GET['pesan'])) {
+                                $pesan = $_GET['pesan'];
+                                $hasil = $_GET['hasil'];
+                                if ($hasil == 'ok') {
+                            ?>
+                                    <script>
+                                        swal('BERHASIL!', '<?= $pesan; ?>', 'success');
+                                    </script>
+
+                                <?php
+                                } else {
+                                ?>
+                                    <script>
+                                        swal('ERROR!', '<?= $pesan; ?>', 'error');
+                                    </script>
+                            <?php
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -134,7 +156,7 @@ require('../system/myfunc.php');
                                                 <form action="../auth-as.php" method="POST">
                                                     <input type="hidden" name="username" value="<?= $user; ?>">
                                                     <input type="hidden" name="password" value="<?= $pass; ?>">
-                                                    <input type="submit" class="btn btn-danger btn-lg btn-block" value="Log In" name="loginas" onclick="return confirm ('Login As <?= $nama; ?> ?');">
+                                                    <input type="submit" class="btn btn-success btn-lg btn-block" value="Log In" name="loginas" onclick="return confirm ('Login As <?= $nama; ?> ?');">
                                                 </form>
                                                 <form action="passreset.php" method="POST">
                                                     <input type="hidden" name="nodata" value="<?= $nodata; ?>">
@@ -144,6 +166,10 @@ require('../system/myfunc.php');
                                                 <form action="profile-admin-tampil.php" method="POST">
                                                     <input type="hidden" name="tokenuser" value="<?= $tokenuser; ?>">
                                                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Profile" name="profile" onclick="return confirm ('Masuk ke profile <?= $nama; ?> ?');">
+                                                </form>
+                                                <form action="admin-user-delete.php" method="POST">
+                                                    <input type="hidden" name="tokenuser" value="<?= $tokenuser; ?>">
+                                                    <input type="submit" class="btn btn-danger btn-lg btn-block" value="Hapus" name="hapus" onclick="return confirm ('Hapus akun <?= $nama; ?> ?');">
                                                 </form>
                                             </td>
                                         </tr>

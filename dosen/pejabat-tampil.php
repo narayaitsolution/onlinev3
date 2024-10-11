@@ -186,16 +186,16 @@ $tahun = date('Y');
                                                 $query = mysqli_query($dbsurat, "SELECT * FROM pejabat ORDER BY prodi, kdjabatan");
                                                 while ($data = mysqli_fetch_array($query)) {
                                                     $nodata = $data['no'];
-                                                    $prodi = $data['prodi'];
-                                                    $nama = $data['nama'];
-                                                    $nip = $data['nip'];
+                                                    $prodipejabat = $data['prodi'];
+                                                    $namapejabat = $data['nama'];
+                                                    $nippejabat = $data['nip'];
                                                     $kdjabatan = $data['kdjabatan'];
                                                 ?>
                                                     <tr>
                                                         <td><?= $no; ?></td>
                                                         <td><?= $prodi; ?></td>
-                                                        <td><?= $nama; ?></td>
-                                                        <td><?= $nip; ?></td>
+                                                        <td><?= $namapejabat; ?></td>
+                                                        <td><?= $nippejabat; ?></td>
                                                         <td><?= $kdjabatan; ?></td>
                                                         <td>
                                                             <a class="btn btn-sm btn-danger" href="pejabat-hapus.php?no=<?= $nodata; ?>" onclick="return confirm ('Hapus ?')">Delete</a>
