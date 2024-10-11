@@ -130,7 +130,7 @@ $tahunlalu = date('Y', strtotime('-1 year'));
                     <td><?= $prodi; ?></td>
                     <td><?= $namakegiatan; ?></td>
                     <td><?= $penyelenggara; ?></td>
-                    <td><a href="<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
+                    <td><a href="../<?= $sertifikat; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat</a></td>
                   </tr>
                   <?php
                   $qanggota = mysqli_query($dbsurat, "SELECT * FROM penghargaananggota WHERE nodata='$nodata'");
