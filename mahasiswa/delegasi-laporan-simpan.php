@@ -55,20 +55,31 @@ $fileChecks = array(
     'laporan' => array('extensions' => array('pdf'), 'maxSize' => 5242880, 'newFileName' => random_str(12)),
     'ktp' => array('extensions' => array('jpg', 'jpeg'), 'maxSize' => 1048576, 'newFileName' => random_str(12)),
     'ktm' => array('extensions' => array('jpg', 'jpeg'), 'maxSize' => 1048576, 'newFileName' => random_str(12)),
-    'butab' => array('extensions' => array('jpg', 'jpeg'), 'maxSize' => 1048576, 'newFileName' => random_str(12))
+    'bukutabungan' => array('extensions' => array('jpg', 'jpeg'), 'maxSize' => 1048576, 'newFileName' => random_str(12))
 );
 
 $uploadResults = array();
 $allFilesValid = true;
+$failedFiles = array();
 
 foreach ($fileChecks as $fileType => $fileParams) {
     $result = checkAndUploadFile($_FILES[$fileType], $fileParams['extensions'], $fileParams['maxSize'], $target_dir, $fileParams['newFileName']);
     $uploadResults[$fileType] = $result;
     if (!$result['status']) {
         $allFilesValid = false;
-        header("location:delegasi-laporan-isi.php?hasil=notok&token=$token&pesan=" . urlencode($result['message']));
-        exit;
+        $failedFiles[] = $fileType;
     }
+}
+
+// If any files failed to upload, redirect with error message
+if (!$allFilesValid) {
+    $failedFilesList = implode(', ', $failedFiles);
+    $errorMessage = "Gagal mengupload file: " . $failedFilesList . ". ";
+    foreach ($failedFiles as $failedFile) {
+        $errorMessage .= $uploadResults[$failedFile]['message'] . " ";
+    }
+    header("location:delegasi-laporan-isi.php?hasil=notok&token=$token&pesan=" . urlencode($errorMessage));
+    exit;
 }
 
 // If all files are valid, proceed with database operations
