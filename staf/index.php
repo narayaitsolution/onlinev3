@@ -54,7 +54,7 @@ $tahun = date('Y');
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Dashboard</h1>
-                             <!-- alert -->
+                            <!-- alert -->
                             <?php
                             if (isset($_GET['pesan'])) {
                                 $pesan = $_GET['pesan'];
@@ -458,7 +458,7 @@ $tahun = date('Y');
                     </div>
                 </div>
             </section>
-            
+
             <!-- Setting SKPI -->
             <?php
             $qoperatorskpi = mysqli_query($dbsurat, "SELECT * FROM skpi_operator WHERE kode='$nip'");
@@ -486,6 +486,7 @@ $tahun = date('Y');
                                                 <thead>
                                                     <tr>
                                                         <th width="5%" style="text-align: center;">No</th>
+                                                        <th style="text-align: center;">Tgl. Pengajuan</th>
                                                         <th style="text-align: center;">Nama</th>
                                                         <th style="text-align: center;">NIM</th>
                                                         <th width="20%" style="text-align: center;">Aksi</th>
@@ -493,14 +494,16 @@ $tahun = date('Y');
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $query = mysqli_query($dbsurat, "SELECT no, nim, nama FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' ORDER BY tanggal");
+                                                    $query = mysqli_query($dbsurat, "SELECT no, nim, nama FROM skpi_prestasipenghargaan WHERE verifikasi1='1' AND verifikasi2='1' AND verifikasi3='1' AND prodi='$prodi' AND year(tanggal)='$tahun' ORDER BY tanggal");
                                                     while ($data = mysqli_fetch_array($query)) {
                                                         $nodata = $data['no'];
+                                                        $tanggal = $data['tanggal'];
                                                         $nim = $data['nim'];
                                                         $nama = $data['nama'];
                                                     ?>
                                                         <tr>
                                                             <td><?= $no; ?></td>
+                                                            <td><?= tgl_indo($tanggal); ?></td>
                                                             <td><?= $nama; ?></td>
                                                             <td><?= $nim; ?></td>
                                                             <td style="text-align: center;">
