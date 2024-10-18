@@ -105,7 +105,7 @@ if ($allFilesValid) {
         $uploadResults['ktm']['path'],
         $norek,
         $bank,
-        $uploadResults['butab']['path']
+        $uploadResults['bukutabungan']['path']
     );
     $stmt->execute();
 

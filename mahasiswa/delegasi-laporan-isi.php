@@ -68,26 +68,26 @@ $no = 1;
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col">
-                 <!-- alert -->
-                 <?php
-                 if (isset($_GET['pesan'])) {
-                     $pesan = $_GET['pesan'];
-                     $hasil = $_GET['hasil'];
-                     if ($hasil == 'ok') {
-                         ?>
-                         <script>
-                             swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
-                         </script>
-                         <?php
-                     } elseif ($hasil == 'notok') {
-                         ?>
-                         <script>
-                             swal('ERROR!', '<?= $pesan; ?>', 'error');
-                         </script>
-                         <?php
-                     }
-                 }
-                 ?>
+                <!-- alert -->
+                <?php
+                if (isset($_GET['pesan'])) {
+                  $pesan = $_GET['pesan'];
+                  $hasil = $_GET['hasil'];
+                  if ($hasil == 'ok') {
+                ?>
+                    <script>
+                      swal('BERHASIL!!', '<?= $pesan; ?>', 'success');
+                    </script>
+                  <?php
+                  } elseif ($hasil == 'notok') {
+                  ?>
+                    <script>
+                      swal('ERROR!', '<?= $pesan; ?>', 'error');
+                    </script>
+                <?php
+                  }
+                }
+                ?>
               </div>
             </div>
           </div>
@@ -287,9 +287,9 @@ $no = 1;
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="butab" class="col-sm-2 col-form-label">Foto Buku Rekening</label>
+                        <label for="bukutabungan" class="col-sm-2 col-form-label">Foto Buku Rekening</label>
                         <div class="col-sm-10">
-                          <input type="file" class="form-control" id="butab" name="butab" accept="image/jpeg" required>
+                          <input type="file" class="form-control" id="bukutabungan" name="bukutabungan" accept="image/jpeg" required>
                           <small style="color: red;">Nama pemegang buku <b>HARUS SAMA</b> dengan nama KTP</small><br>
                           <small style="color: red;">Format File JPG, ukuran file maksimal 1MB</small>
                         </div>
