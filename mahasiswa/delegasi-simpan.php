@@ -42,63 +42,65 @@ $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
 $nipwd = $dhasil['nip'];
 
-
-$target_dir = "../lampiran/";
-$allowed_extensions = ['jpg', 'jpeg'];
-$max_file_size = 2 * 1024 * 1024; // 2MB
-
-function secure_upload($file, $kode)
+// Fungsi untuk upload dan validasi file
+function uploadFile($file, $kode)
 {
-    global $target_dir, $allowed_extensions, $max_file_size;
+    $target_dir = "../lampiran/";
+    $allowed_extensions = ['jpg', 'jpeg'];
+    $max_file_size = 2 * 1024 * 1024; // 2MB
 
-    $file_tmp_path = $file['tmp_name'];
-    $file_name = $file['name'];
-    $file_size = $file['size'];
-    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-
-    // Check file extension
-    if (!in_array($file_ext, $allowed_extensions)) {
-        return ['status' => false, 'message' => 'File harus format JPG/JPEG'];
+    // Validasi file
+    if (!isset($file['tmp_name']) || empty($file['tmp_name'])) {
+        return ['status' => false, 'message' => 'File tidak ditemukan'];
     }
 
-    // Check file size
+    $file_tmp = $file['tmp_name'];
+    $file_size = $file['size'];
+    $file_type = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+    // Validasi ekstensi
+    if (!in_array($file_type, $allowed_extensions)) {
+        return ['status' => false, 'message' => 'Format file harus JPG/JPEG'];
+    }
+
+    // Validasi ukuran
     if ($file_size > $max_file_size) {
         return ['status' => false, 'message' => 'Ukuran file maksimal 2MB'];
     }
 
-    $new_file_name = $kode . '.jpg';
-    $destination = $target_dir . $new_file_name;
-
-    // Verify MIME type
+    // Validasi mime type
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $file_mime = finfo_file($finfo, $file_tmp_path);
+    $mime_type = finfo_file($finfo, $file_tmp);
     finfo_close($finfo);
 
-    if ($file_mime !== 'image/jpeg' && $file_mime !== 'image/jpg') {
-        return ['status' => false, 'message' => 'Jenis file harus JPG/JPEG'];
+    if (!in_array($mime_type, ['image/jpeg', 'image/jpg'])) {
+        return ['status' => false, 'message' => 'File harus berupa gambar JPG/JPEG'];
     }
 
-    $resized_image = imgresize($file_tmp_path);
-    if ($resized_image === false) {
-        return ['status' => false, 'message' => 'Resize file gagal'];
+    // Simpan file
+    $new_filename = $target_dir . $kode . '.jpg';
+    if (!move_uploaded_file($file_tmp, $new_filename)) {
+        return ['status' => false, 'message' => 'Gagal menyimpan file'];
     }
 
-    if (file_put_contents($destination, $resized_image)) {
-        return ['status' => true, 'path' => $destination];
-    } else {
-        return ['status' => false, 'message' => 'Upload file gagal'];
-    }
+    return ['status' => true, 'path' => $new_filename];
 }
 
-// Upload bukti
-$upload_result = secure_upload($_FILES['bukti'], $kode);
+// Proses upload file
+if (!isset($_FILES['bukti'])) {
+    header("location:delegasi-isi.php?nip=$nim&pesan=File bukti tidak ditemukan&hasil=notok");
+    exit;
+}
+
+$upload_result = uploadFile($_FILES['bukti'], $kode);
 if (!$upload_result['status']) {
-    header("location:delegasi-isi.php?nip=$nim&pesan=gagal&hasil=notok&error=" . urlencode($upload_result['message']));
+    header("location:delegasi-isi.php?nip=$nim&pesan=" . urlencode($upload_result['message']) . "&hasil=notok");
     exit;
 }
 
 $dest_path = $upload_result['path'];
 
+// Proses penyimpanan data ke database
 if ($jeniskegiatan == 'Individu') {
     $stmt = $dbsurat->prepare("INSERT INTO delegasi (tanggal, nim, nama, prodi, kegiatan, namakegiatan, tglmulai, tglselesai, tempat, tingkat, kategori, jeniskegiatan, bukti, validator1, validator2, validator3, token) 
                                 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");

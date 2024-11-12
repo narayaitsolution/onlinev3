@@ -8,4 +8,4 @@ $token = mysqli_real_escape_string($dbsurat, $_GET['token']);
 $query3 = mysqli_query($dbsurat, "DELETE FROM delegasi WHERE token = '$token'");
 $query4 = mysqli_query($dbsurat, "DELETE FROM delegasianggota WHERE token='$token'");
 
-header("location:index.php");
+header("location:index.php?hasil=ok&pesan=Penghapusan pengajuan delegasi berhasil");
