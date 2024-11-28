@@ -15,80 +15,78 @@ $nimketua = $_SESSION['nip'];
 
 $statuslaporan = 0;
 
-$target_dir = "../lampiran/";
-$allowedfileExtensions = array('jpg', 'jpeg', 'pdf');
+$upload_dir = "../lampiran/";
+// Validasi dan upload file
+$allowed_pdf = ['application/pdf'];
+$allowed_image = ['image/jpeg'];
+$max_size_laporan = 5 * 1024 * 1024; // 5MB
+$max_size_image = 1 * 1024 * 1024; // 1MB
 
-// Function to check and upload file
-function checkAndUploadFile($file, $allowedExtensions, $maxSize, $targetDir, $newFileName)
-{
-    $tmpPath = $file['tmp_name'];
-    $fileName = $file['name'];
-    $fileSize = $file['size'];
-    $fileParts = explode(".", $fileName);
-    $fileExtension = strtolower(end($fileParts));
+$errors = [];
 
-    if ($fileSize > $maxSize) {
-        return array('status' => false, 'message' => "Ukuran file maksimal " . ($maxSize / 1048576) . "MB!!");
+/// Laporan file
+if (isset($_FILES['laporan'])) {
+    $laporan = $_FILES['laporan'];
+    if (!in_array($laporan['type'], $allowed_pdf) || $laporan['size'] > $max_size_laporan) {
+        $errors[] = "Laporan harus berupa file PDF dan maksimal 5MB.";
     }
-
-    if (!in_array($fileExtension, $allowedExtensions)) {
-        return array('status' => false, 'message' => "Format file tidak sesuai!!");
-    }
-
-    $filePath = $targetDir . $newFileName . '.' . $fileExtension;
-    if (move_uploaded_file($tmpPath, $filePath)) {
-        $info = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $filePath);
-        $expectedMimeType = ($fileExtension == 'pdf') ? 'application/pdf' : 'image/jpeg';
-        if ($info == $expectedMimeType) {
-            return array('status' => true, 'path' => $filePath);
-        } else {
-            unlink($filePath);
-            return array('status' => false, 'message' => "File tidak valid!");
-        }
-    }
-
-    return array('status' => false, 'message' => "Gagal mengupload file!");
+} else {
+    $errors[] = "File laporan tidak ditemukan.";
 }
 
-// Check and upload each file
-$fileChecks = array(
-    'laporan' => array('extensions' => array('pdf'), 'maxSize' => 5242880, 'newFileName' => random_str(12)),
-    'ktp' => array('extensions' => array('jpg', 'jpeg'), 'maxSize' => 1048576, 'newFileName' => random_str(12)),
-    'ktm' => array('extensions' => array('jpg', 'jpeg'), 'maxSize' => 1048576, 'newFileName' => random_str(12)),
-    'bukutabungan' => array('extensions' => array('jpg', 'jpeg'), 'maxSize' => 1048576, 'newFileName' => random_str(12))
-);
-
-$uploadResults = array();
-$allFilesValid = true;
-$failedFiles = array();
-
-foreach ($fileChecks as $fileType => $fileParams) {
-    $result = checkAndUploadFile($_FILES[$fileType], $fileParams['extensions'], $fileParams['maxSize'], $target_dir, $fileParams['newFileName']);
-    $uploadResults[$fileType] = $result;
-    if (!$result['status']) {
-        $allFilesValid = false;
-        $failedFiles[] = $fileType;
+// KTP file
+if (isset($_FILES['ktp'])) {
+    $ktp = $_FILES['ktp'];
+    if (!in_array($ktp['type'], $allowed_image) || $ktp['size'] > $max_size_image) {
+        $errors[] = "Foto KTP harus berupa file JPG dan maksimal 1MB.";
     }
+} else {
+    $errors[] = "File KTP tidak ditemukan.";
 }
 
-// If any files failed to upload, redirect with error message
-if (!$allFilesValid) {
-    $failedFilesList = implode(', ', $failedFiles);
-    $errorMessage = "Gagal mengupload file: " . $failedFilesList . ". ";
-    foreach ($failedFiles as $failedFile) {
-        $errorMessage .= $uploadResults[$failedFile]['message'] . " ";
+// KTM file
+if (isset($_FILES['ktm'])) {
+    $ktm = $_FILES['ktm'];
+    if (!in_array($ktm['type'], $allowed_image) || $ktm['size'] > $max_size_image) {
+        $errors[] = "Foto KTM harus berupa file JPG dan maksimal 1MB.";
     }
-    header("location:delegasi-laporan-isi.php?hasil=notok&token=$token&pesan=" . urlencode($errorMessage));
+} else {
+    $errors[] = "File KTM tidak ditemukan.";
+}
+
+// Buku tabungan file
+if (isset($_FILES['bukutabungan'])) {
+    $bukutabungan = $_FILES['bukutabungan'];
+    if (!in_array($bukutabungan['type'], $allowed_image) || $bukutabungan['size'] > $max_size_image) {
+        $errors[] = "Foto buku tabungan harus berupa file JPG dan maksimal 1MB.";
+    }
+} else {
+    $errors[] = "File buku tabungan tidak ditemukan.";
+}
+
+// Jika ada kesalahan, tampilkan dan hentikan eksekusi
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        header("location:delegasi-laporan-isi.php?hasil=notok&token=$token&pesan=" . $error);
+    }
     exit;
-}
+} else {
+    // If all files are valid, proceed with database operations
+    $laporan_path = $upload_dir . "laporan_" . $nimketua . time() . ".pdf";
+    $ktp_path = $upload_dir . "ktp_" . $nimketua . time() . ".jpg";
+    $ktm_path = $upload_dir . "ktm_" . $nimketua . time() . ".jpg";
+    $bukutabungan_path = $upload_dir . "bukutabungan_" . $nimketua . time() . ".jpg";
 
-// If all files are valid, proceed with database operations
-if ($allFilesValid) {
+    move_uploaded_file($laporan['tmp_name'], $laporan_path);
+    move_uploaded_file($ktp['tmp_name'], $ktp_path);
+    move_uploaded_file($ktm['tmp_name'], $ktm_path);
+    move_uploaded_file($bukutabungan['tmp_name'], $bukutabungan_path);
+
     // Update tabel delegasi
     $stmt = $dbsurat->prepare("UPDATE delegasi 
                                 SET laporan=?, tgllaporan=?, statuslaporan=?
                                 WHERE token=?");
-    $stmt->bind_param("ssss", $uploadResults['laporan']['path'], $tanggal, $statuslaporan, $token);
+    $stmt->bind_param("ssss", $laporan_path, $tanggal, $statuslaporan, $token);
     $stmt->execute();
 
     // Insert data tabel delegasiupload
@@ -99,13 +97,13 @@ if ($allFilesValid) {
         $tanggal,
         $token,
         $nimketua,
-        $uploadResults['laporan']['path'],
+        $laporan_path,
         $noktp,
-        $uploadResults['ktp']['path'],
-        $uploadResults['ktm']['path'],
+        $ktp_path,
+        $ktm_path,
         $norek,
         $bank,
-        $uploadResults['bukutabungan']['path']
+        $bukutabungan_path
     );
     $stmt->execute();
 
